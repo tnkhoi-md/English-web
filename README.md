@@ -13,6 +13,10 @@ A personal English-learning prototype for long-term self-study.
 - Added local JSON export/import backup.
 - Added clearer data-storage wording: current data is local to the browser/device.
 - Kept iPad/Safari-safe delegated interaction for multiple-choice buttons.
+- Refined iPad layout: clearer spacing between cards/sections, compact lesson header, improved content width and hierarchy.
+- Fixed brand styling so the logo and Tnkhoi English wordmark no longer overlap.
+- Added semantic lesson colors for Vocabulary, Listening, Grammar, Pronunciation, Speaking and Mediation.
+- Refined typography, line-height, button spacing, examples and expandable sections for easier reading.
 
 ## Data
 The prototype stores learning data in browser `localStorage`. Reloading the page does not normally erase it, but another device/browser has a separate local store. Use **Settings → Export backup** to move data manually. Cloud account sync is reserved for a later architecture phase.
