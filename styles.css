@@ -17,7 +17,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
 button,input{font:inherit}
-button{cursor:pointer}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .app-shell{min-height:100vh}
 .topbar{
   position:sticky;top:0;z-index:20;
@@ -76,7 +76,7 @@ p{line-height:1.55}
 .example{font-size:21px;line-height:1.45;padding:18px;border-radius:16px;background:var(--surface2);margin:18px 0}
 .vi{color:var(--muted);font-size:14px}
 .choice-grid{display:grid;gap:10px;margin-top:18px}
-.choice{border:1px solid var(--line);background:var(--surface);padding:15px;border-radius:14px;text-align:left;font-weight:650}
+.choice{appearance:none;-webkit-appearance:none;width:100%;color:var(--text);border:1px solid var(--line);background:var(--surface);padding:15px;border-radius:14px;text-align:left;font-weight:650}
 .choice:hover{border-color:#999}
 .choice.correct{border-color:var(--success);background:#eef9f2}
 .choice.wrong{border-color:var(--danger);background:#fff2f0}
