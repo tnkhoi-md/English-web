@@ -1,258 +1,55 @@
-
-const KEY = "tnkhoi_english_v1";
-
-const defaultState = {
-  profile: { level: "A1", xp: 120, streak: 3 },
-  skills: { Vocabulary: 62, Grammar: 55, Listening: 48, Speaking: 43, Reading: 51, Writing: 24, Pronunciation: 39 },
-  words: {
-    headache:{meaning:"đau đầu",ipa:"/ˈhedeɪk/",mastery:72,domain:"Health",status:"developing"},
-    cough:{meaning:"ho",ipa:"/kɒf/ · /kɔːf/",mastery:64,domain:"Health",status:"developing"},
-    fever:{meaning:"sốt",ipa:"/ˈfiːvə(r)/",mastery:58,domain:"Health",status:"developing"},
-    pain:{meaning:"đau",ipa:"/peɪn/",mastery:81,domain:"Health",status:"strong"},
-    throat:{meaning:"họng",ipa:"/θrəʊt/ · /θroʊt/",mastery:45,domain:"Health",status:"developing"},
-    symptom:{meaning:"triệu chứng",ipa:"/ˈsɪmptəm/",mastery:32,domain:"Health",status:"recognition"}
-  },
-  completed: [],
-  lessonEvidence: {},
-  theme: "system"
-};
-
-const lesson = {
-  id:"A1_HEALTH_SYMPTOMS_001",
-  title:"Describing Symptoms",
-  subtitle:"Say what is wrong and respond to simple health questions.",
-  duration:"8 min",
-  level:"A1",
-  domain:"Health",
-  why:"Listening recognition is developing, while several symptom words are already partly known. This lesson converts that knowledge into useful speaking.",
-  steps:[
-    {type:"intro", title:"A small skill with real-world value", body:"Today you will learn to describe a simple health problem, ask where it hurts, and answer a few basic questions.", vi:"Hôm nay bạn sẽ học cách mô tả một vấn đề sức khỏe đơn giản và trả lời một vài câu hỏi cơ bản."},
-    {type:"vocab", word:"headache", meaning:"đau đầu", ipa:"/ˈhedeɪk/", example:"I have a headache.", vi:"Tôi bị đau đầu."},
-    {type:"vocab", word:"fever", meaning:"sốt", ipa:"/ˈfiːvə(r)/", example:"I have a fever.", vi:"Tôi bị sốt."},
-    {type:"vocab", word:"cough", meaning:"ho", ipa:"/kɒf/ · /kɔːf/", example:"I have a cough.", vi:"Tôi bị ho."},
-    {type:"vocab", word:"sore throat", meaning:"đau/rát họng", ipa:"/sɔːr θrəʊt/", example:"I have a sore throat.", vi:"Tôi bị đau/rát họng."},
-    {type:"listen", title:"Listen for the problem", script:"Doctor: What’s wrong?\\nPatient: I don’t feel well.\\nDoctor: What’s the problem?\\nPatient: I have a headache and a cough.\\nDoctor: Do you have a fever?\\nPatient: Yes, I do.\\nDoctor: Where does it hurt?\\nPatient: My throat hurts.", question:"What problems does the patient have?", choices:["A headache and a cough","A stomachache and back pain","Only a fever"], answer:0},
-    {type:"grammar", title:"One useful pattern", body:"Use have + symptom to report a problem.", example:"I have a headache.\\nI have a cough.\\nI have a fever.", vi:"Dùng have + triệu chứng để nói mình đang gặp vấn đề gì."},
-    {type:"pron", title:"Pronunciation focus: /θ/", body:"In throat, the first sound is /θ/. Put your tongue lightly between your teeth and let air pass.", example:"throat → /θrəʊt/", vi:"Đặt đầu lưỡi nhẹ giữa hai răng và đẩy hơi ra."},
-    {type:"speak", title:"Your turn", prompt:"Imagine you don't feel well. Say two things to a doctor.", hint:"Try: I have a headache. I have a cough.", vi:"Hãy tưởng tượng bạn không khỏe. Nói hai điều với bác sĩ."},
-    {type:"case", title:"Mini case", body:"Nam doesn't feel well today. He has a headache and a cough. He also has a fever.", question:"Which symptoms does Nam have?", choices:["Headache, cough and fever","Back pain and sore throat","Only a headache"], answer:0},
-    {type:"mediation", title:"Tell someone else", body:"Mai has a headache and a sore throat. She also has a cough.", prompt:"Tell your friend what is wrong with Mai.", hint:"Mai isn't feeling well. She has ...", vi:"Đọc thông tin rồi nói lại cho người khác bằng tiếng Anh."},
-    {type:"done", title:"Evidence captured", body:"You practiced recognition, recall, pronunciation, speaking and transfer. The system will use this evidence to decide what you should do next."}
-  ]
-};
-
-let state = loadState();
-let view = "today";
-let lessonStep = 0;
-let lessonResults = {};
-let toastTimer;
-
-function loadState(){
-  try{
-    const saved = JSON.parse(localStorage.getItem(KEY));
-    return saved ? {...defaultState,...saved,skills:{...defaultState.skills,...saved.skills},words:{...defaultState.words,...saved.words}} : structuredClone(defaultState);
-  }catch(e){ return structuredClone(defaultState); }
-}
-function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
-function esc(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-function toast(msg){
-  clearTimeout(toastTimer);
-  document.querySelector(".toast")?.remove();
-  const el=document.createElement("div");el.className="toast";el.textContent=msg;document.body.appendChild(el);
-  toastTimer=setTimeout(()=>el.remove(),2200);
-}
-function setView(v){ view=v; render(); window.scrollTo({top:0,behavior:"smooth"}); }
-function toggleTheme(){
-  state.theme = state.theme==="dark" ? "light" : "dark"; save(); render();
-}
-function applyTheme(){
-  const dark = state.theme==="dark" || (state.theme==="system" && matchMedia("(prefers-color-scheme: dark)").matches);
-  document.documentElement.classList.toggle("dark",dark);
-}
-function navItems(){
-  return [["today","Today"],["learn","Learn"],["input","Input"],["words","My Word"],["profile","Profile"]];
-}
-function render(){
-  applyTheme();
-  const app=document.getElementById("app");
-  if(view==="lesson") app.innerHTML=renderLesson();
-  else app.innerHTML=renderShell(renderView(view));
-  bind();
-}
-function renderShell(content){
-  const nav=navItems();
-  return `<div class="app-shell">
-    <header class="topbar"><div class="topbar-inner">
-      <div class="brand">Tnkhoi English</div>
-      <div class="profile-pill"><span class="dot"></span>${esc(state.profile.level)} · ${state.profile.xp} XP</div>
-    </div></header>
-    <div class="layout">
-      <aside class="sidebar"><div class="nav">${nav.map(([id,label])=>`<button class="${view===id?"active":""}" data-nav="${id}">${label}</button>`).join("")}</div></aside>
-      <main>${content}</main>
-    </div>
-    <nav class="bottom-nav">${nav.map(([id,label])=>`<button class="${view===id?"active":""}" data-nav="${id}">${label}</button>`).join("")}</nav>
-  </div>`;
-}
-function renderView(v){
-  if(v==="today") return renderToday();
-  if(v==="learn") return renderLearn();
-  if(v==="input") return renderInput();
-  if(v==="words") return renderWords();
-  return renderProfile();
-}
-function renderToday(){
-  const completed=state.completed.includes(lesson.id);
-  const nextTitle=completed ? "Talking About Duration" : lesson.title;
-  const nextSub=completed ? "A1 Health · 8 min" : lesson.subtitle;
-  return `<section class="hero">
-    <div class="eyebrow">GOOD ${new Date().getHours()<12?"MORNING":new Date().getHours()<18?"AFTERNOON":"EVENING"}</div>
-    <h1>Your next useful step.</h1>
-    <p class="muted">Current profile: <strong>${esc(state.profile.level)}</strong>. The system chooses a session from your gaps, goals and recent evidence.</p>
-  </section>
-  <div class="card next-card">
-    <div class="eyebrow">NEXT BEST LESSON</div>
-    <h2>${esc(nextTitle)}</h2>
-    <p>${esc(nextSub)}</p>
-    <div class="badges"><span class="badge dark">${completed?"NEXT":"8 MIN"}</span><span class="badge">Health</span><span class="badge">Listening + Speaking</span></div>
-    <p class="muted"><strong>Why this?</strong> ${completed?"You completed the core symptom lesson. The next concept is duration.":"Your listening and speaking are developing, while symptom vocabulary is already partly familiar."}</p>
-    <div class="button-row"><button class="btn primary" data-start-lesson>${completed?"Preview next lesson":"Start lesson"}</button><button class="btn secondary" data-nav="learn">Explore curriculum</button></div>
-  </div>
-  <div class="grid grid-3" style="margin-top:16px">
-    ${statCard("Current level",state.profile.level,"A0 → C1")}
-    ${statCard("Streak",state.profile.streak+" days","Consistency, not punishment")}
-    ${statCard("XP",state.profile.xp,"Learning evidence")}
-  </div>
-  <div class="grid grid-2" style="margin-top:16px">
-    <div class="card"><h3>What your profile says</h3>${Object.entries(state.skills).map(([k,v])=>skillRow(k,v)).join("")}</div>
-    <div class="card"><h3>Today's options</h3>
-      <div class="word-list">
-        <div class="word-item"><div><strong>🎧 Listening</strong><div class="word-meta">8 min · symptom dialogue</div></div><button class="btn small secondary" data-start-lesson>Start</button></div>
-        <div class="word-item"><div><strong>🗣 Speaking</strong><div class="word-meta">2 min · describe a problem</div></div><button class="btn small secondary" data-start-lesson>Start</button></div>
-        <div class="word-item"><div><strong>🔁 Quick review</strong><div class="word-meta">3 items need evidence</div></div><button class="btn small secondary" data-nav="words">Open</button></div>
-      </div>
-    </div>
-  </div>`;
-}
-function statCard(a,b,c){return `<div class="card"><div class="eyebrow">${a}</div><div class="stat"><div class="number">${b}</div></div><div class="muted" style="font-size:12px;margin-top:5px">${c}</div></div>`}
-function skillRow(k,v){return `<div class="skill-row"><span>${esc(k)}</span><div class="skill-bar"><div style="width:${v}%"></div></div><strong>${v}</strong></div>`}
-function renderLearn(){
-  return `<section class="hero"><div class="eyebrow">CURRICULUM</div><h1>Learn.</h1><p class="muted">A0 → C1. The map is structured, but your path is adaptive.</p></section>
-  <div class="grid grid-2">
-    <div class="card"><div class="eyebrow">CURRENT</div><h2>A1 · Health</h2><p>Build a useful communication spine from symptoms to basic health interaction.</p>
-      <div class="progress"><div style="width:32%"></div></div><p class="muted">2 / 6 core learning objects explored</p>
-      <button class="btn primary" data-start-lesson>Continue</button>
-    </div>
-    <div class="card"><div class="eyebrow">FOUNDATION</div><h2>A0 · Core English</h2><p>Sound, identity, everyday objects, essential actions, time, place and survival communication.</p><div class="badges"><span class="badge">Vocabulary</span><span class="badge">Grammar</span><span class="badge">Pronunciation</span></div></div>
-  </div>
-  <div class="card" style="margin-top:16px"><h3>Learning spine</h3>
-    ${["A0 Foundation","A1 Functional English","A2 Independent English","B1 Communication","B2 Professional & Academic","C1 Advanced / Medical / Research"].map((x,i)=>`<div class="word-item" style="margin-top:10px"><div><strong>${x}</strong><div class="word-meta">${i<2?"Available now":"Future level · unlocked by evidence"}</div></div><span class="badge">${i===1?"CURRENT":i===0?"FOUNDATION":"LOCKED"}</span></div>`).join("")}
-  </div>`;
-}
-function renderInput(){
-  return `<section class="hero"><div class="eyebrow">ENGLISH INPUT</div><h1>Bring the real world in.</h1><p class="muted">This area will turn articles, papers, videos and other content into calibrated learning experiences.</p></section>
-  <div class="grid grid-2">
-    <div class="card"><h3>Controlled input</h3><p>Short dialogues, graded stories and level-calibrated listening.</p><button class="btn secondary" data-start-lesson>Try a dialogue</button></div>
-    <div class="card"><h3>Bring Anything</h3><p>In the next build, paste a URL, upload a PDF or add text. The engine will identify what is worth learning for you.</p><button class="btn ghost" data-demo-import>Preview workflow</button></div>
-  </div>
-  <div class="card" style="margin-top:16px"><h3>Input pipeline</h3><p class="muted">SOURCE → DIFFICULTY → KEY LANGUAGE → PREREQUISITES → LEARNING OBJECTS → PERSONAL LESSON</p></div>`;
-}
-function renderWords(){
-  const words=Object.entries(state.words);
-  return `<section class="hero"><div class="eyebrow">PERSONAL LEXICAL KNOWLEDGE BASE</div><h1>My Word.</h1><p class="muted">Not a word list. A memory of what you know, how well you know it, and where you have encountered it.</p></section>
-  <div class="kpi">
-    ${statCard("Words tracked",words.length,"Across your learning")}
-    ${statCard("Strong",words.filter(([_,w])=>w.mastery>=75).length,"High confidence")}
-    ${statCard("Developing",words.filter(([_,w])=>w.mastery<75).length,"Needs evidence")}
-  </div>
-  <div class="card" style="margin-top:16px"><div class="word-list">${words.map(([word,w])=>`
-    <div class="word-item">
-      <div class="word-main"><strong>${esc(word)}</strong><div class="word-meta">${esc(w.meaning)} · ${esc(w.domain)} · ${esc(w.ipa)}</div></div>
-      <div style="text-align:right"><strong>${w.mastery}%</strong><div class="word-meta">${w.status}</div></div>
-    </div>`).join("")}</div></div>`;
-}
-function renderProfile(){
-  return `<section class="hero"><div class="eyebrow">LEARNER MODEL</div><h1>Your profile.</h1><p class="muted">The system tracks evidence across skills rather than reducing you to one number.</p></section>
-  <div class="grid grid-2">
-    <div class="card"><h3>Current profile</h3><div class="number" style="font-size:44px">${esc(state.profile.level)}</div><p class="muted">General English foundation with a growing Health / Medical bridge.</p><div class="badges"><span class="badge dark">${state.profile.xp} XP</span><span class="badge">${state.profile.streak}-day streak</span></div></div>
-    <div class="card"><h3>Theme</h3><p class="muted">Follows your device by default. You can override it here.</p><div class="button-row"><button class="btn secondary" data-theme>Toggle dark / light</button><button class="btn ghost" data-reset>Reset demo data</button></div></div>
-  </div>
-  <div class="card" style="margin-top:16px"><h3>Skill profile</h3>${Object.entries(state.skills).map(([k,v])=>skillRow(k,v)).join("")}</div>
-  <div class="card" style="margin-top:16px"><h3>Design principle</h3><p>Complexity belongs inside the engine, not in the interface. The system should remember everything relevant without turning memory into a backlog.</p></div>`;
-}
-function renderLesson(){
-  const s=lesson.steps[lessonStep];
-  const total=lesson.steps.length;
-  return `<div class="lesson-shell">
-    <div class="lesson-header"><button class="back" data-exit-lesson>← Exit</button><div class="step">${lessonStep+1} / ${total}</div></div>
-    <div class="badges"><span class="badge dark">${lesson.level}</span><span class="badge">${lesson.domain}</span><span class="badge">${lesson.duration}</span></div>
-    <div class="card lesson-card"><div class="content">${renderLessonStep(s)}</div></div>
-    <div class="footer-note">Evidence is saved locally on this device for this prototype.</div>
-  </div>`;
-}
-function renderLessonStep(s){
-  if(s.type==="intro") return `<div class="eyebrow">TODAY'S SKILL</div><h2>${esc(s.title)}</h2><p style="font-size:20px">${esc(s.body)}</p><p class="vi">${esc(s.vi)}</p><div class="button-row"><button class="btn primary" data-next>Start</button></div>`;
-  if(s.type==="vocab") return `<div class="eyebrow">VOCABULARY</div><div class="big-word">${esc(s.word)}</div><div class="ipa">${esc(s.ipa)}</div><p>${esc(s.meaning)}</p><div class="example">${esc(s.example)}</div><p class="vi">${esc(s.vi)}</p><div class="audio-box"><button class="btn secondary" data-speak="${esc(s.word)}">🔊 Hear word</button><span class="muted">Browser speech · audio is a fallback in this prototype</span></div><div class="button-row"><button class="btn primary" data-next>Got it</button></div>`;
-  if(s.type==="listen") return `<div class="eyebrow">LISTENING</div><h2>${esc(s.title)}</h2><div class="audio-box"><button class="btn secondary" data-speak="${esc(s.script.replace(/\\n/g," "))}">🔊 Play dialogue</button><span class="muted">Listen first, then answer.</span></div><p>${esc(s.question)}</p><div class="choice-grid">${s.choices.map((c,i)=>`<button type="button" class="choice ${lessonResults[lessonStep]!==undefined?(i===s.answer?"correct":lessonResults[lessonStep]===i?"wrong":""):""}" data-choice="${i}">${esc(c)}</button>`).join("")}</div>${lessonResults[lessonStep]!==undefined?`<div class="feedback">${lessonResults[lessonStep]===s.answer?"Correct. Your listening evidence is stronger.":"Not quite. Listen again and focus on the symptoms."}</div><div class="button-row"><button type="button" class="btn primary" data-next>${lessonStep===total-1?"Finish":"Continue"}</button></div>`:`<div class="footer-note">Tap one answer to continue.</div>`}${lessonResults[lessonStep]===undefined?"":""}`;
-  if(s.type==="grammar") return `<div class="eyebrow">LANGUAGE PATTERN</div><h2>${esc(s.title)}</h2><p>${esc(s.body)}</p><div class="example">${esc(s.example).replace(/\\n/g,"<br>")}</div><p class="vi">${esc(s.vi)}</p><div class="button-row"><button class="btn primary" data-next>Practice</button></div>`;
-  if(s.type==="pron") return `<div class="eyebrow">PRONUNCIATION</div><h2>${esc(s.title)}</h2><p>${esc(s.body)}</p><div class="example">${esc(s.example)}</div><p class="vi">${esc(s.vi)}</p><div class="audio-box"><button class="btn secondary" data-speak="throat">🔊 Listen</button><button class="btn secondary" data-speak="My throat hurts.">🔊 Phrase</button></div><div class="button-row"><button class="btn primary" data-next>I can say it</button></div>`;
-  if(s.type==="speak") return `<div class="eyebrow">SPEAKING</div><h2>${esc(s.title)}</h2><p style="font-size:18px">${esc(s.prompt)}</p><textarea id="speakInput" rows="4" placeholder="Type what you would say, then say it aloud..."></textarea><p class="muted">${esc(s.hint)}</p><p class="vi">${esc(s.vi)}</p><div class="button-row"><button class="btn secondary" data-speak-input>🔊 Hear model</button><button class="btn primary" data-submit-speak>Submit evidence</button></div>`;
-  if(s.type==="case") return `<div class="eyebrow">TRANSFER</div><h2>${esc(s.title)}</h2><p>${esc(s.body)}</p><p><strong>${esc(s.question)}</strong></p><div class="choice-grid">${s.choices.map((c,i)=>`<button type="button" class="choice ${lessonResults[lessonStep]!==undefined?(i===s.answer?"correct":lessonResults[lessonStep]===i?"wrong":""):""}" data-choice="${i}">${esc(c)}</button>`).join("")}</div>${lessonResults[lessonStep]!==undefined?`<div class="feedback">${lessonResults[lessonStep]===s.answer?"Correct. This is transfer evidence.":"Try again. Re-read the case and identify all the symptoms."}</div><div class="button-row"><button type="button" class="btn primary" data-next>Continue</button></div>`:`<div class="footer-note">Tap one answer to continue.</div>`}`;
-  if(s.type==="mediation") return `<div class="eyebrow">MEDIATION</div><h2>${esc(s.title)}</h2><p>${esc(s.body)}</p><p style="font-size:18px">${esc(s.prompt)}</p><textarea id="medInput" rows="4" placeholder="Tell the person what is wrong..."></textarea><p class="muted">${esc(s.hint)}</p><p class="vi">${esc(s.vi)}</p><div class="button-row"><button class="btn primary" data-submit-med>Capture evidence</button></div>`;
-  return `<div class="eyebrow">DONE</div><h2>${esc(s.title)}</h2><p style="font-size:19px">${esc(s.body)}</p><div class="card" style="background:var(--surface2);margin-top:18px"><h3>Your next step</h3><p>${lessonStep<lesson.steps.length-1?"Continue building the Health spine.":"The system will use today's evidence to choose your next session."}</p></div><div class="button-row"><button class="btn primary" data-finish>Finish lesson</button></div>`;
-}
-function next(){
-  if(lessonStep < lesson.steps.length-1){ lessonStep++; render(); window.scrollTo({top:0,behavior:"smooth"}); }
-}
-function startLesson(){lessonStep=0;lessonResults={};view="lesson";render();}
-function finishLesson(){
-  if(!state.completed.includes(lesson.id)) state.completed.push(lesson.id);
-  state.profile.xp += 25;
-  state.skills.Listening=Math.min(100,state.skills.Listening+5);
-  state.skills.Speaking=Math.min(100,state.skills.Speaking+5);
-  state.skills.Vocabulary=Math.min(100,state.skills.Vocabulary+3);
-  ["headache","cough","fever","throat","symptom"].forEach(w=>{
-    if(state.words[w]) state.words[w].mastery=Math.min(100,state.words[w].mastery+8);
-  });
-  state.lessonEvidence[lesson.id]={completedAt:new Date().toISOString(),results:lessonResults};
-  save();toast("Lesson evidence saved");view="today";render();
-}
-function bind(){
-  document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>setView(b.dataset.nav));
-  document.querySelectorAll("[data-start-lesson]").forEach(b=>b.onclick=startLesson);
-  document.querySelectorAll("[data-next]").forEach(b=>b.onclick=next);
-  document.querySelectorAll("[data-exit-lesson]").forEach(b=>b.onclick=()=>{view="today";render()});
-  document.querySelectorAll("[data-choice]").forEach(b=>b.addEventListener("click",(e)=>{
-    e.preventDefault();
-    e.stopPropagation();
-    const s=lesson.steps[lessonStep];
-    lessonResults[lessonStep]=Number(b.dataset.choice);
-    render();
-    window.scrollTo({top:0,behavior:"smooth"});
-  },{passive:false}));
-  document.querySelectorAll("[data-speak]").forEach(b=>b.onclick=()=>speech(b.dataset.speak));
-  document.querySelectorAll("[data-speak-input]").forEach(b=>b.onclick=()=>{
-    const text=document.getElementById("speakInput")?.value || "I have a headache. I have a cough.";
-    speech(text);
-  });
-  document.querySelectorAll("[data-submit-speak]").forEach(b=>b.onclick=()=>{
-    const text=(document.getElementById("speakInput")?.value||"").trim();
-    if(text.length<5){toast("Try saying at least one complete sentence.");return}
-    state.skills.Speaking=Math.min(100,state.skills.Speaking+3);state.lessonEvidence.tempSpeak=true;save();toast("Speaking evidence captured");next();
-  });
-  document.querySelectorAll("[data-submit-med]").forEach(b=>b.onclick=()=>{
-    const text=(document.getElementById("medInput")?.value||"").trim();
-    if(text.length<8){toast("Try one complete sentence.");return}
-    state.skills.Reading=Math.min(100,state.skills.Reading+2);state.skills.Speaking=Math.min(100,state.skills.Speaking+2);save();toast("Mediation evidence captured");next();
-  });
-  document.querySelectorAll("[data-finish]").forEach(b=>b.onclick=finishLesson);
-  document.querySelectorAll("[data-theme]").forEach(b=>b.onclick=toggleTheme);
-  document.querySelectorAll("[data-reset]").forEach(b=>b.onclick=()=>{
-    if(confirm("Reset the local demo progress?")){localStorage.removeItem(KEY);state=loadState();render();toast("Demo reset");}
-  });
-  document.querySelectorAll("[data-demo-import]").forEach(b=>b.onclick=()=>toast("Bring Anything is reserved for the next build."));
-}
-function speech(text){
-  if(!("speechSynthesis" in window)){toast("Speech is not supported on this browser.");return}
-  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=.86;speechSynthesis.speak(u);
-}
+const KEY='tnkhoi_english_v2';
+const DEFAULT={profile:{level:'A1',xp:120,streak:3,totalStudySeconds:0},skills:{Vocabulary:62,Grammar:55,Listening:48,Speaking:43,Reading:51,Writing:24,Pronunciation:39},words:{headache:{meaning:'đau đầu',ipa:'/ˈhedeɪk/',mastery:72,domain:'Health',status:'Developing'},cough:{meaning:'ho',ipa:'/kɒf/ · /kɔːf/',mastery:64,domain:'Health',status:'Developing'},fever:{meaning:'sốt',ipa:'/ˈfiːvə(r)/',mastery:58,domain:'Health',status:'Developing'},pain:{meaning:'đau',ipa:'/peɪn/',mastery:81,domain:'Health',status:'Strong'},throat:{meaning:'họng',ipa:'/θrəʊt/ · /θroʊt/',mastery:45,domain:'Health',status:'Developing'},symptom:{meaning:'triệu chứng',ipa:'/ˈsɪmptəm/',mastery:32,domain:'Health',status:'Recognition'}},completed:[],evidence:{},theme:'system',voice:'auto',rate:.88};
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));return s?merge(DEFAULT,s):structuredClone(DEFAULT)}catch{return structuredClone(DEFAULT)}}
+function merge(a,b){return {...a,...b,profile:{...a.profile,...b.profile},skills:{...a.skills,...b.skills},words:{...a.words,...b.words},evidence:{...a.evidence,...b.evidence}}}
+let state=load(),view='today',step=0,answers={},sessionStart=0,timer=null;
+const lesson={id:'A1_HEALTH_SYMPTOMS_001',title:'Describing Symptoms',duration:'8 min',steps:[
+{t:'intro',title:'A small skill with real-world value',body:'Describe a simple health problem, ask where it hurts, and answer basic health questions.',vi:'Mô tả một vấn đề sức khỏe đơn giản và trả lời các câu hỏi cơ bản.'},
+{t:'vocab',word:'headache',meaning:'đau đầu',ipa:'/ˈhedeɪk/',ex:'I have a headache.',vi:'Tôi bị đau đầu.',more:['She had a headache after studying for hours.','My headache is better now.','I have a bad headache today.']},
+{t:'vocab',word:'fever',meaning:'sốt',ipa:'/ˈfiːvə(r)/',ex:'I have a fever.',vi:'Tôi bị sốt.',more:['He has a fever today.','She had a fever last night.','The patient says she has a fever.']},
+{t:'vocab',word:'cough',meaning:'ho',ipa:'/kɒf/ · /kɔːf/',ex:'I have a cough.',vi:'Tôi bị ho.',more:['I have a dry cough.','His cough is worse at night.','She started to cough yesterday.']},
+{t:'vocab',word:'sore throat',meaning:'đau/rát họng',ipa:'/sɔːr θrəʊt/',ex:'I have a sore throat.',vi:'Tôi bị đau/rát họng.',more:['I woke up with a sore throat.','She has a sore throat today.','My sore throat is getting better.']},
+{t:'choice',title:'Listen for the problem',audio:"Doctor: What's wrong? Patient: I don't feel well. Doctor: What's the problem? Patient: I have a headache and a cough. Doctor: Do you have a fever? Patient: Yes, I do. Doctor: Where does it hurt? Patient: My throat hurts.",q:'What problems does the patient have?',opts:['A headache and a cough','A stomachache and back pain','Only a fever'],ans:0},
+{t:'grammar',title:'Have + symptom',body:'Use have + symptom to report a health problem.',ex:['I have a headache.','I have a cough.','I have a fever.'],vi:'Dùng have + triệu chứng để nói mình đang gặp vấn đề gì.'},
+{t:'pron',title:'Pronunciation focus: /θ/',body:'In throat, the first sound is /θ/. Put your tongue lightly between your teeth and let air pass.',ex:'throat → /θrəʊt/',vi:'Đặt đầu lưỡi nhẹ giữa hai răng và đẩy hơi ra.'},
+{t:'speak',title:'Your turn',prompt:"Imagine you don't feel well. Say two things to a doctor.",hint:'Try: I have a headache. I have a cough.',examples:['I have a headache.','I have a cough and a sore throat.','I don\'t feel well today.']},
+{t:'choice',title:'Mini case',body:"Nam doesn't feel well today. He has a headache and a cough. He also has a fever.",q:'Which symptoms does Nam have?',opts:['Headache, cough and fever','Back pain and sore throat','Only a headache'],ans:0},
+{t:'med',title:'Tell someone else',body:'Mai has a headache and a sore throat. She also has a cough.',prompt:'Tell your friend what is wrong with Mai.',hint:'Mai isn\'t feeling well. She has ...',examples:['Mai isn\'t feeling well. She has a headache.','Mai has a headache, a sore throat and a cough.']},
+{t:'done',title:'Evidence captured',body:"You practiced recognition, recall, pronunciation, speaking and transfer. The system will use today's evidence to choose your next session."}
+]};
+function esc(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function fmt(sec){const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return h?`${h}h ${m}m`:m?`${m}m ${String(s).padStart(2,'0')}s`:`${s}s`}
+function clock(){return new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+function toast(x){document.querySelector('.toast')?.remove();const e=document.createElement('div');e.className='toast';e.textContent=x;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
+function theme(){document.documentElement.classList.toggle('dark',state.theme==='dark'||(state.theme==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))}
+function studyStart(){if(timer)return;sessionStart=sessionStart||Date.now();timer=setInterval(()=>{state.profile.totalStudySeconds++;if(state.profile.totalStudySeconds%10===0)save();document.querySelectorAll('[data-total]').forEach(e=>e.textContent=fmt(state.profile.totalStudySeconds));document.querySelectorAll('[data-session]').forEach(e=>e.textContent=fmt(Math.floor((Date.now()-sessionStart)/1000)));},1000)}
+function studyStop(){if(timer){clearInterval(timer);timer=null;save()}}
+function go(v){studyStop();view=v;render();scrollTo(0,0)}
+function start(){step=0;answers={};sessionStart=Date.now();view='lesson';render();studyStart();scrollTo(0,0)}
+function next(){if(step<lesson.steps.length-1){step++;render();scrollTo(0,0)}}
+function finish(){studyStop();if(!state.completed.includes(lesson.id))state.completed.push(lesson.id);state.profile.xp+=25;['Listening','Speaking'].forEach(k=>state.skills[k]=Math.min(100,state.skills[k]+5));state.skills.Vocabulary=Math.min(100,state.skills.Vocabulary+3);['headache','cough','fever','throat','symptom'].forEach(w=>{if(state.words[w]){state.words[w].mastery=Math.min(100,state.words[w].mastery+8);state.words[w].status=state.words[w].mastery>=75?'Strong':state.words[w].mastery>=50?'Developing':'Recognition'}});state.evidence[lesson.id]={date:new Date().toISOString(),answers};save();view='today';render();toast('Lesson evidence saved')}
+function stat(a,b,c){return `<div class="card"><div class="eyebrow">${a}</div><div class="num">${b}</div><div class="muted small">${c}</div></div>`}
+function skills(){return Object.entries(state.skills).map(([k,v])=>`<div class="skill"><span>${k}</span><div><i style="width:${v}%"></i></div><b>${v}</b></div>`).join('')}
+const nav=[['today','Today'],['learn','Learn'],['vocab','Vocabulary'],['grammar','Grammar'],['input','Input'],['words','My Word'],['profile','Profile']];
+function shell(content){return `<header class="top"><div class="topin"><div class="brand"><span></span>Tnkhoi English</div><div class="tools"><span class="clock">⌚ <b data-clock>${clock()}</b></span><span class="study">⏱ <b data-total>${fmt(state.profile.totalStudySeconds)}</b></span><span class="profile">${state.profile.level} · ${state.profile.xp} XP</span></div></div></header><div class="layout"><aside>${nav.map(([id,l],i)=>(i===0||i===2?`<div class="navtitle">${i===0?'LEARN':'REFERENCE'}</div>`:'')+`<button data-nav="${id}" class="${view===id?'active':''}">${l}</button>`).join('')}</aside><main>${content}</main></div><nav class="bottom">${[['today','Today'],['learn','Learn'],['vocab','Words'],['input','Input'],['profile','Profile']].map(([id,l])=>`<button data-nav="${id}" class="${view===id?'active':''}">${l}</button>`).join('')}</nav>`}
+function today(){const done=state.completed.includes(lesson.id);return `<section class="hero"><div class="eyebrow">GOOD ${new Date().getHours()<12?'MORNING':new Date().getHours()<18?'AFTERNOON':'EVENING'}</div><h1>Your next useful step.</h1><p class="muted">Current profile: <b>${state.profile.level}</b>. The system chooses what matters next.</p></section><div class="card heroCard"><div class="eyebrow">NEXT BEST LESSON</div><h2>${done?'Talking About Duration':'Describing Symptoms'}</h2><p>${done?'A1 Health · duration, onset and time expressions.':'Say what is wrong and respond to simple health questions.'}</p><div class="tags"><em class="blue">${done?'NEXT':'8 MIN'}</em><em class="orange">Health</em><em class="purple">Listening + Speaking</em></div><p class="muted"><b>Why this?</b> ${done?'Duration is the next concept in the Health learning spine.':'Listening and speaking are developing while symptom vocabulary is partly familiar.'}</p><button class="btn blue" data-start>${done?'Review lesson':'Start lesson'}</button></div><div class="grid3">${stat('Current level',state.profile.level,'A0 → C1')}${stat('Study time',fmt(state.profile.totalStudySeconds),'Accumulated on this device')}${stat('Streak',state.profile.streak+' days','Consistency, not punishment')}</div><div class="grid2"><div class="card green"><h3>Skill profile</h3>${skills()}</div><div class="card orange"><h3>Quick actions</h3><div class="list"><div><b>🎧 Listening</b><small>8 min · symptom dialogue</small><button class="btn small" data-start>Start</button></div><div><b>🗣 Speaking</b><small>2 min · describe a problem</small><button class="btn small" data-start>Start</button></div><div><b>🔤 Vocabulary</b><small>Browse the index</small><button class="btn small" data-nav="vocab">Open</button></div></div></div></div>`}
+function learn(){return `<section class="hero"><div class="eyebrow">CURRICULUM</div><h1>Learn.</h1><p class="muted">A0 → C1. Structured curriculum, adaptive path.</p></section><div class="grid2"><div class="card blue"><h2>A1 · Health</h2><p>Symptoms → location → duration → severity → follow-up → basic interaction.</p><div class="bar"><i style="width:32%"></i></div><p class="muted small">2 / 6 core learning objects explored</p><button class="btn blue" data-start>Continue</button></div><div class="card purple"><h2>A0 · Core English</h2><p>Sound, identity, everyday objects, essential actions, time, place and survival communication.</p></div></div><div class="card section"><h3>Learning spine</h3>${['A0 Foundation','A1 Functional English','A2 Independent English','B1 Communication','B2 Professional & Academic','C1 Advanced / Medical / Research'].map((x,i)=>`<div class="row"><b>${x}</b><span class="tag ${i<2?'blue':'purple'}">${i===1?'CURRENT':i===0?'FOUNDATION':'LOCKED'}</span></div>`).join('')}</div>`}
+function vocab(){return `<section class="hero"><div class="eyebrow">VOCABULARY INDEX</div><h1>Vocabulary.</h1><p class="muted">A curriculum index plus your personal lexical memory.</p></section><div class="grid2">${[['Body','head · chest · stomach · back · throat','blue'],['Symptoms','pain · headache · fever · cough · sore throat','orange'],['Health','sick · ill · medicine · doctor · hospital','green'],['Functions','have a headache · feel sick · it hurts · what’s wrong?','purple']].map(x=>`<div class="card ${x[2]}"><div class="eyebrow">${x[0]}</div><h2>${x[1].split(' · ')[0]}</h2><p class="muted">${x[1]}</p><button class="btn small" data-nav="words">Open My Word</button></div>`).join('')}</div>`}
+function grammar(){return `<section class="hero"><div class="eyebrow">GRAMMAR REFERENCE</div><h1>Grammar.</h1><p class="muted">Theory is available on demand; lessons use grammar as a tool.</p></section><div class="grid2"><div class="card blue"><h2>Have + symptom</h2><p>Use <b>have + noun phrase</b> to report many common health problems.</p><div class="example">I have a headache.<br>I have a cough.<br>I have a fever.</div><p class="vi">Tôi bị đau đầu. Tôi bị ho. Tôi bị sốt.</p></div><div class="card green"><h2>Feel + adjective</h2><p>Describe how you feel.</p><div class="example">I feel sick.<br>I feel tired.<br>I don't feel well.</div></div><div class="card orange"><h2>Ask about symptoms</h2><div class="example">What's wrong?<br>What's the problem?<br>Where does it hurt?<br>Do you have a fever?</div></div><div class="card purple"><h2>A1 → A1+ bridge</h2><div class="example">It started yesterday.<br>I've had it for two days.</div><span class="tag purple">Extension</span></div></div>`}
+function input(){return `<section class="hero"><div class="eyebrow">ENGLISH INPUT</div><h1>Bring the real world in.</h1><p class="muted">Short content now; articles, papers, videos and transcripts are part of the planned import pipeline.</p></section><div class="grid2"><div class="card blue"><h2>Controlled input</h2><p>Short dialogues, graded stories and level-calibrated listening.</p><button class="btn blue" data-start>Try a dialogue</button></div><div class="card orange"><h2>Bring Anything</h2><p>Paste a URL, upload a PDF or add text in the next build. The system will identify what is worth learning.</p><button class="btn" data-demo>Preview</button></div></div>`}
+function words(){return `<section class="hero"><div class="eyebrow">PERSONAL LEXICAL KNOWLEDGE BASE</div><h1>My Word.</h1><p class="muted">Meaning, pronunciation, mastery and context.</p></section><div class="grid3">${stat('Words tracked',Object.keys(state.words).length,'Across learning')}${stat('Strong',Object.values(state.words).filter(w=>w.mastery>=75).length,'High confidence')}${stat('Developing',Object.values(state.words).filter(w=>w.mastery<75).length,'Needs evidence')}</div><div class="card section"><div class="list">${Object.entries(state.words).map(([w,x])=>`<div><b>${esc(w)}</b><small>${esc(x.meaning)} · ${esc(x.domain)} · ${esc(x.ipa)}</small><strong>${x.mastery}%</strong></div>`).join('')}</div></div>`}
+function profile(){return `<section class="hero"><div class="eyebrow">LEARNER MODEL</div><h1>Your profile.</h1><p class="muted">A multidimensional profile, simplified for the interface.</p></section><div class="grid2"><div class="card blue"><h3>Current profile</h3><div class="num">${state.profile.level}</div><p class="muted">General English foundation + Medical bridge.</p></div><div class="card purple"><h3>Accumulated study time</h3><div class="num">${fmt(state.profile.totalStudySeconds)}</div><p class="muted">Stored locally on this device.</p><button class="btn" data-theme>Toggle dark / light</button></div></div><div class="card section"><h3>Skill profile</h3>${skills()}</div><div class="card section"><h3>Speech quality</h3><p class="muted">Browser speech quality varies by installed voice. Choose the best English voice available below. For genuinely exam-like natural audio, production should use licensed neural TTS or professional human recordings.</p><select id="voiceSelect"><option value="auto">Auto — best available English voice</option></select><label class="range">Speed <input id="rate" type="range" min=".72" max="1.02" step=".01" value="${state.rate}"><b id="rateLabel">${Number(state.rate).toFixed(2)}×</b></label><button class="btn" data-test>▶ Test voice</button></div><div class="card section"><button class="btn danger" data-reset>Reset prototype data</button></div>`}
+function render(){theme();let content=view==='today'?today():view==='learn'?learn():view==='vocab'?vocab():view==='grammar'?grammar():view==='input'?input():view==='words'?words():view==='profile'?profile():lessonView();document.getElementById('app').innerHTML=view==='lesson'?content:shell(content);bind();if(!window.__clock){window.__clock=setInterval(()=>{document.querySelectorAll('[data-clock]').forEach(e=>e.textContent=clock())},1000)}}
+function lessonView(){const s=lesson.steps[step];return `<div class="lesson"><div class="lessonHead"><button class="btn" data-exit>← Exit</button><span>⏱ <b data-session>00:00</b> · ${step+1}/${lesson.steps.length}</span></div><div class="tags"><em class="blue">A1</em><em class="orange">Health</em><em class="green">8 min</em></div><div class="card lessonCard">${lessonContent(s)}</div><p class="muted small">Study time is accumulated while this learning session is open.</p></div>`}
+function lessonContent(s){if(s.t==='intro')return `<div class="content"><div class="eyebrow">TODAY'S SKILL</div><h2>${s.title}</h2><p class="lead">${s.body}</p><p class="vi">${s.vi}</p><div class="timerbox">Session time <b data-session>00:00</b></div><button class="btn blue" data-next>Start learning</button></div>`;if(s.t==='vocab')return `<div class="content"><div class="eyebrow">VOCABULARY</div><div class="bigword">${s.word}</div><div class="ipa">${s.ipa}</div><p>${s.meaning}</p><div class="example">${s.ex}</div><p class="vi">${s.vi}</p><div class="audio"><button class="btn" data-speak="${esc(s.word)}">🔊 Hear word</button><button class="btn" data-speak="${esc(s.ex)}">▶ Hear sentence</button></div><details><summary>More examples</summary><div class="examples">${s.more.map(x=>`<div>${esc(x)} <button class="mini" data-speak="${esc(x)}">🔊</button></div>`).join('')}</div></details><button class="btn blue" data-next>Continue</button></div>`;if(s.t==='choice')return `<div class="content"><div class="eyebrow">${s.title}</div><h2>Listen, then answer</h2><div class="audio"><button class="btn blue" data-speak="${esc(s.audio||'')}">🔊 Play dialogue</button><span class="muted">Listen first.</span></div><p><b>${s.q}</b></p><div class="choices">${s.opts.map((o,i)=>`<button type="button" class="choice ${answers[step]!==undefined?(i===s.ans?'correct':answers[step]===i?'wrong':''):''}" data-choice="${i}">${o}</button>`).join('')}</div>${answers[step]!==undefined?`<div class="feedback">${answers[step]===s.ans?'✓ Correct. Evidence captured.':'↻ Not quite. Listen again and try once more.'}</div><button class="btn blue" data-next>Continue</button>`:`<p class="hint">Tap one answer.</p>`}</div>`;if(s.t==='grammar')return `<div class="content"><div class="eyebrow">LANGUAGE PATTERN</div><h2>${s.title}</h2><p>${s.body}</p><div class="example">${s.ex.join('<br>')}</div><p class="vi">${s.vi}</p><details><summary>More examples</summary><div class="examples">${['I have a sore throat.','She has a cough.','Do you have a fever?'].map(x=>`<div>${x} <button class="mini" data-speak="${esc(x)}">🔊</button></div>`).join('')}</div></details><button class="btn blue" data-next>Practice</button></div>`;if(s.t==='pron')return `<div class="content"><div class="eyebrow">PRONUNCIATION</div><h2>${s.title}</h2><p>${s.body}</p><div class="example">${s.ex}</div><p class="vi">${s.vi}</p><div class="audio"><button class="btn" data-speak="throat">🔊 Word</button><button class="btn" data-speak="My throat hurts.">🔊 Phrase</button></div><button class="btn blue" data-next>I can say it</button></div>`;if(s.t==='speak')return `<div class="content"><div class="eyebrow">SPEAKING</div><h2>${s.title}</h2><p class="lead">${s.prompt}</p><textarea id="speak" rows="4" placeholder="Type what you would say, then say it aloud..."></textarea><p class="muted">${s.hint}</p><details><summary>Example answers</summary><div class="examples">${s.examples.map(x=>`<div>${x} <button class="mini" data-speak="${esc(x)}">🔊</button></div>`).join('')}</div></details><div class="buttons"><button class="btn" data-model>🔊 Hear model</button><button class="btn blue" data-submit-speak>Submit evidence</button></div></div>`;if(s.t==='med')return `<div class="content"><div class="eyebrow">MEDIATION</div><h2>${s.title}</h2><p>${s.body}</p><p class="lead">${s.prompt}</p><textarea id="med" rows="4" placeholder="Tell your friend what is wrong..."></textarea><p class="muted">${s.hint}</p><details><summary>Example answers</summary><div class="examples">${s.examples.map(x=>`<div>${x} <button class="mini" data-speak="${esc(x)}">🔊</button></div>`).join('')}</div></details><button class="btn blue" data-submit-med>Capture evidence</button></div>`;return `<div class="content"><div class="eyebrow">DONE</div><h2>${s.title}</h2><p class="lead">${s.body}</p><div class="timerbox">This session <b data-session>00:00</b><br><span>Total learning ${fmt(state.profile.totalStudySeconds)}</span></div><button class="btn green" data-finish>Finish lesson</button></div>`}
+function voices(){return 'speechSynthesis' in window?speechSynthesis.getVoices().filter(v=>/^en(-|_)/i.test(v.lang)||/English/i.test(v.name)):[]}
+function selectedVoice(){const vs=voices();if(state.voice!=='auto'){const v=vs.find(x=>x.name===state.voice);if(v)return v}const pref=['Samantha','Karen','Daniel','Alex','Jenny','Aria','Google US English'];return vs.find(v=>pref.some(p=>v.name.includes(p)))||vs.find(v=>/en-US|en-GB/i.test(v.lang))||vs[0]}
+function speak(text){if(!('speechSynthesis'in window)){toast('Speech is not supported by this browser.');return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=Number(state.rate)||.88;u.pitch=.98;const v=selectedVoice();if(v)u.voice=v;speechSynthesis.speak(u)}
+function bind(){document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>go(b.dataset.nav));document.querySelectorAll('[data-start]').forEach(b=>b.onclick=start);document.querySelectorAll('[data-next]').forEach(b=>b.onclick=next);document.querySelectorAll('[data-exit]').forEach(b=>b.onclick=()=>go('today'));document.querySelectorAll('[data-speak]').forEach(b=>b.onclick=()=>speak(b.dataset.speak));document.querySelectorAll('[data-model]').forEach(b=>b.onclick=()=>speak(document.getElementById('speak')?.value||'I have a headache. I have a cough.'));document.querySelectorAll('[data-submit-speak]').forEach(b=>b.onclick=()=>{if((document.getElementById('speak')?.value||'').trim().length<5){toast('Try one complete sentence.');return}state.skills.Speaking=Math.min(100,state.skills.Speaking+3);save();toast('Speaking evidence captured');next()});document.querySelectorAll('[data-submit-med]').forEach(b=>b.onclick=()=>{if((document.getElementById('med')?.value||'').trim().length<8){toast('Try one complete sentence.');return}state.skills.Reading=Math.min(100,state.skills.Reading+2);state.skills.Speaking=Math.min(100,state.skills.Speaking+2);save();toast('Mediation evidence captured');next()});document.querySelectorAll('[data-finish]').forEach(b=>b.onclick=finish);document.querySelectorAll('[data-theme]').forEach(b=>b.onclick=()=>{state.theme=state.theme==='dark'?'light':'dark';save();render()});document.querySelectorAll('[data-reset]').forEach(b=>b.onclick=()=>{if(confirm('Reset prototype data?')){localStorage.removeItem(KEY);state=load();render();}});document.querySelectorAll('[data-demo]').forEach(b=>b.onclick=()=>toast('Bring Anything will be connected in a later build.'));
+const vs=document.getElementById('voiceSelect');if(vs){vs.innerHTML='<option value="auto">Auto — best available English voice</option>'+voices().map(v=>`<option value="${esc(v.name)}">${esc(v.name)} · ${esc(v.lang)}</option>`).join('');vs.value=state.voice;vs.onchange=()=>{state.voice=vs.value;save();toast('Voice preference saved')};}const r=document.getElementById('rate');if(r){r.oninput=()=>{state.rate=Number(r.value);document.getElementById('rateLabel').textContent=state.rate.toFixed(2)+'×'};r.onchange=save}document.querySelectorAll('[data-test]').forEach(b=>b.onclick=()=>speak('Hello. This is a natural English listening practice sentence.'))}
+// Robust delegated touch/click handler: survives every render and avoids Safari/iPad interaction loss.
+document.addEventListener('pointerup',e=>{const b=e.target.closest?.('[data-choice]');if(!b||view!=='lesson')return;e.preventDefault();e.stopPropagation();answers[step]=Number(b.dataset.choice);render();scrollTo(0,0)},{passive:false});
+document.addEventListener('click',e=>{const b=e.target.closest?.('[data-choice]');if(!b||view!=='lesson')return;e.preventDefault();e.stopPropagation();if(answers[step]===undefined){answers[step]=Number(b.dataset.choice);render();scrollTo(0,0)}},{passive:false});
+if('speechSynthesis'in window)speechSynthesis.onvoiceschanged=()=>{if(view==='profile')bind()};
 render();
