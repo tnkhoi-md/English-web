@@ -1,16 +1,21 @@
-# Tnkhoi English — v2
+# Tnkhoi English — Personal Learning System
 
-## Improvements
-- Robust iPad/Safari quiz interaction using delegated pointer/click handling.
-- Liquid-glass interface with blue, green, orange, yellow, red and purple accents.
-- Real-time clock and accumulated study time.
-- Per-session learning timer.
-- Vocabulary index and Grammar reference pages.
-- More varied examples and expandable examples.
-- Voice selection + adjustable speech rate.
+**Version 29.9.26 · Built by Nguyên Khôi · © KhoiTN-MD**
 
-## Audio
-Browser SpeechSynthesis is device-dependent. For genuinely natural exam-like English, the production version should use licensed neural TTS or professionally recorded human audio. This version lets you choose the best English voice available on your device.
+A personal English-learning prototype for long-term self-study.
 
-## Deploy
-Replace `index.html`, `app.js`, `styles.css`, and `README.md` in the existing GitHub Pages repository.
+## What's new in 29.9.26
+- Fixed study timer: opening a lesson does **not** count study time.
+- Study time starts only after **Start learning**.
+- Active session time and accumulated study time are separated.
+- Added Library, Review, Achievements and Progress views.
+- Added Author Corner.
+- Added local JSON export/import backup.
+- Added clearer data-storage wording: current data is local to the browser/device.
+- Kept iPad/Safari-safe delegated interaction for multiple-choice buttons.
+
+## Data
+The prototype stores learning data in browser `localStorage`. Reloading the page does not normally erase it, but another device/browser has a separate local store. Use **Settings → Export backup** to move data manually. Cloud account sync is reserved for a later architecture phase.
+
+## Run
+Open `index.html` in a browser or deploy the folder to GitHub Pages.
