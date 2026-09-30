@@ -48,7 +48,7 @@ sanitize = function (raw) {
   return s;
 };
 const _fresh42 = fresh; fresh = () => { const s = _fresh42(); s.utest = {}; return s; };
-S = load(); save();
+S = load();
 const _merge42 = mergeState;
 mergeState = function (a, b) { const m = _merge42(a, b); m.utest = { ...(a.utest || {}) }; for (const [k, v] of Object.entries(b.utest || {})) { const x = m.utest[k]; m.utest[k] = !x ? v : { best: Math.max(x.best, v.best), n: Math.max(x.n, v.n), last: Math.max(x.last, v.last) }; } return m; };
 
@@ -264,5 +264,4 @@ Object.assign(ACT, {
 });
 
 /* ---------------- Start ---------------- */
-initApp();
-if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
+/* khởi động: xem app-v43.js */

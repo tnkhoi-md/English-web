@@ -1,7 +1,7 @@
-# Tnkhoi English 4.2
+# Tnkhoi English 4.3
 
 Hệ thống tự học tiếng Anh phổ thông (0 đến C1) và tiếng Anh y khoa cơ bản, chạy hoàn toàn trong trình duyệt.
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.2 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.3 (03.10.26).
 
 ## Cấu trúc (thư mục gốc, đúng như repo English-web)
 
@@ -19,10 +19,11 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.2 (02.10.26).
 | `app-core.js`, `app-views.js`, `app-views2.js` | Lõi: lưu trữ, FSRS, bộ đếm giờ, giọng đọc, bài học, ôn tập, phòng khám |
 | `app-v4.js` | Thư viện, Mục tiêu, Kiểm tra đầu vào, Đồng bộ thiết bị, thanh công cụ |
 | `app-v41.js` | Bộ lọc kỳ thi, Ngữ pháp, Kho phát âm, câu nói động lực, nhóm ca bệnh |
-| `app-v42.js` | Lộ trình theo chặng, trang chặng, bài kiểm tra chặng, công cụ luyện tập 9 dạng câu. Phải nạp cuối cùng và khởi động app |
+| `app-v42.js` | Lộ trình theo chặng, trang chặng, bài kiểm tra chặng, công cụ luyện tập 9 dạng câu |
+| `app-v43.js` | Sinh bài học 5 từ cho mọi nhóm từ vựng của chặng, bài ngẫu nhiên. Phải nạp cuối cùng và khởi động app |
 | `index-single-file.html` | Bản gộp một file, dùng để mở thử hoặc dự phòng |
 
-Không đổi thứ tự thẻ `<script>` trong `index.html`. Các file `content-*` phải nạp trước `app-core.js`; `app-v42.js` luôn đứng cuối.
+Không đổi thứ tự thẻ `<script>` trong `index.html`. Các file `content-*` phải nạp trước `app-core.js`; `app-v43.js` luôn đứng cuối.
 
 ## Cập nhật lên GitHub Pages
 
@@ -41,6 +42,14 @@ Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm bài học và 
 ## Thêm từ vào thư viện
 
 Mỗi dòng trong `content-library-*.js` có dạng `từ|từ loại|nghĩa|câu ví dụ hoặc định nghĩa`. Thêm dòng vào đúng cấp độ (`A1`…`C1` hoặc `T1`/`T2`) của chủ đề là xong. Mã thẻ ôn tính theo chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả một từ đã có người học (thẻ cũ sẽ bị bỏ qua). Muốn thêm chủ đề mới, chép một khối `{ id, icon, color, title, vi, levels }`.
+
+## Mới trong 4.3
+
+- Mọi chặng đều có mục Bài học. Mỗi nhóm từ vựng của chặng (ví dụ A1.1: People & family, Core verbs, Core nouns, Time) được chia thành các bài 5 từ, tổng cộng 285 bài phủ toàn bộ 1.407 từ của lộ trình.
+- Cấu trúc mỗi bài giống bài G/M: giới thiệu, học từ, kiểm tra nghĩa, chọn từ theo nghĩa, điền từ vào câu, phân loại từ loại, nghe hiểu, sắp xếp câu, chép chính tả, viết đúng chính tả, phát âm cặp âm, nói hoặc viết câu với từ mới.
+- Nút “Bài ngẫu nhiên” tạo bài từ 5 từ chưa học bất kỳ trong chặng.
+- Học xong bài, từ vào lịch ôn tập và cộng vào tiến độ Thư viện. Trang Hôm nay gợi ý bài tiếp theo của chặng đang học.
+- Bài được sinh tự động từ thư viện: thêm từ vào một nhóm trong `content-library-*.js` là có thêm bài, không cần viết tay.
 
 ## Mới trong 4.2
 

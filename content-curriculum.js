@@ -7,7 +7,7 @@ const UNITS = [
 { id: "a1-1", track: "gen", level: "A1", code: "A1.1", icon: "👋", color: "#2e9d57", title: "First steps", vi: "Làm quen",
   goal: "Giới thiệu bản thân, gia đình, nói giờ và ngày; dùng đúng be, số nhiều và mạo từ.",
   lessons: ["G1"], grammar: ["be", "plurals", "articles"], pron: ["th"],
-  vocab: [["core-verbs", "A1"], ["core-nouns", "A1"], ["people", "A1"], ["time", "A1"]] },
+  vocab: [["people", "A1"], ["core-verbs", "A1"], ["core-nouns", "A1"], ["time", "A1"]] },
 { id: "a1-2", track: "gen", level: "A1", code: "A1.2", icon: "🏠", color: "#3a9d6a", title: "Everyday life", vi: "Cuộc sống hằng ngày",
   goal: "Kể thói quen, hỏi và trả lời câu hỏi đơn giản về sinh hoạt, công việc, cảm xúc.",
   lessons: ["G2"], grammar: ["present-simple", "questions"], pron: ["s"],

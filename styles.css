@@ -450,3 +450,12 @@ button.lv.on{background:var(--lc);color:#fff;border-color:var(--lc)}
 .ftok.right{border-style:solid;border-color:var(--good);background:var(--good-soft)}.ftok.wrong{border-style:solid;border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through}
 .practice-cta{border-top:4px solid #5b4fc4}
 @media (max-width:860px){.roadmap::before{left:21px}.unode{grid-template-columns:36px 1fr;gap:10px}.udot{width:36px;height:36px;font-size:10px;border-width:2px}.uparts{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ v4.3 · unit lessons ============ */
+.lgroup{border:1px solid var(--rule);border-left:4px solid var(--tc,var(--accent));border-radius:14px;padding:4px 12px;margin-top:8px;background:var(--surface)}
+.lg-h{display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;list-style:none}
+.lg-h::-webkit-details-marker{display:none}
+.lgroup .ti{width:36px;height:36px;font-size:18px}
+.lgroup .list .item{padding:10px 2px}
+.lgroup .lesson-dot{width:30px;height:30px;font-size:12px;border-color:var(--tc,var(--accent));color:var(--tc,var(--accent))}
+.lgroup .lesson-dot.done{background:var(--tc,var(--accent));color:#fff}
