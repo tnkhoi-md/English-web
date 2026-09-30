@@ -1,7 +1,7 @@
-# Tnkhoi English 4.1
+# Tnkhoi English 4.2
 
 Hệ thống tự học tiếng Anh phổ thông (0 đến C1) và tiếng Anh y khoa cơ bản, chạy hoàn toàn trong trình duyệt.
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.1 (01.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.2 (02.10.26).
 
 ## Cấu trúc (thư mục gốc, đúng như repo English-web)
 
@@ -13,14 +13,16 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.1 (01.10.26).
 | `content-library-gen.js` | Thư viện phổ thông: 16 chủ đề, A1 đến C1 |
 | `content-library-exam.js` | Từ vựng luyện thi: nền tảng A1–B2 (xếp đầu), TOEIC, IELTS/VSTEP, họ từ, kết hợp từ |
 | `content-clinic-screen.js` | 10 tình huống phòng khám sàng lọc ban đầu (C4–C13) |
+| `content-curriculum.js` | 18 chặng học (12 phổ thông A1.1 đến C1, 6 y khoa Y1 đến Y6) và ngân hàng 318 câu bài tập ngữ pháp |
 | `content-pron-grammar.js` | Kho từ phát âm, Thư viện ngữ pháp (25 điểm A1–B2), 60 câu nói động lực |
 | `content-library-med.js` | Thư viện y khoa: giải phẫu, sinh lý, bệnh học, lâm sàng |
 | `app-core.js`, `app-views.js`, `app-views2.js` | Lõi: lưu trữ, FSRS, bộ đếm giờ, giọng đọc, bài học, ôn tập, phòng khám |
 | `app-v4.js` | Thư viện, Mục tiêu, Kiểm tra đầu vào, Đồng bộ thiết bị, thanh công cụ |
-| `app-v41.js` | Bộ lọc kỳ thi, Ngữ pháp, Kho phát âm, câu nói động lực, nhóm ca bệnh. Phải nạp cuối cùng và khởi động app |
+| `app-v41.js` | Bộ lọc kỳ thi, Ngữ pháp, Kho phát âm, câu nói động lực, nhóm ca bệnh |
+| `app-v42.js` | Lộ trình theo chặng, trang chặng, bài kiểm tra chặng, công cụ luyện tập 9 dạng câu. Phải nạp cuối cùng và khởi động app |
 | `index-single-file.html` | Bản gộp một file, dùng để mở thử hoặc dự phòng |
 
-Không đổi thứ tự thẻ `<script>` trong `index.html`. Các file `content-*` phải nạp trước `app-core.js`; `app-v41.js` luôn đứng cuối.
+Không đổi thứ tự thẻ `<script>` trong `index.html`. Các file `content-*` phải nạp trước `app-core.js`; `app-v42.js` luôn đứng cuối.
 
 ## Cập nhật lên GitHub Pages
 
@@ -39,6 +41,17 @@ Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm bài học và 
 ## Thêm từ vào thư viện
 
 Mỗi dòng trong `content-library-*.js` có dạng `từ|từ loại|nghĩa|câu ví dụ hoặc định nghĩa`. Thêm dòng vào đúng cấp độ (`A1`…`C1` hoặc `T1`/`T2`) của chủ đề là xong. Mã thẻ ôn tính theo chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả một từ đã có người học (thẻ cũ sẽ bị bỏ qua). Muốn thêm chủ đề mới, chép một khối `{ id, icon, color, title, vi, levels }`.
+
+## Mới trong 4.2
+
+- Lộ trình được thiết kế lại thành bản đồ chặng. Mỗi chặng gom bài học, bộ từ vựng lấy trực tiếp từ Thư viện (theo chủ đề và cấp độ), điểm ngữ pháp, nhóm phát âm, ca bệnh và một bài kiểm tra chặng. Đạt 80% là qua chặng.
+- “Học từ mới” mỗi ngày lấy từ của chặng đang học; học trong chặng hay trong thư viện đều cộng vào cùng một tiến độ. Mỗi chủ đề trong thư viện và mỗi điểm ngữ pháp cho biết nó thuộc chặng nào.
+- Ngân hàng bài tập ngữ pháp: 10 câu mỗi điểm A1, 12 câu A2, 14 câu B1, 16 câu B2 (318 câu), gồm 5 dạng: chọn đáp án, chọn câu đúng, điền dạng đúng, tìm lỗi sai, sắp xếp câu. Có chế độ luyện đầy đủ, kiểm tra nhanh 8 câu và làm lại câu sai.
+- Bài kiểm tra chặng thêm 4 dạng cho từ vựng: chọn nghĩa, chọn từ tiếng Anh, nghe và chọn, viết đúng chính tả.
+
+## Thêm bài tập ngữ pháp
+
+Trong `content-curriculum.js`, mỗi dòng của `GRAMMAR_BANK` là một câu hỏi: `c|câu có ___|A / B / C|chỉ số đúng|giải thích`, `x|Chọn câu đúng|câu 1 / câu 2 / câu 3|chỉ số|giải thích`, `t|câu có ___ (gợi ý)|đáp án 1;đáp án 2|giải thích`, `f|câu có lỗi|từ sai|sửa thành|giải thích`, `o|câu hoàn chỉnh|giải thích`. Chỉ số bắt đầu từ 0.
 
 ## Mới trong 4.1
 

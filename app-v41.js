@@ -28,7 +28,7 @@ sanitize = function (raw) {
   return s;
 };
 const _fresh41 = fresh; fresh = () => { const s = _fresh41(); s.gram = {}; s.pb = {}; return s; };
-S = load(); save();
+S = load();
 const _merge41 = mergeState;
 mergeState = function (a, b) {
   const m = _merge41(a, b); m.gram = { ...(a.gram || {}) }; m.pb = { ...(a.pb || {}) };
@@ -211,5 +211,4 @@ Object.assign(ACT, {
 addEventListener("hashchange", () => { if (ROUTE.name !== "grammar") GQ = null; });
 
 /* ---------------- Start ---------------- */
-initApp();
-if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
+/* khởi động: xem app-v42.js */
