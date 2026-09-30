@@ -1,7 +1,7 @@
 /* ============================================================
    CORE · utils, state, migration, FSRS, time, speech
    ============================================================ */
-const APP = { name: "Tnkhoi English", version: "3.2", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
+const APP = { name: "Tnkhoi English", version: "3.3", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
 const KEY = "tnkhoi_english_v3";
 const LESSONS = [...GENERAL, ...MEDICAL];
 const LESSON_BY = Object.fromEntries(LESSONS.map(l => [l.id, l]));

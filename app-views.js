@@ -172,8 +172,12 @@ function viewToday() {
 
 /* ---------------- Path ---------------- */
 function lessonRow(l, idx) {
-  const r = S.lessons[l.id], ok = preOk(l), inProgress = (L && L.id === l.id && !L.fin && L.i > 0) || (S.resume && S.resume.id === l.id && S.resume.i > 0 && !r?.done);
-  const status = r?.done ? `<span class="chip good">${Math.round(r.best * 100)}%</span>` : inProgress ? `<span class="chip acc">đang học, bước ${L.i + 1}/${L.steps.length}</span>` : "";
+  const r = S.lessons[l.id], ok = preOk(l);
+  const rp = (S.resume && S.resume.id === l.id && S.resume.i > 0 && !r?.done) ? S.resume : null;
+  const live = (L && L.id === l.id && !L.fin) ? L : null;
+  const inProgress = !!live || !!rp;
+  const stepText = live ? `${live.i + 1}/${live.steps.length}` : rp ? `${rp.i + 1}` : "";
+  const status = r?.done ? `<span class="chip good">${Math.round(r.best * 100)}%</span>` : inProgress ? `<span class="chip acc">đang học, bước ${stepText}</span>` : "";
   const sub = !ok && !r?.done ? `Nên học sau ${l.pre.join(", ")}` : l.vi;
   return `<a class="item link" href="#/lesson/${l.id}"><span class="lesson-dot ${r?.done ? "done" : !ok ? "lock" : ""}">${idx + 1}</span>
     <span class="grow"><span class="t" lang="en">${esc(l.title)}</span><br><span class="s">${esc(sub)}</span></span>${status}<span class="chip">${l.level}</span></a>`;
