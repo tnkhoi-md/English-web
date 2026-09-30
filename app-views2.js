@@ -351,6 +351,7 @@ const ACT = {
     catch (e) { asrError(e); }
     render();
   },
+  checkWrite() { const st = stState(), step = L.steps[L.i]; st.val = $("#writeIn")?.value || ""; const words = norm(st.val).split(" ").filter(Boolean); if (words.length < (step.minWords || 3)) { toast(`Hãy viết ít nhất ${step.minWords || 3} từ.`); return; } st.cov = coverage(st.val, step.kw); st.ratio = st.cov.filter(Boolean).length / st.cov.length; st.ok = st.ratio >= 0.6; st.done = true; st.feedback = `Đã có ${st.cov.filter(Boolean).length}/${st.cov.length} ý/từ khóa mục tiêu.`; result("writing", st.ok); render(); },
   checkSpeak() { const st = stState(), step = L.steps[L.i]; st.typed = $("#spk")?.value || ""; const txt = st.typed.trim() || st.heard || ""; if (!txt) { toast("Hãy nói hoặc gõ câu trả lời trước."); return; } runSpeakCheck(step, st, txt, st.typed.trim() ? "typed" : "asr"); render(); },
   selfSpeak() { const st = stState(); st.self = true; if (!st.logged) { st.logged = true; result("speaking", true); } render(); },
   recStart() { const owner = ROUTE.name === "lesson" ? L.id + ":" + L.i : "x"; recReset(owner); recStart(owner, render); },
@@ -464,6 +465,7 @@ document.addEventListener("input", e => {
   if (t.id === "wsearch") { WQ = t.value; const box = $("#wlist"); if (box) box.innerHTML = wordListHtml(); }
   if (t.id === "askIn" && CL) CL.input = t.value;
   if (t.id === "spk" && L) stState().typed = t.value;
+  if (t.id === "writeIn" && L) stState().val = t.value;
   if (t.id === "sumIn" && CL) CL.summary = t.value;
   if (t.id === "setRate") { S.settings.rate = +t.value; $("#rateLbl").textContent = (+t.value).toFixed(2) + "×"; touch(); }
 });

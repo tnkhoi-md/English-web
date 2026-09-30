@@ -1,7 +1,7 @@
 /* ============================================================
    CORE · utils, state, migration, FSRS, time, speech
    ============================================================ */
-const APP = { name: "Tnkhoi English", version: "3.0", build: "29.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
+const APP = { name: "Tnkhoi English", version: "3.1", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
 const KEY = "tnkhoi_english_v3";
 const LESSONS = [...GENERAL, ...MEDICAL];
 const LESSON_BY = Object.fromEntries(LESSONS.map(l => [l.id, l]));
@@ -171,7 +171,7 @@ function forecast(days = 7) {
 }
 
 /* ---------------- Time tracking: chỉ tính khi đang ở màn học, trang hiển thị và có tương tác ---------------- */
-const TT = { last: Date.now(), input: Date.now(), acc: 0, session: 0, saveAt: Date.now(), counting: false };
+const TT = { last: Date.now(), input: Date.now(), acc: 0, session: 0, saveAt: Date.now(), counting: false, started: false };
 const IDLE_MS = 120000;
 function markActive() { TT.input = Date.now(); }
 ["pointerdown", "keydown", "touchstart", "wheel", "input"].forEach(ev => addEventListener(ev, markActive, { passive: true, capture: true }));
@@ -185,7 +185,8 @@ function streak() {
 }
 setInterval(() => {
   const now = Date.now(); const dt = Math.min(3, (now - TT.last) / 1000); TT.last = now;
-  const counting = isStudyRoute() && !document.hidden && (now - TT.input < IDLE_MS || SPEECH.busy);
+  const lessonStarted = ROUTE.name !== "lesson" || !!(L && L.active);
+  const counting = isStudyRoute() && lessonStarted && !document.hidden && (now - TT.input < IDLE_MS || SPEECH.busy);
   if (counting) { TT.acc += dt; TT.session += dt; const whole = Math.floor(TT.acc); if (whole >= 1) { TT.acc -= whole; addSeconds(whole); } }
   if (counting !== TT.counting) { TT.counting = counting; }
   paintTimer();

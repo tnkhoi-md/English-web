@@ -347,7 +347,6 @@ input[type="range"] { width: 180px; accent-color: var(--ink); }
 <div id="app"></div>
 <noscript>Cần bật JavaScript để dùng Tnkhoi English.</noscript>
 <script>
-"use strict";
 /* ============================================================
    CONTENT · General English track (A1 → A2)
    Mỗi bài: can-do rõ ràng, 6 từ, 1 mẫu câu, nghe, luyện, phát âm, nói.
@@ -383,11 +382,19 @@ const GENERAL = [
         { q: "What does Minh do?", opts: ["He's a medical student.", "He's a nurse.", "He's a teacher."], a: 0, why: "Minh nói: I'm a medical student." },
         { q: "Where does Anna work?", opts: ["At a school", "At City Hospital", "At a pharmacy"], a: 1, why: "Anna nói: I work at City Hospital." }
       ] },
+    { t: "read", k: "reading", title: "A new classmate",
+      text: "Anna meets Minh at the hospital café. Minh is a medical student from Vietnam. Anna is a nurse at City Hospital. They talk about where they live and what they do.",
+      vi: "Anna gặp Minh ở quán cà phê của bệnh viện. Minh là sinh viên y khoa đến từ Việt Nam. Anna là y tá tại Bệnh viện Thành phố. Họ nói về nơi mình sống và công việc.",
+      qs: [
+        { q: "Where do Anna and Minh meet?", opts: ["At a school", "At a hospital café", "At a pharmacy"], a: 1, why: "They meet at the hospital café." },
+        { q: "What does Anna do?", opts: ["She is a nurse.", "She is a student.", "She is a doctor."], a: 0, why: "Anna says she is a nurse at City Hospital." }
+      ] },
     { t: "cloze", k: "grammar", s: "I ___ a medical student.", opts: ["am", "is", "are"], a: 0, why: "Chủ ngữ I đi với am." },
     { t: "cloze", k: "grammar", s: "She ___ from Japan.", opts: ["am", "is", "are"], a: 1, why: "He / she / it đi với is." },
     { t: "order", k: "grammar", vi: "Bạn đến từ đâu?", tiles: ["Where", "are", "you", "from?"] },
     { t: "dict", k: "listening", s: "Nice to meet you.", vi: "Rất vui được gặp bạn." },
     { t: "pairs", set: "finals" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write a short self-introduction of 3–4 sentences. Include your name, where you are from, what you do, and one extra detail.", "vi": "Viết 3–4 câu giới thiệu bản thân: tên, quê quán, nghề nghiệp và một thông tin thêm.", "minWords": 3, "maxWords": 80, "model": "Hi, my name is Khoi. I’m from Vietnam. I’m a medical student. I live in Ho Chi Minh City.", "kw": ["name", "from", "student", "work", "live"]},
     { t: "speak", title: "Introduce yourself", prompt: "Introduce yourself in three sentences: your name, where you're from and what you do.",
       vi: "Giới thiệu bản thân trong ba câu: tên, quê, nghề.",
       models: ["Hi, my name is Khoi.", "I'm from Vietnam.", "I'm a medical student."],
@@ -431,6 +438,7 @@ const GENERAL = [
       opts: ["/s/", "/z/", "/ɪz/"],
       items: [["works", 0], ["lives", 1], ["washes", 2], ["gets", 0], ["plays", 1], ["finishes", 2]],
       why: "Sau âm vô thanh (/k/, /t/, /p/, /f/) đọc /s/. Sau âm hữu thanh và nguyên âm đọc /z/. Sau /s/, /z/, /ʃ/, /tʃ/, /dʒ/ đọc /ɪz/." },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write 4 sentences about your weekday routine. Use at least two frequency words such as usually, always, or never.", "vi": "Viết 4 câu về một ngày trong tuần. Dùng ít nhất hai từ chỉ tần suất như usually, always hoặc never.", "minWords": 3, "maxWords": 80, "model": "I usually get up at six. I always have breakfast at home. I start work at seven. I never drink coffee at night.", "kw": ["usually", "always", "get up", "breakfast", "work", "study"]},
     { t: "speak", title: "Your morning", prompt: "Describe your morning in three sentences. Use usually or always.",
       vi: "Kể buổi sáng của bạn trong ba câu, có dùng usually hoặc always.",
       models: ["I usually get up at six.", "I always have breakfast at home.", "I start work at seven thirty."],
@@ -474,6 +482,7 @@ const GENERAL = [
     { t: "order", k: "grammar", vi: "Anh/chị uống gì không?", tiles: ["Would", "you", "like", "something", "to", "drink?"] },
     { t: "dict", k: "listening", s: "Could I have the bill, please?", vi: "Cho tôi xin hóa đơn." },
     { t: "pairs", set: "z-s" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write a short food order. Ask for one main dish and one drink, then mention one food you are allergic to.", "vi": "Viết một đoạn gọi món ngắn: gọi một món chính, một đồ uống và nói bạn dị ứng với một loại thực phẩm.", "minWords": 3, "maxWords": 80, "model": "Could I have the chicken, please? And a glass of water. I’m allergic to peanuts.", "kw": ["order", "menu", "glass", "water", "allergic"]},
     { t: "speak", title: "Order a meal", prompt: "Order a meal and a drink politely. Say one food you are allergic to.",
       vi: "Gọi một món ăn và đồ uống thật lịch sự, nói mình dị ứng với gì.",
       models: ["Could I have the fish, please?", "I'd like a glass of orange juice.", "I'm allergic to shrimp."],
@@ -515,6 +524,7 @@ const GENERAL = [
     { t: "order", k: "grammar", vi: "Gần đây có hiệu thuốc không?", tiles: ["Is", "there", "a", "pharmacy", "near", "here?"] },
     { t: "dict", k: "listening", s: "Turn left and go straight.", vi: "Rẽ trái rồi đi thẳng." },
     { t: "pairs", set: "l-n" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write simple directions from a familiar place to another place. Use at least three location or direction expressions.", "vi": "Viết hướng dẫn đường đi đơn giản từ một địa điểm quen thuộc đến một địa điểm khác. Dùng ít nhất ba cụm chỉ vị trí hoặc phương hướng.", "minWords": 3, "maxWords": 80, "model": "Go straight for two minutes. Turn left at the bank. The pharmacy is next to the hospital.", "kw": ["turn", "left", "right", "next to", "opposite", "straight"]},
     { t: "speak", title: "Give directions", prompt: "A visitor asks you: Is there a café near here? Answer and give simple directions.",
       vi: "Một người hỏi gần đây có quán cà phê không. Trả lời và chỉ đường đơn giản.",
       models: ["Yes, there is.", "Go straight and turn left.", "It's next to the pharmacy."],
@@ -558,6 +568,7 @@ const GENERAL = [
       opts: ["/t/", "/d/", "/ɪd/"],
       items: [["watched", 0], ["stayed", 1], ["visited", 2], ["worked", 0], ["played", 1], ["needed", 2]],
       why: "Sau âm vô thanh (/k/, /p/, /s/, /ʃ/, /tʃ/) đọc /t/. Sau âm hữu thanh và nguyên âm đọc /d/. Sau /t/ và /d/ đọc /ɪd/." },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write 4–5 sentences about last weekend. Use at least three past-tense verbs and one time expression.", "vi": "Viết 4–5 câu về cuối tuần trước. Dùng ít nhất ba động từ quá khứ và một cụm chỉ thời gian.", "minWords": 4, "maxWords": 80, "model": "Last Saturday, I visited my friend. We went to a café. We talked for an hour and watched a film.", "kw": ["last", "Saturday", "went", "visited", "watched", "yesterday"]},
     { t: "speak", title: "Your weekend", prompt: "Tell me about your last weekend in three sentences.",
       vi: "Kể về cuối tuần vừa rồi trong ba câu.",
       models: ["On Saturday I went to the cinema.", "I had dinner with my family.", "On Sunday I stayed at home and studied."],
@@ -599,6 +610,7 @@ const GENERAL = [
     { t: "order", k: "grammar", vi: "Bạn có muốn đi cùng không?", tiles: ["Would", "you", "like", "to", "come?"] },
     { t: "dict", k: "listening", s: "Sorry, I can't. I'm busy tomorrow.", vi: "Xin lỗi, mình không đi được. Mai mình bận." },
     { t: "pairs", set: "i-ee" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write a short message about your plans for tomorrow. Include a time, an activity, and a polite change or suggestion.", "vi": "Viết một tin nhắn ngắn về kế hoạch ngày mai. Có thời gian, hoạt động và một đề nghị hoặc thay đổi lịch sự.", "minWords": 4, "maxWords": 80, "model": "Are you free tomorrow evening? I’m planning to study at seven. Could we meet on Friday instead?", "kw": ["tomorrow", "plan", "meet", "free", "could", "another"]},
     { t: "speak", title: "Say no nicely", prompt: "A friend says: Would you like to have dinner tomorrow? Say no politely, give a reason and suggest another day.",
       vi: "Bạn bè mời ăn tối ngày mai. Từ chối lịch sự, nêu lý do và gợi ý ngày khác.",
       models: ["Thanks for inviting me, but I can't.", "I'm going to work late tomorrow.", "How about Friday?"],
@@ -606,6 +618,7 @@ const GENERAL = [
   ]
 }
 ];
+
 
 /* ============================================================
    CONTENT · Medical English track
@@ -656,6 +669,7 @@ const MEDICAL = [
     { t: "order", k: "grammar", vi: "Đau ở đâu?", tiles: ["Where", "does", "it", "hurt?"] },
     { t: "dict", k: "listening", s: "I have a headache and a sore throat.", vi: "Tôi bị đau đầu và đau họng." },
     { t: "pairs", set: "th-t" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write a short symptom report in 3–4 sentences. Say the main symptom, where it is, when it started, and one associated symptom.", "vi": "Viết 3–4 câu mô tả triệu chứng: triệu chứng chính, vị trí, thời điểm khởi phát và một triệu chứng kèm theo.", "minWords": 3, "maxWords": 80, "model": "I have a headache. It started yesterday. I also have a sore throat and a cough.", "kw": ["headache", "started", "throat", "cough", "pain"]},
     { t: "speak", title: "Tell someone else", prompt: "Mai has a headache and a sore throat. She also has a cough. Tell the doctor what is wrong with Mai.",
       vi: "Thuật lại cho bác sĩ tình trạng của Mai (dùng she has).",
       models: ["Mai isn't feeling well.", "She has a headache and a sore throat.", "She also has a cough."],
@@ -702,6 +716,7 @@ const MEDICAL = [
     { t: "order", k: "grammar", vi: "Hôm nay anh/chị đến khám vì chuyện gì?", tiles: ["What", "brings", "you", "in", "today?"] },
     { t: "dict", k: "listening", s: "Could you tell me your full name and date of birth, please?", vi: "Anh/chị cho tôi biết họ tên và ngày sinh nhé?" },
     { t: "mcq", k: "pron", q: "Which syllable is stressed in appointment?", opts: ["AP-point-ment", "ap-POINT-ment", "ap-point-MENT"], a: 1, why: "ap-POINT-ment /əˈpɔɪntmənt/. Âm đầu đọc nhẹ /ə/." },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write the opening of a consultation. Greet the patient, introduce yourself, confirm their identity, and ask an open question.", "vi": "Viết phần mở đầu một buổi khám: chào bệnh nhân, giới thiệu, xác nhận danh tính và hỏi một câu mở.", "minWords": 3, "maxWords": 80, "model": "Good morning. My name is Dr. Minh. Could I check your name and date of birth? What brought you in today?", "kw": ["hello", "name", "date of birth", "help", "today", "brought"]},
     { t: "speak", title: "Open a consultation", prompt: "Greet the patient, say who you are, check their name and date of birth, then ask an open question.",
       vi: "Chào, giới thiệu vai trò, xác nhận danh tính, rồi hỏi một câu mở.",
       models: ["Good morning. I'm Dr Khoi, one of the doctors.", "Could you tell me your full name and date of birth, please?", "What brings you in today?"],
@@ -745,6 +760,7 @@ const MEDICAL = [
     { t: "order", k: "grammar", vi: "Anh/chị bị bao lâu rồi?", tiles: ["How", "long", "have", "you", "had", "it?"] },
     { t: "dict", k: "listening", s: "It started suddenly two hours ago.", vi: "Nó bắt đầu đột ngột cách đây hai giờ." },
     { t: "pairs", set: "finals" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write 3–4 questions about the timing of a symptom. Ask when it started, whether it is changing, and how often it happens.", "vi": "Viết 3–4 câu hỏi về thời gian của một triệu chứng: bắt đầu khi nào, có thay đổi không và xảy ra bao lâu một lần.", "minWords": 3, "maxWords": 80, "model": "When did the cough start? How long have you had it? How often does it happen? Has it got worse?", "kw": ["when", "started", "how long", "often", "changed", "worse"]},
     { t: "speak", title: "Ask about timing", prompt: "Ask a patient three questions about when their cough started and how it is changing.",
       vi: "Hỏi bệnh nhân ba câu về thời điểm bắt đầu và diễn tiến của cơn ho.",
       models: ["When did the cough start?", "How long have you had it?", "Is it getting better or worse?"],
@@ -795,6 +811,7 @@ const MEDICAL = [
     { t: "order", k: "grammar", vi: "Cơn đau có cảm giác thế nào?", tiles: ["What", "does", "the", "pain", "feel", "like?"] },
     { t: "dict", k: "listening", s: "On a scale of zero to ten, how bad is the pain?", vi: "Trên thang 0 đến 10, cơn đau ở mức nào?" },
     { t: "pairs", set: "sh-s" },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write four simple questions about pain using four SOCRATES areas: site, character, aggravating factors, and severity.", "vi": "Viết bốn câu hỏi đơn giản về đau, dùng bốn thành phần SOCRATES: vị trí, tính chất, yếu tố làm nặng và mức độ.", "minWords": 3, "maxWords": 80, "model": "Where exactly is the pain? What does it feel like? Does anything make it worse? On a scale of zero to ten, how bad is it?", "kw": ["where", "feel like", "worse", "better", "scale", "pain"]},
     { t: "speak", title: "Four SOCRATES questions", prompt: "A patient says: I have a pain in my knee. Ask four questions: where, what it feels like, what makes it worse, and how bad it is.",
       vi: "Bệnh nhân đau gối. Hỏi bốn câu: vị trí, tính chất, yếu tố làm nặng, mức độ.",
       models: ["Where exactly is the pain?", "What does it feel like?", "Does anything make it worse?", "On a scale of zero to ten, how bad is it?"],
@@ -831,6 +848,7 @@ const MEDICAL = [
     { t: "mcq", k: "pron", q: "Where is the stress in cardiology?", opts: ["CAR-di-ol-o-gy", "car-DI-ol-o-gy", "car-di-OL-o-gy"], a: 2, why: "Với -logy, trọng âm rơi vào âm ngay trước: car-di-OL-o-gy." },
     { t: "mcq", k: "clinical", q: "Which explanation is best for a patient?", opts: ["You have hepatitis secondary to viral aetiology.", "Your liver is inflamed. It's probably caused by a virus.", "It's a liver thing."], a: 1, why: "Rõ ràng, dùng từ đời thường, vẫn chính xác." },
     { t: "dict", k: "listening", s: "Tachycardia means a fast heart rate.", vi: "Tachycardia nghĩa là tim đập nhanh." },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write a two-sentence patient-friendly explanation of one medical word. Use a plain-English meaning rather than only the technical term.", "vi": "Viết hai câu giải thích một thuật ngữ y khoa cho bệnh nhân bằng tiếng Anh đời thường, không chỉ lặp lại thuật ngữ.", "minWords": 4, "maxWords": 80, "model": "Gastritis means that the lining of your stomach is inflamed. It can cause a burning pain.", "kw": ["means", "stomach", "heart", "inflamed", "pain", "fast"]},
     { t: "speak", title: "Explain a term", prompt: "Explain the word gastritis to a patient in simple English. Then say one symptom it can cause.",
       vi: "Giải thích từ gastritis cho bệnh nhân bằng tiếng Anh đơn giản, rồi nêu một triệu chứng.",
       models: ["Gastritis means the lining of your stomach is inflamed.", "It can cause a burning pain in your stomach."],
@@ -875,6 +893,7 @@ const MEDICAL = [
     { t: "order", k: "grammar", vi: "Anh/chị nên uống một viên, ngày hai lần.", tiles: ["You", "should", "take", "one", "tablet", "twice", "a", "day."] },
     { t: "dict", k: "listening", s: "It's important to avoid spicy food.", vi: "Điều quan trọng là tránh đồ cay." },
     { t: "mcq", k: "pron", q: "Where is the stress in prescribe?", opts: ["PRE-scribe", "pre-SCRIBE"], a: 1, why: "pre-SCRIBE /prɪˈskraɪb/. Âm đầu đọc nhẹ /prɪ/." },
+    {"t": "write", "k": "writing", "title": "Short writing", "prompt": "Write a short medication explanation. Include how often to take it, one precaution, and a teach-back question.", "vi": "Viết lời dặn thuốc ngắn: tần suất dùng, một điều cần lưu ý và một câu teach-back.", "minWords": 4, "maxWords": 80, "model": "Take one tablet twice a day. It is important to avoid alcohol for now. Could you tell me how you’ll take it?", "kw": ["take", "twice", "avoid", "important", "tell", "how"]},
     { t: "speak", title: "Give advice and check", prompt: "Tell a patient how to take a painkiller (three times a day, after food), give one piece of advice, and check understanding.",
       vi: "Dặn cách uống thuốc giảm đau (ngày ba lần, sau ăn), thêm một lời khuyên, rồi kiểm tra bệnh nhân hiểu chưa.",
       models: ["You should take one painkiller three times a day, after food.", "Try to rest and drink plenty of water.", "Could you tell me how you'll take them?"],
@@ -882,6 +901,7 @@ const MEDICAL = [
   ]
 }
 ];
+
 
 /* ============================================================
    CONTENT · Phòng khám ảo (virtual patients)
@@ -1094,10 +1114,11 @@ const TERMS = [
 ];
 const TERM_PARTS = ["gastr", "hepat", "arthr", "peri", "card", "cardi", "neur", "nephr", "dermat", "tachy", "brady", "dys", "hyper", "glyc", "poly", "o", "itis", "algia", "ectomy", "scopy", "logy", "ia", "pnoea", "megaly", "aemia", "uria"];
 
+
 /* ============================================================
    CORE · utils, state, migration, FSRS, time, speech
    ============================================================ */
-const APP = { name: "Tnkhoi English", version: "3.0", build: "29.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
+const APP = { name: "Tnkhoi English", version: "3.1", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
 const KEY = "tnkhoi_english_v3";
 const LESSONS = [...GENERAL, ...MEDICAL];
 const LESSON_BY = Object.fromEntries(LESSONS.map(l => [l.id, l]));
@@ -1267,7 +1288,7 @@ function forecast(days = 7) {
 }
 
 /* ---------------- Time tracking: chỉ tính khi đang ở màn học, trang hiển thị và có tương tác ---------------- */
-const TT = { last: Date.now(), input: Date.now(), acc: 0, session: 0, saveAt: Date.now(), counting: false };
+const TT = { last: Date.now(), input: Date.now(), acc: 0, session: 0, saveAt: Date.now(), counting: false, started: false };
 const IDLE_MS = 120000;
 function markActive() { TT.input = Date.now(); }
 ["pointerdown", "keydown", "touchstart", "wheel", "input"].forEach(ev => addEventListener(ev, markActive, { passive: true, capture: true }));
@@ -1281,7 +1302,8 @@ function streak() {
 }
 setInterval(() => {
   const now = Date.now(); const dt = Math.min(3, (now - TT.last) / 1000); TT.last = now;
-  const counting = isStudyRoute() && !document.hidden && (now - TT.input < IDLE_MS || SPEECH.busy);
+  const lessonStarted = ROUTE.name !== "lesson" || !!(L && L.active);
+  const counting = isStudyRoute() && lessonStarted && !document.hidden && (now - TT.input < IDLE_MS || SPEECH.busy);
   if (counting) { TT.acc += dt; TT.session += dt; const whole = Math.floor(TT.acc); if (whole >= 1) { TT.acc -= whole; addSeconds(whole); } }
   if (counting !== TT.counting) { TT.counting = counting; }
   paintTimer();
@@ -1386,6 +1408,7 @@ function applyTheme() {
 }
 matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", applyTheme);
 
+
 /* ============================================================
    VIEWS 1 · router, shell, Today, Path, Lesson player
    ============================================================ */
@@ -1432,7 +1455,7 @@ addEventListener("hashchange", () => {
   if (r.name === "clinic" && r.arg && (!CL || CL.id !== r.arg || CL.phase === "report")) { if (!startCase(r.arg)) { location.hash = "#/clinic"; return; } }
   if (r.name === "sounds" && r.arg && (!SD || SD.set !== r.arg)) startDrill(r.arg);
   if (r.name === "words" && r.arg === "build" && !B) startBuild();
-  if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) TT.session = 0;
+  if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) { TT.session = 0; TT.started = r.name !== "lesson"; }
   render(true);
 });
 
@@ -1580,7 +1603,7 @@ let L = null;
 const PAIR_ROUNDS = 6;
 function startLesson(id) {
   const l = LESSON_BY[id]; if (!l) return false;
-  L = { id, l, i: 0, steps: [{ t: "intro" }, { t: "words" }, { t: "check", k: "vocab", qs: makeCheck(l) }, ...l.steps, { t: "done" }], st: {}, res: [], fin: false };
+  L = { id, l, i: 0, active: false, steps: [{ t: "intro" }, { t: "words" }, { t: "check", k: "vocab", qs: makeCheck(l) }, ...l.steps, { t: "done" }], st: {}, res: [], fin: false };
   return true;
 }
 function makeCheck(l) {
@@ -1592,7 +1615,7 @@ function stepComplete(step, st) {
   switch (step.t) {
     case "words": return (st.wi || 0) >= L.l.words.length - 1;
     case "check": case "listen": case "read": return step.qs.every((_, i) => st.q && st.q[i] && st.q[i].done);
-    case "mcq": case "cloze": case "order": case "dict": case "classify": return !!st.done;
+    case "mcq": case "cloze": case "order": case "dict": case "classify": case "write": return !!st.done;
     case "pairs": return (st.round || 0) >= PAIR_ROUNDS;
     default: return true;
   }
@@ -1640,7 +1663,7 @@ const STEP = {
     return `<div class="row"><span class="chip acc">${trackName(l.track)}</span><span class="chip">${l.level}</span><span class="chip">khoảng ${l.min} phút</span></div>
       <h1 lang="en">${esc(l.title)}</h1><p class="lede">${esc(l.vi)}</p>
       <div class="soft"><b>Sau bài này bạn có thể:</b> ${esc(l.can)}</div>
-      <p class="muted">Bài gồm 6 từ mới, một mẫu câu, nghe hiểu, luyện tập, phát âm và nói. Điểm chỉ tính câu đúng ngay lần đầu. Từ mới vào hàng ôn tập khi bạn học xong bài.</p>
+      <p class="muted">Bài kết hợp từ vựng, ngữ pháp, nghe/đọc, phát âm, viết ngắn và nói. Không phải bước nào cũng đo cùng một kỹ năng; bằng chứng được ghi riêng để hệ thống biết bạn thực sự làm được gì. Từ mới vào hàng ôn tập khi bạn học xong bài.</p>
       ${r?.done ? `<p class="muted small">Lần trước bạn đạt ${Math.round(r.best * 100)}%. Học lại không tạo thêm thẻ trùng.</p>` : ""}
       ${!preOk(l) ? `<p class="feedback no">Bài này nên học sau ${l.pre.join(", ")}. Bạn vẫn có thể học trước nếu muốn.</p>` : ""}`;
   },
@@ -1720,6 +1743,10 @@ const STEP = {
       ${st.ans != null ? `<div class="feedback ${st.ans === st.cur.w ? "ok" : "no"}" role="status"><b>${st.ans === st.cur.w ? "Đúng." : "Chưa đúng."}</b> Từ vừa đọc là <b lang="en">${esc(target)}</b>.</div>
         <div class="row">${hear(pair[0])}<span lang="en" class="en">${esc(pair[0])}</span>${hear(pair[1])}<span lang="en" class="en">${esc(pair[1])}</span><button class="btn primary" data-act="pairNext" style="margin-left:auto">Lượt tiếp</button></div>` : ""}`;
   },
+  write(step, st) {
+    const count = norm(st.val || "").split(" ").filter(Boolean).length;
+    return `<span class="step-kind">Viết ngắn</span><h2 lang="en">${esc(step.title)}</h2><p class="q">${esc(step.prompt)}</p><p class="muted">${esc(step.vi)}</p><div class="soft"><b>Mục tiêu:</b> ${step.minWords || 3}–${step.maxWords || 80} từ · ${step.kw.slice(0, 5).map(x => `<span class="chip">${esc(x)}</span>`).join(" ")}</div><textarea class="field" id="writeIn" lang="en" rows="6" placeholder="Write in English…" ${st.done ? "disabled" : ""}>${esc(st.val || "")}</textarea><div class="row between"><span class="muted small">${count} từ</span><button class="btn primary" data-act="checkWrite" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Bài viết đạt các ý chính." : "Cần bổ sung một vài ý."}</b> ${esc(st.feedback || "")}</div><details open><summary class="btn quiet small" style="display:inline-flex">Xem bài mẫu</summary><div class="ex-item" style="margin-top:10px"><span class="en" lang="en">${esc(step.model)}</span>${hear(step.model)}</div></details>` : `<p class="muted small">Đây là đánh giá hỗ trợ: hệ thống kiểm tra ý chính, không chấm ngữ pháp như một giám khảo IELTS.</p>`}`;
+  },
   speak(step, st) {
     const owner = L.id + ":" + L.i;
     const recMine = REC.owner === owner;
@@ -1757,6 +1784,7 @@ const STEP = {
       <div class="row"><a class="btn primary" href="#/review/go">Ôn ngay</a>${next ? `<a class="btn" href="#/lesson/${next.id}">Bài tiếp: ${next.id}</a>` : ""}<a class="btn quiet" href="#/today">Về Hôm nay</a></div>`;
   }
 };
+
 
 /* ============================================================
    VIEWS 2 · Review, Clinic, Sounds, Words, Progress, Settings
@@ -2111,6 +2139,7 @@ const ACT = {
     catch (e) { asrError(e); }
     render();
   },
+  checkWrite() { const st = stState(), step = L.steps[L.i]; st.val = $("#writeIn")?.value || ""; const words = norm(st.val).split(" ").filter(Boolean); if (words.length < (step.minWords || 3)) { toast(`Hãy viết ít nhất ${step.minWords || 3} từ.`); return; } st.cov = coverage(st.val, step.kw); st.ratio = st.cov.filter(Boolean).length / st.cov.length; st.ok = st.ratio >= 0.6; st.done = true; st.feedback = `Đã có ${st.cov.filter(Boolean).length}/${st.cov.length} ý/từ khóa mục tiêu.`; result("writing", st.ok); render(); },
   checkSpeak() { const st = stState(), step = L.steps[L.i]; st.typed = $("#spk")?.value || ""; const txt = st.typed.trim() || st.heard || ""; if (!txt) { toast("Hãy nói hoặc gõ câu trả lời trước."); return; } runSpeakCheck(step, st, txt, st.typed.trim() ? "typed" : "asr"); render(); },
   selfSpeak() { const st = stState(); st.self = true; if (!st.logged) { st.logged = true; result("speaking", true); } render(); },
   recStart() { const owner = ROUTE.name === "lesson" ? L.id + ":" + L.i : "x"; recReset(owner); recStart(owner, render); },
@@ -2224,6 +2253,7 @@ document.addEventListener("input", e => {
   if (t.id === "wsearch") { WQ = t.value; const box = $("#wlist"); if (box) box.innerHTML = wordListHtml(); }
   if (t.id === "askIn" && CL) CL.input = t.value;
   if (t.id === "spk" && L) stState().typed = t.value;
+  if (t.id === "writeIn" && L) stState().val = t.value;
   if (t.id === "sumIn" && CL) CL.summary = t.value;
   if (t.id === "setRate") { S.settings.rate = +t.value; $("#rateLbl").textContent = (+t.value).toFixed(2) + "×"; touch(); }
 });

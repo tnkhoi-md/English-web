@@ -44,7 +44,7 @@ addEventListener("hashchange", () => {
   if (r.name === "clinic" && r.arg && (!CL || CL.id !== r.arg || CL.phase === "report")) { if (!startCase(r.arg)) { location.hash = "#/clinic"; return; } }
   if (r.name === "sounds" && r.arg && (!SD || SD.set !== r.arg)) startDrill(r.arg);
   if (r.name === "words" && r.arg === "build" && !B) startBuild();
-  if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) TT.session = 0;
+  if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) { TT.session = 0; TT.started = r.name !== "lesson"; }
   render(true);
 });
 
@@ -192,7 +192,7 @@ let L = null;
 const PAIR_ROUNDS = 6;
 function startLesson(id) {
   const l = LESSON_BY[id]; if (!l) return false;
-  L = { id, l, i: 0, steps: [{ t: "intro" }, { t: "words" }, { t: "check", k: "vocab", qs: makeCheck(l) }, ...l.steps, { t: "done" }], st: {}, res: [], fin: false };
+  L = { id, l, i: 0, active: false, steps: [{ t: "intro" }, { t: "words" }, { t: "check", k: "vocab", qs: makeCheck(l) }, ...l.steps, { t: "done" }], st: {}, res: [], fin: false };
   return true;
 }
 function makeCheck(l) {
@@ -204,7 +204,7 @@ function stepComplete(step, st) {
   switch (step.t) {
     case "words": return (st.wi || 0) >= L.l.words.length - 1;
     case "check": case "listen": case "read": return step.qs.every((_, i) => st.q && st.q[i] && st.q[i].done);
-    case "mcq": case "cloze": case "order": case "dict": case "classify": return !!st.done;
+    case "mcq": case "cloze": case "order": case "dict": case "classify": case "write": return !!st.done;
     case "pairs": return (st.round || 0) >= PAIR_ROUNDS;
     default: return true;
   }
@@ -252,7 +252,7 @@ const STEP = {
     return `<div class="row"><span class="chip acc">${trackName(l.track)}</span><span class="chip">${l.level}</span><span class="chip">khoảng ${l.min} phút</span></div>
       <h1 lang="en">${esc(l.title)}</h1><p class="lede">${esc(l.vi)}</p>
       <div class="soft"><b>Sau bài này bạn có thể:</b> ${esc(l.can)}</div>
-      <p class="muted">Bài gồm 6 từ mới, một mẫu câu, nghe hiểu, luyện tập, phát âm và nói. Điểm chỉ tính câu đúng ngay lần đầu. Từ mới vào hàng ôn tập khi bạn học xong bài.</p>
+      <p class="muted">Bài kết hợp từ vựng, ngữ pháp, nghe/đọc, phát âm, viết ngắn và nói. Không phải bước nào cũng đo cùng một kỹ năng; bằng chứng được ghi riêng để hệ thống biết bạn thực sự làm được gì. Từ mới vào hàng ôn tập khi bạn học xong bài.</p>
       ${r?.done ? `<p class="muted small">Lần trước bạn đạt ${Math.round(r.best * 100)}%. Học lại không tạo thêm thẻ trùng.</p>` : ""}
       ${!preOk(l) ? `<p class="feedback no">Bài này nên học sau ${l.pre.join(", ")}. Bạn vẫn có thể học trước nếu muốn.</p>` : ""}`;
   },
@@ -331,6 +331,10 @@ const STEP = {
       <div class="grid2">${pair.map((w, i) => `<button class="choice${st.ans != null ? (i === st.cur.w ? " right" : st.ans === i ? " wrong" : "") : ""}" style="font-size:28px;text-align:center" data-act="pairPick" data-i="${i}" ${st.ans != null ? "disabled" : ""} lang="en">${esc(w)}</button>`).join("")}</div>
       ${st.ans != null ? `<div class="feedback ${st.ans === st.cur.w ? "ok" : "no"}" role="status"><b>${st.ans === st.cur.w ? "Đúng." : "Chưa đúng."}</b> Từ vừa đọc là <b lang="en">${esc(target)}</b>.</div>
         <div class="row">${hear(pair[0])}<span lang="en" class="en">${esc(pair[0])}</span>${hear(pair[1])}<span lang="en" class="en">${esc(pair[1])}</span><button class="btn primary" data-act="pairNext" style="margin-left:auto">Lượt tiếp</button></div>` : ""}`;
+  },
+  write(step, st) {
+    const count = norm(st.val || "").split(" ").filter(Boolean).length;
+    return `<span class="step-kind">Viết ngắn</span><h2 lang="en">${esc(step.title)}</h2><p class="q">${esc(step.prompt)}</p><p class="muted">${esc(step.vi)}</p><div class="soft"><b>Mục tiêu:</b> ${step.minWords || 3}–${step.maxWords || 80} từ · ${step.kw.slice(0, 5).map(x => `<span class="chip">${esc(x)}</span>`).join(" ")}</div><textarea class="field" id="writeIn" lang="en" rows="6" placeholder="Write in English…" ${st.done ? "disabled" : ""}>${esc(st.val || "")}</textarea><div class="row between"><span class="muted small">${count} từ</span><button class="btn primary" data-act="checkWrite" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Bài viết đạt các ý chính." : "Cần bổ sung một vài ý."}</b> ${esc(st.feedback || "")}</div><details open><summary class="btn quiet small" style="display:inline-flex">Xem bài mẫu</summary><div class="ex-item" style="margin-top:10px"><span class="en" lang="en">${esc(step.model)}</span>${hear(step.model)}</div></details>` : `<p class="muted small">Đây là đánh giá hỗ trợ: hệ thống kiểm tra ý chính, không chấm ngữ pháp như một giám khảo IELTS.</p>`}`;
   },
   speak(step, st) {
     const owner = L.id + ":" + L.i;

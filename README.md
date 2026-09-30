@@ -1,41 +1,47 @@
-# Tnkhoi English 3.0
+# Tnkhoi English 3.1
 
 Hệ thống tự học tiếng Anh thông dụng và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và tài khoản.
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 3.0 (29.9.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 3.1 (30.9.26).
 
-## Có gì trong ứng dụng
+## Nội dung phiên bản 3.1
 
-- **Hôm nay**: kế hoạch tối đa 3 bước, tự sắp theo thứ tự ưu tiên: thẻ đến hạn, bài tiếp theo (xen kẽ hai mạch), ca bệnh ảo hoặc kỹ năng yếu nhất. Mỗi bước ghi rõ lý do.
-- **Lộ trình**: 6 bài tiếng Anh thông dụng (G1–G6, A1–A2) và 6 bài tiếng Anh y khoa (M1–M6). Mỗi bài gồm 6 từ, mẫu câu kèm lỗi người Việt hay gặp, nghe hiểu, bài tập, phát âm và nói.
-- **Ôn tập**: thuật toán FSRS-4.5 với tham số mặc định. Mỗi từ có 2 thẻ (nhìn từ nhớ nghĩa, nhìn nghĩa gõ lại từ). Thẻ chỉ được tạo khi học xong bài.
-- **Phòng khám ảo**: 3 ca (đau đầu, đau thượng vị, ho sốt). Hỏi bệnh bằng cách gõ, nói hoặc chọn từ ngân hàng câu hỏi (có cả cách hỏi chưa phù hợp). Sau đó viết tóm tắt ca, chọn chẩn đoán, cách giải thích, và nhận báo cáo theo các nhóm tiêu chí giao tiếp lâm sàng kiểu OET.
-- **Phát âm**: 7 cặp âm tối thiểu người Việt hay nhầm (/θ/–/t/, /ɪ/–/iː/, /l/–/n/, âm cuối…), nghe phân biệt và tự nói để máy nhận dạng.
-- **Sổ từ và thuật ngữ**: từ đã học kèm trạng thái ôn, bảng 31 hình vị y khoa, trò ghép thuật ngữ.
-- **Tiến bộ**: điểm kỹ năng chỉ tính từ bằng chứng thật (kèm số lần), thời gian 14 ngày, lịch 12 tuần.
+- **General English G1–G6**: từ A1 đến A2, dùng tình huống đời sống làm trục. G1 được chuẩn hóa như Golden Lesson mẫu với vocabulary, grammar, listening, reading, pronunciation, writing và speaking.
+- **Medical English M1–M6**: từ mô tả triệu chứng → mở đầu khám → thời gian khởi phát → mô tả đau theo SOCRATES → giải mã thuật ngữ → giải thích/dặn dò và teach-back.
+- **Writing strand**: mỗi bài có một nhiệm vụ viết ngắn. Hệ thống chỉ kiểm tra ý chính/từ khóa và ghi evidence cho kỹ năng viết; đây không phải chấm IELTS.
+- **Reading**: bài đọc được dùng để luyện locating information và hiểu ngữ cảnh, không chỉ kiểm tra từ vựng.
+- **Evidence**: recognition, recall, controlled use, production/transfer và retention được xem là các lớp bằng chứng khác nhau; hoàn thành bài không đồng nghĩa mastery.
+- **FSRS-4.5**: dùng làm lịch ôn tập, không dùng làm định nghĩa duy nhất của mastery.
+- **Phòng khám ảo**: luyện ngôn ngữ giao tiếp lâm sàng; không phải công cụ chẩn đoán/điều trị và không phải điểm OET.
 
-Thời gian học chỉ được tính khi bạn đang ở màn học, trang đang hiển thị và có tương tác trong 2 phút gần nhất. Một ngày vào chuỗi khi học từ 5 phút.
+## Nguyên tắc nội dung
 
-## Đưa lên GitHub Pages
+1. General English là nền tảng.
+2. Medical English phát triển dần theo năng lực ngôn ngữ.
+3. Một bài học phải có input, retrieval và cơ hội sử dụng.
+4. Một lỗi đơn lẻ không được xem là “điểm yếu” lâu dài.
+5. Recognition không đồng nghĩa mastery.
+6. Nội dung y khoa phục vụ học ngôn ngữ, không thay thế đào tạo lâm sàng.
+7. Authentic listening sẽ được nâng cấp dần từ controlled audio/TTS → natural dialogue → authentic input.
 
-1. Chép toàn bộ nội dung thư mục này (hoặc chỉ riêng `index.html` bản một-file) vào repository `English-web`, ghi đè bản cũ.
-2. Commit và push. GitHub Pages sẽ phục vụ lại tại địa chỉ cũ.
-3. Dữ liệu cũ trong trình duyệt (khóa `tnkhoi_english_*`) được tự nhận ra lần đầu mở: thời gian học được mang sang, các số liệu mẫu (XP, streak giả) thì không.
+## Thời gian học
 
-Trên iPad: mở trang bằng Safari, chọn Chia sẻ, Thêm vào MH chính để dùng như một ứng dụng.
+Thời gian chỉ được tính khi người học thực sự bắt đầu phiên học. **Mở bài và chưa bấm “Bắt đầu” không làm tăng thời gian.** Sau khi bắt đầu, hệ thống tạm dừng khi trang bị ẩn hoặc không có tương tác trong 2 phút; TTS đang phát vẫn được xem là hoạt động học.
 
-## Dữ liệu và sao lưu
+## Dữ liệu
 
-Mọi dữ liệu nằm trong `localStorage` của trình duyệt trên thiết bị đó (khóa `tnkhoi_english_v3`). Safari có thể xóa dữ liệu của trang ít dùng, vì vậy hãy vào **Cài đặt**, chọn **Tải file sao lưu** hoặc **Sao chép dữ liệu** mỗi tuần. File nhập vào luôn được kiểm tra và làm sạch trước khi dùng.
+Mọi dữ liệu nằm trong `localStorage` trên thiết bị đó (khóa `tnkhoi_english_v3`). Hãy xuất bản sao lưu định kỳ trong Cài đặt để chuyển sang thiết bị khác.
 
-## Thêm bài học mới
+## GitHub Pages
 
-Nội dung nằm riêng trong `js/content-general.js`, `js/content-medical.js` và `js/content-extra.js`. Để thêm bài, chép một khối bài có sẵn, đổi `id` (ví dụ `G7`), điền `words` (6 từ, có `us`/`uk` IPA, `syl` và `st` là chỉ số âm tiết nhấn) và `steps`. Các dạng bước có sẵn: `pattern`, `listen`, `read`, `mcq`, `cloze` (chọn hoặc gõ), `order`, `dict`, `classify`, `pairs`, `speak`. Mã thẻ ôn tập có dạng `G7:0:r`, nên `id` bài phải là một chữ G hoặc M kèm một chữ số.
+1. Chép toàn bộ thư mục này hoặc dùng `index-single-file.html` nếu muốn một file duy nhất.
+2. Commit và push lên repository.
+3. GitHub Pages sẽ phục vụ lại website.
 
-Muốn tạo lại bản một-file sau khi sửa: nối các file JS theo thứ tự trong `index.html` vào một thẻ `<script>`.
+Trên iPad: Safari → Chia sẻ → Thêm vào Màn hình chính.
 
-## Giới hạn cần biết
+## Giới hạn
 
-- Giọng đọc là giọng tổng hợp của thiết bị. Trên iPad, tải giọng tiếng Anh loại Nâng cao trong Cài đặt, Trợ năng, Nội dung được đọc để nghe tự nhiên hơn.
-- Nhận dạng giọng nói (Safari 14.5 trở lên, Chrome) chỉ cho biết máy hiểu bạn nói từ nào, không chấm từng âm vị như ELSA.
-- Phòng khám ảo nhận câu hỏi tự do bằng so khớp từ khóa, nên có lúc không hiểu một cách diễn đạt lạ. Khi đó hãy nói rõ hơn hoặc chọn từ ngân hàng câu hỏi.
-- Nội dung y khoa phục vụ học ngôn ngữ, không phải hướng dẫn chẩn đoán hay điều trị. Điểm phòng khám là để tự luyện, không phải điểm OET.
+- TTS phụ thuộc giọng đọc của thiết bị.
+- Speech recognition chỉ kiểm tra transcript, chưa phân tích âm vị như ELSA.
+- Phòng khám ảo sử dụng matching có kiểm soát; diễn đạt quá khác mẫu có thể chưa được nhận.
+- Nội dung y khoa chỉ phục vụ học ngôn ngữ.
