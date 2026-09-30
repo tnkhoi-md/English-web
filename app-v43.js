@@ -62,7 +62,7 @@ UNITS.forEach((u, ui) => {
   });
   u.lessons = [...u.core, ...u.groups.flatMap(g => g.ids)];
 });
-S = load(); save();
+S = load();
 
 /* ---------------- Engine hooks ---------------- */
 const _alc43 = addLessonCards;
@@ -124,5 +124,4 @@ Object.assign(ACT, {
 });
 
 /* ---------------- Start ---------------- */
-initApp();
-if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
+/* khởi động: xem app-v44.js */

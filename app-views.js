@@ -89,7 +89,7 @@ function render(nav = false) {
   const r = ROUTE, key = r.name + "/" + r.arg;
   document.body.classList.toggle("focus", isFocus());
   const app = document.getElementById("app");
-  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync, grammar: viewGrammar, pron: viewPron, unit: viewUnit, practice: viewPractice }[r.name] || viewToday;
+  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync, grammar: viewGrammar, pron: viewPron, unit: viewUnit, practice: viewPractice, phonemes: viewPhonemes, voices: viewVoices }[r.name] || viewToday;
   const y = scrollY;
   app.innerHTML = isFocus() ? V() : shell(V());
   paintTimer();
