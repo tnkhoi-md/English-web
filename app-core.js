@@ -1,7 +1,7 @@
 /* ============================================================
    CORE · utils, state, migration, FSRS, time, speech
    ============================================================ */
-const APP = { name: "Tnkhoi English", version: "3.1", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
+const APP = { name: "Tnkhoi English", version: "3.2", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
 const KEY = "tnkhoi_english_v3";
 const LESSONS = [...GENERAL, ...MEDICAL];
 const LESSON_BY = Object.fromEntries(LESSONS.map(l => [l.id, l]));
@@ -46,6 +46,7 @@ function fresh() {
     v: 3, createdAt: Date.now(),
     settings: { name: "Khôi", theme: "system", accent: "us", voice: "auto", voice2: "auto", rate: 0.9, goal: 15 },
     time: { total: 0, days: {}, legacy: 0 },
+    resume: null,
     lessons: {}, cards: {}, log: [], cases: {}, pron: {}, lab: { n: 0, ok: 0 }, migrated: null
   };
 }
@@ -74,6 +75,7 @@ function sanitize(raw) {
   if (raw.cases && typeof raw.cases === "object") for (const [id, v] of Object.entries(raw.cases)) if (CASE_BY[id] && v) S.cases[id] = { best: clamp(num(v.best, 0), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last, 0) };
   if (raw.pron && typeof raw.pron === "object") for (const [id, v] of Object.entries(raw.pron)) if (PAIRS[id] && v) S.pron[id] = { n: Math.max(0, Math.round(num(v.n))), ok: Math.max(0, Math.round(num(v.ok))) };
   if (raw.lab) S.lab = { n: Math.max(0, Math.round(num(raw.lab.n))), ok: Math.max(0, Math.round(num(raw.lab.ok))) };
+  if (raw.resume && typeof raw.resume === "object" && LESSON_BY[raw.resume.id]) S.resume = { id: raw.resume.id, i: Math.max(0, Math.round(num(raw.resume.i, 0))), st: raw.resume.st && typeof raw.resume.st === "object" ? raw.resume.st : {}, res: Array.isArray(raw.resume.res) ? raw.resume.res.slice(-200) : [], active: !!raw.resume.active, savedAt: num(raw.resume.savedAt, Date.now()) };
   if (raw.migrated && typeof raw.migrated === "object") S.migrated = { from: String(raw.migrated.from || "").slice(0, 60), seconds: Math.round(num(raw.migrated.seconds)), at: num(raw.migrated.at), shown: !!raw.migrated.shown };
   return S;
 }
@@ -101,6 +103,8 @@ function save() {
   catch { if (!saveWarned) { saveWarned = true; toast("Không lưu được vào trình duyệt. Hãy xuất bản sao lưu trong Cài đặt."); } }
 }
 function touch() { dirty = true; }
+function saveResume() { if (!L || L.fin || ROUTE.name !== "lesson") return; S.resume = { id:L.id, i:L.i, st:L.st, res:L.res.slice(-200), active:!!L.active, savedAt:Date.now() }; touch(); save(); }
+function clearResume() { if (S.resume) { S.resume=null; touch(); save(); } }
 
 /* ---------------- Evidence ---------------- */
 function evidence(k, ok, src = "") { S.log.push({ t: Date.now(), k, ok: ok ? 1 : 0, src }); if (S.log.length > 4000) S.log.splice(0, S.log.length - 4000); touch(); }
@@ -171,10 +175,11 @@ function forecast(days = 7) {
 }
 
 /* ---------------- Time tracking: chỉ tính khi đang ở màn học, trang hiển thị và có tương tác ---------------- */
-const TT = { last: Date.now(), input: Date.now(), acc: 0, session: 0, saveAt: Date.now(), counting: false, started: false };
-const IDLE_MS = 120000;
+const TT = { last: Date.now(), input: Date.now(), acc: 0, session: 0, saveAt: Date.now(), counting: false };
+const IDLE_MS = 180000;
+const SESSION_MAX_GAP = 8;
 function markActive() { TT.input = Date.now(); }
-["pointerdown", "keydown", "touchstart", "wheel", "input"].forEach(ev => addEventListener(ev, markActive, { passive: true, capture: true }));
+["pointerdown", "keydown", "touchstart", "wheel", "input", "scroll"].forEach(ev => addEventListener(ev, markActive, { passive: true, capture: true }));
 function addSeconds(n) { const k = dayKey(); S.time.days[k] = (S.time.days[k] || 0) + n; S.time.total += n; touch(); }
 function todaySeconds() { return S.time.days[dayKey()] || 0; }
 function streak() {
@@ -185,15 +190,17 @@ function streak() {
 }
 setInterval(() => {
   const now = Date.now(); const dt = Math.min(3, (now - TT.last) / 1000); TT.last = now;
-  const lessonStarted = ROUTE.name !== "lesson" || !!(L && L.active);
-  const counting = isStudyRoute() && lessonStarted && !document.hidden && (now - TT.input < IDLE_MS || SPEECH.busy);
+  const recentlyActive = (now - TT.input) < IDLE_MS;
+  const saneGap = dt <= SESSION_MAX_GAP;
+  const counting = isStudyRoute() && !document.hidden && saneGap && (recentlyActive || SPEECH.busy || !!(L && L.active && TT.counting));
   if (counting) { TT.acc += dt; TT.session += dt; const whole = Math.floor(TT.acc); if (whole >= 1) { TT.acc -= whole; addSeconds(whole); } }
   if (counting !== TT.counting) { TT.counting = counting; }
   paintTimer();
-  if (dirty && now - TT.saveAt > 15000) { TT.saveAt = now; save(); }
+  if (dirty && now - TT.saveAt > 5000) { TT.saveAt = now; save(); }
 }, 1000);
-document.addEventListener("visibilitychange", () => { TT.last = Date.now(); if (document.hidden) { save(); stopSpeech(); } });
-addEventListener("pagehide", save);
+document.addEventListener("visibilitychange", () => { TT.last = Date.now(); if (document.hidden) { saveResume(); save(); stopSpeech(); } });
+addEventListener("pagehide", () => { saveResume(); save(); });
+addEventListener("beforeunload", () => { saveResume(); save(); });
 
 /* ---------------- Speech: TTS hai giọng, nhận dạng giọng nói, ghi âm ---------------- */
 const SPEECH = { voices: [], busy: false, token: 0 };

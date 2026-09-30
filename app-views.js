@@ -44,7 +44,7 @@ addEventListener("hashchange", () => {
   if (r.name === "clinic" && r.arg && (!CL || CL.id !== r.arg || CL.phase === "report")) { if (!startCase(r.arg)) { location.hash = "#/clinic"; return; } }
   if (r.name === "sounds" && r.arg && (!SD || SD.set !== r.arg)) startDrill(r.arg);
   if (r.name === "words" && r.arg === "build" && !B) startBuild();
-  if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) { TT.session = 0; TT.started = r.name !== "lesson"; }
+  if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) TT.session = 0;
   render(true);
 });
 
@@ -149,9 +149,11 @@ function viewToday() {
   const stepsHtml = first
     ? [LESSON_BY.G1, LESSON_BY.M1].map(l => `<li class="plan-step track-${l.track}"><div><div class="t"><b>${esc(trackName(l.track))}: ${esc(l.title)}</b></div><div class="why">${esc(l.can)}</div></div><a class="btn primary" href="#/lesson/${l.id}">Học bài ${l.id}</a></li>`).join("")
     : plan.map(p => `<li class="plan-step ${p.track ? "track-" + p.track : ""}"><div><div><b>${esc(p.title)}</b> <span class="muted small">khoảng ${p.est} phút</span></div><div class="why">${esc(p.why)}</div></div><a class="btn primary" href="${p.href}">${esc(p.cta)}</a></li>`).join("");
+  const resume=S.resume&&LESSON_BY[S.resume.id]&&!S.lessons[S.resume.id]?.done?S.resume:null;
+  const resumeBanner=resume?(()=>{const rl=LESSON_BY[resume.id];return `<div class="resume-banner panel" role="status"><div><span class="step-kind">Đang học dở</span><h3 style="margin:4px 0">${esc(rl.title)}</h3><p class="muted small">Bạn đang ở bước ${resume.i+1}/${rl.steps.length}. Trạng thái được lưu tự động.</p></div><div class="row"><a class="btn primary" href="#/lesson/${resume.id}">Tiếp tục</a><button class="btn quiet" data-act="discardResume" data-id="${resume.id}">Bỏ qua</button></div></div>`})():"";
   return `<section class="page-head"><p class="muted">${greeting()}, ${esc(S.settings.name || "bạn")}. ${esc(date.charAt(0).toUpperCase() + date.slice(1))}</p>
       <h1 class="hero-plan">${esc(headline)}</h1></section>
-    ${stepsHtml ? `<ol class="plan" aria-label="Kế hoạch hôm nay">${stepsHtml}</ol>` : `<div class="empty"><p>Không còn gì đến hạn. Bạn có thể luyện phát âm hoặc khám lại một ca bệnh.</p><div class="row"><a class="btn" href="#/sounds">Phát âm</a><a class="btn" href="#/clinic">Phòng khám ảo</a></div></div>`}
+    ${resumeBanner}${stepsHtml ? `<ol class="plan" aria-label="Kế hoạch hôm nay">${stepsHtml}</ol>` : `<div class="empty"><p>Không còn gì đến hạn. Bạn có thể luyện phát âm hoặc khám lại một ca bệnh.</p><div class="row"><a class="btn" href="#/sounds">Phát âm</a><a class="btn" href="#/clinic">Phòng khám ảo</a></div></div>`}
     ${first ? `<div class="panel stack" style="margin-top:18px"><h3>Ứng dụng này hoạt động thế nào</h3>
       <p>Hai mạch học chạy song song: tiếng Anh thông dụng làm nền, tiếng Anh y khoa dùng lại chính ngữ pháp đó trong phòng khám.</p>
       <p>Từ mới chỉ vào hàng ôn tập sau khi bạn học xong bài. Thuật toán FSRS lên lịch ôn mỗi thẻ ngay trước lúc bạn sắp quên.</p>
@@ -170,7 +172,7 @@ function viewToday() {
 
 /* ---------------- Path ---------------- */
 function lessonRow(l, idx) {
-  const r = S.lessons[l.id], ok = preOk(l), inProgress = L && L.id === l.id && !L.fin && L.i > 0;
+  const r = S.lessons[l.id], ok = preOk(l), inProgress = (L && L.id === l.id && !L.fin && L.i > 0) || (S.resume && S.resume.id === l.id && S.resume.i > 0 && !r?.done);
   const status = r?.done ? `<span class="chip good">${Math.round(r.best * 100)}%</span>` : inProgress ? `<span class="chip acc">đang học, bước ${L.i + 1}/${L.steps.length}</span>` : "";
   const sub = !ok && !r?.done ? `Nên học sau ${l.pre.join(", ")}` : l.vi;
   return `<a class="item link" href="#/lesson/${l.id}"><span class="lesson-dot ${r?.done ? "done" : !ok ? "lock" : ""}">${idx + 1}</span>
@@ -190,9 +192,12 @@ function viewPath() {
 /* ---------------- Lesson player ---------------- */
 let L = null;
 const PAIR_ROUNDS = 6;
-function startLesson(id) {
-  const l = LESSON_BY[id]; if (!l) return false;
-  L = { id, l, i: 0, active: false, steps: [{ t: "intro" }, { t: "words" }, { t: "check", k: "vocab", qs: makeCheck(l) }, ...l.steps, { t: "done" }], st: {}, res: [], fin: false };
+function buildLesson(l) { return { id:l.id, l, i:0, active:false, steps:[{t:"intro"},{t:"words"},{t:"check",k:"vocab",qs:makeCheck(l)},...l.steps,{t:"done"}], st:{}, res:[], fin:false }; }
+function startLesson(id, allowResume=true) {
+  const l=LESSON_BY[id]; if(!l) return false;
+  const saved=allowResume && S.resume && S.resume.id===id ? S.resume : null;
+  L=buildLesson(l);
+  if(saved){ L.i=clamp(saved.i,0,L.steps.length-1); L.st=saved.st&&typeof saved.st==="object"?saved.st:{}; L.res=Array.isArray(saved.res)?saved.res.slice(-200):[]; L.active=!!saved.active || L.i>0; }
   return true;
 }
 function makeCheck(l) {
@@ -204,7 +209,7 @@ function stepComplete(step, st) {
   switch (step.t) {
     case "words": return (st.wi || 0) >= L.l.words.length - 1;
     case "check": case "listen": case "read": return step.qs.every((_, i) => st.q && st.q[i] && st.q[i].done);
-    case "mcq": case "cloze": case "order": case "dict": case "classify": case "write": return !!st.done;
+    case "mcq": case "cloze": case "order": case "dict": case "classify": return !!st.done;
     case "pairs": return (st.round || 0) >= PAIR_ROUNDS;
     default: return true;
   }
@@ -217,6 +222,7 @@ function viewLesson() {
   const last = step.t === "done";
   const nextLabel = step.t === "intro" ? "Bắt đầu" : step.t === "speak" && !st.checked && !st.self ? "Bỏ qua bước nói" : "Tiếp tục";
   const actions = last ? "" : `<div class="step-actions">${L.i > 0 ? `<button class="btn" data-act="stepBack">Quay lại</button>` : ""}<button class="btn primary" data-act="stepNext" ${done ? "" : "disabled"}>${nextLabel}</button></div>`;
+  L.active=L.active||L.i>0||step.t!=="intro"; queueMicrotask(()=>{try{saveResume()}catch{}});
   return `<div class="track-${L.l.track}">${focusBar({ n: L.steps.length, i: L.i }, "Tiến độ bài")}<div class="focus-page"><article class="step-card">${body}</article>${actions}</div></div>`;
 }
 function choicesHtml(q, qs, qi, en = true) {
@@ -252,7 +258,7 @@ const STEP = {
     return `<div class="row"><span class="chip acc">${trackName(l.track)}</span><span class="chip">${l.level}</span><span class="chip">khoảng ${l.min} phút</span></div>
       <h1 lang="en">${esc(l.title)}</h1><p class="lede">${esc(l.vi)}</p>
       <div class="soft"><b>Sau bài này bạn có thể:</b> ${esc(l.can)}</div>
-      <p class="muted">Bài kết hợp từ vựng, ngữ pháp, nghe/đọc, phát âm, viết ngắn và nói. Không phải bước nào cũng đo cùng một kỹ năng; bằng chứng được ghi riêng để hệ thống biết bạn thực sự làm được gì. Từ mới vào hàng ôn tập khi bạn học xong bài.</p>
+      <p class="muted">Bài gồm 6 từ mới, một mẫu câu, nghe hiểu, luyện tập, phát âm và nói. Điểm chỉ tính câu đúng ngay lần đầu. Từ mới vào hàng ôn tập khi bạn học xong bài.</p>
       ${r?.done ? `<p class="muted small">Lần trước bạn đạt ${Math.round(r.best * 100)}%. Học lại không tạo thêm thẻ trùng.</p>` : ""}
       ${!preOk(l) ? `<p class="feedback no">Bài này nên học sau ${l.pre.join(", ")}. Bạn vẫn có thể học trước nếu muốn.</p>` : ""}`;
   },
@@ -332,10 +338,6 @@ const STEP = {
       ${st.ans != null ? `<div class="feedback ${st.ans === st.cur.w ? "ok" : "no"}" role="status"><b>${st.ans === st.cur.w ? "Đúng." : "Chưa đúng."}</b> Từ vừa đọc là <b lang="en">${esc(target)}</b>.</div>
         <div class="row">${hear(pair[0])}<span lang="en" class="en">${esc(pair[0])}</span>${hear(pair[1])}<span lang="en" class="en">${esc(pair[1])}</span><button class="btn primary" data-act="pairNext" style="margin-left:auto">Lượt tiếp</button></div>` : ""}`;
   },
-  write(step, st) {
-    const count = norm(st.val || "").split(" ").filter(Boolean).length;
-    return `<span class="step-kind">Viết ngắn</span><h2 lang="en">${esc(step.title)}</h2><p class="q">${esc(step.prompt)}</p><p class="muted">${esc(step.vi)}</p><div class="soft"><b>Mục tiêu:</b> ${step.minWords || 3}–${step.maxWords || 80} từ · ${step.kw.slice(0, 5).map(x => `<span class="chip">${esc(x)}</span>`).join(" ")}</div><textarea class="field" id="writeIn" lang="en" rows="6" placeholder="Write in English…" ${st.done ? "disabled" : ""}>${esc(st.val || "")}</textarea><div class="row between"><span class="muted small">${count} từ</span><button class="btn primary" data-act="checkWrite" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Bài viết đạt các ý chính." : "Cần bổ sung một vài ý."}</b> ${esc(st.feedback || "")}</div><details open><summary class="btn quiet small" style="display:inline-flex">Xem bài mẫu</summary><div class="ex-item" style="margin-top:10px"><span class="en" lang="en">${esc(step.model)}</span>${hear(step.model)}</div></details>` : `<p class="muted small">Đây là đánh giá hỗ trợ: hệ thống kiểm tra ý chính, không chấm ngữ pháp như một giám khảo IELTS.</p>`}`;
-  },
   speak(step, st) {
     const owner = L.id + ":" + L.i;
     const recMine = REC.owner === owner;
@@ -362,7 +364,7 @@ const STEP = {
     if (!L.fin) {
       L.fin = true; const total = L.res.length, ok = L.res.filter(r => r.ok).length, score = total ? ok / total : 1;
       const prev = S.lessons[l.id]; S.lessons[l.id] = { done: true, best: Math.max(prev?.best || 0, score), last: Date.now(), n: (prev?.n || 0) + 1 };
-      L.added = addLessonCards(l); L.score = score; L.ok = ok; L.total = total; save();
+      L.added = addLessonCards(l); L.score = score; L.ok = ok; L.total = total; clearResume(); save();
     }
     const by = {}; L.res.forEach(r => { by[r.k] = by[r.k] || [0, 0]; by[r.k][1]++; if (r.ok) by[r.k][0]++; });
     const next = LESSONS.find(x => x.track === l.track && !S.lessons[x.id]?.done);
@@ -373,3 +375,10 @@ const STEP = {
       <div class="row"><a class="btn primary" href="#/review/go">Ôn ngay</a>${next ? `<a class="btn" href="#/lesson/${next.id}">Bài tiếp: ${next.id}</a>` : ""}<a class="btn quiet" href="#/today">Về Hôm nay</a></div>`;
   }
 };
+
+
+/* v3.2: live input synchronization */
+function syncLessonInput(el){if(!L||!el)return;const st=stState();if(el.id==="writeIn"||el.id==="ans")st.val=el.value||"";if(el.id==="spk")st.typed=el.value||"";L.active=true;if(el.id==="writeIn"){const out=document.getElementById("writeCount");if(out)out.textContent=`${norm(st.val).split(" ").filter(Boolean).length} từ`;}try{saveResume()}catch{}}
+document.addEventListener("input",e=>{const el=e.target.closest("#writeIn,#ans,#spk");if(el)syncLessonInput(el)},{capture:true});
+document.addEventListener("change",e=>{const el=e.target.closest("#writeIn,#ans,#spk");if(el)syncLessonInput(el)},{capture:true});
+document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||el.dataset.act!=="discardResume")return;e.preventDefault();if(S.resume&&S.resume.id===el.dataset.id){clearResume();if(L&&L.id===el.dataset.id&&!L.fin)L=null;render(true);}} ,{capture:true});

@@ -326,3 +326,13 @@ input[type="range"] { width: 180px; accent-color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* v3.2 semantic color + iPad touch */
+:root{--gen:#3158d4;--gen-soft:rgba(49,88,212,.12);--med2:#0a8f78;--med-soft2:rgba(10,143,120,.12)}
+.track-gen{--accent:var(--gen);--accent-soft:var(--gen-soft)}.track-med{--accent:var(--med2);--accent-soft:var(--med-soft2)}
+.choice,.btn,.icon-btn,.tile,.seg button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.resume-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 18px;background:linear-gradient(135deg,var(--accent-soft),var(--surface));border-color:color-mix(in srgb,var(--accent) 28%,var(--rule))}
+.timer-pill.on{border-color:color-mix(in srgb,var(--accent) 35%,var(--rule));background:color-mix(in srgb,var(--accent-soft) 70%,var(--surface));color:var(--accent)}
+.soft{border-left:4px solid var(--accent)}
+.skill .bar i{background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 65%,white))}
+@media(max-width:860px){.resume-banner{align-items:flex-start;flex-direction:column}.resume-banner .row{width:100%}.resume-banner .btn{flex:1}}
