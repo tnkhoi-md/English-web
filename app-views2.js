@@ -33,12 +33,12 @@ function viewReview() {
   let body;
   if (info.dir === "r") {
     body = `<span class="step-kind">Nhìn từ, nhớ nghĩa</span><div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div>
-      ${R.phase === "back" ? `<div class="divider"></div><p style="font-size:22px;font-weight:600">${esc(w.vi)}</p>${partsHtml(w.parts)}<div class="ex-item"><span class="example" lang="en">${esc(w.ex)}</span><span class="example-vi">${esc(w.exvi)}</span>${hear(w.ex)}</div>` : ""}</div>`;
+      ${R.phase === "back" ? `<div class="divider"></div><p style="font-size:22px;font-weight:600">${esc(w.vi)}</p>${partsHtml(w.parts)}${w.ex ? `<div class="ex-item"><span class="example" lang="en">${esc(w.ex)}</span><span class="example-vi">${esc(w.exvi)}</span>${hear(w.ex)}</div>` : ""}` : ""}</div>`;
   } else {
     const bl = blankIn(w.ex, w.w);
     body = `<span class="step-kind">Nhìn nghĩa, gõ lại từ</span><div class="flash"><p style="font-size:26px;font-weight:600">${esc(w.vi)}</p>${bl ? `<p class="cloze" lang="en" style="font-size:22px">${bl}</p>` : ""}<p class="muted small">${esc(w.exvi)}</p>
       <div class="row"><input class="field" id="ans" style="flex:1;min-width:200px" value="${esc(R.typed)}" data-enter="revCheck" ${R.phase === "back" ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Gõ từ tiếng Anh">${R.phase === "front" ? `<button class="btn primary" data-act="revCheck">Kiểm tra</button>` : ""}</div>
-      ${R.phase === "back" ? `<div class="feedback ${R.check.ok ? "ok" : "no"}" role="status"><b>${R.check.ok ? (R.check.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> <span class="en" lang="en" style="font-size:19px">${esc(w.w)}</span> <span class="muted">${esc(ipaOf(w))}</span></div><div class="row">${hear(w.w)}${hear(w.ex, "Nghe câu")}<span class="example" lang="en" style="font-size:17px">${esc(w.ex)}</span></div>` : ""}</div>`;
+      ${R.phase === "back" ? `<div class="feedback ${R.check.ok ? "ok" : "no"}" role="status"><b>${R.check.ok ? (R.check.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> <span class="en" lang="en" style="font-size:19px">${esc(w.w)}</span> <span class="muted">${esc(ipaOf(w))}</span></div><div class="row">${hear(w.w)}${w.ex ? hear(w.ex, "Nghe câu") + `<span class="example" lang="en" style="font-size:17px">${esc(w.ex)}</span>` : ""}</div>` : ""}</div>`;
   }
   const suggest = info.dir === "p" && R.check ? (R.check.ok ? (R.check.typo ? 2 : 3) : 1) : 0;
   const grades = [["Quên", 1], ["Khó", 2], ["Nhớ", 3], ["Dễ", 4]].map(([lab, g]) => { const n = schedule(c, g, now); return `<button class="grade g${g}${suggest === g ? " suggest" : ""}" data-act="grade" data-g="${g}"><span>${lab}</span><small>${fmtIvl(n.due - now)}</small></button>`; }).join("");
@@ -357,7 +357,7 @@ const ACT = {
   recStop() { recStop(); },
   recPlay() { recPlay(); },
   // review
-  revFlip() { R.phase = "back"; render(); speakNow(cardInfo(R.cur).w.ex); },
+  revFlip() { R.phase = "back"; render(); speakNow(cardInfo(R.cur).w.ex || cardInfo(R.cur).w.w); },
   revCheck() {
     if (R.phase !== "front") return; const w = cardInfo(R.cur).w; R.typed = $("#ans")?.value || ""; const v = norm(R.typed), t = norm(w.w); if (!v) return;
     R.check = { ok: v === t || (t.length > 4 && lev(v, t) <= 1), typo: v !== t && t.length > 4 && lev(v, t) <= 1 };
@@ -475,7 +475,7 @@ document.addEventListener("change", e => {
 });
 
 /* ---------------- Init ---------------- */
-(function init() {
+function initApp() {
   const r = ROUTE;
   if (r.name === "lesson" && !startLesson(r.arg)) { location.replace("#/path"); ROUTE = parseRoute(); }
   if (r.name === "clinic" && r.arg && !startCase(r.arg)) { location.replace("#/clinic"); ROUTE = parseRoute(); }
@@ -483,4 +483,4 @@ document.addEventListener("change", e => {
   if (r.name === "sounds" && r.arg) startDrill(r.arg);
   if (S.migrated && !S.migrated.shown) { S.migrated.shown = true; setTimeout(() => toast(`Đã mang ${fmtDur(S.migrated.seconds)} học từ phiên bản cũ sang.`), 600); }
   save(); render(true);
-})();
+}

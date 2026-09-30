@@ -89,7 +89,7 @@ function render(nav = false) {
   const r = ROUTE, key = r.name + "/" + r.arg;
   document.body.classList.toggle("focus", isFocus());
   const app = document.getElementById("app");
-  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore }[r.name] || viewToday;
+  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync }[r.name] || viewToday;
   const y = scrollY;
   app.innerHTML = isFocus() ? V() : shell(V());
   paintTimer();
@@ -150,7 +150,7 @@ function viewToday() {
     ? [LESSON_BY.G1, LESSON_BY.M1].map(l => `<li class="plan-step track-${l.track}"><div><div class="t"><b>${esc(trackName(l.track))}: ${esc(l.title)}</b></div><div class="why">${esc(l.can)}</div></div><a class="btn primary" href="#/lesson/${l.id}">Học bài ${l.id}</a></li>`).join("")
     : plan.map(p => `<li class="plan-step ${p.track ? "track-" + p.track : ""}"><div><div><b>${esc(p.title)}</b> <span class="muted small">khoảng ${p.est} phút</span></div><div class="why">${esc(p.why)}</div></div><a class="btn primary" href="${p.href}">${esc(p.cta)}</a></li>`).join("");
   const resume=S.resume&&LESSON_BY[S.resume.id]&&!S.lessons[S.resume.id]?.done?S.resume:null;
-  const resumeBanner=resume?(()=>{const rl=LESSON_BY[resume.id];return `<div class="resume-banner panel" role="status"><div><span class="step-kind">Đang học dở</span><h3 style="margin:4px 0">${esc(rl.title)}</h3><p class="muted small">Bạn đang ở bước ${resume.i+1}/${rl.steps.length}. Trạng thái được lưu tự động.</p></div><div class="row"><a class="btn primary" href="#/lesson/${resume.id}">Tiếp tục</a><button class="btn quiet" data-act="discardResume" data-id="${resume.id}">Bỏ qua</button></div></div>`})():"";
+  const resumeBanner=resume?(()=>{const rl=LESSON_BY[resume.id];return `<div class="resume-banner panel" role="status"><div><span class="step-kind">Đang học dở</span><h3 style="margin:4px 0">${esc(rl.title)}</h3><p class="muted small">Bạn đang ở bước ${resume.i+1}/${rl.steps.length + 4}. Trạng thái được lưu tự động.</p></div><div class="row"><a class="btn primary" href="#/lesson/${resume.id}">Tiếp tục</a><button class="btn quiet" data-act="discardResume" data-id="${resume.id}">Bỏ qua</button></div></div>`})():"";
   return `<section class="page-head"><p class="muted">${greeting()}, ${esc(S.settings.name || "bạn")}. ${esc(date.charAt(0).toUpperCase() + date.slice(1))}</p>
       <h1 class="hero-plan">${esc(headline)}</h1></section>
     ${resumeBanner}${stepsHtml ? `<ol class="plan" aria-label="Kế hoạch hôm nay">${stepsHtml}</ol>` : `<div class="empty"><p>Không còn gì đến hạn. Bạn có thể luyện phát âm hoặc khám lại một ca bệnh.</p><div class="row"><a class="btn" href="#/sounds">Phát âm</a><a class="btn" href="#/clinic">Phòng khám ảo</a></div></div>`}

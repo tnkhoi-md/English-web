@@ -192,7 +192,7 @@ setInterval(() => {
   const now = Date.now(); const dt = Math.min(3, (now - TT.last) / 1000); TT.last = now;
   const recentlyActive = (now - TT.input) < IDLE_MS;
   const saneGap = dt <= SESSION_MAX_GAP;
-  const counting = isStudyRoute() && !document.hidden && saneGap && (recentlyActive || SPEECH.busy || !!(L && L.active && TT.counting));
+  const counting = isStudyRoute() && !document.hidden && saneGap && (recentlyActive || SPEECH.busy);
   if (counting) { TT.acc += dt; TT.session += dt; const whole = Math.floor(TT.acc); if (whole >= 1) { TT.acc -= whole; addSeconds(whole); } }
   if (counting !== TT.counting) { TT.counting = counting; }
   paintTimer();
