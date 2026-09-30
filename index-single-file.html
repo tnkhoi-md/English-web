@@ -420,6 +420,28 @@ button.lv.on{background:var(--lc);color:#fff;border-color:var(--lc)}
 @media (max-width:420px){.topics{grid-template-columns:1fr}.toolbar [data-act="tbRate"] span{display:none}}
 @media (max-width:480px){.toolbar .timer-pill{display:none}}
 
+/* ============ v4.1 · exams, grammar, pronunciation bank, quote ============ */
+.lv-AB{--lc:#c0392b}
+.exm{display:inline-flex;align-items:center;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--ec);background:color-mix(in srgb,var(--ec) 13%,transparent)}
+.exm-IELTS{--ec:#c8102e}.exm-TOEIC{--ec:#1f5fbf}.exm-VSTEP{--ec:#b8860b}.exm-CEFR{--ec:#5b6b7d}
+.exrow{display:flex;flex-wrap:wrap;gap:4px;grid-column:1/-1}
+.exm-btn{min-height:34px;padding:4px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);font-size:13px;font-weight:700;color:var(--ec,var(--muted))}
+.exm-btn.on{background:var(--ec,var(--ink));color:#fff;border-color:var(--ec,var(--ink))}
+.sec-d{margin:-6px 0 12px}
+.quote-card{margin:0 0 18px;padding:20px 22px;border-radius:20px;background:linear-gradient(135deg,color-mix(in srgb,var(--gen) 10%,var(--surface)),color-mix(in srgb,var(--med) 12%,var(--surface)));border:1px solid color-mix(in srgb,var(--gen) 22%,var(--rule));display:grid;gap:6px;position:relative;overflow:hidden}
+.quote-card::after{content:"\201C";position:absolute;right:18px;bottom:-40px;font:700 160px/1 var(--en);color:color-mix(in srgb,var(--gen) 12%,transparent);pointer-events:none}
+.q-label{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--gen)}
+.q-en{font:400 clamp(22px,3.2vw,30px)/1.3 var(--en);margin-top:2px}
+.q-vi{font-weight:600;font-size:16px}.q-mean{color:var(--muted);font:italic 15px/1.4 var(--en)}
+.gcard{display:grid;gap:6px;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--rule);border-top:4px solid #5b4fc4;color:inherit;text-decoration:none;transition:transform .12s ease}
+.gcard:hover{transform:translateY(-2px)}
+.ipa-pair{display:flex;flex-wrap:wrap;gap:12px;margin-top:2px;font:400 17px/1.3 var(--en);color:var(--muted)}
+.ipa-pair small{font:700 10px var(--ui);color:var(--muted);margin-right:2px}
+.ipa-pair .cur{color:var(--ink);font-weight:700}
+.chip.tpc.on{outline:2px solid var(--tc)}
+.xtable{width:100%;border-collapse:collapse;font-size:14px}.xtable th,.xtable td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}.xtable th{font-size:12px;color:var(--muted);font-weight:600}
+@media (max-width:860px){.item{flex-wrap:wrap}.item .grow{flex:1 1 55%}.list .item .avatar{width:40px;height:40px;font-size:14px;border-radius:12px}.list .item>.chip{margin-left:54px}}
+
 </style>
 </head>
 <body>
@@ -1173,6 +1195,420 @@ const TERMS = [
 const TERM_PARTS = ["gastr", "hepat", "arthr", "peri", "card", "cardi", "neur", "nephr", "dermat", "tachy", "brady", "dys", "hyper", "glyc", "poly", "o", "itis", "algia", "ectomy", "scopy", "logy", "ia", "pnoea", "megaly", "aemia", "uria"];
 
 /* ============================================================
+   v4.1 · PHÒNG KHÁM SÀNG LỌC BAN ĐẦU: 10 tình huống thường gặp
+   Chọn theo dữ liệu lý do khám thường gặp ở tuyến chăm sóc ban đầu
+   (Finley 2018, Can Fam Physician). Nội dung bám NICE (NG84, NG136,
+   NG59, NG226, CG95, CKS/UKHSA UTI) và tiêu chuẩn WHO về đái tháo đường.
+   Phục vụ học ngôn ngữ, không phải hướng dẫn điều trị. Phác đồ tại
+   Việt Nam có thể khác.
+   ============================================================ */
+const ICE_KW = [["hoping", "expect", "expecting", "like us to do", "want us", "would you like"]];
+const WORRY_KW = [["worrying", "worried", "worry", "worries", "concern", "afraid", "scared"]];
+const OPEN_KW = [["how can i help", "help you", "bring", "brings", "help", "problem", "come in"]];
+const MED_KW = [["medicine", "medicines", "medication", "tablets", "taking anything", "taking"]];
+const ALLERGY_KW = [["allergic to", "allergic", "allergy", "allergies"]];
+const SCALE_KW = [["scale", "how bad", "out of ten", "severe", "zero to ten"]];
+const SCREEN_CASES = [
+{
+  id: "C4", group: "screen", title: "Sore throat", vi: "Đau họng", rec: ["M1", "M2"],
+  patient: { name: "Ms Anna Nguyen", age: 24, job: "university student", av: "AN" },
+  setting: "Primary care screening clinic",
+  task: "Chị Anna đau họng ba ngày. Hãy khai thác triệu chứng, sàng lọc dấu hiệu nguy hiểm đường thở, hỏi dị ứng thuốc và giải thích vì sao có thể không cần kháng sinh.",
+  cats: [["open", "Mở đầu"], ["HX", "History (bệnh sử)"], ["SYM", "Associated symptoms (triệu chứng kèm)"], ["RF", "Red flags (dấu hiệu cảnh báo)"], ["PMH", "Past history (tiền sử)"], ["DH", "Drugs & allergies (thuốc, dị ứng)"], ["SH", "Social (xã hội)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Hello, I'm Dr Khoi. What brings you in today?", a: "I've had a really sore throat for three days.", kw: OPEN_KW },
+    { id: "h1", cat: "HX", key: 1, q: "When did it start?", a: "On Saturday. It's getting a bit worse each day.", kw: [["when", "start", "started", "how long"]] },
+    { id: "h2", cat: "SYM", key: 1, q: "Have you had a fever?", a: "Yes, I felt hot last night, so I took paracetamol.", kw: [["fever", "temperature"]] },
+    { id: "h3", cat: "SYM", key: 1, q: "Have you got a cough or a runny nose?", a: "Yes, a bit of both, and my nose is blocked.", kw: [["cough", "runny nose", "blocked nose", "runny"]] },
+    { id: "h4", cat: "SYM", key: 1, q: "Can you swallow food and drinks?", a: "It hurts, but I can eat soft food and drink normally.", kw: [["swallow", "swallowing"]] },
+    { id: "rf1", cat: "RF", key: 1, q: "Do you have any difficulty breathing, or are you drooling?", a: "No, my breathing is fine.", kw: [["breathing", "breathe", "drooling"]] },
+    { id: "rf2", cat: "RF", key: 1, q: "Can you open your mouth fully, and is one side much more swollen?", a: "Yes, I can open it. Both sides feel the same.", kw: [["open your mouth", "one side", "swollen"]] },
+    { id: "p1", cat: "PMH", key: 0, q: "Do you have any medical problems, or get tonsillitis often?", a: "No. I had tonsillitis once as a child.", kw: [["medical problem", "tonsillitis", "health problem", "conditions"]] },
+    { id: "d1", cat: "DH", key: 1, q: "Are you taking any medicines at the moment?", a: "Just paracetamol and throat lozenges.", kw: MED_KW },
+    { id: "d2", cat: "DH", key: 1, q: "Are you allergic to any medicines?", a: "Yes, penicillin gives me a rash.", kw: ALLERGY_KW },
+    { id: "s1", cat: "SH", key: 0, q: "Do you smoke or drink alcohol?", a: "I don't smoke. I have a drink sometimes at weekends.", kw: [["smoke", "alcohol"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "What do you think might be causing it?", a: "I think it's strep throat. My roommate had it last month.", kw: [["causing", "think it is", "worried", "worry"]] },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping we could do today?", a: "I was hoping for antibiotics. I have exams next week.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "SYM", q: "Do you have odynophagia?", a: "Sorry, I don't know that word.", why: "Thuật ngữ chuyên môn.", better: "Does it hurt when you swallow?" },
+    { cat: "ICE", q: "You don't need antibiotics, so don't ask for them.", a: "Oh… OK.", why: "Gạt đi mong muốn của bệnh nhân khi chưa giải thích.", better: "What were you hoping we could do today?" }
+  ],
+  summary: {
+    scaffold: "Ms Anna Nguyen is a …-year-old … with a …-day history of …",
+    model: "Ms Anna Nguyen is a 24-year-old student with a three-day history of sore throat, fever, cough and a runny, blocked nose. She can swallow fluids and has no difficulty breathing or one-sided swelling. She is allergic to penicillin. She is worried it is strep throat and hopes for antibiotics before her exams.",
+    kw: [["24", "twenty-four"], ["three-day", "3-day", "three days", "3 days"], ["sore throat"], ["fever", "temperature"], ["cough", "runny", "nose"], ["swallow"], ["breathing"], ["penicillin", "allerg"], ["strep", "worried"], ["antibiotic", "exam"]],
+    labels: ["tuổi", "thời gian", "đau họng", "sốt", "ho, sổ mũi", "nuốt", "thở", "dị ứng penicillin", "mối lo", "mong muốn"]
+  },
+  dx: { q: "What is the most likely diagnosis?", opts: ["Viral pharyngitis (throat infection)", "Bacterial tonsillitis needing immediate antibiotics", "Quinsy (peritonsillar abscess)", "Epiglottitis"], a: 0,
+    why: "Có ho, sổ mũi, nghẹt mũi nên nghiêng về vi-rút. Theo điểm FeverPAIN (NICE NG84): 0–1 điểm không cần kháng sinh; 2–3 điểm cân nhắc không dùng hoặc kê đơn dự phòng; 4–5 điểm mới cân nhắc kháng sinh. Quinsy: sưng một bên, khó há miệng, giọng như ngậm khoai. Viêm nắp thanh quản: khó thở, chảy nước dãi, không nuốt được nước bọt, là cấp cứu." },
+  explain: { q: "Which explanation is best for Anna?", opts: [
+      "You have acute pharyngitis; antibiotics are contraindicated.",
+      "This looks like a viral throat infection, and antibiotics don't work against viruses. It usually settles in about a week. Paracetamol or ibuprofen, plenty of fluids and rest will help. Please come back if it gets worse or you can't swallow.",
+      "It's nothing. Just go home."], a: 1,
+    why: "Giải thích bằng từ đời thường vì sao không cần kháng sinh, hướng dẫn chăm sóc và dặn khi nào quay lại (safety-netting)." }
+},
+{
+  id: "C5", group: "screen", title: "Blood pressure check", vi: "Tầm soát tăng huyết áp", rec: ["M2", "M6"],
+  patient: { name: "Mr Minh Hoang", age: 52, job: "bank manager", av: "MH" },
+  setting: "Primary care screening clinic",
+  task: "Anh Minh có huyết áp 156/98 mmHg khi khám sức khỏe ở công ty. Hãy khai thác triệu chứng, yếu tố nguy cơ tim mạch, thuốc đang dùng, lối sống và mối lo của anh.",
+  cats: [["open", "Mở đầu"], ["HX", "Readings (các lần đo)"], ["SYM", "Symptoms (triệu chứng)"], ["RF", "Red flags (dấu hiệu cảnh báo)"], ["PMH", "Past history (tiền sử)"], ["DH", "Drugs (thuốc)"], ["FH", "Family history (gia đình)"], ["SH", "Lifestyle (lối sống)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Good morning. What brings you in today?", a: "My blood pressure was high at a work health check. It was 156 over 98.", kw: OPEN_KW },
+    { id: "h1", cat: "HX", key: 1, q: "Have you had your blood pressure checked before?", a: "Once, two years ago. They said it was a bit high, but I didn't follow it up.", kw: [["checked before", "before", "previous"]] },
+    { id: "y1", cat: "SYM", key: 1, q: "Have you had any headaches, blurred vision or chest pain?", a: "Sometimes a headache in the morning, but no chest pain or problems with my eyes.", kw: [["headache", "headaches", "blurred", "vision", "chest pain"]] },
+    { id: "rf1", cat: "RF", key: 1, q: "Have you had any shortness of breath, confusion or weakness on one side?", a: "No, nothing like that.", kw: [["shortness of breath", "breathless", "confusion", "weakness", "one side"]] },
+    { id: "p1", cat: "PMH", key: 1, q: "Do you have any other health problems, like diabetes or kidney problems?", a: "Not that I know of. I haven't had a blood test for years.", kw: [["health problem", "health problems", "diabetes", "kidney", "medical problem"]] },
+    { id: "d1", cat: "DH", key: 1, q: "Are you taking any medicines, including painkillers or cold remedies?", a: "I take ibuprofen for my knee a few times a week.", kw: [["medicine", "medicines", "medication", "painkiller", "painkillers", "remedies", "taking"]] },
+    { id: "f1", cat: "FH", key: 1, q: "Does anyone in your family have high blood pressure, heart disease or stroke?", a: "My father had a stroke when he was sixty.", kw: [["family", "father", "mother", "parents"]] },
+    { id: "s1", cat: "SH", key: 1, q: "Do you smoke or drink alcohol?", a: "I smoke ten a day, and I drink beer with clients two or three times a week.", kw: [["smoke", "alcohol", "cigarettes"]] },
+    { id: "s2", cat: "SH", key: 1, q: "Can you tell me about your diet and exercise? How much salt do you use?", a: "I eat out a lot and I love fish sauce. I don't really exercise.", kw: [["diet", "exercise", "salt"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "What do you think about the reading, and is anything worrying you?", a: "I feel fine, so I'm not sure it's a problem. But I don't want a stroke like my dad.", kw: WORRY_KW },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping we could do today?", a: "Honestly, I don't want tablets for the rest of my life.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "SYM", q: "Do you have any target organ damage?", a: "Target what? Sorry?", why: "Thuật ngữ chuyên môn.", better: "Have you had any chest pain, breathlessness or problems with your eyes?" },
+    { cat: "SH", q: "You must stop smoking and drinking right now.", a: "Well… it's not that easy.", why: "Khuyên răn khi chưa khai thác xong, nghe như phán xét.", better: "Do you smoke or drink alcohol?" }
+  ],
+  summary: {
+    scaffold: "Mr Minh Hoang is a …-year-old … whose blood pressure was …",
+    model: "Mr Minh Hoang is a 52-year-old bank manager whose blood pressure was 156/98 at a work health check. He has occasional morning headaches but no chest pain, visual or neurological symptoms. He takes ibuprofen regularly, smokes ten cigarettes a day, drinks alcohol several times a week and eats a high-salt diet with little exercise. His father had a stroke at sixty. He is worried about stroke but reluctant to take lifelong medication.",
+    kw: [["52", "fifty-two"], ["156", "blood pressure"], ["headache"], ["chest pain", "no chest"], ["ibuprofen"], ["smok"], ["alcohol", "beer", "drink"], ["salt", "fish sauce", "diet"], ["father", "stroke"], ["tablet", "medication", "reluctant", "lifelong"]],
+    labels: ["tuổi", "chỉ số huyết áp", "đau đầu", "không đau ngực", "ibuprofen", "hút thuốc", "rượu bia", "ăn mặn", "tiền sử gia đình", "mong muốn"]
+  },
+  dx: { q: "What is the best next step?", opts: ["Confirm with home or ambulatory blood pressure monitoring, and check cardiovascular risk", "Start two blood pressure drugs today", "Send him to the emergency department now", "Tell him the reading is normal for his age"], a: 0,
+    why: "Theo NICE NG136, huyết áp phòng khám ≥140/90 cần xác nhận bằng đo tại nhà hoặc Holter huyết áp (ngưỡng ≥135/85). Chỉ cần đánh giá chuyên khoa trong ngày khi ≥180/120 kèm dấu hiệu tổn thương cơ quan đích hoặc triệu chứng đe dọa tính mạng. Làm thêm xét nghiệm nguy cơ tim mạch (đường huyết, mỡ máu, chức năng thận, nước tiểu, ECG). Ibuprofen dùng thường xuyên có thể làm tăng huyết áp." },
+  explain: { q: "Which explanation is best for Mr Hoang?", opts: [
+      "Your hypertension requires lifelong antihypertensives.",
+      "High blood pressure often has no symptoms, but over time it can damage the heart, brain and kidneys. I understand why you're worried after your father's stroke. First, let's check it properly at home for a week. Then we can decide together about lifestyle changes and whether you need medicine.",
+      "One high reading means nothing. Don't worry about it."], a: 1,
+    why: "Ghi nhận mối lo, giải thích bằng từ đời thường, nêu bước tiếp theo và cùng bệnh nhân ra quyết định." }
+},
+{
+  id: "C6", group: "screen", title: "Tiredness and thirst", vi: "Mệt, khát nhiều (tầm soát đái tháo đường)", rec: ["M2", "M3"],
+  patient: { name: "Mrs Hoa Tran", age: 48, job: "shop owner", av: "HT" },
+  setting: "Primary care screening clinic",
+  task: "Chị Hoa mệt và khát nhiều hai tháng. Hãy khai thác triệu chứng tăng đường huyết, sàng lọc dấu hiệu cấp cứu, tiền sử, gia đình, chế độ ăn và điều chị lo lắng.",
+  cats: [["open", "Mở đầu"], ["SYM", "Symptoms (triệu chứng)"], ["RF", "Red flags (dấu hiệu cảnh báo)"], ["PMH", "Past history (tiền sử)"], ["DH", "Drugs & allergies (thuốc, dị ứng)"], ["FH", "Family history (gia đình)"], ["SH", "Diet & lifestyle (ăn uống, lối sống)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Hello, Mrs Tran. How can I help you today?", a: "I've been very thirsty and tired for about two months.", kw: OPEN_KW },
+    { id: "y1", cat: "SYM", key: 1, q: "Are you passing urine more often, even at night?", a: "Yes, I get up two or three times every night.", kw: [["urine", "passing water", "toilet"]] },
+    { id: "y2", cat: "SYM", key: 1, q: "Have you lost any weight without trying?", a: "Maybe a little. My clothes feel a bit loose.", kw: [["weight"]] },
+    { id: "y3", cat: "SYM", key: 1, q: "Have you noticed blurred vision, slow-healing cuts or numbness in your feet?", a: "A small cut on my foot took a long time to heal, and my feet sometimes tingle.", kw: [["blurred", "vision", "cuts", "heal", "numbness", "feet", "tingling"]] },
+    { id: "rf1", cat: "RF", key: 1, q: "Have you had any vomiting, stomach pain or fast breathing?", a: "No, none of those.", kw: [["vomiting", "stomach pain", "fast breathing"]] },
+    { id: "p1", cat: "PMH", key: 1, q: "Do you have any other health problems, like high blood pressure or high cholesterol?", a: "My blood pressure is a bit high. And I had diabetes in my last pregnancy.", kw: [["health problem", "health problems", "blood pressure", "cholesterol", "medical problem"]] },
+    { id: "d1", cat: "DH", key: 1, q: "Are you taking any medicines at the moment?", a: "Only amlodipine for my blood pressure.", kw: MED_KW },
+    { id: "d2", cat: "DH", key: 0, q: "Are you allergic to any medicines?", a: "No, I'm not.", kw: ALLERGY_KW },
+    { id: "f1", cat: "FH", key: 1, q: "Does anyone in your family have diabetes?", a: "Yes, my mother and my older brother.", kw: [["family", "mother", "father"]] },
+    { id: "s1", cat: "SH", key: 1, q: "Can you tell me what you usually eat and drink in a day?", a: "Rice three times a day, and I love sweet milk tea, two cups a day.", kw: [["eat", "diet", "food"]] },
+    { id: "s2", cat: "SH", key: 1, q: "How active are you, and do you smoke?", a: "I sit in my shop all day. I don't smoke.", kw: [["active", "exercise", "smoke"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "What do you think might be going on?", a: "I'm afraid it's diabetes, like my mother. She lost her eyesight.", kw: [["going on", "causing", "think it is"]] },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping for from today's visit?", a: "I want to know for sure. And I'm scared of insulin injections.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "SYM", q: "Any polyuria or polydipsia?", a: "Poly… sorry, what does that mean?", why: "Thuật ngữ chuyên môn.", better: "Are you passing urine more often, or feeling very thirsty?" },
+    { cat: "ICE", q: "This is what happens when you eat so much rice and sugar.", a: "…", why: "Đổ lỗi, làm bệnh nhân xấu hổ và ngại chia sẻ.", better: "What do you think might be going on?" }
+  ],
+  summary: {
+    scaffold: "Mrs Hoa Tran is a …-year-old … with a …-month history of …",
+    model: "Mrs Hoa Tran is a 48-year-old shop owner with a two-month history of thirst, tiredness, passing urine at night and mild weight loss. A cut on her foot healed slowly and her feet tingle. She has high blood pressure, had gestational diabetes, and her mother and brother have diabetes. Her diet is high in rice and sweet drinks and she is not very active. There are no features of ketoacidosis. She is worried about diabetes and afraid of insulin.",
+    kw: [["48", "forty-eight"], ["two-month", "2-month", "two months", "2 months"], ["thirst"], ["urine", "night"], ["weight"], ["foot", "feet", "heal"], ["blood pressure", "hypertension"], ["gestational", "pregnancy"], ["mother", "brother", "family"], ["insulin", "worried"]],
+    labels: ["tuổi", "thời gian", "khát", "tiểu đêm", "sụt cân", "bàn chân", "tăng huyết áp", "đái tháo đường thai kỳ", "gia đình", "mối lo"]
+  },
+  dx: { q: "What is the most likely diagnosis, and how is it confirmed?", opts: ["Type 2 diabetes, confirmed with HbA1c or fasting blood glucose", "Type 1 diabetes needing insulin today", "Diabetic ketoacidosis", "Urinary tract infection"], a: 0,
+    why: "Khát, tiểu nhiều, mệt, sụt cân, vết thương lâu lành cùng yếu tố nguy cơ (đái tháo đường thai kỳ, gia đình, tăng huyết áp, ít vận động) → nghĩ đái tháo đường típ 2. Chẩn đoán theo WHO: HbA1c ≥ 48 mmol/mol (6,5%) hoặc glucose đói ≥ 7,0 mmol/L; không có triệu chứng thì cần xét nghiệm lại để khẳng định. Không nôn, không đau bụng, không thở nhanh → không gợi ý nhiễm toan ceton." },
+  explain: { q: "Which explanation is best for Mrs Tran?", opts: [
+      "You have hyperglycaemia secondary to insulin resistance.",
+      "Your symptoms could be caused by diabetes, which means the body can't control the sugar in your blood properly. A blood test will tell us for sure. Most people with type 2 diabetes don't start with insulin. Diet, activity and tablets usually come first, and they help protect your eyes, kidneys and feet.",
+      "You will need insulin, just like your mother."], a: 1,
+    why: "Trả lời đúng vào nỗi sợ tiêm insulin và mất thị lực, dùng từ dễ hiểu, nêu bước kiểm tra tiếp theo." }
+},
+{
+  id: "C7", group: "screen", title: "Low back pain", vi: "Đau thắt lưng", rec: ["M4"],
+  patient: { name: "Mr Nam Vo", age: 38, job: "warehouse worker", av: "NV" },
+  setting: "Primary care screening clinic",
+  task: "Anh Nam đau thắt lưng sau khi bê hàng. Hãy khai thác cơn đau theo SOCRATES, sàng lọc đầy đủ dấu hiệu cảnh báo (hội chứng chùm đuôi ngựa, nhiễm trùng, ung thư, gãy xương) và mong muốn của anh.",
+  cats: SOCRATES_CATS,
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Hello, I'm Dr Khoi. What brings you in today?", a: "I hurt my lower back lifting boxes at work four days ago.", kw: OPEN_KW },
+    { id: "s1", cat: "S", key: 1, q: "Where exactly is the pain?", a: "Across my lower back, a bit more on the right.", kw: [["where", "point", "which part"]] },
+    { id: "on1", cat: "O", key: 1, q: "How did it start?", a: "Suddenly, when I lifted a heavy box.", kw: [["how did it start", "start", "started", "when"]] },
+    { id: "c1", cat: "C", key: 1, q: "What does the pain feel like?", a: "Like a tight, aching muscle. It catches when I bend.", kw: [["feel like", "describe", "kind of", "type of"]] },
+    { id: "r1", cat: "R", key: 1, q: "Does the pain go down your leg, below the knee?", a: "No, it stays in my back.", kw: [["below the knee", "go down", "spread", "leg"]] },
+    { id: "e1", cat: "E", key: 1, q: "Does anything make it better or worse?", a: "Bending and sitting for a long time make it worse. Moving around gently helps.", kw: [["better", "worse", "relieve"]] },
+    { id: "v1", cat: "V", key: 1, q: "On a scale of zero to ten, how bad is it?", a: "About six at the moment.", kw: SCALE_KW },
+    { id: "rf1", cat: "RF", key: 1, q: "Any numbness around your bottom or between your legs?", a: "No, nothing like that.", kw: [["between your legs", "around your bottom", "numbness", "saddle"]] },
+    { id: "rf2", cat: "RF", key: 1, q: "Any problems passing urine or controlling your bowels?", a: "No, everything is normal.", kw: [["urine", "bowels", "bladder"]] },
+    { id: "rf3", cat: "RF", key: 1, q: "Any fever, weight loss, or a history of cancer?", a: "No fever, my weight is stable and I've never had cancer.", kw: [["fever", "weight loss", "cancer"]] },
+    { id: "rf4", cat: "RF", key: 1, q: "Any weakness in your legs?", a: "No, my legs feel strong.", kw: [["weakness", "weak"]] },
+    { id: "d1", cat: "DH", key: 1, q: "What have you taken for the pain so far?", a: "Ibuprofen three times a day. It helps a bit.", kw: [["taken", "painkiller", "painkillers", "medicine", "medication"]] },
+    { id: "d2", cat: "DH", key: 0, q: "Are you allergic to any medicines?", a: "No.", kw: ALLERGY_KW },
+    { id: "sh1", cat: "SH", key: 1, q: "What does your job involve, and can you work at the moment?", a: "I lift boxes all day. I've been off work for two days.", kw: [["job", "work"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "Is there anything that worries you about it?", a: "My uncle has a slipped disc. I'm worried I've damaged my spine.", kw: WORRY_KW },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping for today?", a: "I think I need an X-ray, and a note for work.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "RF", q: "Any saddle anaesthesia or urinary retention?", a: "Sorry, I don't understand.", why: "Thuật ngữ chuyên môn.", better: "Any numbness around your bottom, or problems passing urine?" },
+    { cat: "ICE", q: "You just need to rest in bed for two weeks.", a: "Two weeks in bed?", why: "Lời khuyên sai: nằm nghỉ lâu làm hồi phục chậm hơn; lại trả lời trước khi hỏi mong muốn.", better: "What were you hoping for today?" }
+  ],
+  summary: {
+    scaffold: "Mr Nam Vo is a …-year-old … with a …-day history of …",
+    model: "Mr Nam Vo is a 38-year-old warehouse worker with a four-day history of sudden lower back pain after lifting a heavy box. The pain is aching, six out of ten, worse with bending and sitting and does not go down the leg. There are no red flags: no saddle numbness, no bladder or bowel problems, no leg weakness, and no fever, weight loss or history of cancer. He takes ibuprofen. He is worried about a slipped disc and hopes for an X-ray and a sick note.",
+    kw: [["38", "thirty-eight"], ["four-day", "4-day", "four days", "4 days"], ["lift", "box"], ["lower back", "back pain"], ["six", "6"], ["bend", "sitting"], ["leg"], ["red flag", "saddle", "bladder", "bowel", "numb"], ["ibuprofen"], ["x-ray", "disc", "worried"]],
+    labels: ["tuổi", "thời gian", "cơ chế", "vị trí", "mức độ", "yếu tố tăng", "không lan chân", "cờ đỏ âm tính", "thuốc", "mối lo, mong muốn"]
+  },
+  dx: { q: "What is the most likely diagnosis?", opts: ["Non-specific (mechanical) low back pain", "Cauda equina syndrome", "Kidney stone", "Spinal fracture"], a: 0,
+    why: "Khởi phát sau nâng vật nặng, đau kiểu cơ học, không lan xuống chân, không có dấu hiệu cảnh báo → đau thắt lưng không đặc hiệu. NICE NG59: không chụp X-quang thường quy; khuyên duy trì vận động nhẹ; có thể dùng NSAID ngắn ngày nếu không có chống chỉ định. Hội chứng chùm đuôi ngựa (tê vùng yên ngựa, rối loạn tiểu tiện hoặc đại tiện, yếu hai chân) là cấp cứu." },
+  explain: { q: "Which explanation is best for Mr Vo?", opts: [
+      "You have a lumbar strain. Imaging is not indicated.",
+      "This sounds like a strained back muscle. It's very common and usually gets better within a few weeks. An X-ray wouldn't show the muscle and wouldn't change the treatment. Staying gently active helps more than bed rest. Come back straight away if you get numbness between your legs or problems passing urine.",
+      "It's just a pulled muscle. Go back to work tomorrow."], a: 1,
+    why: "Giải thích vì sao không chụp X-quang, trấn an có căn cứ, khuyên vận động và dặn dấu hiệu cần quay lại ngay." }
+},
+{
+  id: "C8", group: "screen", title: "Painful urination", vi: "Tiểu buốt", rec: ["M2", "M3"],
+  patient: { name: "Ms Mai Le", age: 29, job: "office worker", av: "ML" },
+  setting: "Primary care screening clinic",
+  task: "Chị Mai tiểu buốt từ hôm qua. Hãy khai thác triệu chứng tiết niệu, loại trừ viêm thận bể thận, hỏi khả năng có thai, khí hư, và tôn trọng sự riêng tư khi hỏi các câu nhạy cảm.",
+  cats: [["open", "Mở đầu"], ["SYM", "Urinary symptoms (triệu chứng tiết niệu)"], ["RF", "Red flags (dấu hiệu cảnh báo)"], ["GYN", "Gynaecology (phụ khoa)"], ["PMH", "Past history (tiền sử)"], ["DH", "Drugs & allergies (thuốc, dị ứng)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Good afternoon. How can I help you today?", a: "It burns when I pass urine. It started yesterday.", kw: OPEN_KW },
+    { id: "u1", cat: "SYM", key: 1, q: "Are you going to the toilet more often than usual?", a: "Yes, every hour, and I only pass a little.", kw: [["more often", "toilet", "frequently"]] },
+    { id: "u2", cat: "SYM", key: 1, q: "Do you have to get up at night to pass urine?", a: "Yes, twice last night. That's not normal for me.", kw: [["at night", "get up", "night"]] },
+    { id: "u3", cat: "SYM", key: 1, q: "Does your urine look cloudy, or have you seen any blood?", a: "It's a bit cloudy. No blood.", kw: [["cloudy", "blood"]] },
+    { id: "rf1", cat: "RF", key: 1, q: "Have you had a fever, shivering, or pain in your back or side?", a: "No fever and no back pain.", kw: [["fever", "shivering", "your back", "side"]] },
+    { id: "rf2", cat: "RF", key: 0, q: "Have you been vomiting?", a: "No.", kw: [["vomiting", "vomit", "been sick"]] },
+    { id: "g1", cat: "GYN", key: 1, q: "Have you noticed any unusual vaginal discharge or itching?", a: "No, nothing like that.", kw: [["discharge", "itching", "itchy"]] },
+    { id: "g2", cat: "GYN", key: 1, q: "Is there any chance you could be pregnant?", a: "No, I had my period last week.", kw: [["pregnant", "period"]] },
+    { id: "p1", cat: "PMH", key: 0, q: "Have you had urine infections before?", a: "Once, about two years ago.", kw: [["infections before", "before", "previous"]] },
+    { id: "d1", cat: "DH", key: 1, q: "Are you taking any medicines, including the pill?", a: "Just the contraceptive pill.", kw: [["medicine", "medicines", "medication", "pill", "taking"]] },
+    { id: "d2", cat: "DH", key: 1, q: "Are you allergic to any medicines?", a: "Not that I know of.", kw: ALLERGY_KW },
+    { id: "i1", cat: "ICE", key: 1, q: "What do you think might be causing it?", a: "I don't drink much water at work. Or could it be something from my boyfriend?", kw: [["causing", "think it is", "worried", "worry"]] },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping we could do today?", a: "Something to stop the burning quickly. I have a big presentation on Friday.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "SYM", q: "Do you have dysuria, frequency and nocturia?", a: "Sorry, can you say that in normal words?", why: "Thuật ngữ chuyên môn.", better: "Does it burn when you pass urine? Are you going more often, or at night?" },
+    { cat: "GYN", q: "Are you sleeping around?", a: "Excuse me?", why: "Câu hỏi phán xét, xúc phạm. Hỏi về quan hệ tình dục cần trung lập và giải thích lý do hỏi.", better: "I ask everyone this: have you had any new sexual partners recently?" }
+  ],
+  summary: {
+    scaffold: "Ms Mai Le is a …-year-old … with a …-day history of …",
+    model: "Ms Mai Le is a 29-year-old office worker with a one-day history of burning when passing urine, frequency, getting up at night and cloudy urine. She has no fever, back pain, vomiting or vaginal discharge, and is not pregnant. She takes the contraceptive pill and has had one previous urine infection. She wonders if it is caused by low fluid intake and hopes for quick relief before a presentation.",
+    kw: [["29", "twenty-nine"], ["one-day", "1-day", "yesterday", "one day"], ["burn", "pain"], ["often", "frequency"], ["night"], ["cloudy"], ["fever", "back"], ["discharge"], ["pregnant"], ["pill", "contracept"]],
+    labels: ["tuổi", "thời gian", "tiểu buốt", "tiểu nhiều lần", "tiểu đêm", "nước tiểu đục", "không sốt, không đau lưng", "không khí hư", "không có thai", "thuốc tránh thai"]
+  },
+  dx: { q: "What is the most likely diagnosis?", opts: ["Lower urinary tract infection (cystitis)", "Kidney infection (pyelonephritis)", "Vaginal thrush", "Chlamydia"], a: 0,
+    why: "Có từ 2 trong 3 dấu hiệu (tiểu buốt, tiểu đêm mới xuất hiện, nước tiểu đục) ở phụ nữ dưới 65 tuổi, không có thai → nhiễm khuẩn tiết niệu dưới khả năng cao, có thể điều trị không cần que thử (UKHSA/NICE). Không sốt, không đau hông lưng, không nôn → không nghĩ viêm thận bể thận. Không khí hư → ít nghĩ viêm âm đạo hoặc bệnh lây truyền qua đường tình dục." },
+  explain: { q: "Which explanation is best for Ms Le?", opts: [
+      "You have cystitis, most likely caused by E. coli.",
+      "This looks like a bladder infection. It's very common in women and isn't a sign that you've done anything wrong. A short course of antibiotics should clear it within a few days, and drinking enough fluids helps. Please come back if you get a fever or pain in your back.",
+      "Just drink more water. It's nothing."], a: 1,
+    why: "Trấn an mối lo liên quan bạn trai mà không phán xét, giải thích điều trị và dặn dấu hiệu viêm thận cần quay lại." }
+},
+{
+  id: "C9", group: "screen", title: "Chest pain", vi: "Đau ngực (sàng lọc hội chứng vành cấp)", rec: ["M4"],
+  patient: { name: "Mr Quang Do", age: 58, job: "taxi company owner", av: "QD" },
+  setting: "Primary care screening clinic",
+  task: "Anh Quang đến vì đau ngực. Hãy khai thác nhanh nhưng đủ theo SOCRATES, hỏi yếu tố nguy cơ tim mạch, và nhận ra khi nào đây là tình huống cấp cứu.",
+  cats: SOCRATES_CATS,
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Hello, I'm Dr Khoi. What brings you in today?", a: "I've been getting chest pain, doctor. I've got some now.", kw: OPEN_KW },
+    { id: "on1", cat: "O", key: 1, q: "When did it start, and is it there now?", a: "About forty minutes ago, walking up the stairs. It's still there, but a bit less.", kw: [["when", "start", "started", "there now", "right now"]] },
+    { id: "c1", cat: "C", key: 1, q: "What does the pain feel like?", a: "Heavy, like someone is sitting on my chest.", kw: [["feel like", "describe", "kind of"]] },
+    { id: "s1", cat: "S", key: 1, q: "Can you show me where it is?", a: "Here, in the middle of my chest.", kw: [["where", "show me", "point"]] },
+    { id: "r1", cat: "R", key: 1, q: "Does the pain spread to your arm, neck or jaw?", a: "Yes, into my left arm.", kw: [["spread", "arm", "neck", "jaw", "radiate"]] },
+    { id: "a1", cat: "A", key: 1, q: "Have you felt sweaty, sick or short of breath?", a: "I was very sweaty and a bit breathless.", kw: [["sweaty", "sweating", "short of breath", "breathless"]] },
+    { id: "t1", cat: "T", key: 1, q: "Have you had pain like this before?", a: "Twice this week when I walked fast. It went away when I rested.", kw: [["before", "this week"]] },
+    { id: "v1", cat: "V", key: 1, q: "On a scale of zero to ten, how bad is it?", a: "It was eight. Now it's about five.", kw: SCALE_KW },
+    { id: "rf1", cat: "RF", key: 0, q: "Is the pain tearing, and does it go through to your back?", a: "No, it's not like that.", kw: [["tearing", "through to your back"]] },
+    { id: "p1", cat: "PMH", key: 1, q: "Do you have high blood pressure, diabetes or high cholesterol?", a: "High blood pressure and cholesterol, but I stopped my tablets months ago.", kw: [["blood pressure", "diabetes", "cholesterol", "medical problem", "health problem"]] },
+    { id: "d1", cat: "DH", key: 0, q: "Are you taking any medicines at the moment?", a: "None at the moment.", kw: MED_KW },
+    { id: "d2", cat: "DH", key: 0, q: "Are you allergic to any medicines?", a: "No.", kw: ALLERGY_KW },
+    { id: "f1", cat: "SH", key: 1, q: "Does anyone in your family have heart problems?", a: "My brother had a heart attack at fifty-two.", kw: [["family", "brother", "father", "mother"]] },
+    { id: "sh1", cat: "SH", key: 1, q: "Do you smoke?", a: "Yes, a packet a day for thirty years.", kw: [["smoke", "cigarette", "cigarettes"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "What's worrying you most?", a: "I thought it was just gas, but my wife made me come. Is it my heart?", kw: WORRY_KW }
+  ],
+  bad: [
+    { cat: "C", q: "Is it pleuritic or crushing?", a: "Sorry, I don't understand.", why: "Thuật ngữ chuyên môn.", better: "What does the pain feel like?" },
+    { cat: "ICE", q: "It's probably just indigestion. Take an antacid.", a: "Oh, OK…", why: "Trấn an sai, nguy hiểm: đau ngực kiểu tim đang diễn ra cần xử trí cấp cứu.", better: "What's worrying you most?" }
+  ],
+  summary: {
+    scaffold: "Mr Quang Do is a …-year-old man with …",
+    model: "Mr Quang Do is a 58-year-old man with central, heavy chest pain that started forty minutes ago on exertion and is still present, spreading to the left arm, with sweating and breathlessness. He has had exertional chest pain twice this week. He has high blood pressure and high cholesterol but stopped his tablets, smokes a packet a day, and his brother had a heart attack at fifty-two. This could be an acute coronary syndrome and needs emergency assessment.",
+    kw: [["58", "fifty-eight"], ["heavy", "central", "middle"], ["forty minutes", "40 minutes", "still"], ["arm"], ["sweat"], ["breath"], ["this week", "before", "exertion"], ["blood pressure", "cholesterol"], ["smok"], ["brother", "family"]],
+    labels: ["tuổi", "tính chất, vị trí", "đang đau", "lan tay", "vã mồ hôi", "khó thở", "đau khi gắng sức", "yếu tố nguy cơ", "hút thuốc", "gia đình"]
+  },
+  dx: { q: "What should happen now?", opts: ["Possible acute coronary syndrome: call an ambulance, ECG now and emergency transfer", "Book a routine exercise test next week", "Give an antacid and review in two weeks", "Reassure him and restart his tablets"], a: 0,
+    why: "Đau ngực đang diễn ra hoặc trong 12 giờ qua có tính chất gợi ý tim (NICE CG95): đè nặng, lan tay trái, vã mồ hôi, khó thở, nhiều yếu tố nguy cơ → nghĩ hội chứng vành cấp. Gọi cấp cứu, làm ECG ngay và chuyển viện khẩn; không xử trí như ca thường quy. Đây là đáp án duy nhất an toàn." },
+  explain: { q: "What is the best thing to say to Mr Do?", opts: [
+      "You're probably having an MI, so we need troponins.",
+      "Your pain could be coming from your heart, so to be safe we need to do a heart tracing now and get you to hospital by ambulance straight away. I'll stay with you while we arrange it.",
+      "It's probably gas, but let's check next week."], a: 1,
+    why: "Nói rõ, bình tĩnh, không thuật ngữ, nêu ngay hành động khẩn và trấn an bằng sự hiện diện." }
+},
+{
+  id: "C10", group: "screen", title: "Diarrhoea and vomiting", vi: "Tiêu chảy, nôn", rec: ["M3"],
+  patient: { name: "Ms Thu Bui", age: 31, job: "teacher", av: "TB" },
+  setting: "Primary care screening clinic",
+  task: "Chị Thu bị tiêu chảy và nôn từ hôm qua. Hãy khai thác tính chất phân, mức độ mất nước, dấu hiệu cảnh báo, yếu tố phơi nhiễm và điều chị mong muốn.",
+  cats: [["open", "Mở đầu"], ["SYM", "Stool (phân)"], ["HYD", "Fluids & dehydration (dịch, mất nước)"], ["RF", "Red flags (dấu hiệu cảnh báo)"], ["EXP", "Exposure (yếu tố phơi nhiễm)"], ["PMH", "Past history (tiền sử)"], ["DH", "Drugs & allergies (thuốc, dị ứng)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Good morning. How can I help you today?", a: "I've had diarrhoea since yesterday, and I was sick last night.", kw: OPEN_KW },
+    { id: "st1", cat: "SYM", key: 1, q: "How many times have you been to the toilet today?", a: "About six times since this morning. It's very watery.", kw: [["how many times", "toilet"]] },
+    { id: "st2", cat: "RF", key: 1, q: "Have you seen any blood or mucus in your stool?", a: "No, no blood.", kw: [["blood", "mucus"]] },
+    { id: "h1", cat: "HYD", key: 1, q: "Are you able to keep fluids down?", a: "Yes. Since this morning I can drink water.", kw: [["keep fluids", "fluids", "keep"]] },
+    { id: "h2", cat: "HYD", key: 1, q: "Are you passing urine as usual, and do you feel dizzy when you stand up?", a: "Less urine than normal, and I'm a little dizzy.", kw: [["urine", "dizzy", "stand up"]] },
+    { id: "rf1", cat: "RF", key: 1, q: "Have you had a high fever or severe tummy pain?", a: "A little crampy pain, and a mild temperature last night.", kw: [["fever", "tummy", "abdominal", "stomach pain", "temperature"]] },
+    { id: "x1", cat: "EXP", key: 1, q: "Has anyone who ate with you been ill too?", a: "Yes, my sister. We had seafood at a street stall on Saturday.", kw: [["ate with you", "anyone", "ill too"]] },
+    { id: "x2", cat: "EXP", key: 1, q: "Have you travelled recently, taken antibiotics or been in hospital?", a: "No, none of those.", kw: [["travelled", "traveled", "travel", "antibiotics", "hospital"]] },
+    { id: "p1", cat: "PMH", key: 0, q: "Do you have any medical conditions?", a: "No, I'm usually healthy.", kw: [["medical condition", "medical conditions", "medical problem", "health problem"]] },
+    { id: "d1", cat: "DH", key: 1, q: "Have you taken anything for it?", a: "I bought some loperamide, but I haven't taken it yet.", kw: [["taken anything", "taken"]] },
+    { id: "d2", cat: "DH", key: 0, q: "Are you allergic to any medicines?", a: "No.", kw: ALLERGY_KW },
+    { id: "i1", cat: "ICE", key: 1, q: "What's your main worry?", a: "I have to teach tomorrow. And was it the seafood?", kw: WORRY_KW },
+    { id: "i2", cat: "ICE", key: 1, q: "What would you like us to do today?", a: "Something to stop it quickly.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "HYD", q: "Are you clinically dehydrated?", a: "How would I know?", why: "Hỏi thẳng kết luận chuyên môn mà bệnh nhân không tự đánh giá được.", better: "Are you passing urine as usual, and do you feel dizzy when you stand up?" },
+    { cat: "ICE", q: "Well, you shouldn't eat street food.", a: "…Right.", why: "Phán xét, không giúp ích.", better: "What's your main worry?" }
+  ],
+  summary: {
+    scaffold: "Ms Thu Bui is a …-year-old … with a …-day history of …",
+    model: "Ms Thu Bui is a 31-year-old teacher with a one-day history of watery diarrhoea, about six times today, and vomiting last night, after eating seafood from a street stall. Her sister has similar symptoms. There is no blood in the stool, only mild cramps and a mild fever. She can keep fluids down but is passing less urine and feels a little dizzy. She has not travelled, taken antibiotics or been in hospital. She wants something to stop it so she can work.",
+    kw: [["31", "thirty-one"], ["one-day", "yesterday", "one day"], ["watery", "diarrhoea", "diarrhea"], ["six", "6"], ["vomit", "sick"], ["seafood", "street"], ["sister"], ["blood"], ["fluid", "urine", "dizzy"], ["travel", "antibiotic"]],
+    labels: ["tuổi", "thời gian", "phân nước", "số lần", "nôn", "thức ăn nghi ngờ", "người ăn cùng", "không máu", "mất nước", "phơi nhiễm khác"]
+  },
+  dx: { q: "What is the most likely diagnosis?", opts: ["Acute gastroenteritis, probably food-related", "Inflammatory bowel disease", "Appendicitis", "C. difficile infection"], a: 0,
+    why: "Tiêu chảy cấp phân nước, nôn, người ăn cùng cũng bị, không máu, không sốt cao → viêm dạ dày ruột cấp, nhiều khả năng do thức ăn, thường tự khỏi. Quan trọng nhất là bù nước bằng dung dịch oresol. Không dùng thuốc cầm tiêu chảy khi phân có máu hoặc sốt cao. C. difficile cần nghĩ tới khi mới dùng kháng sinh hoặc nằm viện." },
+  explain: { q: "Which explanation is best for Ms Bui?", opts: [
+      "You have infective gastroenteritis; oral rehydration therapy is indicated.",
+      "It's most likely a stomach bug from the food, and it usually settles in a few days. The most important thing is to replace the fluid you're losing with oral rehydration solution, little and often. Wash your hands well so it doesn't spread. Come back if you see blood, or if you can't keep fluids down.",
+      "Just take the loperamide and go to work."], a: 1,
+    why: "Tập trung vào việc quan trọng nhất (bù nước), phòng lây lan và dặn dấu hiệu cần quay lại." }
+},
+{
+  id: "C11", group: "screen", title: "Itchy rash", vi: "Ngứa, phát ban", rec: ["M2"],
+  patient: { name: "Ms Linh Dang", age: 22, job: "university student", av: "LD" },
+  setting: "Primary care screening clinic",
+  task: "Chị Linh bị ban ngứa tái phát. Hãy khai thác vị trí, tính chất, yếu tố khởi phát, tiền sử dị ứng, dấu hiệu nhiễm trùng, và tìm hiểu nỗi lo về thuốc bôi corticoid.",
+  cats: [["open", "Mở đầu"], ["SK", "The rash (tổn thương da)"], ["TRG", "Triggers (yếu tố khởi phát)"], ["RF", "Red flags (dấu hiệu cảnh báo)"], ["PMH", "Past & family history (tiền sử)"], ["DH", "Drugs & allergies (thuốc, dị ứng)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Hi, I'm Dr Khoi. What brings you in today?", a: "I've got an itchy rash on my arms and legs. It keeps coming back.", kw: OPEN_KW },
+    { id: "k1", cat: "SK", key: 1, q: "Where is the rash, and when did it start this time?", a: "In the creases of my elbows and behind my knees. This time it's been two weeks.", kw: [["where is the rash", "where", "this time"]] },
+    { id: "k2", cat: "SK", key: 1, q: "Is it itchy, and is it worse at night?", a: "Very itchy, especially at night. I scratch it in my sleep.", kw: [["itchy", "itch", "at night"]] },
+    { id: "k3", cat: "SK", key: 1, q: "What does it look like? Is it red, dry or weeping?", a: "Red and dry. Sometimes it cracks.", kw: [["look like", "weeping", "dry"]] },
+    { id: "t1", cat: "TRG", key: 1, q: "Have you used any new soaps, creams or washing powder?", a: "I started a new shower gel last month.", kw: [["soap", "soaps", "washing powder", "shower gel", "new"]] },
+    { id: "t2", cat: "TRG", key: 1, q: "Does anything make it worse, like stress or hot weather?", a: "Exams and hot weather make it much worse.", kw: [["worse", "stress", "hot weather"]] },
+    { id: "rf1", cat: "RF", key: 1, q: "Have you had any painful blisters, a fever, or skin that is hot and spreading?", a: "No, nothing like that.", kw: [["blisters", "fever", "spreading"]] },
+    { id: "p1", cat: "PMH", key: 1, q: "Do you or your family have asthma or hay fever?", a: "I had asthma as a child. My mother has hay fever.", kw: [["asthma", "hay fever"]] },
+    { id: "p2", cat: "PMH", key: 0, q: "Does anyone at home have an itchy rash too?", a: "No, only me.", kw: [["anyone at home", "at home"]] },
+    { id: "d1", cat: "DH", key: 1, q: "What have you tried for it so far?", a: "A cream from the pharmacy. I don't know what it was.", kw: [["tried", "so far"]] },
+    { id: "d2", cat: "DH", key: 0, q: "Are you allergic to any medicines?", a: "No.", kw: ALLERGY_KW },
+    { id: "i1", cat: "ICE", key: 1, q: "Is there anything worrying you about it?", a: "Is it contagious? My roommate keeps asking.", kw: WORRY_KW },
+    { id: "i2", cat: "ICE", key: 1, q: "How do you feel about using a steroid cream?", a: "I'm scared of steroids. I heard they make the skin thin.", kw: [["steroid", "steroids"]] }
+  ],
+  bad: [
+    { cat: "SK", q: "Is the pruritus nocturnal?", a: "Sorry?", why: "Thuật ngữ chuyên môn.", better: "Is it itchy, and is it worse at night?" },
+    { cat: "ICE", q: "Everyone gets eczema. It's nothing.", a: "But it's really affecting my sleep…", why: "Xem nhẹ ảnh hưởng tới chất lượng sống của bệnh nhân.", better: "Is there anything worrying you about it?" }
+  ],
+  summary: {
+    scaffold: "Ms Linh Dang is a …-year-old … with …",
+    model: "Ms Linh Dang is a 22-year-old student with a recurrent, very itchy, red and dry rash in the elbow and knee creases, this time for two weeks. It is worse at night, with stress and hot weather, and may be aggravated by a new shower gel. She had asthma as a child and her mother has hay fever. There are no signs of infection. She is worried it is contagious and is afraid of steroid creams.",
+    kw: [["22", "twenty-two"], ["itch"], ["elbow", "knee", "crease"], ["two weeks", "2 weeks", "recurrent"], ["night"], ["red", "dry"], ["stress", "hot"], ["shower gel", "soap"], ["asthma", "hay fever"], ["contagious", "steroid"]],
+    labels: ["tuổi", "ngứa", "vị trí nếp gấp", "thời gian, tái phát", "về đêm", "đỏ, khô", "yếu tố tăng", "sữa tắm mới", "cơ địa dị ứng", "mối lo"]
+  },
+  dx: { q: "What is the most likely diagnosis?", opts: ["Atopic eczema", "Scabies", "Fungal infection (tinea)", "Psoriasis"], a: 0,
+    why: "Ngứa nhiều, tái phát, ở nếp gấp khuỷu và khoeo, có tiền sử bản thân và gia đình về cơ địa dị ứng (hen, viêm mũi dị ứng) → viêm da cơ địa. Ghẻ: ngứa về đêm, người trong nhà cũng bị, tổn thương ở kẽ ngón tay. Nấm: mảng hình vòng, bờ rõ. Vảy nến: mảng dày có vảy bạc ở mặt duỗi. Cảnh báo: mụn nước đau mọc thành cụm kèm sốt (eczema herpeticum) cần khám trong ngày." },
+  explain: { q: "Which explanation is best for Ms Dang?", opts: [
+      "You have atopic dermatitis. Apply a topical corticosteroid twice daily.",
+      "This is eczema, a dry and sensitive skin condition that often runs in families. It isn't contagious. Using a moisturiser every day and a soap substitute helps prevent flare-ups. For flare-ups, a steroid cream used for a short time as directed is safe and won't thin your skin.",
+      "It's just dry skin. Buy any lotion."], a: 1,
+    why: "Trả lời cả hai mối lo (lây, corticoid làm mỏng da), hướng dẫn chăm sóc nền và cách dùng thuốc an toàn." }
+},
+{
+  id: "C12", group: "screen", title: "Knee pain", vi: "Đau khớp gối", rec: ["M4"],
+  patient: { name: "Mrs Lan Pham", age: 63, job: "retired accountant", av: "LP" },
+  setting: "Primary care screening clinic",
+  task: "Bà Lan đau gối phải một năm nay. Hãy khai thác cơn đau, cứng khớp buổi sáng, dấu hiệu viêm nhiễm, ảnh hưởng sinh hoạt, thuốc đang dùng và nỗi lo của bà.",
+  cats: SOCRATES_CATS,
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Good morning. How can I help you today?", a: "My right knee has been painful for about a year, and it's getting worse.", kw: OPEN_KW },
+    { id: "s1", cat: "S", key: 1, q: "Where exactly is the pain?", a: "On the inside of my right knee.", kw: [["where", "point", "which part"]] },
+    { id: "on1", cat: "O", key: 1, q: "How did it start? Did you injure it?", a: "Slowly. There was no injury.", kw: [["how did it start", "injure", "injury", "start", "started"]] },
+    { id: "c1", cat: "C", key: 1, q: "What does the pain feel like?", a: "An aching pain, and it sometimes clicks.", kw: [["feel like", "describe", "kind of"]] },
+    { id: "t1", cat: "T", key: 1, q: "Is it stiff in the morning, and for how long?", a: "A little stiff, but only for ten minutes or so.", kw: [["stiff", "morning"]] },
+    { id: "e1", cat: "E", key: 1, q: "Does anything make it better or worse?", a: "Walking far and going down stairs make it worse. Rest helps.", kw: [["better", "worse", "relieve"]] },
+    { id: "v1", cat: "V", key: 0, q: "On a scale of zero to ten, how bad is it?", a: "About five.", kw: SCALE_KW },
+    { id: "rf1", cat: "RF", key: 1, q: "Is the knee ever hot, red or very swollen, or have you had a fever?", a: "It swells a little after a long walk, but it's never hot or red.", kw: [["hot", "red", "swollen", "fever"]] },
+    { id: "rf2", cat: "RF", key: 1, q: "Does it ever lock or give way?", a: "No, it's never locked.", kw: [["lock", "give way"]] },
+    { id: "p1", cat: "PMH", key: 1, q: "Do you have any other health problems?", a: "High blood pressure. And I'm a bit overweight.", kw: [["health problem", "health problems", "medical problem", "conditions"]] },
+    { id: "d1", cat: "DH", key: 1, q: "What have you taken for the pain?", a: "Paracetamol, and sometimes ibuprofen tablets.", kw: [["taken", "painkiller", "painkillers", "medication"]] },
+    { id: "d2", cat: "DH", key: 0, q: "Are you allergic to any medicines?", a: "No.", kw: ALLERGY_KW },
+    { id: "sh1", cat: "SH", key: 1, q: "How is it affecting your daily life?", a: "I've stopped my morning walks with my friends.", kw: [["daily life", "affecting", "affect"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "Is anything worrying you about it?", a: "I'm worried I'll end up in a wheelchair, like my mother.", kw: WORRY_KW },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping for today?", a: "Maybe an injection? Or should I stop exercising?", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "C", q: "Is there any crepitus or effusion?", a: "I'm not sure what you mean.", why: "Thuật ngữ chuyên môn.", better: "Does it click or grate, and does it swell?" },
+    { cat: "ICE", q: "At your age, knees just wear out.", a: "So there's nothing I can do?", why: "Thái độ buông xuôi, sai về chuyên môn: vận động và giảm cân giúp cải thiện rõ.", better: "Is anything worrying you about it?" }
+  ],
+  summary: {
+    scaffold: "Mrs Lan Pham is a …-year-old … with a …-year history of …",
+    model: "Mrs Lan Pham is a 63-year-old retired accountant with a one-year history of gradually worsening aching pain on the inside of her right knee, worse with walking and stairs and better with rest. Morning stiffness lasts about ten minutes. There is mild swelling after walking but no heat, redness, fever, locking or giving way. She has high blood pressure, is overweight and takes paracetamol and ibuprofen. She has stopped walking and is worried about ending up in a wheelchair.",
+    kw: [["63", "sixty-three"], ["one-year", "a year", "one year"], ["knee"], ["walk", "stairs"], ["ten minutes", "10 minutes", "stiff"], ["hot", "red", "lock", "fever"], ["blood pressure", "hypertension"], ["overweight", "weight"], ["ibuprofen", "paracetamol"], ["wheelchair", "worried"]],
+    labels: ["tuổi", "thời gian", "vị trí", "yếu tố tăng", "cứng khớp sáng", "không dấu hiệu viêm nhiễm", "tăng huyết áp", "thừa cân", "thuốc", "mối lo"]
+  },
+  dx: { q: "What is the most likely diagnosis?", opts: ["Knee osteoarthritis", "Septic arthritis", "Gout", "Rheumatoid arthritis"], a: 0,
+    why: "Tuổi từ 45, đau liên quan vận động, cứng khớp buổi sáng không quá 30 phút → chẩn đoán lâm sàng thoái hóa khớp gối (NICE NG226), không cần X-quang. Điều trị chính: tập mạnh cơ, giảm cân, NSAID bôi tại chỗ. NICE không khuyến cáo dùng thường quy paracetamol hay opioid yếu. Ibuprofen uống kéo dài không tốt cho người tăng huyết áp. Khớp nóng, đỏ, sưng kèm sốt → nghĩ viêm khớp nhiễm khuẩn, cấp cứu." },
+  explain: { q: "Which explanation is best for Mrs Pham?", opts: [
+      "You have OA with degenerative changes; imaging isn't required.",
+      "This sounds like osteoarthritis, which is wear and repair in the joint. It's very common and doesn't usually lead to a wheelchair. Strengthening exercises and keeping active are the best treatment, and losing a little weight takes pressure off the knee. A painkiller gel rubbed on the knee is safer for your stomach and blood pressure than ibuprofen tablets.",
+      "It's your age. There's nothing we can do."], a: 1,
+    why: "Trấn an nỗi sợ ngồi xe lăn, khuyến khích tiếp tục vận động và giải thích an toàn thuốc." }
+},
+{
+  id: "C13", group: "screen", title: "Low mood", vi: "Buồn chán, mất hứng thú (sàng lọc trầm cảm)", rec: ["M2", "M6"],
+  patient: { name: "Mr Bao Tran", age: 27, job: "software developer", av: "BT" },
+  setting: "Primary care screening clinic",
+  task: "Anh Bảo thấy buồn chán hai tháng nay. Hãy hỏi theo PHQ-2, giấc ngủ, sinh hoạt, và bắt buộc hỏi về ý nghĩ tự hại một cách tế nhị. Tôn trọng mong muốn giữ bí mật của anh.",
+  cats: [["open", "Mở đầu"], ["MOOD", "Mood (tâm trạng)"], ["FUNC", "Sleep & daily life (giấc ngủ, sinh hoạt)"], ["RISK", "Risk (nguy cơ)"], ["PMH", "Past history (tiền sử)"], ["DH", "Drugs & alcohol (thuốc, rượu)"], ["SH", "Support (hỗ trợ)"], ["ICE", "Ideas, concerns, expectations"]],
+  qs: [
+    { id: "o1", cat: "open", key: 1, q: "Hello, I'm Dr Khoi. What brings you in today?", a: "I've been feeling really down for the last couple of months. I'm not sure why.", kw: OPEN_KW },
+    { id: "m1", cat: "MOOD", key: 1, q: "Over the last two weeks, how often have you felt down, depressed or hopeless?", a: "Most days, to be honest.", kw: [["depressed", "hopeless", "felt down"]] },
+    { id: "m2", cat: "MOOD", key: 1, q: "Have you lost interest or pleasure in things you used to enjoy?", a: "Yes. I used to play football, but I just can't be bothered now.", kw: [["interest", "pleasure", "enjoy"]] },
+    { id: "m3", cat: "MOOD", key: 0, q: "Do you feel anxious or on edge a lot of the time?", a: "I worry about work all the time. My heart races on Sunday nights.", kw: [["anxious", "anxiety", "on edge", "nervous"]] },
+    { id: "f1", cat: "FUNC", key: 1, q: "How are you sleeping and eating?", a: "I wake up at four and can't get back to sleep. I've lost my appetite.", kw: [["sleeping", "sleep", "eating", "appetite"]] },
+    { id: "f2", cat: "FUNC", key: 1, q: "How are things at work and at home?", a: "I'm behind at work. I live alone and I've stopped seeing my friends.", kw: [["at work", "at home", "friends"]] },
+    { id: "r1", cat: "RISK", key: 1, q: "Sometimes when people feel this low, they have thoughts of harming themselves or ending their life. Have you had any thoughts like that?", a: "Sometimes I think everyone would be better off without me. But I have no plans. I wouldn't do anything.", kw: [["harming", "harm", "ending their life", "end your life", "suicide", "suicidal", "hurt yourself"]] },
+    { id: "r2", cat: "RISK", key: 1, q: "Have you made any plans, or ever tried to hurt yourself in the past?", a: "No, never.", kw: [["made any plans", "plans", "ever tried", "tried to hurt"]] },
+    { id: "p1", cat: "PMH", key: 0, q: "Have you had problems with your mood before, or any other health problems?", a: "No. I had a thyroid test years ago, and it was normal.", kw: [["mood before", "health problems", "health problem"]] },
+    { id: "d1", cat: "DH", key: 1, q: "Are you taking any medicines, or using alcohol or drugs to cope?", a: "I drink four or five beers most nights to help me sleep.", kw: [["alcohol", "drugs", "cope", "medicines"]] },
+    { id: "s1", cat: "SH", key: 1, q: "Who do you have for support?", a: "My sister. She's the one who told me to come.", kw: [["support", "who do you have"]] },
+    { id: "i1", cat: "ICE", key: 1, q: "What do you think is going on?", a: "Maybe I'm just weak. I'm embarrassed to be here.", kw: [["going on", "think it is", "causing"]] },
+    { id: "i2", cat: "ICE", key: 1, q: "What were you hoping we could do today?", a: "I don't want tablets. And I don't want my company to find out.", kw: ICE_KW }
+  ],
+  bad: [
+    { cat: "MOOD", q: "Do you have anhedonia?", a: "What's that?", why: "Thuật ngữ chuyên môn.", better: "Have you lost interest or pleasure in things you used to enjoy?" },
+    { cat: "ICE", q: "Just try to think positively and exercise more.", a: "I've tried…", why: "Xem nhẹ, khiến bệnh nhân cảm thấy không được lắng nghe.", better: "What do you think is going on?" },
+    { cat: "RISK", q: "You're not going to do anything stupid, are you?", a: "…No.", why: "Câu hỏi dẫn dắt và mang tính phán xét, khiến bệnh nhân khó nói thật.", better: "Sometimes when people feel this low, they have thoughts of harming themselves or ending their life. Have you had any thoughts like that?" }
+  ],
+  summary: {
+    scaffold: "Mr Bao Tran is a …-year-old … with …",
+    model: "Mr Bao Tran is a 27-year-old software developer with two months of low mood most days, loss of interest, early morning waking and poor appetite. He worries about work, lives alone and has withdrawn from friends. He has passive thoughts that others would be better off without him, but no plans and no previous self-harm. He drinks four or five beers most nights. His sister supports him. He feels embarrassed, does not want medication, and is worried about confidentiality at work.",
+    kw: [["27", "twenty-seven"], ["two months", "2 months", "couple of months"], ["low mood", "down", "depress"], ["interest"], ["sleep", "waking", "wake"], ["appetite"], ["alone", "friends"], ["thought", "plan", "better off", "suicid"], ["beer", "alcohol", "drink"], ["tablet", "medication", "confidential", "company"]],
+    labels: ["tuổi", "thời gian", "khí sắc", "mất hứng thú", "giấc ngủ", "ăn uống", "thu mình", "đánh giá nguy cơ", "rượu", "mong muốn, bí mật"]
+  },
+  dx: { q: "What is the most important next step?", opts: ["Assess and document suicide risk and agree a safety plan, alongside a likely diagnosis of depression", "Prescribe an antidepressant and review in six months", "Tell him it's normal stress and he'll be fine", "Refer him to cardiology for his palpitations"], a: 0,
+    why: "PHQ-2 dương tính (buồn chán và mất hứng thú hầu hết các ngày) kèm rối loạn giấc ngủ, ăn uống → nghĩ trầm cảm, có lo âu đi kèm; rượu làm nặng thêm. Có ý nghĩ thụ động về cái chết → phải hỏi rõ kế hoạch, phương tiện, yếu tố bảo vệ, lập kế hoạch an toàn và hẹn tái khám sớm. Ý nghĩ tự sát có kế hoạch cụ thể → chuyển chuyên khoa khẩn." },
+  explain: { q: "Which response is best for Mr Tran?", opts: [
+      "You have major depressive disorder, so I'll start an SSRI.",
+      "Thank you for telling me. That took courage. What you're describing sounds like depression. It's a common illness, not a weakness, and it can get better. There are options besides tablets, like talking therapy and slowly doing more of the things you used to enjoy. What we talk about here stays confidential. Let's make a plan for what to do if the dark thoughts get stronger, and I'd like to see you again next week.",
+      "Everyone feels like this sometimes. Just cheer up."], a: 1,
+    why: "Ghi nhận cảm xúc, bình thường hóa mà không xem nhẹ, tôn trọng mong muốn không dùng thuốc, bảo đảm bí mật và có kế hoạch an toàn." }
+}
+];
+CASES.push(...SCREEN_CASES);
+
+/* ============================================================
    THƯ VIỆN TỪ VỰNG · Tiếng Anh phổ thông (A1 → C1)
    Mỗi dòng: từ | từ loại | nghĩa tiếng Việt | câu ví dụ (không bắt buộc)
    Thêm từ: chỉ cần thêm dòng vào đúng cấp độ của chủ đề.
@@ -1796,6 +2232,498 @@ back to square one|phr|quay lại vạch xuất phát|`
 ];
 
 /* ============================================================
+   THƯ VIỆN TỪ VỰNG LUYỆN THI (v4.1) · ưu tiên A1 → B2
+   Danh sách từ do tác giả tự biên soạn, đối chiếu cấp độ với khung CEFR
+   (tham khảo NGSL/TSL CC BY-SA 4.0 và Oxford 3000 làm danh mục kiểm tra;
+   không sao chép định nghĩa). Mỗi dòng: từ | từ loại | nghĩa | ví dụ
+   exam: kỳ thi liên quan. sec: nhóm hiển thị trong thư viện.
+   ============================================================ */
+const LIB_EXAM_CORE = [
+{ id: "core-verbs", sec: "core", exam: ["CEFR", "VSTEP", "IELTS", "TOEIC"], icon: "⚡", color: "#e0622f", title: "Core verbs", vi: "Động từ lõi thông dụng", levels: {
+A1: `be|v|thì, là, ở|She is a nurse.
+have|v|có; ăn, uống|I have two brothers.
+do|v|làm|What do you do?
+go|v|đi|We go to school by bus.
+come|v|đến|Come here, please.
+get|v|nhận; lấy; trở nên|I get up at six.
+make|v|làm ra, tạo ra|She makes breakfast every day.
+take|v|cầm, lấy; đưa đi|Take one tablet a day.
+give|v|cho, đưa|Give me your hand.
+see|v|nhìn thấy|I can see the sea.
+know|v|biết|I know her name.
+think|v|nghĩ|I think it's a good idea.
+say|v|nói|What did he say?
+tell|v|kể, bảo|Tell me about your family.
+ask|v|hỏi; yêu cầu|Can I ask a question?
+use|v|sử dụng|Can I use your phone?
+find|v|tìm thấy|I can't find my keys.
+put|v|đặt, để|Put your bag here.
+start|v|bắt đầu|The class starts at eight.
+stop|v|dừng lại|Stop the car, please.`,
+A2: `become|v|trở thành|She wants to become a doctor.
+bring|v|mang đến|Bring your passport.
+build|v|xây dựng|They built a new hospital.
+carry|v|mang, xách|Can you carry this box?
+change|v|thay đổi|I want to change my plan.
+choose|v|chọn|Choose the correct answer.
+continue|v|tiếp tục|Please continue.
+decide|v|quyết định|I decided to study medicine.
+describe|v|mô tả|Describe your pain.
+explain|v|giải thích|Can you explain this word?
+feel|v|cảm thấy|I feel better today.
+forget|v|quên|Don't forget your medicine.
+happen|v|xảy ra|What happened?
+hope|v|hy vọng|I hope you feel better soon.
+keep|v|giữ|Keep the medicine in a cool place.
+leave|v|rời đi; để lại|The train leaves at nine.
+lose|v|mất; thua|I lost my wallet.
+move|v|di chuyển; chuyển nhà|Can you move your fingers?
+pay|v|trả tiền|Can I pay by card?
+remember|v|nhớ|I remember his face.
+send|v|gửi|Send me an email.
+spend|v|tiêu; dành (thời gian)|I spend two hours studying.
+travel|v|đi du lịch, đi lại|I travel for work.
+try|v|thử; cố gắng|Try this one.
+understand|v|hiểu|I don't understand.
+wait|v|chờ|Please wait here.`,
+B1: `achieve|v|đạt được|She achieved her goal.
+allow|v|cho phép|Visitors are not allowed after 8 pm.
+avoid|v|tránh|Avoid fatty food.
+compare|v|so sánh|Compare the two results.
+consider|v|cân nhắc|Consider all the options.
+develop|v|phát triển|He developed a rash.
+encourage|v|khuyến khích|We encourage patients to exercise.
+expect|v|mong đợi|What do you expect from the treatment?
+improve|v|cải thiện|Your English has improved.
+include|v|bao gồm|The price includes breakfast.
+increase|v|tăng|The risk increases with age.
+manage|v|quản lý; xoay xở|She manages a small team.
+prepare|v|chuẩn bị|Prepare for the exam.
+prevent|v|ngăn ngừa|Vaccines prevent disease.
+provide|v|cung cấp|We provide free check-ups.
+reduce|v|giảm|Reduce your salt intake.
+suggest|v|gợi ý|I suggest you rest.
+support|v|hỗ trợ|Her family supports her.`,
+B2: `acknowledge|v|thừa nhận|He acknowledged the mistake.
+assume|v|cho rằng, giả định|Don't assume it's serious.
+contribute|v|đóng góp; góp phần|Stress contributes to high blood pressure.
+determine|v|xác định|Tests will determine the cause.
+emphasise|v|nhấn mạnh (US: emphasize)|
+ensure|v|đảm bảo|Ensure the patient is comfortable.
+establish|v|thiết lập|
+maintain|v|duy trì|Maintain a healthy weight.
+obtain|v|thu được, có được|
+overcome|v|vượt qua|She overcame her fear.
+pursue|v|theo đuổi|He wants to pursue a career in surgery.
+require|v|đòi hỏi, cần|This job requires patience.`
+}},
+{ id: "core-adj", sec: "core", exam: ["CEFR", "VSTEP", "IELTS"], icon: "🎨", color: "#c77c1a", title: "Core adjectives & adverbs", vi: "Tính từ và trạng từ lõi", levels: {
+A1: `big|adj|to|
+small|adj|nhỏ|
+long|adj|dài|
+new|adj|mới|
+easy|adj|dễ|
+difficult|adj|khó|
+beautiful|adj|đẹp|
+fast|adj, adv|nhanh|
+slow|adj|chậm|
+very|adv|rất|
+really|adv|thật sự|
+often|adv|thường|
+again|adv|lại, lần nữa|`,
+A2: `important|adj|quan trọng|
+interesting|adj|thú vị|
+boring|adj|nhàm chán|
+dangerous|adj|nguy hiểm|
+careful|adj|cẩn thận|Be careful!
+quiet|adj|yên tĩnh|
+different|adj|khác nhau|
+same|adj|giống nhau|
+possible|adj|có thể|
+ready|adj|sẵn sàng|
+quickly|adv|một cách nhanh chóng|
+carefully|adv|một cách cẩn thận|
+already|adv|đã … rồi|
+still|adv|vẫn|`,
+B1: `available|adj|có sẵn; rảnh|Is the doctor available?
+common|adj|phổ biến|
+familiar|adj|quen thuộc|
+likely|adj|có khả năng|
+necessary|adj|cần thiết|
+serious|adj|nghiêm trọng|
+successful|adj|thành công|
+suitable|adj|phù hợp|
+useful|adj|hữu ích|
+recent|adj|gần đây|
+actually|adv|thực ra|
+especially|adv|đặc biệt là|
+probably|adv|có lẽ|
+unfortunately|adv|không may|`,
+B2: `accurate|adj|chính xác|
+adequate|adj|đủ, thỏa đáng|
+crucial|adj|then chốt|
+essential|adj|thiết yếu|
+efficient|adj|hiệu quả (về thời gian, nguồn lực)|
+effective|adj|có hiệu quả (đạt kết quả)|
+relevant|adj|liên quan|
+reluctant|adj|miễn cưỡng|
+significant|adj|đáng kể|
+considerably|adv|đáng kể|
+gradually|adv|dần dần|
+relatively|adv|tương đối|`
+}},
+{ id: "core-nouns", sec: "core", exam: ["CEFR", "VSTEP", "IELTS", "TOEIC"], icon: "📦", color: "#b5651d", title: "Core nouns", vi: "Danh từ lõi thông dụng", levels: {
+A1: `thing|n|đồ vật, điều|
+people|n|người (số nhiều)|
+place|n|nơi chốn|
+problem|n|vấn đề|
+question|n|câu hỏi|
+answer|n|câu trả lời|
+word|n|từ|
+number|n|con số|
+way|n|cách; đường|
+life|n|cuộc sống|`,
+A2: `idea|n|ý tưởng|
+information|n|thông tin (không đếm được)|
+advice|n|lời khuyên (không đếm được)|
+reason|n|lý do|
+result|n|kết quả|
+activity|n|hoạt động|
+area|n|khu vực|
+fact|n|sự thật|
+group|n|nhóm|
+difference|n|sự khác biệt|`,
+B1: `advantage|n|lợi thế, ưu điểm|
+disadvantage|n|bất lợi, nhược điểm|
+effect|n|ảnh hưởng, tác động|
+situation|n|tình huống|
+attitude|n|thái độ|
+behaviour|n|hành vi (US: behavior)|
+knowledge|n|kiến thức|
+purpose|n|mục đích|
+quality|n|chất lượng|
+risk|n|rủi ro, nguy cơ|`,
+B2: `aspect|n|khía cạnh|
+consequence|n|hậu quả|
+feature|n|đặc điểm|
+outcome|n|kết cục, kết quả|
+perspective|n|góc nhìn|
+priority|n|ưu tiên|
+range|n|phạm vi|
+trend|n|xu hướng|`
+}}
+];
+
+const LIB_EXAM = [
+/* ---------- TOEIC ---------- */
+{ id: "t-office", sec: "toeic", exam: ["TOEIC"], icon: "🗂️", color: "#2c6fbb", title: "Office & meetings", vi: "Văn phòng và cuộc họp", levels: {
+A2: `meeting|n|cuộc họp|
+manager|n|người quản lý|
+colleague|n|đồng nghiệp|
+printer|n|máy in|
+file|n|hồ sơ, tệp|
+desk|n|bàn làm việc|
+schedule|n|lịch trình|`,
+B1: `agenda|n|chương trình nghị sự|Let's look at the agenda.
+minutes|n|biên bản cuộc họp|Who is taking the minutes?
+memo|n|bản ghi nhớ nội bộ|
+attachment|n|tệp đính kèm|Please see the attachment.
+conference call|n|cuộc gọi hội nghị|
+deadline|n|hạn chót|
+reschedule|v|dời lịch|Can we reschedule the meeting?
+postpone|v|hoãn lại|The meeting was postponed.
+supervisor|n|người giám sát|
+headquarters|n|trụ sở chính|`,
+B2: `branch|n|chi nhánh|
+subsidiary|n|công ty con|
+merger|n|sáp nhập|
+facilitate|v|tạo điều kiện|
+delegate|v|giao việc, ủy quyền|
+on behalf of|phr|thay mặt cho|I'm writing on behalf of my manager.
+in charge of|phr|phụ trách|
+as of|phr|kể từ (ngày)|As of Monday, the office opens at 8.`
+}},
+{ id: "t-hr", sec: "toeic", exam: ["TOEIC"], icon: "🧑‍💼", color: "#7b52c9", title: "Hiring & human resources", vi: "Tuyển dụng và nhân sự", levels: {
+A2: `job|n|công việc|
+apply|v|nộp đơn|
+salary|n|lương|
+interview|n|phỏng vấn|`,
+B1: `applicant|n|người nộp đơn|
+candidate|n|ứng viên|
+résumé|n|sơ yếu lý lịch (UK: CV)|
+position|n|vị trí công việc|
+hire|v|thuê, tuyển|
+employee|n|nhân viên|
+employer|n|người sử dụng lao động|
+training|n|đào tạo|
+promotion|n|sự thăng chức|
+retire|v|nghỉ hưu|
+full-time|adj|toàn thời gian|
+part-time|adj|bán thời gian|`,
+B2: `orientation|n|buổi định hướng nhân viên mới|
+payroll|n|bảng lương|
+benefits package|n|gói phúc lợi|
+performance review|n|đánh giá hiệu suất|
+qualified|adj|đủ trình độ|
+resign|v|từ chức|
+recruit|v|tuyển dụng|
+probation|n|thời gian thử việc|`
+}},
+{ id: "t-finance", sec: "toeic", exam: ["TOEIC", "IELTS"], icon: "💹", color: "#1f8f5f", title: "Finance & budgets", vi: "Tài chính và ngân sách", levels: {
+A2: `price|n|giá|
+cost|n, v|chi phí; có giá|
+profit|n|lợi nhuận|
+bill|n|hóa đơn|`,
+B1: `budget|n|ngân sách|
+expense|n|chi phí, khoản chi|
+invoice|n|hóa đơn thanh toán|
+payment|n|khoản thanh toán|
+account|n|tài khoản|
+loan|n|khoản vay|
+estimate|n, v|ước tính|
+quarterly|adj|hằng quý|quarterly report
+revenue|n|doanh thu|`,
+B2: `reimburse|v|hoàn trả chi phí|The company will reimburse your travel costs.
+audit|n|kiểm toán|
+investment|n|khoản đầu tư|
+shareholder|n|cổ đông|
+forecast|n, v|dự báo|
+deficit|n|thâm hụt|
+fiscal year|n|năm tài chính|`
+}},
+{ id: "t-marketing", sec: "toeic", exam: ["TOEIC"], icon: "📣", color: "#d64f7a", title: "Sales & marketing", vi: "Bán hàng và tiếp thị", levels: {
+A2: `customer|n|khách hàng|
+product|n|sản phẩm|
+sell|v|bán|
+advertise|v|quảng cáo|`,
+B1: `client|n|khách hàng (dịch vụ)|
+brand|n|thương hiệu|
+discount|n|giảm giá|
+launch|v, n|ra mắt|The new product will launch in May.
+survey|n|khảo sát|
+competitor|n|đối thủ cạnh tranh|
+brochure|n|tờ quảng cáo|
+customer service|n|dịch vụ khách hàng|`,
+B2: `market share|n|thị phần|
+target audience|n|khách hàng mục tiêu|
+campaign|n|chiến dịch|
+feedback|n|phản hồi|
+promotion|n|khuyến mại|
+competitive|adj|cạnh tranh|
+exceed|v|vượt quá|Sales exceeded expectations.`
+}},
+{ id: "t-logistics", sec: "toeic", exam: ["TOEIC"], icon: "🚚", color: "#8a5a2b", title: "Orders, shipping & purchasing", vi: "Đặt hàng, vận chuyển và mua hàng", levels: {
+A2: `order|n, v|đơn hàng; đặt hàng|
+deliver|v|giao hàng|
+box|n|thùng, hộp|
+receipt|n|biên lai|`,
+B1: `delivery|n|sự giao hàng|
+shipment|n|lô hàng|
+warehouse|n|kho hàng|
+supplier|n|nhà cung cấp|
+out of stock|phr|hết hàng|
+refund|n|hoàn tiền|
+warranty|n|bảo hành|
+fragile|adj|dễ vỡ|
+contract|n|hợp đồng|`,
+B2: `inventory|n|hàng tồn kho|
+quote|n|báo giá|
+procurement|n|mua sắm (doanh nghiệp)|
+backorder|n|đơn hàng chờ bổ sung|
+dispatch|v|gửi đi|
+expedite|v|xúc tiến, làm nhanh|`
+}},
+{ id: "t-travel", sec: "toeic", exam: ["TOEIC"], icon: "🧳", color: "#1b8fb3", title: "Business travel & events", vi: "Công tác và sự kiện", levels: {
+A2: `flight|n|chuyến bay|
+book|v|đặt (vé, phòng)|
+hotel|n|khách sạn|
+trip|n|chuyến đi|`,
+B1: `reservation|n|sự đặt chỗ|
+itinerary|n|lịch trình chuyến đi|
+boarding pass|n|thẻ lên máy bay|
+conference|n|hội nghị|
+venue|n|địa điểm tổ chức|
+attendee|n|người tham dự|
+registration|n|đăng ký|
+catering|n|dịch vụ ăn uống|`,
+B2: `accommodation|n|chỗ ở|
+keynote speaker|n|diễn giả chính|
+workshop|n|hội thảo thực hành|
+reimbursement|n|sự hoàn trả chi phí|
+round trip|n|khứ hồi|`
+}},
+/* ---------- IELTS & VSTEP ---------- */
+{ id: "i-education", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🏫", color: "#3a5fc8", title: "Education", vi: "Giáo dục", levels: {
+A2: `university|n|đại học|
+subject|n|môn học|
+student|n|học sinh, sinh viên|`,
+B1: `course|n|khóa học|
+degree|n|bằng cấp|
+knowledge|n|kiến thức|
+skill|n|kỹ năng|
+qualification|n|bằng cấp, chứng chỉ|
+online learning|n|học trực tuyến|
+tuition fee|n|học phí|`,
+B2: `curriculum|n|chương trình giảng dạy|
+academic performance|n|kết quả học tập|
+critical thinking|n|tư duy phản biện|
+lifelong learning|n|học tập suốt đời|
+vocational training|n|đào tạo nghề|
+compulsory|adj|bắt buộc|
+tertiary education|n|giáo dục đại học|`
+}},
+{ id: "i-environment", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🌍", color: "#2f9a55", title: "Environment & energy", vi: "Môi trường và năng lượng", levels: {
+B1: `environment|n|môi trường|
+pollution|n|ô nhiễm|
+climate|n|khí hậu|
+waste|n, v|rác thải; lãng phí|
+recycle|v|tái chế|
+protect|v|bảo vệ|
+energy|n|năng lượng|
+rubbish|n|rác (US: trash)|`,
+B2: `sustainable|adj|bền vững|
+emission|n|khí thải|
+renewable energy|n|năng lượng tái tạo|
+fossil fuel|n|nhiên liệu hóa thạch|
+conservation|n|sự bảo tồn|
+carbon footprint|n|dấu chân carbon|
+global warming|n|nóng lên toàn cầu|
+single-use plastic|n|nhựa dùng một lần|`
+}},
+{ id: "i-technology", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🤖", color: "#4d5bd6", title: "Technology & the internet", vi: "Công nghệ và Internet", levels: {
+B1: `device|n|thiết bị|
+digital|adj|kỹ thuật số|
+research|n, v|nghiên cứu|
+online|adj, adv|trực tuyến|
+software|n|phần mềm|`,
+B2: `innovation|n|sự đổi mới|
+automation|n|tự động hóa|
+rely on|phr|phụ thuộc vào|
+access|n, v|truy cập; tiếp cận|
+privacy|n|quyền riêng tư|
+screen time|n|thời gian dùng màn hình|
+cyberbullying|n|bắt nạt trên mạng|
+breakthrough|n|bước đột phá|`
+}},
+{ id: "i-health", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🥗", color: "#d9486b", title: "Health & lifestyle", vi: "Sức khỏe và lối sống", levels: {
+B1: `diet|n|chế độ ăn|
+exercise|n, v|tập thể dục|
+habit|n|thói quen|
+stress|n|căng thẳng|
+junk food|n|đồ ăn vặt kém lành mạnh|`,
+B2: `obesity|n|béo phì|
+sedentary|adj|ít vận động|a sedentary lifestyle
+well-being|n|sự khỏe mạnh, hạnh phúc|
+prevention|n|phòng ngừa|
+life expectancy|n|tuổi thọ trung bình|
+mental health|n|sức khỏe tâm thần|
+healthcare system|n|hệ thống y tế|
+awareness|n|nhận thức|`
+}},
+{ id: "i-urban", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🏙️", color: "#6b7a8f", title: "Cities, housing & transport", vi: "Đô thị, nhà ở và giao thông", levels: {
+B1: `traffic|n|giao thông|
+public transport|n|giao thông công cộng|
+population|n|dân số|
+countryside|n|nông thôn|
+crowded|adj|đông đúc|`,
+B2: `urban|adj|thuộc đô thị|
+rural|adj|thuộc nông thôn|
+urbanisation|n|đô thị hóa (US: urbanization)|
+affordable housing|n|nhà ở giá phải chăng|
+congestion|n|tắc nghẽn|
+infrastructure|n|cơ sở hạ tầng|
+commuter|n|người đi làm xa hằng ngày|
+high-rise|adj|cao tầng|`
+}},
+{ id: "i-crime", sec: "ielts", exam: ["IELTS"], icon: "⚖️", color: "#7a4e3a", title: "Crime & law", vi: "Tội phạm và pháp luật", levels: {
+B1: `crime|n|tội phạm|
+law|n|luật|
+police|n|cảnh sát|
+prison|n|nhà tù|
+punish|v|trừng phạt|
+steal|v|ăn trộm|`,
+B2: `offender|n|người phạm tội|
+punishment|n|hình phạt|
+rehabilitation|n|sự cải tạo, phục hồi|
+deter|v|răn đe|
+juvenile crime|n|tội phạm vị thành niên|
+sentence|n, v|bản án; tuyên án|
+community service|n|lao động công ích|`
+}},
+{ id: "i-economy", sec: "ielts", exam: ["IELTS", "TOEIC"], icon: "🌐", color: "#1b7f8c", title: "Globalisation & economy", vi: "Toàn cầu hóa và kinh tế", levels: {
+B1: `economy|n|nền kinh tế|
+trade|n, v|thương mại; buôn bán|
+company|n|công ty|
+international|adj|quốc tế|
+unemployment|n|thất nghiệp|`,
+B2: `globalisation|n|toàn cầu hóa (US: globalization)|
+workforce|n|lực lượng lao động|
+invest|v|đầu tư|
+demand|n|nhu cầu|
+supply|n|nguồn cung|
+policy|n|chính sách|
+poverty|n|nghèo đói|
+inequality|n|bất bình đẳng|
+multinational|adj|đa quốc gia|`
+}},
+{ id: "i-media", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "📰", color: "#c2552e", title: "Media & advertising", vi: "Truyền thông và quảng cáo", levels: {
+B1: `advertisement|n|quảng cáo|
+newspaper|n|báo|
+channel|n|kênh|
+article|n|bài báo|`,
+B2: `mass media|n|truyền thông đại chúng|
+influence|n, v|ảnh hưởng|
+consumer|n|người tiêu dùng|
+biased|adj|thiên vị|
+censorship|n|kiểm duyệt|
+celebrity|n|người nổi tiếng|
+fake news|n|tin giả|`
+}},
+/* ---------- Kỹ năng thi ---------- */
+{ id: "x-families", sec: "skills", exam: ["TOEIC", "IELTS", "VSTEP"], icon: "🌳", color: "#5a8f29", title: "Word families", vi: "Họ từ (dạng từ) hay ra đề", levels: {
+B1: `decide · decision · decisive|v · n · adj|quyết định · sự quyết định · quyết đoán|
+succeed · success · successful · successfully|v · n · adj · adv|thành công (các dạng)|
+employ · employee · employer · employment|v · n · n · n|thuê · nhân viên · chủ · việc làm|
+produce · product · production · productive|v · n · n · adj|sản xuất · sản phẩm · sự sản xuất · năng suất|
+care · careful · carefully · careless|n · adj · adv · adj|chăm sóc · cẩn thận · cẩn thận · bất cẩn|`,
+B2: `economy · economic · economical · economist|n · adj · adj · n|kinh tế · thuộc kinh tế · tiết kiệm · nhà kinh tế|
+compete · competition · competitive · competitor|v · n · adj · n|cạnh tranh (các dạng)|
+diagnose · diagnosis · diagnostic|v · n · adj|chẩn đoán (các dạng)|
+prescribe · prescription|v · n|kê đơn · đơn thuốc|
+effect · effective · effectively · effectiveness|n · adj · adv · n|tác động · hiệu quả (các dạng)|
+analyse · analysis · analytical · analyst|v · n · adj · n|phân tích (các dạng)|`
+}},
+{ id: "x-collocations", sec: "skills", exam: ["IELTS", "TOEIC", "VSTEP"], icon: "🧷", color: "#b24a8c", title: "Exam collocations", vi: "Kết hợp từ hay dùng khi thi", levels: {
+A2: `make a mistake|phr|mắc lỗi|
+do homework|phr|làm bài tập về nhà|
+take a break|phr|nghỉ giải lao|
+catch a cold|phr|bị cảm lạnh|
+have a temperature|phr|bị sốt|`,
+B1: `make a decision|phr|đưa ra quyết định|
+pay attention to|phr|chú ý tới|
+meet a deadline|phr|kịp hạn chót|
+attend a meeting|phr|tham dự cuộc họp|
+heavy traffic|phr|giao thông đông đúc|
+take medication|phr|dùng thuốc|
+suffer from|phr|mắc, chịu đựng (bệnh)|He suffers from asthma.
+depend on|phr|phụ thuộc vào|
+be responsible for|phr|chịu trách nhiệm về|`,
+B2: `have an effect on|phr|có tác động tới|
+play a role in|phr|đóng vai trò trong|
+raise awareness of|phr|nâng cao nhận thức về|
+lead to|phr|dẫn đến|
+result in|phr|gây ra, dẫn tới|
+due to|phr|do, vì|
+in terms of|phr|xét về mặt|
+reduce emissions|phr|giảm khí thải|
+commit a crime|phr|phạm tội|`
+}}
+];
+/* Nền tảng lên đầu để lượt học từ mới mỗi ngày ưu tiên từ lõi A1–B2; chủ đề luyện thi xếp sau. */
+LIB_GEN.unshift(...LIB_EXAM_CORE);
+LIB_GEN.push(...LIB_EXAM);
+
+/* ============================================================
    THƯ VIỆN TỪ VỰNG · Tiếng Anh y khoa cơ bản
    Lộ trình: Giải phẫu → Sinh lý → Bệnh học → Lâm sàng
    T1 = nền tảng, T2 = mở rộng.
@@ -2243,6 +3171,368 @@ side effect|n|tác dụng phụ|`
 ];
 
 /* ============================================================
+   v4.1 · KHO TỪ PHÁT ÂM · THƯ VIỆN NGỮ PHÁP · CÂU NÓI ĐỘNG LỰC
+   IPA theo quy ước Cambridge Dictionary. Mỗi dòng: từ | IPA UK | IPA US | ghi chú
+   ============================================================ */
+const PRON_BANK = [
+{ id: "silent", icon: "🤫", color: "#7a63d6", title: "Chữ câm", vi: "Có chữ viết nhưng không đọc", tip: "Đọc theo âm, không đọc theo chữ. Nghe mẫu trước, rồi mới nhìn chữ.", items: `Wednesday|/ˈwenz.deɪ/|/ˈwenz.deɪ/|chữ d đầu không đọc, chỉ 2 âm tiết
+island|/ˈaɪ.lənd/|/ˈaɪ.lənd/|s câm
+receipt|/rɪˈsiːt/|/rɪˈsiːt/|p câm
+debt|/det/|/det/|b câm
+doubt|/daʊt/|/daʊt/|b câm
+subtle|/ˈsʌt.əl/|/ˈsʌt̬.əl/|b câm
+psychology|/saɪˈkɒl.ə.dʒi/|/saɪˈkɑː.lə.dʒi/|p câm
+knee|/niː/|/niː/|k câm
+knife|/naɪf/|/naɪf/|k câm
+honest|/ˈɒn.ɪst/|/ˈɑː.nɪst/|h câm
+hour|/aʊər/|/aʊr/|h câm
+climb|/klaɪm/|/klaɪm/|b câm
+answer|/ˈɑːn.sər/|/ˈæn.sɚ/|w câm
+listen|/ˈlɪs.ən/|/ˈlɪs.ən/|t câm
+castle|/ˈkɑː.səl/|/ˈkæs.əl/|t câm
+muscle|/ˈmʌs.əl/|/ˈmʌs.əl/|c câm
+calm|/kɑːm/|/kɑːm/|l câm
+half|/hɑːf/|/hæf/|l câm
+salmon|/ˈsæm.ən/|/ˈsæm.ən/|l câm
+foreign|/ˈfɒr.ən/|/ˈfɔːr.ən/|g câm` },
+{ id: "syllables", icon: "✂️", color: "#d0691f", title: "Âm tiết bị nuốt", vi: "Viết nhiều âm tiết, đọc ít hơn", tip: "Người bản xứ thường bỏ một nguyên âm yếu ở giữa từ. Đọc đủ từng chữ nghe rất cứng.", items: `comfortable|/ˈkʌmf.tə.bəl/|/ˈkʌmf.tɚ.bəl/|3 âm tiết, nhấn âm đầu
+vegetable|/ˈvedʒ.tə.bəl/|/ˈvedʒ.tə.bəl/|3 âm tiết
+chocolate|/ˈtʃɒk.lət/|/ˈtʃɑːk.lət/|2 âm tiết
+different|/ˈdɪf.ər.ənt/|/ˈdɪf.ɚ.ənt/|khi nói nhanh thường thành /ˈdɪf.rənt/
+interesting|/ˈɪn.trə.stɪŋ/|/ˈɪn.trɪ.stɪŋ/|3 âm tiết, nhấn âm đầu
+temperature|/ˈtem.prə.tʃər/|/ˈtem.pɚ.ə.tʃɚ/|
+every|/ˈev.ri/|/ˈev.ri/|2 âm tiết
+restaurant|/ˈres.trɒnt/|/ˈres.tə.rɑːnt/|
+business|/ˈbɪz.nɪs/|/ˈbɪz.nɪs/|2 âm tiết, u đọc /ɪ/
+family|/ˈfæm.əl.i/|/ˈfæm.əl.i/|thường nghe gần như 2 âm tiết` },
+{ id: "spelling", icon: "🔤", color: "#2f7fd8", title: "Chính tả đánh lừa", vi: "Chữ viết và âm đọc khác xa nhau", tip: "Nhóm -ough có nhiều cách đọc. Học từng từ, đừng đoán theo chữ.", items: `colonel|/ˈkɜː.nəl/|/ˈkɝː.nəl/|đọc giống kernel
+choir|/kwaɪər/|/kwaɪr/|ch đọc /kw/
+queue|/kjuː/|/kjuː/|5 chữ, 2 âm
+recipe|/ˈres.ɪ.pi/|/ˈres.ə.pi/|3 âm tiết, e cuối đọc /i/
+women|/ˈwɪm.ɪn/|/ˈwɪm.ɪn/|o đọc /ɪ/
+busy|/ˈbɪz.i/|/ˈbɪz.i/|u đọc /ɪ/
+thorough|/ˈθʌr.ə/|/ˈθɝː.oʊ/|khác through
+through|/θruː/|/θruː/|
+though|/ðəʊ/|/ðoʊ/|
+tough|/tʌf/|/tʌf/|
+cough|/kɒf/|/kɑːf/|gh đọc /f/
+clothes|/kləʊðz/|/kloʊðz/|cụm cuối /ðz/` },
+{ id: "stress", icon: "🎯", color: "#c0392b", title: "Trọng âm dễ sai", vi: "Danh từ và động từ đổi trọng âm, họ từ dời trọng âm", tip: "Với nhiều cặp hai âm tiết: danh từ nhấn âm 1, động từ nhấn âm 2. Âm tiết không nhấn thường đọc nhẹ thành /ə/.", items: `record (n)|/ˈrek.ɔːd/|/ˈrek.ɚd/|danh từ: nhấn âm 1
+record (v)|/rɪˈkɔːd/|/rɪˈkɔːrd/|động từ: nhấn âm 2
+present (n)|/ˈprez.ənt/|/ˈprez.ənt/|món quà; hiện tại
+present (v)|/prɪˈzent/|/prɪˈzent/|trình bày
+increase (n)|/ˈɪn.kriːs/|/ˈɪn.kriːs/|
+increase (v)|/ɪnˈkriːs/|/ɪnˈkriːs/|
+object (n)|/ˈɒb.dʒɪkt/|/ˈɑːb.dʒekt/|
+object (v)|/əbˈdʒekt/|/əbˈdʒekt/|phản đối
+photograph|/ˈfəʊ.tə.ɡrɑːf/|/ˈfoʊ.t̬ə.ɡræf/|nhấn âm 1
+photography|/fəˈtɒɡ.rə.fi/|/fəˈtɑː.ɡrə.fi/|nhấn dời sang âm 2
+economy|/ɪˈkɒn.ə.mi/|/iˈkɑː.nə.mi/|nhấn âm 2
+economic|/ˌiː.kəˈnɒm.ɪk/|/ˌiː.kəˈnɑː.mɪk/|nhấn âm 3
+hotel|/həʊˈtel/|/hoʊˈtel/|nhấn âm 2
+develop|/dɪˈvel.əp/|/dɪˈvel.əp/|nhấn âm 2
+determine|/dɪˈtɜː.mɪn/|/dɪˈtɝː.mɪn/|đuôi không đọc “mai”
+career|/kəˈrɪər/|/kəˈrɪr/|nhấn âm 2
+advertisement|/ədˈvɜː.tɪs.mənt/|/ˌæd.vɚˈtaɪz.mənt/|Anh-Anh và Anh-Mỹ nhấn khác nhau` },
+{ id: "ed", icon: "⏮️", color: "#12908e", title: "Đuôi -ed", vi: "/t/, /d/ hay /ɪd/", tip: "Sau âm vô thanh (p, k, s, sh, ch, f): /t/. Sau âm hữu thanh và nguyên âm: /d/. Sau t, d: /ɪd/ và thêm một âm tiết.", items: `asked|/ɑːskt/|/æskt/|/t/, cụm 3 phụ âm cuối
+helped|/helpt/|/helpt/|/t/
+washed|/wɒʃt/|/wɑːʃt/|/t/
+watched|/wɒtʃt/|/wɑːtʃt/|/t/
+laughed|/lɑːft/|/læft/|/t/
+played|/pleɪd/|/pleɪd/|/d/
+called|/kɔːld/|/kɑːld/|/d/
+lived|/lɪvd/|/lɪvd/|/d/
+opened|/ˈəʊ.pənd/|/ˈoʊ.pənd/|/d/
+cleaned|/kliːnd/|/kliːnd/|/d/
+wanted|/ˈwɒn.tɪd/|/ˈwɑːn.t̬ɪd/|/ɪd/
+needed|/ˈniː.dɪd/|/ˈniː.dɪd/|/ɪd/
+started|/ˈstɑː.tɪd/|/ˈstɑːr.t̬ɪd/|/ɪd/
+visited|/ˈvɪz.ɪ.tɪd/|/ˈvɪz.ɪ.t̬ɪd/|/ɪd/
+decided|/dɪˈsaɪ.dɪd/|/dɪˈsaɪ.dɪd/|/ɪd/` },
+{ id: "s", icon: "➕", color: "#2e9d57", title: "Đuôi -s, -es", vi: "/s/, /z/ hay /ɪz/", tip: "Sau âm vô thanh: /s/. Sau âm hữu thanh và nguyên âm: /z/. Sau s, z, sh, ch, j: /ɪz/ và thêm một âm tiết. Đừng bỏ âm này, nó mang nghĩa số nhiều hoặc ngôi thứ ba.", items: `books|/bʊks/|/bʊks/|/s/
+cups|/kʌps/|/kʌps/|/s/
+months|/mʌnθs/|/mʌnθs/|/s/, cụm /nθs/ khó
+dogs|/dɒɡz/|/dɑːɡz/|/z/
+calls|/kɔːlz/|/kɑːlz/|/z/
+pens|/penz/|/penz/|/z/
+buses|/ˈbʌs.ɪz/|/ˈbʌs.ɪz/|/ɪz/
+watches|/ˈwɒtʃ.ɪz/|/ˈwɑː.tʃɪz/|/ɪz/
+pages|/ˈpeɪ.dʒɪz/|/ˈpeɪ.dʒɪz/|/ɪz/
+boxes|/ˈbɒk.sɪz/|/ˈbɑːk.sɪz/|/ɪz/` },
+{ id: "th", icon: "👅", color: "#e0622f", title: "Âm /θ/ và /ð/", vi: "Đầu lưỡi đặt giữa hai hàm răng", tip: "/θ/ thổi hơi, không rung (think). /ð/ rung dây thanh (this). Đừng thay bằng /t/, /d/ hay /s/, /z/.", items: `think|/θɪŋk/|/θɪŋk/|/θ/
+thank|/θæŋk/|/θæŋk/|/θ/
+three|/θriː/|/θriː/|cụm /θr/
+month|/mʌnθ/|/mʌnθ/|/θ/ cuối
+health|/helθ/|/helθ/|/lθ/ cuối
+both|/bəʊθ/|/boʊθ/|
+mouth|/maʊθ/|/maʊθ/|
+throat|/θrəʊt/|/θroʊt/|
+birth|/bɜːθ/|/bɝːθ/|
+this|/ðɪs/|/ðɪs/|/ð/
+mother|/ˈmʌð.ər/|/ˈmʌð.ɚ/|/ð/
+weather|/ˈweð.ər/|/ˈweð.ɚ/|/ð/
+breath (n)|/breθ/|/breθ/|danh từ: /θ/
+breathe (v)|/briːð/|/briːð/|động từ: /ð/, nguyên âm dài` },
+{ id: "clusters", icon: "🧱", color: "#8a5a2b", title: "Cụm phụ âm cuối", vi: "Đọc đủ các phụ âm ở cuối từ", tip: "Tiếng Việt không có cụm phụ âm cuối nên ta hay bỏ bớt. Tập chậm từng âm rồi nói nhanh dần.", items: `texts|/teksts/|/teksts/|/ksts/
+sixth|/sɪksθ/|/sɪksθ/|/ksθ/
+world|/wɜːld/|/wɝːld/|/ld/
+strengths|/streŋθs/|/streŋθs/|/ŋθs/
+asked|/ɑːskt/|/æskt/|/skt/
+helped|/helpt/|/helpt/|/lpt/
+clothes|/kləʊðz/|/kloʊðz/|/ðz/
+tests|/tests/|/tests/|/sts/` },
+{ id: "medical", icon: "🩺", color: "#0a8f78", title: "Thuật ngữ y khoa hay đọc sai", vi: "Từ y khoa dễ phát âm nhầm", tip: "Nhiều từ có chữ câm (p, h) hoặc chính tả Anh-Anh (oe, ae). Anh-Mỹ viết khác: esophagus, hemorrhage, anemia.", items: `diabetes|/ˌdaɪ.əˈbiː.tiːz/|/ˌdaɪ.əˈbiː.t̬iːz/|nhấn “-be-”
+oesophagus|/ɪˈsɒf.ə.ɡəs/|/ɪˈsɑː.fə.ɡəs/|US: esophagus
+haemorrhage|/ˈhem.ər.ɪdʒ/|/ˈhem.ɚ.ɪdʒ/|US: hemorrhage
+pneumonia|/njuːˈməʊ.ni.ə/|/nuːˈmoʊ.njə/|p câm
+psychiatry|/saɪˈkaɪə.tri/|/saɪˈkaɪə.tri/|p câm
+sciatica|/saɪˈæt.ɪ.kə/|/saɪˈæt̬.ɪ.kə/|sc đọc /s/
+dyspnoea|/dɪspˈniː.ə/|/ˈdɪsp.niː.ə/|US: dyspnea, nhấn khác
+diarrhoea|/ˌdaɪ.əˈriː.ə/|/ˌdaɪ.əˈriː.ə/|US: diarrhea
+anaemia|/əˈniː.mi.ə/|/əˈniː.mi.ə/|US: anemia
+paracetamol|/ˌpær.əˈsiː.tə.mɒl/|/ˌper.əˈsiː.t̬ə.mɑːl/|Mỹ thường nói acetaminophen
+asthma|/ˈæs.mə/|/ˈæz.mə/|th câm
+stomach|/ˈstʌm.ək/|/ˈstʌm.ək/|ch đọc /k/
+ache|/eɪk/|/eɪk/|ch đọc /k/
+nausea|/ˈnɔː.zi.ə/|/ˈnɑː.zi.ə/|
+hypertension|/ˌhaɪ.pəˈten.ʃən/|/ˌhaɪ.pɚˈten.ʃən/|
+arthritis|/ɑːˈθraɪ.tɪs/|/ɑːrˈθraɪ.t̬əs/|cụm /θr/
+ibuprofen|/ˌaɪ.bjuːˈprəʊ.fən/|/ˌaɪ.bjuːˈproʊ.fən/|
+tonsillitis|/ˌtɒn.səlˈaɪ.tɪs/|/ˌtɑːn.səlˈaɪ.t̬əs/|
+eczema|/ˈek.sɪ.mə/|/ɪɡˈziː.mə/|Anh-Anh và Anh-Mỹ khác nhau
+migraine|/ˈmiː.ɡreɪn/|/ˈmaɪ.ɡreɪn/|Anh-Anh và Anh-Mỹ khác nhau
+urine|/ˈjʊə.rɪn/|/ˈjʊr.ɪn/|
+bruise|/bruːz/|/bruːz/|
+wound|/wuːnd/|/wuːnd/|vết thương (khác wound /waʊnd/ là quá khứ của wind)
+thyroid|/ˈθaɪ.rɔɪd/|/ˈθaɪ.rɔɪd/|/θ/
+oedema|/ɪˈdiː.mə/|/ɪˈdiː.mə/|US: edema` }
+];
+
+/* ============================================================
+   THƯ VIỆN NGỮ PHÁP (A1 → B2)
+   quiz: [câu hỏi, [lựa chọn], chỉ số đúng, giải thích]
+   ============================================================ */
+const GRAMMAR = [
+{ id: "be", lvl: "A1", title: "The verb be", vi: "Động từ to be", exams: ["CEFR", "VSTEP"],
+  form: "I am · you/we/they are · he/she/it is. Phủ định: is not (isn't). Câu hỏi: Is she …?",
+  use: "Nói tên, nghề, tuổi, quê, tính chất, trạng thái. Câu tiếng Anh luôn cần động từ, nên trước tính từ và danh từ phải có be.",
+  ex: [["She is a nurse.", "Cô ấy là y tá."], ["I'm tired.", "Tôi mệt."], ["Are you from Hue?", "Bạn là người Huế à?"]],
+  err: [["She very tired.", "She is very tired.", "Thiếu be trước tính từ."], ["I am agree.", "I agree.", "agree đã là động từ, không thêm be."]],
+  quiz: [["My brother ___ a doctor.", ["am", "is", "are"], 1, "He, she, it và danh từ số ít đi với is."], ["They ___ very busy today.", ["is", "are", "be"], 1, "They đi với are."]] },
+{ id: "present-simple", lvl: "A1", title: "Present simple", vi: "Thì hiện tại đơn", exams: ["CEFR", "VSTEP", "TOEIC"],
+  form: "I/you/we/they + V · he/she/it + V-s/-es. Phủ định: don't/doesn't + V. Câu hỏi: Do/Does + S + V?",
+  use: "Thói quen, sự thật, lịch trình. Hay đi với always, usually, often, every day.",
+  ex: [["He works at a clinic.", "Anh ấy làm việc ở phòng khám."], ["Does she smoke?", "Cô ấy có hút thuốc không?"], ["The train leaves at 7.", "Tàu chạy lúc 7 giờ."]],
+  err: [["He work every day.", "He works every day.", "Ngôi thứ ba số ít cần -s."], ["Does she smokes?", "Does she smoke?", "Sau does dùng động từ nguyên mẫu."]],
+  quiz: [["The patient ___ two tablets a day.", ["take", "takes", "taking"], 1, "The patient = he/she nên dùng takes."], ["___ your father work at weekends?", ["Do", "Does", "Is"], 1, "Your father là ngôi thứ ba số ít: Does."]] },
+{ id: "plurals", lvl: "A1", title: "Plurals & countable nouns", vi: "Số nhiều, danh từ đếm được và không đếm được", exams: ["CEFR", "TOEIC", "IELTS"],
+  form: "Đếm được: a book, two books. Không đếm được: water, advice, information, equipment, furniture (không có -s, không dùng a). Lượng từ: many/a few + đếm được; much/a little + không đếm được.",
+  use: "Tiếng Việt không đánh dấu số nhiều, nên hay quên -s. Một số danh từ tiếng Việt đếm được nhưng tiếng Anh thì không.",
+  ex: [["three patients", "ba bệnh nhân"], ["some advice", "vài lời khuyên"], ["How much water do you drink?", "Bạn uống bao nhiêu nước?"]],
+  err: [["three patient", "three patients", "Số nhiều cần -s."], ["advices, informations", "advice, information", "Danh từ không đếm được không thêm -s."]],
+  quiz: [["Can you give me some ___?", ["advice", "advices", "an advice"], 0, "advice không đếm được."], ["There are five ___ in the waiting room.", ["person", "people", "peoples"], 1, "Số nhiều của person là people."]] },
+{ id: "articles", lvl: "A1", title: "Articles a, an, the", vi: "Mạo từ", exams: ["CEFR", "IELTS", "TOEIC", "VSTEP"],
+  form: "a/an + danh từ đếm được số ít (lần đầu nhắc, chưa xác định). the + thứ đã xác định. Không mạo từ: nói chung với số nhiều hoặc không đếm được.",
+  use: "an trước âm nguyên âm (an hour, an X-ray), a trước âm phụ âm (a university). Nói chung chung: Life is hard, Doctors work long hours.",
+  ex: [["I saw a doctor. The doctor was kind.", "Tôi đi khám một bác sĩ. Vị bác sĩ đó rất tử tế."], ["an hour, a university", "một giờ, một trường đại học"], ["Smoking is bad for health.", "Hút thuốc có hại cho sức khỏe."]],
+  err: [["I saw doctor.", "I saw a doctor.", "Danh từ đếm được số ít cần mạo từ."], ["The life is hard.", "Life is hard.", "Nói chung chung không dùng the."], ["a hour", "an hour", "hour bắt đầu bằng âm nguyên âm."]],
+  quiz: [["She is ___ engineer.", ["a", "an", "the"], 1, "engineer bắt đầu bằng âm nguyên âm."], ["___ exercise is good for you.", ["The", "An", "(không mạo từ)"], 2, "Nói chung chung về tập thể dục: không mạo từ."]] },
+{ id: "there-is", lvl: "A1", title: "There is / there are", vi: "Có (tồn tại)", exams: ["CEFR", "VSTEP"],
+  form: "There is + số ít / không đếm được. There are + số nhiều. Is there …? Are there any …?",
+  use: "Nói một thứ tồn tại ở đâu đó. Không dịch “có” thành have.",
+  ex: [["There is a pharmacy near here.", "Gần đây có một hiệu thuốc."], ["There are two lifts.", "Có hai thang máy."]],
+  err: [["Have a pharmacy near here?", "Is there a pharmacy near here?", "Dịch từng chữ từ “có”."], ["There is many people.", "There are many people.", "Số nhiều dùng are."]],
+  quiz: [["___ any toilets on this floor?", ["Is there", "Are there", "Have"], 1, "toilets số nhiều: Are there."]] },
+{ id: "questions", lvl: "A1", title: "Question word order", vi: "Trật tự từ trong câu hỏi", exams: ["CEFR", "VSTEP", "IELTS"],
+  form: "(Từ để hỏi) + trợ động từ + chủ ngữ + động từ chính. Where do you live? What does it feel like? When did it start?",
+  use: "Tiếng Việt giữ nguyên trật tự câu và thêm từ hỏi. Tiếng Anh phải đảo trợ động từ lên trước chủ ngữ.",
+  ex: [["Where does it hurt?", "Đau ở đâu?"], ["How long have you had it?", "Bạn bị bao lâu rồi?"]],
+  err: [["Where you feel the pain?", "Where do you feel the pain?", "Thiếu trợ động từ do."], ["When it started?", "When did it start?", "Quá khứ: did + động từ nguyên mẫu."]],
+  quiz: [["Chọn câu đúng", ["What you are doing?", "What are you doing?", "What doing you?"], 1, "Đảo are lên trước you."], ["Chọn câu đúng", ["How often you exercise?", "How often do you exercise?", "How often exercise you?"], 1, "Cần trợ động từ do."]] },
+{ id: "prepositions", lvl: "A1", title: "Prepositions of time & place", vi: "Giới từ chỉ thời gian và nơi chốn", exams: ["CEFR", "TOEIC", "VSTEP"],
+  form: "at + giờ (at 7 pm), on + ngày (on Monday), in + tháng, năm, buổi (in May, in the morning). at + điểm (at the hospital), in + trong không gian (in the room), on + bề mặt, tầng (on the second floor).",
+  use: "Giới từ hay đi kèm cố định: interested in, depend on, married to, good at, allergic to.",
+  ex: [["The appointment is at 9 on Monday.", "Lịch hẹn lúc 9 giờ thứ Hai."], ["She's allergic to penicillin.", "Cô ấy dị ứng penicillin."]],
+  err: [["in Monday", "on Monday", "Ngày trong tuần dùng on."], ["discuss about the plan", "discuss the plan", "discuss không cần about."], ["married with", "married to", "Cụm cố định."]],
+  quiz: [["I was born ___ 2003.", ["on", "in", "at"], 1, "Năm dùng in."], ["The X-ray department is ___ the second floor.", ["in", "at", "on"], 2, "Tầng dùng on."]] },
+{ id: "past-simple", lvl: "A2", title: "Past simple", vi: "Thì quá khứ đơn", exams: ["CEFR", "VSTEP", "TOEIC", "IELTS"],
+  form: "V-ed hoặc động từ bất quy tắc (go → went). Phủ định: didn't + V. Câu hỏi: Did + S + V?",
+  use: "Việc đã xong trong quá khứ, thường có thời gian cụ thể: yesterday, last week, two days ago. Có từ chỉ thời gian vẫn phải chia động từ.",
+  ex: [["I went to the pharmacy yesterday.", "Hôm qua tôi đi hiệu thuốc."], ["Did you take the tablets?", "Bạn đã uống thuốc chưa?"]],
+  err: [["Yesterday I go to work.", "Yesterday I went to work.", "Có yesterday vẫn phải chia quá khứ."], ["Did you went?", "Did you go?", "Sau did dùng nguyên mẫu."]],
+  quiz: [["The pain ___ two days ago.", ["start", "started", "has started"], 1, "Mốc two days ago: quá khứ đơn."], ["I ___ breakfast this morning.", ["don't have", "didn't have", "didn't had"], 1, "didn't + nguyên mẫu."]] },
+{ id: "future", lvl: "A2", title: "Will, going to, present continuous", vi: "Các cách nói về tương lai", exams: ["CEFR", "VSTEP", "TOEIC"],
+  form: "will + V (quyết định lúc nói, dự đoán, lời hứa). be going to + V (dự định đã có, dự đoán có dấu hiệu). Hiện tại tiếp diễn (lịch hẹn đã sắp xếp).",
+  use: "I'll call you back (vừa quyết định). I'm going to study medicine (dự định). I'm seeing the doctor at 3 (đã hẹn).",
+  ex: [["I'll open the window.", "Để tôi mở cửa sổ."], ["We're meeting the client tomorrow.", "Mai chúng tôi gặp khách hàng."]],
+  err: [["I will to go.", "I will go.", "Sau will không có to."], ["Tomorrow I go to Hanoi.", "Tomorrow I'm going to Hanoi.", "Kế hoạch tương lai cần dạng tương lai."]],
+  quiz: [["Look at those clouds. It ___ rain.", ["is going to", "will to", "rains"], 0, "Có dấu hiệu hiện tại: going to."]] },
+{ id: "comparatives", lvl: "A2", title: "Comparatives & superlatives", vi: "So sánh hơn và so sánh nhất", exams: ["CEFR", "TOEIC", "IELTS"],
+  form: "Tính từ ngắn: -er than, the -est. Tính từ dài: more … than, the most. Bất quy tắc: good → better → best, bad → worse → worst.",
+  use: "So sánh hai hay nhiều đối tượng. Trong IELTS Writing Task 1 dùng rất nhiều.",
+  ex: [["The pain is worse at night.", "Cơn đau nặng hơn về đêm."], ["This is the most effective treatment.", "Đây là cách điều trị hiệu quả nhất."]],
+  err: [["more better", "better", "Không dùng more với dạng -er."], ["more cheap than", "cheaper than", "Tính từ ngắn dùng -er."]],
+  quiz: [["Today I feel ___ than yesterday.", ["good", "better", "more good"], 1, "good → better."]] },
+{ id: "present-perfect", lvl: "A2", title: "Present perfect", vi: "Thì hiện tại hoàn thành", exams: ["CEFR", "VSTEP", "TOEIC", "IELTS"],
+  form: "have/has + V3 (quá khứ phân từ). Hay đi với ever, never, just, already, yet, for, since.",
+  use: "Trải nghiệm đến giờ, việc vừa xảy ra, việc kéo dài từ quá khứ tới hiện tại. How long have you had the cough?",
+  ex: [["I've had this cough for two weeks.", "Tôi bị ho hai tuần rồi."], ["Have you ever had surgery?", "Bạn đã từng phẫu thuật chưa?"]],
+  err: [["I live here since 2020.", "I have lived here since 2020.", "Kéo dài đến nay dùng hiện tại hoàn thành."], ["I have seen him yesterday.", "I saw him yesterday.", "Có mốc quá khứ cụ thể thì dùng quá khứ đơn."]],
+  quiz: [["She ___ in this hospital since 2019.", ["works", "has worked", "worked"], 1, "since + mốc, kéo dài đến nay."], ["I ___ my keys. I can't find them.", ["lost", "have lost", "am losing"], 1, "Kết quả ở hiện tại: have lost."]] },
+{ id: "modals", lvl: "A2", title: "Should, must, have to", vi: "Động từ khuyết thiếu chỉ lời khuyên, bắt buộc", exams: ["CEFR", "VSTEP", "TOEIC"],
+  form: "should/must/can/might + V nguyên mẫu (không to, không -s). have to + V (có chia: she has to).",
+  use: "should: lời khuyên. must: bắt buộc từ người nói. have to: bắt buộc từ quy định. mustn't: cấm. don't have to: không cần.",
+  ex: [["You should rest for a few days.", "Bạn nên nghỉ ngơi vài ngày."], ["You mustn't drive after this medicine.", "Không được lái xe sau khi dùng thuốc này."]],
+  err: [["You must to take it.", "You must take it.", "Không có to sau must."], ["She cans come.", "She can come.", "Động từ khuyết thiếu không thêm -s."]],
+  quiz: [["You ___ drink alcohol with this medicine. It's dangerous.", ["mustn't", "don't have to", "should"], 0, "Cấm vì nguy hiểm: mustn't."], ["It's free. You ___ pay.", ["mustn't", "don't have to", "can't"], 1, "Không cần: don't have to."]] },
+{ id: "first-conditional", lvl: "A2", title: "First conditional", vi: "Câu điều kiện loại 1", exams: ["CEFR", "VSTEP", "IELTS"],
+  form: "If + hiện tại đơn, will + V. Mệnh đề if không dùng will.",
+  use: "Điều có thể xảy ra trong hiện tại hoặc tương lai, dùng nhiều khi dặn dò bệnh nhân.",
+  ex: [["If the pain gets worse, come back straight away.", "Nếu đau nặng hơn, hãy quay lại ngay."], ["If you take it with food, it will upset your stomach less.", "Nếu uống cùng thức ăn, thuốc sẽ ít làm khó chịu dạ dày hơn."]],
+  err: [["If you will take it…", "If you take it…", "Không dùng will sau if."]],
+  quiz: [["If it ___ tomorrow, we will stay at home.", ["will rain", "rains", "rained"], 1, "Mệnh đề if dùng hiện tại đơn."]] },
+{ id: "gerund-infinitive", lvl: "B1", title: "Gerund or infinitive", vi: "V-ing hay to V", exams: ["TOEIC", "IELTS", "VSTEP"],
+  form: "Sau enjoy, avoid, finish, stop, suggest, mind, keep: V-ing. Sau want, decide, plan, hope, agree, refuse, need: to V. Sau giới từ: luôn V-ing.",
+  use: "Nhóm này rất hay xuất hiện trong TOEIC Part 5.",
+  ex: [["Avoid lifting heavy things.", "Tránh nâng vật nặng."], ["I decided to study medicine.", "Tôi quyết định học y."], ["She's interested in learning English.", "Cô ấy thích học tiếng Anh."]],
+  err: [["avoid to lift", "avoid lifting", "avoid + V-ing."], ["I'm interested in learn.", "I'm interested in learning.", "Sau giới từ dùng V-ing."]],
+  quiz: [["You should stop ___.", ["smoke", "to smoke", "smoking"], 2, "stop + V-ing = bỏ thói quen."], ["We plan ___ a new clinic.", ["opening", "to open", "open"], 1, "plan + to V."]] },
+{ id: "pp-vs-past", lvl: "B1", title: "Present perfect vs past simple, for / since", vi: "Hiện tại hoàn thành hay quá khứ đơn", exams: ["IELTS", "VSTEP", "TOEIC"],
+  form: "Quá khứ đơn: thời điểm đã kết thúc (yesterday, in 2020, ago). Hiện tại hoàn thành: đến nay, không nói rõ lúc nào. for + khoảng thời gian; since + mốc.",
+  use: "Trong hỏi bệnh: When did it start? (quá khứ đơn) và How long have you had it? (hiện tại hoàn thành).",
+  ex: [["It started three days ago.", "Nó bắt đầu cách đây ba ngày."], ["I've had it for three days / since Monday.", "Tôi bị ba ngày rồi / từ thứ Hai."]],
+  err: [["since three days", "for three days", "Khoảng thời gian dùng for."], ["How long do you have it?", "How long have you had it?", "“Bao lâu rồi” dùng hiện tại hoàn thành."]],
+  quiz: [["I ___ him since we were students.", ["knew", "have known", "know"], 1, "since + mốc, kéo dài đến nay."], ["She ___ to Japan in 2022.", ["has gone", "went", "goes"], 1, "Năm cụ thể: quá khứ đơn."]] },
+{ id: "passive", lvl: "B1", title: "The passive", vi: "Câu bị động", exams: ["TOEIC", "IELTS", "VSTEP"],
+  form: "be (chia theo thì) + V3. The sample was sent. The results will be ready. The room is being cleaned. Người thực hiện (nếu cần): by …",
+  use: "Khi hành động quan trọng hơn người làm: văn phong học thuật, báo cáo, quy trình y khoa.",
+  ex: [["The patient was admitted last night.", "Bệnh nhân được nhập viện tối qua."], ["Blood samples are taken in the morning.", "Mẫu máu được lấy vào buổi sáng."]],
+  err: [["The sample sent to the lab.", "The sample was sent to the lab.", "Bị động cần be."], ["The meeting was cancel.", "The meeting was cancelled.", "Sau be dùng V3."]],
+  quiz: [["The new hospital ___ in 2025.", ["built", "was built", "is building"], 1, "Bệnh viện được xây: bị động quá khứ."], ["All applications must ___ by Friday.", ["submit", "be submitted", "submitted"], 1, "must + be + V3."]] },
+{ id: "relative", lvl: "B1", title: "Relative clauses", vi: "Mệnh đề quan hệ", exams: ["IELTS", "TOEIC", "VSTEP"],
+  form: "who (người), which (vật), that (người/vật, chỉ trong mệnh đề xác định), whose (của ai), where (nơi). Mệnh đề không xác định có dấu phẩy và không dùng that.",
+  use: "Nối hai câu, mô tả chính xác người hoặc vật. Giúp câu văn IELTS phức tạp hơn.",
+  ex: [["The doctor who saw me was very kind.", "Vị bác sĩ khám cho tôi rất tử tế."], ["My sister, who lives in Hue, is a nurse.", "Chị tôi, người sống ở Huế, là y tá."]],
+  err: [["The drug that you take it…", "The drug that you take…", "Không lặp lại đại từ it."], ["My mother, that is a teacher…", "My mother, who is a teacher…", "Mệnh đề có dấu phẩy không dùng that."]],
+  quiz: [["The man ___ car was stolen called the police.", ["who", "whose", "which"], 1, "Sở hữu: whose."], ["This is the clinic ___ I work.", ["where", "which", "who"], 0, "Nơi chốn: where."]] },
+{ id: "sva", lvl: "B1", title: "Subject–verb agreement", vi: "Hòa hợp chủ ngữ và động từ", exams: ["TOEIC", "IELTS"],
+  form: "Chủ ngữ số ít + động từ số ít. Everyone, each, the number of + số ít. A number of + số nhiều. Chủ ngữ dài: tìm danh từ chính.",
+  use: "Lỗi rất hay bị bắt trong TOEIC Part 5 và bị trừ điểm IELTS Writing.",
+  ex: [["The number of patients is increasing.", "Số bệnh nhân đang tăng."], ["The results of the test show …", "Kết quả xét nghiệm cho thấy …"]],
+  err: [["The number of patients are rising.", "The number of patients is rising.", "Danh từ chính là number."], ["Everyone have a role.", "Everyone has a role.", "Everyone là số ít."]],
+  quiz: [["Each of the rooms ___ a window.", ["have", "has", "having"], 1, "Each of … dùng số ít."], ["The list of names ___ on the desk.", ["is", "are", "be"], 0, "Danh từ chính là list."]] },
+{ id: "reported", lvl: "B1", title: "Reported speech", vi: "Câu tường thuật", exams: ["VSTEP", "IELTS"],
+  form: "Lùi thì: am → was, will → would, did → had done. say (that) …; tell + người + (that) …; ask + if/whether hoặc từ để hỏi + S + V.",
+  use: "Thuật lại lời bệnh nhân, đồng nghiệp: She said she had a headache.",
+  ex: [["She said (that) she felt dizzy.", "Cô ấy nói cô ấy thấy chóng mặt."], ["He asked where the pharmacy was.", "Anh ấy hỏi hiệu thuốc ở đâu."]],
+  err: [["She said me …", "She told me … / She said to me …", "say không đi trực tiếp với người."], ["He asked where was the pharmacy.", "He asked where the pharmacy was.", "Câu hỏi gián tiếp không đảo ngữ."]],
+  quiz: [["He ___ me that he was tired.", ["said", "told", "asked"], 1, "tell + người."]] },
+{ id: "second-conditional", lvl: "B1", title: "Second conditional", vi: "Câu điều kiện loại 2", exams: ["IELTS", "VSTEP"],
+  form: "If + quá khứ đơn, would + V. If I were you, I would … (dùng were cho mọi ngôi, trang trọng).",
+  use: "Giả định không có thật ở hiện tại, lời khuyên lịch sự.",
+  ex: [["If I had more time, I would study more.", "Nếu có nhiều thời gian hơn, tôi sẽ học nhiều hơn."], ["If I were you, I'd see a doctor.", "Nếu là bạn, tôi sẽ đi khám."]],
+  err: [["If I would have time…", "If I had time…", "Không dùng would sau if."]],
+  quiz: [["If she ___ closer, she would walk to work.", ["lives", "lived", "would live"], 1, "Điều kiện loại 2: quá khứ đơn sau if."]] },
+{ id: "word-forms", lvl: "B1", title: "Word forms", vi: "Dạng từ: danh, động, tính, trạng từ", exams: ["TOEIC", "IELTS", "VSTEP"],
+  form: "Vị trí quyết định dạng từ: sau mạo từ và tính từ là danh từ; trước danh từ là tính từ; bổ nghĩa cho động từ là trạng từ (-ly). Hậu tố: -tion, -ment, -ness (danh từ); -ful, -ive, -al (tính từ).",
+  use: "Dạng câu hỏi xuất hiện nhiều nhất trong TOEIC Part 5.",
+  ex: [["a successful launch", "một buổi ra mắt thành công"], ["She works efficiently.", "Cô ấy làm việc hiệu quả."], ["the decision of the committee", "quyết định của hội đồng"]],
+  err: [["a success launch", "a successful launch", "Trước danh từ cần tính từ."], ["He speaks English very good.", "He speaks English very well.", "Bổ nghĩa cho động từ dùng trạng từ."]],
+  quiz: [["The new system is very ___.", ["effect", "effective", "effectively"], 1, "Sau be và very cần tính từ."], ["Please read the instructions ___.", ["careful", "care", "carefully"], 2, "Bổ nghĩa cho read: trạng từ."]] },
+{ id: "third-conditional", lvl: "B2", title: "Third conditional, wish", vi: "Câu điều kiện loại 3 và câu ước", exams: ["IELTS", "VSTEP"],
+  form: "If + had V3, would have V3. I wish + quá khứ đơn (hiện tại), I wish + had V3 (quá khứ).",
+  use: "Giả định trái với quá khứ, hối tiếc.",
+  ex: [["If he had come earlier, we would have treated him sooner.", "Nếu anh ấy đến sớm hơn, chúng tôi đã điều trị sớm hơn."], ["I wish I had studied harder.", "Ước gì tôi đã học chăm hơn."]],
+  err: [["If I would have known…", "If I had known…", "Mệnh đề if dùng had V3."]],
+  quiz: [["If she ___ the bus, she wouldn't have been late.", ["caught", "had caught", "would catch"], 1, "Loại 3: had + V3."]] },
+{ id: "modals-past", lvl: "B2", title: "Modals in the past", vi: "Động từ khuyết thiếu ở quá khứ", exams: ["IELTS"],
+  form: "should have V3 (lẽ ra nên), must have V3 (chắc hẳn đã), might/could have V3 (có thể đã), can't have V3 (không thể nào đã).",
+  use: "Suy đoán hoặc tiếc nuối về quá khứ.",
+  ex: [["You should have come in earlier.", "Lẽ ra bạn nên đến khám sớm hơn."], ["It must have been a virus.", "Chắc hẳn đó là do vi-rút."]],
+  err: [["You should came.", "You should have come.", "should + have + V3."]],
+  quiz: [["The lights are off. They ___ gone home.", ["must have", "should have", "can have"], 0, "Suy đoán chắc chắn: must have."]] },
+{ id: "linking", lvl: "B2", title: "Although, despite, however", vi: "Từ nối chỉ sự tương phản", exams: ["TOEIC", "IELTS", "VSTEP"],
+  form: "although/even though + mệnh đề (S + V). despite/in spite of + danh từ hoặc V-ing. However, … đứng đầu câu mới, sau nó có dấu phẩy.",
+  use: "TOEIC hay hỏi phân biệt although và despite. IELTS thưởng điểm cho câu phức có liên từ đúng.",
+  ex: [["Although it was raining, she walked to work.", "Mặc dù trời mưa, cô ấy vẫn đi bộ đi làm."], ["Despite the rain, she walked to work.", "Bất chấp trời mưa, cô ấy vẫn đi bộ đi làm."]],
+  err: [["Despite it was raining…", "Although it was raining… / Despite the rain…", "despite không đi với mệnh đề."], ["Although …, but …", "Although …, …", "Không dùng although và but cùng lúc."]],
+  quiz: [["___ feeling tired, he finished the report.", ["Although", "Despite", "However"], 1, "Sau chỗ trống là V-ing: despite."], ["The drug works well. ___, it can cause headaches.", ["Although", "Despite", "However"], 2, "Đầu câu mới, có dấu phẩy: However."]] },
+{ id: "indirect-questions", lvl: "B2", title: "Indirect questions", vi: "Câu hỏi gián tiếp (lịch sự)", exams: ["IELTS", "TOEIC"],
+  form: "Could you tell me / Do you know / I was wondering + từ để hỏi (hoặc if/whether) + S + V (không đảo ngữ).",
+  use: "Hỏi lịch sự với khách hàng, bệnh nhân, người lạ.",
+  ex: [["Could you tell me where it hurts?", "Anh/chị chỉ giúp tôi đau ở đâu nhé?"], ["Do you know if the clinic is open?", "Bạn có biết phòng khám mở cửa không?"]],
+  err: [["Could you tell me where does it hurt?", "Could you tell me where it hurts?", "Câu hỏi gián tiếp không dùng trợ động từ đảo."]],
+  quiz: [["Do you know what time ___?", ["does the bank open", "the bank opens", "opens the bank"], 1, "Không đảo ngữ trong câu hỏi gián tiếp."]] }
+];
+
+/* ============================================================
+   CÂU NÓI ĐỘNG LỰC (ngạn ngữ, thành ngữ truyền thống, phạm vi công cộng)
+   [tiếng Anh, ý nghĩa, tương đương tiếng Việt]
+   ============================================================ */
+const PROVERBS = [
+["Practice makes perfect.", "Skill comes from repetition.", "Trăm hay không bằng tay quen."],
+["Rome wasn't built in a day.", "Big things take time.", "Việc lớn cần có thời gian."],
+["Where there's a will, there's a way.", "Determination finds a path.", "Có chí thì nên."],
+["Little strokes fell great oaks.", "Small, repeated efforts win.", "Có công mài sắt, có ngày nên kim."],
+["Slow and steady wins the race.", "Consistency beats speed.", "Chậm mà chắc."],
+["Every cloud has a silver lining.", "Something good hides in bad times.", "Trong cái rủi có cái may."],
+["Actions speak louder than words.", "What you do matters more than what you say.", "Việc làm quan trọng hơn lời nói."],
+["The early bird catches the worm.", "Start early to gain the advantage.", "Trâu chậm uống nước đục."],
+["Better late than never.", "Starting late beats never starting.", "Muộn còn hơn không."],
+["No pain, no gain.", "Effort brings results.", "Muốn ăn thì lăn vào bếp."],
+["Nothing ventured, nothing gained.", "Take chances to succeed.", "Không vào hang hổ, sao bắt được hổ con."],
+["Constant dripping wears away the stone.", "Persistence overcomes difficulty.", "Nước chảy đá mòn."],
+["Little by little, one goes far.", "Tiny steps add up.", "Kiến tha lâu cũng đầy tổ."],
+["Many a little makes a mickle.", "Small amounts become large.", "Tích tiểu thành đại."],
+["Great oaks from little acorns grow.", "Big things start small.", "Cây lớn mọc lên từ hạt nhỏ."],
+["Failure is the mother of success.", "Mistakes teach you.", "Thất bại là mẹ thành công."],
+["If at first you don't succeed, try, try again.", "Keep trying.", "Thất bại thì làm lại, làm mãi sẽ thành."],
+["To err is human.", "Everyone makes mistakes.", "Nhân vô thập toàn."],
+["It's never too late to learn.", "Learning has no age limit.", "Học không bao giờ là muộn."],
+["Live and learn.", "Experience teaches us.", "Sống là học hỏi mỗi ngày."],
+["Knowledge is power.", "Knowing gives you strength.", "Tri thức là sức mạnh."],
+["A journey of a thousand miles begins with a single step.", "Just start.", "Hành trình vạn dặm bắt đầu từ một bước chân."],
+["Don't put off until tomorrow what you can do today.", "Don't procrastinate.", "Việc hôm nay chớ để ngày mai."],
+["Time and tide wait for no man.", "Time won't wait for you.", "Thời gian không chờ đợi ai."],
+["Time is money.", "Time is valuable.", "Thời gian là vàng bạc."],
+["Strike while the iron is hot.", "Act at the right moment.", "Rèn sắt khi còn nóng."],
+["Two heads are better than one.", "Working together helps.", "Một cây làm chẳng nên non, ba cây chụm lại nên hòn núi cao."],
+["Look before you leap.", "Think before you act.", "Cẩn tắc vô áy náy."],
+["Learn to walk before you run.", "Master the basics first.", "Phải biết đi trước khi chạy."],
+["Prevention is better than cure.", "Avoid problems early.", "Phòng bệnh hơn chữa bệnh."],
+["An apple a day keeps the doctor away.", "Healthy habits protect you.", "Mỗi ngày một quả táo, không cần gặp bác sĩ."],
+["Health is better than wealth.", "Health matters most.", "Sức khỏe là vàng."],
+["Laughter is the best medicine.", "Joy heals.", "Một nụ cười bằng mười thang thuốc bổ."],
+["Good medicine tastes bitter.", "Helpful things can be unpleasant.", "Thuốc đắng dã tật."],
+["First, do no harm.", "The first duty of care.", "Trước hết, không gây hại."],
+["Where there's life, there's hope.", "Never give up.", "Còn nước còn tát."],
+["After rain comes sunshine.", "Hard times pass.", "Sau cơn mưa trời lại sáng."],
+["Early to bed and early to rise makes a man healthy, wealthy and wise.", "A good routine pays off.", "Ngủ sớm dậy sớm giúp ta khỏe mạnh, sung túc và sáng suốt."],
+["Honesty is the best policy.", "Always be truthful.", "Thật thà là cha quỷ quái."],
+["When in Rome, do as the Romans do.", "Adapt to local customs.", "Nhập gia tùy tục."],
+["Practise what you preach.", "Do what you advise others to do.", "Nói phải đi đôi với làm."],
+["A friend in need is a friend indeed.", "True friends help in hard times.", "Hoạn nạn mới biết bạn hiền."],
+["Fortune favours the brave.", "Courage brings luck.", "May mắn mỉm cười với người dũng cảm."],
+["The pen is mightier than the sword.", "Ideas are stronger than force.", "Ngòi bút mạnh hơn gươm giáo."],
+["Don't judge a book by its cover.", "Look deeper than appearances.", "Đừng trông mặt mà bắt hình dong."],
+["You never know what you can do till you try.", "Try it and see.", "Chưa thử sao biết mình làm được."],
+["Nothing is impossible to a willing heart.", "A strong will overcomes all.", "Không có việc gì khó, chỉ sợ lòng không bền."],
+["Hard work pays off.", "Effort is rewarded.", "Siêng năng ắt thành công."],
+["Keep your chin up.", "Stay positive.", "Ngẩng cao đầu, đừng nản lòng."],
+["Hang in there.", "Don't give up.", "Cố lên, đừng bỏ cuộc."],
+["Break a leg!", "Good luck, for example before a test.", "Chúc may mắn nhé!"],
+["The sky's the limit.", "There are no limits.", "Không gì là giới hạn."],
+["Go the extra mile.", "Do more than expected.", "Nỗ lực hơn cả mong đợi."],
+["Hit the books.", "Study hard.", "Chăm chỉ học bài."],
+["Burn the midnight oil.", "Study or work late into the night.", "Thức khuya học tập."],
+["Every little helps.", "Small contributions matter.", "Mỗi chút đều có ích."],
+["Learn from your mistakes.", "Use errors to grow.", "Học từ chính sai lầm của mình."],
+["Practice is the best of all instructors.", "Practice teaches best.", "Thực hành là người thầy giỏi nhất."],
+["Seeing is believing.", "Experience convinces.", "Trăm nghe không bằng một thấy."],
+["Well begun is half done.", "A good start makes the rest easier.", "Đầu xuôi đuôi lọt."]
+];
+
+/* ============================================================
    CORE · utils, state, migration, FSRS, time, speech
    ============================================================ */
 const APP = { name: "Tnkhoi English", version: "3.3", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
@@ -2633,7 +3923,7 @@ function render(nav = false) {
   const r = ROUTE, key = r.name + "/" + r.arg;
   document.body.classList.toggle("focus", isFocus());
   const app = document.getElementById("app");
-  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync }[r.name] || viewToday;
+  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync, grammar: viewGrammar, pron: viewPron }[r.name] || viewToday;
   const y = scrollY;
   app.innerHTML = isFocus() ? V() : shell(V());
   paintTimer();
@@ -2710,7 +4000,7 @@ function viewToday() {
       <div class="panel stack ${wod.l.track === "med" ? "track-med" : "track-gen"}"><div class="row between"><h3>${pool.length ? "Một từ để nói to hôm nay" : "Xem trước một từ"}</h3>${hear(wod.w.w)}</div>
         ${specimen(wod.w, "sm")}${partsHtml(wod.w.parts)}<p><b>${esc(wod.w.vi)}</b></p><p class="example" lang="en">${esc(wod.w.ex)}</p></div>
     </div>
-    <div class="panel stack" style="margin-top:14px"><div class="row between"><h3>Lỗi người Việt hay gặp</h3><a class="muted small" href="#/lesson/${tip.l}">từ bài ${tip.l}</a></div>
+    <div class="panel stack" style="margin-top:14px"><div class="row between"><h3>Lỗi sai thường gặp</h3><a class="muted small" href="#/lesson/${tip.l}">từ bài ${tip.l}</a></div>
       <div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(tip.x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(tip.v)}</span><span class="why">${esc(tip.why)}</span></div></div>`;
 }
 
@@ -2825,7 +4115,7 @@ const STEP = {
   pattern(step) {
     return `<span class="step-kind">Mẫu câu</span><h2 lang="en">${esc(step.title)}</h2><p style="font-size:17px;white-space:pre-line">${esc(step.rule)}</p><div class="soft">${esc(step.vi)}</div>
       <div class="ex-list">${step.ex.map(([en, vi]) => `<div class="ex-item"><span class="en" lang="en">${esc(en)}</span><span class="vi">${esc(vi)}</span>${hear(en)}</div>`).join("")}</div>
-      <h3>Lỗi người Việt hay gặp</h3><div>${step.pit.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div>`;
+      <h3>Lỗi sai thường gặp</h3><div>${step.pit.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div>`;
   },
   listen(step, st) {
     const all = step.qs.every((_, i) => st.q && st.q[i] && st.q[i].done); const show = st.show || all;
@@ -3498,7 +4788,7 @@ sanitize = function (raw) {
   recomputeTime(s);
   return s;
 };
-S = load(); save();
+S = load();
 addSeconds = function (n) { const k = dayKey(), bd = S.time.byDev, d = bd[DEV] || (bd[DEV] = {}); d[k] = (d[k] || 0) + n; S.time.days[k] = (S.time.days[k] || 0) + n; S.time.total += n; touch(); };
 const _touch = touch; touch = () => { _touch(); SYNC.pending = true; };
 
@@ -3889,6 +5179,221 @@ document.addEventListener("change", e => {
   if (t.id === "syncAuto") { const c = syncCfg(); c.auto = t.checked; saveCfg(c); }
 });
 addEventListener("hashchange", () => { if (ROUTE.name !== "learn") LN = null; if (ROUTE.name !== "quiz") QZ = null; if (ROUTE.name !== "placement") PL = null; if (ROUTE.name === "library" && location.hash.includes("?lvl=")) { const l = location.hash.split("?lvl=")[1]; LF.track = "gen"; LF.lvl = l; } });
+
+/* ---------------- Start ---------------- */
+/* khởi động: xem app-v41.js */
+
+/* ============================================================
+   v4.1 · Thư viện luyện thi (ưu tiên A1–B2), Thư viện ngữ pháp,
+   Kho từ phát âm, Câu nói động lực, Phòng khám sàng lọc ban đầu.
+   Nạp SAU app-v4.js; gọi initApp() ở cuối file.
+   ============================================================ */
+APP.version = "4.1"; APP.build = "01.10.26";
+
+/* ---------------- Metadata cho chủ đề cũ ---------------- */
+const SEC_OF = { society: "ielts", academic: "skills", discourse: "skills", idioms: "skills", verbs: "skills" };
+const EXAM_OF = { places: ["CEFR", "VSTEP", "TOEIC"], work: ["CEFR", "VSTEP", "TOEIC"], shopping: ["CEFR", "VSTEP", "TOEIC"], tech: ["CEFR", "VSTEP", "IELTS"], nature: ["CEFR", "VSTEP", "IELTS"], body: ["CEFR", "VSTEP", "IELTS"], society: ["IELTS", "VSTEP"], academic: ["IELTS", "VSTEP"], discourse: ["IELTS", "VSTEP", "TOEIC"], idioms: ["IELTS"], verbs: ["TOEIC", "IELTS", "VSTEP"] };
+LIB.forEach(t => { if (t.track !== "gen") return; t.sec = t.sec || SEC_OF[t.id] || "life"; t.exam = t.exam || EXAM_OF[t.id] || ["CEFR", "VSTEP"]; });
+const EXAMS = ["IELTS", "TOEIC", "VSTEP"];
+const examChips = t => (t.exam || []).map(e => `<span class="exm exm-${e}">${e}</span>`).join("");
+const LIB_SECS = [["core", "⭐ Nền tảng A1–B2 (ưu tiên học trước)", "Động từ, tính từ, danh từ lõi xuất hiện trong mọi kỳ thi."], ["life", "🏡 Chủ đề đời sống", "Giao tiếp hằng ngày, nền cho CEFR và VSTEP bậc 1–3."], ["toeic", "💼 Luyện thi TOEIC", "Từ vựng nơi làm việc: văn phòng, nhân sự, tài chính, đặt hàng, công tác."], ["ielts", "🎓 Luyện thi IELTS và VSTEP", "Các chủ đề hay ra đề Speaking và Writing."], ["skills", "🧠 Kỹ năng làm bài", "Họ từ, kết hợp từ, từ nối, cụm động từ, thành ngữ."]];
+const lvlMatch = w => !LF.lvl || (LF.lvl === "AB" ? ["A1", "A2", "B1", "B2"].includes(w.lvl) : w.lvl === LF.lvl);
+const examMatch = t => !LF.exam || (t.exam || []).includes(LF.exam) || (LF.exam === "MED" && t.track === "med");
+LF.exam = ""; LF.lvl = "AB";
+
+/* ---------------- State extensions ---------------- */
+const GRAMMAR_BY = Object.fromEntries(GRAMMAR.map(g => [g.id, g]));
+PRON_BANK.forEach(c => { c.list = c.items.split("\n").map(l => l.split("|").map(x => x.trim())).filter(p => p[0]).map(([w, uk, us, note]) => ({ w, uk, us, note: note || "", key: `${c.id}:${slugify(w)}` })); });
+const PB_KEYS = new Set(PRON_BANK.flatMap(c => c.list.map(x => x.key)));
+const _san41 = sanitize;
+sanitize = function (raw) {
+  const s = _san41(raw); s.gram = {}; s.pb = {}; if (!raw || typeof raw !== "object") return s;
+  if (raw.gram && typeof raw.gram === "object") for (const [k, v] of Object.entries(raw.gram)) if (GRAMMAR_BY[k] && v) s.gram[k] = { best: clamp(num(v.best), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last) };
+  if (raw.pb && typeof raw.pb === "object") for (const [k, v] of Object.entries(raw.pb)) if (PB_KEYS.has(k) && v) s.pb[k] = { n: Math.max(0, Math.round(num(v.n))), ok: Math.max(0, Math.round(num(v.ok))) };
+  return s;
+};
+const _fresh41 = fresh; fresh = () => { const s = _fresh41(); s.gram = {}; s.pb = {}; return s; };
+S = load(); save();
+const _merge41 = mergeState;
+mergeState = function (a, b) {
+  const m = _merge41(a, b); m.gram = { ...(a.gram || {}) }; m.pb = { ...(a.pb || {}) };
+  for (const [k, v] of Object.entries(b.gram || {})) { const x = m.gram[k]; m.gram[k] = !x ? v : { best: Math.max(x.best, v.best), n: Math.max(x.n, v.n), last: Math.max(x.last, v.last) }; }
+  for (const [k, v] of Object.entries(b.pb || {})) { const x = m.pb[k]; m.pb[k] = !x || v.n > x.n ? v : x; }
+  return m;
+};
+
+/* ---------------- Nav, routes, study time ---------------- */
+Object.assign(ICONS, { grammar: '<path d="M4 6h16M4 12h10M4 18h7"/><path d="M15 17l2 2 4-5"/>', quote: '<path d="M7 7h4v4c0 3-2 5-4 6M15 7h4v4c0 3-2 5-4 6"/>' });
+NAV4[1][0] = "Thư viện";
+NAV4[1][1].splice(1, 0, ["grammar", "Thư viện ngữ pháp", "grammar", "#5b4fc4"]);
+const _isStudy41 = isStudyRoute;
+isStudyRoute = () => _isStudy41() || (ROUTE.name === "grammar" && !!ROUTE.arg) || (ROUTE.name === "pron" && !!ROUTE.arg);
+
+/* ---------------- Motivational quote (random per login) ---------------- */
+function quoteIndex(force) {
+  let cur = null, last = -1; try { cur = sessionStorage.getItem("tnk_quote"); last = +(localStorage.getItem("tnk_quote_last") ?? -1); } catch { }
+  const valid = cur !== null && !isNaN(+cur) && +cur < PROVERBS.length;
+  if (valid && !force) return +cur;
+  let i; do { i = Math.floor(Math.random() * PROVERBS.length); } while (PROVERBS.length > 2 && (i === last || (valid && i === +cur)));
+  try { sessionStorage.setItem("tnk_quote", String(i)); localStorage.setItem("tnk_quote_last", String(i)); } catch { }
+  return i;
+}
+function quoteCard() {
+  const [en, mean, vi] = PROVERBS[quoteIndex()];
+  return `<section class="quote-card" aria-label="Câu nói động lực"><div class="row between"><span class="q-label">${ic("quote", 18)} Câu nói hôm nay</span><div class="row" style="gap:6px">${hear(en, "Nghe câu nói")}<button class="icon-btn" data-act="quoteNext" aria-label="Câu khác" title="Câu khác">↻</button></div></div>
+    <p class="q-en" lang="en">${esc(en)}</p><p class="q-vi">${esc(vi)}</p><p class="q-mean" lang="en">${esc(mean)}</p></section>`;
+}
+const _viewToday41 = viewToday;
+viewToday = () => _viewToday41().replace("</h1></section>", "</h1></section>" + quoteCard());
+
+/* ---------------- Library (exam-aware) ---------------- */
+function topicCard41(t) {
+  const ws = t.words.filter(lvlMatch); const c = coverage2(ws); const lv = [...new Set(t.words.map(w => w.lvl))];
+  return `<a class="topic" href="#/library/${t.id}" style="--tc:${t.color}"><span class="ti" aria-hidden="true">${t.icon}</span><span class="tt"><b lang="en">${esc(t.title)}</b><span class="muted small">${esc(t.vi)}</span></span>
+    <span class="meter"><i style="width:${c.p * 100}%"></i></span><span class="row between small"><span class="muted">${c.d}/${c.n} đã học</span><span class="muted">${lv.length > 1 ? lvName(lv[0]) + "–" + lvName(lv[lv.length - 1]) : lvName(lv[0])}</span></span>${t.exam ? `<span class="exrow">${examChips(t)}</span>` : ""}</a>`;
+}
+libResults = function () {
+  const q = norm(LF.q); if (!q) return "";
+  const res = LIB.filter(t => (LF.track === "all" || t.track === LF.track) && examMatch(t)).flatMap(t => t.words).filter(w => lvlMatch(w) && (norm(w.w).includes(q) || w.vi.toLowerCase().includes(LF.q.trim().toLowerCase())));
+  return res.length ? `<p class="muted small">${res.length} kết quả${res.length > 80 ? ", hiện 80 đầu tiên" : ""}</p><div class="lw-list" data-showtopic="1">${res.slice(0, 80).map(w => wordRow(w, true)).join("")}</div>` : `<div class="empty"><p>Không có từ nào khớp “${esc(LF.q)}” với bộ lọc hiện tại.</p></div>`;
+};
+viewLibrary = function () {
+  if (ROUTE.arg && LIB_BY[ROUTE.arg]) { const t = LIB_BY[ROUTE.arg]; return viewTopic(t).replace('<div class="meter lg">', (t.exam ? `<div class="exrow">${examChips(t)}</div>` : "") + '<div class="meter lg">'); }
+  const gen = LIB.filter(t => t.track === "gen"), genWords = gen.flatMap(t => t.words);
+  const prio = genWords.filter(w => ["A1", "A2", "B1", "B2"].includes(w.lvl)), pc = coverage2(prio);
+  const seg = [["all", "Tất cả"], ["gen", "Phổ thông"], ["med", "Y khoa"]].map(([id, l]) => `<button data-act="libTrack" data-t="${id}" aria-pressed="${LF.track === id}">${l}</button>`).join("");
+  const levels = LF.track === "med" ? MED_LEVELS : GEN_LEVELS;
+  const lvBtns = `<button class="lv lv-all ${!LF.lvl ? "on" : ""}" data-act="libLevel" data-l="">Mọi cấp</button>${LF.track !== "med" ? `<button class="lv lv-AB ${LF.lvl === "AB" ? "on" : ""}" data-act="libLevel" data-l="AB">Ưu tiên A1–B2</button>` : ""}${levels.map(l => `<button class="lv lv-${l} ${LF.lvl === l ? "on" : ""}" data-act="libLevel" data-l="${l}">${lvName(l)}</button>`).join("")}`;
+  const exBtns = LF.track === "med" ? "" : `<div class="lv-filter" role="group" aria-label="Kỳ thi"><button class="exm-btn ${!LF.exam ? "on" : ""}" data-act="libExam" data-e="">Mọi kỳ thi</button>${EXAMS.map(e => `<button class="exm-btn exm-${e} ${LF.exam === e ? "on" : ""}" data-act="libExam" data-e="${e}">${e}</button>`).join("")}</div>`;
+  const grid = ts => { const xs = ts.filter(examMatch).filter(t => t.words.some(lvlMatch)); return xs.length ? `<div class="topics">${xs.map(topicCard41).join("")}</div>` : `<p class="muted small">Không có chủ đề nào khớp bộ lọc.</p>`; };
+  let body = "";
+  if (LF.q) body = libResults();
+  else {
+    if (LF.track !== "med") body += LIB_SECS.map(([sec, title, desc]) => { const ts = gen.filter(t => t.sec === sec); const g = grid(ts); return g.startsWith("<p") ? "" : `<h2 class="sec-h">${title}</h2><p class="muted small sec-d">${desc}</p>${g}`; }).join("");
+    if (LF.track !== "gen" && !LF.exam) body += LIB_MED_GROUPS.map(([gid, name, en, icon]) => { const g = grid(LIB.filter(t => t.group === gid)); return g.startsWith("<p") ? "" : `<h2 class="sec-h">${icon} Y khoa: ${name}</h2>${g}`; }).join("");
+    if (!body) body = `<div class="empty"><p>Không có chủ đề nào khớp bộ lọc.</p></div>`;
+  }
+  return `<section class="page-head"><h1>Thư viện từ vựng</h1><p class="lede">${LIB_COUNT} từ và thuật ngữ trong ${LIB.length} chủ đề. Mạch phổ thông ưu tiên ${prio.length} từ A1–B2 thông dụng cho IELTS, TOEIC, VSTEP và các bài thi theo CEFR; bạn đã học ${pc.d} từ trong số đó.</p>
+      <div class="meter lg" style="max-width:520px"><i style="width:${pc.p * 100}%;background:var(--gen)"></i></div></section>
+    <div class="filterbar"><div class="seg-tog" role="group" aria-label="Mạch học">${seg}</div><div class="lv-filter" role="group" aria-label="Cấp độ">${lvBtns}</div>${exBtns}
+      <label class="searchbox">${ic("search", 18)}<input id="libq" type="search" placeholder="Tìm từ tiếng Anh hoặc nghĩa tiếng Việt…" value="${esc(LF.q)}" aria-label="Tìm trong thư viện"></label></div>
+    <div id="libBody">${body}</div>`;
+};
+
+/* ---------------- Grammar library ---------------- */
+let GQ = null;
+const gramStatus = g => S.gram[g.id];
+function viewGrammar() {
+  if (ROUTE.arg && GRAMMAR_BY[ROUTE.arg]) return viewGrammarPoint(GRAMMAR_BY[ROUTE.arg]);
+  const done = GRAMMAR.filter(g => gramStatus(g)).length;
+  const lvls = ["A1", "A2", "B1", "B2"];
+  const exBtns = `<div class="lv-filter"><button class="exm-btn ${!LF.gex ? "on" : ""}" data-act="gramExam" data-e="">Mọi kỳ thi</button>${EXAMS.map(e => `<button class="exm-btn exm-${e} ${LF.gex === e ? "on" : ""}" data-act="gramExam" data-e="${e}">${e}</button>`).join("")}</div>`;
+  const card = g => { const r = gramStatus(g); return `<a class="gcard" href="#/grammar/${g.id}"><div class="row between"><span class="lv lv-${g.lvl}">${g.lvl}</span>${r ? `<span class="chip ${r.best >= 0.8 ? "good" : "acc"}">${Math.round(r.best * 100)}%</span>` : `<span class="chip">chưa luyện</span>`}</div><b lang="en">${esc(g.title)}</b><span class="muted small">${esc(g.vi)}</span><span class="exrow">${g.exams.map(e => `<span class="exm exm-${e}">${e}</span>`).join("")}</span></a>`; };
+  return `<section class="page-head"><h1>Thư viện ngữ pháp</h1><p class="lede">${GRAMMAR.length} điểm ngữ pháp cốt lõi từ A1 đến B2, sắp theo thứ tự nên học. Mỗi điểm có công thức, cách dùng, ví dụ nghe được, lỗi sai thường gặp và câu hỏi luyện kiểu đề thi. Bạn đã luyện ${done}/${GRAMMAR.length} điểm.</p></section>
+    <div class="filterbar">${exBtns}</div>
+    ${lvls.map(l => { const gs = GRAMMAR.filter(g => g.lvl === l && (!LF.gex || g.exams.includes(LF.gex))); return gs.length ? `<h2 class="sec-h"><span class="lv lv-${l}">${l}</span> ${CEFR.find(c => c[0] === l)[1]}</h2><div class="topics">${gs.map(card).join("")}</div>` : ""; }).join("")}
+    <section class="panel stack" style="margin-top:22px"><h3>Kỳ thi kiểm tra ngữ pháp thế nào</h3>
+      <p><b>TOEIC Part 5 và 6</b>: câu hỏi về dạng từ xuất hiện nhiều nhất, sau đó là thì, chủ động và bị động, hòa hợp chủ ngữ và động từ, giới từ, liên từ, đại từ quan hệ.</p>
+      <p><b>IELTS</b>: không có bài ngữ pháp riêng. “Grammatical Range and Accuracy” là một trong bốn tiêu chí chấm Writing và Speaking, thưởng điểm cho câu phức viết đúng.</p>
+      <p><b>VSTEP</b>: bốn kỹ năng, mỗi kỹ năng 25%. Ngữ pháp được chấm trong Viết và Nói.</p></section>`;
+}
+function viewGrammarPoint(g) {
+  if (!GQ || GQ.id !== g.id) GQ = { id: g.id, st: g.quiz.map(() => ({})) };
+  const qs = g.quiz.map(([q, opts, a, why]) => ({ q, opts, a, why }));
+  const allDone = GQ.st.every(s => s.done), ok = GQ.st.filter(s => s.ok).length;
+  const i = GRAMMAR.indexOf(g), prev = GRAMMAR[i - 1], next = GRAMMAR[i + 1];
+  return `<section class="page-head"><a class="muted small" href="#/grammar">Thư viện ngữ pháp</a><div class="row"><span class="lv lv-${g.lvl}">${g.lvl}</span><span class="exrow">${g.exams.map(e => `<span class="exm exm-${e}">${e}</span>`).join("")}</span></div><h1 lang="en">${esc(g.title)}</h1><p class="lede">${esc(g.vi)}</p></section>
+    <div class="grid2"><section class="panel stack track-gen accent"><h3>Công thức</h3><p style="white-space:pre-line">${esc(g.form)}</p></section><section class="panel stack"><h3>Cách dùng</h3><p>${esc(g.use)}</p></section></div>
+    <section class="panel stack" style="margin-top:14px"><h3>Ví dụ</h3><div class="ex-list">${g.ex.map(([en, vi]) => `<div class="ex-item"><span class="en" lang="en">${esc(en)}</span><span class="vi">${esc(vi)}</span>${hear(en)}</div>`).join("")}</div></section>
+    <section class="panel stack" style="margin-top:14px"><h3>Lỗi sai thường gặp</h3><div>${g.err.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div></section>
+    <section class="panel stack" style="margin-top:14px"><div class="row between"><h3>Luyện tập</h3>${allDone ? `<span class="chip ${ok === qs.length ? "good" : "acc"}">đúng ${ok}/${qs.length}</span>` : ""}</div>
+      ${qs.map((q, k) => `<div class="stack"><p class="q" lang="en">${esc(q.q)}</p>${choicesHtml(q, GQ.st[k], "g" + k, true)}</div>`).join('<div class="divider"></div>')}
+      ${allDone ? `<div class="row"><button class="btn" data-act="gramRetry">Làm lại</button></div>` : ""}</section>
+    <div class="row between" style="margin-top:16px">${prev ? `<a class="btn" href="#/grammar/${prev.id}">Điểm trước: ${esc(prev.title)}</a>` : "<span></span>"}${next ? `<a class="btn primary" href="#/grammar/${next.id}">Điểm tiếp: ${esc(next.title)}</a>` : ""}</div>`;
+}
+
+/* ---------------- Pronunciation bank ---------------- */
+const PBR = {};
+const pbBase = w => w.replace(/\s*\((n|v)\)\s*$/, "");
+function pbSpeakText(w) { const b = pbBase(w); if (/\(n\)$/.test(w)) return (/^[aeiou]/i.test(b) ? "an " : "a ") + b; if (/\(v\)$/.test(w)) return "to " + b; return b; }
+function soundTabs(cur) { return `<div class="tabs" role="tablist" style="margin-bottom:16px"><a href="#/sounds" role="tab" style="text-decoration:none"><button tabindex="-1" aria-selected="${cur === "pairs"}">Cặp âm tối thiểu</button></a><a href="#/pron" role="tab" style="text-decoration:none"><button tabindex="-1" aria-selected="${cur === "bank"}">Kho từ phát âm</button></a></div>`; }
+const _viewSounds41 = viewSounds;
+viewSounds = () => { const h = _viewSounds41(); return ROUTE.arg ? h : h.replace('</section>', '</section>' + soundTabs("pairs")); };
+function viewPron() {
+  const cat = PRON_BANK.find(c => c.id === ROUTE.arg);
+  const total = PRON_BANK.reduce((a, c) => a + c.list.length, 0), done = Object.keys(S.pb).length;
+  if (!cat) return `<section class="page-head"><h1>Phát âm</h1><p class="lede">Kho ${total} từ hay đọc sai trong giao tiếp và bài thi nói, chia theo lỗi. Mỗi từ có phiên âm Anh-Anh và Anh-Mỹ, nghe được cả hai giọng và tự nói để máy nhận dạng. Bạn đã tập ${done} từ.</p></section>${soundTabs("bank")}
+      <div class="topics">${PRON_BANK.map(c => { const d = c.list.filter(x => S.pb[x.key]).length; return `<a class="topic" href="#/pron/${c.id}" style="--tc:${c.color}"><span class="ti">${c.icon}</span><span class="tt"><b>${esc(c.title)}</b><span class="muted small">${esc(c.vi)}</span></span><span class="meter"><i style="width:${d / c.list.length * 100}%"></i></span><span class="muted small">${d}/${c.list.length} từ đã tập</span></a>`; }).join("")}</div>
+      <p class="muted small" style="margin-top:16px">Phiên âm theo quy ước Cambridge Dictionary. Giọng đọc là giọng tổng hợp của thiết bị, nên hãy coi IPA là chuẩn khi hai bên khác nhau.</p>`;
+  const accUK = S.settings.accent === "uk";
+  return `<section class="page-head" style="--tc:${cat.color}"><a class="muted small" href="#/pron">Kho từ phát âm</a><div class="row" style="gap:14px"><span class="ti big">${cat.icon}</span><div><h1>${esc(cat.title)}</h1><p class="lede" style="margin:0">${esc(cat.vi)}</p></div></div><p class="tip"><b>Mẹo:</b> ${esc(cat.tip)}</p></section>
+    <div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:14px">${PRON_BANK.map(c => `<a class="chip tpc ${c.id === cat.id ? "on" : ""}" style="--tc:${c.color}" href="#/pron/${c.id}">${c.icon} ${esc(c.title)}</a>`).join("")}</div>
+    <div class="lw-list">${cat.list.map(x => { const r = PBR[x.key], p = S.pb[x.key]; return `<div class="lw pb-row" style="--tc:${cat.color}"><div class="lw-main"><span class="lw-w" lang="en">${esc(x.w)}</span>
+      <div class="ipa-pair"><span class="${accUK ? "cur" : ""}"><small>UK</small> ${esc(x.uk)}</span><span class="${!accUK ? "cur" : ""}"><small>US</small> ${esc(x.us)}</span></div>${x.note ? `<div class="lw-ex">${esc(x.note)}</div>` : ""}</div>
+      <div class="lw-act"><button class="mini" data-act="pbHear" data-w="${esc(x.w)}" data-acc="uk" aria-label="Nghe giọng Anh-Anh">${ic("speaker", 15)} UK</button><button class="mini" data-act="pbHear" data-w="${esc(x.w)}" data-acc="us" aria-label="Nghe giọng Anh-Mỹ">${ic("speaker", 15)} US</button>
+      ${SR ? `<button class="mini" data-act="pbSay" data-k="${x.key}" data-w="${esc(x.w)}" aria-label="Tự nói từ ${esc(pbBase(x.w))}">${ic("mic", 15)} Nói</button>` : ""}
+      ${r ? `<span class="chip ${r.ok ? "good" : "bad"}" lang="en">${r.ok ? "✓ máy nghe đúng" : "máy nghe: " + esc(r.heard || "không rõ")}</span>` : p ? `<span class="chip">${p.ok}/${p.n}</span>` : ""}</div></div>`; }).join("")}</div>
+    ${!SR ? `<p class="muted small" style="margin-top:12px">Trình duyệt này chưa nhận dạng giọng nói; hãy nghe mẫu và đọc theo.</p>` : ""}`;
+}
+
+/* ---------------- Clinic list: two groups + safety note ---------------- */
+const _viewClinic41 = viewClinic;
+viewClinic = function () {
+  if (ROUTE.arg) return _viewClinic41();
+  const row = c => { const r = S.cases[c.id]; const ready = c.rec.every(id => S.lessons[id]?.done); return `<a class="item link" href="#/clinic/${c.id}"><span class="avatar">${c.patient.av}</span><span class="grow"><span class="t">${esc(c.vi)}</span> <span class="muted small" lang="en">${esc(c.title)}</span><br><span class="s">${esc(c.patient.name)}, ${c.patient.age} tuổi, <span lang="en">${esc(c.patient.job)}</span>. ${ready ? "Đã học đủ bài chuẩn bị." : "Nên học trước " + c.rec.join(", ") + "."}</span></span>${r ? `<span class="chip good">tốt nhất ${Math.round(r.best * 100)}%</span>` : `<span class="chip acc">chưa khám</span>`}</a>`; };
+  const base = CASES.filter(c => c.group !== "screen"), screen = CASES.filter(c => c.group === "screen");
+  return `<section class="page-head"><h1>Phòng khám ảo</h1><p class="lede">Bạn là bác sĩ. Hỏi bệnh bằng cách tự gõ, tự nói hoặc chọn từ ngân hàng câu hỏi; ngân hàng có cả những cách hỏi chưa phù hợp để bạn học cách tránh. Cuối buổi, bạn viết tóm tắt ca, chọn chẩn đoán và cách giải thích cho bệnh nhân.</p></section>
+    <div class="feedback no" role="note" style="margin-bottom:14px"><b>Lưu ý:</b> đây là công cụ luyện tiếng Anh giao tiếp lâm sàng, không phải hướng dẫn chẩn đoán hay điều trị. Ngưỡng và cách xử trí bám theo hướng dẫn NICE (Anh) và WHO, có thể khác phác đồ của Bộ Y tế Việt Nam.</div>
+    <h2 class="sec-h">🩺 Phòng khám sàng lọc ban đầu (${screen.length} tình huống thường gặp)</h2><p class="muted small sec-d">Chọn theo các lý do đến khám phổ biến nhất ở tuyến chăm sóc ban đầu: nhiễm trùng hô hấp trên, tăng huyết áp, đái tháo đường, đau lưng, đau khớp, bệnh da, tiết niệu, tiêu hóa, tâm lý, và đau ngực cần nhận diện cấp cứu.</p>
+    <div class="list panel track-med">${screen.map(row).join("")}</div>
+    <h2 class="sec-h">📚 Ca nền tảng</h2><div class="list panel track-med">${base.map(row).join("")}</div>
+    <div class="panel stack" style="margin-top:14px"><h3>Chấm điểm dựa trên gì</h3><p>Báo cáo cuối ca mô phỏng các nhóm tiêu chí giao tiếp lâm sàng của OET Speaking: xây dựng quan hệ, tìm hiểu quan điểm bệnh nhân (ICE), cấu trúc buổi hỏi, thu thập và cung cấp thông tin. Đây là công cụ tự luyện, không phải điểm OET.</p></div>`;
+};
+
+/* ---------------- Goals: exam equivalence ---------------- */
+const _viewGoals41 = viewGoals;
+viewGoals = () => _viewGoals41() + `<section class="panel stack" style="margin-top:14px"><h2>Quy đổi tham khảo giữa các kỳ thi</h2>
+  <div style="overflow-x:auto"><table class="xtable"><thead><tr><th>CEFR</th><th>IELTS</th><th>TOEIC Nghe + Đọc</th><th>VSTEP (Khung 6 bậc)</th><th>Vốn từ ước tính</th></tr></thead><tbody>
+  <tr><td><span class="lv lv-A1">A1</span></td><td>–</td><td>từ 120</td><td>Bậc 1</td><td>dưới ~1.500</td></tr>
+  <tr><td><span class="lv lv-A2">A2</span></td><td>khoảng 3.0–3.5</td><td>từ 225</td><td>Bậc 2</td><td>~1.500–2.500</td></tr>
+  <tr><td><span class="lv lv-B1">B1</span></td><td>4.0–5.0</td><td>từ 550</td><td>Bậc 3 (4.0–5.5)</td><td>~2.750–3.250</td></tr>
+  <tr><td><span class="lv lv-B2">B2</span></td><td>5.5–6.5</td><td>từ 785</td><td>Bậc 4 (6.0–8.0)</td><td>~3.250–3.750</td></tr>
+  <tr><td><span class="lv lv-C1">C1</span></td><td>7.0–8.0</td><td>từ 945</td><td>Bậc 5 (8.5–10)</td><td>~3.750–4.500</td></tr></tbody></table></div>
+  <p class="muted small">Nguồn: bảng CEFR của IELTS và ETS (điểm tối thiểu TOEIC theo từng kỹ năng cộng lại), Thông tư 23/2017 của Bộ GD&ĐT cho VSTEP, ước tính vốn từ của Milton và Alexiou (2009). Các đơn vị có thể công bố khác nhau đôi chút; hãy kiểm tra lại với nơi tổ chức thi trước khi đăng ký.</p></section>`;
+
+/* ---------------- More & About ---------------- */
+const _viewMore41 = viewMore;
+viewMore = () => _viewMore41().replace('<a class="item link" href="#/words">', '<a class="item link" href="#/grammar"><span class="ti">📐</span><span class="grow"><span class="t">Thư viện ngữ pháp</span><br><span class="s">24 điểm ngữ pháp A1 đến B2, có bài luyện</span></span></a><a class="item link" href="#/words">');
+const _viewAbout41 = viewAbout;
+viewAbout = () => _viewAbout41().replace("<b>Dựa trên lỗi của người Việt.</b>", "<b>Tập trung vào lỗi sai thường gặp.</b>").replace('<section class="panel stack" style="margin-top:14px"><p style="font-family:var(--en);font-size:22px">', `<section class="panel stack" style="margin-top:14px"><h3>Nguồn tham khảo trong phiên bản ${APP.version}</h3><p class="muted small">Danh sách từ vựng do tác giả biên soạn, cấp độ đối chiếu với khung CEFR, có tham khảo NGSL và TOEIC Service List (Browne, Culligan và Phillips, CC BY-SA 4.0) và Oxford 3000 như danh mục kiểm tra, không sao chép định nghĩa. Ngữ pháp theo tiến trình của English Grammar Profile và British Council. Phòng khám ảo bám theo NICE (NG84, NG136, NG59, NG226, CG95, hướng dẫn UTI của UKHSA) và tiêu chuẩn chẩn đoán đái tháo đường của WHO. Phiên âm theo Cambridge Dictionary. Các câu ngạn ngữ là câu truyền thống thuộc phạm vi công cộng.</p></section><section class="panel stack" style="margin-top:14px"><p style="font-family:var(--en);font-size:22px">`);
+
+/* ---------------- Actions ---------------- */
+function sayAccent(text, acc) { const st = S.settings, o = [st.accent, st.voice, st.voice2]; st.accent = acc; st.voice = st.voice2 = "auto"; speakNow(text); [st.accent, st.voice, st.voice2] = o; }
+const _pick41 = ACT.pick;
+Object.assign(ACT, {
+  pick(el) {
+    const q = el.dataset.q;
+    if (ROUTE.name === "grammar" && /^g\d+$/.test(q) && GQ) {
+      const g = GRAMMAR_BY[GQ.id], k = +q.slice(1), [qq, opts, a, why] = g.quiz[k], st = GQ.st[k], was = st.done;
+      pickOpt2q({ q: qq, opts, a, why }, st, +el.dataset.o);
+      if (!was && st.done) { evidence("grammar", st.ok, "gram:" + g.id); if (GQ.st.every(s => s.done)) { const sc = GQ.st.filter(s => s.ok).length / GQ.st.length, pr = S.gram[g.id]; S.gram[g.id] = { best: Math.max(pr?.best || 0, sc), n: (pr?.n || 0) + 1, last: Date.now() }; touch(); save(); } }
+      render(); return;
+    }
+    _pick41(el);
+  },
+  gramRetry() { GQ = null; render(); },
+  gramExam(el) { LF.gex = el.dataset.e; render(); },
+  libExam(el) { LF.exam = el.dataset.e; render(); },
+  quoteNext() { quoteIndex(true); const card = document.querySelector(".quote-card"); if (card) card.outerHTML = quoteCard(); },
+  pbHear(el) { sayAccent(pbSpeakText(el.dataset.w), el.dataset.acc); },
+  async pbSay(el) {
+    if (ASR.on) { try { ASR.cur.stop(); } catch { } return; }
+    const key = el.dataset.k, w = norm(pbBase(el.dataset.w)); toast(`Đọc từ “${pbBase(el.dataset.w)}”…`);
+    try { const alts = (await recognize()).map(norm); const ok = alts.some(a => (" " + a + " ").includes(" " + w + " ")); PBR[key] = { ok, heard: alts[0] || "" }; const p = S.pb[key] || (S.pb[key] = { n: 0, ok: 0 }); p.n++; if (ok) p.ok++; evidence("pron", ok, "pb"); touch(); render(); }
+    catch (e) { asrError(e); }
+  }
+});
+addEventListener("hashchange", () => { if (ROUTE.name !== "grammar") GQ = null; });
 
 /* ---------------- Start ---------------- */
 initApp();

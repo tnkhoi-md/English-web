@@ -89,7 +89,7 @@ function render(nav = false) {
   const r = ROUTE, key = r.name + "/" + r.arg;
   document.body.classList.toggle("focus", isFocus());
   const app = document.getElementById("app");
-  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync }[r.name] || viewToday;
+  const V = { today: viewToday, path: viewPath, lesson: viewLesson, review: viewReview, clinic: viewClinic, sounds: viewSounds, words: viewWords, progress: viewProgress, settings: viewSettings, about: viewAbout, more: viewMore, library: viewLibrary, goals: viewGoals, learn: viewLearn, quiz: viewQuiz, placement: viewPlacement, sync: viewSync, grammar: viewGrammar, pron: viewPron }[r.name] || viewToday;
   const y = scrollY;
   app.innerHTML = isFocus() ? V() : shell(V());
   paintTimer();
@@ -166,7 +166,7 @@ function viewToday() {
       <div class="panel stack ${wod.l.track === "med" ? "track-med" : "track-gen"}"><div class="row between"><h3>${pool.length ? "Một từ để nói to hôm nay" : "Xem trước một từ"}</h3>${hear(wod.w.w)}</div>
         ${specimen(wod.w, "sm")}${partsHtml(wod.w.parts)}<p><b>${esc(wod.w.vi)}</b></p><p class="example" lang="en">${esc(wod.w.ex)}</p></div>
     </div>
-    <div class="panel stack" style="margin-top:14px"><div class="row between"><h3>Lỗi người Việt hay gặp</h3><a class="muted small" href="#/lesson/${tip.l}">từ bài ${tip.l}</a></div>
+    <div class="panel stack" style="margin-top:14px"><div class="row between"><h3>Lỗi sai thường gặp</h3><a class="muted small" href="#/lesson/${tip.l}">từ bài ${tip.l}</a></div>
       <div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(tip.x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(tip.v)}</span><span class="why">${esc(tip.why)}</span></div></div>`;
 }
 
@@ -281,7 +281,7 @@ const STEP = {
   pattern(step) {
     return `<span class="step-kind">Mẫu câu</span><h2 lang="en">${esc(step.title)}</h2><p style="font-size:17px;white-space:pre-line">${esc(step.rule)}</p><div class="soft">${esc(step.vi)}</div>
       <div class="ex-list">${step.ex.map(([en, vi]) => `<div class="ex-item"><span class="en" lang="en">${esc(en)}</span><span class="vi">${esc(vi)}</span>${hear(en)}</div>`).join("")}</div>
-      <h3>Lỗi người Việt hay gặp</h3><div>${step.pit.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div>`;
+      <h3>Lỗi sai thường gặp</h3><div>${step.pit.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div>`;
   },
   listen(step, st) {
     const all = step.qs.every((_, i) => st.q && st.q[i] && st.q[i].done); const show = st.show || all;

@@ -78,7 +78,7 @@ sanitize = function (raw) {
   recomputeTime(s);
   return s;
 };
-S = load(); save();
+S = load();
 addSeconds = function (n) { const k = dayKey(), bd = S.time.byDev, d = bd[DEV] || (bd[DEV] = {}); d[k] = (d[k] || 0) + n; S.time.days[k] = (S.time.days[k] || 0) + n; S.time.total += n; touch(); };
 const _touch = touch; touch = () => { _touch(); SYNC.pending = true; };
 
@@ -471,5 +471,4 @@ document.addEventListener("change", e => {
 addEventListener("hashchange", () => { if (ROUTE.name !== "learn") LN = null; if (ROUTE.name !== "quiz") QZ = null; if (ROUTE.name !== "placement") PL = null; if (ROUTE.name === "library" && location.hash.includes("?lvl=")) { const l = location.hash.split("?lvl=")[1]; LF.track = "gen"; LF.lvl = l; } });
 
 /* ---------------- Start ---------------- */
-initApp();
-if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
+/* khởi động: xem app-v41.js */

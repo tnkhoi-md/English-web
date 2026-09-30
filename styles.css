@@ -405,3 +405,25 @@ button.lv.on{background:var(--lc);color:#fff;border-color:var(--lc)}
 }
 @media (max-width:420px){.topics{grid-template-columns:1fr}.toolbar [data-act="tbRate"] span{display:none}}
 @media (max-width:480px){.toolbar .timer-pill{display:none}}
+
+/* ============ v4.1 · exams, grammar, pronunciation bank, quote ============ */
+.lv-AB{--lc:#c0392b}
+.exm{display:inline-flex;align-items:center;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--ec);background:color-mix(in srgb,var(--ec) 13%,transparent)}
+.exm-IELTS{--ec:#c8102e}.exm-TOEIC{--ec:#1f5fbf}.exm-VSTEP{--ec:#b8860b}.exm-CEFR{--ec:#5b6b7d}
+.exrow{display:flex;flex-wrap:wrap;gap:4px;grid-column:1/-1}
+.exm-btn{min-height:34px;padding:4px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);font-size:13px;font-weight:700;color:var(--ec,var(--muted))}
+.exm-btn.on{background:var(--ec,var(--ink));color:#fff;border-color:var(--ec,var(--ink))}
+.sec-d{margin:-6px 0 12px}
+.quote-card{margin:0 0 18px;padding:20px 22px;border-radius:20px;background:linear-gradient(135deg,color-mix(in srgb,var(--gen) 10%,var(--surface)),color-mix(in srgb,var(--med) 12%,var(--surface)));border:1px solid color-mix(in srgb,var(--gen) 22%,var(--rule));display:grid;gap:6px;position:relative;overflow:hidden}
+.quote-card::after{content:"\201C";position:absolute;right:18px;bottom:-40px;font:700 160px/1 var(--en);color:color-mix(in srgb,var(--gen) 12%,transparent);pointer-events:none}
+.q-label{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--gen)}
+.q-en{font:400 clamp(22px,3.2vw,30px)/1.3 var(--en);margin-top:2px}
+.q-vi{font-weight:600;font-size:16px}.q-mean{color:var(--muted);font:italic 15px/1.4 var(--en)}
+.gcard{display:grid;gap:6px;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--rule);border-top:4px solid #5b4fc4;color:inherit;text-decoration:none;transition:transform .12s ease}
+.gcard:hover{transform:translateY(-2px)}
+.ipa-pair{display:flex;flex-wrap:wrap;gap:12px;margin-top:2px;font:400 17px/1.3 var(--en);color:var(--muted)}
+.ipa-pair small{font:700 10px var(--ui);color:var(--muted);margin-right:2px}
+.ipa-pair .cur{color:var(--ink);font-weight:700}
+.chip.tpc.on{outline:2px solid var(--tc)}
+.xtable{width:100%;border-collapse:collapse;font-size:14px}.xtable th,.xtable td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}.xtable th{font-size:12px;color:var(--muted);font-weight:600}
+@media (max-width:860px){.item{flex-wrap:wrap}.item .grow{flex:1 1 55%}.list .item .avatar{width:40px;height:40px;font-size:14px;border-radius:12px}.list .item>.chip{margin-left:54px}}
