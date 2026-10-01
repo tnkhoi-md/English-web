@@ -1,7 +1,7 @@
 # Tnkhoi English 4.4
 
 Hệ thống tự học tiếng Anh phổ thông (0 đến C1) và tiếng Anh y khoa cơ bản, chạy hoàn toàn trong trình duyệt.
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.4 (04.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.5 (01.10.26).
 
 ## Cấu trúc (thư mục gốc, đúng như repo English-web)
 
@@ -10,12 +10,12 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.4 (04.10.26).
 | `index.html` | Trang chính, nạp các file bên dưới theo đúng thứ tự (cache-bust `?v=4.0`) |
 | `styles.css` | Giao diện |
 | `content-general.js`, `content-medical.js`, `content-extra.js` | 12 bài học, 3 ca bệnh ảo, cặp âm, hình vị |
-| `content-library-gen.js` | Thư viện phổ thông: 16 chủ đề, A1 đến C1 |
+| `content-library-gen.js` | Thư viện phổ thông: 21 chủ đề, A1 đến C1 (có thêm Từ cơ bản, Quần áo, Giao thông, Giải trí, Trường học) |
 | `content-library-exam.js` | Từ vựng luyện thi: nền tảng A1–B2 (xếp đầu), TOEIC, IELTS/VSTEP, họ từ, kết hợp từ |
 | `content-clinic-screen.js` | 10 tình huống phòng khám sàng lọc ban đầu (C4–C13) |
-| `content-curriculum.js` | 18 chặng học (12 phổ thông A1.1 đến C1, 6 y khoa Y1 đến Y6) và ngân hàng 318 câu bài tập ngữ pháp |
+| `content-curriculum.js` | 18 chặng học (12 phổ thông A1.1 đến C1, 6 y khoa Y1 đến Y6) và ngân hàng 524 câu bài tập ngữ pháp |
 | `content-phonemes.js` | Thư viện 44 âm tiếng Anh: cách phát âm, lỗi sai, cách viết, từ ví dụ, cặp âm tối thiểu |
-| `content-pron-grammar.js` | Kho từ phát âm, Thư viện ngữ pháp (25 điểm A1–B2), 60 câu nói động lực |
+| `content-pron-grammar.js` | Kho từ phát âm, Thư viện ngữ pháp (40 điểm A1–C1), 60 câu nói động lực |
 | `content-library-med.js` | Thư viện y khoa: giải phẫu, sinh lý, bệnh học, lâm sàng |
 | `app-core.js`, `app-views.js`, `app-views2.js` | Lõi: lưu trữ, FSRS, bộ đếm giờ, giọng đọc, bài học, ôn tập, phòng khám |
 | `app-v4.js` | Thư viện, Mục tiêu, Kiểm tra đầu vào, Đồng bộ thiết bị, thanh công cụ |
@@ -44,6 +44,22 @@ Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm bài học và 
 ## Thêm từ vào thư viện
 
 Mỗi dòng trong `content-library-*.js` có dạng `từ|từ loại|nghĩa|câu ví dụ hoặc định nghĩa`. Thêm dòng vào đúng cấp độ (`A1`…`C1` hoặc `T1`/`T2`) của chủ đề là xong. Mã thẻ ôn tính theo chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả một từ đã có người học (thẻ cũ sẽ bị bỏ qua). Muốn thêm chủ đề mới, chép một khối `{ id, icon, color, title, vi, levels }`.
+
+## Mới trong 4.5 (mở rộng từ vựng và ngữ pháp)
+
+- **Thêm 1.193 từ phổ thông** có ví dụ, nâng từ phổ thông từ khoảng 1.020 lên 2.211: A1 450, A2 518, B1 592, B2 451, C1 200 (trước đó C1 chỉ có 53). Năm chủ đề mới: Từ cơ bản (số, màu, hình, hướng, từ để hỏi), Quần áo, Giao thông và đi lại, Giải trí và sở thích, Trường học. Nhóm từ lõi (Core verbs, Core adjectives, Core nouns) có thêm mức C1. Danh sách từ do tác giả biên soạn, đối chiếu cấp độ với Oxford 3000/5000, English Vocabulary Profile và NGSL; chưa sao chép định nghĩa.
+- **Thêm 15 điểm ngữ pháp** (tổng 40, A1 đến C1): sở hữu, hiện tại tiếp diễn, quá khứ tiếp diễn, used to, từ chỉ lượng, câu điều kiện loại 0, câu hỏi đuôi, cụm động từ, too/enough, câu nhờ bảo (causative), tương lai hoàn thành, điều kiện hỗn hợp, đảo ngữ, mệnh đề phân từ, câu nhấn mạnh (cleft). Thêm 206 câu bài tập (ngân hàng 524 câu) và mở lại mục C1 trong Thư viện ngữ pháp. Điểm ngữ pháp đã được gắn vào các chặng, kể cả A2.3, C1 và Y1, Y2, Y4, Y6 vốn trước đó không có ngữ pháp.
+- Số bài học tự sinh tăng từ 285 lên 523.
+- Mọi câu trắc nghiệm mới đều qua hai lượt kiểm tra độc lập: tác giả tự thử từng đáp án nhiễu, rồi một người rà soát khác thử lại từng lựa chọn và sửa 19 trên 210 câu có thể bị hiểu là có hai đáp án đúng.
+- Chưa gộp các từ xuất hiện ở nhiều chủ đề (xem mục 4.4.1). Thẻ ôn theo chủ đề và chính tả nên người đã học không mất dữ liệu.
+
+## Mới trong 4.4.1 (chất lượng bài tập)
+
+- **Mỗi câu trắc nghiệm chỉ có một đáp án đúng.** Câu điền từ trong bài sinh tự động giờ có gợi ý nghĩa tiếng Việt của từ cần điền, và đáp án nhiễu luôn khác nghĩa (không trùng hoặc gần nghĩa) với đáp án đúng, ưu tiên cùng từ loại. Câu “chọn nghĩa”, “chọn từ”, “nghe và chọn” dùng cùng bộ lọc. Từ nhiễu trong bài nghe không bao giờ xuất hiện trong bản ghi (kể cả dạng biến đổi). Chỗ trống khớp nguyên từ (không còn khớp “man” trong “woman”). Câu gõ từ có gợi ý chữ cái đầu và số ký tự.
+- **Vị trí đáp án đúng được xáo trộn.** Trước đây 73% câu ngữ pháp có đáp án đúng ở lựa chọn B, và mọi ca bệnh có đáp án ở vị trí cố định. Nay xáo mỗi lần luyện (ngân hàng ngữ pháp, thư viện ngữ pháp) hoặc mỗi lần tải (bài viết tay, ca bệnh); mỗi vị trí khoảng một phần ba.
+- **Sửa 30 câu ngữ pháp có hai đáp án cùng đúng** (ví dụ “stop ___” nhận cả smoking và to smoke, “She said she ___” nhận cả had và has, “Although/Despite feeling tired”), và nhận thêm các cách viết đúng cho câu gõ (’s not, ’re not).
+- **Thêm 950 câu ví dụ hoặc định nghĩa**: 99% từ trong thư viện nay có ví dụ (trước đó 32%). Nhờ vậy 283/285 bài sinh tự động có câu điền từ (trước đó 136), và số câu nghe tăng từ 182 lên 566.
+- Chưa gộp các từ xuất hiện ở nhiều chủ đề (như order, bill, cold: nhiều cặp khác nghĩa) vì sẽ làm mất thẻ ôn cũ. Gợi ý nghĩa trong câu điền từ đã xử lý các cặp khác nghĩa.
 
 ## Mới trong 4.4
 
@@ -85,6 +101,6 @@ Trong `content-curriculum.js`, mỗi dòng của `GRAMMAR_BANK` là một câu h
 
 ## Giới hạn
 
-- Thư viện là bộ từ lõi có chọn lọc (khoảng 1.400 từ), chưa phải toàn bộ vốn từ của mỗi cấp CEFR. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
+- Thư viện là bộ từ lõi có chọn lọc (khoảng 2.600 từ, trong đó 2.200 từ phổ thông và 400 từ y khoa), chưa phải toàn bộ vốn từ của mỗi cấp CEFR. Mức C1 mới có khoảng 200 từ. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Từ trong thư viện chưa có phiên âm IPA; hãy dùng nút nghe.
 - Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn.

@@ -180,7 +180,7 @@ urethra|n|niệu đạo|the tube that carries urine out of the body
 uterus|n|tử cung|the womb
 ovary|n|buồng trứng|an organ that produces eggs
 testis|n|tinh hoàn (số nhiều: testes)|an organ that produces sperm
-breast|n|vú|`,
+breast|n|vú|the soft organ on the chest that makes milk in women`,
 T2: `nephron|n|nephron, đơn vị thận|the filtering unit of the kidney
 prostate|n|tuyến tiền liệt|a gland below the bladder in men
 cervix|n|cổ tử cung|the lower part of the uterus
@@ -192,7 +192,7 @@ T1: `gland|n|tuyến|an organ that makes a substance such as a hormone
 thyroid gland|n|tuyến giáp|a gland in the neck that controls metabolism
 pituitary gland|n|tuyến yên|a small gland under the brain that controls other glands
 adrenal gland|n|tuyến thượng thận|a gland on top of each kidney
-blood|n|máu|
+blood|n|máu|the red liquid pumped around the body by the heart
 red blood cell|n|hồng cầu|a cell that carries oxygen
 white blood cell|n|bạch cầu|a cell that fights infection
 platelet|n|tiểu cầu|a cell fragment that helps blood clot
@@ -205,16 +205,16 @@ parathyroid gland|n|tuyến cận giáp|small glands that control calcium`
 }},
 { id: "a-senses", group: "anatomy", icon: "👁️", color: "#1f9e89", title: "Skin, eye & ear", vi: "Da, mắt và tai", levels: {
 T1: `skin|n|da|the outer covering of the body
-eye|n|mắt|
+eye|n|mắt|the organ of the body used for seeing
 pupil|n|đồng tử|the black centre of the eye
 iris|n|mống mắt|the coloured part of the eye
-eyelid|n|mí mắt|
+eyelid|n|mí mắt|the fold of skin that covers and protects the eye
 eardrum|n|màng nhĩ|a thin membrane inside the ear
-nail|n|móng|`,
+nail|n|móng|the hard plate that covers the end of a finger or toe`,
 T2: `epidermis|n|biểu bì|the outer layer of the skin
 dermis|n|trung bì|the layer of skin under the epidermis
-sweat gland|n|tuyến mồ hôi|
-hair follicle|n|nang lông|
+sweat gland|n|tuyến mồ hôi|a small structure in the skin that produces sweat
+hair follicle|n|nang lông|a small pocket in the skin from which a hair grows
 cornea|n|giác mạc|the clear front surface of the eye
 lens|n|thủy tinh thể|focuses light inside the eye
 retina|n|võng mạc|the layer at the back of the eye that senses light
@@ -233,7 +233,7 @@ hormone|n|hormon, nội tiết tố|a chemical messenger carried in the blood
 enzyme|n|enzym|a protein that speeds up chemical reactions
 glucose|n|glucose, đường|the main sugar used for energy
 insulin|n|insulin|a hormone that lowers blood sugar
-oxygen|n|oxy|
+oxygen|n|oxy|a gas in the air that the body needs to live
 electrolyte|n|chất điện giải|a mineral such as sodium or potassium in body fluids`,
 T2: `membrane|n|màng|a thin layer around a cell or organ
 diffusion|n|khuếch tán|movement from high to low concentration
@@ -241,16 +241,16 @@ osmosis|n|thẩm thấu|movement of water across a membrane
 receptor|n|thụ thể|a structure that receives a signal
 negative feedback|n|điều hòa ngược âm tính|a response that reverses a change
 glucagon|n|glucagon|a hormone that raises blood sugar
-sodium|n|natri|
-potassium|n|kali|
-calcium|n|canxi|
+sodium|n|natri|a mineral in body fluids that helps control water balance and nerve signals
+potassium|n|kali|a mineral inside cells that is vital for nerves, muscles and the heartbeat
+calcium|n|canxi|a mineral needed for strong bones and teeth, muscle contraction and clotting
 acid-base balance|n|cân bằng kiềm toan|keeping the blood pH normal`
 }},
 { id: "p-circ", group: "physiology", icon: "💓", color: "#e74c3c", title: "Circulation & breathing", vi: "Tuần hoàn và hô hấp", levels: {
 T1: `heart rate|n|nhịp tim|how many times the heart beats per minute
 blood pressure|n|huyết áp|the pressure of blood against artery walls
 circulation|n|tuần hoàn|the movement of blood around the body
-breathing|n|hô hấp, thở|
+breathing|n|hô hấp, thở|the process of taking air into the lungs and letting it out
 respiratory rate|n|nhịp thở|breaths per minute
 inhale|v|hít vào|to breathe in
 exhale|v|thở ra|to breathe out
@@ -268,27 +268,27 @@ carbon dioxide|n|khí CO2|a waste gas we breathe out`
 { id: "p-systems", group: "physiology", icon: "🔄", color: "#27ae60", title: "Digestion, kidneys, nerves & immunity", vi: "Tiêu hóa, thận, thần kinh và miễn dịch", levels: {
 T1: `digestion|n|sự tiêu hóa|breaking down food so the body can use it
 absorption|n|sự hấp thu|taking nutrients into the blood
-urine|n|nước tiểu|
-body temperature|n|thân nhiệt|
+urine|n|nước tiểu|the liquid waste made by the kidneys and passed out of the body
+body temperature|n|thân nhiệt|how hot or cold the inside of the body is
 reflex|n|phản xạ|an automatic response
 immune system|n|hệ miễn dịch|the body's defence against infection
 antibody|n|kháng thể|a protein that attacks germs
-fluid balance|n|cân bằng dịch|`,
+fluid balance|n|cân bằng dịch|the state in which the amount of water taken in matches the amount lost`,
 T2: `peristalsis|n|nhu động|waves of muscle that move food along the gut
 bile|n|mật|a fluid from the liver that helps digest fat
-gastric acid|n|acid dạ dày|
+gastric acid|n|acid dạ dày|the strong acid made in the stomach to help digest food
 filtration|n|sự lọc|how the kidneys clean the blood
-urine output|n|lượng nước tiểu|
+urine output|n|lượng nước tiểu|the amount of urine a person passes in a given time
 nerve impulse|n|xung thần kinh|a signal travelling along a nerve
 synapse|n|khớp thần kinh, synap|the gap between two nerve cells
 neurotransmitter|n|chất dẫn truyền thần kinh|a chemical that carries a signal across a synapse
 antigen|n|kháng nguyên|a substance that triggers an immune response
-thermoregulation|n|điều hòa thân nhiệt|`
+thermoregulation|n|điều hòa thân nhiệt|the way the body keeps its temperature steady`
 }},
 /* ---------- BỆNH HỌC ---------- */
 { id: "d-general", group: "pathology", icon: "🔬", color: "#6c5ce7", title: "General pathology", vi: "Bệnh học đại cương", levels: {
-T1: `disease|n|bệnh|
-disorder|n|rối loạn|
+T1: `disease|n|bệnh|an illness with specific signs that harms the body's normal function
+disorder|n|rối loạn|a condition in which a part of the body or mind does not work normally
 infection|n|nhiễm trùng|illness caused by germs
 inflammation|n|viêm|redness, heat, swelling and pain in tissue
 acute|adj|cấp tính|starting suddenly, short-lived
@@ -298,9 +298,9 @@ benign|adj|lành tính|not cancer, does not spread
 malignant|adj|ác tính|cancerous, can spread
 oedema|n|phù (US: edema)|swelling caused by fluid
 lesion|n|tổn thương|an area of damaged tissue
-diagnosis|n|chẩn đoán|
+diagnosis|n|chẩn đoán|the identification of the illness a patient has, based on signs and tests
 prognosis|n|tiên lượng|the likely outcome of a disease
-complication|n|biến chứng|`,
+complication|n|biến chứng|a new problem that arises during or because of an illness or treatment`,
 T2: `aetiology|n|nguyên nhân bệnh (US: etiology)|the cause of a disease
 pathogenesis|n|cơ chế bệnh sinh|how a disease develops
 necrosis|n|hoại tử|death of tissue
@@ -317,23 +317,23 @@ fibrosis|n|xơ hóa|thickening and scarring of tissue
 congenital|adj|bẩm sinh|present from birth`
 }},
 { id: "d-infect", group: "pathology", icon: "🦠", color: "#2d9c7b", title: "Infection & immunity", vi: "Nhiễm trùng và miễn dịch", levels: {
-T1: `bacteria|n|vi khuẩn (số ít: bacterium)|
-virus|n|vi-rút|
-germ|n|mầm bệnh (từ thông dụng)|
-fungus|n|nấm (số nhiều: fungi)|
-vaccine|n|vắc-xin|
-allergy|n|dị ứng|
-contagious|adj|dễ lây|
+T1: `bacteria|n|vi khuẩn (số ít: bacterium)|tiny single-celled living organisms, some of which cause infections
+virus|n|vi-rút|a tiny infectious agent that can only multiply inside living cells
+germ|n|mầm bệnh (từ thông dụng)|a general word for a tiny organism that can cause disease
+fungus|n|nấm (số nhiều: fungi)|a yeast or mould-type organism that can sometimes infect the body
+vaccine|n|vắc-xin|a preparation that trains the body's defences to fight a particular infection
+allergy|n|dị ứng|an exaggerated reaction of the body's defences to a harmless substance
+contagious|adj|dễ lây|able to be passed from one person to another by contact
 antibiotic|n|kháng sinh|a medicine that kills bacteria`,
-T2: `pathogen|n|tác nhân gây bệnh|
-parasite|n|ký sinh trùng|
+T2: `pathogen|n|tác nhân gây bệnh|any organism that can cause disease
+parasite|n|ký sinh trùng|an organism that lives on or in another living thing and harms it
 sepsis|n|nhiễm khuẩn huyết|a life-threatening response to infection
 abscess|n|áp xe|a collection of pus
-pus|n|mủ|
-incubation period|n|thời kỳ ủ bệnh|
-immunity|n|miễn dịch|
+pus|n|mủ|a thick yellowish fluid made of dead white cells that forms at infected sites
+incubation period|n|thời kỳ ủ bệnh|the time between catching an infection and the first signs of illness
+immunity|n|miễn dịch|the body's ability to resist a particular infection or disease
 autoimmune|adj|tự miễn|when the immune system attacks the body
-antibiotic resistance|n|kháng kháng sinh|`
+antibiotic resistance|n|kháng kháng sinh|the ability of bacteria to survive drugs that normally kill them`
 }},
 { id: "d-systems", group: "pathology", icon: "📋", color: "#b83280", title: "Common diseases by system", vi: "Bệnh thường gặp theo hệ cơ quan", levels: {
 T1: `hypertension|n|tăng huyết áp|high blood pressure
@@ -346,101 +346,101 @@ anaemia|n|thiếu máu (US: anemia)|a lack of red blood cells or haemoglobin
 gastritis|n|viêm dạ dày|inflammation of the stomach lining
 fracture|n|gãy xương|a broken bone
 migraine|n|đau nửa đầu|a severe, throbbing headache, often one-sided
-cancer|n|ung thư|`,
+cancer|n|ung thư|a disease in which abnormal cells grow out of control and can spread`,
 T2: `myocardial infarction|n|nhồi máu cơ tim|death of heart muscle from a blocked artery
 heart failure|n|suy tim|the heart cannot pump well enough
 angina|n|cơn đau thắt ngực|chest pain from reduced blood flow to the heart
 atrial fibrillation|n|rung nhĩ|an irregular, often fast heart rhythm
 COPD|n|bệnh phổi tắc nghẽn mạn tính|chronic obstructive pulmonary disease
-tuberculosis|n|bệnh lao|
-peptic ulcer|n|loét dạ dày tá tràng|
-cirrhosis|n|xơ gan|
-appendicitis|n|viêm ruột thừa|
-hyperthyroidism|n|cường giáp|
-hypothyroidism|n|suy giáp|
-urinary tract infection|n|nhiễm trùng đường tiết niệu|
-kidney stone|n|sỏi thận|
-chronic kidney disease|n|bệnh thận mạn|
-osteoarthritis|n|thoái hóa khớp|
-rheumatoid arthritis|n|viêm khớp dạng thấp|
-osteoporosis|n|loãng xương|
-epilepsy|n|động kinh|
-dementia|n|sa sút trí tuệ|
-meningitis|n|viêm màng não|
-dermatitis|n|viêm da|
-cataract|n|đục thủy tinh thể|
-glaucoma|n|tăng nhãn áp, glôcôm|`
+tuberculosis|n|bệnh lao|a serious bacterial infection that mainly affects the lungs
+peptic ulcer|n|loét dạ dày tá tràng|an open sore in the lining of the stomach or first part of the small intestine
+cirrhosis|n|xơ gan|permanent scarring of the liver that stops it working properly
+appendicitis|n|viêm ruột thừa|inflammation of the small pouch attached to the large intestine
+hyperthyroidism|n|cường giáp|a condition in which the thyroid gland makes too much hormone
+hypothyroidism|n|suy giáp|a condition in which the thyroid gland makes too little hormone
+urinary tract infection|n|nhiễm trùng đường tiết niệu|an infection of the bladder, kidneys or the tubes that carry urine
+kidney stone|n|sỏi thận|a hard lump of minerals that forms in the kidney
+chronic kidney disease|n|bệnh thận mạn|a long-term, gradual loss of the kidneys' ability to filter blood
+osteoarthritis|n|thoái hóa khớp|a joint disease caused by wear of the cartilage, leading to pain and stiffness
+rheumatoid arthritis|n|viêm khớp dạng thấp|a long-term disease in which the immune system attacks the joints
+osteoporosis|n|loãng xương|a condition in which bones become thin, weak and break easily
+epilepsy|n|động kinh|a brain disorder that causes repeated seizures
+dementia|n|sa sút trí tuệ|a lasting decline in memory, thinking and ability to cope with daily life
+meningitis|n|viêm màng não|inflammation of the membranes that cover the brain and spinal cord
+dermatitis|n|viêm da|inflammation of the skin, causing redness and itching
+cataract|n|đục thủy tinh thể|clouding of the lens of the eye that makes vision dim
+glaucoma|n|tăng nhãn áp, glôcôm|an eye disease in which raised pressure damages the nerve of the eye`
 }},
 /* ---------- LÂM SÀNG ---------- */
 { id: "c-signs", group: "clinical", icon: "🤒", color: "#e67e22", title: "Signs & symptoms", vi: "Triệu chứng và dấu hiệu", levels: {
-T1: `nausea|n|buồn nôn|
-vomiting|n|nôn|
-diarrhoea|n|tiêu chảy (US: diarrhea)|
-constipation|n|táo bón|
-fatigue|n|mệt mỏi|
-fever|n|sốt|
-rash|n|phát ban|
-itching|n|ngứa|
-swelling|n|sưng|
-numbness|n|tê|
-shortness of breath|n|khó thở|
+T1: `nausea|n|buồn nôn|the unpleasant feeling that you are about to be sick
+vomiting|n|nôn|the forceful emptying of the stomach contents through the mouth
+diarrhoea|n|tiêu chảy (US: diarrhea)|frequent loose or watery stools
+constipation|n|táo bón|difficulty passing stools, or passing them less often than normal
+fatigue|n|mệt mỏi|a feeling of extreme tiredness that rest does not fully relieve
+fever|n|sốt|a body temperature higher than normal
+rash|n|phát ban|an area of red or irritated skin, or many small spots on the skin
+itching|n|ngứa|an irritating skin sensation that makes you want to scratch
+swelling|n|sưng|an abnormal enlargement of a part of the body
+numbness|n|tê|loss of feeling in a part of the body
+shortness of breath|n|khó thở|the feeling of not being able to get enough air
 palpitations|n|hồi hộp, đánh trống ngực|feeling your heart beat fast or hard
-cough|n|ho|`,
-T2: `chills|n|ớn lạnh|
+cough|n|ho|a sudden forceful blast of air from the lungs and throat`,
+T2: `chills|n|ớn lạnh|a feeling of coldness with shivering, often at the start of a fever
 wheeze|n|khò khè|a whistling sound when breathing
-tingling|n|cảm giác kiến bò|
-blurred vision|n|nhìn mờ|
-weight loss|n|sụt cân|
-loss of appetite|n|chán ăn|
+tingling|n|cảm giác kiến bò|a pricking or pins-and-needles feeling in the skin
+blurred vision|n|nhìn mờ|eyesight that is not sharp or clear
+weight loss|n|sụt cân|a drop in body weight
+loss of appetite|n|chán ăn|a reduced desire to eat
 jaundice|n|vàng da|yellow skin and eyes
-bruising|n|bầm tím|
-lump|n|khối u, cục|
+bruising|n|bầm tím|dark skin discolouration caused by blood leaking under the skin after a knock
+lump|n|khối u, cục|a hard swelling or mass that can be felt under the skin
 tenderness|n|ấn đau|pain when an area is pressed
 dyspnoea|n|khó thở (thuật ngữ)|the medical term for shortness of breath
 haemoptysis|n|ho ra máu|coughing up blood`
 }},
 { id: "c-exam", group: "clinical", icon: "🩺", color: "#0a7a5f", title: "Examination & tests", vi: "Khám và xét nghiệm", levels: {
 T1: `history|n|bệnh sử|what the patient tells you about the illness
-examination|n|thăm khám|
+examination|n|thăm khám|the careful check of a patient's body by a doctor to look for signs of illness
 vital signs|n|dấu hiệu sinh tồn|pulse, blood pressure, temperature, breathing
-blood test|n|xét nghiệm máu|
-urine test|n|xét nghiệm nước tiểu|
-X-ray|n|chụp X-quang|
-ultrasound|n|siêu âm|
-scan|n|chụp chiếu (CT, MRI)|`,
+blood test|n|xét nghiệm máu|a test on a sample of blood taken from a vein
+urine test|n|xét nghiệm nước tiểu|a test on a sample of urine
+X-ray|n|chụp X-quang|an image of the inside of the body made using a type of radiation
+ultrasound|n|siêu âm|an image of organs made using high-frequency sound waves
+scan|n|chụp chiếu (CT, MRI)|a detailed image of the inside of the body made by a machine`,
 T2: `inspection|n|nhìn|looking carefully at the patient
 palpation|n|sờ|examining by touch
 percussion|n|gõ|tapping to hear the sound underneath
 auscultation|n|nghe|listening with a stethoscope
-full blood count|n|công thức máu|
-CT scan|n|chụp cắt lớp vi tính|
-MRI scan|n|chụp cộng hưởng từ|
+full blood count|n|công thức máu|a blood test that measures the numbers of red cells, white cells and platelets
+CT scan|n|chụp cắt lớp vi tính|a detailed body image made from many X-ray pictures combined by a computer
+MRI scan|n|chụp cộng hưởng từ|a detailed body image made using strong magnets and radio waves
 ECG|n|điện tâm đồ|a recording of the heart's electrical activity
 biopsy|n|sinh thiết|taking a small piece of tissue to examine
-endoscopy|n|nội soi|
+endoscopy|n|nội soi|looking inside the body with a thin flexible tube that has a camera
 differential diagnosis|n|chẩn đoán phân biệt|a list of possible causes`
 }},
 { id: "c-treat", group: "clinical", icon: "💊", color: "#2471a3", title: "Treatment & care", vi: "Điều trị và chăm sóc", levels: {
-T1: `tablet|n|viên thuốc|
-dose|n|liều|
-injection|n|mũi tiêm|
-prescription|n|đơn thuốc|
-painkiller|n|thuốc giảm đau|
-operation|n|ca mổ|
-rest|n, v|nghỉ ngơi|
-bandage|n|băng (vết thương)|
+T1: `tablet|n|viên thuốc|a small solid piece of medicine that is swallowed
+dose|n|liều|the amount of a medicine taken at one time
+injection|n|mũi tiêm|the act of putting a liquid medicine into the body with a needle
+prescription|n|đơn thuốc|a written order from a doctor for a medicine
+painkiller|n|thuốc giảm đau|a medicine that reduces or removes pain
+operation|n|ca mổ|a medical procedure in which a surgeon cuts into the body to treat a problem
+rest|n, v|nghỉ ngơi|time spent relaxing or sleeping to recover strength
+bandage|n|băng (vết thương)|a strip of cloth wrapped around an injured part of the body
 admit|v|nhập viện|We need to admit you.
-discharge|v|cho xuất viện|`,
-T2: `capsule|n|viên nang|
-infusion|n|truyền dịch|
-drip|n|chai truyền dịch|
-anaesthetic|n|thuốc gây mê / gây tê|
-stitches|n|mũi khâu|
-physiotherapy|n|vật lý trị liệu|
-referral|n|giấy chuyển viện, chuyển khám|
+discharge|v|cho xuất viện|to officially let a patient leave hospital`,
+T2: `capsule|n|viên nang|a medicine in a small soluble shell that is swallowed
+infusion|n|truyền dịch|the slow delivery of fluid or medicine into a vein
+drip|n|chai truyền dịch|a bag of fluid that runs slowly into a patient's vein through a tube
+anaesthetic|n|thuốc gây mê / gây tê|a drug that makes a patient lose feeling or consciousness during a procedure
+stitches|n|mũi khâu|threads used to sew the edges of a wound or cut together
+physiotherapy|n|vật lý trị liệu|treatment with exercise and movement to restore body function
+referral|n|giấy chuyển viện, chuyển khám|a letter or request sending a patient to another doctor or service
 contraindication|n|chống chỉ định|a reason not to give a treatment
-consent|n|sự đồng ý (có hiểu biết)|
-monitoring|n|theo dõi|
-side effect|n|tác dụng phụ|`
+consent|n|sự đồng ý (có hiểu biết)|a patient's agreement to treatment after being told the risks and benefits
+monitoring|n|theo dõi|regularly checking a patient's condition over time
+side effect|n|tác dụng phụ|an unwanted effect of a medicine in addition to its intended one`
 }}
 ];

@@ -301,8 +301,8 @@ const STEP = {
   cloze(step, st) {
     const shown = st.done ? (step.opts ? step.opts[step.a] : step.a[0]) : "";
     const sent = esc(step.s).replace("___", `<span class="gap">${shown ? esc(shown) : "&nbsp;"}</span>`);
-    if (step.opts) return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">Chọn từ điền vào chỗ trống.</p><p class="cloze" lang="en">${sent}</p>${choicesHtml({ opts: step.opts, a: step.a, why: step.why }, st, -1)}`;
-    return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">Gõ từ còn thiếu.</p><p class="cloze" lang="en">${sent}</p>
+    if (step.opts) return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">Chọn từ điền vào chỗ trống.</p><p class="cloze" lang="en">${sent}</p>${step.hint ? `<p class="muted small">Gợi ý, ${esc(step.hint)}</p>` : ""}${choicesHtml({ opts: step.opts, a: step.a, why: step.why }, st, -1)}`;
+    return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">Gõ từ còn thiếu.</p><p class="cloze" lang="en">${sent}</p>${step.hint ? `<p class="muted small">Gợi ý, ${esc(step.hint)}</p>` : ""}
       <div class="row"><input class="field" id="ans" style="flex:1;min-width:180px" value="${esc(st.val || "")}" data-enter="checkCloze" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Từ còn thiếu"><button class="btn primary" data-act="checkCloze" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>
       ${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Đúng, chỉ sai chính tả nhẹ." : "Đúng.") : "Đáp án: " + esc(step.a[0]) + "."}</b> ${esc(step.why)}</div>` : st.tries ? `<div class="feedback no" role="status"><b>Chưa đúng.</b> Thử lại một lần.</div>` : ""}`;
   },

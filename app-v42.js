@@ -18,7 +18,10 @@ function parseBank(txt) {
     return null;
   }).filter(Boolean);
 }
-GRAMMAR.forEach(g => { g.bank = parseBank(GRAMMAR_BANK[g.id]); });
+/* Câu trắc nghiệm: đáp án đúng không được nằm cố định ở một vị trí, nên xáo thứ tự lựa chọn (giữ đúng chỉ số đáp án). */
+function shuffleChoice(opts, a) { const right = opts[a], o = shuffle(opts); return [o, o.indexOf(right)]; }
+function shuffleItemOpts(it) { if ((it.t === "c" || it.t === "x") && it.opts && typeof it.a === "number") { const [o, a] = shuffleChoice(it.opts, it.a); it.opts = o; it.a = a; } return it; }
+GRAMMAR.forEach(g => { g.bank = parseBank(GRAMMAR_BANK[g.id]); g.quiz = (g.quiz || []).map(([q, opts, a, why]) => { const [o, k] = shuffleChoice(opts, a); return [q, o, k, why]; }); });
 function unitWords(u) { const seen = new Set(), out = []; u.vocab.forEach(([tid, l]) => (LIB_BY[tid]?.words || []).forEach(w => { if (w.lvl === l && !seen.has(w.key)) { seen.add(w.key); out.push(w); } })); return out; }
 const unitsOf = track => UNITS.filter(u => u.track === track);
 const unitsWithTopic = tid => UNITS.filter(u => u.vocab.some(([t]) => t === tid));
@@ -158,9 +161,17 @@ viewGrammar = () => ROUTE.arg ? _viewGrammar42() : _viewGrammar42().replace(/<sp
 /* ---------------- Practice engine (9 exercise types) ---------------- */
 const PX_LABEL = { c: "chọn đáp án", x: "chọn câu đúng", t: "điền dạng đúng", f: "tìm lỗi sai", o: "sắp xếp câu", m: "chọn nghĩa", r: "chọn từ tiếng Anh", l: "nghe và chọn", s: "viết đúng chính tả" };
 let PX = null;
+/* Đáp án nhiễu hợp lệ: khác từ, không trùng hoặc gần nghĩa tiếng Việt với đáp án đúng (tránh hai đáp án cùng đúng); ưu tiên cùng từ loại. */
+const viParts = s => String(s || "").toLowerCase().replace(/\([^)]*\)/g, " ").split(/[,;\/]| hoặc /).map(x => x.trim()).filter(Boolean);
+function viClash(a, b) { const A = viParts(a.vi), B = viParts(b.vi); return A.some(x => B.some(y => x === y || (" " + x + " ").includes(" " + y + " ") || (" " + y + " ").includes(" " + x + " "))); }
+const posKey = w => String(w.pos || "").split(/[,·]/)[0].trim();
+function rankDistractors(w, cands, n) {
+  const ok = cands.filter(x => x !== w && !/·/.test(x.w) && x.w.toLowerCase() !== w.w.toLowerCase() && !viClash(x, w)).filter((x, i, a) => a.findIndex(y => y.w.toLowerCase() === x.w.toLowerCase()) === i);
+  return [...shuffle(ok.filter(x => posKey(x) === posKey(w))), ...shuffle(ok.filter(x => posKey(x) !== posKey(w)))].slice(0, n);
+}
 function vocabItems(words, pool) {
   const ws = words.filter(w => !/·/.test(w.w)); const P = (pool || ws).filter(w => !/·/.test(w.w));
-  const others = (w, k, n) => shuffle(P.filter(x => x !== w && x[k] !== w[k])).filter((x, i, a) => a.findIndex(y => y[k] === x[k]) === i).slice(0, n).map(x => x[k]);
+  const others = (w, k, n) => rankDistractors(w, P, n).map(x => x[k]);
   return ws.map((w, i) => {
     const kind = ["m", "r", "l", "s"][i % 4];
     if (kind === "s") return { t: "s", w, q: w.vi, ans: [w.w], why: `${w.w}: ${w.vi}`, skill: "writing", src: "unit" };
@@ -171,11 +182,11 @@ function vocabItems(words, pool) {
 function startPractice(arg) {
   const m = /^([gqu])-(.+)$/.exec(arg || ""); if (!m) return false; const [, kind, id] = m;
   let items, title, back, track = "gen";
-  if (kind === "g" || kind === "q") { const g = GRAMMAR_BY[id]; if (!g) return false; items = shuffle(g.bank).map(b => ({ ...b, skill: "grammar", src: "gram:" + id })); if (kind === "q") items = items.slice(0, 8); title = g.title; back = `#/grammar/${id}`; }
+  if (kind === "g" || kind === "q") { const g = GRAMMAR_BY[id]; if (!g) return false; items = shuffle(g.bank).map(b => shuffleItemOpts({ ...b, skill: "grammar", src: "gram:" + id })); if (kind === "q") items = items.slice(0, 8); title = g.title; back = `#/grammar/${id}`; }
   else {
     const u = UNIT_BY[id]; if (!u) return false; track = u.track;
     const ws = unitWords(u); const pick = [...shuffle(ws.filter(isLearned)), ...shuffle(ws.filter(w => !isLearned(w)))].slice(0, 12);
-    const gram = u.grammar.flatMap(gid => shuffle(GRAMMAR_BY[gid].bank).slice(0, u.grammar.length > 2 ? 2 : 3).map(b => ({ ...b, skill: "grammar", src: "gram:" + gid })));
+    const gram = u.grammar.flatMap(gid => shuffle(GRAMMAR_BY[gid].bank).slice(0, u.grammar.length > 2 ? 2 : 3).map(b => shuffleItemOpts({ ...b, skill: "grammar", src: "gram:" + gid })));
     items = shuffle([...vocabItems(pick, ws.length >= 4 ? ws : LIB.filter(t => t.track === u.track).flatMap(t => t.words)), ...gram]);
     title = `Kiểm tra chặng ${u.code}`; back = `#/unit/${id}`;
   }

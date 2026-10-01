@@ -101,7 +101,7 @@ const gramStatus = g => S.gram[g.id];
 function viewGrammar() {
   if (ROUTE.arg && GRAMMAR_BY[ROUTE.arg]) return viewGrammarPoint(GRAMMAR_BY[ROUTE.arg]);
   const done = GRAMMAR.filter(g => gramStatus(g)).length;
-  const lvls = ["A1", "A2", "B1", "B2"];
+  const lvls = ["A1", "A2", "B1", "B2", "C1"];
   const exBtns = `<div class="lv-filter"><button class="exm-btn ${!LF.gex ? "on" : ""}" data-act="gramExam" data-e="">Mọi kỳ thi</button>${EXAMS.map(e => `<button class="exm-btn exm-${e} ${LF.gex === e ? "on" : ""}" data-act="gramExam" data-e="${e}">${e}</button>`).join("")}</div>`;
   const card = g => { const r = gramStatus(g); return `<a class="gcard" href="#/grammar/${g.id}"><div class="row between"><span class="lv lv-${g.lvl}">${g.lvl}</span>${r ? `<span class="chip ${r.best >= 0.8 ? "good" : "acc"}">${Math.round(r.best * 100)}%</span>` : `<span class="chip">chưa luyện</span>`}</div><b lang="en">${esc(g.title)}</b><span class="muted small">${esc(g.vi)}</span><span class="exrow">${g.exams.map(e => `<span class="exm exm-${e}">${e}</span>`).join("")}</span></a>`; };
   return `<section class="page-head"><h1>Thư viện ngữ pháp</h1><p class="lede">${GRAMMAR.length} điểm ngữ pháp cốt lõi từ A1 đến B2, sắp theo thứ tự nên học. Mỗi điểm có công thức, cách dùng, ví dụ nghe được, lỗi sai thường gặp và câu hỏi luyện kiểu đề thi. Bạn đã luyện ${done}/${GRAMMAR.length} điểm.</p></section>

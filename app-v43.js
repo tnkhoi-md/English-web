@@ -19,17 +19,28 @@ function lessonWord(lw) {
 function posIndex(pos) { const p = (pos || "").split(/[,·]/)[0].trim(); return p === "n" ? 0 : p === "v" ? 1 : p === "adj" ? 2 : 3; }
 function buildGenSteps(l, unitIdx, part) {
   const ws = l.words, pool = l.pool;
-  const withEx = ws.filter(w => w.ex && !/·/.test(w.w) && new RegExp(reEsc(w.w), "i").test(w.ex));
-  const blank = w => w.ex.replace(new RegExp(reEsc(w.w), "i"), "___");
-  const others = (w, n) => shuffle(pool.filter(x => x.w !== w.w && !/·/.test(x.w))).slice(0, n).map(x => x.w);
+  /* Khớp nguyên từ (không khớp "man" trong "woman"). */
+  const wordRe = w => new RegExp("(^|[^A-Za-z'])(" + reEsc(w.w) + ")(?![A-Za-z])", "i");
+  const withEx = ws.filter(w => w.ex && !/·/.test(w.w) && wordRe(w).test(w.ex));
+  const blank = w => w.ex.replace(wordRe(w), (m, pre) => pre + "___");
+  /* Mỗi câu trắc nghiệm chỉ được có MỘT đáp án đúng: đáp án nhiễu không trùng hoặc gần nghĩa với đáp án đúng (xem rankDistractors). */
+  const others = (w, n) => rankDistractors(w, pool, n).map(x => x.w);
+  const hintOf = w => viParts(w.vi)[0] || w.vi;
   const steps = [];
   shuffle(ws.filter(w => !/·/.test(w.w))).slice(0, 2).forEach(w => { const opts = shuffle([w.w, ...others(w, 2)]); steps.push({ t: "mcq", k: "vocab", q: `Which word means “${w.vi}”?`, opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` }); });
-  withEx.slice(0, 2).forEach(w => { const opts = shuffle([w.w, ...shuffle(ws.filter(x => x !== w && !/·/.test(x.w))).slice(0, 2).map(x => x.w)]); if (opts.length >= 2) steps.push({ t: "cloze", k: "vocab", s: blank(w), opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` }); });
+  /* Câu điền từ: kèm gợi ý nghĩa tiếng Việt của từ cần điền. Gợi ý này là thứ phân biệt đáp án đúng với các từ còn lại (cùng từ loại, khác nghĩa), nên không có hai đáp án cùng đúng. */
+  withEx.slice(0, 2).forEach(w => {
+    const lesson = rankDistractors(w, ws, 2), more = lesson.length < 2 ? rankDistractors(w, pool.filter(x => !lesson.includes(x)), 2 - lesson.length) : [];
+    const opts = shuffle([w.w, ...lesson.map(x => x.w), ...more.map(x => x.w)]);
+    if (opts.length >= 3) steps.push({ t: "cloze", k: "vocab", s: blank(w), hint: `nghĩa của từ cần điền: ${hintOf(w)}`, opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` });
+  });
   const cls = ws.filter(w => !/·/.test(w.w) && w.pos);
   if (cls.length >= 3) steps.push({ t: "classify", k: "vocab", title: "Word classes", q: "Mỗi từ thuộc từ loại nào?", opts: ["danh từ", "động từ", "tính từ", "khác"], items: cls.map(w => [w.w, posIndex(w.pos)]), why: "n là danh từ, v là động từ, adj là tính từ. Trạng từ (adv), cụm từ (phr), giới từ (prep)… xếp vào loại khác. Một số từ có nhiều từ loại; ở đây tính theo nghĩa đang học." });
   if (withEx.length >= 2) {
-    const heard = withEx.slice(0, 3), notIn = shuffle(pool.filter(x => !ws.some(y => y.w === x.w) && !/·/.test(x.w)));
-    const qs = heard.slice(0, 2).map((w, k) => { const opts = shuffle([w.w, ...notIn.slice(k * 2, k * 2 + 2).map(x => x.w)]); return { q: "Which of these words is in the recording?", opts, a: opts.indexOf(w.w), why: `Câu có từ ${w.w}: “${w.ex}”` }; }).filter(q => q.opts.length >= 2);
+    const heard = withEx.slice(0, 3), heardText = heard.map(w => w.ex).join(" ");
+    /* Từ nhiễu không được xuất hiện (kể cả dạng biến đổi như lives/lived) trong bản ghi. */
+    const notIn = shuffle(pool.filter(x => !ws.some(y => y.w === x.w) && !/·/.test(x.w) && !new RegExp("(^|[^A-Za-z'])" + reEsc(x.w), "i").test(heardText)));
+    const qs = heard.slice(0, 2).map((w, k) => { const opts = shuffle([w.w, ...notIn.slice(k * 2, k * 2 + 2).map(x => x.w)]); return { q: "Which of these words is in the recording?", opts, a: opts.indexOf(w.w), why: `Câu có từ ${w.w}: “${w.ex}”` }; }).filter(q => q.opts.length >= 3);
     if (qs.length) steps.push({ t: "listen", k: "listening", title: "Listen to the examples", who: { N: "Narrator" }, lines: heard.map(w => ["N", w.ex, `${w.w}: ${w.vi}`]), qs });
   }
   const sent = withEx.map(w => w.ex).filter(s => { const n = s.split(/\s+/).length; return n >= 3 && n <= 10; });
@@ -37,12 +48,18 @@ function buildGenSteps(l, unitIdx, part) {
   const dsent = sent[1] || (withEx.length > 1 ? withEx[1].ex : null);
   if (dsent && dsent.split(/\s+/).length <= 14) steps.push({ t: "dict", k: "listening", s: dsent, vi: "Nghe câu có từ mới rồi chép lại." });
   const sp = ws.filter(w => !/·/.test(w.w)).slice(-1)[0];
-  if (sp) steps.push(sp.ex && new RegExp(reEsc(sp.w), "i").test(sp.ex) ? { t: "cloze", k: "writing", s: blank(sp), type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : { t: "cloze", k: "writing", s: `“${sp.vi}” in English: ___`, type: true, a: [sp.w], why: `${sp.w}: ${sp.vi}.` });
+  if (sp) { const tHint = `nghĩa: ${hintOf(sp)}; bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`; steps.push(sp.ex && wordRe(sp).test(sp.ex) ? { t: "cloze", k: "writing", s: blank(sp), hint: tHint, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : { t: "cloze", k: "writing", s: `“${sp.vi}” in English: ___`, hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `${sp.w}: ${sp.vi}.` }); }
   steps.push({ t: "pairs", set: PAIR_KEYS[(unitIdx * 3 + part) % PAIR_KEYS.length] });
   const fam = ws.every(w => /·/.test(w.w)); const spk = (fam ? ws : ws.filter(w => !/·/.test(w.w))).slice(0, 4);
   steps.push({ t: "speak", title: "Use the new words", prompt: `Say or write one short sentence with each word: ${spk.map(w => baseWord(w.w)).join(", ")}.`, vi: fam ? "Nói hoặc viết mỗi họ từ một câu, dùng ít nhất dạng đầu tiên của họ từ." : "Nói hoặc viết mỗi từ một câu ngắn. Máy kiểm tra bạn đã dùng đủ các từ chưa.", models: spk.map(w => w.ex || `${capFirst(baseWord(w.w))}.`), kw: spk.map(w => fam ? w.w.split(" · ").map(x => x.toLowerCase()) : [baseWord(w.w).toLowerCase()]), labels: spk.map(w => baseWord(w.w)) });
   return steps;
 }
+/* ---------------- Xáo thứ tự lựa chọn của bài viết tay và ca bệnh ----------------
+   Dữ liệu viết tay có đáp án đúng gần như luôn ở một vị trí; xáo khi tải để vị trí không đoán được.
+   Giữ nguyên câu chỉ có 2 lựa chọn (Yes/No). */
+const _shufQ = q => { if (q && Array.isArray(q.opts) && q.opts.length > 2 && typeof q.a === "number") { const [o, a] = shuffleChoice(q.opts, q.a); q.opts = o; q.a = a; } };
+LESSONS.forEach(l => (l.steps || []).forEach(st => { if (st.t === "mcq" || (st.t === "cloze" && st.opts)) _shufQ(st); (st.qs || []).forEach(_shufQ); }));
+CASES.forEach(c => { _shufQ(c.dx); _shufQ(c.explain); });
 /* ---------------- Generate lessons for every unit ---------------- */
 const GEN_LESSONS = [];
 UNITS.forEach((u, ui) => {
