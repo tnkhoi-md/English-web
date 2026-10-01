@@ -1,13 +1,13 @@
-# Tnkhoi English 4.4
+# Tnkhoi English 4.6
 
 Hệ thống tự học tiếng Anh phổ thông (0 đến C1) và tiếng Anh y khoa cơ bản, chạy hoàn toàn trong trình duyệt.
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.5 (01.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.6.11 (01.10.26).
 
 ## Cấu trúc (thư mục gốc, đúng như repo English-web)
 
 | File | Vai trò |
 |---|---|
-| `index.html` | Trang chính, nạp các file bên dưới theo đúng thứ tự (cache-bust `?v=4.0`) |
+| `index.html` | Trang chính, nạp các file bên dưới theo đúng thứ tự (cache-bust `?v=4.6`) |
 | `styles.css` | Giao diện |
 | `content-general.js`, `content-medical.js`, `content-extra.js` | 12 bài học, 3 ca bệnh ảo, cặp âm, hình vị |
 | `content-library-gen.js` | Thư viện phổ thông: 21 chủ đề, A1 đến C1 (có thêm Từ cơ bản, Quần áo, Giao thông, Giải trí, Trường học) |
@@ -22,6 +22,9 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.5 (01.10.26).
 | `app-v41.js` | Bộ lọc kỳ thi, Ngữ pháp, Kho phát âm, câu nói động lực, nhóm ca bệnh |
 | `app-v42.js` | Lộ trình theo chặng, trang chặng, bài kiểm tra chặng, công cụ luyện tập 9 dạng câu |
 | `app-v43.js` | Sinh bài học 5 từ cho mọi nhóm từ vựng của chặng, bài ngẫu nhiên |
+| `app-v45.js` | Luyện đề (TOEIC Part 5 và 6, điền đoạn văn, viết lại câu), Kho luyện đọc, 4 dạng câu hỏi mới trong bộ máy luyện tập. Nạp trước `app-v44.js` |
+| `content-reading.js`, `content-exam.js` | Dữ liệu: 48 bài đọc, ngân hàng TOEIC Part 5 và 6, cloze, viết lại câu |
+| `NGHIEN-CUU-NGUON-MO.md` | Báo cáo nghiên cứu: định dạng đề thi chính thức, nguồn mở và giấy phép, hiệu chỉnh độ dài và độ khó đoạn đọc |
 | `app-v44.js` | Giọng người thật cho từ đơn, xếp hạng giọng máy, trang Giọng đọc, Thư viện 44 âm. Phải nạp cuối cùng và khởi động app |
 | `index-single-file.html` | Bản gộp một file, dùng để mở thử hoặc dự phòng |
 
@@ -44,6 +47,54 @@ Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm bài học và 
 ## Thêm từ vào thư viện
 
 Mỗi dòng trong `content-library-*.js` có dạng `từ|từ loại|nghĩa|câu ví dụ hoặc định nghĩa`. Thêm dòng vào đúng cấp độ (`A1`…`C1` hoặc `T1`/`T2`) của chủ đề là xong. Mã thẻ ôn tính theo chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả một từ đã có người học (thẻ cũ sẽ bị bỏ qua). Muốn thêm chủ đề mới, chép một khối `{ id, icon, color, title, vi, levels }`.
+
+## Mới trong 4.6.11 (trang chủ)
+
+- Bỏ hai khối "Xem trước một từ" và "Lỗi sai thường gặp" khỏi trang Hôm nay.
+- Mục "Mục tiêu hôm nay" có biểu tượng cho ba ô số liệu (ngày liên tiếp, thẻ đến hạn, thẻ đã có), xếp ngang ba cột.
+
+## Mới trong 4.6.8
+
+- Bốn ô thống kê đầu trang Tiến bộ (tổng thời gian học, ngày có học, ngày liên tiếp, thẻ đã vững) có biểu tượng màu riêng: đồng hồ, lịch, ngọn lửa, cúp.
+
+## Mới trong 4.6.7 (Tiến bộ: biểu đồ ra-đa)
+
+- Bỏ hai mục "Bài học và thẻ" và "Phòng khám và phát âm" khỏi trang Tiến bộ.
+- Mục **Kỹ năng** đổi từ các thanh ngang sang **biểu đồ ra-đa** 8 trục (từ vựng, ngữ pháp, nghe, đọc, nói, viết, phát âm, giao tiếp lâm sàng), kèm bảng tỉ lệ đúng và số lần làm bên dưới. Kỹ năng chưa luyện nằm ở tâm.
+
+## Mới trong 4.6.5 (Ôn tập)
+
+- Màn tổng quan Ôn tập làm lại: thẻ lớn nêu số thẻ đến hạn kèm nút bắt đầu và thời gian ước tính (hoặc báo đã xong và thời điểm thẻ kế tiếp), **thanh phân bố mức nhớ** (mới, đang học, đang củng cố, đã vững) có chú thích, biểu đồ 7 ngày tới, và hướng dẫn chấm điểm thu gọn thành bốn ô màu (Quên, Khó, Nhớ, Dễ) với phím tắt 1 đến 4.
+- Sửa lỗi biểu đồ cột (7 ngày tới ở Ôn tập, 14 ngày ở Tiến bộ) bị thấp hơn thực tế vì chiều cao tính theo phần trăm.
+
+## Mới trong 4.6.3 (Từ của tôi)
+
+- Dải thống kê ngay đầu trang (số thẻ, mới và đang học, đang củng cố, đã vững) và nút **Ôn thẻ đến hạn** hoặc **Thêm từ từ Thư viện**.
+- **Bộ lọc theo mức nhớ** (Tất cả, Mới, Đang học, Đang củng cố, Đã vững): lọc tức thì, ẩn nhóm trống, cập nhật số từ mỗi nhóm và hiện số từ khớp.
+- Mỗi dòng từ gọn hơn: từ, phiên âm và nghĩa nằm bên trái, nút nghe và trạng thái nhớ nằm bên phải.
+
+## Mới trong 4.6.2 (thanh công cụ và trang chủ)
+
+- **Thanh công cụ chia ba nhóm có tên**: Giọng đọc (US/UK và tốc độ), Giao diện, Đồng bộ. Nhóm có viền chung; tên nhóm hiện trên màn hình rộng, ẩn trên điện thoại. Giao diện đổi từ một nút xoay vòng sang bộ chọn ba trạng thái (Sáng, Tối, Theo thiết bị) hiển thị rõ chế độ đang dùng. Đồng hồ không còn bị xuống dòng.
+- **Trang chủ (Hôm nay)** có dải tóm tắt ngay dưới lời chào: tiến độ phút học trong ngày so với mục tiêu, số thẻ đến hạn (bấm để ôn), chuỗi ngày liên tiếp, cùng bốn lối tắt: Ôn tập, Luyện đề, Đọc, Lộ trình.
+
+## Mới trong 4.6.1 (mục Tiến bộ)
+
+- Thêm các phần trước đây thiếu: **Lộ trình** (số chặng đã qua, chặng đang học), **Vốn từ theo cấp độ** (A1 đến C1, nền tảng và mở rộng y khoa), **Ngữ pháp, luyện đề và đọc** (điểm đạt theo cấp, bộ đề và bài đọc đã làm, điểm trung bình, năm lượt làm gần đây có liên kết), và dòng gợi ý kỹ năng cần chú ý.
+- Ô thống kê đầu trang xếp 2 cột trên màn hình hẹp; nhãn số liệu không còn xuống dòng; lịch 12 tuần có chú thích mức độ.
+
+## Mới trong 4.6 (Luyện đề và Kho luyện đọc)
+
+- **Trang Luyện đề** (menu Học): 53 bộ đề, gồm 358 mục dữ liệu (bài đọc, đoạn văn, câu hỏi).
+  - **TOEIC Part 5**: ngân hàng 150 câu hoàn thành câu theo 7 nhóm (dạng từ, thì, giới từ, liên từ, đại từ, từ vựng công sở, lượng từ và so sánh), có bộ Thi thử 30 câu.
+  - **TOEIC Part 6**: 16 đoạn thư, thông báo, bài báo, mỗi đoạn 4 chỗ trống trong đó có một chỗ chọn nguyên câu, có bộ Thi thử 4 đoạn (16 câu). Số câu theo đề TOEIC hiện hành (Part 5 có 30 câu, Part 6 có 16 câu, theo ETS RM-17-05).
+  - **Điền đoạn văn kiểu Cambridge**: 12 bài chọn từ và 12 bài gõ từ (open cloze), mỗi bài 8 chỗ trống, mức B1 đến C1.
+  - **Viết lại câu với từ cho sẵn** (key word transformation): 120 câu B1, B2, C1; mỗi câu liệt kê đủ các đáp án đúng. Bộ chấm hiểu dạng viết tắt (`shouldn't have` bằng `should not have`) nhưng không nhận lỗi gần đúng, vì `has` và `had` khác nghĩa.
+- **Kho luyện đọc**: 48 đoạn văn ngắn tự viết, A2 (8), B1 (14), B2 (14), C1 (12), trong đó 13 bài y khoa. Mỗi bài có 5 câu hỏi (ý chính, chi tiết, suy luận hoặc từ trong ngữ cảnh, True/False/Not given), đáp án kèm bằng chứng trích từ bài và giải thích tiếng Việt. Chạm vào từ gạch chấm để xem nghĩa và thêm vào lịch ôn; có nút nghe cả bài và tóm tắt tiếng Việt.
+- Mọi câu trắc nghiệm qua hai lượt kiểm tra độc lập (tác giả tự thử từng đáp án nhiễu, rồi người rà soát thử lại); người rà soát đã sửa khoảng 63 trên 766 câu (kể cả vài câu True/False/Not given bị gắn nhãn sai) và bổ sung khoảng 160 đáp án chấp nhận được cho phần viết lại câu.
+- Trang Luyện đề liệt kê nguồn chính thức và nguồn mở (kèm giấy phép) để luyện thêm. Chi tiết trong `NGHIEN-CUU-NGUON-MO.md`.
+- Phiên bản này đổi `?v=` thành 4.6; nếu mở app mà thấy lỗi lạ sau khi cập nhật, hãy tải lại cứng trang (Ctrl+Shift+R) để bỏ bộ nhớ đệm.
+- Chưa có: Part 7 nhiều đoạn, matching headings, Yes/No/Not given, word formation (Cambridge Part 3), thi thử có đồng hồ.
 
 ## Mới trong 4.5 (mở rộng từ vựng và ngữ pháp)
 

@@ -206,7 +206,7 @@ addEventListener("beforeunload", () => { saveResume(); save(); });
 const SPEECH = { voices: [], busy: false, token: 0 };
 const TTS_OK = "speechSynthesis" in window;
 function loadVoices() { if (!TTS_OK) return; SPEECH.voices = speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang)); }
-if (TTS_OK) { loadVoices(); speechSynthesis.onvoiceschanged = () => { loadVoices(); if (ROUTE && ROUTE.name === "settings") render(); }; }
+if (TTS_OK) { loadVoices(); speechSynthesis.onvoiceschanged = () => { loadVoices(); if (typeof ROUTE !== "undefined" && ROUTE && ROUTE.name === "settings") render(); }; }
 const langCode = () => (S.settings.accent === "uk" ? "en-GB" : "en-US");
 function voiceScore(v) {
   let s = 0; const n = v.name;
