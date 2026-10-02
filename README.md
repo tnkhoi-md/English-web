@@ -74,4 +74,4 @@ Vào mục Đồng bộ thiết bị, tạo một fine-grained token trên GitHu
 
 - Thư viện là bộ từ lõi có chọn lọc, chưa phải toàn bộ vốn từ của mỗi cấp CEFR; mức C1 còn ít từ nhất. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Điểm Viết và Nói là tự chấm, ứng dụng không chấm tự động, đang trong quá trình hoàn thiện.
-- Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế. Chương Máu (M6) ít chắc chắn hơn các chương khác vì nguồn bị lỗi font.
+- Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế.
