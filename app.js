@@ -896,8 +896,10 @@ function viewSounds() {
 /* ---------------- Words ---------------- */
 let B = null, WQ = "";
 const BUILD_N = 8;
-function startBuild() { B = { order: shuffle(TERMS).slice(0, BUILD_N), round: 0, score: 0 }; newBuild(); }
-function newBuild() { const t = B.order[B.round]; if (!t) return; const extra = shuffle(TERM_PARTS.filter(p => !t.p.includes(p))).slice(0, 3); B.pool = shuffle([...t.p, ...extra]); B.ans = []; B.done = false; B.ok = false; B.tries = 0; }
+const SYS_LABELS = { cardio: "Tim mạch", blood: "Máu và bạch huyết", resp: "Hô hấp", ent: "Tai mũi họng", gi: "Tiêu hóa, gan mật", urinary: "Tiết niệu", repro: "Sinh sản, sản phụ khoa", neuro: "Thần kinh", psych: "Tâm thần, hành vi", eye: "Mắt", musculo: "Cơ xương khớp", skin: "Da", endo: "Nội tiết", immune: "Miễn dịch, dị ứng", onco: "Ung bướu", infect: "Nhiễm trùng", general: "Thuật ngữ chung" };
+let BSYS = "";
+function startBuild() { const pool = TERMS.filter(t => !BSYS || t.s === BSYS); B = { order: shuffle(pool.length >= BUILD_N ? pool : TERMS).slice(0, BUILD_N), round: 0, score: 0 }; newBuild(); }
+function newBuild() { const t = B.order[B.round]; if (!t) return; const extra = shuffle(TERM_PARTS.filter(p => !t.p.includes(p) && p.length > 1)).slice(0, 3); B.pool = shuffle([...t.p, ...extra]); B.ans = []; B.done = false; B.ok = false; B.tries = 0; }
 function wordListHtml() {
   const q = norm(WQ); const ws = learnedWords().filter(({ w }) => !q || norm(w.w).includes(q) || norm(w.vi).includes(q) || w.vi.toLowerCase().includes(WQ.toLowerCase()));
   if (!learnedWords().length) return `<div class="empty"><p>Sổ từ trống. Học xong một bài, các từ của bài sẽ xuất hiện ở đây kèm trạng thái ôn tập.</p><a class="btn primary" href="#/path">Mở lộ trình</a></div>`;
@@ -1142,6 +1144,7 @@ const ACT = {
   },
   bNext() { B.round++; if (B.round < BUILD_N) newBuild(); else save(); render(); },
   buildAgain() { startBuild(); render(); },
+  buildSys(el) { BSYS = el.dataset.v || ""; startBuild(); render(); },
   // settings
   testVoice() { const [a, b] = voicePair(); sayLines([{ text: "Hello. I'm Dr Khoi. What brings you in today?", who: 0 }, { text: "I've had a headache for three days.", who: 1 }]); if (!a) toast("Chưa tải được giọng đọc. Thử lại sau vài giây."); },
   exportFile() {
@@ -2665,12 +2668,13 @@ function buildGameHtml() {
 }
 viewWords = function () {
   const grp = (type, title, hint) => `<details class="ex-group mt-group"><summary>${title} <span class="chip">${MORPHEMES.filter(m => m[0] === type).length}</span></summary><p class="muted small" style="margin:0 0 6px">${hint}</p><div class="mt-grid">${MORPHEMES.filter(m => m[0] === type).map(([, f, en, vi, ex]) => `<div class="mt-card" data-q="${esc(norm(f + " " + en + " " + vi + " " + ex))}"><b lang="en">${esc(f)}</b><span lang="en">${esc(en)}</span><span class="muted small">${esc(vi)}</span><span class="mt-ex row" lang="en">${esc(ex)} ${hear(ex)}</span></div>`).join("")}</div></details>`;
-  const terms = `<details class="ex-group mt-group"><summary>Thuật ngữ mẫu <span class="chip">${TERMS.length}</span></summary><p class="muted small" style="margin:0 0 6px">Mỗi thuật ngữ tách thành các mảnh: tiền tố, gốc, hậu tố.</p><div class="mt-terms">${TERMS.map(t => `<div class="mt-term" data-q="${esc(norm(t.t + " " + t.m + " " + t.vi))}"><span class="row"><b lang="en">${esc(t.t)}</b>${hear(t.t)}</span><span class="muted small" lang="en">${t.p.map(esc).join(" + ")}</span><span lang="en">${esc(t.m)}</span><span class="muted small">${esc(t.vi)}</span></div>`).join("")}</div></details>`;
+  const termCard = t => `<div class="mt-term" data-q="${esc(norm(t.t + " " + t.m + " " + t.vi))}"><span class="row"><b lang="en">${esc(t.t)}</b>${hear(t.t)}</span><span class="muted small" lang="en">${t.p.map(esc).join(" + ")}</span><span lang="en">${esc(t.m)}</span><span class="muted small">${esc(t.vi)}</span></div>`;
+  const terms = Object.entries(SYS_LABELS).map(([k, l]) => { const ts = TERMS.filter(t => t.s === k); return ts.length ? `<details class="ex-group mt-group"><summary>${l} <span class="chip">${ts.length}</span></summary><div class="mt-terms">${ts.map(termCard).join("")}</div></details>` : ""; }).join("");
   return `<section class="page-head"><h1>Thư viện thuật ngữ y khoa</h1><p class="lede">Phần lớn thuật ngữ y khoa ghép từ gốc Hy Lạp và La-tinh. Nhớ các mảnh hình vị là đoán được nghĩa của hàng trăm từ: luyện ghép trước, rồi tra bảng bên dưới.</p></section>
-    <section class="panel track-med mt-practice"><h2 style="margin:0 0 10px">Luyện ghép thuật ngữ</h2>${buildGameHtml()}</section>
+    <section class="panel track-med mt-practice"><h2 style="margin:0 0 10px">Luyện ghép thuật ngữ</h2><div class="lv-filter mt-sys" role="group" aria-label="Chọn hệ cơ quan">${[["", "Tất cả"], ...Object.entries(SYS_LABELS)].filter(([k]) => !k || TERMS.some(t => t.s === k)).map(([k, l]) => `<button class="exm-btn ${BSYS === k ? "on" : ""}" data-act="buildSys" data-v="${k}" aria-pressed="${BSYS === k}">${l}</button>`).join("")}</div>${buildGameHtml()}</section>
     <h2 class="sec-h" style="margin-top:22px">Tra hình vị và thuật ngữ</h2>
     <input class="search" id="msearch" type="search" placeholder="Tìm mảnh, nghĩa hoặc thuật ngữ…" aria-label="Tìm hình vị hoặc thuật ngữ"><p class="muted small" id="mcount" style="margin:6px 0 0"></p>
-    <div class="stack" style="margin-top:12px">${grp("prefix", "Tiền tố", "Đứng đầu từ, cho biết mức độ, vị trí hoặc số lượng.")}${grp("root", "Gốc từ", "Phần mang nghĩa chính, thường là một cơ quan hoặc bộ phận.")}${grp("suffix", "Hậu tố", "Đứng cuối từ, cho biết bệnh lý, thủ thuật hoặc triệu chứng.")}${terms}</div>`;
+    <div class="stack" style="margin-top:12px">${grp("prefix", "Tiền tố", "Đứng đầu từ, cho biết mức độ, vị trí hoặc số lượng.")}${grp("root", "Gốc từ", "Phần mang nghĩa chính, thường là một cơ quan hoặc bộ phận.")}${grp("suffix", "Hậu tố", "Đứng cuối từ, cho biết bệnh lý, thủ thuật hoặc triệu chứng.")}<h3 style="margin:10px 0 0">Thuật ngữ mẫu theo hệ cơ quan</h3><p class="muted small" style="margin:0">Mỗi thuật ngữ tách thành các mảnh: tiền tố, gốc, hậu tố.</p>${terms}</div>`;
 };
 addEventListener("input", e => {
   if (!e.target || e.target.id !== "msearch") return;
@@ -2910,7 +2914,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.19.3"; APP.build = "01.10.26";
+APP.version = "4.20.1"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */

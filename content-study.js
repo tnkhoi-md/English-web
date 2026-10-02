@@ -19844,7 +19844,26 @@ const I18N_EN = {
 "Đã bật": "On",
 "Chưa bật": "Off",
 "Vì sao “": "Why “",
-"” chưa đúng:": "” is not right:"
+"” chưa đúng:": "” is not right:",
+"Thuật ngữ mẫu theo hệ cơ quan": "Sample terms by body system",
+"Chọn hệ cơ quan": "Choose a body system",
+"Tim mạch": "Cardiovascular",
+"Máu và bạch huyết": "Blood and lymph",
+"Hô hấp": "Respiratory",
+"Tai mũi họng": "Ear, nose and throat",
+"Tiêu hóa, gan mật": "Digestive, liver and biliary",
+"Tiết niệu": "Urinary",
+"Sinh sản, sản phụ khoa": "Reproductive, obstetrics and gynaecology",
+"Thần kinh": "Nervous system",
+"Tâm thần, hành vi": "Mental health and behaviour",
+"Mắt": "Eye",
+"Cơ xương khớp": "Musculoskeletal",
+"Da": "Skin",
+"Nội tiết": "Endocrine",
+"Miễn dịch, dị ứng": "Immune and allergy",
+"Ung bướu": "Oncology",
+"Nhiễm trùng": "Infection",
+"Thuật ngữ chung": "General terms"
 };
 
 /* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */

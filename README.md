@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.14 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.20.1 (02.10.26).
 
 ## Tính năng
 
@@ -14,7 +14,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.14 (02.10.26).
 **Từ vựng**
 - **Thư viện từ vựng** khoảng 3.800 từ (hơn 3.100 từ phổ thông) theo chủ đề và cấp độ: phổ thông A1 đến C1, luyện thi (TOEIC, IELTS, VSTEP), họ từ, kết hợp từ, và y khoa (giải phẫu, sinh lý, bệnh học, lâm sàng, giáo trình M1 đến M6). Có câu ví dụ, phiên âm và định nghĩa tiếng Anh cho từ B1 trở lên.
 - **Luyện tập** (một trang): ôn thẻ đến hạn bằng thuật toán FSRS (mỗi từ có thẻ nhìn từ nhớ nghĩa và thẻ nhìn nghĩa gõ lại từ, kèm hướng dẫn chấm), rồi các bài tập theo dạng.
-- **Thư viện thuật ngữ y khoa**: luyện ghép thuật ngữ từ tiền tố, gốc, hậu tố, bảng hình vị và thuật ngữ mẫu có ô tìm kiếm trong một trang.
+- **Thư viện thuật ngữ y khoa**: hơn 260 hình vị (tiền tố, gốc, hậu tố) và gần 400 thuật ngữ mẫu chia theo 17 hệ cơ quan, có ô tìm kiếm; luyện ghép thuật ngữ từ các mảnh, chọn theo hệ cơ quan.
 
 **Ngữ pháp, luyện đề, đọc, viết**
 - **Thư viện ngữ pháp** 40 điểm (A1 đến C1) với công thức, cách dùng, ví dụ, lỗi sai thường gặp và ngân hàng hơn 500 câu bài tập.
