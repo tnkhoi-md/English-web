@@ -113,9 +113,7 @@ floor|n|sàn nhà, tầng|The book is on the floor.
 lamp|n|đèn|Please turn on the lamp.
 toilet|n|nhà vệ sinh, bồn cầu|The toilet is next to the bathroom.
 bag|n|túi, cặp|Her bag is on the chair.
-clock|n|đồng hồ treo tường|The clock is on the wall.
-open|v|mở|Please open the door.
-close|v|đóng|Close the window, please.`,
+clock|n|đồng hồ treo tường|The clock is on the wall.`,
 A2: `sofa|n|ghế sofa|The cat is asleep on the sofa.
 fridge|n|tủ lạnh|Put the milk in the fridge, please.
 cupboard|n|tủ chén, tủ đồ|The cups are in the cupboard above the sink.
@@ -203,9 +201,7 @@ tomato|n|cà chua|Put a tomato in the salad.
 cheese|n|phô mai|I like cheese on my bread.
 juice|n|nước ép|She drinks orange juice for breakfast.
 soup|n|món súp|The soup is very hot.
-cake|n|bánh ngọt|We have a cake for her birthday.
-eat|v|ăn|We eat dinner at seven.
-drink|v, n|uống; đồ uống|Do you want a drink?`,
+cake|n|bánh ngọt|We have a cake for her birthday.`,
 A2: `delicious|adj|ngon|This soup is delicious. Can I have some more?
 salty|adj|mặn|The soup is too salty for me.
 sweet|adj|ngọt|I don't like sweet tea. It has too much sugar.
@@ -301,10 +297,7 @@ Saturday|n|thứ Bảy|We go to the park on Saturday.
 spring|n|mùa xuân|Flowers come out in spring.
 summer|n|mùa hè|It is very hot in summer.
 autumn|n|mùa thu (US: fall)|The leaves fall in autumn.
-winter|n|mùa đông|It is cold in winter.
-now|adv|bây giờ|I am busy now.
-day|n|ngày|I work every day.
-time|n|thời gian, giờ|What time is it?`,
+winter|n|mùa đông|It is cold in winter.`,
 A2: `weekend|n|cuối tuần|What are you doing this weekend?
 early|adj, adv|sớm|I get up early to catch the bus.
 late|adj, adv|muộn|Sorry I'm late. The train was slow.
@@ -337,7 +330,6 @@ frequent|adj|thường xuyên|Frequent short breaks help you study better.
 decade|n|thập kỷ, mười năm|He has worked here for over a decade.
 period|n|khoảng thời gian|There was a long period of rain in April.
 meanwhile|adv|trong khi đó|Cook the rice, and meanwhile cut the vegetables.
-eventually|adv|cuối cùng, rốt cuộc|After many delays, we eventually arrived at the hotel.
 lately|adv|gần đây|I have been very tired lately.
 currently|adv|hiện tại|She is currently working in a hospital.
 shortly|adv|ngay sau đây, chẳng bao lâu|The doctor will see you shortly.
@@ -684,13 +676,11 @@ money|n|tiền|I have no money in my bag.
 price|n|giá|What is the price of this book?
 cheap|adj|rẻ|This bag is cheap, only five dollars.
 expensive|adj|đắt|That watch is too expensive for me.
-pay|v|trả tiền|You can pay at the front desk.
 card|n|thẻ|Can I use my card here?
 shirt|n|áo sơ mi|He wears a white shirt to work.
 shoes|n|giày|My new shoes are very small.
 shop assistant|n|nhân viên bán hàng|The shop assistant is very helpful.
 basket|n|giỏ|Put the apples in the basket.
-open|adj|mở cửa|The bank is open now.
 closed|adj|đóng cửa|The shop is closed on Sunday.
 free|adj|miễn phí|The coffee is free today.
 coin|n|đồng xu|I have one coin in my pocket.
@@ -704,7 +694,6 @@ cash|n|tiền mặt|Sorry, we only take cash, not cards.
 change|n|tiền thừa|The cashier gave me my change and a small bag.
 customer|n|khách hàng|The customer asked the shop assistant for a smaller size.
 market|n|chợ|Anna buys fresh vegetables at the market every morning.
-spend|v|tiêu (tiền, thời gian)|How much money do you spend on food each week?
 queue|n, v|hàng người xếp hàng; xếp hàng|There is a long queue at the checkout.
 checkout|n|quầy thanh toán|Please pay at the checkout.
 trolley|n|xe đẩy hàng (US: cart)|He pushed the trolley down the aisle.
@@ -739,7 +728,6 @@ haggle|v|mặc cả|Tourists often haggle in the market.`
 A1: `sun|n|mặt trời|The sun is bright today.
 rain|n, v|mưa|Take an umbrella because the rain is heavy.
 hot|adj|nóng|It is very hot in the kitchen.
-cold|adj|lạnh|My hands are cold in winter.
 tree|n|cây|A bird sits in the tree.
 flower|n|hoa|She puts a red flower in the glass.
 dog|n|con chó|The dog runs after the ball.
@@ -777,7 +765,6 @@ recycle|v|tái chế|Please recycle your bottles instead of throwing them in the
 climate|n|khí hậu|The climate in this region is warm and dry.
 flood|n|lũ lụt|After three days of rain, the flood covered the main road.
 humid|adj|ẩm ướt|The air is so humid in July that my clothes never dry.
-temperature|n|nhiệt độ|The temperature dropped to five degrees last night.
 protect|v|bảo vệ|We should protect the forest for future generations.
 thunder|n|sấm|The thunder was so loud that the dog hid.
 lightning|n|tia chớp, sét|Lightning hit the old tree last night.
@@ -820,7 +807,6 @@ music|n|âm nhạc|We listen to music in the car.
 film|n|phim (US: movie)|Do you want to watch a film tonight?
 internet|n|mạng internet|I use the internet every day.
 video|n|video|I watch a video on my phone.
-call|v, n|gọi điện; cuộc gọi|I call my mother every evening.
 text|n, v|tin nhắn; nhắn tin|I send a text to my friend.`,
 A2: `website|n|trang web|The school website shows all the class times.
 app|n|ứng dụng|I use an app to learn English every day.
@@ -869,7 +855,6 @@ misinformation|n|thông tin sai lệch|Misinformation about health can spread qu
 encryption|n|mã hóa|Encryption protects your messages so strangers cannot read them.
 authentication|n|sự xác thực|Two-step authentication makes your account much harder to hack.
 surveillance|n|sự giám sát|Critics argue that mass surveillance threatens personal freedom.
-obsolete|adj|lỗi thời, không còn dùng|Old software becomes obsolete when it is no longer supported.
 proliferation|n|sự gia tăng nhanh chóng|The proliferation of fake accounts makes online fraud harder to stop.
 digital literacy|phr|năng lực số|Schools should teach digital literacy as early as possible.
 disruptive|adj|mang tính đột phá, gây xáo trộn|Disruptive technologies can transform whole industries almost overnight.
@@ -879,7 +864,6 @@ anonymity|n|sự ẩn danh|Online anonymity can encourage both honest debate and
 B1: `opinion|n|ý kiến|In my opinion, ...
 agree|v|đồng ý|Do you agree with the new school timetable?
 disagree|v|không đồng ý|I disagree with you, but I respect your opinion.
-problem|n|vấn đề|Traffic is a big problem in our city.
 solution|n|giải pháp|We need to find a solution to the parking shortage.
 community|n|cộng đồng|The local community organised a clean-up day for the park.
 government|n|chính phủ|The government plans to build more schools in rural areas.
@@ -891,7 +875,6 @@ citizen|n|công dân|Every citizen has the right to vote.
 vote|v, n|bỏ phiếu; lá phiếu|People over eighteen can vote in this country.
 election|n|cuộc bầu cử|The election will take place in May.
 tradition|n|truyền thống|Eating together is an important family tradition.
-volunteer|n, v|tình nguyện viên; tình nguyện|She works as a volunteer at the local hospital.
 protest|n, v|cuộc biểu tình; phản đối|Thousands of people joined the protest against the new law.`,
 B2: `issue|n|vấn đề (cần bàn)|Housing costs are an important issue for young people.
 policy|n|chính sách|The company changed its policy on working from home.
@@ -994,11 +977,9 @@ tie in with|phr|phù hợp, ăn khớp với|These results tie in with earlier f
 B2: `analyse|v|phân tích|Students must analyse the results of their experiment carefully.
 approach|n|cách tiếp cận|Our teacher uses a new approach to explain grammar.
 evidence|n|bằng chứng|The police need more evidence before they can arrest anyone.
-significant|adj|đáng kể; có ý nghĩa thống kê|There has been a significant rise in the price of rice this year.
 method|n|phương pháp|Which method did you use to solve this maths problem?
 research|n|nghiên cứu|Her research on sleep was published in a famous journal.
 factor|n|yếu tố|Stress is an important factor in many health problems.
-data|n|dữ liệu|The team collected data from over a thousand students.
 conclude|v|kết luận|After reading the report, we conclude that the plan will work.
 indicate|v|cho thấy|The survey results indicate that most people prefer online shopping.
 assess|v|đánh giá|Teachers assess students' progress through tests and class projects.
@@ -1024,18 +1005,12 @@ feasible|adj|khả thi|Is it feasible to finish the project in just two weeks?
 empirical|adj|thực nghiệm|The theory needs empirical support from real experiments, not just ideas.
 synthesise|v|tổng hợp|In her essay, Lan must synthesise ideas from five different articles.
 paradigm|n|mô hình, hệ hình|The discovery caused a paradigm shift in how doctors think about stress.
-criterion|n|tiêu chí|Age is the main criterion for entering the programme.
 methodology|n|phương pháp luận|The methodology of the study was criticised by some experts.
 mechanism|n|cơ chế|Researchers are studying the mechanism by which the drug works.
 framework|n|khung, khuôn khổ|The study provides a useful framework for understanding stress.
-inherent|adj|vốn có, cố hữu|There are inherent risks in any surgery.
 validity|n|tính hợp lệ, giá trị|The validity of the test was questioned by several experts.
-substantial|adj|đáng kể|There is substantial evidence that exercise improves mood.
-infer|v|suy ra|We can infer from these data that the treatment is effective.
 correlate|v|tương quan|Hours of sleep correlate with test performance.
-theoretical|adj|thuộc lý thuyết|The study is mainly theoretical and has no practical results yet.
-coherent|adj|mạch lạc, chặt chẽ|The essay presents a clear and coherent argument.
-exacerbate|v|làm trầm trọng thêm|Stress can exacerbate many physical symptoms.`
+theoretical|adj|thuộc lý thuyết|The study is mainly theoretical and has no practical results yet.`
 }},
 { id: "discourse", icon: "🧩", color: "#b0582b", title: "Linking & discourse", vi: "Từ nối và diễn ngôn", levels: {
 A2: `and|conj|và|Anna bought bread and milk at the market.
@@ -1110,7 +1085,6 @@ play it by ear|phr|tùy cơ ứng biến|We have no fixed plan for Saturday, so 
 once in a blue moon|phr|hiếm khi, năm thì mười họa|We only eat out once in a blue moon.
 break the ice|phr|phá vỡ bầu không khí ngượng ngùng|A joke helped to break the ice at the start of the meeting.
 get out of hand|phr|vượt khỏi tầm kiểm soát|Do not let the party get out of hand.
-in the long run|phr|về lâu dài|Saving money now will help you in the long run.
 make ends meet|phr|xoay xở đủ sống|Many families struggle to make ends meet.
 call it a day|phr|nghỉ, dừng làm việc hôm nay|We are all tired, so let us call it a day.`,
 C1: `bear in mind|phr|ghi nhớ, lưu ý|Bear in mind that the shop closes early on Sundays.
@@ -1154,8 +1128,6 @@ between|prep|ở giữa|The bank is between the shop and the park.
 next to|prep|bên cạnh|I sit next to my friend.
 in front of|prep|phía trước|The car is in front of the house.
 under|prep|dưới|The cat is under the table.
-here|adv|ở đây|Please come here.
-there|adv|ở đó|My book is over there.
 what|pron|cái gì|What is your name?
 who|pron|ai|Who is that man?
 where|adv|ở đâu|Where do you live?
@@ -1167,7 +1139,6 @@ hello|excl|xin chào|Hello, my name is Anna.
 goodbye|excl|tạm biệt|Goodbye, see you tomorrow.
 please|adv|làm ơn, xin vui lòng|Please open the window.
 thank you|phr|cảm ơn|Thank you for your help.
-sorry|excl|xin lỗi|Sorry, I am late.
 excuse me|phr|xin lỗi (để gây chú ý hoặc xin đi qua)|Excuse me, where is the station?
 yes|excl|vâng, có|Yes, I like coffee.
 no|excl|không|No, thank you.`,
@@ -1203,7 +1174,6 @@ shorts|n|quần short|He plays football in shorts.
 pocket|n|túi áo, túi quần|My phone is in my pocket.
 scarf|n|khăn quàng cổ|Wear a scarf in winter.
 gloves|n|găng tay|My gloves are very warm.
-wear|v|mặc, đội, đi|She likes to wear red.
 uniform|n|đồng phục|Nurses wear a blue uniform.`,
 A2: `shoelace|n|dây giày|I tie my shoelace before I run.
 swimsuit|n|đồ bơi|I forgot my swimsuit.
@@ -1253,11 +1223,9 @@ road|n|con đường|The road is very busy.
 traffic light|n|đèn giao thông|Stop at the traffic light.
 drive|v|lái xe|My father can drive a bus.
 ride|v|cưỡi, đi (xe đạp, xe máy)|I ride my bike to work.
-walk|v|đi bộ|I walk to school every day.
 fly|v|bay|We fly to Hanoi tomorrow.
 get on|phr|lên xe|Get on the bus at the next stop.
 get off|phr|xuống xe|Get off the train at Hue.
-turn|v|rẽ|Turn left at the corner.
 parking|n|chỗ đậu xe, việc đỗ xe|There is free parking here.
 driver|n|tài xế|The bus driver is friendly.`,
 A2: `car park|n|bãi đỗ xe|The car park is behind the shop.
@@ -1297,7 +1265,6 @@ fare|n|giá vé|The bus fare is very cheap.
 season ticket|n|vé tháng|She bought a season ticket for the train.
 gate|n|cổng (ở sân bay)|Your flight leaves from gate twelve.
 runway|n|đường băng|The plane waited on the runway.
-lift|n, v|cho đi nhờ xe; thang máy (UK)|Can you give me a lift to the station?
 traffic jam|n|tắc đường|We were stuck in a traffic jam for an hour.
 cycle lane|n|làn đường dành cho xe đạp|There is a new cycle lane on our street.`,
 B2: `carpool|v, n|đi chung xe|My colleagues and I carpool to work.
@@ -1313,8 +1280,6 @@ C1: `gridlock|n|tắc nghẽn hoàn toàn|Gridlock paralysed the city centre.`
 }},
 { id: "leisure", icon: "🎸", color: "#e8590c", title: "Leisure & hobbies", vi: "Giải trí và sở thích", levels: {
 A1: `hobby|n|sở thích|My hobby is reading.
-game|n|trò chơi|We play a game after dinner.
-play|v|chơi|The children play in the park.
 sport|n|thể thao|Football is my favourite sport.
 football|n|bóng đá|He plays football on Sundays.
 swim|v|bơi|I can swim very well.
@@ -1323,7 +1288,6 @@ sing|v|hát|She likes to sing in the shower.
 song|n|bài hát|This is my favourite song.
 guitar|n|đàn ghi-ta|My brother plays the guitar.
 piano|n|đàn piano|She plays the piano every day.
-cinema|n|rạp chiếu phim|We go to the cinema on Friday.
 movie|n|phim (US)|Let us watch a movie tonight.
 holiday|n|kỳ nghỉ|We go on holiday in July.
 party|n|bữa tiệc|I have a party on Saturday.
@@ -1377,19 +1341,15 @@ leisure activity|phr|hoạt động giải trí|Walking is a cheap and healthy l
 }},
 { id: "school", icon: "🏫", color: "#2f9e44", title: "School & study", vi: "Trường học và học tập", levels: {
 A1: `classroom|n|phòng học|The classroom is big and bright.
-pen|n|cái bút mực|I need a pen.
 pencil|n|bút chì|Can I borrow your pencil?
 rubber|n|cục tẩy (UK; US: eraser)|Use a rubber to remove the mistake.
 ruler|n|thước kẻ|I draw a line with a ruler.
-bag|n|cặp, túi|My bag is very heavy.
 board|n|cái bảng|The teacher writes on the board.
 notebook|n|vở ghi chép|I write words in my notebook.
-paper|n|giấy|I need some paper.
 maths|n|môn toán (UK; US: math)|I like maths.
 science|n|môn khoa học|We do an experiment in science.
 history|n|môn lịch sử|History is my favourite subject.
 art|n|môn mỹ thuật|We paint in art class.
-test|n|bài kiểm tra|We have a test on Monday.
 glue|n|keo dán|I use glue to stick the paper.
 scissors|n|cái kéo|Be careful with the scissors.
 classmate|n|bạn cùng lớp|My classmate sits next to me.
@@ -1397,7 +1357,6 @@ backpack|n|ba lô|Her backpack is full of books.
 alphabet|n|bảng chữ cái|Say the alphabet from A to Z.
 spelling|n|chính tả|My spelling is not good.
 page|n|trang sách|Open your book at page ten.
-listen|v|lắng nghe|Listen to the teacher, please.
 letter|n|chữ cái|The first letter is B.
 playtime|n|giờ chơi|The children love playtime.`,
 A2: `crayon|n|bút sáp màu|The child has a red crayon.
@@ -1405,7 +1364,6 @@ pencil sharpener|phr|gọt bút chì|I need a pencil sharpener.
 exercise book|phr|vở bài tập|Write it in your exercise book.
 break|n|giờ giải lao|We eat lunch at break.
 playground|n|sân chơi|The children run in the playground.
-library|n|thư viện|I read books in the library.
 dictionary|n|từ điển|Use a dictionary to find the meaning.
 calculator|n|máy tính bỏ túi|You can use a calculator in the maths test.
 geography|n|môn địa lý|We study rivers in geography.

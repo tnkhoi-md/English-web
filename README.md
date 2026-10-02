@@ -1,7 +1,7 @@
 # Tnkhoi English 4.6
 
 Hệ thống tự học tiếng Anh phổ thông (0 đến C1) và tiếng Anh y khoa cơ bản, chạy hoàn toàn trong trình duyệt.
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.6.11 (01.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.7.1 (02.10.26).
 
 ## Cấu trúc (thư mục gốc, đúng như repo English-web)
 
@@ -22,10 +22,9 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.6.11 (01.10.26).
 | `app-v41.js` | Bộ lọc kỳ thi, Ngữ pháp, Kho phát âm, câu nói động lực, nhóm ca bệnh |
 | `app-v42.js` | Lộ trình theo chặng, trang chặng, bài kiểm tra chặng, công cụ luyện tập 9 dạng câu |
 | `app-v43.js` | Sinh bài học 5 từ cho mọi nhóm từ vựng của chặng, bài ngẫu nhiên |
-| `app-v45.js` | Luyện đề (TOEIC Part 5 và 6, điền đoạn văn, viết lại câu), Kho luyện đọc, 4 dạng câu hỏi mới trong bộ máy luyện tập. Nạp trước `app-v44.js` |
 | `content-reading.js`, `content-exam.js` | Dữ liệu: 48 bài đọc, ngân hàng TOEIC Part 5 và 6, cloze, viết lại câu |
 | `NGHIEN-CUU-NGUON-MO.md` | Báo cáo nghiên cứu: định dạng đề thi chính thức, nguồn mở và giấy phép, hiệu chỉnh độ dài và độ khó đoạn đọc |
-| `app-v44.js` | Giọng người thật cho từ đơn, xếp hạng giọng máy, trang Giọng đọc, Thư viện 44 âm. Phải nạp cuối cùng và khởi động app |
+| `app-v46.js` | Gộp của v4.4 và v4.5: Luyện đề, Kho luyện đọc, giao diện Tiến bộ, Hôm nay, Từ của tôi, Ôn tập, giọng người thật, trang Giọng đọc, Thư viện 44 âm. File script cuối cùng, khởi động app |
 | `index-single-file.html` | Bản gộp một file, dùng để mở thử hoặc dự phòng |
 
 Không đổi thứ tự thẻ `<script>` trong `index.html`. Các file `content-*` phải nạp trước `app-core.js`; `app-v44.js` luôn đứng cuối.
@@ -47,6 +46,14 @@ Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm bài học và 
 ## Thêm từ vào thư viện
 
 Mỗi dòng trong `content-library-*.js` có dạng `từ|từ loại|nghĩa|câu ví dụ hoặc định nghĩa`. Thêm dòng vào đúng cấp độ (`A1`…`C1` hoặc `T1`/`T2`) của chủ đề là xong. Mã thẻ ôn tính theo chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả một từ đã có người học (thẻ cũ sẽ bị bỏ qua). Muốn thêm chủ đề mới, chép một khối `{ id, icon, color, title, vi, levels }`.
+
+## Mới trong 4.7 (gộp file và bước 4)
+
+- **Gộp file:** `app-v44.js` và `app-v45.js` thành `app-v46.js` (số file script giảm một). Thứ tự nạp trong `index.html` giữ nguyên, `app-v46.js` đứng cuối.
+- **Gộp 121 từ trùng cùng nghĩa** giữa các chủ đề (ví dụ open, eat, meeting, salary): giữ bản đầu tiên, xóa bản sau. Thẻ ôn và trạng thái "đã biết" của bản trùng tự chuyển sang từ gốc khi nạp dữ liệu (bảng `DUP_ALIAS` trong `app-v46.js`), khi đồng bộ cũng vậy, nên không mất dữ liệu. Thư viện còn 2.479 từ (phổ thông 2.090).
+- **Tái xuất hiện từ trong Kho luyện đọc:** mỗi bài đọc hiện dải tóm tắt (từ đã học, từ đến hạn ôn, từ chưa học); từ đã học được gạch chân xanh.
+- **Trang Viết và nói** (`#/writing`, mở từ Luyện đề): 9 đề (5 viết, 4 nói, có đề y khoa) và bảng tự chấm bốn tiêu chí theo cách IELTS và VSTEP chấm. Điểm tự chấm được lưu và cộng vào kỹ năng Viết hoặc Nói trên biểu đồ ra-đa.
+- **Chưa làm:** định nghĩa tiếng Anh cho từ vựng (cần viết khoảng 2.000 định nghĩa, nên tách riêng).
 
 ## Mới trong 4.6.11 (trang chủ)
 

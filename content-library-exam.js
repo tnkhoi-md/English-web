@@ -466,15 +466,11 @@ catalyst|n|chất xúc tác, tác nhân thúc đẩy|The crisis was a catalyst f
 const LIB_EXAM = [
 /* ---------- TOEIC ---------- */
 { id: "t-office", sec: "toeic", exam: ["TOEIC"], icon: "🗂️", color: "#2c6fbb", title: "Office & meetings", vi: "Văn phòng và cuộc họp", levels: {
-A2: `meeting|n|cuộc họp|The meeting starts at nine in the conference room.
-manager|n|người quản lý|Please send the report to the manager before lunch.
-colleague|n|đồng nghiệp|My colleague sits next to me and shares his lunch.
+A2: `manager|n|người quản lý|Please send the report to the manager before lunch.
 printer|n|máy in|The printer is out of paper again.
 file|n|hồ sơ, tệp|Please save the file on the shared computer.
 desk|n|bàn làm việc|Minh puts his laptop on his desk every morning.
-schedule|n|lịch trình|Check the schedule to see when the next meeting is.
 department|n|phòng ban|She works in the sales department.
-team|n|nhóm, đội|Our team meets every Monday morning.
 report|n|báo cáo|I must finish the report today.
 reception|n|quầy lễ tân|Please wait at reception until someone comes.`,
 B1: `agenda|n|chương trình nghị sự|Let's look at the agenda.
@@ -482,15 +478,12 @@ minutes|n|biên bản cuộc họp|Who is taking the minutes?
 memo|n|bản ghi nhớ nội bộ|The manager sent a memo to all staff about the new rules.
 attachment|n|tệp đính kèm|Please see the attachment.
 conference call|n|cuộc gọi hội nghị|We have a conference call with our partners in Japan at ten.
-deadline|n|hạn chót|The deadline for the report is Friday afternoon.
 reschedule|v|dời lịch|Can we reschedule the meeting?
 postpone|v|hoãn lại|The meeting was postponed.
 supervisor|n|người giám sát|Lan asked her supervisor for a day off next week.
 headquarters|n|trụ sở chính|The company's headquarters moved to a larger building downtown.
 proposal|n|bản đề xuất|She sent a proposal to the new client.
-presentation|n|bài thuyết trình|He gave a short presentation to the board.
-get back to|phr|trả lời lại, liên hệ lại|I will get back to you by Friday.
-task|n|nhiệm vụ, công việc|Each member of the team has a clear task.`,
+get back to|phr|trả lời lại, liên hệ lại|I will get back to you by Friday.`,
 B2: `branch|n|chi nhánh|She works at the company's branch in the next town.
 subsidiary|n|công ty con|The firm opened a subsidiary overseas to serve local customers.
 merger|n|sáp nhập|After the merger, the two companies shared one office.
@@ -503,12 +496,8 @@ stakeholder|n|bên liên quan|We must inform every stakeholder before the change
 streamline|v|tinh gọn quy trình|The company wants to streamline its ordering process.`
 }},
 { id: "t-hr", sec: "toeic", exam: ["TOEIC"], icon: "🧑‍💼", color: "#7b52c9", title: "Hiring & human resources", vi: "Tuyển dụng và nhân sự", levels: {
-A2: `job|n|công việc|Anna is looking for a new job in a hospital.
-apply|v|nộp đơn|You can apply for this position online before Friday.
-salary|n|lương|His salary goes into his bank account every month.
-interview|n|phỏng vấn|Minh wore a clean shirt to the interview.
-staff|n|nhân viên (tập thể)|The staff are very friendly here.
-worker|n|người lao động, công nhân|Each worker gets a lunch break.`,
+A2: `apply|v|nộp đơn|You can apply for this position online before Friday.
+staff|n|nhân viên (tập thể)|The staff are very friendly here.`,
 B1: `applicant|n|người nộp đơn|Each applicant must send a letter and a photo.
 candidate|n|ứng viên|The best candidate will start work next month.
 résumé|n|sơ yếu lý lịch (UK: CV)|Please attach your résumé to the email.
@@ -516,12 +505,10 @@ position|n|vị trí công việc|They have an open position for a nurse at the 
 hire|v|thuê, tuyển|The restaurant wants to hire two new cooks this summer.
 employee|n|nhân viên|Every employee gets a free lunch on Fridays.
 employer|n|người sử dụng lao động|My employer pays for my English classes.
-training|n|đào tạo|New nurses receive two weeks of training before they work alone.
 promotion|n|sự thăng chức|Lan was very happy to get a promotion after three years.
 retire|v|nghỉ hưu|My grandfather plans to retire when he is sixty-five.
 full-time|adj|toàn thời gian|She works in a full-time job at the bank.
 part-time|adj|bán thời gian|Nam has a part-time job at a cafe while he studies.
-overtime|n|giờ làm thêm|Staff receive extra pay for overtime.
 vacancy|n|vị trí còn trống (tuyển dụng)|There is a vacancy in the accounts department.
 reference|n|thư giới thiệu, người giới thiệu|The employer asked for a reference from my last job.
 maternity leave|n|nghỉ thai sản|She returns from maternity leave next month.`,
@@ -538,19 +525,15 @@ incentive|n|động lực, khoản khuyến khích|The firm offers a bonus as an
 turnover|n|tỷ lệ nghỉ việc (nhân sự); doanh thu|High staff turnover is costly for the company.`
 }},
 { id: "t-finance", sec: "toeic", exam: ["TOEIC", "IELTS"], icon: "💹", color: "#1f8f5f", title: "Finance & budgets", vi: "Tài chính và ngân sách", levels: {
-A2: `price|n|giá|What is the price of this jacket?
-cost|n, v|chi phí; có giá|The cost of the repair was very high.
+A2: `cost|n, v|chi phí; có giá|The cost of the repair was very high.
 profit|n|lợi nhuận|The shop made a small profit last month.
-bill|n|hóa đơn|Can we have the bill, please?
 tax|n|thuế|You must pay tax on your income.
 credit card|n|thẻ tín dụng|Can I pay by credit card?
 total|n|tổng cộng|The total is fifty dollars.`,
-B1: `budget|n|ngân sách|We have a small budget for the office party.
-expense|n|chi phí, khoản chi|Travel is the biggest expense for our team.
+B1: `expense|n|chi phí, khoản chi|Travel is the biggest expense for our team.
 invoice|n|hóa đơn thanh toán|Please send the invoice to our accounting department by Monday.
 payment|n|khoản thanh toán|The payment will arrive in your account within three days.
 account|n|tài khoản|She opened a savings account at the local bank.
-loan|n|khoản vay|They took out a loan to buy their first flat.
 estimate|n, v|ước tính|Can you estimate how much the repairs will cost?
 quarterly|adj|hằng quý|quarterly report
 revenue|n|doanh thu|The company's revenue grew by ten percent this year.
@@ -570,16 +553,10 @@ liability|n|khoản nợ phải trả|Every liability must be listed in the annu
 cash flow|n|dòng tiền|Poor cash flow forced the shop to close.`
 }},
 { id: "t-marketing", sec: "toeic", exam: ["TOEIC"], icon: "📣", color: "#d64f7a", title: "Sales & marketing", vi: "Bán hàng và tiếp thị", levels: {
-A2: `customer|n|khách hàng|The customer asked for a smaller size.
-product|n|sản phẩm|This new product is cheap and easy to use.
-sell|v|bán|They sell fresh bread and cakes every morning.
+A2: `product|n|sản phẩm|This new product is cheap and easy to use.
 advertise|v|quảng cáo|The shop will advertise its sale on the radio.
-offer|n|ưu đãi, lời đề nghị|The shop has a special offer this week.
-sale|n|đợt giảm giá, việc bán hàng|There is a big sale in the shop today.
 poster|n|áp phích|They put a poster on the wall.`,
 B1: `client|n|khách hàng (dịch vụ)|Our lawyer is meeting a new client this afternoon.
-brand|n|thương hiệu|This brand makes comfortable running shoes.
-discount|n|giảm giá|Students get a ten percent discount on all books.
 launch|v, n|ra mắt|The new product will launch in May.
 survey|n|khảo sát|The company sent a survey to ask customers about the new menu.
 competitor|n|đối thủ cạnh tranh|Our main competitor just lowered its prices.
@@ -602,7 +579,6 @@ endorsement|n|sự chứng thực, quảng cáo bởi người nổi tiếng|The
 A2: `order|n, v|đơn hàng; đặt hàng|Lan wants to order two books online.
 deliver|v|giao hàng|The shop will deliver the sofa to your home on Monday.
 box|n|thùng, hộp|Please put the glasses carefully into the box.
-receipt|n|biên lai|Keep the receipt in case you need to return it.
 parcel|n|bưu kiện|A parcel arrived for you this morning.
 address|n|địa chỉ|Please write your address on the form.
 package|n|gói hàng|The package is too heavy to carry.`,
@@ -611,7 +587,6 @@ shipment|n|lô hàng|The shipment of laptops left the port this morning.
 warehouse|n|kho hàng|The company stores its goods in a large warehouse near the airport.
 supplier|n|nhà cung cấp|Our supplier sends fresh vegetables to the restaurant every day.
 out of stock|phr|hết hàng|Sorry, the black shoes are out of stock right now.
-refund|n|hoàn tiền|The shop gave me a full refund for the broken lamp.
 warranty|n|bảo hành|The washing machine has a two-year warranty, so the repair is free.
 fragile|adj|dễ vỡ|Be careful with this parcel because it is fragile.
 contract|n|hợp đồng|Both companies signed the contract on Tuesday.
@@ -631,14 +606,11 @@ backlog|n|lượng công việc tồn đọng|A backlog of orders delayed the de
 { id: "t-travel", sec: "toeic", exam: ["TOEIC"], icon: "🧳", color: "#1b8fb3", title: "Business travel & events", vi: "Công tác và sự kiện", levels: {
 A2: `flight|n|chuyến bay|My flight to London leaves at six o'clock.
 book|v|đặt (vé, phòng)|Please book a double room for two nights.
-hotel|n|khách sạn|The hotel is near the beach and has a pool.
 trip|n|chuyến đi|Minh is on a business trip to Hanoi this week.
-taxi|n|xe taxi|We took a taxi to the hotel.
 pack|v|đóng gói hành lý|I need to pack my bags tonight.
 tour|n|chuyến tham quan|We joined a tour of the old city.
 arrive|v|đến nơi|The train will arrive at six o'clock.`,
 B1: `reservation|n|sự đặt chỗ|I made a reservation for a table for four at eight.
-itinerary|n|lịch trình chuyến đi|The itinerary shows our flights, hotels and meetings for each day.
 boarding pass|n|thẻ lên máy bay|Show your boarding pass and passport at the gate.
 conference|n|hội nghị|Anna is giving a talk at an international conference in May.
 venue|n|địa điểm tổ chức|The venue for the wedding is a beautiful garden near the lake.
@@ -646,25 +618,17 @@ attendee|n|người tham dự|Each attendee received a name badge and a free not
 registration|n|đăng ký|Registration for the conference opens at eight, so please arrive early.
 catering|n|dịch vụ ăn uống|The catering at the event was excellent, especially the vegetarian dishes.
 customs|n|hải quan|We had to go through customs at the airport.
-visa|n|thị thực|You need a visa to enter that country.
-gate|n|cổng lên máy bay|Your flight leaves from gate twelve.`,
-B2: `accommodation|n|chỗ ở|The company booked our accommodation near the conference centre for three nights.
-keynote speaker|n|diễn giả chính|The keynote speaker opened the conference with a talk about the future of work.
+visa|n|thị thực|You need a visa to enter that country.`,
+B2: `keynote speaker|n|diễn giả chính|The keynote speaker opened the conference with a talk about the future of work.
 workshop|n|hội thảo thực hành|Anna signed up for a workshop where participants practise presenting in small groups.
 reimbursement|n|sự hoàn trả chi phí|Please send your receipts to Finance to get reimbursement for the taxi fares.
 round trip|n|khứ hồi|A round trip to Hanoi from here costs less if you book early.`
 }},
 /* ---------- IELTS & VSTEP ---------- */
 { id: "i-education", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🏫", color: "#3a5fc8", title: "Education", vi: "Giáo dục", levels: {
-A2: `university|n|đại học|Minh wants to study medicine at university.
-subject|n|môn học|Maths is my favourite subject at school.
-student|n|học sinh, sinh viên|Every student gets a free book on the first day.
-classroom|n|lớp học, phòng học|The classroom is clean and bright.`,
+A2: `university|n|đại học|Minh wants to study medicine at university.`,
 B1: `course|n|khóa học|Lan is taking an English course on Saturday mornings.
 degree|n|bằng cấp|After four years, Nam finally received his degree in engineering.
-knowledge|n|kiến thức|Reading the news every day increases your knowledge of the world.
-skill|n|kỹ năng|Speaking clearly is an important skill for teachers.
-qualification|n|bằng cấp, chứng chỉ|You need a teaching qualification to work in most public schools.
 online learning|n|học trực tuyến|Online learning lets you study from home at any time.
 tuition fee|n|học phí|The tuition fee for this semester is due at the end of the month.
 scholarship|n|học bổng|She won a scholarship to study in Germany.
@@ -681,55 +645,32 @@ literacy|n|khả năng đọc viết|The programme aims to improve adult literac
 }},
 { id: "i-environment", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🌍", color: "#2f9a55", title: "Environment & energy", vi: "Môi trường và năng lượng", levels: {
 A2: `plastic|n|nhựa|Plastic bags are bad for the sea.`,
-B1: `environment|n|môi trường|Planting trees is a simple way to help the environment.
-pollution|n|ô nhiễm|Pollution from cars makes the air in big cities dirty.
-climate|n|khí hậu|The climate here is hot and humid in summer.
-waste|n, v|rác thải; lãng phí|Households throw away too much food waste every week.
-recycle|v|tái chế|Remember to recycle your bottles and cans after the party.
-protect|v|bảo vệ|We must protect rivers and forests for future generations.
+B1: `waste|n, v|rác thải; lãng phí|Households throw away too much food waste every week.
 energy|n|năng lượng|Turning off lights saves energy and lowers your electricity bill.
-rubbish|n|rác (US: trash)|Please put your rubbish in the bin, not on the street.
-wildlife|n|động vật hoang dã|The park protects local wildlife.
-habitat|n|môi trường sống|Forests are the natural habitat of many animals.
-landfill|n|bãi chôn lấp rác|Most of our rubbish ends up in a landfill.`,
-B2: `sustainable|adj|bền vững|Many farmers are changing to more sustainable methods that protect the soil.
-emission|n|khí thải|The emission from old factories harms the air we breathe.
+rubbish|n|rác (US: trash)|Please put your rubbish in the bin, not on the street.`,
+B2: `emission|n|khí thải|The emission from old factories harms the air we breathe.
 renewable energy|n|năng lượng tái tạo|The island gets most of its power from renewable energy such as wind and sun.
 fossil fuel|n|nhiên liệu hóa thạch|Burning fossil fuel, such as coal and oil, harms the atmosphere.
 conservation|n|sự bảo tồn|Conservation of wild animals depends on protecting their natural homes.
 carbon footprint|n|dấu chân carbon|Flying less is one way to reduce your carbon footprint.
 global warming|n|nóng lên toàn cầu|Scientists warn that global warming is causing sea levels to rise.
 single-use plastic|n|nhựa dùng một lần|Many shops now charge extra for single-use plastic bags.
-biodegradable|adj|có thể phân hủy sinh học|Biodegradable bags break down naturally.
-ecosystem|n|hệ sinh thái|Pollution can destroy a fragile ecosystem.
-greenhouse gas|n|khí nhà kính|Cars produce a large amount of greenhouse gas.`
+biodegradable|adj|có thể phân hủy sinh học|Biodegradable bags break down naturally.`
 }},
 { id: "i-technology", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🤖", color: "#4d5bd6", title: "Technology & the internet", vi: "Công nghệ và Internet", levels: {
-A2: `internet|n|mạng internet|The internet is very slow today.`,
-B1: `device|n|thiết bị|Is your device fully charged, or do you need a charger?
-digital|adj|kỹ thuật số|Lan prefers reading digital books on her phone to carrying paper ones.
-research|n, v|nghiên cứu|Before buying a laptop, do some research and compare prices.
-online|adj, adv|trực tuyến|You can pay your electricity bill online in just a few minutes.
-software|n|phần mềm|This software helps you edit photos and videos easily.
-smartphone|n|điện thoại thông minh|Most students own a smartphone today.
-hacker|n|tin tặc|A hacker stole thousands of customer passwords.`,
+
+B1: `digital|adj|kỹ thuật số|Lan prefers reading digital books on her phone to carrying paper ones.
+smartphone|n|điện thoại thông minh|Most students own a smartphone today.`,
 B2: `innovation|n|sự đổi mới|Constant innovation keeps the company ahead of its competitors.
 automation|n|tự động hóa|Automation in factories means machines now do many repetitive tasks.
 rely on|phr|phụ thuộc vào|Many people rely on their phones to find directions in new cities.
-access|n, v|truy cập; tiếp cận|Students need access to a reliable internet connection for their homework.
-privacy|n|quyền riêng tư|Always check your privacy settings before sharing photos on social media.
 screen time|n|thời gian dùng màn hình|Doctors advise parents to limit their children's screen time before bed.
 cyberbullying|n|bắt nạt trên mạng|The school has a clear policy against cyberbullying in class group chats.
-breakthrough|n|bước đột phá|Researchers announced a breakthrough in battery technology this week.
-cybersecurity|n|an ninh mạng|Banks invest heavily in cybersecurity.`
+breakthrough|n|bước đột phá|Researchers announced a breakthrough in battery technology this week.`
 }},
 { id: "i-health", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🥗", color: "#d9486b", title: "Health & lifestyle", vi: "Sức khỏe và lối sống", levels: {
-A2: `fit|adj|khỏe mạnh, cân đối|He runs every day to stay fit.
-gym|n|phòng tập thể dục|She goes to the gym after work.`,
-B1: `diet|n|chế độ ăn|A healthy diet includes plenty of vegetables, fruit and water.
-exercise|n, v|tập thể dục|Do you get enough exercise during the week?
-habit|n|thói quen|Drinking a glass of water every morning is a good habit.
-stress|n|căng thẳng|Too much stress at work can make it hard to sleep.
+A2: `fit|adj|khỏe mạnh, cân đối|He runs every day to stay fit.`,
+B1: `habit|n|thói quen|Drinking a glass of water every morning is a good habit.
 junk food|n|đồ ăn vặt kém lành mạnh|Eating too much junk food can make you gain weight.
 balanced diet|n|chế độ ăn cân bằng|A balanced diet includes fruit, vegetables and protein.
 lifestyle|n|lối sống|A healthy lifestyle can prevent many diseases.`,
@@ -741,24 +682,20 @@ life expectancy|n|tuổi thọ trung bình|Better healthcare has raised the aver
 mental health|n|sức khỏe tâm thần|Talking to friends can improve your mental health when life is difficult.
 healthcare system|n|hệ thống y tế|The healthcare system in this country gives everyone access to a doctor.
 awareness|n|nhận thức|The campaign aims to increase public awareness of the dangers of smoking.
-malnutrition|n|suy dinh dưỡng|Malnutrition remains a serious problem in some regions.
 addiction|n|chứng nghiện|Phone addiction is increasing among teenagers.`
 }},
 { id: "i-urban", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🏙️", color: "#6b7a8f", title: "Cities, housing & transport", vi: "Đô thị, nhà ở và giao thông", levels: {
-A2: `village|n|ngôi làng|My grandparents live in a small village.
-traffic jam|n|tắc đường|We were late because of a traffic jam.`,
+
 B1: `traffic|n|giao thông|The traffic was so bad that I arrived late to work.
 public transport|n|giao thông công cộng|Public transport in this city is cheap, clean and reliable.
 population|n|dân số|The population of the city has doubled in twenty years.
 countryside|n|nông thôn|My grandparents live in the countryside, surrounded by fields and hills.
 crowded|adj|đông đúc|The bus was so crowded that nobody could find a seat.
-suburb|n|vùng ngoại ô|They moved to a quiet suburb outside the city.
 skyscraper|n|nhà chọc trời|This skyscraper is the tallest building in the city.`,
 B2: `urban|adj|thuộc đô thị|Urban areas usually have more jobs, hospitals and universities than villages.
 rural|adj|thuộc nông thôn|Many young people leave rural villages to look for work in cities.
 urbanisation|n|đô thị hóa (US: urbanization)|Rapid urbanisation has put pressure on schools and hospitals in the city.
 affordable housing|n|nhà ở giá phải chăng|The council plans to build affordable housing for young families.
-congestion|n|tắc nghẽn|A new metro line should reduce congestion on the main roads.
 infrastructure|n|cơ sở hạ tầng|Good roads and bridges are an important part of a country's infrastructure.
 commuter|n|người đi làm xa hằng ngày|Every morning, thousands of commuter passengers take the train into the city.
 high-rise|adj|cao tầng|They live in a high-rise apartment with a view of the river.
@@ -767,9 +704,7 @@ C1: `gentrification|n|quá trình tân trang khu dân cư (đẩy giá lên)|Gen
 }},
 { id: "i-crime", sec: "ielts", exam: ["IELTS"], icon: "⚖️", color: "#7a4e3a", title: "Crime & law", vi: "Tội phạm và pháp luật", levels: {
 A2: `thief|n|kẻ trộm|The thief ran away with my bag.`,
-B1: `crime|n|tội phạm|Crime in this neighbourhood has fallen since more streetlights were installed.
-law|n|luật|It is against the law to drive without a licence.
-police|n|cảnh sát|Call the police if you see someone breaking into a car.
+B1: `police|n|cảnh sát|Call the police if you see someone breaking into a car.
 prison|n|nhà tù|The man spent two years in prison for his crime.
 punish|v|trừng phạt|Parents should explain rules clearly before they punish a child.
 steal|v|ăn trộm|Someone tried to steal her bag on the crowded train.
@@ -789,7 +724,7 @@ deterrent|n|biện pháp răn đe|Heavy fines can be an effective deterrent.
 fraud|n|gian lận, lừa đảo|He was jailed for credit card fraud.`
 }},
 { id: "i-economy", sec: "ielts", exam: ["IELTS", "TOEIC"], icon: "🌐", color: "#1b7f8c", title: "Globalisation & economy", vi: "Toàn cầu hóa và kinh tế", levels: {
-A2: `factory|n|nhà máy|He works in a car factory.`,
+
 B1: `economy|n|nền kinh tế|The economy grows when more people have jobs and spend money.
 trade|n, v|thương mại; buôn bán|Trade between the two countries has increased in recent years.
 company|n|công ty|My uncle works for a company that makes furniture.
@@ -802,9 +737,6 @@ workforce|n|lực lượng lao động|The factory has a young and skilled workf
 invest|v|đầu tư|Nam decided to invest his savings in a small business.
 demand|n|nhu cầu|Demand for electric cars is rising as petrol becomes more expensive.
 supply|n|nguồn cung|A shortage of supply has pushed up the price of rice.
-policy|n|chính sách|The government introduced a new policy to help small businesses.
-poverty|n|nghèo đói|Education is one of the best ways to escape poverty.
-inequality|n|bất bình đẳng|Economic inequality is growing because the rich are getting richer faster than everyone else.
 multinational|adj|đa quốc gia|She works for a multinational firm with offices in twelve countries.
 recession|n|suy thoái kinh tế|Many people lost their jobs during the recession.
 outsource|v|thuê ngoài|Many firms outsource customer service to other countries.
@@ -819,7 +751,6 @@ headline|n|tiêu đề báo|The headline on the front page shocked everyone.
 journalist|n|nhà báo|The journalist interviewed the mayor.`,
 B2: `mass media|n|truyền thông đại chúng|The mass media, including television and radio, shapes how people see the news.
 influence|n, v|ảnh hưởng|Social media can influence what young people buy and wear.
-consumer|n|người tiêu dùng|A smart consumer compares prices before buying anything online.
 biased|adj|thiên vị|Some readers think the report is biased because it only shows one side.
 censorship|n|kiểm duyệt|Many writers oppose censorship because they want to publish freely.
 celebrity|n|người nổi tiếng|The shop hired a famous celebrity to promote its new perfume.
@@ -842,15 +773,12 @@ effect · effective · effectively · effectiveness|n · adj · adv · n|tác đ
 analyse · analysis · analytical · analyst|v · n · adj · n|phân tích (các dạng)|`
 }},
 { id: "x-collocations", sec: "skills", exam: ["IELTS", "TOEIC", "VSTEP"], icon: "🧷", color: "#b24a8c", title: "Exam collocations", vi: "Kết hợp từ hay dùng khi thi", levels: {
-A2: `make a mistake|phr|mắc lỗi|Everyone can make a mistake, so don't worry too much.
-do homework|phr|làm bài tập về nhà|Minh must do homework before he plays games.
-take a break|phr|nghỉ giải lao|Let's take a break and have some tea.
+A2: `do homework|phr|làm bài tập về nhà|Minh must do homework before he plays games.
 catch a cold|phr|bị cảm lạnh|Wear a warm coat, or you will catch a cold.
 have a temperature|phr|bị sốt|Children often have a temperature when they catch a cold.
 take a photo|phr|chụp ảnh|Can you take a photo of us?
 go on holiday|phr|đi nghỉ|We usually go on holiday in August.`,
-B1: `make a decision|phr|đưa ra quyết định|It is hard to make a decision when you don't have all the facts.
-pay attention to|phr|chú ý tới|Please pay attention to the safety instructions before the flight starts.
+B1: `pay attention to|phr|chú ý tới|Please pay attention to the safety instructions before the flight starts.
 meet a deadline|phr|kịp hạn chót|We worked all weekend to meet a deadline for the project.
 attend a meeting|phr|tham dự cuộc họp|Can you attend a meeting with the new client tomorrow morning?
 heavy traffic|phr|giao thông đông đúc|We were late because of heavy traffic on the main road.
@@ -858,12 +786,10 @@ take medication|phr|dùng thuốc|You should take medication twice a day after m
 suffer from|phr|mắc, chịu đựng (bệnh)|He suffers from asthma.
 depend on|phr|phụ thuộc vào|The result will depend on the weather.
 be responsible for|phr|chịu trách nhiệm về|Anna will be responsible for training the new staff this month.
-take part in|phr|tham gia|Over fifty students will take part in the contest.
 take advantage of|phr|tận dụng|You should take advantage of the free English classes.
 take place|phr|diễn ra|The conference will take place in Hanoi.
 give a presentation|phr|thuyết trình|She has to give a presentation on Monday.
 look forward to|phr|mong đợi|I look forward to meeting you next week.
-come up with|phr|nghĩ ra|The team must come up with a clever plan.
 make sense|phr|có lý, dễ hiểu|Your explanation does not make sense to me.`,
 B2: `have an effect on|phr|có tác động tới|Lack of sleep can have an effect on your memory and mood.
 play a role in|phr|đóng vai trò trong|Parents play a role in shaping their children's attitudes towards learning.
@@ -877,9 +803,7 @@ commit a crime|phr|phạm tội|People who commit a crime must face the conseque
 play a part in|phr|đóng vai trò trong|Education can play a part in reducing poverty.
 take into account|phr|xem xét, tính đến|Employers should take into account each worker's needs.
 pose a threat to|phr|gây đe dọa cho|Plastic waste can pose a threat to marine life.
-bring about|phr|gây ra, mang lại|New technology can bring about major changes in work.
 give rise to|phr|làm nảy sinh|Poor housing can give rise to health problems.
-in the long run|phr|về lâu dài|Saving money now will help you in the long run.
 on a regular basis|phr|một cách thường xuyên|Doctors advise exercising on a regular basis.
 at the expense of|phr|phải trả giá bằng, gây thiệt hại cho|Economic growth should not come at the expense of nature.
 gain access to|phr|có được quyền tiếp cận|Poor families struggle to gain access to quality healthcare.`

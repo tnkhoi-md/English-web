@@ -563,3 +563,8 @@ a.ts-card:hover { border-color: var(--accent); }
 .stat-ic { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 9px; margin-bottom: 6px; color: var(--ic); background: color-mix(in srgb, var(--ic) 14%, transparent); }
 .stat-ic svg { stroke: currentColor; fill: none; }
 .goal-stats { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 10px; }
+/* ---- v4.7 tái xuất hiện từ, Viết và nói ---- */
+button.rw.known { border-bottom: 2px solid var(--good); }
+.rd-sum { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 0 0 12px; }
+.wr-crit { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.wr-crit:last-of-type { border-bottom: 0; }

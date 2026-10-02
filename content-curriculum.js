@@ -23,7 +23,7 @@ const UNITS = [
 { id: "a2-2", track: "gen", level: "A2", code: "A2.2", icon: "🗺️", color: "#1a8a9a", title: "Plans and comparisons", vi: "Kế hoạch và so sánh",
   goal: "Nói dự định, so sánh, đưa lời khuyên và điều kiện có thể xảy ra.",
   lessons: ["G6"], grammar: ["future", "comparatives", "modals", "first-conditional", "quantifiers"], pron: ["syllables"],
-  vocab: [["core-adj", "A2"], ["daily", "A2"], ["food", "A2"], ["places", "A2"], ["shopping", "A2"], ["body", "A2"], ["work", "A2"], ["nature", "A2"], ["tech", "A2"], ["discourse", "A2"], ["x-collocations", "A2"], ["clothes", "A2"], ["transport", "A2"], ["leisure", "A2"], ["i-environment", "A2"], ["i-technology", "A2"], ["i-health", "A2"], ["i-urban", "A2"], ["i-crime", "A2"], ["i-economy", "A2"]] },
+  vocab: [["core-adj", "A2"], ["daily", "A2"], ["food", "A2"], ["places", "A2"], ["shopping", "A2"], ["body", "A2"], ["work", "A2"], ["nature", "A2"], ["tech", "A2"], ["discourse", "A2"], ["x-collocations", "A2"], ["clothes", "A2"], ["transport", "A2"], ["leisure", "A2"], ["i-environment", "A2"], ["i-health", "A2"], ["i-crime", "A2"]] },
 { id: "a2-3", track: "gen", level: "A2", code: "A2.3", icon: "🗂️", color: "#2080a8", title: "Workplace basics", vi: "Nơi làm việc cơ bản (TOEIC nền)",
   goal: "Nắm từ vựng công sở, nhân sự, tài chính, bán hàng, đặt hàng, công tác ở mức A2.",
   lessons: [], grammar: ["zero-conditional"], pron: ["spelling"],
