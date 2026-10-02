@@ -58,7 +58,13 @@ twin|n|một trong cặp sinh đôi|My twin looks exactly like me.
 handsome|adj|đẹp trai|Your brother is very handsome.
 bald|adj|hói|My uncle is bald.
 blonde|adj|tóc vàng hoe|She has long blonde hair.
-divorced|adj|đã ly hôn|My aunt is divorced and lives alone.`,
+divorced|adj|đã ly hôn|My aunt is divorced and lives alone.
+kid|n|đứa trẻ, trẻ con|The kid is playing football in the park.
+lady|n|quý bà, phụ nữ|That lady over there is my English teacher.
+guest|n|khách mời|We have a guest coming to dinner tonight.
+waiter|n|người phục vụ bàn|The waiter brought us the menu and some water.
+partner|n|bạn đời, đối tác|She lives with her partner in a small flat.
+`,
 B1: `relative|n|họ hàng|My favourite relative is my uncle, who lives in another city.
 relationship|n|mối quan hệ|They have a close relationship.
 generation|n|thế hệ|Each generation in my family learns something new from the last one.
@@ -82,7 +88,18 @@ mature|adj|trưởng thành, chín chắn|He is very mature for his age.
 fall out with|phr|cãi nhau, bất hòa với|Don't fall out with your friends over small things.
 look up to|phr|ngưỡng mộ, kính trọng|Children often look up to their older brothers.
 get together|phr|tụ họp, gặp gỡ|Our family likes to get together at the weekend.
-grow apart|phr|dần xa cách nhau|Old friends can grow apart when they live in different cities.`,
+grow apart|phr|dần xa cách nhau|Old friends can grow apart when they live in different cities.
+toddler|n|trẻ mới biết đi|The toddler ran across the room laughing.
+widow|n|góa phụ|The widow lived alone after her husband died.
+pensioner|n|người về hưu|A pensioner can get a cheaper ticket on the bus.
+youngster|n|thanh thiếu niên|The youngster was nervous on his first day.
+childhood|n|thời thơ ấu|I had a happy childhood in a small village.
+best friend|n|bạn thân nhất|My best friend always tells me the truth.
+stepfather|n|cha dượng|My stepfather taught me how to drive.
+grow old|phr|già đi|I want to grow old with someone I love.
+bachelor|n|người đàn ông độc thân|He stayed a bachelor until he was forty.
+godmother|n|mẹ đỡ đầu|My godmother sends me a card every birthday.
+`,
 B2: `upbringing|n|sự nuôi dạy|Her strict upbringing taught her to be honest and polite.
 sibling|n|anh chị em ruột|As the youngest sibling, Anna always got her brother's old clothes.
 spouse|n|vợ hoặc chồng (trang trọng)|Please write the name of your spouse on the form.
@@ -94,7 +111,24 @@ descendant|n|con cháu, hậu duệ|He is a descendant of a famous doctor.
 guardian|n|người giám hộ|The child's legal guardian signed the form for the operation.
 estranged|adj|xa cách, không còn liên lạc (với người thân)|He is estranged from his father after a long argument.
 peer|n|bạn đồng trang lứa|A teenager can be strongly influenced by a close peer.
-orphan|n|trẻ mồ côi|The orphan was raised by his aunt.`
+orphan|n|trẻ mồ côi|The orphan was raised by his aunt.
+offspring|n|con cái, con cháu|Many animals protect their offspring from danger.
+newlywed|n|người mới cưới|The newlywed couple left for their honeymoon on Sunday.
+foster parent|n|cha mẹ nuôi tạm thời|The foster parent cared for the boy for two years.
+widower|n|người đàn ông góa vợ|The widower raised his three children alone.
+companion|n|bạn đồng hành|The old man's dog was his only companion.
+idol|n|thần tượng|The singer is an idol to many teenagers.
+confidant|n|người tâm phúc|She told her secrets only to her closest confidant.
+adolescent|n|thiếu niên|Every adolescent needs support from family and friends.
+stepchild|n|con riêng của vợ/chồng|He treats his stepchild as if she were his own.
+fellow|adj|đồng (cùng loại)|He shared the prize with his fellow students.
+`,
+C1: `kinship|n|quan hệ họ hàng|Strong kinship ties hold the village together.
+lineage|n|dòng dõi|She can trace her lineage back to the 1700s.
+elder|n|người lớn tuổi, bậc trưởng lão|The village elder settled the argument between the two farmers.
+namesake|n|người trùng tên|He was named after his grandfather, his namesake.
+compatriot|n|đồng hương|Far from home, she was glad to meet a compatriot.
+`,
 }},
 { id: "daily", icon: "🏠", color: "#c9962c", title: "Daily life & home", vi: "Sinh hoạt và nhà cửa", levels: {
 A1: `house|n|ngôi nhà|They have a big house with a garden.
@@ -146,7 +180,13 @@ balcony|n|ban công|We have breakfast on the balcony.
 ceiling|n|trần nhà|The ceiling in my bedroom is very high.
 lift|n|thang máy (US: elevator)|The lift is broken, so we use the stairs.
 wash up|phr|rửa bát đĩa|I cook and my brother has to wash up.
-make the bed|phr|dọn giường|I always make the bed before I leave.`,
+make the bed|phr|dọn giường|I always make the bed before I leave.
+mirror|n|cái gương|She looked at herself in the mirror.
+sink|n|bồn rửa|There are dirty plates in the sink.
+bin|n|thùng rác|Please put the paper in the bin.
+cushion|n|cái gối tựa|I put a cushion behind my back.
+drawer|n|ngăn kéo|The keys are in the top drawer.
+`,
 B1: `routine|n|thói quen hằng ngày|My morning routine is simple: shower, breakfast, then the bus.
 chore|n|việc vặt trong nhà|Washing the dishes is my least favourite chore.
 landlord|n|chủ nhà (cho thuê)|Our landlord fixed the broken heater yesterday.
@@ -170,7 +210,18 @@ decorate|v|trang trí, sơn sửa (nhà)|We want to decorate the living room bef
 move house|phr|chuyển nhà|We are going to move house next month.
 settle in|phr|ổn định chỗ ở mới|It took a few weeks to settle in after the move.
 heating|n|hệ thống sưởi|The heating is not working, so the flat is cold.
-air conditioning|n|điều hòa không khí|The air conditioning keeps the room cool in summer.`,
+air conditioning|n|điều hòa không khí|The air conditioning keeps the room cool in summer.
+wardrobe|n|tủ quần áo|He hung his shirts in the wardrobe.
+sweep|v|quét (nhà)|I sweep the floor every morning before work.
+mop|v|lau (sàn)|She had to mop the kitchen after the spill.
+broom|n|cái chổi|He kept the broom behind the kitchen door.
+bucket|n|cái xô|Fill the bucket with warm water and soap.
+light bulb|n|bóng đèn|The light bulb in the hall has stopped working.
+plug in|phr|cắm điện|Please plug in the kettle and make some tea.
+switch off|phr|tắt (thiết bị)|Don't forget to switch off the lights when you leave.
+hang up|phr|treo lên|Hang up your coat when you come in.
+tidy up|phr|dọn dẹp cho gọn|Let's tidy up the living room before the guests arrive.
+`,
 B2: `commute|v, n|đi lại (nhà ↔ nơi làm)|I commute for an hour every day.
 maintenance|n|sự bảo trì|Regular maintenance keeps the heating system working properly.
 cluttered|adj|bừa bộn|His desk is so cluttered that he can never find his keys.
@@ -181,7 +232,24 @@ utilities|n|các dịch vụ tiện ích (điện, nước, gas)|The rent includ
 domestic|adj|thuộc về gia đình, trong nhà|She does most of the domestic work in the family.
 spacious|adj|rộng rãi|The flat is bright and spacious.
 cramped|adj|chật chội|Five people lived in one cramped room.
-tenancy|n|thời hạn thuê nhà|Her tenancy ends in June.`
+tenancy|n|thời hạn thuê nhà|Her tenancy ends in June.
+declutter|v|dọn bớt đồ lộn xộn|We decided to declutter the house and give things away.
+clutter|n|đồ đạc bừa bộn|There was too much clutter on the desk.
+pantry|n|tủ đựng thức ăn|She keeps rice and flour in the pantry.
+hallway|n|hành lang trong nhà|Leave your muddy shoes in the hallway.
+oversleep|v|ngủ quên, ngủ dậy muộn|If I oversleep, I will miss the first bus.
+doze off|phr|thiếp đi, ngủ gật|Grandpa tends to doze off in front of the television.
+unplug|v|rút phích cắm|Always unplug the iron when you finish using it.
+thermostat|n|bộ điều chỉnh nhiệt độ|She turned down the thermostat to save energy.
+insulation|n|vật liệu cách nhiệt|Good insulation keeps the house warm in winter.
+odd job|n|việc vặt|He did an odd job around the house every weekend.
+`,
+C1: `dwelling|n|chỗ ở, nhà ở|The old dwelling had only two small rooms.
+residence|n|nơi cư trú|The family's main residence is in the countryside.
+upkeep|n|chi phí và việc bảo dưỡng|The upkeep of an old house can be expensive.
+refurbish|v|tân trang, sửa sang lại|They plan to refurbish the whole apartment next year.
+lodger|n|người thuê phòng|They let a lodger live in the spare room.
+`,
 }},
 { id: "food", icon: "🍜", color: "#e25d4a", title: "Food & drink", vi: "Ăn uống", levels: {
 A1: `rice|n|cơm, gạo|We eat rice with fish every day.
@@ -239,7 +307,13 @@ taste|v, n|nếm; có vị; vị|I do not like the taste of coffee.
 chop|v|chặt, thái nhỏ|Chop the onions into small pieces.
 peel|v|gọt vỏ, bóc vỏ|Please peel the potatoes.
 slice|n, v|lát; thái lát|Cut a slice of bread for me.
-roast|v|quay, nướng (lò)|We roast a chicken on Sundays.`,
+roast|v|quay, nướng (lò)|We roast a chicken on Sundays.
+sausage|n|xúc xích|He fried a sausage for breakfast.
+salad|n|món rau trộn|I ordered a salad and a glass of water.
+pizza|n|bánh pizza|We shared a large pizza on Friday night.
+biscuit|n|bánh quy|She had a biscuit with her tea.
+ice cream|n|kem|The children asked for ice cream after dinner.
+`,
 B1: `ingredient|n|nguyên liệu|Garlic is the main ingredient in this sauce.
 portion|n|khẩu phần|The portion was so big that I could not finish it.
 diet|n|chế độ ăn|a healthy diet
@@ -263,7 +337,18 @@ greasy|adj|nhiều dầu mỡ|Greasy food makes me feel sick.
 bland|adj|nhạt nhẽo|The soup was bland, so I added salt.
 calorie|n|ca-lo|Each calorie counts when you are on a diet.
 protein|n|chất đạm|Fish and eggs are a good source of protein.
-allergic|adj|bị dị ứng|He is allergic to nuts.`,
+allergic|adj|bị dị ứng|He is allergic to nuts.
+beef|n|thịt bò|We had beef and vegetables for dinner.
+pork|n|thịt lợn|She doesn't eat pork for religious reasons.
+lamb|n|thịt cừu non|The restaurant is famous for its roast lamb.
+seafood|n|hải sản|We ate fresh seafood by the beach.
+shrimp|n|tôm|He added shrimp to the fried rice.
+mushroom|n|nấm|I added one mushroom to the soup for extra flavour.
+cabbage|n|bắp cải|The soup was full of cabbage and carrots.
+cucumber|n|dưa chuột|He cut a cucumber into thin slices.
+yogurt|n|sữa chua|I have yogurt with fruit every morning.
+vinegar|n|giấm|Add a little vinegar to the salad.
+`,
 B2: `processed food|n|thực phẩm chế biến sẵn|Doctors say you should eat less processed food and more fresh vegetables.
 wholegrain|adj|nguyên cám|Wholegrain bread keeps you full for longer than white bread.
 appetite|n|sự thèm ăn|I have no appetite.
@@ -277,7 +362,24 @@ savoury|adj|mặn (không ngọt)|I prefer savoury snacks to sweet ones.
 cuisine|n|ẩm thực|Vietnamese cuisine is famous for fresh herbs.
 perishable|adj|dễ hỏng|Milk and meat are perishable, so keep them in the fridge.
 intake|n|lượng ăn vào, lượng tiêu thụ|Doctors advise a lower salt intake for patients with high blood pressure.
-dietary|adj|thuộc chế độ ăn|The hospital asks about dietary needs before surgery.`
+dietary|adj|thuộc chế độ ăn|The hospital asks about dietary needs before surgery.
+marinate|v|ướp (thịt, cá)|You should marinate the chicken for an hour.
+simmer|v|đun nhỏ lửa|Let the sauce simmer for twenty minutes.
+whisk|v|đánh (trứng, kem)|Whisk the eggs until they are light and fluffy.
+sprinkle|v|rắc, rải|Sprinkle some cheese on top of the pasta.
+garnish|v|trang trí món ăn|He decided to garnish the dish with fresh herbs.
+fillet|n|miếng phi lê|She grilled a salmon fillet with lemon.
+dough|n|bột nhào|Knead the dough for ten minutes before baking.
+broth|n|nước dùng|The broth was hot and full of flavour.
+stew|n|món hầm|Grandma made a beef stew for the whole family.
+tender|adj|mềm (thịt)|The meat was so tender that it fell off the bone.
+`,
+C1: `gourmet|adj|dành cho người sành ăn|They opened a gourmet restaurant in the city centre.
+palatable|adj|ngon miệng, dễ ăn|The sauce made the plain rice more palatable.
+devour|v|ăn ngấu nghiến|The hungry boys will devour the whole pizza in minutes.
+culinary|adj|thuộc ẩm thực, nấu nướng|She studied culinary arts in Paris.
+succulent|adj|mọng nước, ngon|The succulent steak melted in his mouth.
+`,
 }},
 { id: "time", icon: "🗓️", color: "#7a63d6", title: "Time, numbers & calendar", vi: "Thời gian, số và lịch", levels: {
 A1: `today|adv|hôm nay|It is sunny today.
@@ -324,7 +426,12 @@ daily|adj, adv|hằng ngày|Brush your teeth daily.
 weekly|adj, adv|hằng tuần|We have a weekly meeting on Monday.
 calendar|n|lịch|Look at the calendar to check the date.
 during|prep|trong suốt|I slept during the film.
-until|prep, conj|cho đến khi|Wait here until I come back.`,
+until|prep, conj|cho đến khi|Wait here until I come back.
+weekday|n|ngày trong tuần (thứ Hai đến thứ Sáu)|I get up at six on every weekday.
+sunrise|n|bình minh, lúc mặt trời mọc|We watched the sunrise from the top of the hill.
+sunset|n|hoàng hôn, lúc mặt trời lặn|The sunset over the sea was beautiful.
+midday|n|giữa trưa|We usually eat lunch at midday.
+`,
 B1: `recently|adv|gần đây|I recently started going to the gym after work.
 nowadays|adv|ngày nay|Nowadays, most people use their phones to pay for things.
 in advance|phr|trước (thời hạn)|Book in advance.
@@ -343,7 +450,17 @@ shortly|adv|ngay sau đây, chẳng bao lâu|The doctor will see you shortly.
 punctual|adj|đúng giờ|Our teacher is always punctual.
 from time to time|phr|thỉnh thoảng|I visit my grandparents from time to time.
 in the meantime|phr|trong lúc chờ đợi|The bus is late, so in the meantime let us have a coffee.
-up to date|adj|cập nhật, mới nhất|Please keep your records up to date.`,
+up to date|adj|cập nhật, mới nhất|Please keep your records up to date.
+a while|phr|một lúc, một thời gian|Please wait here for a while.
+for ages|phr|rất lâu rồi|I have not seen my cousin for ages.
+in time|phr|kịp lúc|We got to the station in time for the train.
+at the moment|phr|lúc này, hiện giờ|My father is cooking at the moment.
+afterwards|adv|sau đó|We had dinner and went for a walk afterwards.
+once in a while|phr|thỉnh thoảng|I go to the cinema once in a while.
+ever since|phr|kể từ đó|Ever since that day, we have been close friends.
+every other day|phr|cách một ngày|He goes jogging every other day.
+in a moment|phr|một lát nữa|I will call you back in a moment.
+`,
 B2: `simultaneously|adv|đồng thời|The two trains arrived at the station simultaneously.
 duration|n|khoảng thời gian kéo dài|The duration of the flight is about three hours.
 interval|n|khoảng cách (thời gian)|The bus runs at a ten-minute interval during the day.
@@ -356,7 +473,20 @@ imminent|adj|sắp xảy ra|The storm is imminent, so stay indoors.
 ongoing|adj|đang diễn ra, liên tục|The ongoing treatment will last six months.
 in the long run|phr|về lâu dài|Regular exercise will save you money in the long run.
 prior to|prep|trước khi|Patients must not eat anything prior to the operation.
-lifespan|n|tuổi thọ, vòng đời|The average lifespan has increased in the last century.`
+lifespan|n|tuổi thọ, vòng đời|The average lifespan has increased in the last century.
+at once|phr|ngay lập tức|Call the doctor at once!
+for the time being|phr|tạm thời, trong lúc này|You can stay with us for the time being.
+by the time|phr|đến lúc, vào lúc|By the time we arrived, the film had started.
+prompt|adj|nhanh chóng, đúng giờ|Thank you for your prompt reply to my email.
+straight away|phr|ngay lập tức|Tell me straight away if there is a problem.
+timely|adj|kịp thời|The rescue team gave timely help to the village.
+span|n|khoảng thời gian|A short span of attention makes studying hard.
+at short notice|phr|vào phút chót, báo trước ít|They asked me to speak at short notice.
+`,
+C1: `in due course|phr|đúng lúc, vào thời điểm thích hợp|You will receive your results in due course.
+transient|adj|thoáng qua, ngắn ngủi|Fame can be transient, and soon people forget you.
+in retrospect|phr|nhìn lại, khi xem xét lại|In retrospect, leaving so early was a mistake.
+`,
 }},
 { id: "places", icon: "✈️", color: "#2f8fd8", title: "Places & travel", vi: "Nơi chốn và du lịch", levels: {
 A1: `city|n|thành phố|This is a big city with many parks.
@@ -407,7 +537,11 @@ postcard|n|bưu thiếp|I sent you a postcard from Hue.
 harbour|n|bến cảng (US: harbor)|Many boats are in the harbour.
 castle|n|lâu đài|We visited an old castle.
 palace|n|cung điện|The palace is open to tourists.
-zoo|n|sở thú|The children loved the zoo.`,
+zoo|n|sở thú|The children loved the zoo.
+bakery|n|tiệm bánh mì|The bakery on our street opens at six.
+bookshop|n|hiệu sách|I bought this novel at the bookshop.
+stadium|n|sân vận động|Thousands of fans filled the stadium.
+`,
 B1: `destination|n|điểm đến|Our final destination is a small island.
 accommodation|n|chỗ ở|We are still looking for cheap accommodation near the city centre.
 sightseeing|n|tham quan|We spent the whole morning sightseeing in the old town.
@@ -424,7 +558,20 @@ hostel|n|nhà trọ giá rẻ cho khách du lịch|We stayed in a cheap hostel n
 campsite|n|khu cắm trại|The campsite has showers and a small shop.
 resort|n|khu nghỉ dưỡng|The resort has a pool and a beach.
 local|adj|địa phương|I like trying local food when I travel.
-monument|n|đài tưởng niệm, di tích|The monument is in the centre of the city.`,
+monument|n|đài tưởng niệm, di tích|The monument is in the centre of the city.
+downtown|n|trung tâm thành phố|Most of the big shops are downtown.
+post office|n|bưu điện|I need to go to the post office to send this parcel.
+high street|n|phố mua sắm chính|The high street is full of shops and cafes.
+sightseeing tour|n|chuyến tham quan|We took a sightseeing tour of the old town.
+entrance|n|lối vào|Meet me at the main entrance of the museum.
+exit|n|lối ra|The nearest exit is behind you.
+pier|n|bến tàu, cầu tàu|We walked to the end of the pier.
+canyon|n|hẻm núi|The river cut a deep canyon through the rock.
+waterfall|n|thác nước|We swam below the waterfall.
+cliff|n|vách đá|The house stands at the edge of a cliff.
+lighthouse|n|hải đăng|The lighthouse guides ships at night.
+shopping mall|n|trung tâm thương mại|The shopping mall has a cinema and many cafes.
+`,
 B2: `itinerary|n|lịch trình chuyến đi|Our itinerary includes two days in the mountains.
 jet lag|n|mệt mỏi do lệch múi giờ|I always get terrible jet lag after flying to Europe.
 remote|adj|xa xôi, hẻo lánh|They live in a remote village high in the mountains.
@@ -435,7 +582,24 @@ heritage|n|di sản|The old town is part of the national heritage.
 off the beaten track|phr|xa nơi đông khách, hẻo lánh|We found a lovely village off the beaten track.
 cosmopolitan|adj|mang tính quốc tế, đa văn hoá|London is a lively, cosmopolitan city.
 picturesque|adj|đẹp như tranh|We stopped in a picturesque fishing village.
-ancient|adj|cổ xưa|We walked around the ancient city walls.`
+ancient|adj|cổ xưa|We walked around the ancient city walls.
+residential area|n|khu dân cư|It is a quiet residential area with many trees.
+industrial area|n|khu công nghiệp|The factory is in an industrial area outside the city.
+outskirts|n|vùng ngoại ô|We live on the outskirts of Hanoi.
+seafront|n|dải bờ biển (khu phố ven biển)|We had dinner at a cafe on the seafront.
+relocate|v|chuyển đến nơi khác|My company wants to relocate to Singapore next year.
+tourist trap|n|nơi bẫy du khách (đắt đỏ)|That restaurant is a tourist trap, so the prices are high.
+hotspot|n|điểm nóng, địa điểm nổi tiếng|The island is a popular hotspot for divers.
+district|n|quận, khu vực|She lives in a busy district of the capital.
+town hall|n|tòa thị chính|The wedding took place at the town hall.
+nightlife|n|cuộc sống về đêm|The city is famous for its lively nightlife.
+`,
+C1: `vicinity|n|vùng lân cận|There are no shops in the vicinity of our house.
+secluded|adj|hẻo lánh, biệt lập|They found a secluded beach with no other people.
+bustling|adj|nhộn nhịp, tấp nập|The bustling streets were full of stalls and noise.
+periphery|n|vùng ven, rìa|Many factories are on the periphery of the city.
+metropolitan|adj|thuộc đô thị lớn|The metropolitan area has over ten million people.
+`,
 }},
 { id: "work", icon: "💼", color: "#3d6fb0", title: "Work & study", vi: "Công việc và học tập", levels: {
 A1: `job|n|công việc|My mother has a new job.
@@ -475,7 +639,13 @@ task|n|nhiệm vụ|My first task is to answer emails.
 presentation|n|bài thuyết trình|I have a presentation at ten.
 email address|n|địa chỉ thư điện tử|What is your email address?
 engineer|n|kỹ sư|My brother is an engineer.
-receptionist|n|nhân viên lễ tân|The receptionist answered the phone.`,
+receptionist|n|nhân viên lễ tân|The receptionist answered the phone.
+working hours|phr|giờ làm việc|Our working hours are from nine to five.
+day off|phr|ngày nghỉ|Tomorrow is my day off, so I will sleep late.
+clerk|n|nhân viên văn phòng|The clerk typed my name into the computer.
+job offer|phr|lời mời nhận việc|She was happy to get a job offer from a bank.
+bonus|n|tiền thưởng|Everyone received a small bonus before the holiday.
+`,
 B1: `career|n|sự nghiệp|She wants a career in medicine.
 experience|n|kinh nghiệm|Do you have any experience of working in a restaurant?
 skill|n|kỹ năng|Speaking clearly is an important skill at work.
@@ -492,7 +662,18 @@ overtime|n|giờ làm thêm|We worked overtime to finish the project.
 teamwork|n|làm việc nhóm|Good teamwork makes the job easier.
 volunteer|n, v|tình nguyện viên; tình nguyện|She works as a volunteer at the hospital.
 apprentice|n|người học việc|The apprentice learns from an experienced electrician.
-profession|n|nghề nghiệp (đòi hỏi chuyên môn)|Teaching is a respected profession.`,
+profession|n|nghề nghiệp (đòi hỏi chuyên môn)|Teaching is a respected profession.
+sick leave|phr|nghỉ ốm|He is on sick leave until next Monday.
+trainee|n|thực tập sinh, người học việc|The trainee watched the chef carefully all morning.
+pension|n|lương hưu|My grandmother lives on a small pension.
+cover letter|phr|thư xin việc|Send a short cover letter with your application form.
+lay off|phr|cho nghỉ việc|The firm had to lay off ten workers last month.
+quit|v|bỏ việc|He decided to quit and start his own business.
+self-employed|adj|tự kinh doanh|My aunt is self-employed and works from home.
+business trip|phr|chuyến công tác|I am going on a business trip to Hanoi.
+dress code|phr|quy định trang phục|The office has a strict dress code on Fridays.
+paperwork|n|giấy tờ, thủ tục hành chính|I spent the whole morning doing paperwork.
+`,
 B2: `internship|n|kỳ thực tập|She did a summer internship at a law firm.
 residency|n|nội trú (bác sĩ)|After medical school, he began his residency at a hospital.
 supervisor|n|người hướng dẫn|My supervisor gave me useful feedback on my report.
@@ -503,7 +684,18 @@ appraisal|n|đánh giá hiệu suất làm việc|I have my yearly appraisal nex
 prioritise|v|ưu tiên (US: prioritize)|You must prioritise urgent tasks first.
 work-life balance|n|cân bằng công việc và cuộc sống|Nurses need a healthy work-life balance.
 networking|n|xây dựng mạng lưới quan hệ|Networking can help you find a new job.
-freelance|adj, adv|làm tự do|He works freelance as a translator.`,
+freelance|adj, adv|làm tự do|He works freelance as a translator.
+negotiate|v|thương lượng|She managed to negotiate a higher salary.
+work ethic|phr|đạo đức làm việc|His strong work ethic impressed everyone in the team.
+team leader|phr|trưởng nhóm|The team leader divided the work between us.
+job satisfaction|phr|sự hài lòng với công việc|High pay is not the only source of job satisfaction.
+workplace culture|phr|văn hóa nơi làm việc|A friendly workplace culture makes people stay longer.
+take on|phr|nhận (việc, trách nhiệm)|I cannot take on any more projects this month.
+get promoted|phr|được thăng chức|If you work hard, you may get promoted soon.
+clock in|phr|chấm công vào|All workers must clock in before eight o'clock.
+overworked|adj|làm việc quá sức|The nurses are overworked and badly need more help.
+workstation|n|vị trí làm việc|Each workstation has a computer and a phone.
+`,
 C1: `proficiency|n|sự thành thạo|The job requires a high level of proficiency in English.
 expertise|n|chuyên môn sâu|The team relies on her expertise in data analysis.
 competence|n|năng lực|Her competence as a manager earned her a promotion.
@@ -519,7 +711,12 @@ hierarchy|n|hệ thống cấp bậc|A strict hierarchy can slow down decisions.
 incentive|n|sự khuyến khích, ưu đãi|The company offers an incentive for extra sales.
 liaise|v|liên lạc phối hợp|She must liaise with doctors and social workers.
 tenure|n|nhiệm kỳ, thời gian giữ chức|His long tenure gave him great experience.
-vocation|n|thiên hướng nghề nghiệp, sứ mệnh|Nursing is more than a job; it is a vocation.`
+vocation|n|thiên hướng nghề nghiệp, sứ mệnh|Nursing is more than a job; it is a vocation.
+entitlement|n|quyền lợi|Employees have an entitlement to four weeks of paid holiday.
+downsize|v|cắt giảm quy mô|The company had to downsize after losing its biggest client.
+efficiency|n|hiệu quả làm việc|The new system has increased our efficiency a lot.
+breadwinner|n|trụ cột kinh tế gia đình|He became the family breadwinner after his father died.
+`
 }},
 { id: "body", icon: "🩹", color: "#d9486b", title: "Health & the body", vi: "Sức khỏe và cơ thể (phổ thông)", levels: {
 A1: `head|n|đầu|She wears a hat on her head.
@@ -568,7 +765,13 @@ cheek|n|má|The baby has a soft cheek.
 thumb|n|ngón tay cái|He hurt his thumb with a hammer.
 lung|n|phổi|He had an operation on his left lung.
 brain|n|não|The brain controls the whole body.
-tablet|n|viên thuốc|Take one tablet after each meal.`,
+tablet|n|viên thuốc|Take one tablet after each meal.
+ankle|n|mắt cá chân|I twisted my ankle while playing football.
+throat|n|cổ họng|I have a sore throat and I cannot sing today.
+forehead|n|trán|She kissed the baby on the forehead.
+eyebrow|n|lông mày|He raised one eyebrow and smiled at me.
+nail|n|móng tay|I broke a nail while opening the box.
+`,
 B1: `injury|n|chấn thương|The player missed the match because of a knee injury.
 pain|n|cơn đau|He felt a sharp pain in his back.
 sore|adj|đau, rát|a sore throat
@@ -587,7 +790,18 @@ muscle|n|cơ bắp|I pulled a muscle while running.
 cramp|n|chuột rút|I got a cramp in my leg while swimming.
 nausea|n|buồn nôn|The medicine can cause nausea.
 bleed|v|chảy máu|His nose began to bleed.
-stitch|n|mũi khâu|The doctor put one stitch in his hand.`,
+stitch|n|mũi khâu|The doctor put one stitch in his hand.
+breathe|v|thở|Try to breathe slowly and stay calm.
+swallow|v|nuốt|It hurts when I swallow because of my cold.
+blood|n|máu|Blood ran down his knee after he fell.
+sneeze|v|hắt hơi|The dust made me sneeze three times.
+cough|v|ho|He began to cough loudly during the film.
+sweat|n|mồ hôi|Sweat was dripping from his face after the run.
+scar|n|vết sẹo|He has a small scar on his chin from a fall.
+fist|n|nắm đấm|He closed his fist and tried to stay calm.
+blink|v|chớp mắt|Don't blink when the photographer takes the picture.
+yawn|v|ngáp|I always yawn when I am tired or bored.
+`,
 B2: `symptom|n|triệu chứng|A high temperature is a common symptom of flu.
 condition|n|tình trạng bệnh|The doctor explained that his condition is not serious.
 chronic|adj|mạn tính|Her chronic back pain makes it hard to sit for long.
@@ -597,7 +811,24 @@ wellbeing|n|sự khỏe mạnh toàn diện|Regular sleep is important for your 
 dehydration|n|sự mất nước|Dehydration can cause headaches and dizziness.
 nutrition|n|dinh dưỡng|Good nutrition is important for recovery.
 posture|n|tư thế|Bad posture can cause back pain.
-hygiene|n|vệ sinh|Good hygiene helps prevent infection.`
+hygiene|n|vệ sinh|Good hygiene helps prevent infection.
+joint|n|khớp|My knee joint hurts when I climb stairs.
+spine|n|cột sống|Sitting badly all day can damage your spine.
+skeleton|n|bộ xương|The museum has a whole skeleton of a dinosaur.
+organ|n|cơ quan (trong cơ thể)|The liver is an important organ in the body.
+reflex|n|phản xạ|Pulling your hand from a hot pan is a reflex.
+stamina|n|sức bền|Marathon runners need a lot of stamina.
+metabolism|n|sự trao đổi chất|Exercise can speed up your metabolism.
+physique|n|vóc dáng|The swimmer has a strong, athletic physique.
+digestion|n|sự tiêu hóa|Walking after dinner can help your digestion.
+circulation|n|sự tuần hoàn máu|Cold hands can be a sign of poor circulation.
+`,
+C1: `agility|n|sự nhanh nhẹn|The cat jumped onto the shelf with great agility.
+dexterity|n|sự khéo tay|Playing the piano requires a lot of manual dexterity.
+endurance|n|sức chịu đựng|Long-distance cycling tests your endurance.
+coordination|n|sự phối hợp cơ thể|Young children are still developing their coordination.
+vitality|n|sức sống|The old man was full of vitality and energy.
+`,
 }},
 { id: "feelings", icon: "💬", color: "#e0a21a", title: "Feelings & personality", vi: "Cảm xúc và tính cách", levels: {
 A1: `happy|adj|vui|Lan is happy because it's her birthday.
@@ -629,7 +860,13 @@ lonely|adj|cô đơn|He felt lonely in the new city.
 jealous|adj|ghen tị|She was jealous of her friend's new phone.
 brave|adj|dũng cảm|The brave boy saved the cat.
 rude|adj|thô lỗ|It is rude to talk with food in your mouth.
-sleepy|adj|buồn ngủ|The sleepy child went to bed early.`,
+sleepy|adj|buồn ngủ|The sleepy child went to bed early.
+scared|adj|sợ hãi|I was scared when I heard a noise downstairs.
+unhappy|adj|không vui|She looks unhappy today, so I asked her why.
+pleased|adj|hài lòng|I am very pleased to meet you.
+cry|v|khóc|The baby began to cry in the middle of the night.
+smile|v|mỉm cười|Please smile for the camera!
+`,
 B1: `confident|adj|tự tin|After weeks of practice, Lan felt confident about her speech.
 anxious|adj|lo âu|Nam felt anxious while he waited for his exam results.
 upset|adj|buồn bực|She was upset because her friend forgot her birthday.
@@ -647,7 +884,18 @@ stubborn|adj|bướng bỉnh|My brother is too stubborn to say sorry.
 generous|adj|rộng rãi, hào phóng|He is generous and often helps friends.
 mood|n|tâm trạng|She is in a bad mood today.
 guilty|adj|cảm thấy có lỗi|I feel guilty about forgetting her birthday.
-disgusted|adj|ghê tởm|She felt disgusted by the smell.`,
+disgusted|adj|ghê tởm|She felt disgusted by the smell.
+ashamed|adj|xấu hổ|He felt ashamed of the lie he had told.
+delighted|adj|rất vui mừng|She was delighted with her birthday present.
+relieved|adj|nhẹ nhõm|I felt relieved when the exam was finally over.
+thrilled|adj|phấn khích|We were thrilled to win the first prize.
+furious|adj|giận dữ|My father was furious when he saw the broken window.
+terrified|adj|khiếp sợ|She was terrified of flying in small planes.
+hopeful|adj|đầy hy vọng|We are hopeful that the weather will improve soon.
+annoyed|adj|bực mình|He was annoyed because the train was late again.
+miserable|adj|khổ sở, buồn bã|I felt miserable standing in the cold rain.
+confused|adj|bối rối, lúng túng|I am confused because the instructions are not clear.
+`,
 B2: `empathetic|adj|thấu cảm|An empathetic nurse listens carefully and understands how patients feel.
 reassured|adj|yên tâm|The patient felt reassured.
 overwhelmed|adj|choáng ngợp|She felt overwhelmed by the amount of homework she had this week.
@@ -660,7 +908,18 @@ insecure|adj|thiếu tự tin|He felt insecure about his English.
 optimistic|adj|lạc quan|She is optimistic about the future.
 pessimistic|adj|bi quan|Don't be so pessimistic about the exam.
 vulnerable|adj|dễ bị tổn thương|Patients often feel vulnerable in hospital.
-content|adj|hài lòng|She felt content with a quiet life.`,
+content|adj|hài lòng|She felt content with a quiet life.
+envious|adj|ghen tị|She felt envious of her friend's beautiful house.
+homesick|adj|nhớ nhà|I felt homesick during my first month abroad.
+nostalgic|adj|hoài niệm|Old photos make him feel nostalgic about his childhood.
+self-esteem|n|lòng tự trọng|Praise from teachers can build a child's self-esteem.
+anxiety|n|sự lo âu|She felt great anxiety before the job interview.
+sensitive|adj|nhạy cảm|He is very sensitive and cries at sad films.
+fed up|phr|chán ngấy|I am fed up with this noisy neighbourhood.
+mixed feelings|phr|cảm xúc lẫn lộn|I have mixed feelings about moving to a new city.
+cope with|phr|đương đầu với|How do you cope with so much stress?
+bottle up|phr|kìm nén (cảm xúc)|Don't bottle up your anger; talk to someone about it.
+`,
 C1: `apprehensive|adj|e sợ, lo ngại|Nam felt apprehensive about moving to a new city on his own.
 compassionate|adj|giàu lòng trắc ẩn|The doctor was so compassionate that patients trusted her immediately.
 conscientious|adj|tận tâm|Lan is a conscientious worker who always checks every detail twice.
@@ -674,7 +933,13 @@ empathy|n|sự đồng cảm|Empathy is vital for a good caregiver.
 poised|adj|điềm đạm, tự tin|She gave a poised answer under pressure.
 sentimental|adj|đa cảm, hoài niệm|My grandmother is sentimental about old photographs.
 tactful|adj|khéo léo, tế nhị|A tactful reply avoided a long argument.
-detached|adj|xa cách, khách quan|Doctors must stay emotionally detached but caring.`
+detached|adj|xa cách, khách quan|Doctors must stay emotionally detached but caring.
+melancholy|n|nỗi u sầu|A deep melancholy filled him as autumn came.
+exasperated|adj|bực tức đến cùng cực|The teacher grew exasperated with the noisy class.
+euphoric|adj|phấn chấn tột độ|The fans were euphoric after the team's last-minute goal.
+remorse|n|sự hối hận|He felt deep remorse for hurting his sister.
+bewildered|adj|bối rối, hoang mang|The tourist looked bewildered by the busy station.
+`
 }},
 { id: "shopping", icon: "🛍️", color: "#c04fa8", title: "Shopping & money", vi: "Mua sắm và tiền bạc", levels: {
 A1: `buy|v|mua|I want to buy some bread.
@@ -708,7 +973,12 @@ second-hand|adj|đã qua sử dụng|I bought a second-hand bike.
 sale|n|đợt giảm giá|The shoes are on sale this week.
 coupon|n|phiếu giảm giá|I have a coupon for ten percent off.
 cashier|n|thu ngân|The cashier gave me my change.
-wallet|n|ví tiền|He lost his wallet on the bus.`,
+wallet|n|ví tiền|He lost his wallet on the bus.
+shopping list|phr|danh sách đồ cần mua|Don't forget the shopping list when you go out.
+mall|n|trung tâm mua sắm lớn|We walked around the mall all afternoon.
+store|n|cửa hàng|The store opens at nine every morning.
+clothes shop|phr|cửa hàng quần áo|There is a small clothes shop next to the bank.
+`,
 B1: `afford|v|đủ tiền mua|I can't afford it.
 bargain|n|món hời|This coat was a real bargain, half the usual price.
 refund|n|hoàn tiền|The shop gave me a full refund because the phone was broken.
@@ -721,7 +991,18 @@ guarantee|n|sự bảo hành|The phone has a one-year guarantee.
 exchange|v, n|đổi (hàng)|Can I exchange this jumper for a bigger size?
 in stock|phr|còn hàng|Do you have this jacket in stock?
 sold out|phr|hết hàng|The tickets were sold out in an hour.
-purchase|n, v|việc mua; mua|I made an online purchase yesterday.`,
+purchase|n, v|việc mua; mua|I made an online purchase yesterday.
+complaint|n|lời phàn nàn|She made a complaint about the broken toaster.
+shopping centre|phr|trung tâm thương mại|The new shopping centre has over a hundred shops.
+window shopping|phr|đi dạo ngắm hàng|We did some window shopping but bought nothing.
+shopping trolley|phr|xe đẩy hàng|The shopping trolley was full of fruit and milk.
+special offer|phr|khuyến mãi đặc biệt|There is a special offer on coffee this week.
+pay back|phr|trả lại tiền|I will pay back the money next week.
+label|n|nhãn mác|Check the label to see how to wash it.
+shopper|n|người mua sắm|Every shopper wanted to enter the shop on the first day.
+price tag|phr|thẻ giá|He forgot to remove the price tag from the gift.
+take back|phr|mang trả lại|I need to take back these shoes.
+`,
 B2: `insurance|n|bảo hiểm|health insurance
 expenditure|n|khoản chi tiêu|The family's monthly expenditure on food has risen sharply this year.
 out of pocket|phr|tự chi trả|The company did not cover the trip, so I paid out of pocket.
@@ -729,7 +1010,22 @@ consumer|n|người tiêu dùng|Every consumer has the right to ask for a refund
 overpriced|adj|bị định giá quá cao|The souvenirs at the airport are overpriced.
 impulse buy|n|món mua bốc đồng|The chocolate at the till was an impulse buy.
 loyalty card|n|thẻ khách hàng thân thiết|I collect points with my loyalty card.
-haggle|v|mặc cả|Tourists often haggle in the market.`
+haggle|v|mặc cả|Tourists often haggle in the market.
+retailer|n|nhà bán lẻ|The retailer offers free returns on all orders.
+wholesale|adj|(bán) sỉ|Wholesale prices are much lower than shop prices.
+extravagant|adj|xa hoa, tốn kém|It was an extravagant gift for a first date.
+overspend|v|chi tiêu quá mức|Many students overspend during their first month away.
+subscription|n|sự đăng ký dài hạn (báo, dịch vụ)|I cancelled my subscription to the magazine.
+rip-off|n|sự bán giá cắt cổ|Fifty euros for a sandwich is a rip-off!
+good value|phr|đáng đồng tiền|This restaurant is good value for families.
+bulk|n|số lượng lớn|Rice is cheaper if you buy it in bulk.
+price range|phr|khoảng giá|These laptops are in a lower price range.
+`,
+C1: `frugal|adj|tiết kiệm, căn cơ|My grandmother was frugal and never wasted food.
+consumerism|n|chủ nghĩa tiêu dùng|Critics say consumerism makes people buy things they don't need.
+lavish|adj|xa xỉ, hào phóng|The couple organised a lavish wedding for five hundred guests.
+markup|n|mức tăng giá bán|Shops often add a high markup to imported goods.
+`,
 }},
 { id: "nature", icon: "🌿", color: "#3c9a4f", title: "Nature, weather & environment", vi: "Thiên nhiên, thời tiết và môi trường", levels: {
 A1: `sun|n|mặt trời|The sun is bright today.
@@ -765,7 +1061,13 @@ field|n|cánh đồng|The cows are in the field.
 hill|n|đồi|We walked up the hill.
 rainbow|n|cầu vồng|We saw a rainbow after the rain.
 sunny|adj|có nắng|It is a sunny day today.
-wave|n|sóng biển|The big wave hit the beach.`,
+wave|n|sóng biển|The big wave hit the beach.
+animal|n|động vật|Every animal on the farm has a name.
+plant|n|cây, thực vật|This plant needs a lot of water and light.
+leaf|n|chiếc lá|A red leaf fell on my head.
+rock|n|tảng đá|The children climbed onto a large rock.
+sand|n|cát|The sand was too hot to walk on.
+`,
 B1: `environment|n|môi trường|Plastic bags are bad for the environment.
 pollution|n|ô nhiễm|air pollution
 recycle|v|tái chế|Please recycle your bottles instead of throwing them in the bin.
@@ -779,7 +1081,18 @@ wildlife|n|động vật hoang dã|The park is a great place to see wildlife.
 natural resources|phr|tài nguyên thiên nhiên|Oil and water are important natural resources.
 renewable|adj|có thể tái tạo|Wind and solar are renewable sources of energy.
 shortage|n|sự thiếu hụt|There is a water shortage every summer.
-pollute|v|gây ô nhiễm|Factories must not pollute the river.`,
+pollute|v|gây ô nhiễm|Factories must not pollute the river.
+insect|n|côn trùng|An insect landed on my arm.
+valley|n|thung lũng|A small river runs through the green valley.
+desert|n|sa mạc|Very few plants can grow in the desert.
+volcano|n|núi lửa|The volcano erupted and covered the town in ash.
+earthquake|n|trận động đất|The earthquake shook buildings across the whole city.
+coast|n|bờ biển|They drove along the coast for three hours.
+rainfall|n|lượng mưa|Rainfall was unusually low this spring.
+scenery|n|phong cảnh|The scenery in the mountains was beautiful.
+wild|adj|hoang dã|Wild horses still live in these hills.
+tide|n|thủy triều|The tide comes in quickly on this beach.
+`,
 B2: `climate change|n|biến đổi khí hậu|Climate change is making summers hotter around the world.
 drought|n|hạn hán|The long drought killed many crops across the region.
 sustainable|adj|bền vững|Many shops now sell sustainable products that do not harm the planet.
@@ -792,7 +1105,18 @@ habitat|n|môi trường sống|Many animals lose their habitat when forests are
 extinct|adj|tuyệt chủng|Dinosaurs became extinct millions of years ago.
 wildfire|n|cháy rừng|A wildfire spread quickly across the dry hills.
 greenhouse gas|phr|khí nhà kính|Cars and factories release greenhouse gas into the air.
-ozone layer|phr|tầng ozone|The ozone layer protects us from harmful sun rays.`,
+ozone layer|phr|tầng ozone|The ozone layer protects us from harmful sun rays.
+species|n|loài (sinh vật)|Many species of birds live in this forest.
+predator|n|động vật săn mồi|The lion is a powerful predator.
+glacier|n|sông băng|The glacier is shrinking a little each year.
+erosion|n|sự xói mòn|Heavy rain caused erosion of the river bank.
+fertile|adj|màu mỡ|The river leaves behind fertile soil for farmers.
+tropical|adj|nhiệt đới|They spent a week on a tropical island.
+vegetation|n|thảm thực vật|Thick vegetation covered the hillside.
+nocturnal|adj|hoạt động về đêm|Owls are nocturnal, so they sleep during the day.
+migrate|v|di cư (động vật)|Many birds migrate south before winter begins.
+hurricane|n|bão lớn|The hurricane destroyed hundreds of homes on the coast.
+`,
 C1: `biodiversity|n|đa dạng sinh học|Protecting wetlands helps preserve biodiversity because many species live there.
 deforestation|n|nạn phá rừng|Deforestation destroys the homes of thousands of animals every year.
 mitigate|v|giảm nhẹ|Planting trees in cities can help mitigate the effects of extreme heat.
@@ -802,7 +1126,13 @@ degradation|n|sự suy thoái|Soil degradation reduces the amount of food farmer
 resilience|n|khả năng phục hồi, sức chống chịu|Wetlands increase a region's resilience to flooding.
 conserve|v|bảo tồn, giữ gìn|Governments must act to conserve scarce water supplies.
 irreversible|adj|không thể đảo ngược|Scientists warn that some damage to the ice sheets may be irreversible.
-carbon neutral|phr|trung hòa carbon|The city hopes to become carbon neutral by 2040.`
+carbon neutral|phr|trung hòa carbon|The city hopes to become carbon neutral by 2040.
+ecological|adj|thuộc sinh thái|The oil spill caused serious ecological damage to the bay.
+pristine|adj|nguyên sơ, trong lành|We camped beside a pristine mountain lake.
+preservation|n|sự bảo tồn|The preservation of old forests is a priority.
+indigenous|adj|bản địa|Indigenous plants need less water than imported ones.
+devastation|n|sự tàn phá|The flood left devastation across the whole valley.
+`
 }},
 { id: "tech", icon: "💻", color: "#4a67d8", title: "Technology & media", vi: "Công nghệ và truyền thông", levels: {
 A1: `phone|n|điện thoại|My phone is on the table.
@@ -828,7 +1158,13 @@ wifi|n|mạng wifi|Is there free wifi in this cafe?
 camera|n|máy ảnh, camera|My phone has a very good camera.
 video call|phr|cuộc gọi video|We had a video call with our grandparents.
 link|n|đường dẫn, liên kết|Please send me the link to the website.
-chat|v, n|trò chuyện (trực tuyến)|We chat online every evening.`,
+chat|v, n|trò chuyện (trực tuyến)|We chat online every evening.
+laptop|n|máy tính xách tay|She works on her laptop at the café.
+headphones|n|tai nghe|He wore headphones on the bus.
+mouse|n|chuột máy tính|The mouse stopped working yesterday.
+selfie|n|ảnh tự chụp|She took a selfie in front of the tower.
+smartwatch|n|đồng hồ thông minh|His smartwatch counts his steps every day.
+`,
 B1: `device|n|thiết bị|Turn off every electronic device before the plane takes off.
 software|n|phần mềm|The company installed new software on all the office computers.
 upload|v|tải lên|Minh will upload the holiday video to the website tonight.
@@ -844,7 +1180,18 @@ delete|v|xóa|Please delete the old photos from your phone.
 screenshot|n|ảnh chụp màn hình|She sent me a screenshot of the message.
 network|n|mạng lưới|The office network is down again.
 profile|n|hồ sơ cá nhân|Add a photo to your online profile.
-memory|n|bộ nhớ|My phone has no memory left for new photos.`,
+memory|n|bộ nhớ|My phone has no memory left for new photos.
+technology|n|công nghệ|New technology has changed the way we work.
+invention|n|phát minh|The telephone was an important invention.
+gadget|n|thiết bị nhỏ tiện ích|He loves any new kitchen gadget.
+connect|v|kết nối|Can you connect your phone to the speaker?
+virtual|adj|ảo|We had a virtual meeting instead of travelling.
+offline|adv|không có mạng|You can watch the film offline once it is saved.
+folder|n|thư mục|Put all the photos in one folder.
+hard drive|phr|ổ cứng|My hard drive is almost full.
+crash|v|bị sập, ngừng hoạt động đột ngột|I am afraid my computer will crash while I am writing.
+scan|v|quét|Please scan the document and email it to me.
+`,
 B2: `data|n|dữ liệu|The app collects data about how people use it.
 privacy|n|quyền riêng tư|Many users worry about their privacy when they share photos online.
 artificial intelligence|n|trí tuệ nhân tạo|Artificial intelligence can now translate speech almost instantly.
@@ -856,7 +1203,18 @@ hacker|n|tin tặc|A hacker stole thousands of passwords from the company.
 cloud storage|phr|lưu trữ đám mây|I keep my documents in cloud storage so I can open them anywhere.
 streaming|n|phát trực tuyến|Streaming has changed how people watch films.
 bandwidth|n|băng thông|Video calls need a lot of bandwidth.
-malware|n|phần mềm độc hại|The email contained malware that damaged the computer.`,
+malware|n|phần mềm độc hại|The email contained malware that damaged the computer.
+upgrade|v|nâng cấp|You should upgrade your software before the trip.
+glitch|n|trục trặc nhỏ|A small glitch delayed the launch of the app.
+server|n|máy chủ|The website went down when the server crashed.
+interface|n|giao diện|The app has a clean and simple interface.
+compatible|adj|tương thích|This charger is not compatible with older phones.
+cutting-edge|adj|tiên tiến nhất|The lab uses cutting-edge equipment for its research.
+router|n|bộ định tuyến|Restart the router if the signal is weak.
+open-source|adj|mã nguồn mở|The team used open-source software to save money.
+patch|n|bản vá lỗi|The company released a patch to fix the problem.
+user-friendly|adj|dễ sử dụng|The new app is simple and user-friendly.
+`,
 C1: `algorithm|n|thuật toán|The video app uses an algorithm to decide which clips you see next.
 misinformation|n|thông tin sai lệch|Misinformation about health can spread quickly on social networks.
 encryption|n|mã hóa|Encryption protects your messages so strangers cannot read them.
@@ -865,7 +1223,13 @@ surveillance|n|sự giám sát|Critics argue that mass surveillance threatens pe
 proliferation|n|sự gia tăng nhanh chóng|The proliferation of fake accounts makes online fraud harder to stop.
 digital literacy|phr|năng lực số|Schools should teach digital literacy as early as possible.
 disruptive|adj|mang tính đột phá, gây xáo trộn|Disruptive technologies can transform whole industries almost overnight.
-anonymity|n|sự ẩn danh|Online anonymity can encourage both honest debate and abuse.`
+anonymity|n|sự ẩn danh|Online anonymity can encourage both honest debate and abuse.
+ubiquitous|adj|có mặt khắp nơi|Smartphones have become ubiquitous in modern cities.
+cyberattack|n|tấn công mạng|The hospital's records were lost in a cyberattack.
+sophisticated|adj|tinh vi, phức tạp|The bank uses sophisticated software to detect fraud.
+redundant|adj|lỗi thời, không còn cần thiết|Typewriters became redundant once computers arrived.
+scalable|adj|có thể mở rộng|They built a scalable system that handles millions of users.
+`
 }},
 { id: "society", icon: "🏛️", color: "#8a6a4c", title: "Society & opinions", vi: "Xã hội và quan điểm", levels: {
 B1: `opinion|n|ý kiến|In my opinion, ...
@@ -882,7 +1246,18 @@ citizen|n|công dân|Every citizen has the right to vote.
 vote|v, n|bỏ phiếu; lá phiếu|People over eighteen can vote in this country.
 election|n|cuộc bầu cử|The election will take place in May.
 tradition|n|truyền thống|Eating together is an important family tradition.
-protest|n, v|cuộc biểu tình; phản đối|Thousands of people joined the protest against the new law.`,
+protest|n, v|cuộc biểu tình; phản đối|Thousands of people joined the protest against the new law.
+society|n|xã hội|A healthy society takes care of its older people.
+culture|n|văn hóa|Food is an important part of culture.
+charity|n|tổ chức từ thiện|She runs a charity that helps homeless people.
+homeless|adj|vô gia cư|The city built new shelters for homeless people.
+custom|n|phong tục|It is a local custom to remove shoes before entering.
+generation gap|phr|khoảng cách thế hệ|There is a big generation gap between me and my uncle.
+wealthy|adj|giàu có|A wealthy family built the new hospital.
+lifestyle choice|phr|lựa chọn lối sống|Living without a car is a lifestyle choice for many people.
+multicultural|adj|đa văn hóa|London is a multicultural city with many languages.
+community centre|phr|trung tâm cộng đồng|The community centre runs classes for retired people.
+`,
 B2: `issue|n|vấn đề (cần bàn)|Housing costs are an important issue for young people.
 policy|n|chính sách|The company changed its policy on working from home.
 inequality|n|sự bất bình đẳng|Many people believe education can reduce inequality between rich and poor families.
@@ -898,7 +1273,18 @@ discrimination|n|sự phân biệt đối xử|Discrimination at work is illegal
 equality|n|sự bình đẳng|The campaign aims to promote equality between men and women.
 immigration|n|sự nhập cư|Immigration has changed the culture of many big cities.
 tolerance|n|sự khoan dung|Tolerance of different views is important in a diverse society.
-refugee|n|người tị nạn|The charity helps every refugee find a home and work.`,
+refugee|n|người tị nạn|The charity helps every refugee find a home and work.
+minority|n|nhóm thiểu số|Only a small minority of students voted against the plan.
+prejudice|n|định kiến|Prejudice against older workers is still common.
+stereotype|n|khuôn mẫu định kiến|The film breaks the stereotype of the lazy teenager.
+authority|n|chính quyền, nhà chức trách|Local authority workers repaired the road quickly.
+corruption|n|tham nhũng|The minister resigned after a corruption scandal.
+privilege|n|đặc quyền|Education should be a right, not a privilege.
+social class|phr|tầng lớp xã hội|Social class still affects the schools children attend.
+ageing population|phr|dân số già hóa|An ageing population puts pressure on the health system.
+integration|n|sự hòa nhập|Language courses help the integration of new arrivals.
+public opinion|phr|dư luận|Public opinion turned against the new tax.
+`,
 C1: `consensus|n|sự đồng thuận|After a long discussion, the committee reached a consensus on the budget.
 advocate|v|ủng hộ, bênh vực|Many doctors advocate a shorter working week to improve public health.
 stigma|n|sự kỳ thị|mental health stigma
@@ -914,7 +1300,19 @@ accountability|n|trách nhiệm giải trình|Citizens demand greater accountabi
 legislation|n|luật pháp, hệ thống luật|New legislation will ban smoking in all public places.
 discourse|n|diễn ngôn, cuộc thảo luận|Public discourse on health has become more informed in recent years.
 cohesion|n|sự gắn kết|Shared activities help to build social cohesion in a neighbourhood.
-demographic|n|nhóm dân số|Young adults are the key demographic for this health campaign.`
+demographic|n|nhóm dân số|Young adults are the key demographic for this health campaign.
+socioeconomic|adj|thuộc kinh tế xã hội|Socioeconomic background strongly affects children's success at school.
+grassroots|adj|cơ sở, từ người dân|The grassroots campaign began in a small village.
+solidarity|n|sự đoàn kết|Thousands marched in solidarity with the striking workers.
+scrutiny|n|sự xem xét kỹ lưỡng|The new law faced intense public scrutiny.
+mainstream|adj|chính thống, phổ biến|The idea soon became mainstream among young voters.
+`,
+A2: `rich|adj|giàu|The rich man gave money to the school.
+poor|adj|nghèo|Many poor families live in this area.
+crowd|n|đám đông|A big crowd waited outside the theatre.
+foreigner|n|người nước ngoài|A foreigner can easily get lost in this big city.
+homeless person|phr|người vô gia cư|A homeless person asked me for food.
+`,
 }},
 { id: "verbs", icon: "🔗", color: "#0f8c8c", title: "Phrasal verbs", vi: "Cụm động từ", levels: {
 A2: `get up|phr|thức dậy|I get up at six o'clock every morning.
@@ -929,7 +1327,12 @@ go out|phr|ra ngoài|Do you want to go out for dinner tonight?
 come in|phr|đi vào|Please come in and sit down.
 hurry up|phr|nhanh lên|Hurry up, or we will miss the bus!
 stand up|phr|đứng dậy|Please stand up when the teacher comes in.
-give back|phr|trả lại|Please give back my pen.`,
+give back|phr|trả lại|Please give back my pen.
+write down|phr|ghi lại|Please write down your phone number here.
+throw away|phr|vứt đi|Do not throw away that old bag yet.
+slow down|phr|chậm lại|Please slow down; the road is wet.
+hand in|phr|nộp|Students must hand in their homework on Friday.
+`,
 B1: `find out|phr|tìm ra, phát hiện|Lan wants to find out why the train is late.
 give up|phr|từ bỏ|He gave up smoking.
 look after|phr|chăm sóc|Can you look after my cat while I am on holiday?
@@ -949,7 +1352,17 @@ figure out|phr|tìm ra, hiểu ra|I cannot figure out how this machine works.
 hold on|phr|chờ một chút, giữ chặt|Hold on, I will be right back.
 show up|phr|xuất hiện, có mặt|He did not show up for the meeting.
 go on|phr|tiếp tục; xảy ra|Please go on with your story.
-get along|phr|hòa thuận|I get along well with my new colleagues.`,
+get along|phr|hòa thuận|I get along well with my new colleagues.
+move in|phr|dọn vào ở|The new neighbours will move in next week.
+get back|phr|trở về; lấy lại|When did you get back from your trip?
+put away|phr|cất đi|Please put away your toys before dinner.
+keep up with|phr|theo kịp|It is hard to keep up with the news these days.
+sign up|phr|đăng ký|I want to sign up for a cooking class.
+let down|phr|làm thất vọng|Please do not let down your team this time.
+stick to|phr|giữ đúng, bám theo|You should stick to the plan we agreed on.
+drop off|phr|đưa tới, thả xuống|Can you drop off the children at school today?
+fill up|phr|đổ đầy|We stopped to fill up the car with petrol.
+`,
 B2: `come down with|phr|bị (bệnh nhẹ)|I've come down with a cold.
 pass out|phr|ngất|He passed out in the heat.
 throw up|phr|nôn|The child felt sick and had to throw up after the long car ride.
@@ -966,7 +1379,19 @@ deal with|phr|giải quyết, xử lý|Doctors must deal with stressful situatio
 drop out|phr|bỏ học, rút lui|Some students drop out of university after one year.
 look into|phr|điều tra, xem xét|The committee will look into the complaint.
 turn down|phr|từ chối; vặn nhỏ|She had to turn down the job offer.
-put up with|phr|chịu đựng|I cannot put up with the noise any longer.`,
+put up with|phr|chịu đựng|I cannot put up with the noise any longer.
+make up for|phr|bù đắp|He bought flowers to make up for being late.
+take over|phr|tiếp quản|A larger firm plans to take over the company.
+hold back|phr|kìm lại, ngăn lại|She tried to hold back her tears at the ceremony.
+fall apart|phr|tan vỡ, sụp đổ|The old chair began to fall apart after years of use.
+stand for|phr|viết tắt cho; đại diện cho|What does this symbol stand for on the map?
+get away with|phr|thoát tội|He will never get away with cheating on the test.
+catch up with|phr|bắt kịp|I ran fast to catch up with my friends.
+come across|phr|tình cờ thấy|If you come across my keys, please tell me.
+turn into|phr|biến thành|Tadpoles turn into frogs after a few weeks.
+point out|phr|chỉ ra|I want to point out one small mistake.
+run into|phr|tình cờ gặp|If you run into Anna, say hello for me.
+`,
 C1: `flare up|phr|bùng phát lại (triệu chứng)|My eczema flares up in winter.
 bring on|phr|gây ra, khởi phát|Stress can bring on a migraine.
 rule out|phr|loại trừ|We need to rule out a fracture.
@@ -978,7 +1403,12 @@ single out|phr|chọn ra, nhắm riêng vào|The report did not single out any o
 step down|phr|từ chức|The director will step down at the end of the year.
 set out|phr|trình bày; bắt đầu (mục tiêu)|The guidelines set out clearly what staff must do in an emergency.
 live up to|phr|đáp ứng được (kỳ vọng)|The new treatment did not live up to expectations.
-tie in with|phr|phù hợp, ăn khớp với|These results tie in with earlier findings on sleep and memory.`
+tie in with|phr|phù hợp, ăn khớp với|These results tie in with earlier findings on sleep and memory.
+crack down on|phr|trấn áp, siết chặt|The city plans to crack down on illegal parking.
+iron out|phr|giải quyết (trục trặc)|We still need to iron out a few small problems.
+play down|phr|hạ thấp tầm quan trọng|The minister tried to play down the seriousness of the error.
+scale back|phr|cắt giảm quy mô|The company had to scale back its plans because of costs.
+`
 }},
 { id: "academic", icon: "🎓", color: "#5b4fc4", title: "Academic English", vi: "Tiếng Anh học thuật", levels: {
 B2: `analyse|v|phân tích|Students must analyse the results of their experiment carefully.
@@ -996,7 +1426,22 @@ interpret|v|diễn giải|Doctors must interpret the test results carefully.
 previous|adj|trước đó|Previous research has shown similar results.
 participant|n|người tham gia (nghiên cứu)|Each participant answered a short questionnaire.
 theory|n|lý thuyết|The theory explains why some people sleep badly.
-findings|n|những phát hiện|The findings of the study were published last month.`,
+findings|n|những phát hiện|The findings of the study were published last month.
+statistics|n|số liệu thống kê|The statistics show that more people now work from home.
+emphasis|n|sự nhấn mạnh|The course puts great emphasis on speaking skills.
+specific|adj|cụ thể|Can you give me a specific example of this?
+evaluate|v|đánh giá|Teachers evaluate each student at the end of term.
+justify|v|biện minh|Nothing can justify such rude behaviour.
+exclude|v|loại trừ|We should not exclude anyone from the discussion.
+modify|v|điều chỉnh, sửa đổi|We had to modify the plan because of the weather.
+implement|v|thực hiện, triển khai|The school will implement the new rules in May.
+illustrate|v|minh hoạ|This story helps to illustrate the point clearly.
+equivalent|n|vật tương đương|A kilometre is the equivalent of about 0.6 miles.
+contradict|v|mâu thuẫn|His words contradict what he did yesterday.
+transform|v|biến đổi|Technology can transform the way we learn.
+monitor|v|theo dõi|Nurses monitor the patients all night.
+logic|n|tính logic, lập luận hợp lý|I cannot follow the logic of your argument.
+`,
 C1: `hypothesis|n|giả thuyết|The scientist tested her hypothesis that plants grow faster with more light.
 variable|n|biến số|In this experiment, temperature is the only variable we change.
 correlation|n|mối tương quan|The study found a strong correlation between exercise and good sleep.
@@ -1017,7 +1462,25 @@ mechanism|n|cơ chế|Researchers are studying the mechanism by which the drug w
 framework|n|khung, khuôn khổ|The study provides a useful framework for understanding stress.
 validity|n|tính hợp lệ, giá trị|The validity of the test was questioned by several experts.
 correlate|v|tương quan|Hours of sleep correlate with test performance.
-theoretical|adj|thuộc lý thuyết|The study is mainly theoretical and has no practical results yet.`
+theoretical|adj|thuộc lý thuyết|The study is mainly theoretical and has no practical results yet.
+substantiate|v|chứng minh bằng chứng cứ|You must substantiate your claims with real data.
+elaborate|v|nói rõ thêm|Could you elaborate on your second point?
+manipulate|v|thao túng|Some adverts try to manipulate how we feel.
+accumulate|v|tích luỹ|Dust can accumulate quickly in an empty house.
+incorporate|v|kết hợp, đưa vào|The designer chose to incorporate old ideas into the new model.
+scope|n|phạm vi|That question is outside the scope of this course.
+abstract|adj|trừu tượng|Freedom is an abstract idea that is hard to define.
+attribute|v|cho là do|Many people attribute her success to hard work.
+`,
+B1: `summary|n|bản tóm tắt|Write a short summary of the story in your own words.
+chart|n|biểu đồ|The chart shows how sales changed each month.
+diagram|n|sơ đồ|The teacher drew a diagram on the board.
+predict|v|dự đoán|Scientists predict that summers will become hotter.
+volume|n|lưu lượng, khối lượng|The volume of traffic increases at rush hour.
+criticism|n|lời phê bình|The film received a lot of criticism.
+investigate|v|điều tra, nghiên cứu|Police will investigate the cause of the fire.
+overview|n|cái nhìn tổng quan|The first chapter gives a short overview of the topic.
+`,
 }},
 { id: "discourse", icon: "🧩", color: "#b0582b", title: "Linking & discourse", vi: "Từ nối và diễn ngôn", levels: {
 A2: `and|conj|và|Anna bought bread and milk at the market.
@@ -1027,7 +1490,12 @@ so|conj|nên|It was raining, so we took a taxi.
 then|adv|sau đó|First wash your hands, then sit down to eat.
 also|adv|cũng|Lan speaks English and she also speaks French.
 after that|phr|sau đó|We had lunch, and after that we went for a walk.
-or|conj|hoặc|Do you want tea or coffee?`,
+or|conj|hoặc|Do you want tea or coffee?
+lastly|adv|cuối cùng|Lastly, I want to thank all my friends.
+such as|phr|chẳng hạn như|I like fruit such as apples and grapes.
+at first|phr|lúc đầu|At first, I did not like the city.
+anyway|adv|dù sao đi nữa|It rained, but we went out anyway.
+`,
 B1: `however|adv|tuy nhiên|The hotel was cheap. However, the rooms were very dirty.
 although|conj|mặc dù|Although it was cold, we went swimming in the sea.
 for example|phr|ví dụ|I enjoy outdoor sports, for example, running and cycling.
@@ -1041,7 +1509,17 @@ at the same time|phr|đồng thời|She was happy and sad at the same time.
 in my opinion|phr|theo ý kiến của tôi|In my opinion, the film was too long.
 besides|adv|hơn nữa, ngoài ra|I am too tired to go out, and besides, it is raining.
 otherwise|adv|nếu không thì|Take your medicine, otherwise you will not get better.
-in short|phr|tóm lại|In short, the plan did not work.`,
+in short|phr|tóm lại|In short, the plan did not work.
+for instance|phr|ví dụ|Many cities, for instance Hanoi, are very crowded.
+in conclusion|phr|tóm lại|In conclusion, exercise is good for everyone.
+as well as|phr|cũng như|She speaks French as well as English.
+what is more|phr|hơn nữa|The hotel was clean, and what is more, it was cheap.
+after all|phr|rốt cuộc, dù sao|Let's go out; it is the weekend after all.
+by the way|phr|nhân tiện|By the way, did you call your mother?
+in the end|phr|cuối cùng|We tried many ideas, and in the end we won.
+to be honest|phr|thành thật mà nói|To be honest, I did not enjoy the film.
+so far|phr|cho đến nay|So far, I have read three chapters of the book.
+`,
 B2: `therefore|adv|vì vậy|The roads were closed by snow, therefore the meeting was cancelled.
 whereas|conj|trong khi (đối lập)|Anna loves big cities, whereas her brother prefers the countryside.
 despite|prep|mặc dù (+ danh từ)|Despite the heavy rain, the match started on time.
@@ -1054,7 +1532,16 @@ nonetheless|adv|tuy nhiên, dù vậy|The test was hard, but she passed it nonet
 as far as I am concerned|phr|theo tôi thì|As far as I am concerned, the decision is final.
 in other words|phr|nói cách khác|He is bilingual, in other words he speaks two languages fluently.
 regardless of|phr|bất kể|Everyone gets treatment regardless of their income.
-on the whole|phr|nhìn chung|On the whole, the trip was a success.`,
+on the whole|phr|nhìn chung|On the whole, the trip was a success.
+to begin with|phr|trước hết|To begin with, the room is too small.
+above all|phr|trên hết|Above all, stay calm and do not run.
+on the contrary|phr|ngược lại|I am not angry; on the contrary, I am pleased.
+as for|phr|còn về|As for dinner, I will cook tonight.
+apart from|phr|ngoài ra, trừ|Apart from Tom, everyone came to the party.
+even so|phr|dù vậy|The test was hard; even so, most students passed.
+in general|phr|nói chung|In general, people here are friendly and helpful.
+in particular|phr|đặc biệt|I love sweet food, chocolate in particular.
+`,
 C1: `nevertheless|adv|dù vậy|The task was risky; nevertheless, the team decided to continue.
 consequently|adv|do đó|Sales fell sharply last year; consequently, the company closed two shops.
 notwithstanding|prep|bất chấp|Notwithstanding the bad weather, thousands of people came to the festival.
@@ -1068,7 +1555,12 @@ conversely|adv|ngược lại|Some drugs raise blood pressure, while others, con
 in view of|phr|xét đến, do|In view of the new evidence, the case was reopened.
 with regard to|phr|về vấn đề, liên quan đến|With regard to your question, the answer is not yet clear.
 that said|phr|tuy vậy|The results are promising; that said, more research is needed.
-as opposed to|phr|trái với, thay vì|The study compared home care as opposed to hospital care.`
+as opposed to|phr|trái với, thay vì|The study compared home care as opposed to hospital care.
+all things considered|phr|xét mọi mặt|All things considered, it was a successful trip.
+by and large|phr|nhìn chung|By and large, the plan worked well.
+to a certain extent|phr|ở một mức độ nào đó|To a certain extent, I agree with your idea.
+for the most part|phr|phần lớn|For the most part, the students were polite.
+`
 }},
 { id: "idioms", icon: "💡", color: "#d0691f", title: "Collocations & idioms", vi: "Kết hợp từ và thành ngữ", levels: {
 B1: `make a mistake|phr|mắc lỗi|Everyone can make a mistake when they are learning a language.
@@ -1082,7 +1574,17 @@ have a look|phr|xem qua|Let me have a look at your homework.
 take part in|phr|tham gia|Many students take part in the school sports day.
 make progress|phr|tiến bộ|He wants to make progress in his English class.
 get in touch|phr|liên lạc|Please get in touch if you have any questions.
-make sure|phr|đảm bảo|Make sure you lock the door when you leave.`,
+make sure|phr|đảm bảo|Make sure you lock the door when you leave.
+give it a try|phr|thử xem|I have never cooked fish, but I will give it a try.
+do your best|phr|cố gắng hết sức|Just do your best and do not worry.
+on purpose|phr|cố ý|He did not break it on purpose.
+in a mess|phr|bừa bộn, rối tung|Your room is in a mess again.
+by heart|phr|thuộc lòng|She learned the whole poem by heart.
+for a while|phr|một lúc|Let's sit here for a while and rest.
+take your time|phr|cứ từ từ|Take your time; there is no rush.
+take a chance|phr|liều thử|I decided to take a chance and apply.
+change your mind|phr|đổi ý|If you change your mind, just call me.
+`,
 B2: `take something seriously|phr|coi trọng việc gì|You should take something seriously when a doctor gives you advice about your health.
 raise awareness|phr|nâng cao nhận thức|The students made posters to raise awareness about plastic waste.
 a piece of cake|phr|dễ như ăn bánh|The exam was a piece of cake for Lan.
@@ -1093,7 +1595,20 @@ once in a blue moon|phr|hiếm khi, năm thì mười họa|We only eat out once
 break the ice|phr|phá vỡ bầu không khí ngượng ngùng|A joke helped to break the ice at the start of the meeting.
 get out of hand|phr|vượt khỏi tầm kiểm soát|Do not let the party get out of hand.
 make ends meet|phr|xoay xở đủ sống|Many families struggle to make ends meet.
-call it a day|phr|nghỉ, dừng làm việc hôm nay|We are all tired, so let us call it a day.`,
+call it a day|phr|nghỉ, dừng làm việc hôm nay|We are all tired, so let us call it a day.
+keep an eye on|phr|để mắt tới|Could you keep an eye on my bag, please?
+hit the nail on the head|phr|nói trúng phóc|You hit the nail on the head with that comment.
+out of the blue|phr|bất ngờ|He called me out of the blue last night.
+spill the beans|phr|lỡ tiết lộ bí mật|Please do not spill the beans about the party.
+get the hang of|phr|nắm được cách làm|You will soon get the hang of this machine.
+let off steam|phr|xả bực dọc|Running helps me let off steam after work.
+look on the bright side|phr|nhìn mặt tích cực|Try to look on the bright side of things.
+sit on the fence|phr|đứng giữa, không chọn bên|Stop trying to sit on the fence and choose.
+in no time|phr|rất nhanh|The food will be ready in no time.
+make a difference|phr|tạo nên khác biệt|Small acts of kindness can make a difference.
+miss the point|phr|không hiểu ý chính|Please do not miss the point of my story.
+go the extra mile|phr|nỗ lực hơn mức cần thiết|I always try to go the extra mile for my clients.
+`,
 C1: `bear in mind|phr|ghi nhớ, lưu ý|Bear in mind that the shop closes early on Sundays.
 at a loss|phr|bối rối, không biết làm gì|When the computer stopped working, Minh was at a loss.
 a double-edged sword|phr|con dao hai lưỡi|Social media is a double-edged sword: it connects people but can also waste their time.
@@ -1107,7 +1622,18 @@ read between the lines|phr|hiểu ý ngầm|If you read between the lines, the r
 the last straw|phr|giọt nước tràn ly|Losing my keys again was the last straw.
 a blessing in disguise|phr|trong cái rủi có cái may|Losing that job was a blessing in disguise for him.
 face the music|phr|đối mặt với hậu quả|He lied to his boss and now has to face the music.
-come to terms with|phr|chấp nhận, thích nghi với|It took her a long time to come to terms with the diagnosis.`
+come to terms with|phr|chấp nhận, thích nghi với|It took her a long time to come to terms with the diagnosis.
+jump the gun|phr|hành động vội vàng|Do not jump the gun before you hear the facts.
+go back to the drawing board|phr|làm lại từ đầu|The plan failed, so we must go back to the drawing board.
+the elephant in the room|phr|vấn đề lớn không ai nhắc tới|Money was the elephant in the room at the meeting.
+a leap of faith|phr|bước đi liều dựa vào niềm tin|Moving abroad was a leap of faith for her.
+throw in the towel|phr|bỏ cuộc|Do not throw in the towel after one failure.
+`,
+A2: `have fun|phr|vui chơi|We always have fun at the beach.
+take care|phr|bảo trọng; cẩn thận|Take care and call me when you arrive.
+in a hurry|phr|vội vã|I am in a hurry, so I cannot talk now.
+by mistake|phr|do nhầm lẫn|I took your phone by mistake this morning.
+`,
 }},
 { id: "basics", icon: "🔤", color: "#6C8EBF", title: "Basics", vi: "Từ cơ bản", levels: {
 A1: `eleven|n|mười một|I have eleven books.
@@ -1148,7 +1674,16 @@ please|adv|làm ơn, xin vui lòng|Please open the window.
 thank you|phr|cảm ơn|Thank you for your help.
 excuse me|phr|xin lỗi (để gây chú ý hoặc xin đi qua)|Excuse me, where is the station?
 yes|excl|vâng, có|Yes, I like coffee.
-no|excl|không|No, thank you.`,
+no|excl|không|No, thank you.
+forty|n|số bốn mươi|My grandfather is forty years older than me.
+fifty|n|số năm mươi|The ticket costs fifty euros.
+sixty|n|số sáu mươi|There are sixty minutes in an hour.
+seventy|n|số bảy mươi|The bus carries about seventy people.
+bottom|n|đáy, phần dưới cùng|The answer is at the bottom of the page.
+top|n|đỉnh, phía trên cùng|We climbed to the top of the hill.
+fourteen|n|số mười bốn|My sister is fourteen years old.
+zero|n|số không|The temperature fell to zero last night.
+`,
 A2: `north|n, adv|phía bắc|The city is in the north of the country.
 south|n, adv|phía nam|Birds fly south in winter.
 east|n, adv|phía đông|The sun rises in the east.
@@ -1160,7 +1695,15 @@ across|prep|băng qua, bên kia|The shop is across the street.
 million|n|một triệu|About a million people live in this city.
 purple|adj|màu tím|She wore a purple dress to the party.
 triangle|n|hình tam giác|A triangle has three sides.
-whose|det|của ai|Whose coat is this?`
+whose|det|của ai|Whose coat is this?
+eighty|n|số tám mươi|My grandmother is eighty years old.
+ninety|n|số chín mươi|The test lasts ninety minutes.
+gold|n|vàng; màu vàng kim|She wore a ring made of gold.
+silver|n|bạc; màu bạc|He won a silver medal at the games.
+rectangle|n|hình chữ nhật|A door is usually shaped like a rectangle.
+middle|n|giữa|There is a table in the middle of the room.
+fraction|n|phân số, một phần nhỏ|A fraction of the class arrived late today.
+`
 }},
 { id: "clothes", icon: "👕", color: "#e0568a", title: "Clothes", vi: "Quần áo", levels: {
 A1: `clothes|n|quần áo|My clothes are in the wardrobe.
@@ -1202,7 +1745,12 @@ wool|n|len|Wool keeps you warm in winter.
 fit|v|vừa người|These jeans do not fit me.
 raincoat|n|áo mưa|Wear a raincoat today.
 tights|n|quần tất|She wore black tights.
-glasses|n|kính mắt|He wears glasses to read.`,
+glasses|n|kính mắt|He wears glasses to read.
+sweatshirt|n|áo nỉ|He wore a grey sweatshirt and old jeans.
+shoe|n|chiếc giày|I lost a shoe while running for the bus.
+hoodie|n|áo hoodie|She wore a warm hoodie on the cold morning.
+necklace|n|vòng cổ|My mother gave me a silver necklace.
+`,
 B1: `bra|n|áo ngực|She bought a new bra.
 leather|n|da thuộc|Her bag is made of leather.
 silk|n|lụa|The scarf is made of pure silk.
@@ -1212,12 +1760,36 @@ casual|adj|giản dị, thường ngày|I wear casual clothes at weekends.
 formal|adj|trang trọng|You need formal clothes for the ceremony.
 tight|adj|chật, bó|These shoes are too tight.
 loose|adj|rộng, lỏng|He wore a loose shirt in the heat.
-dress up|phr|ăn mặc chỉnh tề|We had to dress up for the wedding.`,
+dress up|phr|ăn mặc chỉnh tề|We had to dress up for the wedding.
+bracelet|n|vòng tay|She wore a gold bracelet on her wrist.
+earring|n|bông tai|She lost an earring at the party.
+purse|n|ví nhỏ đựng tiền|I think I left my purse at home.
+handbag|n|túi xách|She kept her phone in her handbag.
+sunglasses|n|kính râm|He put on sunglasses because the sun was strong.
+collar|n|cổ áo|He turned up the collar of his coat against the wind.
+hanger|n|móc treo quần áo|Put your jacket on a hanger so it doesn't get creased.
+outfit|n|bộ trang phục|She chose a smart outfit for the party.
+ring|n|chiếc nhẫn|He gave her a ring on her birthday.
+`,
 B2: `tailor|n|thợ may|The tailor made my suit in a week.
 fabric|n|vải|The fabric is soft and light.
 waterproof|adj|chống thấm nước|I need a waterproof jacket for the hike.
 accessory|n|phụ kiện|A scarf is a simple accessory.
-alter|v|sửa (quần áo)|Can you alter these trousers for me?`
+alter|v|sửa (quần áo)|Can you alter these trousers for me?
+fashionable|adj|hợp thời trang|These shoes are very fashionable this year.
+baggy|adj|rộng thùng thình|He liked wearing baggy jeans and a loose shirt.
+trendy|adj|thời thượng|They went to a trendy shop in the city centre.
+garment|n|y phục, quần áo|Each garment is checked before it leaves the factory.
+hem|n|đường viền gấu|The hem of her skirt was torn.
+thread|n|sợi chỉ|She sewed the button on with strong thread.
+lining|n|lớp lót|The coat has a warm lining inside.
+button up|phr|cài khuy|Button up your coat because it is freezing outside.
+`,
+C1: `attire|n|trang phục|Formal attire is required at the wedding.
+apparel|n|quần áo, hàng may mặc|The company sells sports apparel in many countries.
+threadbare|adj|sờn rách|He wore a threadbare coat that had seen better days.
+ensemble|n|bộ trang phục phối hợp|Her ensemble of a blue jacket and matching skirt looked elegant.
+`,
 }},
 { id: "transport", icon: "🚌", color: "#2f80c0", title: "Transport & travel", vi: "Giao thông và đi lại", levels: {
 A1: `bus stop|n|trạm xe buýt|I wait at the bus stop.
@@ -1255,7 +1827,13 @@ lane|n|làn đường|Stay in the left lane.
 pavement|n|vỉa hè (US: sidewalk)|Please walk on the pavement.
 airline|n|hãng hàng không|Which airline are you flying with?
 suitcase|n|va li|My suitcase is very heavy.
-traveller|n|du khách (US: traveler)|Every traveller needs a passport.`,
+traveller|n|du khách (US: traveler)|Every traveller needs a passport.
+bus station|n|bến xe buýt|The bus station is near the market.
+train station|n|ga tàu|I will meet you at the train station at noon.
+one-way|adj|một chiều|I bought a one-way ticket to Da Nang.
+truck|n|xe tải|A big truck stopped in front of the shop.
+ticket office|n|phòng bán vé|The ticket office opens at eight.
+`,
 B1: `vehicle|n|phương tiện|The vehicle stopped at the red light.
 rush hour|n|giờ cao điểm|Avoid the metro during rush hour.
 motorway|n|đường cao tốc (US: freeway)|We drove along the motorway for two hours.
@@ -1273,7 +1851,17 @@ season ticket|n|vé tháng|She bought a season ticket for the train.
 gate|n|cổng (ở sân bay)|Your flight leaves from gate twelve.
 runway|n|đường băng|The plane waited on the runway.
 traffic jam|n|tắc đường|We were stuck in a traffic jam for an hour.
-cycle lane|n|làn đường dành cho xe đạp|There is a new cycle lane on our street.`,
+cycle lane|n|làn đường dành cho xe đạp|There is a new cycle lane on our street.
+land|v|hạ cánh|Our plane will land in about twenty minutes.
+check-in desk|n|quầy làm thủ tục|The queue at the check-in desk was very long.
+get a lift|phr|được cho đi nhờ xe|Can I get a lift to school with you?
+pull over|phr|tấp xe vào lề|The police asked him to pull over.
+run out of petrol|phr|hết xăng|Fill the tank so you do not run out of petrol.
+engine|n|động cơ|The engine of my car is very loud.
+tyre|n|lốp xe|I need to change a flat tyre.
+zebra crossing|n|vạch qua đường|Always cross at the zebra crossing.
+cabin|n|khoang (máy bay, tàu)|The cabin was quiet and comfortable.
+`,
 B2: `carpool|v, n|đi chung xe|My colleagues and I carpool to work.
 hitchhike|v|đi nhờ xe dọc đường|They plan to hitchhike across the country.
 pedestrian|n|người đi bộ|A pedestrian crossed the road carefully.
@@ -1282,8 +1870,26 @@ overtake|v|vượt xe|Do not overtake on a bend.
 detour|n|đường vòng|We took a detour because of road works.
 road works|n|công trường sửa đường|Road works caused long delays this morning.
 layover|n|thời gian quá cảnh|I had a three-hour layover in Singapore.
-bypass|n|đường tránh|The new bypass keeps trucks out of the town.`,
-C1: `gridlock|n|tắc nghẽn hoàn toàn|Gridlock paralysed the city centre.`
+bypass|n|đường tránh|The new bypass keeps trucks out of the town.
+transit|n|sự vận chuyển (trên đường đi)|The goods were lost in transit.
+on board|phr|trên tàu, trên máy bay|There were two hundred passengers on board.
+toll|n|phí cầu đường|You have to pay a toll to use this bridge.
+reverse|v|lùi xe|He had to reverse the car into the narrow garage.
+brake|n|phanh|I pressed the brake when the child ran across the road.
+steering wheel|n|vô lăng|She kept both hands on the steering wheel.
+accelerate|v|tăng tốc|Press the pedal gently to accelerate smoothly.
+sat nav|n|thiết bị dẫn đường GPS|My sat nav showed a faster way home.
+public transit|n|giao thông công cộng|Many people in big cities rely on public transit.
+windscreen|n|kính chắn gió|Rain hit the windscreen hard.
+crew|n|phi hành đoàn, thủy thủ đoàn|The crew welcomed us on the plane.
+seat reservation|n|đặt chỗ ngồi|A seat reservation is required on this train.
+`,
+C1: `gridlock|n|tắc nghẽn hoàn toàn|Gridlock paralysed the city centre.
+congested|adj|tắc nghẽn|The congested roads made me late for the meeting.
+gridlocked|adj|kẹt cứng|The gridlocked streets did not move for an hour.
+navigate|v|tìm đường, điều hướng|It is easy to navigate the city with a good map.
+aviation|n|hàng không|He works in the aviation industry.
+`
 }},
 { id: "leisure", icon: "🎸", color: "#e8590c", title: "Leisure & hobbies", vi: "Giải trí và sở thích", levels: {
 A1: `hobby|n|sở thích|My hobby is reading.
@@ -1322,7 +1928,12 @@ photography|n|nhiếp ảnh|She studies photography at college.
 nightclub|n|hộp đêm|They went to a nightclub on Saturday night.
 festival|n|lễ hội|The music festival lasts three days.
 skiing|n|môn trượt tuyết|We go skiing in the mountains every winter.
-karaoke|n|karaoke|We sang at a karaoke bar on Saturday.`,
+karaoke|n|karaoke|We sang at a karaoke bar on Saturday.
+free time|n|thời gian rảnh|What do you do in your free time?
+chess|n|cờ vua|My grandfather taught me how to play chess.
+video game|n|trò chơi điện tử|My brother plays a video game every evening.
+puzzle|n|trò chơi giải đố|This puzzle has a thousand small pieces.
+`,
 B1: `exhibition|n|buổi triển lãm|We visited an art exhibition in the city centre.
 gallery|n|phòng trưng bày|The gallery is free on Sundays.
 theatre|n|nhà hát|We saw a play at the theatre.
@@ -1338,13 +1949,42 @@ coach|n|huấn luyện viên|The coach trained the team every day.
 member|n|thành viên|She is a member of a tennis club.
 gardening|n|làm vườn|Gardening helps me relax after work.
 craft|n|nghề thủ công|She teaches a craft class for children on Saturdays.
-backpacking|n|du lịch bụi|He spent a year backpacking across Asia.`,
+backpacking|n|du lịch bụi|He spent a year backpacking across Asia.
+hang out|phr|đi chơi, tụ tập|I often hang out with my friends after school.
+stay in|phr|ở nhà|I am tired, so I will stay in tonight.
+entertainment|n|giải trí|There is live entertainment at the hotel every night.
+enjoyable|adj|thú vị, dễ chịu|It was a very enjoyable evening.
+amusement park|n|công viên giải trí|We spent the day at the amusement park.
+mess around|phr|nghịch ngợm, chơi vẩn vơ|We just mess around at the park on Sundays.
+chat room|n|phòng trò chuyện trực tuyến|He met many friends in an online chat room.
+outdoors|adv|ngoài trời|We love to eat outdoors in the summer.
+karaoke bar|n|quán karaoke|We sang all night at a karaoke bar.
+roller coaster|n|tàu lượn siêu tốc|The roller coaster was fast and scary.
+`,
 B2: `amateur|n, adj|người nghiệp dư; nghiệp dư|He is an amateur photographer who sells a few pictures.
 spectator|n|khán giả (thể thao)|Every spectator in the stadium stood up and clapped.
 fixture|n|trận đấu theo lịch|The next fixture is against our local rivals.
 blockbuster|n|phim bom tấn|The summer blockbuster made millions in a week.
 soundtrack|n|nhạc phim|The soundtrack of the film is wonderful.
-leisure activity|phr|hoạt động giải trí|Walking is a cheap and healthy leisure activity.`
+leisure activity|phr|hoạt động giải trí|Walking is a cheap and healthy leisure activity.
+pastime|n|trò tiêu khiển|Reading is her favourite pastime.
+unwind|v|thư giãn, xả hơi|A hot bath helps me unwind after work.
+recreation|n|sự giải trí, thư giãn|The park offers space for sport and recreation.
+stage|n|sân khấu|The singer walked onto the stage.
+rehearse|v|diễn tập, tập dượt|The actors rehearse every evening before the show.
+admission|n|phí vào cửa|Admission to the museum is free on Sundays.
+thrilling|adj|hồi hộp, li kỳ|The film has a thrilling ending.
+gig|n|buổi biểu diễn nhạc trực tiếp|We went to a rock gig last Friday.
+stroll|n|cuộc đi dạo|We took a slow stroll along the river.
+binge-watch|v|xem liền một mạch nhiều tập|I like to binge-watch comedy series on rainy days.
+`,
+C1: `hobbyist|n|người chơi theo sở thích|He is a keen hobbyist who builds model planes.
+leisurely|adj|thong thả, nhàn nhã|We had a leisurely breakfast on the balcony.
+pursuit|n|thú vui, hoạt động theo đuổi|Golf is a popular pursuit among older people.
+spectacle|n|cảnh tượng ngoạn mục|The fireworks were an amazing spectacle.
+diversion|n|trò giải khuây|Music was a welcome diversion from his studies.
+dabble|v|thử làm (cho vui)|I like to dabble in painting at the weekend.
+`,
 }},
 { id: "school", icon: "🏫", color: "#2f9e44", title: "School & study", vi: "Trường học và học tập", levels: {
 A1: `classroom|n|phòng học|The classroom is big and bright.
@@ -1385,8 +2025,42 @@ pencil case|phr|hộp bút|My pencil case is on the desk.
 term|n|học kỳ (UK)|The summer term ends in July.
 essay|n|bài luận|I have to write an essay tonight.
 project|n|dự án, bài tập nhóm|Our class project is about birds.
-quiz|n|bài kiểm tra ngắn, câu đố|We have a quiz every Friday.`,
-B1: `graduate|v|tốt nghiệp|He will graduate next year.`
+quiz|n|bài kiểm tra ngắn, câu đố|We have a quiz every Friday.
+canteen|n|căng tin|We eat lunch together in the canteen at noon.
+lunchtime|n|giờ ăn trưa|We play football in the playground at lunchtime.
+school bag|phr|cặp sách|My school bag is too heavy to carry.
+school trip|phr|chuyến đi của trường|Our school trip to the zoo is on Friday.
+nursery|n|nhà trẻ|Her baby goes to nursery three days a week.
+`,
+B1: `graduate|v|tốt nghiệp|He will graduate next year.
+attendance|n|sự có mặt, tỉ lệ đi học|The teacher checks attendance at the start of each class.
+textbook|n|sách giáo khoa|Please open your textbook at page forty.
+kindergarten|n|trường mẫu giáo|My little sister goes to kindergarten in the morning.
+primary school|phr|trường tiểu học|He started primary school when he was six.
+secondary school|phr|trường trung học|She goes to secondary school by bus every day.
+principal|n|hiệu trưởng|The principal gave a speech at the opening ceremony.
+tuition|n|học phí, sự giảng dạy|Tuition at this university is quite expensive.
+detention|n|phạt ở lại sau giờ học|He got detention for talking in class.
+report card|phr|phiếu điểm, học bạ|My parents were proud of my report card.
+boarding school|phr|trường nội trú|She lives at boarding school during the week.
+`,
+B2: `seminar|n|buổi hội thảo chuyên đề|We discuss the reading in a weekly seminar.
+lecturer|n|giảng viên|The lecturer spoke for an hour about modern art.
+graduation|n|lễ tốt nghiệp|Her parents came to her graduation in June.
+diploma|n|văn bằng, chứng chỉ|He received a diploma in business after two years.
+mock exam|phr|kỳ thi thử|We have a mock exam in January to practise.
+revision|n|sự ôn tập|I did four hours of revision for the chemistry test.
+cheat|v|gian lận|Students who cheat in exams may be sent away.
+bully|v|bắt nạt|Nobody should bully another child at school.
+distance learning|phr|học từ xa|Distance learning lets people study without leaving home.
+multiple choice|phr|trắc nghiệm|The test was multiple choice, so it was easy to mark.
+`,
+C1: `academic|adj|thuộc học thuật|Her academic record is excellent.
+thesis|n|luận án|He defended his thesis in front of three professors.
+undergraduate|n|sinh viên đại học (chưa tốt nghiệp)|As an undergraduate, she studied law for three years.
+postgraduate|adj|sau đại học|She is doing a postgraduate course in economics.
+faculty|n|khoa (đại học)|She teaches in the faculty of science at the university.
+`,
 }}
 ];
 
@@ -1491,7 +2165,13 @@ cut|v|cắt|Cut the bread with a knife.
 break|v|làm vỡ, làm hỏng|Be careful not to break the glass.
 fall|v|ngã, rơi|Leaves fall from the trees in autumn.
 hold|v|cầm, giữ|Hold my bag for a minute, please.
-reach|v|với tới; đến được|We reach the village before dark.`,
+reach|v|với tới; đến được|We reach the village before dark.
+pull|v|kéo|He had to pull the heavy door to open it.
+push|v|đẩy|Please push the button and wait for the lift.
+pick|v|chọn; nhặt|You can pick any book from the shelf.
+hide|v|giấu, trốn|The child tried to hide behind the curtain.
+pour|v|rót, đổ|Please pour some water into my glass.
+`,
 B1: `achieve|v|đạt được|She achieved her goal.
 allow|v|cho phép|Visitors are not allowed after 8 pm.
 avoid|v|tránh|Avoid fatty food.
@@ -1537,7 +2217,18 @@ remind|v|nhắc nhở|Please remind me to buy milk.
 replace|v|thay thế|We need to replace the old computer.
 solve|v|giải quyết, giải (bài toán)|It took an hour to solve the puzzle.
 survive|v|sống sót, tồn tại|Few plants can survive in the desert.
-warn|v|cảnh báo|The doctor will warn him about the risks.`,
+warn|v|cảnh báo|The doctor will warn him about the risks.
+attract|v|thu hút|The festival will attract visitors from all over the country.
+depend|v|phụ thuộc|The price will depend on the size of the room.
+divide|v|chia|The teacher will divide the class into four small groups.
+ignore|v|phớt lờ|He chose to ignore the noise from the street.
+last|v|kéo dài|The film will last about two hours.
+rely|v|dựa vào, tin cậy|You can rely on me to arrive on time.
+represent|v|đại diện|She was chosen to represent her country at the games.
+repeat|v|lặp lại|Could you repeat the question, please?
+reply|v|trả lời|I will reply to your email tomorrow morning.
+recommend|v|giới thiệu, khuyên|Can you recommend a good restaurant near here?
+`,
 B2: `acknowledge|v|thừa nhận|He acknowledged the mistake.
 assume|v|cho rằng, giả định|Don't assume it's serious.
 contribute|v|đóng góp; góp phần|Stress contributes to high blood pressure.
@@ -1564,7 +2255,18 @@ enhance|v|nâng cao, cải thiện|Good lighting can enhance the quality of your
 enable|v|cho phép, giúp có thể|This app will enable patients to book appointments online.
 generate|v|tạo ra, phát ra|Wind farms generate clean electricity.
 identify|v|nhận ra, xác định|Doctors can identify the problem with a simple test.
-imply|v|ngụ ý, hàm ý|His silence seemed to imply that he disagreed.`,
+imply|v|ngụ ý, hàm ý|His silence seemed to imply that he disagreed.
+accomplish|v|hoàn thành, đạt được|They managed to accomplish the whole task in one week.
+acquire|v|có được, tiếp thu|Children acquire language very quickly in their first years.
+commit|v|cam kết, dành (thời gian, công sức)|He promised to commit more time to his studies.
+confirm|v|xác nhận|Please confirm your booking by email before Friday.
+resolve|v|giải quyết|They met to resolve the problem between the two teams.
+regulate|v|điều chỉnh, quản lý|The government wants to regulate the price of water.
+reveal|v|tiết lộ, để lộ|The report will reveal how the money was spent.
+undergo|v|trải qua|The old bridge will undergo major repairs next year.
+tackle|v|giải quyết (vấn đề)|The government plans to tackle unemployment this year.
+overlook|v|bỏ sót, không để ý|It is easy to overlook small mistakes when you are tired.
+`,
 C1: `accommodate|v|đáp ứng, cung cấp chỗ ở; điều chỉnh cho phù hợp|The hospital can accommodate up to five hundred patients.
 allocate|v|phân bổ|The government will allocate more funds to rural clinics.
 alleviate|v|làm dịu, giảm bớt|This medicine should alleviate the pain within an hour.
@@ -1589,7 +2291,13 @@ infer|v|suy ra|From her tone, we could infer that she was disappointed.
 intervene|v|can thiệp|The nurse had to intervene when the argument became heated.
 undermine|v|làm suy yếu, phá hoại dần|Constant criticism can undermine a person's confidence.
 uphold|v|duy trì, bảo vệ (luật, nguyên tắc)|Judges must uphold the law without fear or favour.
-warrant|v|đáng, biện minh cho|The situation does not warrant such a strong response.`
+warrant|v|đáng, biện minh cho|The situation does not warrant such a strong response.
+bolster|v|củng cố, hỗ trợ|New evidence will bolster the case against the company.
+disrupt|v|làm gián đoạn|Heavy snow can disrupt trains and flights for days.
+perceive|v|nhận thức, cảm nhận|Many people perceive this change as a threat.
+reinforce|v|củng cố, tăng cường|The results reinforce our belief that the plan is right.
+scrutinise|v|xem xét kỹ lưỡng|Experts will scrutinise every detail of the contract.
+`
 }},
 { id: "core-adj", sec: "core", exam: ["CEFR", "VSTEP", "IELTS"], icon: "🎨", color: "#c77c1a", title: "Core adjectives & adverbs", vi: "Tính từ và trạng từ lõi", levels: {
 A1: `big|adj|to|The elephant is a very big animal.
@@ -1662,7 +2370,13 @@ popular|adj|được ưa chuộng|Football is very popular in Vietnam.
 safe|adj|an toàn|It is safe to walk here at night.
 quite|adv|khá, khá là|The soup is quite hot.
 just|adv|vừa mới; chỉ|I have just finished my homework.
-famous|adj|nổi tiếng|She is a famous singer.`,
+famous|adj|nổi tiếng|She is a famous singer.
+clumsy|adj|vụng về|He is clumsy and often drops his cup.
+silly|adj|ngớ ngẩn|It was a silly mistake, and we all laughed.
+lucky|adj|may mắn|You are lucky to have such kind neighbours.
+messy|adj|bừa bộn|His desk was messy, with papers everywhere.
+weak|adj|yếu|After the long illness, he felt weak for weeks.
+`,
 B1: `available|adj|có sẵn; rảnh|Is the doctor available?
 common|adj|phổ biến|Colds are common in winter.
 familiar|adj|quen thuộc|Her face looks familiar, but I forget her name.
@@ -1701,7 +2415,18 @@ immediately|adv|ngay lập tức|Call a doctor immediately if the pain gets wors
 mainly|adv|chủ yếu|The group consists mainly of students.
 nearly|adv|gần như|We have nearly finished the project.
 rather|adv|khá, hơi (mức độ)|The exam was rather difficult.
-generally|adv|nói chung, thường thì|People generally eat dinner at seven here.`,
+generally|adv|nói chung, thường thì|People generally eat dinner at seven here.
+awkward|adj|khó xử, ngượng ngùng|There was an awkward silence after his strange question.
+hesitant|adj|do dự|He was hesitant to speak in front of the class.
+reasonably|adv|khá, một cách hợp lý|The room was reasonably clean for such a cheap hotel.
+cautious|adj|thận trọng|Be cautious when you cross the busy road.
+reasonable|adj|hợp lý, phải chăng|The hotel offers rooms at a reasonable price.
+ordinary|adj|bình thường|It was an ordinary day until the phone rang.
+optional|adj|không bắt buộc|The extra lesson on Friday is optional.
+convenient|adj|thuận tiện|The shop is convenient because it is next to the station.
+properly|adv|đúng cách|You should chew your food properly before you swallow.
+hardly|adv|hầu như không|I was so tired that I could hardly keep my eyes open.
+`,
 B2: `accurate|adj|chính xác|The weather forecast was accurate, and it rained all day.
 adequate|adj|đủ, thỏa đáng|The room was small but adequate for one night.
 crucial|adj|then chốt|Good communication is crucial in any team.
@@ -1725,7 +2450,18 @@ initial|adj|ban đầu|My initial reaction was one of surprise.
 potential|adj|tiềm năng, có thể xảy ra|The doctor explained the potential risks of the surgery.
 severe|adj|nghiêm trọng, nặng|The storm caused severe damage to the town.
 sufficient|adj|đủ, đầy đủ|Is there sufficient evidence to support this claim?
-substantial|adj|đáng kể, lớn|She received a substantial amount of money.`,
+substantial|adj|đáng kể, lớn|She received a substantial amount of money.
+ambitious|adj|tham vọng|She is an ambitious young woman with big plans.
+vague|adj|mơ hồ, không rõ ràng|His answer was vague, so nobody understood his plan.
+tough|adj|khó khăn; cứng rắn|It was a tough decision for the whole family.
+genuine|adj|chân thật, thật|She showed genuine interest in everything I said.
+mutual|adj|lẫn nhau, chung|They ended the contract by mutual agreement.
+rapidly|adv|nhanh chóng|The town has grown rapidly over the last ten years.
+widespread|adj|phổ biến, lan rộng|There is widespread support for the new law.
+versatile|adj|đa năng|A versatile tool can be used for many different jobs.
+dramatic|adj|đột ngột, ấn tượng|There was a dramatic change in the weather overnight.
+inadequate|adj|không đủ, kém|The old equipment was inadequate for the new job.
+`,
 C1: `ambiguous|adj|mơ hồ, nhiều nghĩa|The instructions were ambiguous and led to some confusion.
 arbitrary|adj|tùy tiện, ngẫu nhiên|The decision seemed arbitrary and unfair to many staff.
 coherent|adj|mạch lạc, chặt chẽ|He gave a clear and coherent account of the accident.
@@ -1745,7 +2481,13 @@ tangible|adj|hữu hình, rõ ràng|We need tangible proof that the treatment wo
 viable|adj|khả thi|Is it a viable option for a small clinic?
 arguably|adv|có thể cho rằng|She is arguably the best surgeon in the country.
 predominantly|adv|chủ yếu, phần lớn|The staff are predominantly women under forty.
-ultimately|adv|cuối cùng, xét cho cùng|Ultimately, the decision belongs to the patient.`
+ultimately|adv|cuối cùng, xét cho cùng|Ultimately, the decision belongs to the patient.
+meticulous|adj|tỉ mỉ, cẩn thận|He kept meticulous records of every payment.
+stringent|adj|nghiêm ngặt|The country has stringent rules about food safety.
+rigorous|adj|nghiêm ngặt, chặt chẽ|The test is rigorous and only a few students pass.
+elusive|adj|khó nắm bắt|Success remained elusive despite years of hard work.
+fleeting|adj|thoáng qua|I only caught a fleeting glimpse of the famous singer.
+`
 }},
 { id: "core-nouns", sec: "core", exam: ["CEFR", "VSTEP", "IELTS", "TOEIC"], icon: "📦", color: "#b5651d", title: "Core nouns", vi: "Danh từ lõi thông dụng", levels: {
 A1: `thing|n|đồ vật, điều|What is that thing on the table?
@@ -1785,7 +2527,12 @@ topic|n|chủ đề|Our topic today is food.
 detail|n|chi tiết|Please tell me every detail.
 type|n|loại, kiểu|What type of music do you like?
 mistake|n|lỗi, sai sót|I made a small mistake in the test.
-trouble|n|rắc rối, phiền toái|I am in trouble with my teacher.`,
+trouble|n|rắc rối, phiền toái|I am in trouble with my teacher.
+souvenir|n|quà lưu niệm|I bought a small souvenir from the market.
+ladder|n|cái thang|He climbed the ladder to fix the roof.
+shortcut|n|đường tắt|We took a shortcut through the park to save time.
+goal|n|mục tiêu|My goal is to speak English fluently next year.
+`,
 B1: `advantage|n|lợi thế, ưu điểm|Living near the office is a big advantage when you hate traffic.
 disadvantage|n|bất lợi, nhược điểm|One disadvantage of this flat is the lack of a lift.
 effect|n|ảnh hưởng, tác động|The medicine had a strong effect on his headache.
@@ -1812,7 +2559,18 @@ responsibility|n|trách nhiệm|Parents have a responsibility to protect their c
 role|n|vai trò|Teachers play an important role in society.
 strength|n|sức mạnh; điểm mạnh|Honesty is her greatest strength.
 challenge|n|thử thách|Learning to drive was a big challenge for him.
-pressure|n|áp lực; sức ép|Many students feel pressure before exams.`,
+pressure|n|áp lực; sức ép|Many students feel pressure before exams.
+boundary|n|ranh giới|A tall fence marks the boundary of the farm.
+limit|n|giới hạn|There is a limit to how much weight the bridge can hold.
+version|n|phiên bản|The new version of the app is much faster.
+tool|n|công cụ|A good dictionary is a useful tool for learners.
+fault|n|lỗi, trách nhiệm cho điều sai|The accident was not my fault.
+impact|n|tác động|The new road had a big impact on local shops.
+standard|n|tiêu chuẩn, mức|The school has a very high standard for its students.
+recommendation|n|lời khuyên, đề xuất|The doctor made a recommendation to rest for a week.
+structure|n|cấu trúc|The structure of the essay was clear and simple.
+tendency|n|xu hướng, thiên hướng|He has a tendency to arrive late for meetings.
+`,
 B2: `aspect|n|khía cạnh|Which aspect of the job do you enjoy the most?
 consequence|n|hậu quả|One consequence of missing the deadline was losing an important client.
 feature|n|đặc điểm|The best feature of this phone is its long battery life.
@@ -1833,7 +2591,19 @@ obstacle|n|trở ngại, chướng ngại|Lack of money is the biggest obstacle 
 principle|n|nguyên tắc|As a matter of principle, she never tells lies.
 proportion|n|tỷ lệ, phần|A large proportion of the students come from rural areas.
 resource|n|nguồn lực, tài nguyên|Water is a precious resource in dry regions.
-strategy|n|chiến lược|We need a clear strategy to reduce costs.`,
+strategy|n|chiến lược|We need a clear strategy to reduce costs.
+gap|n|khoảng trống, chênh lệch|There is a big gap between rich and poor families.
+foundation|n|nền tảng, cơ sở|Good habits are the foundation of a healthy life.
+barrier|n|rào cản|Language can be a barrier when you move abroad.
+evaluation|n|sự đánh giá|The teacher made an evaluation of each student's progress.
+milestone|n|cột mốc|Learning to read is a major milestone for a child.
+dispute|n|tranh chấp|The two neighbours had a long dispute about the fence.
+initiative|n|sáng kiến|The city launched a new initiative to plant more trees.
+misconception|n|quan niệm sai|It is a common misconception that carrots help you see in the dark.
+hazard|n|mối nguy hiểm|A wet floor can be a hazard for visitors.
+phenomenon|n|hiện tượng|Rainbows are a natural phenomenon that people love to watch.
+reputation|n|danh tiếng|The restaurant has a good reputation for fresh food.
+`,
 C1: `criterion|n|tiêu chí|Experience is the main criterion for this job.
 dimension|n|khía cạnh; kích thước|The illness has a psychological dimension as well.
 discrepancy|n|sự chênh lệch, mâu thuẫn|There is a discrepancy between the two reports.
@@ -1853,7 +2623,13 @@ paradox|n|nghịch lý|It is a paradox that more choice can make people unhappy.
 precedent|n|tiền lệ|The court decision set a precedent for similar cases.
 setback|n|trở ngại, bước thụt lùi|The patient suffered a minor setback during recovery.
 pitfall|n|cạm bẫy, rủi ro tiềm ẩn|One common pitfall is trying to learn too much at once.
-catalyst|n|chất xúc tác, tác nhân thúc đẩy|The crisis was a catalyst for change in the health system.`
+catalyst|n|chất xúc tác, tác nhân thúc đẩy|The crisis was a catalyst for change in the health system.
+anomaly|n|điều bất thường|The warm weather in January was a strange anomaly.
+inertia|n|sự trì trệ, quán tính|Inertia kept the old system in place for many years.
+ethos|n|tinh thần, đặc trưng|The company's ethos is based on honesty and teamwork.
+hurdle|n|trở ngại|Getting the money was the first big hurdle for the project.
+repercussion|n|hậu quả|The decision may have a serious repercussion for the whole region.
+`
 }}
 ];
 
@@ -1866,7 +2642,12 @@ file|n|hồ sơ, tệp|Please save the file on the shared computer.
 desk|n|bàn làm việc|Minh puts his laptop on his desk every morning.
 department|n|phòng ban|She works in the sales department.
 report|n|báo cáo|I must finish the report today.
-reception|n|quầy lễ tân|Please wait at reception until someone comes.`,
+reception|n|quầy lễ tân|Please wait at reception until someone comes.
+copy|v|sao chép, photo|Please copy this letter for everyone in the team.
+stapler|n|cái dập ghim|Could I borrow your stapler for a minute?
+envelope|n|phong bì|Put the letter in an envelope and seal it.
+cabinet|n|tủ hồ sơ|The old files are in the filing cabinet by the door.
+`,
 B1: `agenda|n|chương trình nghị sự|Let's look at the agenda.
 minutes|n|biên bản cuộc họp|Who is taking the minutes?
 memo|n|bản ghi nhớ nội bộ|The manager sent a memo to all staff about the new rules.
@@ -1877,7 +2658,17 @@ postpone|v|hoãn lại|The meeting was postponed.
 supervisor|n|người giám sát|Lan asked her supervisor for a day off next week.
 headquarters|n|trụ sở chính|The company's headquarters moved to a larger building downtown.
 proposal|n|bản đề xuất|She sent a proposal to the new client.
-get back to|phr|trả lời lại, liên hệ lại|I will get back to you by Friday.`,
+get back to|phr|trả lời lại, liên hệ lại|I will get back to you by Friday.
+photocopier|n|máy photocopy|The photocopier is out of paper again.
+brainstorm|v|động não nghĩ ý tưởng|Let us brainstorm some ideas before the meeting ends.
+follow up|phr|theo dõi tiếp|I will follow up with the client tomorrow.
+attend|v|tham dự|All managers must attend the meeting on Thursday.
+assign|v|giao việc|The boss will assign a new task to each of us.
+stationery|n|văn phòng phẩm|We ordered new stationery for the whole office.
+cubicle|n|ngăn làm việc|Each worker has a small cubicle with a computer.
+forward|v|chuyển tiếp (thư)|Can you forward the email to the whole team?
+handout|n|tài liệu phát tay|She gave each person a handout at the start.
+`,
 B2: `branch|n|chi nhánh|She works at the company's branch in the next town.
 subsidiary|n|công ty con|The firm opened a subsidiary overseas to serve local customers.
 merger|n|sáp nhập|After the merger, the two companies shared one office.
@@ -1887,11 +2678,29 @@ on behalf of|phr|thay mặt cho|I'm writing on behalf of my manager.
 in charge of|phr|phụ trách|Nam is in charge of training the new staff.
 as of|phr|kể từ (ngày)|As of Monday, the office opens at 8.
 stakeholder|n|bên liên quan|We must inform every stakeholder before the change.
-streamline|v|tinh gọn quy trình|The company wants to streamline its ordering process.`
+streamline|v|tinh gọn quy trình|The company wants to streamline its ordering process.
+prioritize|v|ưu tiên|You need to prioritize your tasks before the busy week begins.
+collaborate|v|hợp tác|Our two teams collaborate closely on every new design.
+take minutes|phr|ghi biên bản|Could you take minutes during today's discussion?
+time management|phr|quản lý thời gian|Good time management helps me finish work before the deadline.
+multitask|v|làm nhiều việc cùng lúc|I cannot multitask when I am writing important emails.
+ground rules|phr|quy tắc cơ bản|We agreed on some ground rules for our meetings.
+action item|phr|đầu việc cần làm|The last action item is to book a room.
+wrap up|phr|kết thúc|Let us wrap up the meeting before five o'clock.
+`,
+C1: `reconvene|v|họp lại|The committee will reconvene after a short lunch break.
+take on board|phr|tiếp thu|The manager promised to take on board our suggestions.
+ramifications|n|hệ quả|The ramifications of the decision are still unclear.
+delegation|n|việc giao quyền|Good delegation gives managers more time to plan.
+`,
 }},
 { id: "t-hr", sec: "toeic", exam: ["TOEIC"], icon: "🧑‍💼", color: "#7b52c9", title: "Hiring & human resources", vi: "Tuyển dụng và nhân sự", levels: {
 A2: `apply|v|nộp đơn|You can apply for this position online before Friday.
-staff|n|nhân viên (tập thể)|The staff are very friendly here.`,
+staff|n|nhân viên (tập thể)|The staff are very friendly here.
+holiday pay|phr|lương ngày nghỉ|We get full holiday pay in August.
+training course|phr|khóa đào tạo|I took a training course in first aid.
+work hours|phr|giờ làm việc|My work hours are from nine to five.
+`,
 B1: `applicant|n|người nộp đơn|Each applicant must send a letter and a photo.
 candidate|n|ứng viên|The best candidate will start work next month.
 résumé|n|sơ yếu lý lịch (UK: CV)|Please attach your résumé to the email.
@@ -1905,7 +2714,16 @@ full-time|adj|toàn thời gian|She works in a full-time job at the bank.
 part-time|adj|bán thời gian|Nam has a part-time job at a cafe while he studies.
 vacancy|n|vị trí còn trống (tuyển dụng)|There is a vacancy in the accounts department.
 reference|n|thư giới thiệu, người giới thiệu|The employer asked for a reference from my last job.
-maternity leave|n|nghỉ thai sản|She returns from maternity leave next month.`,
+maternity leave|n|nghỉ thai sản|She returns from maternity leave next month.
+recruitment|n|việc tuyển dụng|The company has started a recruitment campaign for new nurses.
+dismiss|v|sa thải|The company had to dismiss two workers for being late.
+work experience|phr|kinh nghiệm làm việc|The job requires two years of work experience.
+shortlist|v|chọn vào danh sách rút gọn|We will shortlist five people for the final interview.
+notice period|phr|thời gian báo trước khi nghỉ việc|My notice period is one month.
+raise|n|sự tăng lương|He asked his boss for a raise after one year.
+flexible hours|phr|giờ làm linh hoạt|We have flexible hours, so I start late on Mondays.
+skilled|adj|có tay nghề|The factory is looking for skilled workers.
+`,
 B2: `orientation|n|buổi định hướng nhân viên mới|All new staff must attend orientation on their first morning.
 payroll|n|bảng lương|The payroll department pays everyone on the last day of the month.
 benefits package|n|gói phúc lợi|The company offers a good benefits package, including health insurance.
@@ -1916,14 +2734,33 @@ recruit|v|tuyển dụng|The hospital plans to recruit ten new doctors this year
 probation|n|thời gian thử việc|New employees stay on probation for three months before getting a permanent contract.
 redundancy|n|sa thải do cắt giảm nhân sự|The factory closure caused redundancy for many workers.
 incentive|n|động lực, khoản khuyến khích|The firm offers a bonus as an incentive to sell more.
-turnover|n|tỷ lệ nghỉ việc (nhân sự); doanh thu|High staff turnover is costly for the company.`
+turnover|n|tỷ lệ nghỉ việc (nhân sự); doanh thu|High staff turnover is costly for the company.
+probationary|adj|thử việc|She is still in her probationary period at the firm.
+onboarding|n|quá trình hội nhập nhân viên mới|Good onboarding helps new workers feel welcome on day one.
+job description|phr|bản mô tả công việc|The job description lists all the main duties of the role.
+dismissal|n|việc sa thải|The workers complained about the unfair dismissal of their friend.
+talent|n|nhân tài, năng khiếu|Our company wants to attract the best young talent.
+probation period|phr|thời gian thử việc|Your probation period lasts three months.
+headcount|n|tổng số nhân sự|The company plans to increase its headcount by ten percent.
+job security|phr|sự ổn định việc làm|Many people prefer job security to a higher salary.
+career path|phr|lộ trình nghề nghiệp|The firm shows young staff a clear career path.
+disciplinary|adj|mang tính kỷ luật|He faced a disciplinary meeting after the argument.
+`,
+C1: `grievance|n|khiếu nại, bất bình|She filed a grievance about the way she was treated.
+severance|n|trợ cấp thôi việc|He received a month of severance pay when he left.
+headhunt|v|săn đầu người|A large bank tried to headhunt our best engineer.
+poach|v|lôi kéo người từ công ty khác|Rival firms often poach skilled staff with higher pay.
+`,
 }},
 { id: "t-finance", sec: "toeic", exam: ["TOEIC", "IELTS"], icon: "💹", color: "#1f8f5f", title: "Finance & budgets", vi: "Tài chính và ngân sách", levels: {
 A2: `cost|n, v|chi phí; có giá|The cost of the repair was very high.
 profit|n|lợi nhuận|The shop made a small profit last month.
 tax|n|thuế|You must pay tax on your income.
 credit card|n|thẻ tín dụng|Can I pay by credit card?
-total|n|tổng cộng|The total is fifty dollars.`,
+total|n|tổng cộng|The total is fifty dollars.
+owe|v|nợ|I owe my brother ten euros.
+bank account|phr|tài khoản ngân hàng|I opened a bank account when I got my first job.
+`,
 B1: `expense|n|chi phí, khoản chi|Travel is the biggest expense for our team.
 invoice|n|hóa đơn thanh toán|Please send the invoice to our accounting department by Monday.
 payment|n|khoản thanh toán|The payment will arrive in your account within three days.
@@ -1934,7 +2771,18 @@ revenue|n|doanh thu|The company's revenue grew by ten percent this year.
 income|n|thu nhập|Her monthly income is not very high.
 deposit|n|tiền đặt cọc, tiền gửi|You must pay a deposit when you book the room.
 withdraw|v|rút tiền|I need to withdraw some cash from the ATM.
-interest rate|n|lãi suất|The bank has raised the interest rate again.`,
+interest rate|n|lãi suất|The bank has raised the interest rate again.
+savings|n|tiền tiết kiệm|She spent all her savings on a trip abroad.
+overdraft|n|thấu chi|The bank charges a fee when you go into overdraft.
+bank statement|phr|sao kê ngân hàng|Check your bank statement for any strange payments.
+instalment|n|khoản trả góp|I pay each instalment for my laptop on the first day.
+fee|n|phí|There is a small fee for each transfer.
+wages|n|tiền công|The workers collect their wages on Friday.
+cheque|n|séc|She paid for the repairs with a cheque.
+transfer|n|chuyển khoản|I made a transfer to my landlord this morning.
+fund|n|quỹ|The school set up a fund to help poor students.
+accountant|n|kế toán|Our accountant prepares the tax forms every spring.
+`,
 B2: `reimburse|v|hoàn trả chi phí|The company will reimburse your travel costs.
 audit|n|kiểm toán|An outside company will carry out an audit of our accounts.
 investment|n|khoản đầu tư|Buying new machines was a smart investment for the factory.
@@ -1944,12 +2792,30 @@ deficit|n|thâm hụt|The city has a budget deficit because it spent more than i
 fiscal year|n|năm tài chính|Our fiscal year ends in March, not in December.
 asset|n|tài sản|The building is the company's biggest asset.
 liability|n|khoản nợ phải trả|Every liability must be listed in the annual report.
-cash flow|n|dòng tiền|Poor cash flow forced the shop to close.`
+cash flow|n|dòng tiền|Poor cash flow forced the shop to close.
+capital|n|vốn|They need more capital to open a second shop.
+dividend|n|cổ tức|The company pays a dividend to its owners every year.
+break even|phr|hòa vốn|The café hopes to break even by the end of the year.
+overhead|n|chi phí chung|The overhead for a small shop is mostly rent and heating.
+bankrupt|adj|phá sản|The restaurant went bankrupt after only one year.
+tax return|phr|tờ khai thuế|I send my tax return every April.
+credit score|phr|điểm tín dụng|A low credit score makes it hard to get a loan.
+financial|adj|thuộc tài chính|The firm has serious financial problems this year.
+`,
+C1: `depreciation|n|sự khấu hao, mất giá|The depreciation of the car was higher than expected.
+liquidity|n|tính thanh khoản|The firm had serious problems with liquidity last winter.
+surplus|n|thặng dư|The city ended the year with a budget surplus.
+embezzle|v|biển thủ|The clerk was caught trying to embezzle money from the firm.
+accrue|v|tích lũy dần|Interest will accrue on the loan every month.
+`,
 }},
 { id: "t-marketing", sec: "toeic", exam: ["TOEIC"], icon: "📣", color: "#d64f7a", title: "Sales & marketing", vi: "Bán hàng và tiếp thị", levels: {
 A2: `product|n|sản phẩm|This new product is cheap and easy to use.
 advertise|v|quảng cáo|The shop will advertise its sale on the radio.
-poster|n|áp phích|They put a poster on the wall.`,
+poster|n|áp phích|They put a poster on the wall.
+advert|n|quảng cáo|I saw an advert for cheap flights online.
+logo|n|biểu tượng thương hiệu|The logo on the box is red and white.
+`,
 B1: `client|n|khách hàng (dịch vụ)|Our lawyer is meeting a new client this afternoon.
 launch|v, n|ra mắt|The new product will launch in May.
 survey|n|khảo sát|The company sent a survey to ask customers about the new menu.
@@ -1959,7 +2825,19 @@ customer service|n|dịch vụ khách hàng|I called customer service because my
 slogan|n|khẩu hiệu quảng cáo|The company has a catchy slogan.
 promote|v|quảng bá, thúc đẩy|They use social media to promote their new phone.
 retail|n|bán lẻ|She has ten years of experience in retail.
-free of charge|phr|miễn phí|Delivery is free of charge for orders over fifty euros.`,
+free of charge|phr|miễn phí|Delivery is free of charge for orders over fifty euros.
+commercial|n|quảng cáo trên truyền hình|The commercial for the new phone made everyone laugh.
+loyalty|n|lòng trung thành|The store gives points to reward customer loyalty.
+sales figures|phr|doanh số|The sales figures for March were better than expected.
+billboard|n|biển quảng cáo|A huge billboard stands next to the road.
+flyer|n|tờ rơi|Someone gave me a flyer about the new gym.
+best-seller|n|sản phẩm bán chạy|This book was the best-seller of the year.
+sales team|phr|đội ngũ bán hàng|Our sales team meets every Monday morning.
+newsletter|n|bản tin|Sign up for our newsletter to get new offers.
+promotional|adj|mang tính khuyến mãi|She wore a promotional T-shirt at the fair.
+packaging design|phr|thiết kế bao bì|The packaging design makes the product stand out.
+customer base|phr|tập khách hàng|The shop has a loyal customer base in the village.
+`,
 B2: `market share|n|thị phần|The company wants to increase its market share in Asia.
 target audience|n|khách hàng mục tiêu|Young parents are the target audience for this advert.
 campaign|n|chiến dịch|The new campaign helped the company reach younger buyers.
@@ -1967,7 +2845,21 @@ feedback|n|phản hồi|We read every piece of customer feedback to improve our 
 promotion|n|khuyến mại|The shop is running a promotion: buy one, get one free.
 competitive|adj|cạnh tranh|The mobile phone market is very competitive these days.
 exceed|v|vượt quá|Sales exceeded expectations.
-endorsement|n|sự chứng thực, quảng cáo bởi người nổi tiếng|The athlete's endorsement boosted sales of the shoes.`
+endorsement|n|sự chứng thực, quảng cáo bởi người nổi tiếng|The athlete's endorsement boosted sales of the shoes.
+target market|phr|thị trường mục tiêu|Our target market is young people who like sport.
+branding|n|xây dựng thương hiệu|Strong branding makes a small company easy to remember.
+word of mouth|phr|truyền miệng|Most of our new customers hear about us by word of mouth.
+differentiate|v|tạo sự khác biệt|The firm must differentiate its product from cheaper copies.
+upselling|n|bán thêm sản phẩm đắt hơn|Upselling is common when you buy a new phone.
+market research|phr|nghiên cứu thị trường|Market research showed that people wanted a smaller model.
+niche|n|thị trường ngách|The company found a niche selling tools for left-handed people.
+rebranding|n|việc đổi thương hiệu|The rebranding included a new name and logo.
+`,
+C1: `saturate|v|làm bão hòa|Too many new cafés will saturate the market in this area.
+consumer behaviour|phr|hành vi người tiêu dùng|Consumer behaviour changed quickly during the economic crisis.
+lucrative|adj|sinh lợi|Selling online turned out to be a very lucrative idea.
+rebrand|v|đổi thương hiệu|The bank decided to rebrand itself to attract younger clients.
+`,
 }},
 { id: "t-logistics", sec: "toeic", exam: ["TOEIC"], icon: "🚚", color: "#8a5a2b", title: "Orders, shipping & purchasing", vi: "Đặt hàng, vận chuyển và mua hàng", levels: {
 A2: `order|n, v|đơn hàng; đặt hàng|Lan wants to order two books online.
@@ -1975,7 +2867,12 @@ deliver|v|giao hàng|The shop will deliver the sofa to your home on Monday.
 box|n|thùng, hộp|Please put the glasses carefully into the box.
 parcel|n|bưu kiện|A parcel arrived for you this morning.
 address|n|địa chỉ|Please write your address on the form.
-package|n|gói hàng|The package is too heavy to carry.`,
+package|n|gói hàng|The package is too heavy to carry.
+post|v|gửi bưu điện|I will post the letter on my way to work.
+mail|n|thư từ|The mail usually arrives before noon.
+stamp|n|tem|I need a stamp to send this card abroad.
+courier service|phr|dịch vụ chuyển phát|We use a courier service for urgent letters.
+`,
 B1: `delivery|n|sự giao hàng|The delivery arrived two days late.
 shipment|n|lô hàng|The shipment of laptops left the port this morning.
 warehouse|n|kho hàng|The company stores its goods in a large warehouse near the airport.
@@ -1987,7 +2884,17 @@ contract|n|hợp đồng|Both companies signed the contract on Tuesday.
 courier|n|người/dịch vụ chuyển phát nhanh|We sent the documents by courier.
 packaging|n|bao bì, đóng gói|The packaging protects the goods during transport.
 in bulk|phr|với số lượng lớn|The shop buys rice in bulk to save money.
-damaged|adj|bị hư hỏng|The goods arrived damaged, so we asked for a refund.`,
+damaged|adj|bị hư hỏng|The goods arrived damaged, so we asked for a refund.
+track|v|theo dõi (đơn hàng)|You can track your parcel on our website.
+ship|v|vận chuyển hàng|We ship all orders within two working days.
+stock|n|hàng tồn kho|We have plenty of stock in the back of the shop.
+shipping cost|phr|phí vận chuyển|The shipping cost depends on the weight of the parcel.
+tracking number|phr|mã theo dõi vận đơn|Enter your tracking number to see where the parcel is.
+shelf life|phr|thời hạn bảo quản|Fresh milk has a short shelf life.
+forklift|n|xe nâng|The worker drove a forklift across the warehouse.
+pallet|n|pallet, tấm kê hàng|Twenty boxes fit on one pallet.
+container|n|công-ten-nơ|Each container holds about twenty tons of goods.
+`,
 B2: `inventory|n|hàng tồn kho|Staff count the inventory in the shop at the end of every year.
 quote|n|báo giá|Could you send me a quote for fifty office chairs?
 procurement|n|mua sắm (doanh nghiệp)|The procurement team compares prices from several suppliers before buying.
@@ -1995,7 +2902,21 @@ backorder|n|đơn hàng chờ bổ sung|The blue model is on backorder and will 
 dispatch|v|gửi đi|We will dispatch your parcel as soon as the payment arrives.
 expedite|v|xúc tiến, làm nhanh|Can you expedite my order? I need it by Friday.
 freight|n|hàng hóa vận chuyển|Air freight is faster but more expensive than shipping by sea.
-backlog|n|lượng công việc tồn đọng|A backlog of orders delayed the deliveries.`
+backlog|n|lượng công việc tồn đọng|A backlog of orders delayed the deliveries.
+logistics|n|hậu cần|Logistics is the hardest part of running an online shop.
+distributor|n|nhà phân phối|The distributor delivers our products to shops across the country.
+lead time|phr|thời gian chờ giao hàng|The lead time for this item is about six weeks.
+bulk order|phr|đơn hàng số lượng lớn|A bulk order of fifty chairs gets a lower price.
+tariff|n|thuế quan|A new tariff made imported steel more expensive.
+supply chain|phr|chuỗi cung ứng|Bad weather caused problems in the supply chain.
+restock|v|nhập thêm hàng|We need to restock the shelves before the weekend.
+`,
+C1: `consignment|n|lô hàng gửi|The consignment arrived at the port on Monday.
+consolidate|v|gom hàng, hợp nhất|We consolidate small orders into one large shipment.
+bottleneck|n|điểm nghẽn|The old port has become a bottleneck for all our exports.
+reconcile|v|đối chiếu|The clerk must reconcile the delivery list with the invoices.
+just-in-time|adj|vừa đúng lúc (hàng tồn tối thiểu)|The factory uses a just-in-time system to save storage space.
+`,
 }},
 { id: "t-travel", sec: "toeic", exam: ["TOEIC"], icon: "🧳", color: "#1b8fb3", title: "Business travel & events", vi: "Công tác và sự kiện", levels: {
 A2: `flight|n|chuyến bay|My flight to London leaves at six o'clock.
@@ -2003,7 +2924,11 @@ book|v|đặt (vé, phòng)|Please book a double room for two nights.
 trip|n|chuyến đi|Minh is on a business trip to Hanoi this week.
 pack|v|đóng gói hành lý|I need to pack my bags tonight.
 tour|n|chuyến tham quan|We joined a tour of the old city.
-arrive|v|đến nơi|The train will arrive at six o'clock.`,
+arrive|v|đến nơi|The train will arrive at six o'clock.
+single room|phr|phòng đơn|I would like a single room for two nights.
+double room|phr|phòng đôi|We booked a double room with a sea view.
+guide|n|hướng dẫn viên|The guide showed us the old town.
+`,
 B1: `reservation|n|sự đặt chỗ|I made a reservation for a table for four at eight.
 boarding pass|n|thẻ lên máy bay|Show your boarding pass and passport at the gate.
 conference|n|hội nghị|Anna is giving a talk at an international conference in May.
@@ -2012,21 +2937,58 @@ attendee|n|người tham dự|Each attendee received a name badge and a free not
 registration|n|đăng ký|Registration for the conference opens at eight, so please arrive early.
 catering|n|dịch vụ ăn uống|The catering at the event was excellent, especially the vegetarian dishes.
 customs|n|hải quan|We had to go through customs at the airport.
-visa|n|thị thực|You need a visa to enter that country.`,
+visa|n|thị thực|You need a visa to enter that country.
+expense report|phr|báo cáo chi phí|Please send me your expense report by Friday.
+conference pass|phr|thẻ tham dự hội nghị|Show your conference pass at the door to enter.
+carry-on|n|hành lý xách tay|My carry-on is small enough to fit above the seat.
+terminal|n|nhà ga hàng không|Our flight leaves from the second terminal.
+currency exchange|phr|đổi tiền|There is a currency exchange near the main hall.
+time zone|phr|múi giờ|The time zone here is two hours behind home.
+travel agency|phr|công ty du lịch|The travel agency found us a cheap hotel.
+visitor|n|khách tham quan|Every visitor must sign in at the front desk.
+sleeper train|phr|tàu giường nằm|We took a sleeper train from Berlin to Vienna.
+`,
 B2: `keynote speaker|n|diễn giả chính|The keynote speaker opened the conference with a talk about the future of work.
 workshop|n|hội thảo thực hành|Anna signed up for a workshop where participants practise presenting in small groups.
 reimbursement|n|sự hoàn trả chi phí|Please send your receipts to Finance to get reimbursement for the taxi fares.
-round trip|n|khứ hồi|A round trip to Hanoi from here costs less if you book early.`
+round trip|n|khứ hồi|A round trip to Hanoi from here costs less if you book early.
+connecting flight|phr|chuyến bay nối chuyến|I missed my connecting flight in Frankfurt.
+business class|phr|hạng thương gia|The manager always flies business class on long trips.
+per diem|phr|phụ cấp công tác phí hằng ngày|The firm gives us a per diem for meals on trips.
+overbook|v|nhận đặt quá chỗ|Airlines sometimes overbook flights, so some passengers stay behind.
+keynote|n|bài phát biểu chủ đạo|His keynote opened the whole conference.
+trade fair|phr|hội chợ thương mại|We showed our new machines at a trade fair.
+name badge|phr|thẻ tên|Please wear your name badge at all times.
+travel insurance|phr|bảo hiểm du lịch|The travel insurance covered the cost of my lost bag.
+red-eye|n|chuyến bay đêm|He took the red-eye from New York to London.
+boarding gate|phr|cửa lên máy bay|Go to the boarding gate at least thirty minutes early.
+`,
+C1: `plenary|n|phiên họp toàn thể|The plenary begins at nine with a speech from the president.
+forfeit|v|mất quyền, bị mất|You will forfeit your deposit if you cancel late.
+`,
 }},
 /* ---------- IELTS & VSTEP ---------- */
 { id: "i-education", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🏫", color: "#3a5fc8", title: "Education", vi: "Giáo dục", levels: {
-A2: `university|n|đại học|Minh wants to study medicine at university.`,
+A2: `university|n|đại học|Minh wants to study medicine at university.
+campus|n|khuôn viên trường|The university campus has a large library and a café.
+certificate|n|chứng chỉ|She received a certificate after finishing the course.
+blackboard|n|bảng đen|The teacher wrote the new words on the blackboard.
+vocabulary|n|từ vựng|I learn new vocabulary by reading short stories.
+grammar|n|ngữ pháp|English grammar can be difficult for beginners.
+`,
 B1: `course|n|khóa học|Lan is taking an English course on Saturday mornings.
 degree|n|bằng cấp|After four years, Nam finally received his degree in engineering.
 online learning|n|học trực tuyến|Online learning lets you study from home at any time.
 tuition fee|n|học phí|The tuition fee for this semester is due at the end of the month.
 scholarship|n|học bổng|She won a scholarship to study in Germany.
-assignment|n|bài tập lớn, nhiệm vụ|The teacher gave us a long assignment.`,
+assignment|n|bài tập lớn, nhiệm vụ|The teacher gave us a long assignment.
+dormitory|n|ký túc xá|Most first-year students live in a dormitory.
+headteacher|n|hiệu trưởng|The headteacher welcomed the new pupils on the first day.
+tutorial|n|buổi học nhóm nhỏ, hướng dẫn|We have a tutorial every Thursday afternoon.
+pronunciation|n|cách phát âm|Her pronunciation of English words is very clear.
+laboratory|n|phòng thí nghiệm|The students worked in the laboratory on Tuesday.
+experiment|n|thí nghiệm|We did a simple experiment with water and salt.
+`,
 B2: `curriculum|n|chương trình giảng dạy|The school is updating its curriculum to include more practical subjects.
 academic performance|n|kết quả học tập|Getting enough sleep can improve your academic performance during exam season.
 critical thinking|n|tư duy phản biện|Good teachers encourage critical thinking instead of asking students to memorise facts.
@@ -2035,13 +2997,40 @@ vocational training|n|đào tạo nghề|After school, Nam chose vocational trai
 compulsory|adj|bắt buộc|Education is compulsory for all children until the age of sixteen.
 tertiary education|n|giáo dục đại học|Tertiary education has become more affordable for families in recent years.
 plagiarism|n|đạo văn|Plagiarism can get a student expelled.
-literacy|n|khả năng đọc viết|The programme aims to improve adult literacy.`
+literacy|n|khả năng đọc viết|The programme aims to improve adult literacy.
+peer pressure|n|áp lực từ bạn bè|Peer pressure can make teenagers try risky things.
+educated|adj|có học thức|She comes from a well educated family.
+gifted|adj|có năng khiếu|The school has a special programme for gifted children.
+illiterate|adj|mù chữ|Many adults in the village were illiterate in the past.
+motivation|n|động lực|Students need motivation to keep studying for long hours.
+concentration|n|sự tập trung|Noise in the room made concentration very difficult.
+memorise|v|ghi nhớ, học thuộc|I try to memorise ten new words every day.
+bilingual|adj|song ngữ|Our school offers a bilingual programme in English and Spanish.
+`,
+C1: `rote learning|n|học vẹt|Rote learning rarely helps students understand ideas deeply.
+scholar|n|học giả|The scholar spent decades studying ancient languages.
+specialise|v|chuyên về, chuyên môn hóa|She plans to specialise in marine biology.
+`,
 }},
 { id: "i-environment", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🌍", color: "#2f9a55", title: "Environment & energy", vi: "Môi trường và năng lượng", levels: {
-A2: `plastic|n|nhựa|Plastic bags are bad for the sea.`,
+A2: `plastic|n|nhựa|Plastic bags are bad for the sea.
+nature|n|thiên nhiên|I love walking in nature at the weekend.
+ocean|n|đại dương|Plastic bottles are polluting the ocean.
+electricity|n|điện|The storm cut off the electricity for two hours.
+coal|n|than đá|Many old power stations still burn coal.
+`,
 B1: `waste|n, v|rác thải; lãng phí|Households throw away too much food waste every week.
 energy|n|năng lượng|Turning off lights saves energy and lowers your electricity bill.
-rubbish|n|rác (US: trash)|Please put your rubbish in the bin, not on the street.`,
+rubbish|n|rác (US: trash)|Please put your rubbish in the bin, not on the street.
+solar power|n|năng lượng mặt trời|Solar power is cheap and clean in sunny countries.
+litter|n|rác vứt bừa bãi|There is too much litter in the park after weekends.
+reuse|v|tái sử dụng|You can reuse glass jars to store food.
+damage|v|gây hại, làm hư hại|Heavy rain can damage crops and houses.
+preserve|v|bảo tồn, gìn giữ|We must preserve the forest for future generations.
+rainforest|n|rừng mưa nhiệt đới|The rainforest is home to millions of species.
+chemical|n|hóa chất|The factory leaked a dangerous chemical into the river.
+harm|n|tác hại|Smoke from the factory does great harm to local people.
+`,
 B2: `emission|n|khí thải|The emission from old factories harms the air we breathe.
 renewable energy|n|năng lượng tái tạo|The island gets most of its power from renewable energy such as wind and sun.
 fossil fuel|n|nhiên liệu hóa thạch|Burning fossil fuel, such as coal and oil, harms the atmosphere.
@@ -2049,25 +3038,75 @@ conservation|n|sự bảo tồn|Conservation of wild animals depends on protecti
 carbon footprint|n|dấu chân carbon|Flying less is one way to reduce your carbon footprint.
 global warming|n|nóng lên toàn cầu|Scientists warn that global warming is causing sea levels to rise.
 single-use plastic|n|nhựa dùng một lần|Many shops now charge extra for single-use plastic bags.
-biodegradable|adj|có thể phân hủy sinh học|Biodegradable bags break down naturally.`
+biodegradable|adj|có thể phân hủy sinh học|Biodegradable bags break down naturally.
+wind turbine|n|tua-bin gió|A new wind turbine now powers the whole village.
+extinction|n|sự tuyệt chủng|Hunting has pushed several species close to extinction.
+toxic|adj|độc hại|Toxic waste was found near the river.
+pesticide|n|thuốc trừ sâu|Farmers are using less pesticide than before.
+compost|n|phân ủ, phân hữu cơ|We put vegetable peel into the compost to feed our garden.
+smog|n|khói bụi (sương mù ô nhiễm)|Thick smog covered the city for several days.
+nuclear|adj|hạt nhân|The country built a new nuclear power station.
+recyclable|adj|có thể tái chế|Make sure the packaging is recyclable before you buy it.
+threat|n|mối đe dọa|Rising seas are a serious threat to island nations.
+`,
+C1: `overexploitation|n|sự khai thác quá mức|Overexploitation of fish stocks has harmed local fishermen.
+`,
 }},
 { id: "i-technology", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🤖", color: "#4d5bd6", title: "Technology & the internet", vi: "Công nghệ và Internet", levels: {
 
 B1: `digital|adj|kỹ thuật số|Lan prefers reading digital books on her phone to carrying paper ones.
-smartphone|n|điện thoại thông minh|Most students own a smartphone today.`,
+smartphone|n|điện thoại thông minh|Most students own a smartphone today.
+search engine|n|công cụ tìm kiếm|A search engine helps you find information in seconds.
+virus|n|vi-rút máy tính|My computer got a virus from a strange email.
+spam|n|thư rác|Most of my emails each morning are just spam.
+plug|n|phích cắm|The plug does not fit this socket.
+charger|n|bộ sạc|I left my charger at the hotel.
+inbox|n|hộp thư đến|My inbox is full of unread messages.
+emoji|n|biểu tượng cảm xúc|She ended her message with a smiling emoji.
+`,
 B2: `innovation|n|sự đổi mới|Constant innovation keeps the company ahead of its competitors.
 automation|n|tự động hóa|Automation in factories means machines now do many repetitive tasks.
 rely on|phr|phụ thuộc vào|Many people rely on their phones to find directions in new cities.
 screen time|n|thời gian dùng màn hình|Doctors advise parents to limit their children's screen time before bed.
 cyberbullying|n|bắt nạt trên mạng|The school has a clear policy against cyberbullying in class group chats.
-breakthrough|n|bước đột phá|Researchers announced a breakthrough in battery technology this week.`
+breakthrough|n|bước đột phá|Researchers announced a breakthrough in battery technology this week.
+cyber security|n|an ninh mạng|Banks spend a lot of money on cyber security.
+data breach|n|vụ rò rỉ dữ liệu|A data breach exposed the details of millions of customers.
+hack|v|xâm nhập trái phép, tấn công mạng|Someone tried to hack into my email account.
+outdated|adj|lỗi thời|My old laptop is outdated and runs very slowly.
+virtual reality|n|thực tế ảo|Virtual reality lets students explore ancient cities from the classroom.
+broadband|n|internet băng thông rộng|Our village finally has fast broadband.
+podcast|n|podcast, chương trình âm thanh|I listen to a history podcast on my way to work.
+firewall|n|tường lửa|The firewall blocked the suspicious connection.
+phishing|n|lừa đảo qua mạng|Be careful of phishing emails that ask for your bank details.
+wearable|adj|đeo được|Wearable devices can count your steps and measure your sleep.
+`,
+A2: `robot|n|người máy|A small robot cleans the floor in our house.
+speaker|n|loa|I connected my phone to the speaker and played music.
+cable|n|dây cáp|I need a longer cable to charge my laptop.
+`,
+C1: `cybercrime|n|tội phạm mạng|Cybercrime costs companies billions of dollars each year.
+biometric|adj|sinh trắc học|Biometric data such as fingerprints is used to unlock phones.
+`,
 }},
 { id: "i-health", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🥗", color: "#d9486b", title: "Health & lifestyle", vi: "Sức khỏe và lối sống", levels: {
-A2: `fit|adj|khỏe mạnh, cân đối|He runs every day to stay fit.`,
+A2: `fit|adj|khỏe mạnh, cân đối|He runs every day to stay fit.
+yoga|n|yoga|I do yoga every morning before breakfast.
+stretch|v|giãn cơ, duỗi người|Always stretch your legs before you run.
+sugar|n|đường|I do not take sugar in my tea.
+`,
 B1: `habit|n|thói quen|Drinking a glass of water every morning is a good habit.
 junk food|n|đồ ăn vặt kém lành mạnh|Eating too much junk food can make you gain weight.
 balanced diet|n|chế độ ăn cân bằng|A balanced diet includes fruit, vegetables and protein.
-lifestyle|n|lối sống|A healthy lifestyle can prevent many diseases.`,
+lifestyle|n|lối sống|A healthy lifestyle can prevent many diseases.
+vitamin|n|vi-ta-min|Oranges are full of vitamin C.
+gain weight|phr|tăng cân|He started to gain weight after he stopped playing football.
+vaccine|n|vắc-xin|Children receive a vaccine to protect them against measles.
+painkiller|n|thuốc giảm đau|He took a painkiller for his headache.
+overweight|adj|thừa cân|The doctor said he was a little overweight.
+recovery|n|sự hồi phục|Her recovery after the operation was faster than expected.
+fatigue|n|sự mệt mỏi|Long flights often cause fatigue and headaches.
+`,
 B2: `obesity|n|béo phì|Doctors say that obesity increases the risk of heart disease.
 sedentary|adj|ít vận động|a sedentary lifestyle
 well-being|n|sự khỏe mạnh, hạnh phúc|Spending time outdoors is good for your well-being.
@@ -2076,7 +3115,21 @@ life expectancy|n|tuổi thọ trung bình|Better healthcare has raised the aver
 mental health|n|sức khỏe tâm thần|Talking to friends can improve your mental health when life is difficult.
 healthcare system|n|hệ thống y tế|The healthcare system in this country gives everyone access to a doctor.
 awareness|n|nhận thức|The campaign aims to increase public awareness of the dangers of smoking.
-addiction|n|chứng nghiện|Phone addiction is increasing among teenagers.`
+addiction|n|chứng nghiện|Phone addiction is increasing among teenagers.
+preventive|adj|mang tính phòng ngừa|Regular check-ups are a preventive measure against serious illness.
+physical activity|n|hoạt động thể chất|Children need an hour of physical activity every day.
+wellness|n|sức khỏe toàn diện|The hotel offers a wellness programme with yoga and healthy meals.
+insomnia|n|chứng mất ngủ|Stress at work gave him insomnia for months.
+meditation|n|thiền|Ten minutes of meditation every day helps me stay calm.
+mindfulness|n|chánh niệm|Mindfulness teaches you to pay attention to the present moment.
+dehydrated|adj|mất nước|You will get dehydrated if you do not drink enough water.
+flexibility|n|sự dẻo dai|Swimming improves your strength and flexibility.
+`,
+C1: `sedentary lifestyle|n|lối sống ít vận động|A sedentary lifestyle increases the risk of heart problems.
+holistic|adj|toàn diện|She prefers a holistic approach that treats the whole person.
+immunity|n|khả năng miễn dịch|Vaccines give the body immunity against many diseases.
+sanitary|adj|hợp vệ sinh|Poor sanitary conditions lead to the spread of illness.
+`,
 }},
 { id: "i-urban", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "🏙️", color: "#6b7a8f", title: "Cities, housing & transport", vi: "Đô thị, nhà ở và giao thông", levels: {
 
@@ -2085,7 +3138,13 @@ public transport|n|giao thông công cộng|Public transport in this city is che
 population|n|dân số|The population of the city has doubled in twenty years.
 countryside|n|nông thôn|My grandparents live in the countryside, surrounded by fields and hills.
 crowded|adj|đông đúc|The bus was so crowded that nobody could find a seat.
-skyscraper|n|nhà chọc trời|This skyscraper is the tallest building in the city.`,
+skyscraper|n|nhà chọc trời|This skyscraper is the tallest building in the city.
+apartment block|n|tòa chung cư|They live on the fifth floor of an apartment block.
+highway|n|đường cao tốc|We drove along the highway for three hours.
+resident|n|cư dân|Each resident of the building has a parking space.
+shelter|n|nơi trú ẩn|The city opened a shelter for people with nowhere to sleep.
+skyline|n|đường chân trời của thành phố|The city skyline looks beautiful at night.
+`,
 B2: `urban|adj|thuộc đô thị|Urban areas usually have more jobs, hospitals and universities than villages.
 rural|adj|thuộc nông thôn|Many young people leave rural villages to look for work in cities.
 urbanisation|n|đô thị hóa (US: urbanization)|Rapid urbanisation has put pressure on schools and hospitals in the city.
@@ -2093,11 +3152,35 @@ affordable housing|n|nhà ở giá phải chăng|The council plans to build affo
 infrastructure|n|cơ sở hạ tầng|Good roads and bridges are an important part of a country's infrastructure.
 commuter|n|người đi làm xa hằng ngày|Every morning, thousands of commuter passengers take the train into the city.
 high-rise|adj|cao tầng|They live in a high-rise apartment with a view of the river.
-slum|n|khu ổ chuột|Many families still live in a slum near the river.`,
-C1: `gentrification|n|quá trình tân trang khu dân cư (đẩy giá lên)|Gentrification has made the old district too expensive for locals.`
+slum|n|khu ổ chuột|Many families still live in a slum near the river.
+residential|adj|thuộc khu dân cư|This is a quiet residential area with no factories.
+pedestrian zone|n|khu vực dành cho người đi bộ|The old town is now a pedestrian zone.
+overcrowded|adj|quá đông đúc|The trains are overcrowded in the morning.
+urban sprawl|n|sự lan rộng đô thị|Urban sprawl is swallowing up farmland around the city.
+redevelop|v|tái phát triển, cải tạo|The council plans to redevelop the old harbour.
+homelessness|n|tình trạng vô gia cư|Homelessness is rising in many large cities.
+flyover|n|cầu vượt|A new flyover will reduce traffic at the junction.
+pothole|n|ổ gà|The bus bounced over a deep pothole on the road.
+demolish|v|phá dỡ|They will demolish the old cinema next month.
+developer|n|nhà phát triển bất động sản|A property developer wants to build flats on the old farm.
+`,
+C1: `gentrification|n|quá trình tân trang khu dân cư (đẩy giá lên)|Gentrification has made the old district too expensive for locals.
+zoning|n|quy hoạch phân khu|Strict zoning rules stop factories being built near homes.
+dilapidated|adj|đổ nát, xuống cấp|The dilapidated house at the corner will be pulled down.
+megacity|n|siêu đô thị|Many people move to a megacity like Tokyo to find work.
+municipal|adj|thuộc thành phố, đô thị|The municipal government is building a new library.
+lease|n|hợp đồng thuê|They signed a two-year lease on the flat.
+`,
+A2: `tunnel|n|đường hầm|The train goes through a long tunnel under the river.
+sidewalk|n|vỉa hè (Mỹ)|Children were playing on the sidewalk outside our house.
+`,
 }},
 { id: "i-crime", sec: "ielts", exam: ["IELTS"], icon: "⚖️", color: "#7a4e3a", title: "Crime & law", vi: "Tội phạm và pháp luật", levels: {
-A2: `thief|n|kẻ trộm|The thief ran away with my bag.`,
+A2: `thief|n|kẻ trộm|The thief ran away with my bag.
+robber|n|kẻ cướp|The robber ran out of the bank with a bag.
+illegal|adj|bất hợp pháp|It is illegal to drive without a licence.
+gang|n|băng nhóm tội phạm|The police caught a gang of young thieves.
+`,
 B1: `police|n|cảnh sát|Call the police if you see someone breaking into a car.
 prison|n|nhà tù|The man spent two years in prison for his crime.
 punish|v|trừng phạt|Parents should explain rules clearly before they punish a child.
@@ -2105,7 +3188,16 @@ steal|v|ăn trộm|Someone tried to steal her bag on the crowded train.
 victim|n|nạn nhân|The victim told the police what had happened.
 fine|n|tiền phạt|He had to pay a fine for speeding.
 witness|n|nhân chứng|A witness saw the man leave the shop.
-arrest|v|bắt giữ|Police officers can arrest anyone who breaks the law.`,
+arrest|v|bắt giữ|Police officers can arrest anyone who breaks the law.
+burglary|n|vụ trộm đột nhập|There was a burglary in our street last night.
+suspect|n|nghi phạm|The suspect was taken to the police station.
+innocent|adj|vô tội|He said he was innocent and had done nothing wrong.
+trial|n|phiên xét xử|The trial will start in court next month.
+lawyer|n|luật sư|Her lawyer told her not to speak to anyone.
+security|n|an ninh, bảo vệ|Security at the airport is very strict.
+shoplift|v|ăn trộm trong cửa hàng|Two teenagers tried to shoplift some sweets from the shop.
+criminal|n|tội phạm|The criminal was sent to prison for ten years.
+`,
 B2: `offender|n|người phạm tội|A first-time offender may receive a lighter penalty than someone who repeats the crime.
 punishment|n|hình phạt|Many people think the punishment should match the seriousness of the crime.
 rehabilitation|n|sự cải tạo, phục hồi|Rehabilitation programmes help former prisoners learn new skills and find jobs.
@@ -2115,7 +3207,20 @@ sentence|n, v|bản án; tuyên án|The judge gave him a two-year sentence for t
 community service|n|lao động công ích|Instead of going to prison, she had to do community service cleaning parks.
 law enforcement|n|thực thi pháp luật|Law enforcement agencies are working together to catch the gang.
 deterrent|n|biện pháp răn đe|Heavy fines can be an effective deterrent.
-fraud|n|gian lận, lừa đảo|He was jailed for credit card fraud.`
+fraud|n|gian lận, lừa đảo|He was jailed for credit card fraud.
+convict|v|kết án|The jury may convict him if the evidence is strong.
+prosecute|v|truy tố|The police said they would prosecute anyone who breaks the law.
+verdict|n|phán quyết|The jury reached a verdict after two days.
+jury|n|bồi thẩm đoàn|The jury listened carefully to all the witnesses.
+vandalism|n|hành vi phá hoại|Vandalism in the park has cost the city a lot of money.
+smuggle|v|buôn lậu|They tried to smuggle cigarettes across the border.
+bribery|n|hối lộ|The minister lost his job because of bribery.
+offence|n|hành vi phạm pháp|Driving without insurance is a serious offence.
+`,
+C1: `acquit|v|tuyên trắng án|The court decided to acquit her because of a lack of proof.
+perpetrator|n|thủ phạm|The perpetrator of the attack has not been found yet.
+accomplice|n|đồng phạm|The thief and his accomplice escaped in a stolen car.
+`,
 }},
 { id: "i-economy", sec: "ielts", exam: ["IELTS", "TOEIC"], icon: "🌐", color: "#1b7f8c", title: "Globalisation & economy", vi: "Toàn cầu hóa và kinh tế", levels: {
 
@@ -2125,7 +3230,15 @@ company|n|công ty|My uncle works for a company that makes furniture.
 international|adj|quốc tế|Lan wants a job at an international company so she can use English every day.
 unemployment|n|thất nghiệp|Unemployment is high in towns where the main factory has closed.
 export|v|xuất khẩu|Vietnam will export more rice this year.
-industry|n|ngành công nghiệp|Tourism is an important industry in this region.`,
+industry|n|ngành công nghiệp|Tourism is an important industry in this region.
+inflation|n|lạm phát|High inflation makes food and rent more expensive.
+import|v|nhập khẩu|Many countries import oil from other parts of the world.
+wage|n|tiền lương theo giờ|The minimum wage will rise next year.
+tourism|n|ngành du lịch|Tourism is the main source of income on the island.
+employment|n|việc làm|The new factory will bring employment to the town.
+boom|n|thời kỳ bùng nổ|The town enjoyed a boom when the factory opened.
+trade union|phr|công đoàn|The trade union asked for better working hours.
+`,
 B2: `globalisation|n|toàn cầu hóa (US: globalization)|Globalisation means that products made in one country are sold all over the world.
 workforce|n|lực lượng lao động|The factory has a young and skilled workforce of about two hundred people.
 invest|v|đầu tư|Nam decided to invest his savings in a small business.
@@ -2134,7 +3247,25 @@ supply|n|nguồn cung|A shortage of supply has pushed up the price of rice.
 multinational|adj|đa quốc gia|She works for a multinational firm with offices in twelve countries.
 recession|n|suy thoái kinh tế|Many people lost their jobs during the recession.
 outsource|v|thuê ngoài|Many firms outsource customer service to other countries.
-cost of living|n|chi phí sinh hoạt|The cost of living in big cities is rising fast.`
+cost of living|n|chi phí sinh hoạt|The cost of living in big cities is rising fast.
+monopoly|n|sự độc quyền|The company has a monopoly on train services here.
+subsidy|n|khoản trợ cấp|Farmers receive a subsidy from the government.
+economic growth|phr|tăng trưởng kinh tế|Economic growth has slowed down in recent years.
+stock market|phr|thị trường chứng khoán|The stock market fell sharply after the news.
+labour market|phr|thị trường lao động|Young graduates often find the labour market difficult.
+downturn|n|sự suy giảm kinh tế|A downturn in sales forced the shop to close.
+trade deficit|phr|thâm hụt thương mại|The trade deficit grew because imports rose sharply.
+import duty|phr|thuế nhập khẩu|Travellers must pay import duty on expensive goods.
+price war|phr|cuộc chiến giá cả|A price war between the two shops helped customers.
+`,
+A2: `pocket money|phr|tiền tiêu vặt|He spends his pocket money on comics.
+pay rise|phr|tăng lương|I asked my boss for a pay rise.
+piggy bank|phr|con heo đất|The boy put every coin into his piggy bank.
+`,
+C1: `austerity|n|chính sách thắt lưng buộc bụng|Years of austerity left many public services underfunded.
+fiscal|adj|thuộc tài chính công, thuế khóa|The government announced a new fiscal policy this week.
+stagnation|n|sự trì trệ|Years of stagnation left the town with few jobs.
+`,
 }},
 { id: "i-media", sec: "ielts", exam: ["IELTS", "VSTEP"], icon: "📰", color: "#c2552e", title: "Media & advertising", vi: "Truyền thông và quảng cáo", levels: {
 B1: `advertisement|n|quảng cáo|I saw an advertisement for a new phone on the bus.
@@ -2142,7 +3273,16 @@ newspaper|n|báo|My father reads the newspaper with his coffee every morning.
 channel|n|kênh|Which channel shows the football match tonight?
 article|n|bài báo|Did you read the article about healthy eating in today's paper?
 headline|n|tiêu đề báo|The headline on the front page shocked everyone.
-journalist|n|nhà báo|The journalist interviewed the mayor.`,
+journalist|n|nhà báo|The journalist interviewed the mayor.
+broadcast|v|phát sóng|The BBC will broadcast the match live tonight.
+publish|v|xuất bản|The newspaper will publish the full story tomorrow.
+reporter|n|phóng viên|A reporter asked the mayor about the new road.
+subscribe|v|đăng ký theo dõi|You can subscribe to the channel for free.
+media|n|truyền thông|The media reported the accident within minutes.
+blog|n|blog, nhật ký trực tuyến|She writes a blog about her trips to Asia.
+subtitle|n|phụ đề|I turn on the English subtitle when the actors speak fast.
+news bulletin|phr|bản tin|The news bulletin starts at six every evening.
+`,
 B2: `mass media|n|truyền thông đại chúng|The mass media, including television and radio, shapes how people see the news.
 influence|n, v|ảnh hưởng|Social media can influence what young people buy and wear.
 biased|adj|thiên vị|Some readers think the report is biased because it only shows one side.
@@ -2150,7 +3290,24 @@ censorship|n|kiểm duyệt|Many writers oppose censorship because they want to 
 celebrity|n|người nổi tiếng|The shop hired a famous celebrity to promote its new perfume.
 fake news|n|tin giả|Check the source before sharing a story, because fake news spreads quickly.
 propaganda|n|tuyên truyền|The state used propaganda to control public opinion.
-clickbait|n|tiêu đề giật gân câu view|Clickbait headlines often exaggerate the story.`
+clickbait|n|tiêu đề giật gân câu view|Clickbait headlines often exaggerate the story.
+editor|n|biên tập viên|The editor changed the title of my article.
+coverage|n|việc đưa tin|The coverage of the election lasted all night.
+tabloid|n|báo lá cải|The tabloid printed a shocking story about the singer.
+press freedom|phr|tự do báo chí|Press freedom is important in every democratic country.
+sponsor|v|tài trợ|A local bank will sponsor the football tournament.
+viral|adj|lan truyền chóng mặt|The funny video went viral within a few hours.
+hoax|n|trò lừa bịp|The story about the monster turned out to be a hoax.
+press release|phr|thông cáo báo chí|The company sent out a press release about its new product.
+`,
+A2: `magazine|n|tạp chí|She bought a fashion magazine at the station.
+radio|n|đài phát thanh|He listens to the radio while he cooks dinner.
+programme|n|chương trình|My favourite programme starts at eight o'clock.
+`,
+C1: `impartial|adj|khách quan, vô tư|A good journalist should stay impartial when reporting a conflict.
+defamation|n|sự phỉ báng|The singer sued the magazine for defamation.
+editorial|n|bài xã luận|The editorial criticised the government's plan to close schools.
+`,
 }},
 /* ---------- Kỹ năng thi ---------- */
 { id: "x-families", sec: "skills", exam: ["TOEIC", "IELTS", "VSTEP"], icon: "🌳", color: "#5a8f29", title: "Word families", vi: "Họ từ (dạng từ) hay ra đề", levels: {
@@ -2171,7 +3328,12 @@ A2: `do homework|phr|làm bài tập về nhà|Minh must do homework before he p
 catch a cold|phr|bị cảm lạnh|Wear a warm coat, or you will catch a cold.
 have a temperature|phr|bị sốt|Children often have a temperature when they catch a cold.
 take a photo|phr|chụp ảnh|Can you take a photo of us?
-go on holiday|phr|đi nghỉ|We usually go on holiday in August.`,
+go on holiday|phr|đi nghỉ|We usually go on holiday in August.
+have a shower|phr|tắm vòi sen|I usually have a shower before breakfast.
+make a phone call|phr|gọi điện thoại|I need to make a phone call before dinner.
+have a rest|phr|nghỉ ngơi|You look tired, so have a rest.
+have a chat|phr|trò chuyện|Let's have a chat about your plans over coffee.
+`,
 B1: `pay attention to|phr|chú ý tới|Please pay attention to the safety instructions before the flight starts.
 meet a deadline|phr|kịp hạn chót|We worked all weekend to meet a deadline for the project.
 attend a meeting|phr|tham dự cuộc họp|Can you attend a meeting with the new client tomorrow morning?
@@ -2184,7 +3346,17 @@ take advantage of|phr|tận dụng|You should take advantage of the free English
 take place|phr|diễn ra|The conference will take place in Hanoi.
 give a presentation|phr|thuyết trình|She has to give a presentation on Monday.
 look forward to|phr|mong đợi|I look forward to meeting you next week.
-make sense|phr|có lý, dễ hiểu|Your explanation does not make sense to me.`,
+make sense|phr|có lý, dễ hiểu|Your explanation does not make sense to me.
+pay a visit|phr|đến thăm|We will pay a visit to my grandparents on Sunday.
+take a risk|phr|chấp nhận rủi ro|You have to take a risk if you want to succeed.
+set a goal|phr|đặt mục tiêu|It helps to set a goal before you start studying.
+break the rules|phr|vi phạm quy tắc|Students who break the rules will be sent home.
+make a complaint|phr|khiếu nại|I want to make a complaint about the noisy neighbours.
+give advice|phr|đưa ra lời khuyên|My uncle likes to give advice about money.
+do research|phr|nghiên cứu|Scientists do research to find new medicines.
+get a refund|phr|được hoàn tiền|You can get a refund if the product is damaged.
+pay by credit card|phr|thanh toán bằng thẻ tín dụng|You can pay by credit card at the front desk.
+`,
 B2: `have an effect on|phr|có tác động tới|Lack of sleep can have an effect on your memory and mood.
 play a role in|phr|đóng vai trò trong|Parents play a role in shaping their children's attitudes towards learning.
 raise awareness of|phr|nâng cao nhận thức về|The charity runs events to raise awareness of mental health problems.
@@ -2200,7 +3372,21 @@ pose a threat to|phr|gây đe dọa cho|Plastic waste can pose a threat to marin
 give rise to|phr|làm nảy sinh|Poor housing can give rise to health problems.
 on a regular basis|phr|một cách thường xuyên|Doctors advise exercising on a regular basis.
 at the expense of|phr|phải trả giá bằng, gây thiệt hại cho|Economic growth should not come at the expense of nature.
-gain access to|phr|có được quyền tiếp cận|Poor families struggle to gain access to quality healthcare.`
+gain access to|phr|có được quyền tiếp cận|Poor families struggle to gain access to quality healthcare.
+draw a conclusion|phr|rút ra kết luận|It is too early to draw a conclusion from this small study.
+make a profit|phr|kiếm lợi nhuận|The café began to make a profit after six months.
+reach an agreement|phr|đạt được thỏa thuận|The two sides hope to reach an agreement after long talks.
+meet the requirements|phr|đáp ứng các yêu cầu|Applicants must meet the requirements to enter the competition.
+come to a conclusion|phr|đi đến kết luận|We need to come to a conclusion before the meeting ends.
+make a contribution|phr|đóng góp|Each member can make a contribution to the project.
+take responsibility for|phr|chịu trách nhiệm về|Managers must take responsibility for their team's mistakes.
+take the initiative|phr|chủ động|She decided to take the initiative and call the client.
+`,
+C1: `strike a balance|phr|tìm sự cân bằng|It is hard to strike a balance between work and family.
+shed light on|phr|làm sáng tỏ|The new report may shed light on the cause of the fire.
+turn a blind eye to|phr|nhắm mắt làm ngơ|Some teachers turn a blind eye to small acts of cheating.
+call into question|phr|đặt nghi vấn|The new results call into question the old theory.
+`,
 }}
 ];
 /* Nền tảng lên đầu để lượt học từ mới mỗi ngày ưu tiên từ lõi A1–B2; chủ đề luyện thi xếp sau. */

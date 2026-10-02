@@ -153,169 +153,169 @@ const GRAMMAR = [
   use: "Nói tên, nghề, tuổi, quê, tính chất, trạng thái. Câu tiếng Anh luôn cần động từ, nên trước tính từ và danh từ phải có be.",
   ex: [["She is a nurse.", "Cô ấy là y tá."], ["I'm tired.", "Tôi mệt."], ["Are you from Hue?", "Bạn là người Huế à?"]],
   err: [["She very tired.", "She is very tired.", "Thiếu be trước tính từ."], ["I am agree.", "I agree.", "agree đã là động từ, không thêm be."]],
-  quiz: [["My brother ___ a doctor.", ["am", "is", "are"], 1, "He, she, it và danh từ số ít đi với is."], ["They ___ very busy today.", ["is", "are", "be"], 1, "They đi với are."]] },
+  quiz: [["My brother ___ a doctor.", ["am", "is", "are", "be"], 1, "He, she, it và danh từ số ít đi với is.", {"am": "Chủ ngữ My brother là ngôi thứ ba số ít nên không đi với am; am chỉ dùng với chủ ngữ I.", "are": "Chủ ngữ My brother là số ít nên không dùng are; are đi với you/we/they và danh từ số nhiều.", "be": "Dạng nguyên mẫu be không chia theo chủ ngữ My brother; câu khẳng định hiện tại cần dùng is."}], ["They ___ very busy today.", ["is", "are", "be", "am"], 1, "They đi với are.", {"is": "Chủ ngữ They là số nhiều nên không đi với is; is chỉ dùng với he/she/it và danh từ số ít.", "be": "Be ở dạng nguyên mẫu không chia theo chủ ngữ They; trong câu hiện tại cần dùng are.", "am": "Am chỉ đi với chủ ngữ I, không dùng được với chủ ngữ They."}]] },
 { id: "present-simple", lvl: "A1", title: "Present simple", vi: "Thì hiện tại đơn", exams: ["CEFR", "VSTEP", "TOEIC"],
   form: "I/you/we/they + V · he/she/it + V-s/-es. Phủ định: don't/doesn't + V. Câu hỏi: Do/Does + S + V?",
   use: "Thói quen, sự thật, lịch trình. Hay đi với always, usually, often, every day.",
   ex: [["He works at a clinic.", "Anh ấy làm việc ở phòng khám."], ["Does she smoke?", "Cô ấy có hút thuốc không?"], ["The train leaves at 7.", "Tàu chạy lúc 7 giờ."]],
   err: [["He work every day.", "He works every day.", "Ngôi thứ ba số ít cần -s."], ["Does she smokes?", "Does she smoke?", "Sau does dùng động từ nguyên mẫu."]],
-  quiz: [["The patient ___ two tablets a day.", ["take", "takes", "taking"], 1, "The patient = he/she nên dùng takes."], ["___ your father work at weekends?", ["Do", "Does", "Is"], 1, "Your father là ngôi thứ ba số ít: Does."]] },
+  quiz: [["The patient ___ two tablets a day.", ["take", "takes", "taking", "taken"], 1, "The patient = he/she nên dùng takes.", {"take": "Chủ ngữ The patient là ngôi thứ ba số ít nên động từ hiện tại đơn phải thêm -s (takes); dạng gốc take chỉ đi với I/you/we/they.", "taking": "Dạng V-ing một mình không thể làm động từ chính của câu; ở đây cần động từ chia thì hiện tại đơn takes để nói thói quen dùng thuốc.", "taken": "Quá khứ phân từ taken không đứng một mình làm vị ngữ; câu nói thói quen mỗi ngày nên cần động từ chia hiện tại đơn là takes."}], ["___ your father work at weekends?", ["Do", "Does", "Is", "Did"], 1, "Your father là ngôi thứ ba số ít: Does.", {"Do": "Chủ ngữ your father là ngôi thứ ba số ít nên trợ động từ phải là does; do chỉ đi với I/you/we/they và danh từ số nhiều.", "Is": "Is là dạng của động từ be, không dùng làm trợ động từ trước động từ thường work; câu hỏi hiện tại đơn với work cần Does.", "Did": "Did là trợ động từ thì quá khứ, nhưng câu có at weekends nói về thói quen hiện tại nên cần Does, không phải Did."}]] },
 { id: "plurals", lvl: "A1", title: "Plurals & countable nouns", vi: "Số nhiều, danh từ đếm được và không đếm được", exams: ["CEFR", "TOEIC", "IELTS"],
   form: "Đếm được: a book, two books. Không đếm được: water, advice, information, equipment, furniture (không có -s, không dùng a). Lượng từ: many/a few + đếm được; much/a little + không đếm được.",
   use: "Tiếng Việt không đánh dấu số nhiều, nên hay quên -s. Một số danh từ tiếng Việt đếm được nhưng tiếng Anh thì không.",
   ex: [["three patients", "ba bệnh nhân"], ["some advice", "vài lời khuyên"], ["How much water do you drink?", "Bạn uống bao nhiêu nước?"]],
   err: [["three patient", "three patients", "Số nhiều cần -s."], ["advices, informations", "advice, information", "Danh từ không đếm được không thêm -s."]],
-  quiz: [["Can you give me some ___?", ["advice", "advices", "an advice"], 0, "advice không đếm được."], ["There are five ___ in the waiting room.", ["person", "people", "peoples"], 1, "Số nhiều của person là people."]] },
+  quiz: [["Can you give me some ___?", ["advice", "advices", "an advice", "advises"], 0, "advice không đếm được.", {"advices": "advice là danh từ không đếm được nên không thêm -s để tạo số nhiều; \"some advice\" mới đúng.", "an advice": "advice không đếm được nên không đi với mạo từ an/a; còn some đã đứng trước chỗ trống nên dùng thêm an là thừa.", "advises": "advises là dạng động từ (advise, ngôi thứ ba số ít), trong khi sau some cần một danh từ là advice."}], ["There are five ___ in the waiting room.", ["person", "people", "peoples", "people's"], 1, "Số nhiều của person là people.", {"person": "person là số ít, mà five đòi hỏi danh từ số nhiều; số nhiều thông thường của person là people.", "peoples": "people vốn đã là số nhiều nên không thêm -s; peoples chỉ dùng khi nói về các dân tộc khác nhau.", "people's": "people's là dạng sở hữu (của những người), không phải danh từ số nhiều trơn; sau five ta cần people."}]] },
 { id: "articles", lvl: "A1", title: "Articles a, an, the", vi: "Mạo từ", exams: ["CEFR", "IELTS", "TOEIC", "VSTEP"],
   form: "a/an + danh từ đếm được số ít (lần đầu nhắc, chưa xác định). the + thứ đã xác định. Không mạo từ: nói chung với số nhiều hoặc không đếm được.",
   use: "an trước âm nguyên âm (an hour, an X-ray), a trước âm phụ âm (a university). Nói chung chung: Life is hard, Doctors work long hours.",
   ex: [["I saw a doctor. The doctor was kind.", "Tôi đi khám một bác sĩ. Vị bác sĩ đó rất tử tế."], ["an hour, a university", "một giờ, một trường đại học"], ["Smoking is bad for health.", "Hút thuốc có hại cho sức khỏe."]],
   err: [["I saw doctor.", "I saw a doctor.", "Danh từ đếm được số ít cần mạo từ."], ["The life is hard.", "Life is hard.", "Nói chung chung không dùng the."], ["a hour", "an hour", "hour bắt đầu bằng âm nguyên âm."]],
-  quiz: [["She is ___ engineer.", ["a", "an", "the"], 1, "engineer bắt đầu bằng âm nguyên âm."], ["In general, ___ exercise is good for you.", ["The", "An", "(không mạo từ)"], 2, "Nói chung chung về tập thể dục: không mạo từ."]] },
+  quiz: [["She is ___ engineer.", ["a", "an", "the", "—"], 1, "engineer bắt đầu bằng âm nguyên âm.", {"a": "a đi trước từ bắt đầu bằng phụ âm; engineer mở đầu bằng âm nguyên âm /e/ nên cần an.", "the": "the chỉ dùng khi người nghe đã biết cụ thể, còn câu này chỉ nêu nghề của cô ấy nên dùng an.", "—": "danh từ đếm được số ít chỉ nghề nghiệp phải có mạo từ; để trống là sai, cần an trước engineer."}], ["In general, ___ exercise is good for you.", ["The", "An", "(không mạo từ)", "A"], 2, "Nói chung chung về tập thể dục: không mạo từ.", {"The": "The làm exercise thành xác định, còn câu nói chung về tập thể dục nên không có the.", "An": "An chỉ đi với danh từ đếm được số ít; exercise ở nghĩa chung là không đếm được nên không dùng an.", "A": "A không đi với danh từ không đếm được exercise, và nghĩa nói chung cũng không cần mạo từ nào."}]] },
 { id: "there-is", lvl: "A1", title: "There is / there are", vi: "Có (tồn tại)", exams: ["CEFR", "VSTEP"],
   form: "There is + số ít / không đếm được. There are + số nhiều. Is there …? Are there any …?",
   use: "Nói một thứ tồn tại ở đâu đó. Không dịch “có” thành have.",
   ex: [["There is a pharmacy near here.", "Gần đây có một hiệu thuốc."], ["There are two lifts.", "Có hai thang máy."]],
   err: [["Have a pharmacy near here?", "Is there a pharmacy near here?", "Dịch từng chữ từ “có”."], ["There is many people.", "There are many people.", "Số nhiều dùng are."]],
-  quiz: [["___ any toilets on this floor?", ["Is there", "Are there", "Have"], 1, "toilets số nhiều: Are there."]] },
+  quiz: [["___ any toilets on this floor?", ["Is there", "Are there", "Have", "There are"], 1, "toilets số nhiều: Are there.", {"Is there": "toilets là danh từ số nhiều nên không đi với there is; câu hỏi cần dạng số nhiều Are there.", "Have": "Tiếng Việt nói “có” nhưng tiếng Anh không dùng have để nói sự tồn tại; phải dùng cấu trúc Is/Are there.", "There are": "Trong câu hỏi, phải đảo be lên trước there (Are there…?), không để there are theo trật tự câu khẳng định."}]] },
 { id: "questions", lvl: "A1", title: "Question word order", vi: "Trật tự từ trong câu hỏi", exams: ["CEFR", "VSTEP", "IELTS"],
   form: "(Từ để hỏi) + trợ động từ + chủ ngữ + động từ chính. Where do you live? What does it feel like? When did it start?",
   use: "Tiếng Việt giữ nguyên trật tự câu và thêm từ hỏi. Tiếng Anh phải đảo trợ động từ lên trước chủ ngữ.",
   ex: [["Where does it hurt?", "Đau ở đâu?"], ["How long have you had it?", "Bạn bị bao lâu rồi?"]],
   err: [["Where you feel the pain?", "Where do you feel the pain?", "Thiếu trợ động từ do."], ["When it started?", "When did it start?", "Quá khứ: did + động từ nguyên mẫu."]],
-  quiz: [["Chọn câu đúng", ["What you are doing?", "What are you doing?", "What doing you?"], 1, "Đảo are lên trước you."], ["Chọn câu đúng", ["How often you exercise?", "How often do you exercise?", "How often exercise you?"], 1, "Cần trợ động từ do."]] },
+  quiz: [["Chọn câu đúng", ["What you are doing?", "What are you doing?", "What doing you?", "What are you do?"], 1, "Đảo are lên trước you.", {"What you are doing?": "Trong câu hỏi với What, trợ động từ are phải đảo lên trước chủ ngữ you; giữ trật tự câu khẳng định là sai.", "What doing you?": "Doing đứng trước you làm mất trợ động từ are và sai trật tự; cần What are you doing?", "What are you do?": "What are you do thiếu -ing sau are; thì hiện tại tiếp diễn cần are + V-ing, tức là doing."}], ["Chọn câu đúng", ["How often you exercise?", "How often do you exercise?", "How often exercise you?", "How often you do exercise?"], 1, "Cần trợ động từ do.", {"How often you exercise?": "Câu hỏi hiện tại đơn cần trợ động từ do trước chủ ngữ; không được giữ trật tự câu khẳng định you exercise.", "How often exercise you?": "Động từ thường exercise không được đảo lên trước chủ ngữ you; phải mượn trợ động từ do.", "How often you do exercise?": "Thiếu trợ động từ do đứng trước you; you do exercise là trật tự câu khẳng định, không phải câu hỏi."}]] },
 { id: "prepositions", lvl: "A1", title: "Prepositions of time & place", vi: "Giới từ chỉ thời gian và nơi chốn", exams: ["CEFR", "TOEIC", "VSTEP"],
   form: "at + giờ (at 7 pm), on + ngày (on Monday), in + tháng, năm, buổi (in May, in the morning). at + điểm (at the hospital), in + trong không gian (in the room), on + bề mặt, tầng (on the second floor).",
   use: "Giới từ hay đi kèm cố định: interested in, depend on, married to, good at, allergic to.",
   ex: [["The appointment is at 9 on Monday.", "Lịch hẹn lúc 9 giờ thứ Hai."], ["She's allergic to penicillin.", "Cô ấy dị ứng penicillin."]],
   err: [["in Monday", "on Monday", "Ngày trong tuần dùng on."], ["discuss about the plan", "discuss the plan", "discuss không cần about."], ["married with", "married to", "Cụm cố định."]],
-  quiz: [["I was born ___ 2003.", ["on", "in", "at"], 1, "Năm dùng in."], ["The X-ray department is ___ the second floor.", ["in", "at", "on"], 2, "Tầng dùng on."]] },
+  quiz: [["I was born ___ 2003.", ["on", "in", "at", "of"], 1, "Năm dùng in.", {"on": "On dùng với ngày cụ thể (on 5 May) hoặc thứ; năm như 2003 phải dùng giới từ in.", "at": "At dùng với giờ giấc hoặc thời điểm chính xác (at 9 am); với năm như 2003 phải dùng in.", "of": "Of không phải giới từ chỉ thời gian trong cấu trúc này; muốn nói sinh vào năm nào phải dùng in 2003."}], ["The X-ray department is ___ the second floor.", ["in", "at", "on", "by"], 2, "Tầng dùng on.", {"in": "In dùng cho không gian bên trong (in the building); tầng lầu được nói bằng on the second floor, vì tầng xem như một bề mặt.", "at": "At dùng cho một điểm cụ thể (at the door); với tầng của toà nhà, cách nói chuẩn là on the second floor.", "by": "By nghĩa là bên cạnh hoặc trước hạn chót, không dùng để chỉ vị trí ở một tầng; phải dùng on the second floor."}]] },
 { id: "past-simple", lvl: "A2", title: "Past simple", vi: "Thì quá khứ đơn", exams: ["CEFR", "VSTEP", "TOEIC", "IELTS"],
   form: "V-ed hoặc động từ bất quy tắc (go → went). Phủ định: didn't + V. Câu hỏi: Did + S + V?",
   use: "Việc đã xong trong quá khứ, thường có thời gian cụ thể: yesterday, last week, two days ago. Có từ chỉ thời gian vẫn phải chia động từ.",
   ex: [["I went to the pharmacy yesterday.", "Hôm qua tôi đi hiệu thuốc."], ["Did you take the tablets?", "Bạn đã uống thuốc chưa?"]],
   err: [["Yesterday I go to work.", "Yesterday I went to work.", "Có yesterday vẫn phải chia quá khứ."], ["Did you went?", "Did you go?", "Sau did dùng nguyên mẫu."]],
-  quiz: [["The pain ___ two days ago.", ["start", "started", "has started"], 1, "Mốc two days ago: quá khứ đơn."], ["I ___ breakfast yesterday.", ["don't have", "didn't have", "didn't had"], 1, "didn't + nguyên mẫu."]] },
+  quiz: [["The pain ___ two days ago.", ["start", "started", "has started", "starts"], 1, "Mốc two days ago: quá khứ đơn.", {"start": "Có two days ago là mốc quá khứ nên động từ phải chia quá khứ; start ở dạng nguyên mẫu/hiện tại không phù hợp.", "has started": "Hiện tại hoàn thành không đi với mốc thời gian xác định như two days ago; phải dùng quá khứ đơn started.", "starts": "starts là hiện tại đơn, mâu thuẫn với two days ago chỉ việc đã xảy ra trong quá khứ."}], ["I ___ breakfast yesterday.", ["don't have", "didn't have", "didn't had", "doesn't have"], 1, "didn't + nguyên mẫu.", {"don't have": "yesterday chỉ quá khứ nên phải dùng trợ động từ didn't; don't là hiện tại đơn.", "didn't had": "Sau didn't động từ phải ở nguyên mẫu (have); had là dạng quá khứ đã được didn't thể hiện rồi.", "doesn't have": "doesn't là trợ động từ hiện tại đơn ngôi thứ ba, không hợp với yesterday và chủ ngữ I."}]] },
 { id: "future", lvl: "A2", title: "Will, going to, present continuous", vi: "Các cách nói về tương lai", exams: ["CEFR", "VSTEP", "TOEIC"],
   form: "will + V (quyết định lúc nói, dự đoán, lời hứa). be going to + V (dự định đã có, dự đoán có dấu hiệu). Hiện tại tiếp diễn (lịch hẹn đã sắp xếp).",
   use: "I'll call you back (vừa quyết định). I'm going to study medicine (dự định). I'm seeing the doctor at 3 (đã hẹn).",
   ex: [["I'll open the window.", "Để tôi mở cửa sổ."], ["We're meeting the client tomorrow.", "Mai chúng tôi gặp khách hàng."]],
   err: [["I will to go.", "I will go.", "Sau will không có to."], ["Tomorrow I go to Hanoi.", "Tomorrow I'm going to Hanoi.", "Kế hoạch tương lai cần dạng tương lai."]],
-  quiz: [["Look at those clouds. It ___ rain.", ["is going to", "will to", "rains"], 0, "Có dấu hiệu hiện tại: going to."]] },
+  quiz: [["Look at those clouds. It ___ rain.", ["is going to", "will to", "rains", "goes to"], 0, "Có dấu hiệu hiện tại: going to.", {"will to": "Will to sai vì sau will dùng động từ nguyên mẫu không có to; hơn nữa đây là dự đoán dựa trên dấu hiệu (mây đen) nên dùng going to.", "rains": "Rains là hiện tại đơn, dùng cho thói quen hoặc lịch cố định, không diễn tả dự đoán dựa trên dấu hiệu nhìn thấy.", "goes to": "Goes to không phải cấu trúc chỉ tương lai; đây là động từ chỉ di chuyển, còn dự đoán cần be going to + V."}]] },
 { id: "comparatives", lvl: "A2", title: "Comparatives & superlatives", vi: "So sánh hơn và so sánh nhất", exams: ["CEFR", "TOEIC", "IELTS"],
   form: "Tính từ ngắn: -er than, the -est. Tính từ dài: more … than, the most. Bất quy tắc: good → better → best, bad → worse → worst.",
   use: "So sánh hai hay nhiều đối tượng. Trong IELTS Writing Task 1 dùng rất nhiều.",
   ex: [["The pain is worse at night.", "Cơn đau nặng hơn về đêm."], ["This is the most effective treatment.", "Đây là cách điều trị hiệu quả nhất."]],
   err: [["more better", "better", "Không dùng more với dạng -er."], ["more cheap than", "cheaper than", "Tính từ ngắn dùng -er."]],
-  quiz: [["Today I feel ___ than yesterday.", ["good", "better", "more good"], 1, "good → better."]] },
+  quiz: [["Today I feel ___ than yesterday.", ["good", "better", "more good", "gooder"], 1, "good → better.", {"good": "Good là dạng nguyên cấp, không dùng được với than; so sánh hơn của good phải là better.", "more good": "Good là tính từ bất quy tắc nên không thêm more; dạng so sánh hơn đúng là better.", "gooder": "Good không tạo so sánh hơn bằng cách thêm -er; đây là tính từ bất quy tắc, dạng đúng là better."}]] },
 { id: "present-perfect", lvl: "A2", title: "Present perfect", vi: "Thì hiện tại hoàn thành", exams: ["CEFR", "VSTEP", "TOEIC", "IELTS"],
   form: "have/has + V3 (quá khứ phân từ). Hay đi với ever, never, just, already, yet, for, since.",
   use: "Trải nghiệm đến giờ, việc vừa xảy ra, việc kéo dài từ quá khứ tới hiện tại. How long have you had the cough?",
   ex: [["I've had this cough for two weeks.", "Tôi bị ho hai tuần rồi."], ["Have you ever had surgery?", "Bạn đã từng phẫu thuật chưa?"]],
   err: [["I live here since 2020.", "I have lived here since 2020.", "Kéo dài đến nay dùng hiện tại hoàn thành."], ["I have seen him yesterday.", "I saw him yesterday.", "Có mốc quá khứ cụ thể thì dùng quá khứ đơn."]],
-  quiz: [["She ___ in this hospital since 2019.", ["works", "has worked", "worked"], 1, "since + mốc, kéo dài đến nay."], ["I ___ my keys. I can't find them.", ["have lost", "has lost", "have losed"], 0, "Kết quả ở hiện tại: have lost."]] },
+  quiz: [["She ___ in this hospital since 2019.", ["works", "has worked", "worked", "is working"], 1, "since + mốc, kéo dài đến nay.", {"works": "works là hiện tại đơn, không diễn tả việc kéo dài từ mốc since 2019 đến nay; since cần thì hiện tại hoàn thành.", "worked": "worked là quá khứ đơn, chỉ việc đã kết thúc; since 2019 diễn tả việc vẫn kéo dài đến hiện tại nên cần has worked.", "is working": "hiện tại tiếp diễn không đi với since + mốc thời gian để nói việc kéo dài đến nay; cần hiện tại hoàn thành has worked."}], ["I ___ my keys. I can't find them.", ["have lost", "has lost", "have losed", "lose"], 0, "Kết quả ở hiện tại: have lost.", {"has lost": "chủ ngữ I đi với have chứ không phải has; has chỉ dùng với he/she/it.", "have losed": "lose là động từ bất quy tắc, phân từ hai là lost chứ không phải losed.", "lose": "lose là hiện tại đơn nguyên mẫu, không diễn tả việc đã mất và kết quả còn ở hiện tại; cần have lost."}]] },
 { id: "modals", lvl: "A2", title: "Should, must, have to", vi: "Động từ khuyết thiếu chỉ lời khuyên, bắt buộc", exams: ["CEFR", "VSTEP", "TOEIC"],
   form: "should/must/can/might + V nguyên mẫu (không to, không -s). have to + V (có chia: she has to).",
   use: "should: lời khuyên. must: bắt buộc từ người nói. have to: bắt buộc từ quy định. mustn't: cấm. don't have to: không cần.",
   ex: [["You should rest for a few days.", "Bạn nên nghỉ ngơi vài ngày."], ["You mustn't drive after this medicine.", "Không được lái xe sau khi dùng thuốc này."]],
   err: [["You must to take it.", "You must take it.", "Không có to sau must."], ["She cans come.", "She can come.", "Động từ khuyết thiếu không thêm -s."]],
-  quiz: [["You ___ drink alcohol with this medicine. It's dangerous.", ["mustn't", "don't have to", "should"], 0, "Cấm vì nguy hiểm: mustn't."], ["It's free. You ___ pay.", ["mustn't", "don't have to", "can't"], 1, "Không cần: don't have to."]] },
+  quiz: [["You ___ drink alcohol with this medicine. It's dangerous.", ["mustn't", "don't have to", "should", "must"], 0, "Cấm vì nguy hiểm: mustn't.", {"don't have to": "don't have to chỉ là không bắt buộc, không đủ mạnh để diễn đạt cấm vì thuốc nguy hiểm.", "should": "should drink nghĩa là nên uống rượu, trái với ý nguy hiểm trong câu.", "must": "must drink nghĩa là bắt buộc phải uống rượu, ngược hẳn ý cảnh báo của câu."}], ["It's free. You ___ pay.", ["mustn't", "don't have to", "can't", "must"], 1, "Không cần: don't have to.", {"mustn't": "mustn't nghĩa là cấm, nhưng câu nói miễn phí nên không có lý do cấm trả tiền.", "can't": "can't pay nghĩa là không thể trả, không hợp với ý bạn không cần trả vì miễn phí.", "must": "must pay nghĩa là bắt buộc trả, mâu thuẫn với ý miễn phí ở câu trước."}]] },
 { id: "first-conditional", lvl: "A2", title: "First conditional", vi: "Câu điều kiện loại 1", exams: ["CEFR", "VSTEP", "IELTS"],
   form: "If + hiện tại đơn, will + V. Mệnh đề if không dùng will.",
   use: "Điều có thể xảy ra trong hiện tại hoặc tương lai, dùng nhiều khi dặn dò bệnh nhân.",
   ex: [["If the pain gets worse, come back straight away.", "Nếu đau nặng hơn, hãy quay lại ngay."], ["If you take it with food, it will upset your stomach less.", "Nếu uống cùng thức ăn, thuốc sẽ ít làm khó chịu dạ dày hơn."]],
   err: [["If you will take it…", "If you take it…", "Không dùng will sau if."]],
-  quiz: [["If it ___ tomorrow, we will stay at home.", ["will rain", "rains", "rained"], 1, "Mệnh đề if dùng hiện tại đơn."]] },
+  quiz: [["If it ___ tomorrow, we will stay at home.", ["will rain", "rains", "rained", "would rain"], 1, "Mệnh đề if dùng hiện tại đơn.", {"will rain": "Trong mệnh đề if chỉ tương lai thật không dùng will; phải dùng hiện tại đơn rains.", "rained": "rained là quá khứ đơn, thuộc câu điều kiện loại 2 (không có thật), không khớp với vế chính dùng will.", "would rain": "would rain là dạng điều kiện loại 2, không đứng trong mệnh đề if của câu điều kiện loại 1."}]] },
 { id: "gerund-infinitive", lvl: "B1", title: "Gerund or infinitive", vi: "V-ing hay to V", exams: ["TOEIC", "IELTS", "VSTEP"],
   form: "Sau enjoy, avoid, finish, stop, suggest, mind, keep: V-ing. Sau want, decide, plan, hope, agree, refuse, need: to V. Sau giới từ: luôn V-ing.",
   use: "Nhóm này rất hay xuất hiện trong TOEIC Part 5.",
   ex: [["Avoid lifting heavy things.", "Tránh nâng vật nặng."], ["I decided to study medicine.", "Tôi quyết định học y."], ["She's interested in learning English.", "Cô ấy thích học tiếng Anh."]],
   err: [["avoid to lift", "avoid lifting", "avoid + V-ing."], ["I'm interested in learn.", "I'm interested in learning.", "Sau giới từ dùng V-ing."]],
-  quiz: [["You should give up ___.", ["smoke", "to smoke", "smoking"], 2, "give up + V-ing (không dùng to + động từ)."], ["We plan ___ a new clinic.", ["opening", "to open", "open"], 1, "plan + to V."]] },
+  quiz: [["You should give up ___.", ["smoke", "to smoke", "smoking", "smoked"], 2, "give up + V-ing (không dùng to + động từ).", {"smoke": "Sau give up phải dùng V-ing; dạng nguyên mẫu smoke không đi sau give up.", "to smoke": "give up + to smoke sai vì to ở đây không phải dấu hiệu nguyên mẫu; sau give up cần danh động từ smoking.", "smoked": "smoked là quá khứ/quá khứ phân từ, không thể làm tân ngữ của give up; cần danh động từ smoking."}], ["We plan ___ a new clinic.", ["opening", "to open", "open", "opened"], 1, "plan + to V.", {"opening": "plan thuộc nhóm động từ đi với to V (plan to do), không dùng V-ing.", "open": "Sau plan phải có to trước động từ nguyên mẫu (plan to open); open trần không đứng sau plan.", "opened": "opened là dạng quá khứ, không thể đứng sau plan; cần to open để nói về dự định."}]] },
 { id: "pp-vs-past", lvl: "B1", title: "Present perfect vs past simple, for / since", vi: "Hiện tại hoàn thành hay quá khứ đơn", exams: ["IELTS", "VSTEP", "TOEIC"],
   form: "Quá khứ đơn: thời điểm đã kết thúc (yesterday, in 2020, ago). Hiện tại hoàn thành: đến nay, không nói rõ lúc nào. for + khoảng thời gian; since + mốc.",
   use: "Trong hỏi bệnh: When did it start? (quá khứ đơn) và How long have you had it? (hiện tại hoàn thành).",
   ex: [["It started three days ago.", "Nó bắt đầu cách đây ba ngày."], ["I've had it for three days / since Monday.", "Tôi bị ba ngày rồi / từ thứ Hai."]],
   err: [["since three days", "for three days", "Khoảng thời gian dùng for."], ["How long do you have it?", "How long have you had it?", "“Bao lâu rồi” dùng hiện tại hoàn thành."]],
-  quiz: [["I ___ him since we were students.", ["knew", "have known", "know"], 1, "since + mốc, kéo dài đến nay."], ["She ___ to Japan in 2022.", ["has gone", "went", "goes"], 1, "Năm cụ thể: quá khứ đơn."]] },
+  quiz: [["I ___ him since we were students.", ["knew", "have known", "know", "am knowing"], 1, "since + mốc, kéo dài đến nay.", {"knew": "Knew là quá khứ đơn, nhưng since + mốc nối với hiện tại nên cần hiện tại hoàn thành have known.", "know": "Know ở hiện tại đơn không hợp với since vì since cần hiện tại hoàn thành để chỉ việc kéo dài đến nay.", "am knowing": "Know là động từ chỉ trạng thái, không dùng ở thì tiếp diễn; am knowing còn trái với since nên cần have known."}], ["She ___ to Japan in 2022.", ["has gone", "went", "goes", "go"], 1, "Năm cụ thể: quá khứ đơn.", {"has gone": "Has gone là hiện tại hoàn thành, không dùng với năm cụ thể như in 2022; năm xác định cần quá khứ đơn.", "goes": "Goes là hiện tại đơn, không hợp với in 2022 ở quá khứ; cần went.", "go": "Go ở dạng nguyên mẫu không chia cho She và không biểu thị quá khứ, trái với in 2022."}]] },
 { id: "passive", lvl: "B1", title: "The passive", vi: "Câu bị động", exams: ["TOEIC", "IELTS", "VSTEP"],
   form: "be (chia theo thì) + V3. The sample was sent. The results will be ready. The room is being cleaned. Người thực hiện (nếu cần): by …",
   use: "Khi hành động quan trọng hơn người làm: văn phong học thuật, báo cáo, quy trình y khoa.",
   ex: [["The patient was admitted last night.", "Bệnh nhân được nhập viện tối qua."], ["Blood samples are taken in the morning.", "Mẫu máu được lấy vào buổi sáng."]],
   err: [["The sample sent to the lab.", "The sample was sent to the lab.", "Bị động cần be."], ["The meeting was cancel.", "The meeting was cancelled.", "Sau be dùng V3."]],
-  quiz: [["The new hospital ___ in 2025.", ["built", "was built", "is building"], 1, "Bệnh viện được xây: bị động quá khứ."], ["All applications must ___ by Friday.", ["submit", "be submitted", "submitted"], 1, "must + be + V3."]] },
+  quiz: [["The new hospital ___ in 2025.", ["built", "was built", "is building", "was building"], 1, "Bệnh viện được xây: bị động quá khứ.", {"built": "Chỉ có built thì thiếu trợ động từ, nên không thành câu hoàn chỉnh; cần was built (bị động quá khứ) vì có in 2025.", "is building": "Is building là chủ động hiện tại tiếp diễn; bệnh viện không tự xây và in 2025 là mốc quá khứ nên cần bị động was built.", "was building": "Was building là chủ động quá khứ tiếp diễn; chủ ngữ hospital là vật được xây nên phải dùng bị động was built."}], ["All applications must ___ by Friday.", ["submit", "be submitted", "submitted", "be submit"], 1, "must + be + V3.", {"submit": "Sau must là động từ nguyên mẫu nhưng đơn thuần submit mang nghĩa chủ động; đơn đăng ký bị nộp nên cần dạng bị động be submitted.", "submitted": "Sau must phải là động từ nguyên mẫu, không dùng quá khứ; hơn nữa để bị động cần có be trước submitted, tức be submitted.", "be submit": "Bị động phải dùng be + quá khứ phân từ (submitted); submit ở dạng nguyên mẫu không tạo được nghĩa bị động."}]] },
 { id: "relative", lvl: "B1", title: "Relative clauses", vi: "Mệnh đề quan hệ", exams: ["IELTS", "TOEIC", "VSTEP"],
   form: "who (người), which (vật), that (người/vật, chỉ trong mệnh đề xác định), whose (của ai), where (nơi). Mệnh đề không xác định có dấu phẩy và không dùng that.",
   use: "Nối hai câu, mô tả chính xác người hoặc vật. Giúp câu văn IELTS phức tạp hơn.",
   ex: [["The doctor who saw me was very kind.", "Vị bác sĩ khám cho tôi rất tử tế."], ["My sister, who lives in Hue, is a nurse.", "Chị tôi, người sống ở Huế, là y tá."]],
   err: [["The drug that you take it…", "The drug that you take…", "Không lặp lại đại từ it."], ["My mother, that is a teacher…", "My mother, who is a teacher…", "Mệnh đề có dấu phẩy không dùng that."]],
-  quiz: [["The man ___ car was stolen called the police.", ["who", "whose", "which"], 1, "Sở hữu: whose."], ["This is the clinic ___ I work.", ["where", "which", "who"], 0, "Nơi chốn: where."]] },
+  quiz: [["The man ___ car was stolen called the police.", ["who", "whose", "which", "whom"], 1, "Sở hữu: whose.", {"who": "who là đại từ chủ ngữ chỉ người, không diễn tả sở hữu; ở đây car thuộc về the man nên cần whose.", "which": "which dùng cho vật, mà the man là người và quan hệ ở đây là sở hữu nên phải dùng whose.", "whom": "whom là đại từ tân ngữ chỉ người, không diễn tả sở hữu trước danh từ car; cần whose."}], ["This is the clinic ___ I work.", ["where", "which", "who", "whose"], 0, "Nơi chốn: where.", {"which": "which dùng cho vật và cần đóng vai trò chủ ngữ hoặc tân ngữ; clinic là nơi chốn nên dùng where hoặc in which.", "who": "who chỉ người, mà the clinic là nơi chốn nên không thể dùng who.", "whose": "whose chỉ sở hữu và phải đứng trước một danh từ; sau chỗ trống là I work nên không dùng whose."}]] },
 { id: "sva", lvl: "B1", title: "Subject–verb agreement", vi: "Hòa hợp chủ ngữ và động từ", exams: ["TOEIC", "IELTS"],
   form: "Chủ ngữ số ít + động từ số ít. Everyone, each, the number of + số ít. A number of + số nhiều. Chủ ngữ dài: tìm danh từ chính.",
   use: "Lỗi rất hay bị bắt trong TOEIC Part 5 và bị trừ điểm IELTS Writing.",
   ex: [["The number of patients is increasing.", "Số bệnh nhân đang tăng."], ["The results of the test show …", "Kết quả xét nghiệm cho thấy …"]],
   err: [["The number of patients are rising.", "The number of patients is rising.", "Danh từ chính là number."], ["Everyone have a role.", "Everyone has a role.", "Everyone là số ít."]],
-  quiz: [["Each of the rooms ___ a window.", ["have", "has", "having"], 1, "Each of … dùng số ít."], ["The list of names ___ on the desk.", ["is", "are", "be"], 0, "Danh từ chính là list."]] },
+  quiz: [["Each of the rooms ___ a window.", ["have", "has", "having", "are"], 1, "Each of … dùng số ít.", {"have": "have đi với chủ ngữ số nhiều, nhưng chủ ngữ là Each (số ít) nên phải dùng has.", "having": "having là V-ing, không có trợ động từ nên không phải động từ chính của câu.", "are": "are không đi với a window như has, và chủ ngữ Each số ít cũng không dùng are."}], ["The list of names ___ on the desk.", ["is", "are", "be", "were"], 0, "Danh từ chính là list.", {"are": "are dùng cho chủ ngữ số nhiều, nhưng chủ ngữ chính là list (số ít) chứ không phải names.", "be": "be là nguyên mẫu, không chia cho chủ ngữ số ít The list nên không thể làm động từ chính.", "were": "were là quá khứ số nhiều, không hợp với chủ ngữ số ít list và câu không có dấu hiệu quá khứ."}]] },
 { id: "reported", lvl: "B1", title: "Reported speech", vi: "Câu tường thuật", exams: ["VSTEP", "IELTS"],
   form: "Lùi thì: am → was, will → would, did → had done. say (that) …; tell + người + (that) …; ask + if/whether hoặc từ để hỏi + S + V.",
   use: "Thuật lại lời bệnh nhân, đồng nghiệp: She said she had a headache.",
   ex: [["She said (that) she felt dizzy.", "Cô ấy nói cô ấy thấy chóng mặt."], ["He asked where the pharmacy was.", "Anh ấy hỏi hiệu thuốc ở đâu."]],
   err: [["She said me …", "She told me … / She said to me …", "say không đi trực tiếp với người."], ["He asked where was the pharmacy.", "He asked where the pharmacy was.", "Câu hỏi gián tiếp không đảo ngữ."]],
-  quiz: [["He ___ me that he was tired.", ["said", "told", "asked"], 1, "tell + người."]] },
+  quiz: [["He ___ me that he was tired.", ["said", "told", "asked", "spoke"], 1, "tell + người.", {"said": "say không đi trực tiếp với tân ngữ chỉ người me mà không có to; muốn có me phải dùng tell.", "asked": "asked nghĩa là hỏi, trong khi mệnh đề sau là lời khẳng định that he was tired; cần tell + người + that.", "spoke": "speak không đi với tân ngữ me + mệnh đề that để thuật lại lời nói; cần tell."}]] },
 { id: "second-conditional", lvl: "B1", title: "Second conditional", vi: "Câu điều kiện loại 2", exams: ["IELTS", "VSTEP"],
   form: "If + quá khứ đơn, would + V. If I were you, I would … (dùng were cho mọi ngôi, trang trọng).",
   use: "Giả định không có thật ở hiện tại, lời khuyên lịch sự.",
   ex: [["If I had more time, I would study more.", "Nếu có nhiều thời gian hơn, tôi sẽ học nhiều hơn."], ["If I were you, I'd see a doctor.", "Nếu là bạn, tôi sẽ đi khám."]],
   err: [["If I would have time…", "If I had time…", "Không dùng would sau if."]],
-  quiz: [["If she ___ closer, she would walk to work.", ["lives", "lived", "would live"], 1, "Điều kiện loại 2: quá khứ đơn sau if."]] },
+  quiz: [["If she ___ closer, she would walk to work.", ["lives", "lived", "would live", "will live"], 1, "Điều kiện loại 2: quá khứ đơn sau if.", {"lives": "Lives là hiện tại đơn, dùng cho điều kiện loại 1; mệnh đề chính would walk cho thấy cần quá khứ đơn lived.", "would live": "Would không đứng ngay sau if trong mệnh đề điều kiện; mệnh đề if dùng quá khứ đơn lived.", "will live": "Will live là tương lai, không dùng trong mệnh đề if; câu điều kiện loại 2 cần lived."}]] },
 { id: "word-forms", lvl: "B1", title: "Word forms", vi: "Dạng từ: danh, động, tính, trạng từ", exams: ["TOEIC", "IELTS", "VSTEP"],
   form: "Vị trí quyết định dạng từ: sau mạo từ và tính từ là danh từ; trước danh từ là tính từ; bổ nghĩa cho động từ là trạng từ (-ly). Hậu tố: -tion, -ment, -ness (danh từ); -ful, -ive, -al (tính từ).",
   use: "Dạng câu hỏi xuất hiện nhiều nhất trong TOEIC Part 5.",
   ex: [["a successful launch", "một buổi ra mắt thành công"], ["She works efficiently.", "Cô ấy làm việc hiệu quả."], ["the decision of the committee", "quyết định của hội đồng"]],
   err: [["a success launch", "a successful launch", "Trước danh từ cần tính từ."], ["He speaks English very good.", "He speaks English very well.", "Bổ nghĩa cho động từ dùng trạng từ."]],
-  quiz: [["The new system is very ___.", ["effect", "effective", "effectively"], 1, "Sau be và very cần tính từ."], ["Please read the instructions ___.", ["careful", "care", "carefully"], 2, "Bổ nghĩa cho read: trạng từ."]] },
+  quiz: [["The new system is very ___.", ["effect", "effective", "effectively", "effects"], 1, "Sau be và very cần tính từ.", {"effect": "Effect là danh từ, nhưng sau very is cần tính từ để mô tả hệ thống; tính từ đúng là effective.", "effectively": "Effectively là trạng từ, dùng bổ nghĩa cho động từ; sau is cần tính từ mô tả chủ ngữ the new system, tức effective.", "effects": "Effects là danh từ số nhiều, không đứng sau very is để mô tả hệ thống; chỗ này cần tính từ effective."}], ["Please read the instructions ___.", ["careful", "care", "carefully", "carefulness"], 2, "Bổ nghĩa cho read: trạng từ.", {"careful": "Careful là tính từ, chỉ bổ nghĩa cho danh từ; để bổ nghĩa cho động từ read cần trạng từ carefully.", "care": "Care là danh từ hoặc động từ, không bổ nghĩa cho read được; cần trạng từ carefully chỉ cách đọc.", "carefulness": "Carefulness là danh từ, nên không đứng cuối câu để chỉ cách thức đọc; cần trạng từ carefully."}]] },
 { id: "third-conditional", lvl: "B2", title: "Third conditional, wish", vi: "Câu điều kiện loại 3 và câu ước", exams: ["IELTS", "VSTEP"],
   form: "If + had V3, would have V3. I wish + quá khứ đơn (hiện tại), I wish + had V3 (quá khứ).",
   use: "Giả định trái với quá khứ, hối tiếc.",
   ex: [["If he had come earlier, we would have treated him sooner.", "Nếu anh ấy đến sớm hơn, chúng tôi đã điều trị sớm hơn."], ["I wish I had studied harder.", "Ước gì tôi đã học chăm hơn."]],
   err: [["If I would have known…", "If I had known…", "Mệnh đề if dùng had V3."]],
-  quiz: [["If she ___ the bus, she wouldn't have been late.", ["caught", "had caught", "would catch"], 1, "Loại 3: had + V3."]] },
+  quiz: [["If she ___ the bus, she wouldn't have been late.", ["caught", "had caught", "would catch", "has caught"], 1, "Loại 3: had + V3.", {"caught": "Caught là quá khứ đơn, không dùng trong điều kiện loại 3; mệnh đề chính wouldn't have been cần had caught.", "would catch": "Would catch không dùng trong mệnh đề if; điều kiện loại 3 cần quá khứ hoàn thành had caught.", "has caught": "Has caught là hiện tại hoàn thành, không hợp với wouldn't have been (loại 3); cần had caught."}]] },
 { id: "modals-past", lvl: "B2", title: "Modals in the past", vi: "Động từ khuyết thiếu ở quá khứ", exams: ["IELTS"],
   form: "should have V3 (lẽ ra nên), must have V3 (chắc hẳn đã), might/could have V3 (có thể đã), can't have V3 (không thể nào đã).",
   use: "Suy đoán hoặc tiếc nuối về quá khứ.",
   ex: [["You should have come in earlier.", "Lẽ ra bạn nên đến khám sớm hơn."], ["It must have been a virus.", "Chắc hẳn đó là do vi-rút."]],
   err: [["You should came.", "You should have come.", "should + have + V3."]],
-  quiz: [["The lights are off. They ___ gone home.", ["must have", "needn't have", "can have"], 0, "Suy đoán chắc chắn: must have."]] },
+  quiz: [["The lights are off. They ___ gone home.", ["must have", "needn't have", "can have", "must be"], 0, "Suy đoán chắc chắn: must have.", {"needn't have": "Needn't have + V3 nghĩa là lẽ ra không cần làm nhưng đã làm; câu này đoán một việc dựa trên bằng chứng nên cần must have.", "can have": "Can have không dùng để suy đoán chắc chắn trong câu khẳng định; muốn nói chắc là đã về cần must have gone.", "must be": "Must be + gone nói về trạng thái hiện tại và sai cấu trúc; suy đoán về việc đã xảy ra trước đó phải là must have gone."}]] },
 { id: "linking", lvl: "B2", title: "Although, despite, however", vi: "Từ nối chỉ sự tương phản", exams: ["TOEIC", "IELTS", "VSTEP"],
   form: "although/even though + mệnh đề (S + V). despite/in spite of + danh từ hoặc V-ing. However, … đứng đầu câu mới, sau nó có dấu phẩy.",
   use: "TOEIC hay hỏi phân biệt although và despite. IELTS thưởng điểm cho câu phức có liên từ đúng.",
   ex: [["Although it was raining, she walked to work.", "Mặc dù trời mưa, cô ấy vẫn đi bộ đi làm."], ["Despite the rain, she walked to work.", "Bất chấp trời mưa, cô ấy vẫn đi bộ đi làm."]],
   err: [["Despite it was raining…", "Although it was raining… / Despite the rain…", "despite không đi với mệnh đề."], ["Although …, but …", "Although …, …", "Không dùng although và but cùng lúc."]],
-  quiz: [["___ feeling tired, he finished the report.", ["Because", "Despite", "However"], 1, "Sau chỗ trống là V-ing: despite."], ["The drug works well. ___, it can cause headaches.", ["Although", "Despite", "However"], 2, "Đầu câu mới, có dấu phẩy: However."]] },
+  quiz: [["___ feeling tired, he finished the report.", ["Because", "Despite", "However", "Therefore"], 1, "Sau chỗ trống là V-ing: despite.", {"Because": "Because đi với mệnh đề (có chủ ngữ và động từ chia), còn sau chỗ trống là feeling tired; hơn nữa nghĩa nguyên nhân không hợp.", "However": "However là trạng từ nối đứng đầu câu mới, sau nó phải có dấu phẩy; không đứng trước cụm V-ing để nối vế câu.", "Therefore": "Therefore là trạng từ chỉ kết quả, đứng đầu câu có dấu phẩy; nghĩa không phù hợp vì mệt mỏi không dẫn đến việc hoàn thành báo cáo."}], ["The drug works well. ___, it can cause headaches.", ["Although", "Despite", "However", "Because"], 2, "Đầu câu mới, có dấu phẩy: However.", {"Although": "Although nối hai mệnh đề trong cùng một câu, không đứng đầu câu mới rồi theo sau là dấu phẩy.", "Despite": "Despite đi với danh từ hoặc V-ing và không đứng đầu câu mới tách riêng với dấu phẩy để nối hai ý tương phản.", "Because": "Because chỉ nguyên nhân và đi với mệnh đề, không đứng một mình đầu câu rồi dấu phẩy; về nghĩa, đau đầu không phải kết quả của việc thuốc có tác dụng tốt mà là mặt trái đối lập, nên cần However."}]] },
 { id: "indirect-questions", lvl: "B2", title: "Indirect questions", vi: "Câu hỏi gián tiếp (lịch sự)", exams: ["IELTS", "TOEIC"],
   form: "Could you tell me / Do you know / I was wondering + từ để hỏi (hoặc if/whether) + S + V (không đảo ngữ).",
   use: "Hỏi lịch sự với khách hàng, bệnh nhân, người lạ.",
   ex: [["Could you tell me where it hurts?", "Anh/chị chỉ giúp tôi đau ở đâu nhé?"], ["Do you know if the clinic is open?", "Bạn có biết phòng khám mở cửa không?"]],
   err: [["Could you tell me where does it hurt?", "Could you tell me where it hurts?", "Câu hỏi gián tiếp không dùng trợ động từ đảo."]],
-  quiz: [["Do you know what time ___?", ["does the bank open", "the bank opens", "opens the bank"], 1, "Không đảo ngữ trong câu hỏi gián tiếp."]] }
+  quiz: [["Do you know what time ___?", ["does the bank open", "the bank opens", "opens the bank", "does the bank opens"], 1, "Không đảo ngữ trong câu hỏi gián tiếp.", {"does the bank open": "does the bank open đảo ngữ như câu hỏi trực tiếp; câu hỏi gián tiếp không dùng does đảo.", "opens the bank": "opens the bank đặt động từ lên trước chủ ngữ, sai trật tự; cần the bank opens.", "does the bank opens": "does the bank opens vừa đảo ngữ vừa thêm -s sau does; cả hai đều sai trong câu hỏi gián tiếp."}]] }
 ];
 /* Điểm ngữ pháp bổ sung (v4.5): gộp vào GRAMMAR rồi xếp theo cấp độ (sort ổn định, giữ nguyên thứ tự cũ trong cùng cấp). */
 const GRAMMAR_NEW = [
-{"id": "possessives", "lvl": "A1", "title": "Possessives: my/mine, 's, of, whose", "vi": "Sở hữu: tính từ sở hữu, đại từ sở hữu, 's và of, whose", "exams": ["CEFR", "VSTEP"], "form": "Tính từ sở hữu (+ danh từ): my, your, his, her, its, our, their. Đại từ sở hữu (đứng một mình): mine, yours, his, hers, ours, theirs. Người: Anna's bag; số nhiều có s: the doctors' room. Vật: the door of the room. Hỏi: Whose bag is this?", "use": "Nói đồ vật hay người thuộc về ai. Đừng nhầm its (của nó) với it's (it is), và whose (của ai) với who's (who is). Sau tính từ sở hữu luôn có danh từ; mine/yours thì không.", "ex": [["This is my phone, and that one is yours.", "Đây là điện thoại của tôi, còn cái kia là của bạn."], ["The nurse's uniform is white.", "Đồng phục của y tá màu trắng."], ["Whose coat is on the chair?", "Áo khoác của ai ở trên ghế vậy?"]], "err": [["This book is my.", "This book is mine.", "Không có danh từ phía sau thì dùng mine, không dùng my."], ["The dog is wagging it's tail.", "The dog is wagging its tail.", "its là tính từ sở hữu, it's chỉ là it is."], ["This is my sister book.", "This is my sister's book.", "Người sở hữu cần 's."]], "quiz": [["Is this your pen? No, ___ is blue.", ["my", "mine", "me"], 1, "Không có danh từ sau nên dùng đại từ sở hữu mine."], ["___ umbrella is this?", ["Who", "Whose", "Who's"], 1, "Hỏi chủ sở hữu dùng Whose + danh từ."]]},
-{"id": "present-continuous", "lvl": "A1", "title": "Present continuous", "vi": "Thì hiện tại tiếp diễn", "exams": ["CEFR", "VSTEP", "TOEIC"], "form": "am/is/are + V-ing. Phủ định: isn't/aren't + V-ing. Câu hỏi: Is she working? Quy tắc -ing: make → making (bỏ e), run → running, swim → swimming, sit → sitting (gấp đôi phụ âm), lie → lying.", "use": "Hành động đang diễn ra lúc nói (now, at the moment, Look!, Listen!) hoặc kế hoạch gần. Thói quen dùng hiện tại đơn. Động từ chỉ trạng thái như know, like, want, love, need, understand không dùng thể tiếp diễn.", "ex": [["The doctor is talking to a patient now.", "Bác sĩ đang nói chuyện với một bệnh nhân."], ["I'm not working today.", "Hôm nay tôi không làm việc."], ["Are they waiting outside?", "Họ có đang đợi bên ngoài không?"]], "err": [["She is make dinner now.", "She is making dinner now.", "Sau be dùng V-ing, không dùng nguyên mẫu."], ["I am wanting some water.", "I want some water.", "want là động từ trạng thái, không dùng tiếp diễn."], ["He is runing in the park.", "He is running in the park.", "Động từ ngắn một âm tiết gấp đôi phụ âm cuối trước -ing."]], "quiz": [["Listen! The baby ___.", ["cries", "is crying", "cry"], 1, "Listen! báo hiệu việc đang xảy ra nên dùng tiếp diễn."], ["I ___ the answer.", ["know", "am knowing", "knowing"], 0, "know là động từ trạng thái, dùng hiện tại đơn."]]},
-{"id": "past-continuous", "lvl": "A2", "title": "Past continuous", "vi": "Thì quá khứ tiếp diễn", "exams": ["CEFR", "VSTEP", "IELTS"], "form": "was/were + V-ing. I/he/she/it was; you/we/they were. Phủ định: wasn't/weren't + V-ing. Câu hỏi: Were you sleeping? Mẫu: S + was/were + V-ing when + quá khứ đơn; While + quá khứ tiếp diễn, quá khứ đơn.", "use": "Hành động đang diễn ra tại một thời điểm trong quá khứ (at 8 p.m. last night) hoặc bị một hành động ngắn khác cắt ngang. Hành động dài dùng quá khứ tiếp diễn, hành động ngắn chen vào dùng quá khứ đơn. Hai hành động song song cùng dùng while.", "ex": [["I was watching TV when the phone rang.", "Tôi đang xem tivi thì điện thoại reo."], ["The patients were waiting when the doctor arrived.", "Các bệnh nhân đang đợi thì bác sĩ đến."], ["What were you doing at nine yesterday?", "Chín giờ hôm qua bạn đang làm gì?"]], "err": [["We was waiting for the bus.", "We were waiting for the bus.", "We đi với were."], ["I was walking home when I was seeing an accident.", "I was walking home when I saw an accident.", "Hành động ngắn chen vào dùng quá khứ đơn."], ["She cooking when I called.", "She was cooking when I called.", "Thiếu was trước V-ing."]], "quiz": [["I ___ TV when the phone rang.", ["watching", "was watching", "am watching"], 1, "Hành động đang diễn ra bị cắt ngang dùng quá khứ tiếp diễn."], ["What ___ you doing at 9 o'clock yesterday?", ["was", "were", "did"], 1, "you đi với were."]]},
-{"id": "used-to", "lvl": "A2", "title": "Used to, be used to, get used to", "vi": "Used to + động từ; be/get used to + V-ing", "exams": ["CEFR", "VSTEP", "IELTS"], "form": "used to + V: thói quen hoặc trạng thái trong quá khứ nay không còn. Phủ định/nghi vấn: didn't use to, Did you use to …? (bỏ d). be used to + V-ing/danh từ: quen với. get used to + V-ing: dần trở nên quen.", "use": "Used to + V nói về quá khứ khác với hiện tại. Be used to và get used to là cấu trúc khác, theo sau là V-ing hoặc danh từ: I'm used to waking up early.", "ex": [["I used to live in a small village.", "Tôi từng sống ở một ngôi làng nhỏ."], ["She didn't use to drink coffee.", "Trước đây cô ấy không uống cà phê."], ["He is used to working night shifts.", "Anh ấy đã quen làm ca đêm."]], "err": [["She didn't used to like fish.", "She didn't use to like fish.", "Sau didn't dùng use (không có d)."], ["I'm used to wake up early.", "I'm used to waking up early.", "Sau be used to dùng V-ing."], ["I used to walking to school.", "I used to walk to school.", "Sau used to (thói quen quá khứ) dùng động từ nguyên mẫu."]], "quiz": [["When I was a child, I ___ in a small village.", ["used to live", "use to live", "am used to live"], 0, "Thói quen quá khứ: used to + V."], ["I'm not used to ___ on the left.", ["drive", "driving", "drove"], 1, "be used to + V-ing."]]},
-{"id": "quantifiers", "lvl": "A2", "title": "Quantifiers", "vi": "Từ chỉ số lượng", "exams": ["CEFR", "VSTEP"], "form": "Đếm được: many, a few, few, (not) enough. Không đếm được: much, a little, little. Cả hai: some, any, a lot of, no, enough. Some dùng ở câu khẳng định, any ở câu phủ định và câu hỏi.", "use": "Nói về số lượng không chính xác. Trước tiên xác định danh từ đếm được (egg, bed) hay không đếm được (milk, time, water) rồi mới chọn từ chỉ số lượng.", "ex": [["There are a few beds free in the ward.", "Còn một vài giường trống trong khoa."], ["We don't have much time.", "Chúng ta không có nhiều thời gian."], ["Is there any water in the bottle?", "Trong chai còn nước không?"]], "err": [["I have many homework.", "I have a lot of homework.", "homework không đếm được nên không dùng many."], ["We don't have some milk.", "We don't have any milk.", "Câu phủ định dùng any, không dùng some."], ["How many water do you drink?", "How much water do you drink?", "water không đếm được nên dùng much."]], "quiz": [["There isn't ___ juice in the fridge.", ["many", "much", "a few"], 1, "juice không đếm được; câu phủ định dùng much."], ["I need ___ eggs to make this cake.", ["a little", "much", "a few"], 2, "eggs đếm được số nhiều nên dùng a few."]]},
-{"id": "zero-conditional", "lvl": "A2", "title": "Zero conditional", "vi": "Câu điều kiện loại 0", "exams": ["CEFR", "VSTEP"], "form": "If/When + hiện tại đơn, hiện tại đơn. Hoặc If + hiện tại đơn, mệnh lệnh. Có thể đảo vế: Water boils if you heat it to 100 degrees.", "use": "Nói về sự thật hiển nhiên, quy luật khoa học, thói quen và hướng dẫn luôn đúng. Không dùng will trong cả hai vế.", "ex": [["If you heat ice, it melts.", "Nếu bạn đun nóng đá, nó tan chảy."], ["When I have a headache, I rest in a dark room.", "Khi bị đau đầu, tôi nghỉ trong phòng tối."], ["If a patient has a fever, call the doctor.", "Nếu bệnh nhân bị sốt, hãy gọi bác sĩ."]], "err": [["If you will heat water, it boils.", "If you heat water, it boils.", "Mệnh đề if dùng hiện tại đơn, không dùng will."], ["If it rains, the roads gets slippery.", "If it rains, the roads get slippery.", "roads là số nhiều nên động từ không thêm -s."], ["When I am tired, I drank coffee.", "When I am tired, I drink coffee.", "Cả hai vế đều ở hiện tại đơn."]], "quiz": [["If you mix red and blue, you ___ purple.", ["get", "got", "will to get"], 0, "Sự thật hiển nhiên dùng hiện tại đơn ở cả hai vế."], ["When the temperature ___ below zero, water freezes.", ["drops", "dropped", "will drop"], 0, "Mệnh đề when dùng hiện tại đơn, khớp với freezes."]]},
-{"id": "question-tags", "lvl": "B1", "title": "Question tags", "vi": "Câu hỏi đuôi", "exams": ["CEFR", "IELTS", "VSTEP"], "form": "Câu khẳng định + tag phủ định (She is here, isn't she?). Câu phủ định + tag khẳng định (She isn't here, is she?). Dùng trợ động từ của câu chính; hiện tại đơn dùng do/does, quá khứ đơn dùng did. Đặc biệt: I am ... aren't I?; Let's ... shall we?; mệnh lệnh ... will you?", "use": "Xác nhận thông tin hoặc mời người nghe đồng ý. Đuôi dùng đại từ thay chủ ngữ. Nobody, nothing, never được xem là phủ định nên đuôi khẳng định.", "ex": [["You are a nurse, aren't you?", "Bạn là y tá, đúng không?"], ["He hasn't taken his medicine, has he?", "Anh ấy chưa uống thuốc, phải không?"], ["Let's start the ward round, shall we?", "Chúng ta bắt đầu đi buồng nhé?"]], "err": [["You like coffee, aren't you?", "You like coffee, don't you?", "Câu chính dùng like nên đuôi dùng trợ động từ do."], ["She isn't working, isn't she?", "She isn't working, is she?", "Câu phủ định thì đuôi phải khẳng định."], ["I am late, isn't I?", "I am late, aren't I?", "Với I am, đuôi chuẩn là aren't I."]], "quiz": [["They finished the report yesterday, ___?", ["didn't they", "don't they", "haven't they"], 0, "Câu chính ở quá khứ đơn nên đuôi dùng did."], ["Open the window, ___?", ["do you", "will you", "are you"], 1, "Sau câu mệnh lệnh thường dùng will you."]]},
-{"id": "phrasal-verbs", "lvl": "B1", "title": "Phrasal verbs", "vi": "Cụm động từ", "exams": ["CEFR", "IELTS", "TOEIC", "VSTEP"], "form": "Động từ + tiểu từ (up, down, off, after...). Tách được: turn down the offer / turn the offer down; nếu tân ngữ là đại từ thì bắt buộc đặt giữa: turn it down. Không tách được: look after the baby, run out of milk.", "use": "Rất phổ biến trong giao tiếp và bài thi. Nghĩa thường khác nghĩa từng từ: give up (từ bỏ), look after (chăm sóc), turn down (từ chối hoặc giảm âm), set up (thành lập).", "ex": [["He gave up smoking last year.", "Anh ấy đã bỏ thuốc từ năm ngoái."], ["The nurse looks after the patients.", "Y tá chăm sóc bệnh nhân."], ["They offered her the job, but she turned it down.", "Họ mời cô ấy làm việc nhưng cô ấy từ chối."]], "err": [["Please turn off it.", "Please turn it off.", "Với cụm tách được, đại từ it phải đứng giữa động từ và tiểu từ."], ["She looks her mother after.", "She looks after her mother.", "look after không tách được; tiểu từ đứng ngay sau động từ."], ["We ran out milk.", "We ran out of milk.", "Cụm đầy đủ là run out of + danh từ."]], "quiz": [["I can't hear the TV. Please turn it ___.", ["down", "up", "off"], 1, "Không nghe rõ thì cần tăng âm lượng: turn it up."], ["Our clinic ___ by two doctors in 2015.", ["set up", "was set up", "was setting up"], 1, "Clinic là vật bị thành lập (có by two doctors) nên dùng bị động was set up."]]},
-{"id": "too-enough", "lvl": "B1", "title": "Too, enough, so, such", "vi": "Too, enough, so và such", "exams": ["A2-B1", "VSTEP", "TOEIC"], "form": "too + adj (+ to V): quá … không thể. adj + enough (+ to V); enough + noun. so + adj/adv/much/many + that; such + (a/an) + (adj) + noun + that. too much + danh từ không đếm được, too many + danh từ đếm được.", "use": "Nói về mức độ vượt quá hoặc đủ so với yêu cầu (too/enough), và nhấn mạnh kết quả (so/such ... that). Too mang nghĩa tiêu cực; enough đứng SAU tính từ/trạng từ nhưng TRƯỚC danh từ.", "ex": [["The tea is too hot to drink.", "Trà nóng quá nên không uống được."], ["She is old enough to vote.", "Cô ấy đủ tuổi để bầu cử."], ["It was such a long wait that many patients left.", "Phải chờ lâu đến mức nhiều bệnh nhân bỏ về."]], "err": [["She is enough old to drive.", "She is old enough to drive.", "Enough đứng sau tính từ."], ["It was so a hot day.", "It was such a hot day.", "so + adj; such + a + adj + danh từ."], ["There are too much cars.", "There are too many cars.", "Danh từ đếm được số nhiều dùng too many."]], "quiz": [["He is ___ tired to drive safely.", ["too", "enough", "very"], 0, "Too + adj + to V: quá … không thể."], ["It was ___ a cold night that we stayed inside.", ["so", "such", "too"], 1, "such + a + adj + danh từ + that."]]},
-{"id": "causative", "lvl": "B2", "title": "Causative: have, get, make, let", "vi": "Thể sai khiến", "exams": ["B2", "IELTS", "VSTEP"], "form": "have/get + vật + V3 (nhờ làm giúp). have + người + V; get + người + to V. make + người + V (bắt buộc). let + người + V (cho phép).", "use": "Nói việc do người khác làm cho mình (have/get something done), hoặc bắt/cho phép ai làm gì. Make và let không dùng to sau tân ngữ.", "ex": [["I had my blood pressure checked yesterday.", "Hôm qua tôi đã đi đo huyết áp."], ["The nurse got the patient to sit down.", "Y tá bảo bệnh nhân ngồi xuống."], ["My boss made us work late.", "Sếp bắt chúng tôi làm việc muộn."]], "err": [["I cut my hair yesterday at the salon.", "I had my hair cut yesterday at the salon.", "Người khác cắt giúp thì dùng have + vật + V3."], ["She made me to wait.", "She made me wait.", "Make + người + V nguyên mẫu không to."], ["He got me fix the car.", "He got me to fix the car.", "Get + người + to V."]], "quiz": [["I had my teeth ___ last week.", ["checked", "check", "checking"], 0, "have + vật + V3."], ["They let the children ___ outside.", ["to play", "play", "playing"], 1, "let + người + V nguyên mẫu."]]},
-{"id": "future-perfect", "lvl": "B2", "title": "Future perfect and future continuous", "vi": "Tương lai hoàn thành và tương lai tiếp diễn", "exams": ["B2", "IELTS", "VSTEP"], "form": "will have + V3 (xong trước một mốc tương lai). Thường đi với by + mốc thời gian, by the time + mệnh đề hiện tại đơn. Tương lai tiếp diễn: will be + V-ing (đang diễn ra tại một thời điểm tương lai).", "use": "Dùng will have V3 cho việc đã hoàn thành trước mốc; will be V-ing cho việc đang diễn ra tại mốc. Sau by the time dùng hiện tại đơn, không dùng will.", "ex": [["By next June, I will have finished my degree.", "Đến tháng Sáu tới, tôi sẽ hoàn thành bằng cấp."], ["This time tomorrow, I will be taking my exam.", "Giờ này ngày mai, tôi đang thi."], ["By the time you arrive, the surgery will have ended.", "Khi bạn đến, ca mổ đã kết thúc."]], "err": [["By the time I will arrive, they will have left.", "By the time I arrive, they will have left.", "Sau by the time dùng hiện tại đơn."], ["She will has finished by noon.", "She will have finished by noon.", "Will + have + V3."], ["By June I will finished my course.", "By June I will have finished my course.", "Thiếu have: will have + V3."]], "quiz": [["By 2030, she ___ her medical training.", ["will have completed", "completed", "has completing"], 0, "By + mốc tương lai: will have V3."], ["This time next week, we ___ on a plane.", ["will have sat", "will be sitting", "sat"], 1, "Đang diễn ra tại mốc: will be V-ing."]]},
-{"id": "mixed-conditionals", "lvl": "C1", "title": "Mixed conditionals, wish, as if", "vi": "Câu điều kiện hỗn hợp, ước, as if", "exams": ["C1", "IELTS", "VSTEP"], "form": "If + had V3, would + V (quá khứ gây kết quả hiện tại). If + quá khứ đơn, would have V3 (đặc điểm hiện tại gây kết quả trong quá khứ). I wish + had V3 (tiếc quá khứ); I wish/If only + quá khứ đơn (tiếc hiện tại). as if/as though + quá khứ đơn (không thật ở hiện tại) hoặc had V3 (không thật ở quá khứ).", "use": "Trộn mốc thời gian giữa mệnh đề if và mệnh đề chính. Dùng were cho mọi ngôi trong văn trang trọng. Dấu hiệu now, today hay yesterday, last year giúp chọn đúng dạng.", "ex": [["If I had taken that job, I would be living in Berlin now.", "Nếu tôi nhận công việc đó, giờ tôi đang sống ở Berlin."], ["If she were more careful, she wouldn't have given the wrong dose.", "Nếu cô ấy cẩn thận hơn, cô ấy đã không cho nhầm liều."], ["He talks as if he were the director.", "Anh ta nói như thể mình là giám đốc."]], "err": [["If I would have saved more, I could buy a flat now.", "If I had saved more, I could buy a flat now.", "Mệnh đề if không dùng would; dùng had V3."], ["I wish I studied harder last year.", "I wish I had studied harder last year.", "Tiếc việc trong quá khứ dùng wish + had V3."], ["If she had taken the medicine, she will feel better now.", "If she had taken the medicine, she would feel better now.", "Điều kiện không có thật dùng would + V, không dùng will."]], "quiz": [["If I had listened to the doctor, I ___ healthier now.", ["would be", "would have been", "will be"], 0, "Now cho kết quả hiện tại: would + V."], ["He acts as if he ___ the boss, but he is a trainee.", ["would be", "were", "being"], 1, "Không thật ở hiện tại: as if + were."]]},
-{"id": "inversion", "lvl": "C1", "title": "Inversion", "vi": "Đảo ngữ (phủ định, điều kiện)", "exams": ["C1", "IELTS", "VSTEP"], "form": "Trạng từ phủ định/hạn chế (never, rarely, seldom, little, hardly...when, no sooner...than, not only...but also, only when, not until, under no circumstances) + trợ động từ + S + V. Điều kiện đảo: Had + S + V3 / Should + S + V / Were + S + to V.", "use": "Văn phong trang trọng, bài viết học thuật, nhấn mạnh. Hay gặp trong bài Use of English C1 và IELTS Writing.", "ex": [["Never have I seen such a calm patient.", "Tôi chưa bao giờ thấy một bệnh nhân bình tĩnh như vậy."], ["No sooner had she left than the phone rang.", "Cô ấy vừa đi thì điện thoại reo."], ["Had I known, I would have called earlier.", "Nếu tôi biết, tôi đã gọi sớm hơn."]], "err": [["Not only she forgot the form, but...", "Not only did she forget the form, but...", "Sau Not only đầu câu phải đảo trợ động từ: did she forget."], ["No sooner had he arrived when it rained.", "No sooner had he arrived than it rained.", "No sooner đi với than; hardly đi với when."], ["Only when the test ended we left.", "Only when the test ended did we leave.", "Only when đầu câu kéo theo đảo ngữ ở mệnh đề chính."]], "quiz": [["Rarely ___ such a rapid recovery.", ["have I seen", "I have seen", "I seen have"], 0, "Rarely đầu câu: đảo trợ động từ trước chủ ngữ."], ["___ you need help, please call reception.", ["Should", "Would", "Do"], 0, "Đảo ngữ điều kiện loại 1: Should + S + V."]]},
-{"id": "participle-clauses", "lvl": "C1", "title": "Participle clauses", "vi": "Mệnh đề phân từ và mệnh đề quan hệ rút gọn", "exams": ["C1", "IELTS", "VSTEP"], "form": "V-ing (chủ động, đồng thời), V3 (bị động), Having + V3 (xảy ra trước), Not + V-ing (phủ định). Chủ ngữ của mệnh đề phân từ phải trùng chủ ngữ mệnh đề chính. Rút gọn quan hệ: the man (who is) standing there; the drug (which was) developed in 1998.", "use": "Viết câu gọn, văn phong học thuật. Lỗi dangling participle (chủ ngữ treo) hay bị trừ điểm trong IELTS Writing và bài sửa lỗi.", "ex": [["Having finished her shift, she went straight home.", "Sau khi hết ca, cô ấy về thẳng nhà."], ["Overwhelmed by the workload, the doctors asked for help.", "Bị quá tải công việc, các bác sĩ xin hỗ trợ."], ["The woman standing by the door is my aunt.", "Người phụ nữ đứng cạnh cửa là dì tôi."]], "err": [["Walking to the station, a car almost hit me.", "Walking to the station, I was almost hit by a car.", "Chủ ngữ của Walking phải là I, không phải a car (dangling participle)."], ["Having been finished the shift, she left.", "Having finished the shift, she left.", "Chủ ngữ tự làm hành động nên dùng chủ động: Having finished."], ["The students sat at the back were talking.", "The students sitting at the back were talking.", "Nghĩa chủ động rút gọn bằng V-ing."]], "quiz": [["___ what to do, she asked a colleague.", ["Not knowing", "Knowing not", "Not known"], 0, "Phủ định: Not + V-ing."], ["The patients ___ in Ward 4 will be moved tomorrow.", ["treated", "treating", "treat"], 0, "Bệnh nhân được điều trị (bị động): V3."]]},
-{"id": "cleft-sentences", "lvl": "C1", "title": "Cleft sentences", "vi": "Câu chẻ (nhấn mạnh)", "exams": ["C1", "IELTS", "VSTEP"], "form": "It-cleft: It + be + phần nhấn mạnh + that/who + mệnh đề. Wh-cleft: What + S + V + be + phần nhấn mạnh. All + S + V + be + (to) V.", "use": "Nhấn mạnh thông tin mới hoặc đối lập, rất hay gặp trong nói và viết C1.", "ex": [["It was the delay that upset him.", "Chính sự chậm trễ làm anh ấy khó chịu."], ["What she needs is a long holiday.", "Điều cô ấy cần là một kỳ nghỉ dài."], ["All you have to do is sign here.", "Bạn chỉ cần ký vào đây."]], "err": [["It was in 2015 what the clinic opened.", "It was in 2015 that the clinic opened.", "It-cleft dùng that (hoặc who cho người), không dùng what."], ["That I need is a rest.", "What I need is a rest.", "Wh-cleft bắt đầu bằng What."], ["It was the nurse noticed the error.", "It was the nurse who noticed the error.", "It-cleft cần who/that sau phần nhấn mạnh."]], "quiz": [["___ worries me is the cost, not the risk.", ["What", "That", "Which"], 0, "Wh-cleft mở đầu bằng What."], ["It was my sister ___ first told me about this course.", ["who", "what", "whose"], 0, "It was + người + who."]]}
+{"id": "possessives", "lvl": "A1", "title": "Possessives: my/mine, 's, of, whose", "vi": "Sở hữu: tính từ sở hữu, đại từ sở hữu, 's và of, whose", "exams": ["CEFR", "VSTEP"], "form": "Tính từ sở hữu (+ danh từ): my, your, his, her, its, our, their. Đại từ sở hữu (đứng một mình): mine, yours, his, hers, ours, theirs. Người: Anna's bag; số nhiều có s: the doctors' room. Vật: the door of the room. Hỏi: Whose bag is this?", "use": "Nói đồ vật hay người thuộc về ai. Đừng nhầm its (của nó) với it's (it is), và whose (của ai) với who's (who is). Sau tính từ sở hữu luôn có danh từ; mine/yours thì không.", "ex": [["This is my phone, and that one is yours.", "Đây là điện thoại của tôi, còn cái kia là của bạn."], ["The nurse's uniform is white.", "Đồng phục của y tá màu trắng."], ["Whose coat is on the chair?", "Áo khoác của ai ở trên ghế vậy?"]], "err": [["This book is my.", "This book is mine.", "Không có danh từ phía sau thì dùng mine, không dùng my."], ["The dog is wagging it's tail.", "The dog is wagging its tail.", "its là tính từ sở hữu, it's chỉ là it is."], ["This is my sister book.", "This is my sister's book.", "Người sở hữu cần 's."]], "quiz": [["Is this your pen? No, ___ is blue.", ["my", "mine", "me", "I"], 1, "Không có danh từ sau nên dùng đại từ sở hữu mine.", {"my": "my là tính từ sở hữu cần danh từ theo sau, nhưng sau No, ___ is blue chủ ngữ phải đứng độc lập nên cần mine.", "me": "me là đại từ tân ngữ, không dùng làm chủ ngữ của is blue và không mang nghĩa sở hữu; cần mine.", "I": "I chỉ người nói, nên \"I is blue\" vừa sai chia động từ vừa sai nghĩa; cái bút là vật của tôi nên cần đại từ sở hữu mine."}], ["___ umbrella is this?", ["Who", "Whose", "Who's", "Whom"], 1, "Hỏi chủ sở hữu dùng Whose + danh từ.", {"Who": "Who hỏi về người làm chủ thể và không đi với danh từ umbrella; hỏi chủ sở hữu dùng Whose + danh từ.", "Who's": "Who's nghĩa là Who is, nên \"Who's umbrella\" không thành câu hỏi hợp lý; cần Whose để hỏi cái ô của ai.", "Whom": "Whom là tân ngữ của who và không đứng trước danh từ umbrella để chỉ sở hữu; cần Whose."}]]},
+{"id": "present-continuous", "lvl": "A1", "title": "Present continuous", "vi": "Thì hiện tại tiếp diễn", "exams": ["CEFR", "VSTEP", "TOEIC"], "form": "am/is/are + V-ing. Phủ định: isn't/aren't + V-ing. Câu hỏi: Is she working? Quy tắc -ing: make → making (bỏ e), run → running, swim → swimming, sit → sitting (gấp đôi phụ âm), lie → lying.", "use": "Hành động đang diễn ra lúc nói (now, at the moment, Look!, Listen!) hoặc kế hoạch gần. Thói quen dùng hiện tại đơn. Động từ chỉ trạng thái như know, like, want, love, need, understand không dùng thể tiếp diễn.", "ex": [["The doctor is talking to a patient now.", "Bác sĩ đang nói chuyện với một bệnh nhân."], ["I'm not working today.", "Hôm nay tôi không làm việc."], ["Are they waiting outside?", "Họ có đang đợi bên ngoài không?"]], "err": [["She is make dinner now.", "She is making dinner now.", "Sau be dùng V-ing, không dùng nguyên mẫu."], ["I am wanting some water.", "I want some water.", "want là động từ trạng thái, không dùng tiếp diễn."], ["He is runing in the park.", "He is running in the park.", "Động từ ngắn một âm tiết gấp đôi phụ âm cuối trước -ing."]], "quiz": [["Listen! The baby ___.", ["cries", "is crying", "cry", "crying"], 1, "Listen! báo hiệu việc đang xảy ra nên dùng tiếp diễn.", {"cries": "cries là hiện tại đơn chỉ thói quen, còn Listen! báo hiệu em bé đang khóc ngay lúc này nên cần tiếp diễn.", "cry": "cry là nguyên mẫu, không chia với chủ ngữ số ít the baby và thiếu trợ động từ is.", "crying": "crying đứng một mình thiếu is nên không thành động từ chính; phải là is crying."}], ["I ___ the answer.", ["know", "am knowing", "knowing", "knows"], 0, "know là động từ trạng thái, dùng hiện tại đơn.", {"am knowing": "am knowing dùng tiếp diễn với know, vốn là động từ trạng thái nên không dùng tiếp diễn.", "knowing": "knowing thiếu trợ động từ am nên không thành động từ chia với chủ ngữ I.", "knows": "knows có -s chỉ dùng với ngôi thứ ba số ít, còn chủ ngữ I phải dùng know."}]]},
+{"id": "past-continuous", "lvl": "A2", "title": "Past continuous", "vi": "Thì quá khứ tiếp diễn", "exams": ["CEFR", "VSTEP", "IELTS"], "form": "was/were + V-ing. I/he/she/it was; you/we/they were. Phủ định: wasn't/weren't + V-ing. Câu hỏi: Were you sleeping? Mẫu: S + was/were + V-ing when + quá khứ đơn; While + quá khứ tiếp diễn, quá khứ đơn.", "use": "Hành động đang diễn ra tại một thời điểm trong quá khứ (at 8 p.m. last night) hoặc bị một hành động ngắn khác cắt ngang. Hành động dài dùng quá khứ tiếp diễn, hành động ngắn chen vào dùng quá khứ đơn. Hai hành động song song cùng dùng while.", "ex": [["I was watching TV when the phone rang.", "Tôi đang xem tivi thì điện thoại reo."], ["The patients were waiting when the doctor arrived.", "Các bệnh nhân đang đợi thì bác sĩ đến."], ["What were you doing at nine yesterday?", "Chín giờ hôm qua bạn đang làm gì?"]], "err": [["We was waiting for the bus.", "We were waiting for the bus.", "We đi với were."], ["I was walking home when I was seeing an accident.", "I was walking home when I saw an accident.", "Hành động ngắn chen vào dùng quá khứ đơn."], ["She cooking when I called.", "She was cooking when I called.", "Thiếu was trước V-ing."]], "quiz": [["I ___ TV when the phone rang.", ["watching", "was watching", "am watching", "were watching"], 1, "Hành động đang diễn ra bị cắt ngang dùng quá khứ tiếp diễn.", {"watching": "Watching thiếu was; V-ing đứng một mình không thể làm động từ chính của câu.", "am watching": "Am watching là hiện tại tiếp diễn, trái với phần when the phone rang ở quá khứ.", "were watching": "Chủ ngữ I đi với was, không đi với were; were chỉ dùng với you/we/they và danh từ số nhiều."}], ["What ___ you doing at 9 o'clock yesterday?", ["was", "were", "did", "are"], 1, "you đi với were.", {"was": "Was đi với I/he/she/it; chủ ngữ you phải đi với were.", "did": "Did dùng cho quá khứ đơn và đi với động từ nguyên mẫu; trước doing cần be, tức were, không phải did.", "are": "Are là hiện tại, không hợp với yesterday ở quá khứ; cần were you doing."}]]},
+{"id": "used-to", "lvl": "A2", "title": "Used to, be used to, get used to", "vi": "Used to + động từ; be/get used to + V-ing", "exams": ["CEFR", "VSTEP", "IELTS"], "form": "used to + V: thói quen hoặc trạng thái trong quá khứ nay không còn. Phủ định/nghi vấn: didn't use to, Did you use to …? (bỏ d). be used to + V-ing/danh từ: quen với. get used to + V-ing: dần trở nên quen.", "use": "Used to + V nói về quá khứ khác với hiện tại. Be used to và get used to là cấu trúc khác, theo sau là V-ing hoặc danh từ: I'm used to waking up early.", "ex": [["I used to live in a small village.", "Tôi từng sống ở một ngôi làng nhỏ."], ["She didn't use to drink coffee.", "Trước đây cô ấy không uống cà phê."], ["He is used to working night shifts.", "Anh ấy đã quen làm ca đêm."]], "err": [["She didn't used to like fish.", "She didn't use to like fish.", "Sau didn't dùng use (không có d)."], ["I'm used to wake up early.", "I'm used to waking up early.", "Sau be used to dùng V-ing."], ["I used to walking to school.", "I used to walk to school.", "Sau used to (thói quen quá khứ) dùng động từ nguyên mẫu."]], "quiz": [["When I was a child, I ___ in a small village.", ["used to live", "use to live", "am used to live", "used to living"], 0, "Thói quen quá khứ: used to + V.", {"use to live": "Ở câu khẳng định quá khứ, cấu trúc chuẩn là used to (có -d) + động từ nguyên mẫu; use to chỉ đúng trong câu có did.", "am used to live": "Am used to + V-ing nghĩa là đã quen, không đi với động từ nguyên mẫu live, và cũng không nói về thói quen cũ khi còn nhỏ.", "used to living": "Used to + V-ing sai vì sau used to chỉ dùng động từ nguyên mẫu; còn be used to mới đi với V-ing."}], ["I'm not used to ___ on the left.", ["drive", "driving", "drove", "driven"], 1, "be used to + V-ing.", {"drive": "Be used to là cụm có to là giới từ, nên sau đó dùng V-ing hoặc danh từ chứ không dùng động từ nguyên mẫu drive.", "drove": "Drove là quá khứ đơn, không đứng sau giới từ to trong not used to; ở đây cần V-ing driving.", "driven": "Driven là quá khứ phân từ mang nghĩa bị lái; sau not used to phải dùng V-ing driving để nói chưa quen với việc lái xe."}]]},
+{"id": "quantifiers", "lvl": "A2", "title": "Quantifiers", "vi": "Từ chỉ số lượng", "exams": ["CEFR", "VSTEP"], "form": "Đếm được: many, a few, few, (not) enough. Không đếm được: much, a little, little. Cả hai: some, any, a lot of, no, enough. Some dùng ở câu khẳng định, any ở câu phủ định và câu hỏi.", "use": "Nói về số lượng không chính xác. Trước tiên xác định danh từ đếm được (egg, bed) hay không đếm được (milk, time, water) rồi mới chọn từ chỉ số lượng.", "ex": [["There are a few beds free in the ward.", "Còn một vài giường trống trong khoa."], ["We don't have much time.", "Chúng ta không có nhiều thời gian."], ["Is there any water in the bottle?", "Trong chai còn nước không?"]], "err": [["I have many homework.", "I have a lot of homework.", "homework không đếm được nên không dùng many."], ["We don't have some milk.", "We don't have any milk.", "Câu phủ định dùng any, không dùng some."], ["How many water do you drink?", "How much water do you drink?", "water không đếm được nên dùng much."]], "quiz": [["There isn't ___ juice in the fridge.", ["many", "much", "a few", "few"], 1, "juice không đếm được; câu phủ định dùng much.", {"many": "many chỉ đi với danh từ đếm được số nhiều, còn juice không đếm được nên không dùng many.", "a few": "a few đi với danh từ đếm được số nhiều và không dùng sau isn't với juice không đếm được.", "few": "few đi với danh từ đếm được số nhiều, không hợp với juice là danh từ không đếm được."}], ["I need ___ eggs to make this cake.", ["a little", "much", "a few", "a lot"], 2, "eggs đếm được số nhiều nên dùng a few.", {"a little": "a little đi với danh từ không đếm được, mà eggs là danh từ đếm được số nhiều nên phải dùng a few.", "much": "much chỉ đi với danh từ không đếm được và không hợp với eggs, là danh từ đếm được số nhiều.", "a lot": "a lot đứng trước danh từ phải có of (a lot of eggs); thiếu of nên cấu trúc này sai."}]]},
+{"id": "zero-conditional", "lvl": "A2", "title": "Zero conditional", "vi": "Câu điều kiện loại 0", "exams": ["CEFR", "VSTEP"], "form": "If/When + hiện tại đơn, hiện tại đơn. Hoặc If + hiện tại đơn, mệnh lệnh. Có thể đảo vế: Water boils if you heat it to 100 degrees.", "use": "Nói về sự thật hiển nhiên, quy luật khoa học, thói quen và hướng dẫn luôn đúng. Không dùng will trong cả hai vế.", "ex": [["If you heat ice, it melts.", "Nếu bạn đun nóng đá, nó tan chảy."], ["When I have a headache, I rest in a dark room.", "Khi bị đau đầu, tôi nghỉ trong phòng tối."], ["If a patient has a fever, call the doctor.", "Nếu bệnh nhân bị sốt, hãy gọi bác sĩ."]], "err": [["If you will heat water, it boils.", "If you heat water, it boils.", "Mệnh đề if dùng hiện tại đơn, không dùng will."], ["If it rains, the roads gets slippery.", "If it rains, the roads get slippery.", "roads là số nhiều nên động từ không thêm -s."], ["When I am tired, I drank coffee.", "When I am tired, I drink coffee.", "Cả hai vế đều ở hiện tại đơn."]], "quiz": [["If you mix red and blue, you ___ purple.", ["get", "got", "will to get", "gets"], 0, "Sự thật hiển nhiên dùng hiện tại đơn ở cả hai vế.", {"got": "got là quá khứ, trong khi mix ở hiện tại; sự thật hiển nhiên dùng hiện tại đơn ở cả hai vế.", "will to get": "will to get sai vì will là động từ khuyết thiếu, không đi với to; loại 0 cũng không dùng will.", "gets": "gets có -s chỉ dùng với ngôi thứ ba số ít, còn chủ ngữ you phải dùng get."}], ["When the temperature ___ below zero, water freezes.", ["drops", "dropped", "will drop", "dropping"], 0, "Mệnh đề when dùng hiện tại đơn, khớp với freezes.", {"dropped": "dropped là quá khứ, không khớp với freezes ở hiện tại của mệnh đề chính.", "will drop": "will drop là tương lai, mà mệnh đề when của câu điều kiện loại 0 dùng hiện tại đơn, không dùng will.", "dropping": "dropping là V-ing không có trợ động từ nên không phải động từ chia của mệnh đề when."}]]},
+{"id": "question-tags", "lvl": "B1", "title": "Question tags", "vi": "Câu hỏi đuôi", "exams": ["CEFR", "IELTS", "VSTEP"], "form": "Câu khẳng định + tag phủ định (She is here, isn't she?). Câu phủ định + tag khẳng định (She isn't here, is she?). Dùng trợ động từ của câu chính; hiện tại đơn dùng do/does, quá khứ đơn dùng did. Đặc biệt: I am ... aren't I?; Let's ... shall we?; mệnh lệnh ... will you?", "use": "Xác nhận thông tin hoặc mời người nghe đồng ý. Đuôi dùng đại từ thay chủ ngữ. Nobody, nothing, never được xem là phủ định nên đuôi khẳng định.", "ex": [["You are a nurse, aren't you?", "Bạn là y tá, đúng không?"], ["He hasn't taken his medicine, has he?", "Anh ấy chưa uống thuốc, phải không?"], ["Let's start the ward round, shall we?", "Chúng ta bắt đầu đi buồng nhé?"]], "err": [["You like coffee, aren't you?", "You like coffee, don't you?", "Câu chính dùng like nên đuôi dùng trợ động từ do."], ["She isn't working, isn't she?", "She isn't working, is she?", "Câu phủ định thì đuôi phải khẳng định."], ["I am late, isn't I?", "I am late, aren't I?", "Với I am, đuôi chuẩn là aren't I."]], "quiz": [["They finished the report yesterday, ___?", ["didn't they", "don't they", "haven't they", "weren't they"], 0, "Câu chính ở quá khứ đơn nên đuôi dùng did.", {"don't they": "don't là hiện tại đơn, không khớp với câu chính ở quá khứ đơn finished; đuôi phải dùng didn't.", "haven't they": "câu chính ở quá khứ đơn (finished, yesterday) nên đuôi dùng didn't, không dùng haven't của thì hoàn thành.", "weren't they": "weren't là của động từ be, trong khi finished là động từ thường nên đuôi cần didn't."}], ["Open the window, ___?", ["do you", "will you", "are you", "shall we"], 1, "Sau câu mệnh lệnh thường dùng will you.", {"do you": "sau câu mệnh lệnh khẳng định thường dùng will you, không dùng do you.", "are you": "are không phải trợ động từ của câu mệnh lệnh Open...; đuôi thường dùng là will you.", "shall we": "shall we chỉ đi với Let's (lời rủ cùng làm), còn Open the window là mệnh lệnh nên dùng will you."}]]},
+{"id": "phrasal-verbs", "lvl": "B1", "title": "Phrasal verbs", "vi": "Cụm động từ", "exams": ["CEFR", "IELTS", "TOEIC", "VSTEP"], "form": "Động từ + tiểu từ (up, down, off, after...). Tách được: turn down the offer / turn the offer down; nếu tân ngữ là đại từ thì bắt buộc đặt giữa: turn it down. Không tách được: look after the baby, run out of milk.", "use": "Rất phổ biến trong giao tiếp và bài thi. Nghĩa thường khác nghĩa từng từ: give up (từ bỏ), look after (chăm sóc), turn down (từ chối hoặc giảm âm), set up (thành lập).", "ex": [["He gave up smoking last year.", "Anh ấy đã bỏ thuốc từ năm ngoái."], ["The nurse looks after the patients.", "Y tá chăm sóc bệnh nhân."], ["They offered her the job, but she turned it down.", "Họ mời cô ấy làm việc nhưng cô ấy từ chối."]], "err": [["Please turn off it.", "Please turn it off.", "Với cụm tách được, đại từ it phải đứng giữa động từ và tiểu từ."], ["She looks her mother after.", "She looks after her mother.", "look after không tách được; tiểu từ đứng ngay sau động từ."], ["We ran out milk.", "We ran out of milk.", "Cụm đầy đủ là run out of + danh từ."]], "quiz": [["I can't hear the TV. Please turn it ___.", ["down", "up", "off", "in"], 1, "Không nghe rõ thì cần tăng âm lượng: turn it up.", {"down": "turn it down là giảm âm lượng, ngược với việc không nghe rõ nên cần tăng lên.", "off": "turn it off là tắt TV, không giải quyết việc nghe không rõ; cần turn it up.", "in": "turn it in nghĩa là nộp, không liên quan đến chỉnh âm lượng TV."}], ["Our clinic ___ by two doctors in 2015.", ["set up", "was set up", "was setting up", "was setted up"], 1, "Clinic là vật bị thành lập (có by two doctors) nên dùng bị động was set up.", {"set up": "set up đứng một mình là chủ động, nhưng phòng khám không tự thành lập mà bị thành lập bởi hai bác sĩ nên cần bị động.", "was setting up": "was setting up là tiếp diễn chủ động, nghĩa là phòng khám đang thành lập thứ gì đó, sai vì có by two doctors.", "was setted up": "setted không tồn tại vì set là động từ bất quy tắc, quá khứ phân từ vẫn là set: was set up."}]]},
+{"id": "too-enough", "lvl": "B1", "title": "Too, enough, so, such", "vi": "Too, enough, so và such", "exams": ["A2-B1", "VSTEP", "TOEIC"], "form": "too + adj (+ to V): quá … không thể. adj + enough (+ to V); enough + noun. so + adj/adv/much/many + that; such + (a/an) + (adj) + noun + that. too much + danh từ không đếm được, too many + danh từ đếm được.", "use": "Nói về mức độ vượt quá hoặc đủ so với yêu cầu (too/enough), và nhấn mạnh kết quả (so/such ... that). Too mang nghĩa tiêu cực; enough đứng SAU tính từ/trạng từ nhưng TRƯỚC danh từ.", "ex": [["The tea is too hot to drink.", "Trà nóng quá nên không uống được."], ["She is old enough to vote.", "Cô ấy đủ tuổi để bầu cử."], ["It was such a long wait that many patients left.", "Phải chờ lâu đến mức nhiều bệnh nhân bỏ về."]], "err": [["She is enough old to drive.", "She is old enough to drive.", "Enough đứng sau tính từ."], ["It was so a hot day.", "It was such a hot day.", "so + adj; such + a + adj + danh từ."], ["There are too much cars.", "There are too many cars.", "Danh từ đếm được số nhiều dùng too many."]], "quiz": [["He is ___ tired to drive safely.", ["too", "enough", "very", "so"], 0, "Too + adj + to V: quá … không thể.", {"enough": "enough nghĩa là đủ, trái với ý mệt đến mức không thể lái xe an toàn; vị trí cũng sai vì enough đứng sau tính từ.", "very": "very chỉ nhấn mạnh mức độ và không đi với to V để diễn tả “quá … không thể”; cần too.", "so": "so + adj đi với that-clause (so tired that…), không đi với to drive; cấu trúc to V cần too."}], ["It was ___ a cold night that we stayed inside.", ["so", "such", "too", "very"], 1, "such + a + adj + danh từ + that.", {"so": "Trước a + adj + danh từ (a cold night) phải dùng such; so chỉ đứng trước tính từ đứng một mình.", "too": "too + adj + to V, không đi với that-clause và không đứng trước a cold night.", "very": "very không đứng trước a + tính từ + danh từ theo cách này và không nối được với that-clause; cần such a cold night that."}]]},
+{"id": "causative", "lvl": "B2", "title": "Causative: have, get, make, let", "vi": "Thể sai khiến", "exams": ["B2", "IELTS", "VSTEP"], "form": "have/get + vật + V3 (nhờ làm giúp). have + người + V; get + người + to V. make + người + V (bắt buộc). let + người + V (cho phép).", "use": "Nói việc do người khác làm cho mình (have/get something done), hoặc bắt/cho phép ai làm gì. Make và let không dùng to sau tân ngữ.", "ex": [["I had my blood pressure checked yesterday.", "Hôm qua tôi đã đi đo huyết áp."], ["The nurse got the patient to sit down.", "Y tá bảo bệnh nhân ngồi xuống."], ["My boss made us work late.", "Sếp bắt chúng tôi làm việc muộn."]], "err": [["I cut my hair yesterday at the salon.", "I had my hair cut yesterday at the salon.", "Người khác cắt giúp thì dùng have + vật + V3."], ["She made me to wait.", "She made me wait.", "Make + người + V nguyên mẫu không to."], ["He got me fix the car.", "He got me to fix the car.", "Get + người + to V."]], "quiz": [["I had my teeth ___ last week.", ["checked", "check", "checking", "to check"], 0, "have + vật + V3.", {"check": "Have + vật (my teeth) cần quá khứ phân từ vì răng được nha sĩ kiểm tra; check nguyên mẫu dùng khi have + người.", "checking": "V-ing không dùng trong cấu trúc have + vật + V3; răng là đối tượng bị kiểm tra nên cần checked.", "to check": "Sau have + tân ngữ không dùng to V; răng là vật bị kiểm tra nên cần quá khứ phân từ checked."}], ["They let the children ___ outside.", ["to play", "play", "playing", "played"], 1, "let + người + V nguyên mẫu.", {"to play": "Sau let + tân ngữ, động từ nguyên mẫu không có to (let the children play).", "playing": "let + tân ngữ không đi với V-ing; cần nguyên mẫu trần play.", "played": "played là quá khứ, nhưng let đã mang thì nên sau the children phải là nguyên mẫu play."}]]},
+{"id": "future-perfect", "lvl": "B2", "title": "Future perfect and future continuous", "vi": "Tương lai hoàn thành và tương lai tiếp diễn", "exams": ["B2", "IELTS", "VSTEP"], "form": "will have + V3 (xong trước một mốc tương lai). Thường đi với by + mốc thời gian, by the time + mệnh đề hiện tại đơn. Tương lai tiếp diễn: will be + V-ing (đang diễn ra tại một thời điểm tương lai).", "use": "Dùng will have V3 cho việc đã hoàn thành trước mốc; will be V-ing cho việc đang diễn ra tại mốc. Sau by the time dùng hiện tại đơn, không dùng will.", "ex": [["By next June, I will have finished my degree.", "Đến tháng Sáu tới, tôi sẽ hoàn thành bằng cấp."], ["This time tomorrow, I will be taking my exam.", "Giờ này ngày mai, tôi đang thi."], ["By the time you arrive, the surgery will have ended.", "Khi bạn đến, ca mổ đã kết thúc."]], "err": [["By the time I will arrive, they will have left.", "By the time I arrive, they will have left.", "Sau by the time dùng hiện tại đơn."], ["She will has finished by noon.", "She will have finished by noon.", "Will + have + V3."], ["By June I will finished my course.", "By June I will have finished my course.", "Thiếu have: will have + V3."]], "quiz": [["By 2030, she ___ her medical training.", ["will have completed", "completed", "has completing", "will have complete"], 0, "By + mốc tương lai: will have V3.", {"completed": "Completed là quá khứ đơn, không hợp với By 2030 ở tương lai; cần will have completed.", "has completing": "Has completing sai cấu trúc vì has đi với V3, không đi với V-ing, và By 2030 cần will have completed.", "will have complete": "Will have complete sai vì sau will have phải là V3 completed, không phải nguyên mẫu."}], ["This time next week, we ___ on a plane.", ["will have sat", "will be sitting", "sat", "will sitting"], 1, "Đang diễn ra tại mốc: will be V-ing.", {"will have sat": "Will have sat là tương lai hoàn thành, diễn tả việc đã xong; This time next week cần việc đang diễn ra nên dùng will be sitting.", "sat": "Sat là quá khứ đơn, không hợp với This time next week ở tương lai; cần will be sitting.", "will sitting": "Will sitting thiếu be; sau will phải là động từ nguyên mẫu, nên cần will be sitting."}]]},
+{"id": "mixed-conditionals", "lvl": "C1", "title": "Mixed conditionals, wish, as if", "vi": "Câu điều kiện hỗn hợp, ước, as if", "exams": ["C1", "IELTS", "VSTEP"], "form": "If + had V3, would + V (quá khứ gây kết quả hiện tại). If + quá khứ đơn, would have V3 (đặc điểm hiện tại gây kết quả trong quá khứ). I wish + had V3 (tiếc quá khứ); I wish/If only + quá khứ đơn (tiếc hiện tại). as if/as though + quá khứ đơn (không thật ở hiện tại) hoặc had V3 (không thật ở quá khứ).", "use": "Trộn mốc thời gian giữa mệnh đề if và mệnh đề chính. Dùng were cho mọi ngôi trong văn trang trọng. Dấu hiệu now, today hay yesterday, last year giúp chọn đúng dạng.", "ex": [["If I had taken that job, I would be living in Berlin now.", "Nếu tôi nhận công việc đó, giờ tôi đang sống ở Berlin."], ["If she were more careful, she wouldn't have given the wrong dose.", "Nếu cô ấy cẩn thận hơn, cô ấy đã không cho nhầm liều."], ["He talks as if he were the director.", "Anh ta nói như thể mình là giám đốc."]], "err": [["If I would have saved more, I could buy a flat now.", "If I had saved more, I could buy a flat now.", "Mệnh đề if không dùng would; dùng had V3."], ["I wish I studied harder last year.", "I wish I had studied harder last year.", "Tiếc việc trong quá khứ dùng wish + had V3."], ["If she had taken the medicine, she will feel better now.", "If she had taken the medicine, she would feel better now.", "Điều kiện không có thật dùng would + V, không dùng will."]], "quiz": [["If I had listened to the doctor, I ___ healthier now.", ["would be", "would have been", "will be", "had been"], 0, "Now cho kết quả hiện tại: would + V.", {"would have been": "Would have been nói về kết quả trong quá khứ, nhưng now cho thấy hiện tại; mệnh đề chính cần would be.", "will be": "Will be là tương lai thật, không đi với If I had listened trong câu điều kiện giả định; kết quả phải là would be.", "had been": "Had been là quá khứ hoàn thành, không dùng cho mệnh đề kết quả sau modal; mệnh đề chính cần would be healthier now."}], ["He acts as if he ___ the boss, but he is a trainee.", ["would be", "were", "being", "are"], 1, "Không thật ở hiện tại: as if + were.", {"would be": "Sau as if nói điều trái thực tế dùng quá khứ giả định were, không dùng would be.", "being": "Dạng being một mình không làm động từ chính sau as if; cần quá khứ giả định were.", "are": "Are không hợp với chủ ngữ he (phải là is); hơn nữa để nói điều không có thật (he is a trainee) sau as if cần were."}]]},
+{"id": "inversion", "lvl": "C1", "title": "Inversion", "vi": "Đảo ngữ (phủ định, điều kiện)", "exams": ["C1", "IELTS", "VSTEP"], "form": "Trạng từ phủ định/hạn chế (never, rarely, seldom, little, hardly...when, no sooner...than, not only...but also, only when, not until, under no circumstances) + trợ động từ + S + V. Điều kiện đảo: Had + S + V3 / Should + S + V / Were + S + to V.", "use": "Văn phong trang trọng, bài viết học thuật, nhấn mạnh. Hay gặp trong bài Use of English C1 và IELTS Writing.", "ex": [["Never have I seen such a calm patient.", "Tôi chưa bao giờ thấy một bệnh nhân bình tĩnh như vậy."], ["No sooner had she left than the phone rang.", "Cô ấy vừa đi thì điện thoại reo."], ["Had I known, I would have called earlier.", "Nếu tôi biết, tôi đã gọi sớm hơn."]], "err": [["Not only she forgot the form, but...", "Not only did she forget the form, but...", "Sau Not only đầu câu phải đảo trợ động từ: did she forget."], ["No sooner had he arrived when it rained.", "No sooner had he arrived than it rained.", "No sooner đi với than; hardly đi với when."], ["Only when the test ended we left.", "Only when the test ended did we leave.", "Only when đầu câu kéo theo đảo ngữ ở mệnh đề chính."]], "quiz": [["Rarely ___ such a rapid recovery.", ["have I seen", "I have seen", "I seen have", "did I seen"], 0, "Rarely đầu câu: đảo trợ động từ trước chủ ngữ.", {"I have seen": "Rarely đứng đầu câu mang nghĩa phủ định nên phải đảo have lên trước chủ ngữ (have I seen).", "I seen have": "trật tự này sai: have không đứng sau phân từ seen, và Rarely ở đầu câu đòi đảo have lên trước I.", "did I seen": "did phải đi với động từ nguyên mẫu (did I see), không đi với seen; và câu cần thì hoàn thành have I seen."}], ["___ you need help, please call reception.", ["Should", "Would", "Do", "Were"], 0, "Đảo ngữ điều kiện loại 1: Should + S + V.", {"Would": "Would không dùng để mở đầu đảo ngữ điều kiện loại 1; cấu trúc đúng là Should + S + V.", "Do": "Do + you need không thể thay cho If trong câu điều kiện đảo ngữ; đảo ngữ điều kiện loại 1 dùng Should.", "Were": "Were mở đầu đảo ngữ điều kiện loại 2 (Were I...), và need ở đây là động từ chia, không đi với Were + you need."}]]},
+{"id": "participle-clauses", "lvl": "C1", "title": "Participle clauses", "vi": "Mệnh đề phân từ và mệnh đề quan hệ rút gọn", "exams": ["C1", "IELTS", "VSTEP"], "form": "V-ing (chủ động, đồng thời), V3 (bị động), Having + V3 (xảy ra trước), Not + V-ing (phủ định). Chủ ngữ của mệnh đề phân từ phải trùng chủ ngữ mệnh đề chính. Rút gọn quan hệ: the man (who is) standing there; the drug (which was) developed in 1998.", "use": "Viết câu gọn, văn phong học thuật. Lỗi dangling participle (chủ ngữ treo) hay bị trừ điểm trong IELTS Writing và bài sửa lỗi.", "ex": [["Having finished her shift, she went straight home.", "Sau khi hết ca, cô ấy về thẳng nhà."], ["Overwhelmed by the workload, the doctors asked for help.", "Bị quá tải công việc, các bác sĩ xin hỗ trợ."], ["The woman standing by the door is my aunt.", "Người phụ nữ đứng cạnh cửa là dì tôi."]], "err": [["Walking to the station, a car almost hit me.", "Walking to the station, I was almost hit by a car.", "Chủ ngữ của Walking phải là I, không phải a car (dangling participle)."], ["Having been finished the shift, she left.", "Having finished the shift, she left.", "Chủ ngữ tự làm hành động nên dùng chủ động: Having finished."], ["The students sat at the back were talking.", "The students sitting at the back were talking.", "Nghĩa chủ động rút gọn bằng V-ing."]], "quiz": [["___ what to do, she asked a colleague.", ["Not knowing", "Knowing not", "Not known", "Not know"], 0, "Phủ định: Not + V-ing.", {"Knowing not": "Knowing not đặt not sau động từ, sai cấu trúc; phủ định mệnh đề phân từ là Not + V-ing.", "Not known": "Not known mang nghĩa bị động (không được biết), nhưng cô ấy là người không biết nên cần chủ động Not knowing.", "Not know": "Not know dùng nguyên mẫu sau Not, nhưng mệnh đề phân từ cần V-ing: Not knowing."}], ["The patients ___ in Ward 4 will be moved tomorrow.", ["treated", "treating", "treat", "treats"], 0, "Bệnh nhân được điều trị (bị động): V3.", {"treating": "treating mang nghĩa chủ động, nhưng bệnh nhân được điều trị nên cần treated.", "treat": "treat là nguyên mẫu, không dùng để rút gọn mệnh đề quan hệ sau danh từ số nhiều the patients.", "treats": "treats là động từ chia ngôi thứ ba số ít, không thể đứng sau patients để rút gọn mệnh đề, và cũng không khớp số."}]]},
+{"id": "cleft-sentences", "lvl": "C1", "title": "Cleft sentences", "vi": "Câu chẻ (nhấn mạnh)", "exams": ["C1", "IELTS", "VSTEP"], "form": "It-cleft: It + be + phần nhấn mạnh + that/who + mệnh đề. Wh-cleft: What + S + V + be + phần nhấn mạnh. All + S + V + be + (to) V.", "use": "Nhấn mạnh thông tin mới hoặc đối lập, rất hay gặp trong nói và viết C1.", "ex": [["It was the delay that upset him.", "Chính sự chậm trễ làm anh ấy khó chịu."], ["What she needs is a long holiday.", "Điều cô ấy cần là một kỳ nghỉ dài."], ["All you have to do is sign here.", "Bạn chỉ cần ký vào đây."]], "err": [["It was in 2015 what the clinic opened.", "It was in 2015 that the clinic opened.", "It-cleft dùng that (hoặc who cho người), không dùng what."], ["That I need is a rest.", "What I need is a rest.", "Wh-cleft bắt đầu bằng What."], ["It was the nurse noticed the error.", "It was the nurse who noticed the error.", "It-cleft cần who/that sau phần nhấn mạnh."]], "quiz": [["___ worries me is the cost, not the risk.", ["What", "That", "Which", "Who"], 0, "Wh-cleft mở đầu bằng What.", {"That": "That không mở đầu một wh-cleft nghĩa “điều làm tôi lo”; phải dùng What.", "Which": "Which không dùng làm từ mở đầu wh-cleft nghĩa “điều mà”; cần What.", "Who": "Who chỉ người, còn ở đây cần nói “điều làm tôi lo” (chi phí), nên phải dùng What."}], ["It was my sister ___ first told me about this course.", ["who", "what", "whose", "whom"], 0, "It was + người + who.", {"what": "what không dùng trong it-cleft nhấn mạnh người my sister; cần who (hoặc that).", "whose": "whose chỉ sở hữu và cần danh từ đi sau, nhưng sau đó là trạng từ first; cần who.", "whom": "whom là dạng tân ngữ; ở đây từ cần thiết làm chủ ngữ của told, nên phải dùng who."}]]}
 ];
 GRAMMAR.push(...GRAMMAR_NEW);
 { const _o = ["A1", "A2", "B1", "B2", "C1"]; GRAMMAR.sort((a, b) => _o.indexOf(a.lvl) - _o.indexOf(b.lvl)); }
@@ -503,527 +503,527 @@ const UNITS = [
    o|câu đúng hoàn chỉnh|giải thích                                    (sắp xếp câu)
    ------------------------------------------------------------ */
 const GRAMMAR_BANK = {
-be: `c|My brother ___ a doctor.|am / is / are|1|He, she, it và danh từ số ít đi với is.
-c|They ___ very busy today.|is / are / be|1|They đi với are.
-c|I ___ from Da Nang.|am / is / are|0|I đi với am.
-c|___ you a student?|Is / Are / Am|1|Câu hỏi với you: Are you …?
+be: `c|My brother ___ a doctor.|am / is / are / be|1|He, she, it và danh từ số ít đi với is.|am=>Chủ ngữ My brother là ngôi thứ ba số ít nên không đi với am; am chỉ dùng với chủ ngữ I.;;are=>Chủ ngữ My brother là số ít nên không dùng are; are đi với you/we/they và danh từ số nhiều.;;be=>Dạng nguyên mẫu be không chia theo chủ ngữ My brother; câu khẳng định hiện tại cần dùng is.
+c|They ___ very busy today.|is / are / be / am|1|They đi với are.|is=>Chủ ngữ They là số nhiều nên không đi với is; is chỉ dùng với he/she/it và danh từ số ít.;;be=>Be ở dạng nguyên mẫu không chia theo chủ ngữ They; trong câu hiện tại cần dùng are.;;am=>Am chỉ đi với chủ ngữ I, không dùng được với chủ ngữ They.
+c|I ___ from Da Nang.|am / is / are / be|0|I đi với am.|is=>Is dùng với he/she/it hoặc danh từ số ít; chủ ngữ I phải đi với am.;;are=>Are dùng với you/we/they; chủ ngữ I phải đi với am, ví dụ I am from Da Nang.;;be=>Be nguyên mẫu không dùng làm động từ chính sau chủ ngữ I trong câu hiện tại; phải chia thành am.
+c|___ you a student?|Is / Are / Am / Be|1|Câu hỏi với you: Are you …?|Is=>Chủ ngữ you không đi với Is; Is chỉ dùng với he/she/it và danh từ số ít.;;Am=>Am chỉ đi với chủ ngữ I, nên không thể đặt trước you trong câu hỏi này.;;Be=>Be nguyên mẫu không thể đứng đầu câu hỏi thường với you; phải đảo Are lên trước chủ ngữ.
 t|She ___ (not / be) at home now.|isn't;is not;'s not|Phủ định: is not, viết tắt isn't.
 t|We ___ (be) tired after the night shift.|are;'re|We đi với are.
-x|Chọn câu đúng|She very tired. / She is very tired. / She are very tired.|1|Trước tính từ phải có be.
-x|Chọn câu đúng|I am agree with you. / I agree with you. / I agreeing with you.|1|agree đã là động từ, không thêm be.
+x|Chọn câu đúng|She very tired. / She is very tired. / She are very tired. / She be very tired.|1|Trước tính từ phải có be.|She very tired.=>Thiếu động từ be: trước tính từ tired phải có is, tiếng Anh không bỏ động từ như tiếng Việt.;;She are very tired.=>Chủ ngữ She là số ít nên đi với is; are chỉ dùng với you/we/they và danh từ số nhiều.;;She be very tired.=>Be nguyên mẫu không chia theo chủ ngữ She; câu khẳng định hiện tại cần is.
+x|Chọn câu đúng|I am agree with you. / I agree with you. / I agreeing with you. / I do agreeing with you.|1|agree đã là động từ, không thêm be.|I am agree with you.=>Agree đã là động từ thường nên không thêm am; am agree là lỗi dịch từ tiếng Việt "là đồng ý".;;I agreeing with you.=>Agreeing là dạng V-ing thiếu trợ động từ be nên không thể làm động từ chính của câu.;;I do agreeing with you.=>Sau trợ động từ do phải dùng động từ nguyên mẫu agree, không dùng V-ing agreeing.
 f|The patients is in room three.|is|are|Chủ ngữ số nhiều dùng are.
 o|Where are you from?|Câu hỏi: từ để hỏi + be + chủ ngữ.`,
-"present-simple": `c|The patient ___ two tablets a day.|take / takes / taking|1|The patient = he/she nên dùng takes.
-c|___ your father work at weekends?|Do / Does / Is|1|Your father là ngôi thứ ba số ít: Does.
-c|She never ___ coffee in the evening.|drink / drinks / drinking|1|She + drinks; never đứng trước động từ.
-c|My parents ___ in Hue.|live / lives / living|0|Chủ ngữ số nhiều: live.
+"present-simple": `c|The patient ___ two tablets a day.|take / takes / taking / taken|1|The patient = he/she nên dùng takes.|take=>Chủ ngữ The patient là ngôi thứ ba số ít nên động từ hiện tại đơn phải thêm -s (takes); dạng gốc take chỉ đi với I/you/we/they.;;taking=>Dạng V-ing một mình không thể làm động từ chính của câu; ở đây cần động từ chia thì hiện tại đơn takes để nói thói quen dùng thuốc.;;taken=>Quá khứ phân từ taken không đứng một mình làm vị ngữ; câu nói thói quen mỗi ngày nên cần động từ chia hiện tại đơn là takes.
+c|___ your father work at weekends?|Do / Does / Is / Did|1|Your father là ngôi thứ ba số ít: Does.|Do=>Chủ ngữ your father là ngôi thứ ba số ít nên trợ động từ phải là does; do chỉ đi với I/you/we/they và danh từ số nhiều.;;Is=>Is là dạng của động từ be, không dùng làm trợ động từ trước động từ thường work; câu hỏi hiện tại đơn với work cần Does.;;Did=>Did là trợ động từ thì quá khứ, nhưng câu có at weekends nói về thói quen hiện tại nên cần Does, không phải Did.
+c|She never ___ coffee in the evening.|drink / drinks / drinking / drinked|1|She + drinks; never đứng trước động từ.|drink=>Chủ ngữ She là ngôi thứ ba số ít nên động từ hiện tại đơn phải có -s (drinks); never không làm thay đổi quy tắc này.;;drinking=>Dạng V-ing không thể đứng một mình làm động từ chính sau never trong câu hiện tại đơn; cần drinks để nói thói quen.;;drinked=>Drink là động từ bất quy tắc, không có dạng drinked; hơn nữa câu nói thói quen hiện tại nên cần drinks.
+c|My parents ___ in Hue.|live / lives / living / is live|0|Chủ ngữ số nhiều: live.|lives=>Chủ ngữ My parents là số nhiều nên động từ không thêm -s; lives chỉ đi với ngôi thứ ba số ít như my mother.;;living=>Dạng V-ing một mình không làm vị ngữ được; cần động từ chia thì hiện tại đơn live để nói nơi cha mẹ đang sinh sống.;;is live=>Không kết hợp be với động từ nguyên mẫu live; hơn nữa is đi với chủ ngữ số ít, còn My parents là số nhiều.
 t|He ___ (watch) TV every evening.|watches|Động từ tận cùng -ch thêm -es.
 t|She ___ (not / smoke).|doesn't smoke;does not smoke|Phủ định ngôi thứ ba: doesn't + động từ nguyên mẫu.
 t|___ it hurt when you walk?|Does|Câu hỏi với it: Does.
-x|Chọn câu đúng|Does she smokes? / Does she smoke? / Do she smoke?|1|Sau does dùng động từ nguyên mẫu.
+x|Chọn câu đúng|Does she smokes? / Does she smoke? / Do she smoke? / Does she smoking?|1|Sau does dùng động từ nguyên mẫu.|Does she smokes?=>Sau trợ động từ Does, động từ chính phải ở dạng nguyên mẫu (smoke); dấu -s đã được chuyển sang Does nên không thêm vào smokes nữa.;;Do she smoke?=>Chủ ngữ she là ngôi thứ ba số ít nên trợ động từ phải là Does; Do chỉ đi với I/you/we/they.;;Does she smoking?=>Sau trợ động từ Does phải dùng động từ nguyên mẫu không to (smoke), không dùng dạng V-ing trong câu hỏi hiện tại đơn.
 f|He work at the hospital every day.|work|works|Ngôi thứ ba số ít cần -s.
 o|How often do you exercise?|How often + do + chủ ngữ + động từ.`,
-plurals: `c|Can you give me some ___?|advice / advices / an advice|0|advice không đếm được.
-c|There are five ___ in the waiting room.|person / people / peoples|1|Số nhiều của person là people.
-c|How ___ water do you drink a day?|many / much / a few|1|water không đếm được nên dùng much.
-c|I have a ___ questions.|few / little / much|0|questions đếm được nên dùng a few.
-c|There isn't ___ milk in the fridge.|many / much / few|1|milk không đếm được nên dùng much.
+plurals: `c|Can you give me some ___?|advice / advices / an advice / advises|0|advice không đếm được.|advices=>advice là danh từ không đếm được nên không thêm -s để tạo số nhiều; "some advice" mới đúng.;;an advice=>advice không đếm được nên không đi với mạo từ an/a; còn some đã đứng trước chỗ trống nên dùng thêm an là thừa.;;advises=>advises là dạng động từ (advise, ngôi thứ ba số ít), trong khi sau some cần một danh từ là advice.
+c|There are five ___ in the waiting room.|person / people / peoples / people's|1|Số nhiều của person là people.|person=>person là số ít, mà five đòi hỏi danh từ số nhiều; số nhiều thông thường của person là people.;;peoples=>people vốn đã là số nhiều nên không thêm -s; peoples chỉ dùng khi nói về các dân tộc khác nhau.;;people's=>people's là dạng sở hữu (của những người), không phải danh từ số nhiều trơn; sau five ta cần people.
+c|How ___ water do you drink a day?|many / much / a few / few|1|water không đếm được nên dùng much.|many=>many chỉ đi với danh từ đếm được số nhiều, còn water là danh từ không đếm được nên phải hỏi How much.;;a few=>a few chỉ đi với danh từ đếm được số nhiều và không đứng sau How; với water cần How much.;;few=>few chỉ đi với danh từ đếm được số nhiều (few eggs) và không dùng sau How để hỏi số lượng; water không đếm được nên cần How much.
+c|I have a ___ questions.|few / little / much / many|0|questions đếm được nên dùng a few.|little=>little/a little đi với danh từ không đếm được, còn questions là danh từ đếm được số nhiều nên cần a few.;;much=>much chỉ đi với danh từ không đếm được và thường dùng trong câu phủ định hoặc câu hỏi; questions đếm được nên không dùng much.;;many=>sau mạo từ a không dùng many; many đứng một mình (many questions), còn cụm cố định "a few questions" mới có a.
+c|There isn't ___ milk in the fridge.|many / much / few / a few|1|milk không đếm được nên dùng much.|many=>many đi với danh từ đếm được số nhiều, còn milk là danh từ không đếm được nên không dùng many.;;few=>few đi với danh từ đếm được số nhiều (few eggs), không đi với milk là danh từ không đếm được.;;a few=>a few cũng chỉ dùng với danh từ đếm được số nhiều và mang nghĩa khẳng định "một vài", không hợp với milk.
 t|I have two ___ (child).|children|Số nhiều bất quy tắc: child → children.
 t|Brush your ___ (tooth) twice a day.|teeth|tooth → teeth.
-x|Chọn câu đúng|I need some informations. / I need some information. / I need an information.|1|information không đếm được.
-x|Chọn câu đúng|three patient / three patients / three patientes|1|Số nhiều thêm -s.
+x|Chọn câu đúng|I need some informations. / I need some information. / I need an information. / I need a informations.|1|information không đếm được.|I need some informations.=>information là danh từ không đếm được nên không thêm -s thành informations.;;I need an information.=>information không đếm được nên không đứng sau mạo từ an; muốn đếm phải nói a piece of information.;;I need a informations.=>câu mắc hai lỗi: information không có số nhiều và danh từ bắt đầu bằng nguyên âm cũng không đi với a.
+x|Chọn câu đúng|three patient / three patients / three patientes / three patiens|1|Số nhiều thêm -s.|three patient=>sau số đếm three phải dùng danh từ số nhiều, nên patient phải thêm -s thành patients.;;three patientes=>danh từ tận cùng bằng -t chỉ thêm -s, không thêm -es; patientes không phải dạng số nhiều đúng.;;three patiens=>patiens viết thiếu chữ t trong từ gốc; số nhiều đúng của patient là patients, giữ nguyên chữ t rồi thêm -s.
 f|We bought new furnitures for the clinic.|furnitures|furniture|furniture không đếm được.`,
-articles: `c|She is ___ engineer.|a / an / the|1|engineer bắt đầu bằng âm nguyên âm.
-c|In general, ___ exercise is good for you.|The / An / (không mạo từ)|2|Nói chung chung: không mạo từ.
-c|I saw ___ doctor yesterday. ___ doctor was very kind.|a … The / an … The / a … An|0|Lần đầu nhắc dùng a, lần sau dùng the.
-c|What ___ useful idea!|a / an / the|0|useful bắt đầu bằng âm /j/ (phụ âm) nên dùng a; trong câu cảm thán What a …! không dùng the.
-c|It takes ___ hour to get there.|a / an / the|1|hour bắt đầu bằng âm nguyên âm (h câm).
-c|The window is closed but the door is open. Can you close ___ door, please?|a / an / the|2|Cánh cửa cụ thể mà cả hai đều biết.
+articles: `c|She is ___ engineer.|a / an / the / —|1|engineer bắt đầu bằng âm nguyên âm.|a=>a đi trước từ bắt đầu bằng phụ âm; engineer mở đầu bằng âm nguyên âm /e/ nên phải dùng an.;;the=>the dùng cho người đã xác định, trong khi câu này chỉ nói nghề nghiệp của cô ấy, nên cần mạo từ không xác định an.;;—=>danh từ đếm được số ít chỉ nghề nghiệp không thể đứng trơ trọi, phải có mạo từ an trước engineer.
+c|In general, ___ exercise is good for you.|The / An / (không mạo từ) / A|2|Nói chung chung: không mạo từ.|The=>The làm exercise thành một thứ cụ thể đã biết, còn câu này nói chung về việc tập thể dục nên không dùng the.;;An=>An chỉ đi với danh từ đếm được số ít, mà exercise ở đây là danh từ không đếm được nói chung nên không có mạo từ.;;A=>A không đi với danh từ không đếm được như exercise, và cũng không hợp nghĩa nói chung của câu.
+c|I saw ___ doctor yesterday. ___ doctor was very kind.|a … The / an … The / a … An / a … —|0|Lần đầu nhắc dùng a, lần sau dùng the.|an … The=>an đi với âm nguyên âm, còn doctor bắt đầu bằng phụ âm /d/ nên phải dùng a ở lần nhắc đầu tiên.;;a … An=>lần nhắc thứ hai dùng An là sai, vì bác sĩ đã được nhắc rồi nên phải dùng the; hơn nữa doctor bắt đầu bằng phụ âm nên cũng không dùng an.;;a … —=>doctor là danh từ đếm được số ít nên không thể bỏ trống mạo từ; hơn nữa bác sĩ đã được nhắc ở câu trước nên lần hai phải dùng The.
+c|What ___ useful idea!|a / an / the / —|0|useful bắt đầu bằng âm /j/ (phụ âm) nên dùng a; trong câu cảm thán What a …! không dùng the.|an=>an đứng trước âm nguyên âm, mà useful đọc là /ju:/ bắt đầu bằng phụ âm /j/ nên phải dùng a.;;the=>trong câu cảm thán What a/an + danh từ đếm được số ít không dùng the, vì ý khen chứ không chỉ vật xác định.;;—=>idea là danh từ đếm được số ít nên bắt buộc có mạo từ a sau What; không để trống như với danh từ số nhiều.
+c|It takes ___ hour to get there.|a / an / the / —|1|hour bắt đầu bằng âm nguyên âm (h câm).|a=>a chỉ dùng trước âm phụ âm, nhưng hour có h câm, đọc /aʊə/ bắt đầu bằng nguyên âm nên phải dùng an.;;the=>the nghĩa là một khoảng giờ cụ thể đã xác định, còn câu này chỉ nói đi mất một giờ nói chung nên cần an.;;—=>hour là danh từ đếm được số ít, nên phải có mạo từ an đi trước, không thể để trống như danh từ số nhiều.
+c|The window is closed but the door is open. Can you close ___ door, please?|a / an / the / —|2|Cánh cửa cụ thể mà cả hai đều biết.|a=>a dùng cho vật chưa xác định, còn ở đây cả hai đều biết cánh cửa nào (cửa vẫn mở ở câu trước) nên phải dùng the.;;an=>an không hợp vì door bắt đầu bằng phụ âm, và cũng không chỉ cánh cửa cụ thể đã nhắc ở câu trước như the.;;—=>door là danh từ đếm được số ít, đang chỉ cánh cửa cụ thể nên không được bỏ mạo từ mà phải dùng the.
 t|She has ___ X-ray this afternoon.|an|X-ray đọc bắt đầu bằng âm /e/.
-x|Chọn câu đúng (nói về cuộc sống nói chung)|The life is hard. / Life is hard. / A life is hard.|1|Nói chung chung không dùng the.
+x|Chọn câu đúng (nói về cuộc sống nói chung)|The life is hard. / Life is hard. / A life is hard. / Life are hard.|1|Nói chung chung không dùng the.|The life is hard.=>The life làm cuộc sống thành một thứ cụ thể, trong khi câu nói chung về cuộc sống nên không dùng the.;;A life is hard.=>A life dùng cho một cuộc đời đơn lẻ nào đó, không phải khái niệm chung đang nói, nên A life is hard không hợp nghĩa.;;Life are hard.=>life là danh từ không đếm được nên động từ phải là is (số ít); are chỉ đi với chủ ngữ số nhiều.
 f|My sister is nurse.|nurse|a nurse|Nghề nghiệp cần a hoặc an.
 f|I usually have the breakfast at seven.|the|(bỏ the)|Không dùng the trước bữa ăn nói chung.`,
-"there-is": `c|___ any toilets on this floor?|Is there / Are there / Have|1|toilets số nhiều: Are there.
-c|There ___ a pharmacy near the station.|is / are / have|0|a pharmacy số ít: There is.
-c|There ___ two lifts in this building.|is / are / be|1|Số nhiều: There are.
-c|There isn't ___ milk left.|some / any / a|1|Câu phủ định dùng any.
+"there-is": `c|___ any toilets on this floor?|Is there / Are there / Have / There are|1|toilets số nhiều: Are there.|Is there=>toilets là danh từ số nhiều nên không đi với there is; câu hỏi cần dạng số nhiều Are there.;;Have=>Tiếng Việt nói “có” nhưng tiếng Anh không dùng have để nói sự tồn tại; phải dùng cấu trúc Is/Are there.;;There are=>Trong câu hỏi, phải đảo be lên trước there (Are there…?), không để there are theo trật tự câu khẳng định.
+c|There ___ a pharmacy near the station.|is / are / have / be|0|a pharmacy số ít: There is.|are=>a pharmacy là danh từ số ít nên không dùng are; are chỉ đi với danh từ số nhiều.;;have=>Để nói “có” (tồn tại) tiếng Anh dùng there is/are chứ không dùng have; have cũng không chia theo there.;;be=>Nguyên mẫu be không thể làm động từ chính trong câu khẳng định hiện tại; phải chia thành is theo a pharmacy.
+c|There ___ two lifts in this building.|is / are / be / have|1|Số nhiều: There are.|is=>two lifts là danh từ số nhiều nên không đi với is; there is chỉ dùng cho danh từ số ít.;;be=>Be ở dạng nguyên mẫu không dùng làm động từ chính ở hiện tại đơn; cần chia thành are cho danh từ số nhiều.;;have=>There have không phải cấu trúc tiếng Anh; muốn nói “có” (tồn tại) phải dùng there are với two lifts.
+c|There isn't ___ milk left.|some / any / a / many|1|Câu phủ định dùng any.|some=>Câu phủ định có isn't thường dùng any chứ không dùng some; some chủ yếu xuất hiện trong câu khẳng định.;;a=>milk là danh từ không đếm được nên không dùng mạo từ a; trong câu phủ định cần any.;;many=>many chỉ đi với danh từ đếm được số nhiều, còn milk là danh từ không đếm được nên không dùng many.
 t|___ there a bank near here?|Is|Câu hỏi số ít: Is there …?
 t|There ___ (not / be) any beds available.|aren't;are not;'re not|Số nhiều phủ định: aren't.
-x|Chọn câu đúng|Have a café in the hospital? / Is there a café in the hospital? / There is a café in the hospital have?|1|Không dịch “có” thành have.
-x|Chọn câu đúng|There is many people here. / There are many people here. / There have many people here.|1|Số nhiều dùng are.
+x|Chọn câu đúng|Have a café in the hospital? / Is there a café in the hospital? / There is a café in the hospital have? / There a café is in the hospital?|1|Không dịch “có” thành have.|Have a café in the hospital?=>Tiếng Anh không dùng have để hỏi “có … không”; câu hỏi tồn tại phải mở đầu bằng Is there.;;There is a café in the hospital have?=>Đây là kiểu dịch từng chữ “có … không?”, thêm have ở cuối; tiếng Anh chỉ cần đảo: Is there …?;;There a café is in the hospital?=>Trật tự từ bị sai: trong câu hỏi, is phải đứng trước there (Is there a café…?), không đặt sau a café.
+x|Chọn câu đúng|There is many people here. / There are many people here. / There have many people here. / There be many people here.|1|Số nhiều dùng are.|There is many people here.=>many people là số nhiều nên phải dùng there are; there is chỉ đi với danh từ số ít hoặc không đếm được.;;There have many people here.=>Không dùng have để nói “có” (tồn tại); phải dùng there are với danh từ số nhiều many people.;;There be many people here.=>be nguyên mẫu không được dùng làm động từ chính ở câu khẳng định hiện tại; phải chia là are cho people.
 f|There are a problem with my phone.|are|is|a problem là số ít.
 o|Is there a pharmacy near here?|Is there + danh từ số ít?`,
-questions: `x|Chọn câu đúng|What you are doing? / What are you doing? / What doing you?|1|Đảo are lên trước you.
-x|Chọn câu đúng|How often you exercise? / How often do you exercise? / How often exercise you?|1|Cần trợ động từ do.
-c|Where ___ it hurt?|do / does / is|1|it là ngôi thứ ba số ít: does.
-c|A: When ___ the pain start? B: Two days ago.|did / does / was|0|Quá khứ: did + động từ nguyên mẫu.
-c|How long ___ you had the cough?|do / have / did|1|How long have you had …?
+questions: `x|Chọn câu đúng|What you are doing? / What are you doing? / What doing you? / What are you do?|1|Đảo are lên trước you.|What you are doing?=>Trong câu hỏi với What, trợ động từ are phải đảo lên trước chủ ngữ you; giữ trật tự câu khẳng định là sai.;;What doing you?=>Doing đứng trước you làm mất trợ động từ are và sai trật tự; cần What are you doing?;;What are you do?=>What are you do thiếu -ing sau are; thì hiện tại tiếp diễn cần are + V-ing, tức là doing.
+x|Chọn câu đúng|How often you exercise? / How often do you exercise? / How often exercise you? / How often you do exercise?|1|Cần trợ động từ do.|How often you exercise?=>Câu hỏi hiện tại đơn cần trợ động từ do trước chủ ngữ; không được giữ trật tự câu khẳng định you exercise.;;How often exercise you?=>Động từ thường exercise không được đảo lên trước chủ ngữ you; phải mượn trợ động từ do.;;How often you do exercise?=>Thiếu trợ động từ do đứng trước you; you do exercise là trật tự câu khẳng định, không phải câu hỏi.
+c|Where ___ it hurt?|do / does / is / are|1|it là ngôi thứ ba số ít: does.|do=>Chủ ngữ it là ngôi thứ ba số ít nên trợ động từ phải là does; do dùng với I/you/we/they.;;is=>Is không đi với động từ hurt ở hiện tại đơn; sau is cần V-ing hoặc tính từ, còn câu này cần does + hurt.;;are=>Are chỉ đi với you/we/they và danh từ số nhiều, nên không hợp với chủ ngữ it; hurt ở đây cần trợ động từ does.
+c|A: When ___ the pain start? B: Two days ago.|did / does / was / do|0|Quá khứ: did + động từ nguyên mẫu.|does=>Does dùng cho hiện tại đơn, nhưng the pain start là việc đã xảy ra hai ngày trước nên cần did.;;was=>Was đi với tính từ hoặc V-ing/V3; trước động từ nguyên mẫu start trong câu hỏi quá khứ phải dùng did.;;do=>Do là trợ động từ hiện tại, mâu thuẫn với two days ago ở quá khứ; cần did the pain start.
+c|How long ___ you had the cough?|do / have / did / has|1|How long have you had …?|do=>Do là trợ động từ hiện tại đơn, không đi với had the cough (V3); How long ... had cần trợ động từ have.;;did=>Did đi với động từ nguyên mẫu (did you have), nhưng chỗ trống đứng trước had là V3, nên phải là have.;;has=>Has chỉ đi với ngôi thứ ba số ít; chủ ngữ you cần have trong thì hiện tại hoàn thành.
 t|___ you take any medicine yesterday?|Did|Câu hỏi quá khứ: Did.
 t|What ___ (be) your name?|is;'s|What is your name?
 f|Where you live?|you|do you|Thiếu trợ động từ do.
 o|What does the pain feel like?|Từ để hỏi + does + chủ ngữ + động từ.
 o|How long have you had the cough?|Hỏi thời gian kéo dài: How long have you had …?`,
-prepositions: `c|I was born ___ 2003.|on / in / at|1|Năm dùng in.
-c|The X-ray department is ___ the second floor.|in / at / on|2|Tầng dùng on.
-c|The appointment is ___ 9 am.|in / on / at|2|Giờ dùng at.
-c|See you ___ Monday.|in / on / at|1|Ngày trong tuần dùng on.
-c|She's allergic ___ penicillin.|with / to / of|1|allergic to.
-c|I'm interested ___ cardiology.|on / in / at|1|interested in.
+prepositions: `c|I was born ___ 2003.|on / in / at / of|1|Năm dùng in.|on=>On dùng với ngày cụ thể (on 5 May) hoặc thứ; năm như 2003 phải dùng giới từ in.;;at=>At dùng với giờ giấc hoặc thời điểm chính xác (at 9 am); với năm như 2003 phải dùng in.;;of=>Of không phải giới từ chỉ thời gian trong cấu trúc này; muốn nói sinh vào năm nào phải dùng in 2003.
+c|The X-ray department is ___ the second floor.|in / at / on / by|2|Tầng dùng on.|in=>In dùng cho không gian bên trong (in the building); tầng lầu được nói bằng on the second floor, vì tầng xem như một bề mặt.;;at=>At dùng cho một điểm cụ thể (at the door); với tầng của toà nhà, cách nói chuẩn là on the second floor.;;by=>By nghĩa là bên cạnh hoặc trước hạn chót, không dùng để chỉ vị trí ở một tầng; phải dùng on the second floor.
+c|The appointment is ___ 9 am.|in / on / at / by|2|Giờ dùng at.|in=>In dùng với buổi trong ngày hoặc khoảng thời gian (in the morning); với giờ cụ thể như 9 am phải dùng at.;;on=>On dùng với ngày và thứ (on Monday); giờ giấc cụ thể như 9 am phải dùng giới từ at.;;by=>By nghĩa là chậm nhất vào lúc nào, nên thành cuộc hẹn trước 9 giờ; để nói cuộc hẹn diễn ra đúng 9 giờ phải dùng at 9 am.
+c|See you ___ Monday.|in / on / at / of|1|Ngày trong tuần dùng on.|in=>In dùng với tháng, năm, mùa hoặc buổi trong ngày; với thứ trong tuần như Monday phải dùng on.;;at=>At dùng với giờ giấc hoặc các cụm như at night, at noon; với thứ trong tuần như Monday phải dùng on.;;of=>Of không chỉ thời gian trong câu chào hẹn này; cụm đúng là See you on Monday vì Monday là một ngày trong tuần.
+c|She's allergic ___ penicillin.|with / to / of / from|1|allergic to.|with=>Tính từ allergic đi cố định với giới từ to; allergic with là lỗi do dịch từ tiếng Việt (dị ứng với) sang.;;of=>Of không đi với allergic; tính từ này luôn đi với to (allergic to penicillin), khác với afraid of hay proud of.;;from=>Allergic không đi với from; from dùng để chỉ nguồn gốc hay xuất phát, còn dị ứng với một chất phải dùng to.
+c|I'm interested ___ cardiology.|on / in / at / with|1|interested in.|on=>Interested đi cố định với in; on không được dùng sau interested dù tiếng Việt có thể nói quan tâm đến, nên dễ nhầm.;;at=>At đi với good/bad/surprised (good at), nhưng sau interested phải dùng in, nên interested at là sai.;;with=>With không đi sau interested; ta nói interested in cardiology, còn with thường đi với pleased, familiar hoặc bored.
 t|It depends ___ the results.|on|depend on.
 t|He is married ___ a nurse.|to|married to.
 f|We discussed about the plan.|about|(bỏ about)|discuss không cần about.
-x|Chọn câu đúng|I'm good in English. / I'm good at English. / I'm good on English.|1|good at.`,
-"past-simple": `c|The pain ___ two days ago.|start / started / has started|1|Có mốc two days ago: quá khứ đơn.
-c|I ___ breakfast yesterday.|don't have / didn't have / didn't had|1|didn't + nguyên mẫu.
-c|We ___ to the beach last weekend.|go / went / gone|1|go → went.
-c|___ you see the doctor yesterday?|Do / Did / Have|1|Câu hỏi quá khứ: Did.
+x|Chọn câu đúng|I'm good in English. / I'm good at English. / I'm good on English. / I'm good of English.|1|good at.|I'm good in English.=>Tính từ good đi với at khi nói về khả năng ở một môn hay kỹ năng; good in là lỗi do chuyển từ giỏi về tiếng Việt.;;I'm good on English.=>On không đi sau good để chỉ năng lực; cách nói đúng là good at English.;;I'm good of English.=>Of không đi sau good để chỉ năng lực ở một môn; cách nói đúng là good at English.`,
+"past-simple": `c|The pain ___ two days ago.|start / started / has started / starts|1|Có mốc two days ago: quá khứ đơn.|start=>Có two days ago là mốc quá khứ nên động từ phải chia quá khứ; start ở dạng nguyên mẫu/hiện tại không phù hợp.;;has started=>Hiện tại hoàn thành không đi với mốc thời gian xác định như two days ago; phải dùng quá khứ đơn started.;;starts=>starts là hiện tại đơn, mâu thuẫn với two days ago chỉ việc đã xảy ra trong quá khứ.
+c|I ___ breakfast yesterday.|don't have / didn't have / didn't had / doesn't have|1|didn't + nguyên mẫu.|don't have=>yesterday chỉ quá khứ nên phải dùng trợ động từ didn't; don't là hiện tại đơn.;;didn't had=>Sau didn't động từ phải ở nguyên mẫu (have); had là dạng quá khứ đã được didn't thể hiện rồi.;;doesn't have=>doesn't là trợ động từ hiện tại đơn ngôi thứ ba, không hợp với yesterday và chủ ngữ I.
+c|We ___ to the beach last weekend.|go / went / gone / going|1|go → went.|go=>last weekend là thời gian quá khứ nên động từ phải ở quá khứ (went); go là nguyên mẫu/hiện tại.;;gone=>gone là quá khứ phân từ, chỉ dùng sau have/has hoặc trong bị động, không đứng một mình làm động từ quá khứ đơn.;;going=>going là dạng V-ing, cần có be đứng trước (were going); đứng một mình nó không thành động từ chính chia thì.
+c|___ you see the doctor yesterday?|Do / Did / Have / Does|1|Câu hỏi quá khứ: Did.|Do=>yesterday là quá khứ nên trợ động từ phải là did; Do là hiện tại đơn.;;Have=>Have + you sẽ đòi quá khứ phân từ (Have you seen…?) và không đi với yesterday; câu quá khứ đơn cần Did.;;Does=>Does là trợ động từ hiện tại ngôi thứ ba, vừa sai thì (yesterday) vừa không hợp với chủ ngữ you.
 t|She ___ (buy) some medicine at the pharmacy.|bought|buy → bought.
 t|He ___ (feel) dizzy this morning.|felt|feel → felt.
 t|They ___ (not / come) to the meeting.|didn't come;did not come|Phủ định: didn't + nguyên mẫu.
 t|I ___ (study) until midnight last night.|studied|study → studied (y → ied).
-x|Chọn câu đúng|Yesterday I go to work. / Yesterday I went to work. / Yesterday I goes to work.|1|Có yesterday vẫn phải chia quá khứ.
-x|Chọn câu đúng|Did you went out? / Did you go out? / Did you goed out?|1|Sau did dùng nguyên mẫu.
+x|Chọn câu đúng|Yesterday I go to work. / Yesterday I went to work. / Yesterday I goes to work. / Yesterday I going to work.|1|Có yesterday vẫn phải chia quá khứ.|Yesterday I go to work.=>Có yesterday chỉ quá khứ nên động từ phải chia quá khứ (went), không để nguyên mẫu go.;;Yesterday I goes to work.=>goes là hiện tại đơn ngôi thứ ba, không hợp với chủ ngữ I và cũng sai thì vì có yesterday.;;Yesterday I going to work.=>going không thể đứng một mình làm động từ chính; thiếu be và cũng không diễn tả hành động đã xong hôm qua.
+x|Chọn câu đúng|Did you went out? / Did you go out? / Did you goed out? / Did you gone out?|1|Sau did dùng nguyên mẫu.|Did you went out?=>Đã có trợ động từ Did mang thì quá khứ, nên động từ chính phải ở nguyên mẫu go, không chia lại thành went.;;Did you goed out?=>go là động từ bất quy tắc (went) và sau Did vẫn phải để nguyên mẫu; goed không tồn tại trong tiếng Anh.;;Did you gone out?=>gone là quá khứ phân từ, không dùng sau Did; sau Did cần động từ nguyên mẫu go.
 f|She visit her grandparents last Sunday.|visit|visited|Có last Sunday: quá khứ đơn.
 o|When did the pain start?|When + did + chủ ngữ + nguyên mẫu.`,
-future: `c|Look at those clouds. It ___ rain.|is going to / will to / rains|0|Có dấu hiệu ở hiện tại: going to.
-c|The phone is ringing. I ___ answer it.|'ll / will to / going to|0|Quyết định ngay lúc nói: will.
-c|I ___ my dentist at 3 pm tomorrow. It's booked.|saw / am seeing / will to see|1|Lịch hẹn đã sắp xếp: hiện tại tiếp diễn.
-c|We ___ study medicine next year. We've already applied.|are going to / is going to / will to|0|Đã nộp đơn rồi nên đây là kế hoạch có sẵn: be going to. Chủ ngữ We đi với are.
-c|I think it ___ be sunny tomorrow.|will / is / going|0|Dự đoán theo ý kiến: will.
+future: `c|Look at those clouds. It ___ rain.|is going to / will to / rains / goes to|0|Có dấu hiệu ở hiện tại: going to.|will to=>Will to sai vì sau will dùng động từ nguyên mẫu không có to; hơn nữa đây là dự đoán dựa trên dấu hiệu (mây đen) nên dùng going to.;;rains=>Rains là hiện tại đơn, dùng cho thói quen hoặc lịch cố định, không diễn tả dự đoán dựa trên dấu hiệu nhìn thấy.;;goes to=>Goes to không phải cấu trúc chỉ tương lai; đây là động từ chỉ di chuyển, còn dự đoán cần be going to + V.
+c|The phone is ringing. I ___ answer it.|'ll / will to / going to / am will|0|Quyết định ngay lúc nói: will.|will to=>Will to sai vì sau will phải là động từ nguyên mẫu không có to; 'll đã có sẵn nghĩa quyết định ngay lúc nói.;;going to=>Going to thiếu động từ be (I'm going to); hơn nữa quyết định tức thời khi điện thoại reo thường dùng will.;;am will=>Am will ghép hai trợ động từ liên tiếp nên sai cấu trúc; chỉ cần một dạng như 'll.
+c|I ___ my dentist at 3 pm tomorrow. It's booked.|saw / am seeing / will to see / have seen|1|Lịch hẹn đã sắp xếp: hiện tại tiếp diễn.|saw=>Saw là quá khứ đơn, trái với tomorrow chỉ tương lai; lịch hẹn đã sắp xếp dùng hiện tại tiếp diễn.;;will to see=>Sau will không có to; will to see là cấu trúc sai, và lịch đã đặt sẵn thường dùng hiện tại tiếp diễn.;;have seen=>Have seen là hiện tại hoàn thành, nói về trải nghiệm đã qua nên mâu thuẫn với at 3 pm tomorrow.
+c|We ___ study medicine next year. We've already applied.|are going to / is going to / will to / will going to|0|Đã nộp đơn rồi nên đây là kế hoạch có sẵn: be going to. Chủ ngữ We đi với are.|is going to=>Is going to không hợp với chủ ngữ We; We đi với are, vì is chỉ dùng cho ngôi thứ ba số ít.;;will to=>Sau will phải là động từ nguyên mẫu không có to; hơn nữa đã nộp đơn rồi là kế hoạch có sẵn nên dùng be going to.;;will going to=>Will going to ghép will với going to nên thừa cấu trúc; chỉ dùng will + V hoặc are going to + V.
+c|I think it ___ be sunny tomorrow.|will / is / going / are|0|Dự đoán theo ý kiến: will.|is=>Is là hiện tại của be, không tạo thành dự đoán tương lai; sau it cần trợ động từ will đi với be.;;going=>Going không thể đứng một mình trước be; muốn dùng thì phải là is going to, mà chỗ trống chỉ có một từ.;;are=>Are không đi với it và làm câu thiếu trợ động từ tương lai; vị trí này cần will đứng trước be.
 t|I ___ (call) you back in five minutes, I promise.|will call;'ll call|Lời hứa: will.
 t|She ___ (not / come) to the party.|won't come;will not come;isn't going to come;is not going to come|Phủ định tương lai.
 t|What ___ you going to do this weekend?|are|What are you going to do …?
-x|Chọn câu đúng|I will to go to Hanoi. / I will go to Hanoi. / I will going to Hanoi.|1|Sau will không có to.
-x|Chọn câu đúng|Tomorrow I go to the clinic at 8. / I'm going to the clinic tomorrow at 8. / I going to the clinic tomorrow.|1|Kế hoạch đã định: hiện tại tiếp diễn.
+x|Chọn câu đúng|I will to go to Hanoi. / I will go to Hanoi. / I will going to Hanoi. / I am will go to Hanoi.|1|Sau will không có to.|I will to go to Hanoi.=>Sau will phải là động từ nguyên mẫu không có to; will to go là lỗi hay gặp do liên tưởng với want to go.;;I will going to Hanoi.=>Will đi với động từ nguyên mẫu, không đi với going; will going không phải dạng đúng.;;I am will go to Hanoi.=>Am will ghép hai trợ động từ liên tiếp nên sai cấu trúc; chỉ cần một dạng, ví dụ will go.
+x|Chọn câu đúng|Tomorrow I went to the clinic at 8. / I'm going to the clinic tomorrow at 8. / I going to the clinic tomorrow. / Tomorrow I will to go to the clinic at 8.|1|Kế hoạch đã định: hiện tại tiếp diễn.|Tomorrow I went to the clinic at 8.=>Went là quá khứ đơn, mâu thuẫn với tomorrow chỉ tương lai; kế hoạch đã sắp xếp dùng hiện tại tiếp diễn I'm going.;;I going to the clinic tomorrow.=>Thiếu trợ động từ am: I going là lỗi bỏ be; hiện tại tiếp diễn cần am going.;;Tomorrow I will to go to the clinic at 8.=>Sau will không dùng to; will to go sai cấu trúc, còn lịch hẹn đã sắp xếp thì dùng hiện tại tiếp diễn.
 f|He is going to visits his parents.|visits|visit|Sau going to dùng nguyên mẫu.
 o|Are you going to take the exam?|Câu hỏi: be + chủ ngữ + going to + V.`,
-comparatives: `c|Today I feel ___ than yesterday.|good / better / more good|1|good → better.
-c|This is the ___ hospital in the city.|bigger / biggest / most big|1|So sánh nhất: the biggest.
-c|The new drug is ___ than the old one.|effectiver / more effective / most effective|1|Tính từ dài: more … than.
-c|My pain is ___ at night than during the day.|bad / worse / worst|1|bad → worse.
-c|The exam was not as ___ as I expected.|hard / harder / hardest|0|as … as dùng tính từ nguyên dạng.
+comparatives: `c|Today I feel ___ than yesterday.|good / better / more good / gooder|1|good → better.|good=>Good là dạng nguyên cấp, không dùng được với than; so sánh hơn của good phải là better.;;more good=>Good là tính từ bất quy tắc nên không thêm more; dạng so sánh hơn đúng là better.;;gooder=>Good không tạo so sánh hơn bằng cách thêm -er; đây là tính từ bất quy tắc, dạng đúng là better.
+c|This is the ___ hospital in the city.|bigger / biggest / most big / more big|1|So sánh nhất: the biggest.|bigger=>Bigger là so sánh hơn, thường đi với than; sau the ... in the city cần so sánh nhất là the biggest.;;most big=>Big là tính từ ngắn một âm tiết nên so sánh nhất thêm -est (biggest, gấp đôi g), không dùng most trước tính từ ngắn.;;more big=>Big là tính từ ngắn nên không tạo so sánh với more, và vì có the ... in the city nên cần so sánh nhất biggest.
+c|The new drug is ___ than the old one.|effectiver / more effective / most effective / most more effective|1|Tính từ dài: more … than.|effectiver=>Effective có ba âm tiết, là tính từ dài nên không thêm -er; so sánh hơn tạo bằng more effective.;;most effective=>Most effective là so sánh nhất, dùng với the và hơn hai đối tượng; câu có than so sánh hai thứ nên cần more effective.;;most more effective=>Không được chồng most và more cùng lúc; câu có than so sánh hai thứ nên chỉ dùng một chữ more effective.
+c|My pain is ___ at night than during the day.|bad / worse / worst / badder|1|bad → worse.|bad=>Bad là dạng nguyên cấp, không đi với than trong so sánh hơn; cần dạng bất quy tắc worse.;;worst=>Worst là so sánh nhất (cần the) và dùng cho hơn hai đối tượng; câu này so sánh hai thời điểm với than nên dùng worse.;;badder=>Bad là tính từ bất quy tắc, không thêm -er; dạng so sánh hơn đúng là worse.
+c|The exam was not as ___ as I expected.|hard / harder / hardest / more hard|0|as … as dùng tính từ nguyên dạng.|harder=>Cấu trúc not as ... as đòi hỏi tính từ nguyên cấp ở giữa; dạng so sánh hơn harder chỉ dùng với than.;;hardest=>Hardest là so sánh nhất và không dùng trong cấu trúc as ... as; ở giữa hai chữ as phải là tính từ nguyên cấp hard.;;more hard=>Hard là tính từ ngắn nên so sánh hơn là harder; hơn nữa trong cấu trúc as ... as chỉ dùng dạng nguyên cấp hard.
 t|Hanoi is ___ (cold) than Ho Chi Minh City in winter.|colder|Tính từ ngắn: -er.
 t|This is the ___ (difficult) exam I've ever taken.|most difficult|Tính từ dài, so sánh nhất: the most.
 t|Walking is ___ (healthy) than driving.|healthier|y → ier.
-x|Chọn câu đúng|It's more better now. / It's much better now. / It's more good now.|1|Nhấn mạnh so sánh hơn dùng much.
-x|Chọn câu đúng|She is taller than me. / She is more tall than me. / She is tallest than me.|0|Tính từ ngắn: taller than.
+x|Chọn câu đúng|It's more better now. / It's much better now. / It's more good now. / It's more worse now.|1|Nhấn mạnh so sánh hơn dùng much.|It's more better now.=>Better đã là dạng so sánh hơn của good, nên không thêm more nữa; dùng chồng hai lần so sánh là sai.;;It's more good now.=>Good là tính từ bất quy tắc, so sánh hơn là better chứ không tạo bằng more good.;;It's more worse now.=>Worse đã là dạng so sánh hơn của bad, nên không thêm more; chồng hai lần so sánh là sai.
+x|Chọn câu đúng|She is taller than me. / She is more tall than me. / She is tallest than me. / She is more taller than me.|0|Tính từ ngắn: taller than.|She is more tall than me.=>Tall là tính từ ngắn một âm tiết nên so sánh hơn thêm -er (taller), không dùng more.;;She is tallest than me.=>Tallest là so sánh nhất (đi với the), không đi với than; so sánh hai người dùng taller than.;;She is more taller than me.=>Taller đã mang nghĩa so sánh hơn nhờ đuôi -er nên không thêm more; dùng cả hai là chồng so sánh.
 f|He is the most tallest student in the class.|most|(bỏ most)|tallest đã là so sánh nhất.
 o|This treatment is more effective than that one.|more + tính từ dài + than.`,
-"present-perfect": `c|She ___ in this hospital since 2019.|works / has worked / worked|1|since + mốc, kéo dài đến nay.
-c|I ___ my keys. I can't find them.|have lost / has lost / have losed|0|Kết quả còn ở hiện tại.
-c|___ you ever had surgery?|Did / Have / Were|1|Trải nghiệm: Have you ever …?
-c|I haven't finished my report ___.|yet / already / just|0|yet trong câu phủ định và câu hỏi.
-c|He has ___ left. You only missed him by a minute.|yet / just / ever|1|just: vừa mới.
+"present-perfect": `c|She ___ in this hospital since 2019.|works / has worked / worked / is working|1|since + mốc, kéo dài đến nay.|works=>works là hiện tại đơn, không diễn tả việc kéo dài từ mốc since 2019 đến nay; since cần thì hiện tại hoàn thành.;;worked=>worked là quá khứ đơn, chỉ việc đã kết thúc; since 2019 diễn tả việc vẫn kéo dài đến hiện tại nên cần has worked.;;is working=>hiện tại tiếp diễn không đi với since + mốc thời gian để nói việc kéo dài đến nay; cần hiện tại hoàn thành has worked.
+c|I ___ my keys. I can't find them.|have lost / has lost / have losed / lose|0|Kết quả còn ở hiện tại.|has lost=>chủ ngữ I đi với have chứ không phải has; has chỉ dùng với he/she/it.;;have losed=>lose là động từ bất quy tắc, phân từ hai là lost chứ không phải losed.;;lose=>lose là hiện tại đơn nguyên mẫu, không diễn tả việc đã mất và kết quả còn ở hiện tại; cần have lost.
+c|___ you ever had surgery?|Did / Have / Were / Are|1|Trải nghiệm: Have you ever …?|Did=>Did đi với động từ nguyên mẫu (Did you ever have...?) chứ không đi với had; cấu trúc Have you ever had... mới khớp với had.;;Were=>Were là quá khứ của be, không kết hợp với had surgery để lập thì hiện tại hoàn thành; cần trợ động từ Have.;;Are=>Are không đi với phân từ had; để hỏi về kinh nghiệm trong đời phải dùng Have you ever had...?
+c|I haven't finished my report ___.|yet / already / just / ever|0|yet trong câu phủ định và câu hỏi.|already=>already dùng trong câu khẳng định (và câu hỏi nhấn mạnh), không đi với câu phủ định haven't; câu phủ định dùng yet.;;just=>just nghĩa là vừa mới và đứng giữa trợ động từ và phân từ, không đặt cuối câu phủ định để nói chưa xong.;;ever=>ever dùng trong câu hỏi hoặc câu có nghĩa phủ định như never, không đứng cuối câu phủ định để nói chưa làm xong việc.
+c|He has ___ left. You only missed him by a minute.|yet / just / ever / never|1|just: vừa mới.|yet=>yet dùng trong câu phủ định hoặc câu hỏi, còn He has ___ left là câu khẳng định nên không dùng yet.;;ever=>ever dùng trong câu hỏi hoặc phủ định để nói về kinh nghiệm, không hợp nghĩa "vừa mới đi" ở câu này.;;never=>never nghĩa là chưa bao giờ nên mâu thuẫn với câu sau You only missed him by a minute (anh ta vừa đi cách đây một phút).
 t|I ___ (know) him for ten years.|have known;'ve known|for + khoảng thời gian, kéo dài đến nay.
 t|She ___ (never / be) to Japan.|has never been;'s never been|Trải nghiệm: has never been.
 t|How long ___ you had this cough?|have|How long have you had …?
-x|Chọn câu đúng|I live here since 2020. / I have lived here since 2020. / I am living here since 2020.|1|Kéo dài đến nay: hiện tại hoàn thành.
-x|Chọn câu đúng|I have seen him yesterday. / I saw him yesterday. / I have saw him yesterday.|1|Có mốc quá khứ cụ thể: quá khứ đơn.
+x|Chọn câu đúng|I live here since 2020. / I have lived here since 2020. / I am living here since 2020. / I lived here since 2020.|1|Kéo dài đến nay: hiện tại hoàn thành.|I live here since 2020.=>since + mốc thời gian cần thì hiện tại hoàn thành; hiện tại đơn live không diễn tả việc kéo dài từ 2020 đến nay.;;I am living here since 2020.=>hiện tại tiếp diễn không đi với since + mốc quá khứ để nói việc kéo dài đến nay; cần have lived.;;I lived here since 2020.=>quá khứ đơn lived chỉ việc đã kết thúc, không đi với since 2020 để diễn tả việc kéo dài đến hiện tại.
+x|Chọn câu đúng|I have seen him yesterday. / I saw him yesterday. / I have saw him yesterday. / I have been seeing him yesterday.|1|Có mốc quá khứ cụ thể: quá khứ đơn.|I have seen him yesterday.=>yesterday là mốc quá khứ xác định nên không dùng hiện tại hoàn thành mà dùng quá khứ đơn saw.;;I have saw him yesterday.=>có hai lỗi: have phải đi với phân từ hai seen chứ không phải saw, và yesterday đòi quá khứ đơn.;;I have been seeing him yesterday.=>thì hiện tại hoàn thành tiếp diễn không đi với mốc quá khứ xác định yesterday; chỉ cần quá khứ đơn I saw him.
 f|We have already ate lunch.|ate|eaten|have + quá khứ phân từ.
 o|Have you ever been to London?|Have + chủ ngữ + ever + V3.`,
-modals: `c|You ___ drink alcohol with this medicine. It's dangerous.|mustn't / don't have to / should|0|Cấm vì nguy hiểm: mustn't.
-c|It's free. You ___ pay.|mustn't / don't have to / can't|1|Không cần: don't have to.
-c|You look tired. You ___ go to bed early.|should / must to / have|0|Lời khuyên: should.
-c|In Vietnam, drivers ___ drive on the right.|have to / might / must to|0|Quy định: have to.
-c|She ___ speak three languages.|can / cans / can to|0|Động từ khuyết thiếu không thêm -s, không có to.
-c|It ___ rain later, so take an umbrella.|might / must / should to|0|Khả năng: might.
+modals: `c|You ___ drink alcohol with this medicine. It's dangerous.|mustn't / don't have to / should / must|0|Cấm vì nguy hiểm: mustn't.|don't have to=>don't have to nghĩa là không cần phải, nhưng thuốc nguy hiểm thì phải là cấm tuyệt đối chứ không phải không bắt buộc.;;should=>should chỉ là lời khuyên nên làm, trong khi should drink nghĩa là nên uống rượu, trái hẳn ý nguy hiểm của câu.;;must=>must drink nghĩa là bắt buộc phải uống rượu, ngược hoàn toàn với ý cảnh báo nguy hiểm của câu.
+c|It's free. You ___ pay.|mustn't / don't have to / can't / must|1|Không cần: don't have to.|mustn't=>mustn't nghĩa là cấm, nhưng câu nói miễn phí nên không có lý do cấm trả tiền.;;can't=>can't pay nghĩa là không thể trả, không hợp với ý nó miễn phí nên bạn không cần trả.;;must=>must pay nghĩa là bắt buộc phải trả, mâu thuẫn với câu trước nói rằng nó miễn phí.
+c|You look tired. You ___ go to bed early.|should / must to / have / should to|0|Lời khuyên: should.|must to=>must to sai vì sau động từ khuyết thiếu must không có to; ngoài ra must mạnh hơn lời khuyên nhẹ nhàng.;;have=>have đứng một mình không phải động từ khuyết thiếu; muốn nói nên đi ngủ thì dùng should, và have go là sai cấu trúc.;;should to=>should to sai vì sau should là động từ nguyên mẫu không có to.
+c|In Vietnam, drivers ___ drive on the right.|have to / might / must to / has to|0|Quy định: have to.|might=>might chỉ khả năng có thể xảy ra, không diễn tả quy định bắt buộc về lái xe bên phải.;;must to=>must to sai vì sau must dùng động từ nguyên mẫu không có to, không thêm to.;;has to=>has to chia cho chủ ngữ số ít, nhưng drivers là số nhiều nên phải dùng have to.
+c|She ___ speak three languages.|can / cans / can to / is can|0|Động từ khuyết thiếu không thêm -s, không có to.|cans=>cans sai vì can là động từ khuyết thiếu, không thêm -s dù chủ ngữ she là ngôi thứ ba số ít.;;can to=>can to sai vì sau động từ khuyết thiếu là động từ nguyên mẫu không có to.;;is can=>is can sai vì can đã là động từ khuyết thiếu, không đi với to be; sau can là speak.
+c|It ___ rain later, so take an umbrella.|might / must / should to / might to|0|Khả năng: might.|must=>must diễn tả sự bắt buộc hoặc chắc chắn cao, không hợp với ý có thể mưa và nên mang ô.;;should to=>should to sai vì sau should không có to; ngoài ra should chỉ lời khuyên chứ không phải khả năng.;;might to=>might to sai vì sau might là động từ nguyên mẫu không có to.
 t|You ___ (should / rest) for a few days.|should rest|should + nguyên mẫu.
 t|Nurses ___ (have to / wear) a uniform at work.|have to wear|have to + nguyên mẫu.
 t|He ___ (not / have to / work) on Sundays.|doesn't have to work;does not have to work|Ngôi thứ ba: doesn't have to.
-x|Chọn câu đúng|You must to take it. / You must take it. / You must taking it.|1|Không có to sau must.
-x|Chọn câu đúng|She cans come. / She can come. / She can comes.|1|can không đổi theo ngôi.
+x|Chọn câu đúng|You must to take it. / You must take it. / You must taking it. / You must takes it.|1|Không có to sau must.|You must to take it.=>You must to take it sai vì sau must là động từ nguyên mẫu, không có to.;;You must taking it.=>You must taking it sai vì sau must không dùng V-ing mà dùng động từ nguyên mẫu take.;;You must takes it.=>must là động từ khuyết thiếu nên takes không được thêm -s; sau must dùng take.
+x|Chọn câu đúng|She cans come. / She can come. / She can comes. / She can to come.|1|can không đổi theo ngôi.|She cans come.=>She cans come sai vì can là động từ khuyết thiếu, không thêm -s theo chủ ngữ she.;;She can comes.=>She can comes sai vì sau can phải là động từ nguyên mẫu come, không chia -s.;;She can to come.=>She can to come sai vì sau can không có to; động từ khuyết thiếu đi thẳng với động từ nguyên mẫu.
 f|He has to wearing a mask in the ward.|wearing|wear|have to + nguyên mẫu.`,
-"first-conditional": `c|If it ___ tomorrow, we will stay at home.|will rain / rains / rained|1|Mệnh đề if dùng hiện tại đơn.
-c|If you take this medicine, you ___ better soon.|will feel / feeling / felt|0|Mệnh đề chính dùng will.
-c|___ you don't hurry, you will miss the bus.|If / Unless / Despite|0|If + phủ định.
-c|You won't pass ___ you study.|if / unless / when|1|unless = if not.
-c|If you ___ enough water, you'll get a headache.|don't drink / won't drink / didn't drink|0|Mệnh đề if: hiện tại đơn.
+"first-conditional": `c|If it ___ tomorrow, we will stay at home.|will rain / rains / rained / would rain|1|Mệnh đề if dùng hiện tại đơn.|will rain=>Trong mệnh đề if chỉ tương lai thật không dùng will; phải dùng hiện tại đơn rains.;;rained=>rained là quá khứ đơn, thuộc câu điều kiện loại 2 (không có thật), không khớp với vế chính dùng will.;;would rain=>would rain là dạng điều kiện loại 2, không đứng trong mệnh đề if của câu điều kiện loại 1.
+c|If you take this medicine, you ___ better soon.|will feel / feeling / felt / to feel|0|Mệnh đề chính dùng will.|feeling=>feeling là V-ing, không thể làm động từ chính của mệnh đề chính; cần will feel theo cấu trúc điều kiện loại 1.;;felt=>felt là quá khứ, không hợp với vế if hiện tại đơn và nghĩa tương lai (soon); cần will + nguyên mẫu.;;to feel=>to feel là động từ nguyên mẫu có to, không thể là động từ chính chia thì của mệnh đề chính sau chủ ngữ you.
+c|___ you don't hurry, you will miss the bus.|If / Unless / Despite / Whether|0|If + phủ định.|Unless=>Unless đã mang nghĩa phủ định (nếu không), nên Unless you don't hurry thành phủ định kép và đổi nghĩa.;;Despite=>Despite là giới từ (nghĩa mặc dù), không đứng trước một mệnh đề đầy đủ you don't hurry và không diễn tả điều kiện.;;Whether=>Whether dùng với nghĩa liệu/dù có hay không (kèm or not), không tạo điều kiện “nếu” như If.
+c|You won't pass ___ you study.|if / unless / when / so|1|unless = if not.|if=>“You won't pass if you study” nghĩa là học thì lại trượt, vô lý; ý đúng là trượt nếu không học nên cần unless.;;when=>when chỉ thời điểm chứ không nêu điều kiện, nên “won't pass when you study” sai nghĩa; ở đây cần unless (= if not).;;so=>so nối kết quả hoặc nghĩa “vì vậy”, không đặt được trước mệnh đề you study để nêu điều kiện phủ định.
+c|If you ___ enough water, you'll get a headache.|don't drink / won't drink / didn't drink / not drink|0|Mệnh đề if: hiện tại đơn.|won't drink=>won't ở mệnh đề if mang nghĩa “không chịu/không có ý định uống”, không phải “không uống đủ”; nói về điều kiện thông thường dùng hiện tại đơn don't drink.;;didn't drink=>didn't drink là quá khứ, không khớp với vế chính you'll get (tương lai); điều kiện loại 1 cần if + hiện tại đơn.;;not drink=>Thiếu trợ động từ: phủ định hiện tại đơn của drink với you phải là don't drink, không chỉ thêm not.
 t|If the pain ___ (get) worse, come back straight away.|gets|Mệnh đề if, ngôi thứ ba: gets.
 t|If she ___ (not / eat), she will feel dizzy.|doesn't eat;does not eat|Hiện tại đơn phủ định.
 t|I ___ (call) you if I hear any news.|will call;'ll call|Mệnh đề chính: will.
-x|Chọn câu đúng|If you will take it with food, it helps. / If you take it with food, it will help. / If you took it with food, it will help.|1|Không dùng will sau if.
-x|Chọn câu đúng|If I will see him, I tell him. / If I see him, I will tell him. / If I see him, I told him.|1|If + hiện tại, will + nguyên mẫu.
+x|Chọn câu đúng|If you will take it with food, it helps. / If you take it with food, it will help. / If you took it with food, it will help. / If you take it with food, it helped.|1|Không dùng will sau if.|If you will take it with food, it helps.=>Không dùng will trong mệnh đề if của điều kiện loại 1; phải dùng hiện tại đơn take.;;If you took it with food, it will help.=>Vế if dùng quá khứ (took) thuộc loại 2 nhưng vế chính lại là will help; hai vế không khớp.;;If you take it with food, it helped.=>Vế chính ở quá khứ helped không hợp với if + hiện tại đơn; điều kiện loại 1 cần will help.
+x|Chọn câu đúng|If I will see him, I tell him. / If I see him, I will tell him. / If I see him, I told him. / If I would see him, I will tell him.|1|If + hiện tại, will + nguyên mẫu.|If I will see him, I tell him.=>Mệnh đề if không dùng will, và vế chính nói về tương lai nên cần will tell chứ không phải tell.;;If I see him, I told him.=>Vế if ở hiện tại nhưng vế chính lại chia quá khứ told; điều kiện loại 1 cần will + nguyên mẫu.;;If I would see him, I will tell him.=>would không dùng trong mệnh đề if của điều kiện loại 1; vế if phải là hiện tại đơn see.
 f|If he will come early, we will start the meeting.|will|(bỏ will: If he comes)|Mệnh đề if không dùng will.
 o|If the pain gets worse, call us.|If + hiện tại, mệnh lệnh.`,
-"gerund-infinitive": `c|You should give up ___.|smoke / to smoke / smoking|2|give up + V-ing (không dùng to + động từ).
-c|We plan ___ a new clinic.|opening / to open / open|1|plan + to V.
-c|She enjoys ___ in the morning.|to run / running / run|1|enjoy + V-ing.
-c|I decided ___ medicine.|studying / to study / study|1|decide + to V.
-c|Avoid ___ heavy things.|to lift / lifting / lift|1|avoid + V-ing.
-c|He refused ___ the form.|signing / to sign / sign|1|refuse + to V.
-c|Would you mind ___ the window?|to open / opening / open|1|mind + V-ing.
+"gerund-infinitive": `c|You should give up ___.|smoke / to smoke / smoking / smoked|2|give up + V-ing (không dùng to + động từ).|smoke=>Sau give up phải dùng V-ing; dạng nguyên mẫu smoke không đi sau give up.;;to smoke=>give up đi với danh động từ (give up smoking), không đi với to V; to smoke dễ bị hiểu thành “để hút thuốc”.;;smoked=>smoked là quá khứ/quá khứ phân từ, không thể làm tân ngữ của give up; cần danh động từ smoking.
+c|We plan ___ a new clinic.|opening / to open / open / opened|1|plan + to V.|opening=>plan thuộc nhóm động từ đi với to V (plan to do), không dùng V-ing.;;open=>Sau plan phải có to trước động từ nguyên mẫu (plan to open); open trần không đứng sau plan.;;opened=>opened là dạng quá khứ, không thể đứng sau plan; cần to open để nói về dự định.
+c|She enjoys ___ in the morning.|to run / running / run / ran|1|enjoy + V-ing.|to run=>enjoy thuộc nhóm động từ đi với V-ing, không đi với to V.;;run=>Sau enjoy cần danh động từ running; động từ nguyên mẫu run không đứng ngay sau enjoy.;;ran=>ran là quá khứ, không thể làm tân ngữ của enjoys; cần danh động từ running.
+c|I decided ___ medicine.|studying / to study / study / studied|1|decide + to V.|studying=>decide thuộc nhóm động từ đi với to V (decide to do), không dùng V-ing.;;study=>Sau decided cần to trước động từ nguyên mẫu (decided to study); study trần không đúng.;;studied=>studied là dạng quá khứ, không thể đi ngay sau decided; cần to study.
+c|Avoid ___ heavy things.|to lift / lifting / lift / lifted|1|avoid + V-ing.|to lift=>avoid thuộc nhóm động từ đi với V-ing (avoid doing), không dùng to V.;;lift=>Sau avoid cần danh động từ lifting; động từ nguyên mẫu lift không đứng ngay sau avoid.;;lifted=>lifted là quá khứ/quá khứ phân từ, không làm tân ngữ của avoid; cần danh động từ lifting.
+c|He refused ___ the form.|signing / to sign / sign / signed|1|refuse + to V.|signing=>refuse thuộc nhóm động từ đi với to V (refuse to do), không dùng V-ing.;;sign=>Sau refused cần to trước động từ nguyên mẫu (refused to sign); sign trần không đúng.;;signed=>signed là dạng quá khứ, không thể đứng ngay sau refused; cần to sign.
+c|Would you mind ___ the window?|to open / opening / open / opened|1|mind + V-ing.|to open=>Sau Would you mind phải dùng V-ing vì mind đi với danh động từ, không dùng to V.;;open=>mind cần danh động từ opening; động từ nguyên mẫu open không đứng ngay sau mind.;;opened=>opened là quá khứ, không thể làm tân ngữ của mind; cần opening the window.
 t|I'm interested in ___ (learn) English.|learning|Sau giới từ dùng V-ing.
 t|She agreed ___ (help) us.|to help|agree + to V.
 t|Don't forget ___ (take) your tablets.|to take|forget to do: quên làm việc cần làm.
 t|I hope ___ (become) a surgeon.|to become|hope + to V.
-x|Chọn câu đúng|I look forward to meet you. / I look forward to meeting you. / I look forward meet you.|1|to ở đây là giới từ, sau nó dùng V-ing.
-x|Chọn câu đúng|He suggested to go home. / He suggested going home. / He suggested go home.|1|suggest + V-ing.
+x|Chọn câu đúng|I look forward to meet you. / I look forward to meeting you. / I look forward meet you. / I look forward for meeting you.|1|to ở đây là giới từ, sau nó dùng V-ing.|I look forward to meet you.=>Trong look forward to, to là giới từ nên theo sau là V-ing (meeting), không phải động từ nguyên mẫu.;;I look forward meet you.=>Thiếu giới từ to sau look forward, và sau to đó động từ phải ở dạng V-ing.;;I look forward for meeting you.=>look forward đi với giới từ to chứ không phải for; đúng là look forward to meeting.
+x|Chọn câu đúng|He suggested to go home. / He suggested going home. / He suggested go home. / He suggested to going home.|1|suggest + V-ing.|He suggested to go home.=>suggest đi với V-ing (suggest going), không đi với to V.;;He suggested go home.=>Sau suggest cần danh động từ going; động từ nguyên mẫu trần go không đúng trong cấu trúc này.;;He suggested to going home.=>suggest không đi kèm giới từ to; ghép to với going là sai, chỉ cần suggested going.
 f|Thank you for help me.|help|helping|Sau for dùng V-ing.`,
-"pp-vs-past": `c|I ___ him since we were students.|knew / have known / know|1|since + mốc, kéo dài đến nay.
-c|She ___ to Japan in 2022.|has gone / went / goes|1|Năm cụ thể: quá khứ đơn.
-c|The pain started three days ___.|ago / since / for|0|cách đây: ago.
-c|I've had this cough ___ Monday.|for / since / ago|1|Mốc thời gian: since.
-c|He has worked here ___ ten years.|since / for / ago|1|Khoảng thời gian: for.
-c|When ___ you arrive?|have / did / has|1|When hỏi thời điểm: quá khứ đơn.
+"pp-vs-past": `c|I ___ him since we were students.|knew / have known / know / am knowing|1|since + mốc, kéo dài đến nay.|knew=>Knew là quá khứ đơn, nhưng since + mốc nối với hiện tại nên cần hiện tại hoàn thành have known.;;know=>Know ở hiện tại đơn không hợp với since vì since cần hiện tại hoàn thành để chỉ việc kéo dài đến nay.;;am knowing=>Know là động từ chỉ trạng thái, không dùng ở thì tiếp diễn; am knowing còn trái với since nên cần have known.
+c|She ___ to Japan in 2022.|has gone / went / goes / go|1|Năm cụ thể: quá khứ đơn.|has gone=>Has gone là hiện tại hoàn thành, không dùng với năm cụ thể như in 2022; năm xác định cần quá khứ đơn.;;goes=>Goes là hiện tại đơn, không hợp với in 2022 ở quá khứ; cần went.;;go=>Go ở dạng nguyên mẫu không chia cho She và không biểu thị quá khứ, trái với in 2022.
+c|The pain started three days ___.|ago / since / for / from|0|cách đây: ago.|since=>Since cần một mốc thời gian (since Monday), còn three days ago đã dùng ago nên không dùng since.;;for=>For đi trước một khoảng thời gian (for three days), không đứng sau cụm này để chỉ cách đây bao lâu.;;from=>From chỉ điểm bắt đầu trong cụm from... to..., không đứng sau three days để nói cách đây bao lâu; phải dùng ago.
+c|I've had this cough ___ Monday.|for / since / ago / in|1|Mốc thời gian: since.|for=>For đi với khoảng thời gian (for two weeks), còn Monday là mốc thời gian nên cần since.;;ago=>Ago đi sau khoảng thời gian trong quá khứ đơn (two days ago), không đứng trước Monday; Monday là mốc nên dùng since.;;in=>In đi với tháng, năm, mùa, không đi với Monday khi dùng với hiện tại hoàn thành; mốc Monday cần since.
+c|He has worked here ___ ten years.|since / for / ago / during|1|Khoảng thời gian: for.|since=>Since dùng với mốc thời gian (since 2015), còn ten years là một khoảng thời gian nên cần for.;;ago=>Ago không dùng với hiện tại hoàn thành has worked; ten years ago cũng cần quá khứ đơn, nên chỗ này cần for.;;during=>During đi với danh từ chỉ sự kiện (during the war), không đi trực tiếp với số lượng như ten years; dùng for.
+c|When ___ you arrive?|have / did / has / were|1|When hỏi thời điểm: quá khứ đơn.|have=>Have dùng cho hiện tại hoàn thành, nhưng When hỏi thời điểm cụ thể nên không dùng với have.;;has=>Has chỉ đi với he/she/it và cũng là hiện tại hoàn thành; When hỏi thời điểm nên cần quá khứ đơn did.;;were=>Were không đi với arrive ở dạng nguyên mẫu trong câu hỏi; câu hỏi quá khứ đơn cần trợ động từ did.
 t|I ___ (see) that film last week.|saw|last week: quá khứ đơn.
 t|She ___ (be) a nurse since 2018.|has been;'s been|since + mốc: hiện tại hoàn thành.
 t|They ___ (not / finish) the project yet.|haven't finished;have not finished|yet: hiện tại hoàn thành.
 t|Have you ever ___ (try) Vietnamese coffee?|tried|Have + V3.
-x|Chọn câu đúng|I have visited Hue in 2020. / I visited Hue in 2020. / I was visit Hue in 2020.|1|Có năm cụ thể: quá khứ đơn.
-x|Chọn câu đúng|How long do you have it? / How long have you had it? / How long did you have it now?|1|“Bao lâu rồi”: hiện tại hoàn thành.
+x|Chọn câu đúng|I have visited Hue in 2020. / I visited Hue in 2020. / I was visit Hue in 2020. / I have visit Hue in 2020.|1|Có năm cụ thể: quá khứ đơn.|I have visited Hue in 2020.=>Hiện tại hoàn thành không đi với năm cụ thể như in 2020; thời điểm xác định cần quá khứ đơn.;;I was visit Hue in 2020.=>Was visit là cấu trúc sai: was không đi với động từ nguyên mẫu; quá khứ đơn của visit là visited.;;I have visit Hue in 2020.=>Have visit vừa sai thì vì in 2020 là thời điểm cụ thể, vừa dùng sai động từ visit thay vì V3.
+x|Chọn câu đúng|How long do you have it? / How long have you had it? / How long did you have it now? / How long are you having it?|1|“Bao lâu rồi”: hiện tại hoàn thành.|How long do you have it?=>Do you have it là hiện tại đơn, không diễn tả khoảng thời gian bao lâu rồi; How long ... cần hiện tại hoàn thành.;;How long did you have it now?=>Did you have it là quá khứ đơn, đã chấm dứt, còn now cho thấy việc kéo dài đến hiện tại nên cần have you had.;;How long are you having it?=>Are you having là hiện tại tiếp diễn, nhưng have mang nghĩa sở hữu là động từ chỉ trạng thái, không dùng ở thì tiếp diễn.
 f|I have finished my exam yesterday.|have|(bỏ have: I finished)|Có yesterday: quá khứ đơn.
 o|How long have you worked here?|How long + have + chủ ngữ + V3.`,
-passive: `c|The new hospital ___ in 2025.|built / was built / is building|1|Bệnh viện được xây: bị động quá khứ.
-c|All applications must ___ by Friday.|submit / be submitted / submitted|1|must + be + V3.
-c|The results ___ tomorrow.|will send / will be sent / are sending|1|Tương lai bị động: will be + V3.
-c|English ___ all over the world.|speaks / is spoken / is speaking|1|Bị động hiện tại: is + V3.
-c|The patient ___ to the ward an hour ago.|was taken / took / has taken|0|Bị động quá khứ.
-c|The room ___ at the moment.|is being cleaned / is cleaning / cleans|0|Đang được làm: is being + V3.
+passive: `c|The new hospital ___ in 2025.|built / was built / is building / was building|1|Bệnh viện được xây: bị động quá khứ.|built=>Chỉ có built thì thiếu trợ động từ, nên không thành câu hoàn chỉnh; cần was built (bị động quá khứ) vì có in 2025.;;is building=>Is building là chủ động hiện tại tiếp diễn; bệnh viện không tự xây và in 2025 là mốc quá khứ nên cần bị động was built.;;was building=>Was building là chủ động quá khứ tiếp diễn; chủ ngữ hospital là vật được xây nên phải dùng bị động was built.
+c|All applications must ___ by Friday.|submit / be submitted / submitted / be submit|1|must + be + V3.|submit=>Sau must là động từ nguyên mẫu nhưng đơn thuần submit mang nghĩa chủ động; đơn đăng ký bị nộp nên cần dạng bị động be submitted.;;submitted=>Sau must phải là động từ nguyên mẫu, không dùng quá khứ; hơn nữa để bị động cần có be trước submitted, tức be submitted.;;be submit=>Bị động phải dùng be + quá khứ phân từ (submitted); submit ở dạng nguyên mẫu không tạo được nghĩa bị động.
+c|The results ___ tomorrow.|will send / will be sent / are sending / will be sending|1|Tương lai bị động: will be + V3.|will send=>Will send là chủ động nghĩa gửi; the results là thứ được gửi đi nên cần bị động will be sent.;;are sending=>Are sending là chủ động hiện tại tiếp diễn; kết quả không tự gửi, và tomorrow cần tương lai bị động will be sent.;;will be sending=>Will be sending là chủ động tương lai tiếp diễn; kết quả là đối tượng bị gửi nên cần bị động will be sent.
+c|English ___ all over the world.|speaks / is spoken / is speaking / is speak|1|Bị động hiện tại: is + V3.|speaks=>Speaks là chủ động; English là thứ được nói chứ không tự nói, nên cần bị động is spoken.;;is speaking=>Is speaking là chủ động hiện tại tiếp diễn, chỉ việc đang diễn ra; English là chân lý chung và là thứ được nói, nên dùng is spoken.;;is speak=>Sau is phải là quá khứ phân từ (spoken) hoặc V-ing, không phải dạng nguyên mẫu speak; bị động đúng là is spoken.
+c|The patient ___ to the ward an hour ago.|was taken / took / has taken / is taken|0|Bị động quá khứ.|took=>Took là chủ động quá khứ; bệnh nhân được đưa đi chứ không tự đưa ai, nên cần bị động was taken.;;has taken=>Has taken là chủ động hiện tại hoàn thành; an hour ago là mốc quá khứ nên không dùng hoàn thành, và the patient bị đưa đi nên cần was taken.;;is taken=>Is taken là bị động hiện tại, không hợp với an hour ago là mốc quá khứ; cần was taken.
+c|The room ___ at the moment.|is being cleaned / is cleaning / cleans / is been cleaned|0|Đang được làm: is being + V3.|is cleaning=>Is cleaning là chủ động; căn phòng không tự dọn nên cần bị động tiếp diễn is being cleaned.;;cleans=>Cleans là chủ động hiện tại đơn; the room không tự dọn, và at the moment đòi hỏi thì tiếp diễn bị động is being cleaned.;;is been cleaned=>Is been không phải dạng đúng: bị động tiếp diễn là is being + V3, không dùng been sau is; cần is being cleaned.
 t|The report ___ (write) by the head nurse last week.|was written|Bị động quá khứ: was + V3.
 t|Blood samples ___ (take) every morning.|are taken|Bị động hiện tại, số nhiều.
 t|The meeting has ___ (cancel).|been cancelled;been canceled|Hiện tại hoàn thành bị động: has been + V3.
 t|This drug ___ (should not / give) to children.|should not be given;shouldn't be given|should not + be + V3.
-x|Chọn câu đúng|The sample sent to the lab. / The sample was sent to the lab. / The sample was send to the lab.|1|Bị động cần be + V3.
-x|Chọn câu đúng|The meeting was cancel. / The meeting was cancelled. / The meeting cancelled was.|1|Sau be dùng V3.
+x|Chọn câu đúng|The sample sent to the lab. / The sample was sent to the lab. / The sample was send to the lab. / The sample sending to the lab.|1|Bị động cần be + V3.|The sample sent to the lab.=>Thiếu trợ động từ was nên câu không có động từ chính hoàn chỉnh; bị động quá khứ cần was sent.;;The sample was send to the lab.=>Sau was trong bị động phải dùng quá khứ phân từ sent, không dùng nguyên mẫu send.;;The sample sending to the lab.=>Dạng V-ing thiếu trợ động từ nên không thành câu; hơn nữa mẫu vật bị gửi đi nên cần bị động was sent.
+x|Chọn câu đúng|The meeting was cancel. / The meeting was cancelled. / The meeting cancelled was. / The meeting is cancel.|1|Sau be dùng V3.|The meeting was cancel.=>Sau was trong câu bị động cần quá khứ phân từ cancelled; cancel là dạng nguyên mẫu nên chưa đúng.;;The meeting cancelled was.=>Trật tự từ sai: trợ động từ was phải đứng trước quá khứ phân từ, tức was cancelled, không đặt was ở cuối câu.;;The meeting is cancel.=>Is + nguyên mẫu cancel không tạo thành bị động; cần was cancelled với quá khứ phân từ cancelled.
 f|The letter was wrote by the director.|wrote|written|was + V3.
 o|The patient was admitted last night.|Chủ ngữ + was + V3.`,
-relative: `c|The man ___ car was stolen called the police.|who / whose / which|1|Sở hữu: whose.
-c|This is the clinic ___ I work.|where / which / who|0|Nơi chốn: where.
-c|The doctor ___ saw me was very kind.|who / which / whose|0|Người: who.
-c|The medicine ___ you gave me works well.|who / which / where|1|Vật: which.
-c|My mother, ___ is a teacher, lives in Hue.|that / who / which|1|Mệnh đề có dấu phẩy không dùng that.
-c|Hanoi, ___ is the capital, has many hospitals.|which / that / where|0|Vật, có dấu phẩy: which.
+relative: `c|The man ___ car was stolen called the police.|who / whose / which / whom|1|Sở hữu: whose.|who=>who là đại từ chủ ngữ chỉ người, không diễn tả sở hữu; ở đây car thuộc về the man nên cần whose.;;which=>which dùng cho vật, mà the man là người và quan hệ ở đây là sở hữu nên phải dùng whose.;;whom=>whom là đại từ tân ngữ chỉ người, không diễn tả sở hữu trước danh từ car; cần whose.
+c|This is the clinic ___ I work.|where / which / who / whose|0|Nơi chốn: where.|which=>which dùng cho vật và cần đóng vai trò chủ ngữ hoặc tân ngữ; clinic là nơi chốn nên dùng where hoặc in which.;;who=>who chỉ người, mà the clinic là nơi chốn nên không thể dùng who.;;whose=>whose chỉ sở hữu và phải đứng trước một danh từ; sau chỗ trống là I work nên không dùng whose.
+c|The doctor ___ saw me was very kind.|who / which / whose / where|0|Người: who.|which=>which dùng cho vật, còn the doctor là người nên phải dùng who (hoặc that).;;whose=>whose chỉ sở hữu và cần danh từ theo sau, nhưng sau chỗ trống là động từ saw nên không dùng whose.;;where=>where chỉ nơi chốn, mà the doctor là người; ở đây đại từ làm chủ ngữ của saw nên cần who.
+c|The medicine ___ you gave me works well.|who / which / where / whose|1|Vật: which.|who=>who dùng cho người, còn the medicine là vật nên không dùng who.;;where=>where chỉ nơi chốn, mà the medicine là vật và đại từ làm tân ngữ của gave nên cần which.;;whose=>whose chỉ sở hữu và cần danh từ theo sau, nhưng sau chỗ trống là you gave nên không dùng whose.
+c|My mother, ___ is a teacher, lives in Hue.|that / who / which / whose|1|Mệnh đề có dấu phẩy không dùng that.|that=>that không dùng trong mệnh đề quan hệ không xác định có dấu phẩy; với người ở đây phải dùng who.;;which=>which dùng cho vật, mà My mother là người nên không dùng which.;;whose=>whose chỉ sở hữu và cần danh từ theo sau, nhưng sau chỗ trống là is a teacher nên không dùng whose.
+c|Hanoi, ___ is the capital, has many hospitals.|which / that / where / who|0|Vật, có dấu phẩy: which.|that=>that không dùng trong mệnh đề quan hệ không xác định có dấu phẩy; sau dấu phẩy cần which.;;where=>where thay cho nơi chốn trong mệnh đề có chủ ngữ riêng, nhưng sau chỗ trống là is the capital nên cần đại từ chủ ngữ which.;;who=>who chỉ người, mà Hanoi là địa danh (vật) nên không dùng who.
 t|The nurse ___ looked after me was very patient.|who;that|Người: who hoặc that.
 t|The book ___ I'm reading is about anatomy.|which;that|Vật: which hoặc that.
 t|Do you know the patient ___ son is a doctor?|whose|Sở hữu: whose.
 t|That's the reason ___ I called you.|why|the reason why.
-x|Chọn câu đúng|The drug that you take it is strong. / The drug that you take is strong. / The drug who you take is strong.|1|Không lặp lại đại từ it.
-x|Chọn câu đúng|My sister, that lives in Hue, is a nurse. / My sister, who lives in Hue, is a nurse. / My sister who, lives in Hue, is a nurse.|1|Có dấu phẩy: who, không dùng that.
+x|Chọn câu đúng|The drug that you take it is strong. / The drug that you take is strong. / The drug who you take is strong. / The drug what you take is strong.|1|Không lặp lại đại từ it.|The drug that you take it is strong.=>that đã thay thế tân ngữ của take nên không được nhắc lại bằng it; lặp đại từ là thừa.;;The drug who you take is strong.=>who chỉ người, mà the drug là vật nên phải dùng that hoặc which.;;The drug what you take is strong.=>what không dùng làm đại từ quan hệ sau một danh từ đã nêu (the drug); phải dùng that hoặc which.
+x|Chọn câu đúng|My sister, that lives in Hue, is a nurse. / My sister, who lives in Hue, is a nurse. / My sister who, lives in Hue, is a nurse. / My sister, whose lives in Hue, is a nurse.|1|Có dấu phẩy: who, không dùng that.|My sister, that lives in Hue, is a nurse.=>that không dùng trong mệnh đề quan hệ không xác định có dấu phẩy; phải dùng who.;;My sister who, lives in Hue, is a nurse.=>dấu phẩy đặt sai chỗ; mệnh đề quan hệ không xác định phải đặt dấu phẩy trước who và sau cả mệnh đề.;;My sister, whose lives in Hue, is a nurse.=>whose chỉ sở hữu và cần danh từ theo sau, nhưng sau whose ở đây là động từ lives nên cần who.
 f|The hospital which I was born is in Hanoi.|which|where|Nơi chốn: where (hoặc in which).
 o|The doctor who saw me was very kind.|Mệnh đề quan hệ đứng ngay sau danh từ.`,
-sva: `c|Each of the rooms ___ a window.|have / has / having|1|Each of … dùng số ít.
-c|The list of names ___ on the desk.|is / are / be|0|Danh từ chính là list.
-c|The number of patients ___ increasing.|is / are / were|0|The number of + số ít.
-c|A number of students ___ absent today.|is / are / was|1|A number of + số nhiều.
-c|Everyone ___ a role in the team.|have / has / having|1|Everyone là số ít.
-c|The results of the test ___ normal.|is / are / was|1|Danh từ chính là results.
-c|Neither of the answers ___ correct.|is / be / being|0|Neither of + số ít (văn trang trọng).
+sva: `c|Each of the rooms ___ a window.|have / has / having / are|1|Each of … dùng số ít.|have=>have dùng với chủ ngữ số nhiều, nhưng chủ ngữ thật của câu là Each (số ít) nên phải dùng has.;;having=>having là V-ing, không có trợ động từ nên không thành động từ chính của câu.;;are=>are không phải dạng của have, và rooms chỉ là danh từ bổ nghĩa; chủ ngữ Each số ít cần has.
+c|The list of names ___ on the desk.|is / are / be / were|0|Danh từ chính là list.|are=>are dùng cho chủ ngữ số nhiều, nhưng chủ ngữ chính là list (số ít) chứ không phải names.;;be=>be là nguyên mẫu, không chia theo chủ ngữ số ít the list nên không thể đứng làm động từ chính.;;were=>were là quá khứ số nhiều, không khớp với chủ ngữ số ít list và cũng không có dấu hiệu quá khứ.
+c|The number of patients ___ increasing.|is / are / were / be|0|The number of + số ít.|are=>are dùng với chủ ngữ số nhiều, nhưng The number of làm chủ ngữ số ít nên phải dùng is.;;were=>were là quá khứ số nhiều, sai thì và sai hòa hợp vì The number of đi với động từ số ít.;;be=>be là nguyên mẫu, không chia cho chủ ngữ số ít The number of và không đi với increasing như trợ động từ.
+c|A number of students ___ absent today.|is / are / was / be|1|A number of + số nhiều.|is=>is là số ít, mà A number of nghĩa là một số, đi với danh từ số nhiều students nên động từ phải số nhiều.;;was=>was là quá khứ số ít, sai thì (today) lẫn hòa hợp vì A number of + số nhiều đi với động từ số nhiều.;;be=>be là nguyên mẫu, không chia với chủ ngữ A number of students nên không thể làm động từ chính.
+c|Everyone ___ a role in the team.|have / has / having / are|1|Everyone là số ít.|have=>have dùng với chủ ngữ số nhiều, nhưng Everyone luôn là số ít nên phải dùng has.;;having=>having là V-ing, không có trợ động từ nên không thể làm động từ chính chia cho Everyone.;;are=>are là động từ to be số nhiều, không hợp với Everyone (số ít) và cũng không đi với a role như have/has.
+c|The results of the test ___ normal.|is / are / was / be|1|Danh từ chính là results.|is=>is là số ít, nhưng chủ ngữ chính là results (số nhiều) nên phải dùng are.;;was=>was là quá khứ số ít, không khớp với results số nhiều và không có dấu hiệu quá khứ.;;be=>be là nguyên mẫu, không chia với chủ ngữ số nhiều The results of the test nên không thể làm động từ chính.
+c|Neither of the answers ___ correct.|is / be / being / does|0|Neither of + số ít (văn trang trọng).|be=>be là nguyên mẫu, không chia với Neither of the answers nên không thể làm động từ chính của câu.;;being=>being là V-ing, không có trợ động từ nên không phải động từ chia của câu.;;does=>does không đi với tính từ correct; câu cần to be is, và does chỉ là trợ động từ cho động từ thường.
 t|The news ___ (be) good today.|is|news không đếm được, dùng số ít.
 t|My family and I ___ (live) in Da Nang.|live|Hai chủ ngữ nối bằng and: số nhiều.
 t|Mathematics ___ (be) my favourite subject.|is|Tên môn học tận cùng -s vẫn là số ít.
-x|Chọn câu đúng|The equipment are new. / The equipment is new. / The equipments is new.|1|equipment không đếm được.
-x|Chọn câu đúng|One of my friends are a doctor. / One of my friends is a doctor. / One of my friend is a doctor.|1|One of + danh từ số nhiều + động từ số ít.
+x|Chọn câu đúng|The equipment are new. / The equipment is new. / The equipments is new. / The equipments are new.|1|equipment không đếm được.|The equipment are new.=>are là số nhiều, nhưng equipment là danh từ không đếm được nên động từ phải là is.;;The equipments is new.=>The equipments sai vì equipment không đếm được, không thêm -s; hơn nữa equipments is còn lệch số.;;The equipments are new.=>equipments không tồn tại ở dạng số nhiều, và are cũng không khớp với danh từ không đếm được.
+x|Chọn câu đúng|One of my friends are a doctor. / One of my friends is a doctor. / One of my friend is a doctor. / One of my friend are a doctor.|1|One of + danh từ số nhiều + động từ số ít.|One of my friends are a doctor.=>are là số nhiều, nhưng chủ ngữ One of... là số ít nên phải dùng is.;;One of my friend is a doctor.=>friend ở số ít sai vì sau One of phải là danh từ số nhiều (friends).;;One of my friend are a doctor.=>One of my friend are vừa thiếu -s ở friend vừa dùng are cho chủ ngữ số ít One.
 f|The patients in the ward needs more blankets.|needs|need|Danh từ chính patients là số nhiều.
 f|There is many reasons for this.|is|are|reasons số nhiều.`,
-reported: `c|He ___ me that he was tired.|said / told / asked|1|tell + người.
-c|She said she ___ a headache.|had / have / having|0|Lùi thì: have → had.
-c|He asked me where the pharmacy ___.|was / were / be|0|Lùi thì, không đảo ngữ.
-c|The doctor asked if I ___ any allergies.|had / has / having|0|Lùi thì: had.
-c|“I will call you,” he said. → He said he ___ call me.|would / can / calling|0|will → would.
-c|She told me ___ the tablets after meals.|take / to take / taking|1|tell + người + to V.
+reported: `c|He ___ me that he was tired.|said / told / asked / spoke|1|tell + người.|said=>say không đi trực tiếp với tân ngữ chỉ người me mà không có to; muốn có me phải dùng tell.;;asked=>asked nghĩa là hỏi, trong khi mệnh đề sau là lời khẳng định that he was tired; cần tell + người + that.;;spoke=>speak không đi với tân ngữ me + mệnh đề that để thuật lại lời nói; cần tell.
+c|She said she ___ a headache.|had / have / having / haved|0|Lùi thì: have → had.|have=>Với chủ ngữ she và động từ tường thuật said (quá khứ), phải lùi thì have thành had; have không hợp ngôi và thì.;;having=>having là V-ing, không thể làm động từ chính chia thì trong mệnh đề she ___ a headache.;;haved=>have là động từ bất quy tắc, quá khứ là had; haved không tồn tại.
+c|He asked me where the pharmacy ___.|was / were / be / been|0|Lùi thì, không đảo ngữ.|were=>Chủ ngữ the pharmacy là số ít nên không dùng were; were dùng cho số nhiều hoặc giả định.;;be=>be nguyên mẫu không thể làm động từ chính trong mệnh đề; cần was để lùi thì và hợp với số ít.;;been=>been là quá khứ phân từ, cần có have/had đứng trước; đứng một mình nó không thể làm động từ của mệnh đề.
+c|The doctor asked if I ___ any allergies.|had / has / having / am|0|Lùi thì: had.|has=>Chủ ngữ I không đi với has; hơn nữa động từ tường thuật asked ở quá khứ nên lùi thì thành had.;;having=>having là V-ing, không thể làm động từ chính chia thì sau if I.;;am=>am là be, không dùng để diễn tả sở hữu allergies và không lùi thì; ý “có dị ứng” dùng had.
+c|“I will call you,” he said. → He said he ___ call me.|would / can / calling / calls|0|will → would.|can=>Khi tường thuật lời nói ở quá khứ, động từ phải lùi thì; will lùi thành would, can không thay thế cho nghĩa dự định “sẽ”.;;calling=>calling là V-ing, không thể đứng sau chủ ngữ he làm động từ khiếm khuyết/chính; cần would + nguyên mẫu call.;;calls=>calls là hiện tại đơn không lùi thì và không diễn tả tương lai trong lời thuật lại; cần would call.
+c|She told me ___ the tablets after meals.|take / to take / taking / took|1|tell + người + to V.|take=>Sau told me phải dùng to V để thuật lại lời bảo; take trần không đúng.;;taking=>told + người + V-ing không diễn tả lời yêu cầu; cấu trúc đúng là tell + người + to V.;;took=>took là quá khứ, không dùng được sau told me; cần to take.
 t|“I am tired.” → She said she ___ tired.|was|am → was.
 t|“Do you smoke?” → He asked me if I ___.|smoked|Lùi thì: smoke → smoked.
 t|“Don't eat spicy food.” → The doctor told me not ___ spicy food.|to eat|tell + người + not to V.
 t|“I can't sleep.” → He said he ___ sleep.|couldn't;could not|can → could.
-x|Chọn câu đúng|She said me she was busy. / She told me she was busy. / She told she was busy.|1|tell + người; say không đi trực tiếp với người.
-x|Chọn câu đúng|He asked where was the pharmacy. / He asked where the pharmacy was. / He asked where is the pharmacy.|1|Câu hỏi gián tiếp không đảo ngữ.
+x|Chọn câu đúng|She said me she was busy. / She told me she was busy. / She told she was busy. / She told me she is being busy.|1|tell + người; say không đi trực tiếp với người.|She said me she was busy.=>say không đi trực tiếp với tân ngữ chỉ người; phải nói said to me hoặc dùng told me.;;She told she was busy.=>tell luôn cần tân ngữ chỉ người (told me/him…); thiếu người nghe nên sai.;;She told me she is being busy.=>is being busy là thì tiếp diễn không tự nhiên với tính từ busy và không lùi thì so với told; cần she was busy.
+x|Chọn câu đúng|He asked where was the pharmacy. / He asked where the pharmacy was. / He asked where is the pharmacy. / He asked where the pharmacy were.|1|Câu hỏi gián tiếp không đảo ngữ.|He asked where was the pharmacy.=>Trong câu hỏi gián tiếp phải giữ trật tự câu khẳng định (the pharmacy was), không đảo was lên trước chủ ngữ.;;He asked where is the pharmacy.=>Vừa đảo ngữ sai trong câu hỏi gián tiếp, vừa không lùi thì; đúng là where the pharmacy was.;;He asked where the pharmacy were.=>the pharmacy là danh từ số ít nên không dùng were; cần was.
 f|She asked me what time did the clinic open.|did|(bỏ did: what time the clinic opened)|Câu hỏi gián tiếp không dùng trợ động từ đảo.
 o|She said that she felt dizzy.|said (that) + mệnh đề lùi thì.`,
-"second-conditional": `c|If she ___ closer, she would walk to work.|lives / lived / would live|1|Loại 2: quá khứ đơn sau if.
-c|If I ___ you, I would see a doctor.|am / were / would be|1|If I were you.
-c|What would you do if you ___ the lottery?|win / won / will win|1|Quá khứ đơn sau if.
-c|If I had more time, I ___ more.|study / will study / would study|2|Mệnh đề chính: would + V.
-c|He ___ healthier if he stopped smoking.|will be / would be / is|1|would + V.
-c|If we ___ a car, we could visit you more often.|have / had / would have|1|Quá khứ đơn sau if.
-c|I would travel more if I ___ so busy.|am not / weren't / won't be|1|Quá khứ đơn phủ định.
+"second-conditional": `c|If she ___ closer, she would walk to work.|lives / lived / would live / will live|1|Loại 2: quá khứ đơn sau if.|lives=>Lives là hiện tại đơn, dùng cho điều kiện loại 1; mệnh đề chính would walk cho thấy cần quá khứ đơn lived.;;would live=>Would không đứng ngay sau if trong mệnh đề điều kiện; mệnh đề if dùng quá khứ đơn lived.;;will live=>Will live là tương lai, không dùng trong mệnh đề if; câu điều kiện loại 2 cần lived.
+c|If I ___ you, I would see a doctor.|am / were / would be / will be|1|If I were you.|am=>Am là hiện tại; điều kiện loại 2 (không có thật) dùng quá khứ nên là If I were you.;;would be=>Would be không dùng trong mệnh đề if; sau if ở loại 2 dùng quá khứ, với I thì dùng were.;;will be=>Will be là tương lai, không dùng trong mệnh đề if; câu điều kiện loại 2 cần If I were you.
+c|What would you do if you ___ the lottery?|win / won / will win / would win|1|Quá khứ đơn sau if.|win=>Win là hiện tại đơn, dùng cho điều kiện loại 1; mệnh đề chính would you do cần if + quá khứ đơn.;;will win=>Will win không dùng trong mệnh đề if; câu điều kiện loại 2 dùng quá khứ đơn won.;;would win=>Would win không đứng sau if; would chỉ dùng ở mệnh đề kết quả, mệnh đề if cần won.
+c|If I had more time, I ___ more.|study / will study / would study / studied|2|Mệnh đề chính: would + V.|study=>Study không có would nên mệnh đề kết quả của điều kiện loại 2 thiếu would; không thể dùng hiện tại đơn.;;will study=>Will study là mệnh đề kết quả của loại 1; mệnh đề if là had (quá khứ) nên cần would study.;;studied=>Studied là quá khứ đơn, không thể làm mệnh đề kết quả; điều kiện loại 2 cần would + V sau mệnh đề if.
+c|He ___ healthier if he stopped smoking.|will be / would be / is / had been|1|would + V.|will be=>Will be thuộc điều kiện loại 1; mệnh đề if stopped (quá khứ) nên mệnh đề chính cần would be.;;is=>Is là hiện tại đơn, không phải mệnh đề kết quả của điều kiện loại 2; cần would be.;;had been=>Had been là quá khứ hoàn thành, dùng cho điều kiện loại 3 ở quá khứ, không hợp với stopped ở loại 2.
+c|If we ___ a car, we could visit you more often.|have / had / would have / having|1|Quá khứ đơn sau if.|have=>Have là hiện tại đơn, dùng cho điều kiện loại 1; mệnh đề chính có could nên cần quá khứ đơn had.;;would have=>Would have không dùng trong mệnh đề if; câu điều kiện loại 2 dùng quá khứ đơn had.;;having=>Having là V-ing không có trợ động từ, không thể làm động từ chính trong mệnh đề if; cần had.
+c|I would travel more if I ___ so busy.|am not / weren't / won't be / didn't be|1|Quá khứ đơn phủ định.|am not=>Am not là hiện tại, nhưng điều kiện loại 2 dùng quá khứ; would travel đi với weren't.;;won't be=>Won't be là tương lai, không dùng trong mệnh đề if; cần quá khứ đơn phủ định weren't.;;didn't be=>Didn't be sai cấu trúc: be không dùng với didn't làm phủ định của be; phải dùng weren't.
 t|If I ___ (know) the answer, I would tell you.|knew|know → knew.
 t|She ___ (buy) a house if she had enough money.|would buy;'d buy|would + V.
 t|If it ___ (not / rain), we would go to the park.|didn't rain;did not rain|Quá khứ đơn phủ định.
-x|Chọn câu đúng|If I would have time, I would help. / If I had time, I would help. / If I have time, I would help.|1|Không dùng would sau if.
-x|Chọn câu đúng|If I was you, I will rest. / If I were you, I would rest. / If I am you, I would rest.|1|If I were you, I would …
+x|Chọn câu đúng|If I would have time, I would help. / If I had time, I would help. / If I have time, I would help. / If I having time, I would help.|1|Không dùng would sau if.|If I would have time, I would help.=>Would have không dùng trong mệnh đề if; mệnh đề if loại 2 dùng quá khứ đơn had.;;If I have time, I would help.=>Have time là hiện tại đơn, thuộc điều kiện loại 1; would help ở mệnh đề chính cần had ở mệnh đề if.;;If I having time, I would help.=>Having thiếu trợ động từ, không tạo thành mệnh đề if hoàn chỉnh; cần If I had time.
+x|Chọn câu đúng|If I was you, I will rest. / If I were you, I would rest. / If I am you, I would rest. / If I were you, I would to rest.|1|If I were you, I would …|If I was you, I will rest.=>Mệnh đề chính dùng will rest, tức là cấu trúc loại 1, lệch với mệnh đề if giả định; điều kiện loại 2 cần would rest.;;If I am you, I would rest.=>Am không dùng trong điều kiện loại 2 vì đây là giả định không có thật; cần were và would ở mệnh đề chính.;;If I were you, I would to rest.=>Sau would phải dùng động từ nguyên mẫu không có to; would to rest là lỗi sai cấu trúc.
 f|If he would exercise more, he would lose weight.|would|(bỏ would: If he exercised)|Mệnh đề if không dùng would.
 o|If I were you, I would see a doctor.|Lời khuyên lịch sự.`,
-"word-forms": `c|The new system is very ___.|effect / effective / effectively|1|Sau be và very cần tính từ.
-c|Please read the instructions ___.|careful / care / carefully|2|Bổ nghĩa cho động từ: trạng từ.
-c|The ___ of the committee was final.|decide / decision / decisive|1|Sau the cần danh từ.
-c|She is a very ___ manager.|success / successful / successfully|1|Trước danh từ cần tính từ.
-c|We need to improve our ___.|produce / productive / productivity|2|Sau our cần danh từ.
-c|He drives very ___.|dangerous / dangerously / danger|1|Bổ nghĩa cho drives: trạng từ.
-c|The company is looking for ___ staff.|qualify / qualification / qualified|2|Trước danh từ cần tính từ.
+"word-forms": `c|The new system is very ___.|effect / effective / effectively / effects|1|Sau be và very cần tính từ.|effect=>Effect là danh từ, nhưng sau very is cần tính từ để mô tả hệ thống; tính từ đúng là effective.;;effectively=>Effectively là trạng từ, dùng bổ nghĩa cho động từ; sau is cần tính từ mô tả chủ ngữ the new system, tức effective.;;effects=>Effects là danh từ số nhiều, không đứng sau very is để mô tả hệ thống; chỗ này cần tính từ effective.
+c|Please read the instructions ___.|careful / care / carefully / carefulness|2|Bổ nghĩa cho động từ: trạng từ.|careful=>Careful là tính từ, chỉ bổ nghĩa cho danh từ; để bổ nghĩa cho động từ read cần trạng từ carefully.;;care=>Care là danh từ hoặc động từ, không bổ nghĩa cho read được; cần trạng từ carefully chỉ cách đọc.;;carefulness=>Carefulness là danh từ, nên không đứng cuối câu để chỉ cách thức đọc; cần trạng từ carefully.
+c|The ___ of the committee was final.|decide / decision / decisive / decisively|1|Sau the cần danh từ.|decide=>Decide là động từ, không thể đứng sau The làm chủ ngữ; sau The cần danh từ decision.;;decisive=>Decisive là tính từ, không thể đứng sau The và trước of như một danh từ; chỗ này cần danh từ decision.;;decisively=>Decisively là trạng từ, không đứng sau mạo từ The; ở đây cần danh từ decision làm chủ ngữ.
+c|She is a very ___ manager.|success / successful / successfully / succeed|1|Trước danh từ cần tính từ.|success=>Success là danh từ; trước danh từ manager và sau very cần tính từ, vì danh từ không bổ nghĩa như vậy: successful.;;successfully=>Successfully là trạng từ, không bổ nghĩa cho danh từ manager; cần tính từ successful sau a very.;;succeed=>Succeed là động từ, không đứng trước danh từ manager để mô tả nó; cần tính từ successful.
+c|We need to improve our ___.|produce / productive / productivity / productively|2|Sau our cần danh từ.|produce=>Produce chủ yếu là động từ (sản xuất), còn khi là danh từ chỉ nông sản nên không có nghĩa năng suất; ta nói improve our productivity.;;productive=>Productive là tính từ, sau our phải là danh từ vì improve cần tân ngữ; ta nói improve our productivity.;;productively=>Productively là trạng từ, không thể làm tân ngữ cho improve; sau our cần danh từ productivity.
+c|He drives very ___.|dangerous / dangerously / danger / dangerousness|1|Bổ nghĩa cho drives: trạng từ.|dangerous=>Dangerous là tính từ, nhưng very bổ nghĩa cho động từ drives cần trạng từ; tính từ chỉ bổ nghĩa cho danh từ.;;danger=>Danger là danh từ, không bổ nghĩa cho động từ drives; để nói cách lái xe cần trạng từ dangerously.;;dangerousness=>Dangerousness là danh từ hiếm, không dùng để chỉ cách thức lái xe sau very; cần trạng từ dangerously.
+c|The company is looking for ___ staff.|qualify / qualification / qualified / qualifying|2|Trước danh từ cần tính từ.|qualify=>Qualify là động từ, không đứng trước danh từ staff để mô tả; cần tính từ qualified (có trình độ).;;qualification=>Qualification là danh từ nghĩa bằng cấp, không đứng trước staff để mô tả nhân viên; cần tính từ qualified.;;qualifying=>Qualifying nghĩa là đủ điều kiện tham dự vòng nào đó (qualifying round), không nói nhân viên có trình độ; cần qualified.
 t|Thank you for your ___ (patient).|patience|Sau your cần danh từ: patience.
 t|The ___ (employ) received a bonus.|employee;employees|Người được thuê: employee.
 t|Her ___ (explain) was very clear.|explanation|Danh từ của explain: explanation.
 t|The results were ___ (surprise).|surprising|Tính chất của sự vật: -ing.
-x|Chọn câu đúng|a success launch / a successful launch / a successfully launch|1|Trước danh từ cần tính từ.
-x|Chọn câu đúng|He speaks English very good. / He speaks English very well. / He speaks English very goodly.|1|Bổ nghĩa cho động từ: well.
+x|Chọn câu đúng|a success launch / a successful launch / a successfully launch / a succeeding launch|1|Trước danh từ cần tính từ.|a success launch=>Success là danh từ, không đứng trước danh từ launch để làm tính từ; cần tính từ successful.;;a successfully launch=>Successfully là trạng từ, không bổ nghĩa cho danh từ launch; trước danh từ cần tính từ successful.;;a succeeding launch=>Succeeding nghĩa là kế tiếp, sau đó, không có nghĩa thành công; để nói vụ ra mắt thành công cần successful.
+x|Chọn câu đúng|He speaks English very good. / He speaks English very well. / He speaks English very goodly. / He speaks English very good at.|1|Bổ nghĩa cho động từ: well.|He speaks English very good.=>Good là tính từ, không bổ nghĩa cho động từ speaks; cần trạng từ well, là trạng từ của good.;;He speaks English very goodly.=>Không có trạng từ goodly; trạng từ của good là dạng bất quy tắc well, không tạo bằng -ly.;;He speaks English very good at.=>Good at đi với danh từ (good at English) và không có tác dụng bổ nghĩa cho speaks; ở đây cần trạng từ well sau very.
 f|The doctor gave me a clearly explanation.|clearly|clear|Trước danh từ cần tính từ.`,
-"third-conditional": `c|If she ___ the bus, she wouldn't have been late.|caught / had caught / would catch|1|Loại 3: had + V3.
-c|If he had come earlier, we ___ him sooner.|would treat / would have treated / had treated|1|would have + V3.
-c|I wish I ___ harder last year.|studied / had studied / would study|1|Hối tiếc về quá khứ: wish + had V3.
-c|I wish I ___ more free time now.|have / had / had had|1|Ước cho hiện tại: wish + quá khứ đơn.
-c|If I ___ about the problem, I would have helped.|knew / had known / have known|1|had + V3.
-c|If it hadn't rained, we ___ to the beach.|would go / would have gone / went|1|would have + V3.
-c|If only I ___ to the doctor earlier!|went / had gone / would go|1|If only + had V3: tiếc về quá khứ.
-c|She would have passed if she ___ so nervous.|wasn't / hadn't been / wouldn't be|1|had not been.
+"third-conditional": `c|If she ___ the bus, she wouldn't have been late.|caught / had caught / would catch / has caught|1|Loại 3: had + V3.|caught=>Caught là quá khứ đơn, không dùng trong điều kiện loại 3; mệnh đề chính wouldn't have been cần had caught.;;would catch=>Would catch không dùng trong mệnh đề if; điều kiện loại 3 cần quá khứ hoàn thành had caught.;;has caught=>Has caught là hiện tại hoàn thành, không hợp với wouldn't have been (loại 3); cần had caught.
+c|If he had come earlier, we ___ him sooner.|would treat / would have treated / had treated / will treat|1|would have + V3.|would treat=>Would treat là điều kiện loại 2, không hợp với had come (quá khứ hoàn thành); cần would have treated.;;had treated=>Had treated là quá khứ hoàn thành, dùng trong mệnh đề if chứ không ở mệnh đề kết quả; cần would have treated.;;will treat=>Will treat là tương lai, không hợp với If he had come ở quá khứ; cần would have treated.
+c|I wish I ___ harder last year.|studied / had studied / would study / study|1|Hối tiếc về quá khứ: wish + had V3.|studied=>Studied là quá khứ đơn, dùng cho ước cho hiện tại; last year là quá khứ nên phải dùng had studied.;;would study=>Would study dùng để ước thay đổi hành động ở tương lai, không dùng cho tiếc nuối về last year.;;study=>Study ở hiện tại đơn không dùng sau wish; ước về quá khứ cần had studied.
+c|I wish I ___ more free time now.|have / had / had had / will have|1|Ước cho hiện tại: wish + quá khứ đơn.|have=>Have là hiện tại đơn, không dùng sau wish; ước cho hiện tại cần quá khứ đơn had.;;had had=>Had had là quá khứ hoàn thành, dùng cho hối tiếc ở quá khứ; with now thì dùng had.;;will have=>Will have không dùng sau wish; wish + quá khứ đơn diễn tả ước muốn hiện tại.
+c|If I ___ about the problem, I would have helped.|knew / had known / have known / would know|1|had + V3.|knew=>Knew là quá khứ đơn dùng cho điều kiện loại 2; mệnh đề chính would have helped cần had known.;;have known=>Have known là hiện tại hoàn thành, không dùng trong mệnh đề if của loại 3; cần had known.;;would know=>Would know không dùng trong mệnh đề if; would chỉ ở mệnh đề kết quả.
+c|If it hadn't rained, we ___ to the beach.|would go / would have gone / went / will go|1|would have + V3.|would go=>Would go là loại 2, không hợp với hadn't rained (loại 3); cần would have gone.;;went=>Went là quá khứ đơn, không thể làm mệnh đề kết quả của điều kiện loại 3; cần would have gone.;;will go=>Will go là tương lai, mệnh đề if dùng hadn't rained ở quá khứ nên cần would have gone.
+c|If only I ___ to the doctor earlier!|went / had gone / would go / go|1|If only + had V3: tiếc về quá khứ.|went=>Went là quá khứ đơn, dùng cho hiện tại; earlier là quá khứ nên If only + had gone.;;would go=>Would go chỉ mong thay đổi ở tương lai, không diễn tả tiếc nuối về chuyện đã xảy ra như earlier.;;go=>Go ở nguyên mẫu không dùng sau If only để diễn tả tiếc nuối; cần had gone.
+c|She would have passed if she ___ so nervous.|wasn't / hadn't been / wouldn't be / isn't|1|had not been.|wasn't=>Wasn't là quá khứ đơn, không dùng trong điều kiện loại 3; cần hadn't been.;;wouldn't be=>Wouldn't be không dùng trong mệnh đề if; wouldn't chỉ ở mệnh đề kết quả.;;isn't=>Isn't là hiện tại, không hợp với would have passed ở quá khứ; cần hadn't been.
 t|If you ___ (tell) me, I would have come.|had told|had + V3.
 t|We ___ (not / miss) the flight if we had left earlier.|wouldn't have missed;would not have missed|would not have + V3.
 t|I wish I ___ (not / eat) so much last night.|hadn't eaten;had not eaten|wish + had not V3.
 t|If he ___ (take) his tablets, he wouldn't have got worse.|had taken|had + V3.
-x|Chọn câu đúng|If I would have known, I would have told you. / If I had known, I would have told you. / If I knew, I would have told you.|1|Mệnh đề if: had + V3.
-x|Chọn câu đúng|I wish I can swim. / I wish I could swim. / I wish I will swim.|1|wish + could.
+x|Chọn câu đúng|If I would have known, I would have told you. / If I had known, I would have told you. / If I knew, I would have told you. / If I have known, I would have told you.|1|Mệnh đề if: had + V3.|If I would have known, I would have told you.=>Would have không đứng sau if; mệnh đề if loại 3 phải dùng quá khứ hoàn thành had known.;;If I knew, I would have told you.=>Knew là quá khứ đơn, thuộc loại 2; would have told cần mệnh đề if là had known.;;If I have known, I would have told you.=>Have known là hiện tại hoàn thành, không phải quá khứ hoàn thành; mệnh đề if loại 3 cần had known.
+x|Chọn câu đúng|I wish I can swim. / I wish I could swim. / I wish I will swim. / I wish I swim.|1|wish + could.|I wish I can swim.=>Can là hiện tại; sau wish phải lùi thì, nên dùng could thay vì can.;;I wish I will swim.=>Will là tương lai trực tiếp; sau wish dùng would hoặc could, không dùng will.;;I wish I swim.=>Swim ở hiện tại đơn không dùng sau wish; cần could swim hoặc swam.
 f|If she had studied, she would pass the exam last year.|pass|have passed|Loại 3: would have + V3.
 o|If I had known, I would have come.|If + had V3, would have V3.`,
-"modals-past": `c|The lights are off. They ___ gone home.|must have / needn't have / can have|0|Suy đoán chắc chắn: must have.
-c|You ___ told me earlier! Now it's too late.|must have / should have / might|1|Lẽ ra nên: should have.
-c|She ___ have taken the wrong bus. She's never late.|might / should / must to|0|Có thể đã: might have.
-c|He ___ have seen me. I was hiding.|can't / must / should|0|Không thể nào đã: can't have.
-c|I ___ have locked the door, but I'm not sure.|might / must / should to|0|Không chắc: might have.
-c|We ___ have booked a table. The restaurant is full.|should / must / can|0|Tiếc nuối: should have.
-c|The ground is wet. It ___ have rained last night.|must / should / can|0|Suy luận có căn cứ: must have.
-c|You ___ have come. The meeting was cancelled.|needn't / mustn't / can|0|needn't have: đã làm nhưng hóa ra không cần.
+"modals-past": `c|The lights are off. They ___ gone home.|must have / needn't have / can have / must be|0|Suy đoán chắc chắn: must have.|needn't have=>Needn't have + V3 nghĩa là lẽ ra không cần làm nhưng đã làm; câu này đoán một việc dựa trên bằng chứng nên cần must have.;;can have=>Can have không dùng để suy đoán chắc chắn trong câu khẳng định; muốn nói chắc là đã về cần must have gone.;;must be=>Must be + gone nói về trạng thái hiện tại và sai cấu trúc; suy đoán về việc đã xảy ra trước đó phải là must have gone.
+c|You ___ told me earlier! Now it's too late.|must have / should have / might / should be|1|Lẽ ra nên: should have.|must have=>Must have + V3 là suy đoán chắc chắn về quá khứ, không diễn đạt tiếc nuối vì không làm; câu này cần should have told.;;might=>Might không đi với told ở quá khứ; sau might cần động từ nguyên mẫu hoặc have + V3, và nghĩa là có thể, không phải lẽ ra nên.;;should be=>Should be không đi với told và không nói về việc đã bỏ lỡ trong quá khứ; cần should have + V3 để nói lẽ ra đã nên làm.
+c|She ___ have taken the wrong bus. She's never late.|might / should / must to / might to|0|Có thể đã: might have.|should=>Should have taken the wrong bus nghĩa là lẽ ra cô ấy nên đi nhầm xe, vô lý; câu cần suy đoán khả năng nên dùng might have.;;must to=>Sau modal verb không dùng to; must to là sai cấu trúc, cần might have taken.;;might to=>Modal might không đi với to; sau might trực tiếp là have taken, nên might to không đúng.
+c|He ___ have seen me. I was hiding.|can't / must / should / must to|0|Không thể nào đã: can't have.|must=>Must have seen nghĩa chắc là đã thấy, trái với I was hiding; câu cần phủ định chắc chắn can't have seen.;;should=>Should have seen nghĩa lẽ ra anh ta nên thấy, không diễn tả chắc chắn không thấy vì tôi đang trốn; cần can't have seen.;;must to=>Modal must không đi với to, và cũng sai nghĩa vì tôi đang trốn nên anh ta chắc chắn không thấy, cần can't have.
+c|I ___ have locked the door, but I'm not sure.|might / must / should to / can't|0|Không chắc: might have.|must=>Must have locked nghĩa chắc chắn đã khóa, mâu thuẫn với but I'm not sure; câu cần mức độ có thể là might.;;should to=>Modal should không đi với to, và nghĩa lẽ ra nên cũng không hợp với việc không chắc chắn; cần might have locked.;;can't=>Can't have locked nghĩa chắc chắn không khóa, mâu thuẫn với I'm not sure; chỉ có thể dùng might ở mức độ không chắc.
+c|We ___ have booked a table. The restaurant is full.|should / must / can / ought|0|Tiếc nuối: should have.|must=>Must have booked nghĩa chắc là đã đặt bàn, nhưng nhà hàng đã đầy chỗ nên rõ ràng chưa đặt; câu tiếc nuối cần should have booked.;;can=>Can have không dùng cho khẳng định về quá khứ; câu cần nói lẽ ra nên đặt bàn là should have booked.;;ought=>Ought phải đi với to (ought to have booked); không có to thì sai, nên không thể dùng thay cho should have.
+c|The ground is wet. It ___ have rained last night.|must / should / can / must to|0|Suy luận có căn cứ: must have.|should=>Should have rained nghĩa lẽ ra trời nên mưa, không hợp với suy đoán từ mặt đất ướt; cần must have rained.;;can=>Can have không dùng để suy đoán chắc chắn về quá khứ trong câu khẳng định; mặt đất ướt dẫn đến must have rained.;;must to=>Modal must không đi với to, nên must to have rained sai ngữ pháp; cần must have rained.
+c|You ___ have come. The meeting was cancelled.|needn't / mustn't / can / must|0|needn't have: đã làm nhưng hóa ra không cần.|mustn't=>Mustn't have + V3 không dùng để nói không cần làm; để nói việc làm là thừa vì buổi họp bị hủy phải dùng needn't have come.;;can=>Can have không đúng cấu trúc cho khẳng định quá khứ, và không nói được việc đến là thừa vì buổi họp bị hủy; cần needn't.;;must=>Must have come nghĩa chắc là đã đến, không hợp với việc buổi họp bị hủy nên đến là thừa; cần needn't have come.
 t|He ___ (should / call) an ambulance immediately.|should have called|should have + V3.
 t|She ___ (must / forget) about the appointment.|must have forgotten|must have + V3.
 t|They ___ (can't / finish) already. It's too soon.|can't have finished;cannot have finished|can't have + V3.
 t|I ___ (might / leave) my phone in the taxi.|might have left|might have + V3.
-x|Chọn câu đúng|You should came earlier. / You should have come earlier. / You should have came earlier.|1|should have + V3.
-x|Chọn câu đúng|It must be a virus yesterday. / It must have been a virus. / It must have be a virus.|1|must have been.
+x|Chọn câu đúng|You should came earlier. / You should have come earlier. / You should have came earlier. / You should has come earlier.|1|should have + V3.|You should came earlier.=>Sau should phải dùng nguyên mẫu hoặc have + V3; came là quá khứ không đứng ngay sau should.;;You should have came earlier.=>Sau have trong should have cần quá khứ phân từ come, không dùng quá khứ đơn came.;;You should has come earlier.=>Sau modal should dùng have chứ không dùng has, dù chủ ngữ là gì; cấu trúc đúng là should have come.
+x|Chọn câu đúng|It must be a virus yesterday. / It must have been a virus. / It must have be a virus. / It must have been virus.|1|must have been.|It must be a virus yesterday.=>Must be nói về hiện tại, không hợp với yesterday ở quá khứ; suy đoán về quá khứ cần must have been.;;It must have be a virus.=>Sau have trong must have phải là quá khứ phân từ been, không phải nguyên mẫu be.;;It must have been virus.=>Danh từ đếm được số ít virus thiếu mạo từ a; câu đúng là must have been a virus.
 f|She should have went to the doctor.|went|gone|should have + V3 (gone).
 o|You should have come in earlier.|should have + V3.`,
-linking: `c|___ feeling tired, he finished the report.|Because / Despite / However|1|Sau chỗ trống là V-ing: despite.
-c|The drug works well. ___, it can cause headaches.|Although / Despite / However|2|Đầu câu mới, có dấu phẩy: However.
-c|___ it was raining, she walked to work.|Although / Despite / In spite of|0|Trước mệnh đề: although.
-c|She passed the exam ___ she didn't study much.|despite / even though / however|1|even though + mệnh đề.
-c|I stayed at home ___ my cough.|because / because of / although|1|because of + danh từ.
-c|He is rich; ___, he is not happy.|nevertheless / because / so|0|Tương phản, trang trọng: nevertheless.
-c|___ the bad weather, the flight left on time.|Although / In spite of / However|1|In spite of + danh từ.
-c|Some patients improve quickly, ___ others take months.|whereas / despite / therefore|0|Đối lập hai mệnh đề: whereas.
+linking: `c|___ feeling tired, he finished the report.|Because / Despite / However / Therefore|1|Sau chỗ trống là V-ing: despite.|Because=>Because đi với mệnh đề (có chủ ngữ và động từ chia), còn sau chỗ trống là feeling tired; hơn nữa nghĩa nguyên nhân không hợp.;;However=>However là trạng từ nối đứng đầu câu mới, sau nó phải có dấu phẩy; không đứng trước cụm V-ing để nối vế câu.;;Therefore=>Therefore là trạng từ chỉ kết quả, đứng đầu câu có dấu phẩy; nghĩa không phù hợp vì mệt mỏi không dẫn đến việc hoàn thành báo cáo.
+c|The drug works well. ___, it can cause headaches.|Although / Despite / However / Because|2|Đầu câu mới, có dấu phẩy: However.|Although=>Although nối hai mệnh đề trong cùng một câu, không đứng đầu câu mới rồi theo sau là dấu phẩy.;;Despite=>Despite đi với danh từ hoặc V-ing và không đứng đầu câu mới tách riêng với dấu phẩy để nối hai ý tương phản.;;Because=>Because chỉ nguyên nhân và đi với mệnh đề, không đứng một mình đầu câu rồi dấu phẩy; về nghĩa, đau đầu không phải kết quả của việc thuốc có tác dụng tốt mà là mặt trái đối lập, nên cần However.
+c|___ it was raining, she walked to work.|Although / Despite / In spite of / Despite of|0|Trước mệnh đề: although.|Despite=>Despite đi với danh từ hoặc V-ing, không đi trực tiếp với mệnh đề it was raining.;;In spite of=>In spite of cũng đi với danh từ hoặc V-ing, không đi trực tiếp với mệnh đề có chủ ngữ và động từ.;;Despite of=>Despite không đi với of (chỉ nói in spite of hoặc despite), và cả hai đều không đi với mệnh đề; ở đây cần Although.
+c|She passed the exam ___ she didn't study much.|despite / even though / however / because|1|even though + mệnh đề.|despite=>despite đi với danh từ hoặc V-ing, không đi trước mệnh đề she didn't study much.;;however=>however là trạng từ nối đứng đầu câu mới hoặc sau dấu chấm phẩy, không dùng làm liên từ nối hai mệnh đề không dấu.;;because=>because chỉ nguyên nhân, nhưng việc không học nhiều không phải lý do để đỗ; câu cần ý tương phản even though.
+c|I stayed at home ___ my cough.|because / because of / although / therefore|1|because of + danh từ.|because=>because đi với mệnh đề có chủ ngữ và động từ, còn sau chỗ trống là danh từ my cough nên cần because of.;;although=>although chỉ sự tương phản và đi với mệnh đề, không hợp với danh từ my cough và cũng sai nghĩa.;;therefore=>therefore là trạng từ chỉ kết quả, không dùng được trước danh từ my cough; cần because of để chỉ lý do.
+c|He is rich; ___, he is not happy.|nevertheless / because / so / despite|0|Tương phản, trang trọng: nevertheless.|because=>because chỉ nguyên nhân và đi với mệnh đề; giữa giàu và không hạnh phúc là quan hệ tương phản nên không hợp.;;so=>so chỉ kết quả, mà giàu không dẫn tới việc không hạnh phúc; ngoài ra so không đứng sau dấu chấm phẩy kèm dấu phẩy như thế.;;despite=>despite là giới từ đi với danh từ hoặc V-ing, không đứng sau dấu chấm phẩy trước một mệnh đề; cần nevertheless.
+c|___ the bad weather, the flight left on time.|Although / In spite of / However / Because|1|In spite of + danh từ.|Although=>Although đi với mệnh đề, còn sau chỗ trống là danh từ the bad weather nên cần giới từ In spite of.;;However=>However là trạng từ nối đứng đầu câu mới, không đi trực tiếp trước danh từ the bad weather.;;Because=>Because đi với mệnh đề, không đi trực tiếp với danh từ the bad weather (cần because of); nghĩa nguyên nhân cũng sai vì chuyến bay vẫn đúng giờ.
+c|Some patients improve quickly, ___ others take months.|whereas / despite / therefore / because|0|Đối lập hai mệnh đề: whereas.|despite=>despite đi với danh từ hoặc V-ing, không nối hai mệnh đề đầy đủ như others take months.;;therefore=>therefore chỉ kết quả và không dùng để nối đối lập giữa hai nhóm bệnh nhân; cần whereas.;;because=>because chỉ nguyên nhân, nhưng hai vế câu nói về hai nhóm bệnh nhân khác nhau (tương phản) chứ không phải nguyên nhân kết quả.
 t|___ the traffic, we arrived on time.|Despite;In spite of|+ danh từ: despite, in spite of.
 t|The clinic was busy. ___, everyone was seen before noon.|However;Nevertheless|Đầu câu, tương phản.
 t|I went to bed early ___ I was tired.|because;as;since|Chỉ lý do.
 t|She took an umbrella so ___ she wouldn't get wet.|that|so that: để mà.
-x|Chọn câu đúng|Despite it was raining, we went out. / Although it was raining, we went out. / Although of the rain, we went out.|1|despite không đi với mệnh đề.
-x|Chọn câu đúng|Although it was late, but he kept working. / Although it was late, he kept working. / Despite it was late, he kept working.|1|Không dùng although và but cùng lúc.
+x|Chọn câu đúng|Despite it was raining, we went out. / Although it was raining, we went out. / Although of the rain, we went out. / Despite of it was raining, we went out.|1|despite không đi với mệnh đề.|Despite it was raining, we went out.=>despite đi với danh từ hoặc V-ing, không đi trực tiếp với mệnh đề it was raining; mệnh đề cần although.;;Although of the rain, we went out.=>although là liên từ đi với mệnh đề, không đi với of + danh từ; muốn dùng danh từ phải nói despite/in spite of the rain.;;Despite of it was raining, we went out.=>despite không đi kèm of và cũng không đi với mệnh đề có chủ ngữ và động từ; câu cần Although.
+x|Chọn câu đúng|Although it was late, but he kept working. / Although it was late, he kept working. / Despite it was late, he kept working. / In spite it was late, he kept working.|1|Không dùng although và but cùng lúc.|Although it was late, but he kept working.=>although và but đều nối hai ý tương phản nên dùng cùng lúc là thừa; chỉ cần một liên từ.;;Despite it was late, he kept working.=>despite đi với danh từ hoặc V-ing, không đi trực tiếp với mệnh đề it was late; mệnh đề cần although.;;In spite it was late, he kept working.=>in spite phải đi với of (in spite of) và cũng chỉ đi với danh từ hoặc V-ing, không đi với mệnh đề it was late.
 f|Despite she was ill, she went to work.|Despite|Although|Trước mệnh đề dùng although.
 o|However, it can cause side effects.|However đứng đầu câu, sau có dấu phẩy.`,
-"indirect-questions": `c|Do you know what time ___?|does the bank open / the bank opens / opens the bank|1|Không đảo ngữ trong câu hỏi gián tiếp.
-c|Could you tell me where ___?|is the pharmacy / the pharmacy is / does the pharmacy|1|Chủ ngữ + động từ.
-c|I wonder ___ he will come.|if / that / what|0|Câu hỏi có/không: if hoặc whether.
-c|Can you tell me how long ___ the pain?|have you had / you have had / did you have|1|Không đảo ngữ.
-c|Do you know ___ the clinic is open on Sundays?|whether / who / what|0|whether = liệu có … không.
-c|I'd like to know when ___.|did the problem start / the problem started / started the problem|1|Không dùng did đảo.
-c|Could you tell me ___ you take?|what medicines / what medicines do / which do medicines|0|Không dùng trợ động từ đảo.
-c|Do you remember where ___ your keys?|did you put / you put / put you|1|Chủ ngữ + động từ.
+"indirect-questions": `c|Do you know what time ___?|does the bank open / the bank opens / opens the bank / does the bank opens|1|Không đảo ngữ trong câu hỏi gián tiếp.|does the bank open=>does the bank open là đảo ngữ của câu hỏi trực tiếp; trong câu hỏi gián tiếp không dùng does đảo.;;opens the bank=>opens the bank đảo động từ lên trước chủ ngữ; câu hỏi gián tiếp giữ thứ tự chủ ngữ + động từ: the bank opens.;;does the bank opens=>does the bank opens vừa đảo ngữ vừa thêm -s sau does; trợ động từ does đã mang -s nên động từ phải là open.
+c|Could you tell me where ___?|is the pharmacy / the pharmacy is / does the pharmacy / is the pharmacy located|1|Chủ ngữ + động từ.|is the pharmacy=>is the pharmacy đảo động từ lên trước chủ ngữ như câu hỏi trực tiếp; câu hỏi gián tiếp dùng chủ ngữ + động từ.;;does the pharmacy=>does the pharmacy thêm trợ động từ does và thiếu động từ chính; câu hỏi gián tiếp không dùng does đảo.;;is the pharmacy located=>is the pharmacy located vẫn đảo trợ động từ is lên trước chủ ngữ; câu hỏi gián tiếp phải là where the pharmacy is.
+c|I wonder ___ he will come.|if / that / what / who|0|Câu hỏi có/không: if hoặc whether.|that=>that dùng để dẫn mệnh đề khẳng định, không dùng với I wonder khi hỏi có hay không.;;what=>what là từ hỏi cho đồ vật và cần một danh từ thiếu trong mệnh đề, nhưng he will come đã đủ thành phần.;;who=>who hỏi về người làm gì, không hợp với he will come đã đủ chủ ngữ; hỏi có hay không dùng if.
+c|Can you tell me how long ___ the pain?|have you had / you have had / did you have / you has had|1|Không đảo ngữ.|have you had=>have you had đảo ngữ trợ động từ lên trước chủ ngữ như câu hỏi trực tiếp, không dùng trong câu hỏi gián tiếp.;;did you have=>did you have đảo ngữ với did như câu hỏi trực tiếp; trong câu hỏi gián tiếp phải giữ chủ ngữ + động từ.;;you has had=>chủ ngữ you đi với have chứ không phải has, nên you has had sai hòa hợp chủ ngữ và động từ; đúng là you have had.
+c|Do you know ___ the clinic is open on Sundays?|whether / who / what / which|0|whether = liệu có … không.|who=>who hỏi về người, nhưng sau đó the clinic is open đã có chủ ngữ và không hỏi về người.;;what=>what thay cho một danh từ bị thiếu, mà mệnh đề the clinic is open Sundays đã đầy đủ nên không hợp nghĩa.;;which=>which dùng khi chọn trong một nhóm, không hợp nghĩa hỏi có mở cửa hay không; cần whether.
+c|I'd like to know when ___.|did the problem start / the problem started / started the problem / does the problem start|1|Không dùng did đảo.|did the problem start=>did the problem start đảo trợ động từ lên trước chủ ngữ; câu hỏi gián tiếp dùng the problem started.;;started the problem=>started the problem đặt động từ lên trước chủ ngữ, sai trật tự trong mệnh đề hỏi gián tiếp.;;does the problem start=>does the problem start đảo ngữ và dùng thì hiện tại; câu hỏi gián tiếp phải là chủ ngữ + động từ.
+c|Could you tell me ___ you take?|what medicines / what medicines do / which do medicines / that medicines|0|Không dùng trợ động từ đảo.|what medicines do=>what medicines do giữ trợ động từ do như câu hỏi trực tiếp, nên thừa; câu hỏi gián tiếp không dùng do.;;which do medicines=>which do medicines đảo do lên trước chủ ngữ medicines và sai trật tự từ, nên không thành mệnh đề đúng.;;that medicines=>that medicines không phải từ hỏi nên không tạo mệnh đề hỏi gián tiếp có nghĩa thuốc nào bạn đang dùng.
+c|Do you remember where ___ your keys?|did you put / you put / put you / have you put|1|Chủ ngữ + động từ.|did you put=>did you put đảo trợ động từ did lên trước chủ ngữ; câu hỏi gián tiếp giữ trật tự chủ ngữ + động từ.;;put you=>put you đảo động từ lên trước chủ ngữ you, sai trật tự trong mệnh đề hỏi gián tiếp.;;have you put=>have you put vẫn đảo trợ động từ lên trước chủ ngữ như câu hỏi trực tiếp; cần where you put.
 t|Could you tell me where it ___ (hurt)?|hurts|it + hurts, không đảo ngữ.
 t|I was wondering if you ___ (can) help me.|could|Lịch sự: could.
 t|Do you know what his name ___ (be)?|is|Chủ ngữ his name + is.
 t|Can you explain how the machine ___ (work)?|works|the machine + works.
-x|Chọn câu đúng|Could you tell me where does it hurt? / Could you tell me where it hurts? / Could you tell me where hurts it?|1|Không đảo ngữ.
-x|Chọn câu đúng|Do you know is he a doctor? / Do you know if he is a doctor? / Do you know if is he a doctor?|1|if + chủ ngữ + động từ.
+x|Chọn câu đúng|Could you tell me where does it hurt? / Could you tell me where it hurts? / Could you tell me where hurts it? / Could you tell me where do it hurts?|1|Không đảo ngữ.|Could you tell me where does it hurt?=>where does it hurt đảo trợ động từ does trong câu hỏi gián tiếp; sau where phải là chủ ngữ + động từ: where it hurts.;;Could you tell me where hurts it?=>where hurts it đặt động từ hurts trước chủ ngữ it; trật tự đúng của câu hỏi gián tiếp là chủ ngữ + động từ.;;Could you tell me where do it hurts?=>where do it hurts vừa dùng trợ động từ do thừa vừa đảo ngữ; hurts đã có -s, và it hurts mới đúng.
+x|Chọn câu đúng|Do you know is he a doctor? / Do you know if he is a doctor? / Do you know if is he a doctor? / Do you know he a doctor?|1|if + chủ ngữ + động từ.|Do you know is he a doctor?=>Do you know is he a doctor? thiếu if/whether và đảo động từ is trước chủ ngữ he.;;Do you know if is he a doctor?=>Do you know if is he a doctor? có if nhưng vẫn đảo is trước he; sau if phải là he is.;;Do you know he a doctor?=>Do you know he a doctor? thiếu động từ to be is sau chủ ngữ he, và không có if để hỏi có hay không.
 f|Can you tell me what time does the train leave?|does|(bỏ does: the train leaves)|Câu hỏi gián tiếp không dùng does đảo.
 o|Could you tell me where it hurts?|Câu hỏi gián tiếp lịch sự.`,
-"possessives": `c|Linh and I are sisters. ___ mother is a nurse.|Our / Ours / We|0|Trước danh từ mother cần tính từ sở hữu our.
-c|This phone isn't yours. It's ___.|my / mine / me|1|Không có danh từ phía sau nên dùng đại từ sở hữu mine.
-c|The nurse is checking the ___ blood pressure.|patient's / patients / patient|0|Người sở hữu một người thì thêm 's: the patient's.
-c|___ bag is this? It's on my desk.|Who / Whose / Who's|1|Hỏi chủ sở hữu dùng Whose + danh từ.
+"possessives": `c|Linh and I are sisters. ___ mother is a nurse.|Our / Ours / We / Us|0|Trước danh từ mother cần tính từ sở hữu our.|Ours=>Ours là đại từ sở hữu, đứng một mình không có danh từ theo sau; ở đây mother theo sau nên cần tính từ sở hữu Our.;;We=>We là đại từ chủ ngữ, không thể đứng trước danh từ mother để chỉ sự sở hữu; phải dùng Our.;;Us=>Us là đại từ tân ngữ dùng sau động từ hoặc giới từ, không đứng trước danh từ để chỉ sở hữu; cần Our.
+c|This phone isn't yours. It's ___.|my / mine / me / myself|1|Không có danh từ phía sau nên dùng đại từ sở hữu mine.|my=>my là tính từ sở hữu và phải đứng trước danh từ, nhưng sau It's ở đây không còn danh từ nào nên cần mine.;;me=>me là đại từ tân ngữ, không mang nghĩa sở hữu; "It's me" nghĩa là "là tôi" chứ không phải "của tôi".;;myself=>myself là đại từ phản thân, nghĩa là chính tôi, không diễn tả vật thuộc về tôi; cần đại từ sở hữu mine.
+c|The nurse is checking the ___ blood pressure.|patient's / patients / patient / patient is|0|Người sở hữu một người thì thêm 's: the patient's.|patients=>patients không có dấu sở hữu 's nên chỉ là danh từ số nhiều, không thể hiện huyết áp thuộc về bệnh nhân.;;patient=>patient đứng một mình trước blood pressure không chỉ sự sở hữu; muốn nói huyết áp của bệnh nhân phải thêm 's.;;patient is=>sau mạo từ the và trước blood pressure chỉ cần một dạng sở hữu, thêm động từ is làm câu sai cấu trúc.
+c|___ bag is this? It's on my desk.|Who / Whose / Who's / Whom|1|Hỏi chủ sở hữu dùng Whose + danh từ.|Who=>Who hỏi về người làm chủ thể và không đi trực tiếp với danh từ bag; hỏi chủ sở hữu dùng Whose + danh từ.;;Who's=>Who's là dạng rút gọn của Who is/Who has, nên "Who's bag" không có nghĩa; cần Whose để hỏi của ai.;;Whom=>Whom là tân ngữ của who, không đứng trước danh từ để hỏi sở hữu; câu hỏi "cái túi này của ai" dùng Whose.
 t|Is this your umbrella? No, it's not ___ (I). It's Mai's.|mine|Không có danh từ phía sau nên dùng mine.
 t|Look at that cat! ___ (it) fur is very soft.|its|Trước danh từ fur dùng tính từ sở hữu its.
 t|These are not our seats. Those seats are ___ (they).|theirs|Không có danh từ sau nên dùng theirs.
-x|Chọn câu đúng|A friend of me called. / A friend of mine called. / A friend of my called.|1|Sau of dùng đại từ sở hữu: a friend of mine.
+x|Chọn câu đúng|A friend of me called. / A friend of mine called. / A friend of my called. / A friend of I called.|1|Sau of dùng đại từ sở hữu: a friend of mine.|A friend of me called.=>sau of để chỉ sở hữu phải dùng đại từ sở hữu mine, không dùng đại từ tân ngữ me.;;A friend of my called.=>my là tính từ sở hữu cần danh từ theo sau; sau "a friend of" dùng đại từ sở hữu mine.;;A friend of I called.=>I là đại từ chủ ngữ nên không đứng sau giới từ of; sau of cần đại từ sở hữu mine.
 f|The dog is wagging it's tail.|it's|its|Tính từ sở hữu là its, it's nghĩa là it is.
 o|Whose coat is on the chair?|Whose + danh từ + be + vị trí.`,
-"present-continuous": `c|Shh! The baby ___.|sleeps / is sleeping / sleep|1|Shh! chỉ việc đang xảy ra nên dùng is sleeping.
-c|I ___ the answer to your question.|know / am knowing / knowing|0|know là động từ trạng thái, không dùng tiếp diễn.
-c|Look! It ___ outside.|rains / is raining / rain|1|Look! báo hiệu việc đang xảy ra: is raining.
-c|The nurse ___ the patient's temperature at the moment.|takes / is taking / take|1|At the moment đi với hiện tại tiếp diễn.
+"present-continuous": `c|Shh! The baby ___.|sleeps / is sleeping / sleep / sleeping|1|Shh! chỉ việc đang xảy ra nên dùng is sleeping.|sleeps=>Hiện tại đơn sleeps diễn tả thói quen hoặc sự thật, không hợp với Shh! chỉ việc đang diễn ra ngay lúc này.;;sleep=>sleep là dạng nguyên mẫu, không chia với chủ ngữ số ít the baby (cần -s) và cũng thiếu to be của thì tiếp diễn.;;sleeping=>sleeping một mình thiếu trợ động từ is nên không thành động từ chính; thì tiếp diễn phải là is + V-ing.
+c|I ___ the answer to your question.|know / am knowing / knowing / knows|0|know là động từ trạng thái, không dùng tiếp diễn.|am knowing=>know là động từ trạng thái, ở đây am knowing là dạng tiếp diễn không dùng được với động từ này.;;knowing=>knowing đứng một mình thiếu trợ động từ am, nên không phải động từ chia với chủ ngữ I trong câu.;;knows=>knows có -s chỉ dùng với he/she/it; chủ ngữ I phải dùng know, nên knows sai ngôi.
+c|Look! It ___ outside.|rains / is raining / rain / raining|1|Look! báo hiệu việc đang xảy ra: is raining.|rains=>rains là hiện tại đơn, diễn tả thói quen; Look! báo hiệu trời đang mưa ngay lúc này nên cần tiếp diễn.;;rain=>rain là nguyên mẫu, không chia với chủ ngữ it (cần -s) và cũng thiếu is của thì tiếp diễn.;;raining=>raining thiếu trợ động từ is nên chưa thành động từ chính; phải viết is raining.
+c|The nurse ___ the patient's temperature at the moment.|takes / is taking / take / taking|1|At the moment đi với hiện tại tiếp diễn.|takes=>takes là hiện tại đơn dùng cho thói quen, không hợp với at the moment chỉ việc đang diễn ra lúc này.;;take=>take là nguyên mẫu, không chia với chủ ngữ số ít the nurse và không có is của thì tiếp diễn.;;taking=>taking một mình thiếu trợ động từ is, nên không thành động từ chính của câu.
 t|Look! The children ___ (swim) in the lake.|are swimming;'re swimming|swim gấp đôi m trước -ing: swimming.
 t|She ___ (not / work) today. She's on holiday.|isn't working;is not working;'s not working|Phủ định: isn't + V-ing.
 t|She ___ (write) a report now.|is writing;'s writing|write bỏ e trước -ing: writing.
-x|Chọn câu đúng|I am wanting a glass of water. / I want a glass of water. / I wanting a glass of water.|1|want là động từ trạng thái, dùng hiện tại đơn.
+x|Chọn câu đúng|I am wanting a glass of water. / I want a glass of water. / I wanting a glass of water. / I am want a glass of water.|1|want là động từ trạng thái, dùng hiện tại đơn.|I am wanting a glass of water.=>am wanting dùng tiếp diễn với động từ trạng thái want, mà want không đi với thì tiếp diễn.;;I wanting a glass of water.=>I wanting thiếu trợ động từ am nên chưa có động từ chia; hơn nữa want vẫn là động từ trạng thái.;;I am want a glass of water.=>am là trợ động từ của thì tiếp diễn nên phải đi với V-ing, không đi với want ở dạng nguyên mẫu.
 f|She is make dinner now.|make|making|Sau is dùng V-ing: making.
 o|The students are taking an exam now.|S + am/is/are + V-ing + now.`,
-"past-continuous": `c|I ___ TV when the phone rang.|watching / was watching / am watching|1|Hành động dài đang diễn ra bị cắt ngang: was watching; watching thiếu was, am watching sai thì.
-c|While the nurse ___ blood, the patient fainted.|was taking / were taking / take|0|The nurse là số ít nên dùng was taking.
-c|At 8 p.m. last night, we ___ dinner.|were having / have / are having|0|Mốc giờ trong quá khứ nên dùng were having.
-c|What ___ you doing at 9 o'clock yesterday?|was / were / did|1|you đi với were; did you doing là sai cấu trúc.
-c|He broke his arm while he ___ down the stairs.|was running / were running / is running|0|He đi với was; is running sai thì.
+"past-continuous": `c|I ___ TV when the phone rang.|watching / was watching / am watching / were watching|1|Hành động dài đang diễn ra bị cắt ngang: was watching; watching thiếu was, am watching sai thì.|watching=>Watching thiếu was; V-ing đứng một mình không thể làm động từ chính của câu.;;am watching=>Am watching là hiện tại tiếp diễn, trái với phần when the phone rang ở quá khứ.;;were watching=>Chủ ngữ I đi với was, không đi với were; were chỉ dùng với you/we/they và danh từ số nhiều.
+c|While the nurse ___ blood, the patient fainted.|was taking / were taking / take / has taken|0|The nurse là số ít nên dùng was taking.|were taking=>Chủ ngữ the nurse là số ít nên dùng was, không dùng were (were đi với số nhiều hoặc you).;;take=>Take ở dạng nguyên mẫu không hợp với quá khứ the patient fainted; cần was taking để chỉ việc đang diễn ra.;;has taken=>Has taken là hiện tại hoàn thành, không hợp với mệnh đề quá khứ the patient fainted đi cùng While.
+c|At 8 p.m. last night, we ___ dinner.|were having / have / are having / will have|0|Mốc giờ trong quá khứ nên dùng were having.|have=>Have là hiện tại đơn, mâu thuẫn với mốc quá khứ last night; cần were having.;;are having=>Are having là hiện tại tiếp diễn, không hợp với mốc thời gian last night ở quá khứ.;;will have=>Will have chỉ tương lai, trong khi At 8 p.m. last night là quá khứ nên cần were having.
+c|What ___ you doing at 9 o'clock yesterday?|was / were / did / are|1|you đi với were; did you doing là sai cấu trúc.|was=>Was đi với I/he/she/it; chủ ngữ you phải đi với were.;;did=>Did dùng cho quá khứ đơn và đi với động từ nguyên mẫu; trước doing cần be, tức were, không phải did.;;are=>Are là hiện tại, không hợp với yesterday ở quá khứ; cần were you doing.
+c|He broke his arm while he ___ down the stairs.|was running / were running / is running / runs|0|He đi với was; is running sai thì.|were running=>Were chỉ dùng với you/we/they và số nhiều; chủ ngữ He phải đi với was.;;is running=>Is running là hiện tại tiếp diễn, trái với thì quá khứ broke his arm trong câu.;;runs=>Runs là hiện tại đơn, không hợp với broke ở quá khứ; việc đang diễn ra trong quá khứ cần was running.
 t|I ___ (study) when my friend called.|was studying|Hành động đang diễn ra bị cắt ngang: was studying.
 t|The patients ___ (wait) when the doctor arrived.|were waiting|Chủ ngữ số nhiều dùng were waiting.
 t|At that moment, she ___ (not / listen) to the teacher. She was texting.|wasn't listening;was not listening|Đang diễn ra tại một thời điểm quá khứ nên dùng quá khứ tiếp diễn phủ định: wasn't listening.
-x|Chọn câu đúng|She was cooking when the phone rang. / She cooking when the phone rang. / She were cooking when the phone rang.|0|She đi với was và cần was trước V-ing.
-x|Chọn câu đúng|We was waiting for the bus. / We were waiting for the bus. / We were waited for the bus.|1|We đi với were + V-ing.
+x|Chọn câu đúng|She was cooking when the phone rang. / She cooking when the phone rang. / She were cooking when the phone rang. / She is cook when the phone rang.|0|She đi với was và cần was trước V-ing.|She cooking when the phone rang.=>Thiếu was trước cooking; V-ing đứng một mình không thể làm động từ chính.;;She were cooking when the phone rang.=>Chủ ngữ She là số ít nên phải đi với was, không dùng were (were chỉ đi với you/we/they).;;She is cook when the phone rang.=>Is trái với thì quá khứ của when the phone rang, và cook không có -ing nên cũng sai cấu trúc tiếp diễn.
+x|Chọn câu đúng|We was waiting for the bus. / We were waiting for the bus. / We were waited for the bus. / We waiting for the bus.|1|We đi với were + V-ing.|We was waiting for the bus.=>Chủ ngữ We là số nhiều nên đi với were, không phải was; was chỉ dùng với I/he/she/it.;;We were waited for the bus.=>Waited là V3/quá khứ, nhưng were waited tạo thành bị động và sai nghĩa; muốn diễn tả đang chờ thì dùng were waiting.;;We waiting for the bus.=>Waiting đứng một mình thiếu trợ động từ were nên không tạo thành câu hoàn chỉnh.
 f|I was walking to work when I was seeing an accident.|was seeing|saw|Hành động ngắn chen vào dùng quá khứ đơn: saw.
 o|She was sleeping when I called her.|S + was + V-ing + when + quá khứ đơn.`,
-"used-to": `c|When I was a child, I ___ in a small village.|used to live / use to live / am used to live|0|Trạng thái trong quá khứ: used to + V.
-c|She didn't ___ coffee, but now she drinks it every day.|used drinking / use to drink / be used to drink|1|Phủ định: didn't + use to + V (không có d, không có be).
-c|I'm new here. I'm not used to ___ on the left.|drive / driving / drove|1|be used to + V-ing.
-c|Did you ___ play the piano when you were young?|use to / be used to / using to|0|Câu hỏi với did dùng use to + V (không d, không be).
-c|It took me months to get used to ___ night shifts.|work / working / worked|1|get used to + V-ing.
+"used-to": `c|When I was a child, I ___ in a small village.|used to live / use to live / am used to live / used to living|0|Trạng thái trong quá khứ: used to + V.|use to live=>Ở câu khẳng định quá khứ, cấu trúc chuẩn là used to (có -d) + động từ nguyên mẫu; use to chỉ đúng trong câu có did.;;am used to live=>Am used to + V-ing nghĩa là đã quen, không đi với động từ nguyên mẫu live, và cũng không nói về thói quen cũ khi còn nhỏ.;;used to living=>Used to + V-ing sai vì sau used to chỉ dùng động từ nguyên mẫu; còn be used to mới đi với V-ing.
+c|She didn't ___ coffee, but now she drinks it every day.|used drinking / use to drink / be used to drink / used to drank|1|Phủ định: didn't + use to + V (không có d, không có be).|used drinking=>Không có cấu trúc used + V-ing; sau trợ động từ didn't, thói quen cũ diễn đạt bằng use to + động từ nguyên mẫu.;;be used to drink=>Be used to phải đi với V-ing và mang nghĩa quen với; ở đây sau didn't cần use to + drink, nói thói quen cũ.;;used to drank=>Sau didn't động từ phải ở nguyên mẫu, và drank là quá khứ; hơn nữa didn't đi với use to (không -d), không phải used to.
+c|I'm new here. I'm not used to ___ on the left.|drive / driving / drove / driven|1|be used to + V-ing.|drive=>Be used to là cụm có to là giới từ, nên sau đó dùng V-ing hoặc danh từ chứ không dùng động từ nguyên mẫu drive.;;drove=>Drove là quá khứ đơn, không đứng sau giới từ to trong not used to; ở đây cần V-ing driving.;;driven=>Driven là quá khứ phân từ mang nghĩa bị lái; sau not used to phải dùng V-ing driving để nói chưa quen với việc lái xe.
+c|Did you ___ play the piano when you were young?|use to / be used to / using to / be use to|0|Câu hỏi với did dùng use to + V (không d, không be).|be used to=>Be used to nghĩa là quen với và theo sau là V-ing; câu có Did và play đòi hỏi use to + nguyên mẫu để hỏi thói quen cũ.;;using to=>Using to không phải cấu trúc đúng trong tiếng Anh; câu hỏi thói quen quá khứ với Did dùng use to + động từ nguyên mẫu.;;be use to=>Không có cấu trúc be use to; dạng đúng là be used to (quen với), và ở câu này cần use to đi sau Did.
+c|It took me months to get used to ___ night shifts.|work / working / worked / to work|1|get used to + V-ing.|work=>Get used to có to là giới từ nên sau đó cần V-ing hoặc danh từ, không dùng động từ nguyên mẫu work.;;worked=>Worked là dạng quá khứ, không đứng sau giới từ to trong get used to; cần V-ing working để chỉ việc quen làm ca đêm.;;to work=>Get used to đã có to là giới từ, nên không thêm to work; sau nó phải là V-ing, tức working.
 t|We ___ (use to / live) in Hue, but now we live in Hanoi.|used to live|Thói quen quá khứ khẳng định: used to + V.
 t|He ___ (not / use to / smoke) in the past, but he smokes now.|didn't use to smoke;did not use to smoke;used not to smoke|Phủ định: didn't + use to + V (hoặc used not to + V, trang trọng).
 t|After a few weeks, she got used to ___ (wear) the uniform.|wearing|get used to + V-ing.
-x|Chọn câu đúng|I used to walking to school. / I used to walk to school. / I use to walk to school.|1|Thói quen quá khứ khẳng định: used to + V.
-x|Chọn câu đúng|He is used to get up early. / He is used to getting up early. / He is use to getting up early.|1|be used to + V-ing, và be giữ nguyên used.
+x|Chọn câu đúng|I used to walking to school. / I used to walk to school. / I use to walk to school. / I used to walked to school.|1|Thói quen quá khứ khẳng định: used to + V.|I used to walking to school.=>Used to nói về thói quen quá khứ đi với động từ nguyên mẫu (walk), không đi với V-ing; V-ing chỉ dùng với be used to.;;I use to walk to school.=>Ở câu khẳng định quá khứ phải là used to (có -d); use to chỉ dùng trong câu phủ định hoặc nghi vấn với did.;;I used to walked to school.=>Sau used to chỉ dùng động từ nguyên mẫu; used đã mang nghĩa quá khứ nên walked (quá khứ) bị lặp thì.
+x|Chọn câu đúng|He is used to get up early. / He is used to getting up early. / He is use to getting up early. / He is used to gets up early.|1|be used to + V-ing, và be giữ nguyên used.|He is used to get up early.=>Be used to có to là giới từ, sau đó phải là V-ing (getting up); động từ nguyên mẫu get up thuộc về cấu trúc used to khác.;;He is use to getting up early.=>Dạng be use to không tồn tại; phải viết be used to với used ở quá khứ phân từ để diễn tả sự quen.;;He is used to gets up early.=>Sau giới từ to trong be used to cần V-ing, không dùng động từ chia -s gets; ngôi thứ ba chỉ làm is, không làm động từ sau to.
 f|She didn't used to like fish.|used|use|Sau didn't dùng use to, không dùng used to.
 o|Did you use to play football?|Did + chủ ngữ + use to + V.`,
-"quantifiers": `c|We don't have ___ milk at home. Can you buy some?|some / any / many|1|Câu phủ định dùng any; many không đi với danh từ không đếm được.
-c|How ___ sugar do you take in your tea?|many / few / much|2|sugar không đếm được nên hỏi bằng How much.
-c|There are only ___ beds free in the ward, so we must wait.|a few / a little / much|0|beds đếm được số nhiều nên dùng a few.
-c|Drink ___ water every day. Your body needs it.|many / a few / a lot of|2|water không đếm được; a lot of đi được với cả hai loại danh từ.
-c|There aren't ___ chairs for all the students.|much / enough / a little|1|chairs đếm được; enough dùng được với cả hai loại, còn much và a little thì không.
+"quantifiers": `c|We don't have ___ milk at home. Can you buy some?|some / any / many / few|1|Câu phủ định dùng any; many không đi với danh từ không đếm được.|some=>some thường dùng trong câu khẳng định; trong câu phủ định don't have ta dùng any.;;many=>many không đi với danh từ không đếm được như milk, và câu phủ định này cần any.;;few=>few đi với danh từ đếm được số nhiều, không đi với milk là danh từ không đếm được.
+c|How ___ sugar do you take in your tea?|many / few / much / a little|2|sugar không đếm được nên hỏi bằng How much.|many=>many chỉ đi với danh từ đếm được số nhiều, còn sugar không đếm được nên không hỏi bằng How many.;;few=>few không dùng sau How để hỏi số lượng và chỉ đi với danh từ đếm được số nhiều; sugar cần How much.;;a little=>a little có nghĩa một ít và không dùng sau How để hỏi số lượng; câu hỏi với sugar phải là How much.
+c|There are only ___ beds free in the ward, so we must wait.|a few / a little / much / many|0|beds đếm được số nhiều nên dùng a few.|a little=>a little đi với danh từ không đếm được, mà beds đếm được số nhiều nên phải dùng a few.;;much=>much đi với danh từ không đếm được và không hợp với beds; ngoài ra only ... beds free cần nghĩa "một vài".;;many=>many không hợp với only trong nghĩa "chỉ còn một vài"; câu này nhấn mạnh có rất ít giường nên dùng a few.
+c|Drink ___ water every day. Your body needs it.|many / a few / a lot of / few|2|water không đếm được; a lot of đi được với cả hai loại danh từ.|many=>many chỉ đi với danh từ đếm được số nhiều, còn water không đếm được nên không dùng many.;;a few=>a few chỉ đi với danh từ đếm được số nhiều, không đi với water là danh từ không đếm được.;;few=>few đi với danh từ đếm được số nhiều nên không hợp với water; ngoài ra few mang nghĩa quá ít, trái với ý khuyên uống nhiều nước.
+c|There aren't ___ chairs for all the students.|much / enough / a little / a great deal of|1|chairs đếm được; enough dùng được với cả hai loại, còn much và a little thì không.|much=>much đi với danh từ không đếm được, mà chairs là danh từ đếm được số nhiều nên không dùng much.;;a little=>a little cũng chỉ đi với danh từ không đếm được, nên không hợp với chairs đếm được số nhiều.;;a great deal of=>a great deal of chỉ đi với danh từ không đếm được (a great deal of money), không đi với chairs là danh từ đếm được.
 t|The jar is empty. There is ___ sugar in it. (no / any)|no|Câu khẳng định với nghĩa không có gì dùng no.
 t|How ___ students are there in your class? (much / many)|many|students đếm được nên dùng many.
 t|We have very ___ rice left. (little / few)|little|rice không đếm được nên dùng little.
-x|Chọn câu đúng|She drinks many coffee every day. / She drinks a lot of coffee every day. / She drinks a few coffee every day.|1|coffee không đếm được nên không dùng many hay a few; a lot of thì đúng.
-x|Chọn câu đúng|There aren't any eggs in the fridge. / There isn't any eggs in the fridge. / There aren't some eggs in the fridge.|0|eggs số nhiều nên dùng are; câu phủ định dùng any.
+x|Chọn câu đúng|She drinks many coffee every day. / She drinks a lot of coffee every day. / She drinks a few coffee every day. / She drinks a lot coffee every day.|1|coffee không đếm được nên không dùng many hay a few; a lot of thì đúng.|She drinks many coffee every day.=>many chỉ đi với danh từ đếm được số nhiều, còn coffee ở đây không đếm được nên không dùng many.;;She drinks a few coffee every day.=>a few chỉ đi với danh từ đếm được số nhiều, mà coffee không đếm được nên không dùng a few.;;She drinks a lot coffee every day.=>thiếu giới từ of: trước danh từ phải nói a lot of coffee, còn a lot đứng một mình chỉ dùng khi không có danh từ theo sau.
+x|Chọn câu đúng|There aren't any eggs in the fridge. / There isn't any eggs in the fridge. / There aren't some eggs in the fridge. / There aren't any egg in the fridge.|0|eggs số nhiều nên dùng are; câu phủ định dùng any.|There isn't any eggs in the fridge.=>eggs là danh từ số nhiều nên động từ to be phải là aren't, không phải isn't.;;There aren't some eggs in the fridge.=>some thường không dùng trong câu phủ định; sau aren't ta dùng any.;;There aren't any egg in the fridge.=>sau any trong nghĩa "không có quả trứng nào" với are phải dùng danh từ số nhiều eggs, không dùng egg số ít.
 f|We don't have many time before the exam.|many|much|time không đếm được nên dùng much.
 o|There is a little milk in the glass.|a little đi với danh từ không đếm được như milk.`,
-"zero-conditional": `c|If you heat ice, it ___.|melts / melt / to melt|0|Chủ ngữ it số ít nên động từ hiện tại đơn thêm -s.
-c|If you don't drink enough water, you ___ dehydrated.|gets / get / getting|1|Chủ ngữ you đi với get; mệnh đề chính dùng hiện tại đơn.
-c|When the temperature ___ below zero, water freezes.|drops / dropped / will drop|0|Câu điều kiện loại 0 dùng hiện tại đơn ở cả hai vế, không dùng will.
-c|If a patient has a high fever, the nurse ___ his temperature every hour.|checks / checking / to check|0|Mệnh đề chính dùng hiện tại đơn; the nurse số ít nên thêm -s.
-c|Plants ___ if they don't get any light.|dies / died / die|2|Plants số nhiều nên dùng die; thì hiện tại khớp với don't get.
+"zero-conditional": `c|If you heat ice, it ___.|melts / melt / to melt / melted|0|Chủ ngữ it số ít nên động từ hiện tại đơn thêm -s.|melt=>melt thiếu -s, mà chủ ngữ it là ngôi thứ ba số ít nên động từ hiện tại đơn phải là melts.;;to melt=>to melt là dạng nguyên mẫu có to, không thể làm động từ chia thì hiện tại cho chủ ngữ it.;;melted=>melted là quá khứ, không khớp với heat ở hiện tại; câu loại 0 dùng hiện tại đơn ở cả hai vế.
+c|If you don't drink enough water, you ___ dehydrated.|gets / get / getting / got|1|Chủ ngữ you đi với get; mệnh đề chính dùng hiện tại đơn.|gets=>gets có -s chỉ dùng với ngôi thứ ba số ít, còn chủ ngữ you phải dùng get.;;getting=>getting là V-ing, không có trợ động từ nên không phải động từ chia của mệnh đề chính.;;got=>got là quá khứ, trong khi mệnh đề if dùng hiện tại; câu điều kiện loại 0 phải dùng hiện tại đơn ở cả hai vế.
+c|When the temperature ___ below zero, water freezes.|drops / dropped / will drop / dropping|0|Câu điều kiện loại 0 dùng hiện tại đơn ở cả hai vế, không dùng will.|dropped=>dropped là quá khứ, còn freezes ở hiện tại; câu loại 0 cần hiện tại đơn ở cả hai vế.;;will drop=>will drop là tương lai, mà mệnh đề when/if của câu điều kiện loại 0 dùng hiện tại đơn chứ không dùng will.;;dropping=>dropping là V-ing không có trợ động từ nên không thành động từ chính của mệnh đề when.
+c|If a patient has a high fever, the nurse ___ his temperature every hour.|checks / checking / to check / checked|0|Mệnh đề chính dùng hiện tại đơn; the nurse số ít nên thêm -s.|checking=>checking là V-ing không có trợ động từ, không thể làm động từ chính của mệnh đề chính.;;to check=>to check là nguyên mẫu có to, không phải động từ chia cho chủ ngữ the nurse trong thì hiện tại đơn.;;checked=>checked là quá khứ, trong khi mệnh đề if dùng has ở hiện tại; loại 0 cần hiện tại đơn cho thói quen chung.
+c|Plants ___ if they don't get any light.|dies / died / die / dying|2|Plants số nhiều nên dùng die; thì hiện tại khớp với don't get.|dies=>dies có -s chỉ dùng với chủ ngữ số ít, còn plants là số nhiều nên phải dùng die.;;died=>died là quá khứ, không khớp với don't get ở hiện tại; loại 0 dùng hiện tại đơn để nói sự thật chung.;;dying=>dying là V-ing không có to be nên không thể làm động từ chính chia thì của mệnh đề.
 t|If you ___ red and blue, you get purple. (mix)|mix|Mệnh đề if dùng hiện tại đơn; you đi với động từ nguyên mẫu.
 t|If she ___ well, she feels weak all day. (not / sleep)|doesn't sleep;does not sleep|She là ngôi thứ ba số ít nên phủ định dùng doesn't + V.
 t|If you press this button, the machine always ___. (start)|starts|The machine số ít nên động từ thêm -s.
-x|Chọn câu đúng|If you will cool water to 0 degrees, it freezes. / If you cool water to 0 degrees, it freezes. / If you cools water to 0 degrees, it freeze.|1|Loại 0: hiện tại đơn ở cả hai vế, chia động từ đúng với chủ ngữ.
-x|Chọn câu đúng|When it rains, the roads get slippery. / When it will rain, the roads get slippery. / When it rains, the roads gets slippery.|0|Mệnh đề when dùng hiện tại đơn; roads số nhiều nên dùng get.
+x|Chọn câu đúng|If you will cool water to 0 degrees, it freezes. / If you cool water to 0 degrees, it freezes. / If you cools water to 0 degrees, it freeze. / If you cooling water to 0 degrees, it freezes.|1|Loại 0: hiện tại đơn ở cả hai vế, chia động từ đúng với chủ ngữ.|If you will cool water to 0 degrees, it freezes.=>If you will cool sai vì mệnh đề if của loại 0 dùng hiện tại đơn, không dùng will.;;If you cools water to 0 degrees, it freeze.=>If you cools sai vì you đi với cool không có -s, và it freeze thiếu -s dù chủ ngữ it là ngôi thứ ba số ít.;;If you cooling water to 0 degrees, it freezes.=>If you cooling thiếu trợ động từ nên cooling không thể làm động từ chia của mệnh đề if.
+x|Chọn câu đúng|When it rains, the roads get slippery. / When it will rain, the roads get slippery. / When it rains, the roads gets slippery. / When it rain, the roads get slippery.|0|Mệnh đề when dùng hiện tại đơn; roads số nhiều nên dùng get.|When it will rain, the roads get slippery.=>When it will rain sai vì mệnh đề when của câu điều kiện loại 0 dùng hiện tại đơn, không dùng will.;;When it rains, the roads gets slippery.=>the roads gets sai vì roads là số nhiều nên động từ là get; gets chỉ đi với chủ ngữ số ít.;;When it rain, the roads get slippery.=>When it rain thiếu -s, mà chủ ngữ it là ngôi thứ ba số ít nên phải là rains.
 f|If you will heat water to 100 degrees, it boils.|will heat|heat|Mệnh đề if trong câu điều kiện loại 0 dùng hiện tại đơn, không dùng will.
 o|If you heat ice, it melts.|Cấu trúc: If + hiện tại đơn, hiện tại đơn.`,
-"question-tags": `c|You are a nurse, ___?|aren't you / don't you / isn't you|0|Câu chính dùng are nên đuôi là aren't you.
-c|She doesn't smoke, ___?|doesn't she / is she / does she|2|Câu phủ định dùng doesn't nên đuôi khẳng định does she.
-c|They finished the report yesterday, ___?|didn't they / haven't they / don't they|0|Quá khứ đơn thì đuôi dùng didn't they.
-c|I am late again, ___?|isn't I / aren't I / don't I|1|Với I am, đuôi chuẩn là aren't I.
-c|Let's start the ward round now, ___?|will we / don't we / shall we|2|Sau Let's thì đuôi là shall we.
-c|Open the window, ___?|do you / will you / are you|1|Sau câu mệnh lệnh thường dùng will you.
+"question-tags": `c|You are a nurse, ___?|aren't you / don't you / isn't you / won't you|0|Câu chính dùng are nên đuôi là aren't you.|don't you=>câu chính dùng động từ be (are) nên đuôi phải dùng aren't, không mượn trợ động từ do.;;isn't you=>isn't đi với he/she/it, còn chủ ngữ là you nên phải dùng aren't you.;;won't you=>won't là dạng phủ định của will, không lặp lại động từ are của câu chính; đuôi đúng là aren't you.
+c|She doesn't smoke, ___?|doesn't she / is she / does she / do she|2|Câu phủ định dùng doesn't nên đuôi khẳng định does she.|doesn't she=>câu chính đã phủ định (doesn't) nên đuôi phải khẳng định; doesn't she là đuôi phủ định.;;is she=>câu chính dùng trợ động từ doesn't, nên đuôi phải dùng does chứ không dùng is.;;do she=>chủ ngữ she là ngôi thứ ba số ít nên trợ động từ phải là does, không phải do.
+c|They finished the report yesterday, ___?|didn't they / haven't they / don't they / weren't they|0|Quá khứ đơn thì đuôi dùng didn't they.|haven't they=>câu chính ở quá khứ đơn (finished, yesterday) nên đuôi dùng didn't, không dùng haven't của thì hoàn thành.;;don't they=>don't là hiện tại đơn, không khớp với câu chính ở quá khứ đơn; đuôi phải dùng didn't.;;weren't they=>weren't là của động từ be, trong khi động từ chính finished là động từ thường nên cần didn't.
+c|I am late again, ___?|isn't I / aren't I / don't I / amn't I|1|Với I am, đuôi chuẩn là aren't I.|isn't I=>isn't không đi với chủ ngữ I; với I am đuôi chuẩn là aren't I.;;don't I=>câu chính dùng động từ be (am) nên đuôi không mượn trợ động từ do; đuôi chuẩn là aren't I.;;amn't I=>amn't không phải dạng chuẩn trong tiếng Anh; người bản ngữ dùng aren't I với I am.
+c|Let's start the ward round now, ___?|will we / don't we / shall we / let we|2|Sau Let's thì đuôi là shall we.|will we=>will we dùng với câu thông thường, còn sau Let's (rủ rê) đuôi chuẩn là shall we.;;don't we=>Let's không phải câu chính có trợ động từ do; đuôi chuẩn của lời rủ rê là shall we.;;let we=>let we không phải cấu trúc đuôi câu hỏi; sau Let's đuôi là shall we.
+c|Open the window, ___?|do you / will you / are you / shall we|1|Sau câu mệnh lệnh thường dùng will you.|do you=>sau câu mệnh lệnh khẳng định thường dùng will you, không dùng do you.;;are you=>are không phải trợ động từ của câu mệnh lệnh Open...; đuôi thường dùng là will you.;;shall we=>shall we chỉ đi với Let's (lời rủ cùng làm), còn Open the window là mệnh lệnh nên dùng will you.
 t|Your sister can swim, ___? (not / she)|can't she|Câu khẳng định dùng can nên đuôi là can't she.
 t|He hasn't taken his medicine, ___? (he)|has he|Câu phủ định với hasn't nên đuôi khẳng định has he.
 t|Your brother will come soon, ___? (not)|won't he|Câu khẳng định dùng will nên đuôi là won't he.
 t|Nobody knows the answer, ___? (they)|do they;does he;does she|Nobody mang nghĩa phủ định nên đuôi khẳng định, dùng they hoặc he/she.
-x|Chọn câu đúng|You like coffee, aren't you? / You like coffee, isn't it? / You like coffee, don't you?|2|Động từ chính là like nên đuôi dùng trợ động từ do.
-x|Chọn câu đúng|She isn't working today, is she? / She isn't working today, isn't she? / She isn't working today, does she?|0|Câu phủ định dùng isn't nên đuôi khẳng định is she.
+x|Chọn câu đúng|You like coffee, aren't you? / You like coffee, isn't it? / You like coffee, don't you? / You like coffee, doesn't you?|2|Động từ chính là like nên đuôi dùng trợ động từ do.|You like coffee, aren't you?=>động từ chính là like (động từ thường) nên đuôi mượn trợ động từ don't, không dùng aren't của be.;;You like coffee, isn't it?=>chủ ngữ là You nên đuôi phải có you, và động từ thường like cần don't chứ không phải isn't it.;;You like coffee, doesn't you?=>chủ ngữ you đi với don't, không đi với doesn't (dành cho he/she/it).
+x|Chọn câu đúng|She isn't working today, is she? / She isn't working today, isn't she? / She isn't working today, does she? / She isn't working today, wasn't she?|0|Câu phủ định dùng isn't nên đuôi khẳng định is she.|She isn't working today, isn't she?=>câu chính đã phủ định nên đuôi phải khẳng định; lặp lại isn't là sai.;;She isn't working today, does she?=>câu chính dùng trợ động từ is (hiện tại tiếp diễn) nên đuôi dùng is she, không dùng does.;;She isn't working today, wasn't she?=>câu chính phủ định thì đuôi phải khẳng định, và wasn't là quá khứ không khớp với isn't hiện tại; đuôi đúng là is she.
 f|You have finished your homework, don't you?|don't you|haven't you|Câu chính dùng have (hoàn thành) nên đuôi là haven't you.
 o|Let's go to the canteen, shall we?|Let's luôn đi với đuôi shall we.`,
-"phrasal-verbs": `c|I can't hear the TV. Please turn it ___.|down / up / off|1|Không nghe rõ nên cần tăng âm lượng, turn it up.
-c|She looks ___ her grandmother because her parents work abroad.|after / for / out|0|look after là chăm sóc; look for là tìm kiếm nên không hợp nghĩa.
-c|He was offered a job, but he turned it ___ because the salary was low.|on / down / up|1|turn down là từ chối; đại từ it đứng giữa.
-c|They set ___ a small clinic in the village in 2019.|off / in / up|2|set up nghĩa là thành lập.
-c|My father gave ___ smoking last year because of his health.|in / out / up|2|give up nghĩa là từ bỏ một thói quen; give in là nhượng bộ.
-c|I'll pick the children ___ from school at four.|down / off / up|2|pick up nghĩa là đón ai đó.
+"phrasal-verbs": `c|I can't hear the TV. Please turn it ___.|down / up / off / in|1|Không nghe rõ nên cần tăng âm lượng, turn it up.|down=>turn it down là giảm âm lượng, ngược với việc không nghe rõ nên cần tăng âm lượng.;;off=>turn it off là tắt TV, không giải quyết việc nghe không rõ; cần tăng âm lượng bằng turn it up.;;in=>turn it in nghĩa là nộp (bài, đồ vật), hoàn toàn không liên quan đến việc chỉnh âm lượng TV.
+c|She looks ___ her grandmother because her parents work abroad.|after / for / out / up|0|look after là chăm sóc; look for là tìm kiếm nên không hợp nghĩa.|for=>look for là tìm kiếm, không phải chăm sóc; ở đây bố mẹ làm việc xa nên cần look after (chăm sóc).;;out=>look out là coi chừng, không có nghĩa chăm sóc bà nên không hợp với ngữ cảnh.;;up=>look up her grandmother nghĩa là tra cứu hoặc tìm người, không phải chăm sóc; chăm sóc là look after.
+c|He was offered a job, but he turned it ___ because the salary was low.|on / down / up / off|1|turn down là từ chối; đại từ it đứng giữa.|on=>turn it on nghĩa là bật lên, không hợp nghĩa từ chối một công việc vì lương thấp.;;up=>turn it up là tăng lên (âm lượng, nhiệt độ), không có nghĩa từ chối lời mời làm việc.;;off=>turn it off là tắt đi, không có nghĩa từ chối; từ chối lời mời việc làm là turn it down.
+c|They set ___ a small clinic in the village in 2019.|off / in / up / down|2|set up nghĩa là thành lập.|off=>set off nghĩa là khởi hành hoặc làm nổ, không có nghĩa thành lập phòng khám.;;in=>set in nghĩa là bắt đầu và kéo dài (thời tiết xấu...), không dùng cho việc thành lập một cơ sở.;;down=>set down a clinic không có nghĩa thành lập; set down chỉ đặt xuống hoặc ghi lại, thành lập phải là set up.
+c|My father gave ___ smoking last year because of his health.|in / out / up / off|2|give up nghĩa là từ bỏ một thói quen; give in là nhượng bộ.|in=>give in là nhượng bộ, không có nghĩa từ bỏ thói quen hút thuốc.;;out=>give out nghĩa là phân phát hoặc cạn kiệt, không có nghĩa bỏ hút thuốc.;;off=>give off nghĩa là tỏa ra (mùi, nhiệt), không có nghĩa từ bỏ; từ bỏ hút thuốc là give up smoking.
+c|I'll pick the children ___ from school at four.|down / off / up / on|2|pick up nghĩa là đón ai đó.|down=>pick the children down không phải cụm động từ có nghĩa đón; down không hợp với pick.;;off=>pick off nghĩa là bắn hạ từng người hoặc nhổ bỏ, không có nghĩa đón trẻ ở trường.;;on=>pick on nghĩa là bắt nạt, nên pick the children on from school sai nghĩa; đón người là pick up.
 t|Here is the form. Please fill it ___. (in)|in;out|fill it in là điền vào mẫu; đại từ it đứng giữa.
 t|I don't know this word. I will ___ it up in a dictionary. (look)|look|look up nghĩa là tra cứu.
 t|Our flight was late, but the plane finally took ___ at nine. (off)|off|take off nghĩa là máy bay cất cánh.
 t|The nurse ___ after the patients all night last night. (look)|looked;was looking|Có last night nên dùng quá khứ (looked hoặc was looking).
-x|Chọn câu đúng|He gave up it last year. / He gave it up last year. / He gave last year up it.|1|Với cụm tách được, đại từ it đứng giữa: gave it up.
-x|Chọn câu đúng|We ran out of milk this morning. / We ran out milk of this morning. / We ran of out milk this morning.|0|Cụm đúng là run out of + danh từ.
+x|Chọn câu đúng|He gave up it last year. / He gave it up last year. / He gave last year up it. / He up gave it last year.|1|Với cụm tách được, đại từ it đứng giữa: gave it up.|He gave up it last year.=>He gave up it sai vì với cụm tách được, đại từ it phải đứng giữa động từ và tiểu từ: gave it up.;;He gave last year up it.=>He gave last year up it sai vì cụm từ bị chen trạng từ thời gian vào giữa và đại từ it đứng sai vị trí.;;He up gave it last year.=>He up gave it sai vì tiểu từ up phải đứng sau động từ gave (gave it up), không đứng trước nó.
+x|Chọn câu đúng|We ran out of milk this morning. / We ran out milk of this morning. / We ran of out milk this morning. / We ran milk out of this morning.|0|Cụm đúng là run out of + danh từ.|We ran out milk of this morning.=>ran out milk of sai trật tự; giới từ of phải đi liền sau out trước danh từ: run out of milk.;;We ran of out milk this morning.=>ran of out milk đảo of và out; cụm đúng là run out of, trong đó out đứng trước of.;;We ran milk out of this morning.=>ran milk out of tách cụm run out of và chèn danh từ vào giữa; cụm này không tách được.
 f|Please turn off it before you leave the room.|turn off it|turn it off|Đại từ it phải đứng giữa động từ và tiểu từ.
 o|Could you turn it down, please?|Đại từ it đứng giữa turn và down.`,
-"too-enough": `c|The soup is ___ hot to eat. Wait a few minutes.|too / enough / so|0|Too + adj + to V diễn tả quá mức nên không thể.
-c|She isn't old ___ to drive a car.|enough / too / so|0|Enough đứng sau tính từ: old enough to V.
-c|We don't have ___ chairs for all the guests.|too / enough / so|1|Enough đứng trước danh từ: enough chairs.
-c|It was ___ a boring film that we left halfway.|so / such / too|1|Có a + adj + danh từ nên dùng such, không dùng so.
-c|The ward was ___ noisy that the patients couldn't sleep.|such / so / too|1|so + adj + that; such cần có danh từ đi kèm.
-c|There is ___ traffic in the city centre at 8 a.m., so I always take the metro.|too many / too much / too|1|Traffic là danh từ không đếm được nên dùng too much.
+"too-enough": `c|The soup is ___ hot to eat. Wait a few minutes.|too / enough / so / very|0|Too + adj + to V diễn tả quá mức nên không thể.|enough=>enough đứng sau tính từ nghĩa là đủ, trái với ý quá nóng không ăn được; cần too hot to eat.;;so=>so + adj thường đi với that-clause chứ không với to V, và không diễn tả quá mức không thể.;;very=>very chỉ nhấn mạnh mức độ, không đi với to V để diễn tả “quá … không thể”; cần too.
+c|She isn't old ___ to drive a car.|enough / too / so / very|0|Enough đứng sau tính từ: old enough to V.|too=>too + adj + to V mang nghĩa quá … không thể, và too không đứng sau tính từ old; sai cả vị trí lẫn nghĩa.;;so=>so không đứng sau tính từ và không đi với to V để nói đủ điều kiện; cần old enough to drive.;;very=>very đứng trước tính từ, không đi sau old và không diễn tả đủ điều kiện để làm gì; cần enough.
+c|We don't have ___ chairs for all the guests.|too / enough / so / very|1|Enough đứng trước danh từ: enough chairs.|too=>too không đứng trước danh từ chairs với nghĩa đủ; nghĩa phủ định “không đủ ghế” cần enough chairs.;;so=>so không đứng trực tiếp trước danh từ chairs; muốn nói “không đủ ghế” phải dùng enough.;;very=>very chỉ bổ nghĩa cho tính từ/trạng từ, không đứng trực tiếp trước danh từ chairs và không diễn tả đủ hay không đủ.
+c|It was ___ a boring film that we left halfway.|so / such / too / very|1|Có a + adj + danh từ nên dùng such, không dùng so.|so=>Trước cụm có mạo từ a + adj + danh từ (a boring film) phải dùng such; so chỉ đi với tính từ đứng một mình.;;too=>too + adj + to V nghĩa quá … không thể, không đi với that-clause và không đứng trước a boring film.;;very=>very không đi với mệnh đề that để chỉ kết quả và không đứng trước a + tính từ + danh từ; cần such a boring film that.
+c|The ward was ___ noisy that the patients couldn't sleep.|such / so / too / very|1|so + adj + that; such cần có danh từ đi kèm.|such=>such cần đi với danh từ (such a noisy ward); ở đây noisy là tính từ đứng một mình sau was nên phải dùng so.;;too=>too + adj đi với to V (too noisy to sleep), không đi với that-clause chỉ kết quả như câu này.;;very=>very không nối với that-clause để chỉ kết quả; cấu trúc so + adj + that mới đúng.
+c|There is ___ traffic in the city centre at 8 a.m., so I always take the metro.|too many / too much / too / too few|1|Traffic là danh từ không đếm được nên dùng too much.|too many=>traffic là danh từ không đếm được nên không dùng many; many chỉ đi với danh từ đếm được số nhiều.;;too=>too + danh từ phải kèm much/many; too đứng một mình chỉ bổ nghĩa cho tính từ, không đứng trước traffic.;;too few=>few chỉ đi với danh từ đếm được số nhiều và nghĩa ít quá, trái với ý đường đông nên đi metro.
 t|The medicine is ___ bitter that the child refuses to take it. (so / such)|so|So + adj + that; không có danh từ nên dùng so.
 t|Is the room big ___ for twenty people? (too / enough)|enough|Adj + enough + for: đủ lớn.
 t|There were ___ many patients in the waiting room that some had to stand. (so / too)|so|So many + danh từ + that: nhiều đến mức.
 t|I can't buy this laptop. It is ___ expensive for me. (too / enough)|too|Too + adj + for + người: quá đắt đối với tôi.
-x|Chọn câu đúng|She is too young to vote. / She is young too to vote. / She is enough young to vote.|0|Too đứng trước tính từ: too young to V.
-x|Chọn câu đúng|He speaks English enough well to work abroad. / He speaks English well enough to work abroad. / He speaks English well too to work abroad.|1|Enough đứng sau trạng từ: well enough.
+x|Chọn câu đúng|She is too young to vote. / She is young too to vote. / She is enough young to vote. / She was too young vote.|0|Too đứng trước tính từ: too young to V.|She is young too to vote.=>too phải đứng trước tính từ (too young), không đặt sau tính từ young.;;She is enough young to vote.=>enough phải đứng sau tính từ (young enough) chứ không đứng trước; hơn nữa ý quá trẻ để bầu cần dùng too.;;She was too young vote.=>Thiếu to trước động từ vote; cấu trúc đúng là too + tính từ + to V (too young to vote).
+x|Chọn câu đúng|He speaks English enough well to work abroad. / He speaks English well enough to work abroad. / He speaks English well too to work abroad. / He speaks English too well to work abroad.|1|Enough đứng sau trạng từ: well enough.|He speaks English enough well to work abroad.=>enough phải đứng sau trạng từ well (well enough), không đứng trước nó.;;He speaks English well too to work abroad.=>too đặt sau well mang nghĩa “cũng”, không phải “quá”, nên không tạo cấu trúc too … to V đúng; cũng không diễn đạt ý đủ giỏi.;;He speaks English too well to work abroad.=>too well to V nghĩa là giỏi quá đến mức không thể làm việc ở nước ngoài, vô lý; ý đúng là giỏi đủ để đi làm, cần well enough.
 f|It was so a difficult exam that nobody finished it.|so a difficult|such a difficult|Có a + adj + danh từ thì dùng such a, không dùng so a.
 o|The tea was too hot to drink.|Too + adj + to V: quá nóng nên không uống được.`,
-"causative": `c|I had my blood pressure ___ at the clinic yesterday.|check / checked / checking|1|Have + vật + V3: huyết áp được đo bởi người khác.
-c|The teacher made the students ___ the essay again.|to rewrite / rewrite / rewriting|1|Make + người + V nguyên mẫu, không có to.
-c|She got her brother ___ her laptop.|repair / to repair / repaired|1|Get + người + to V.
-c|My parents didn't let me ___ out after ten.|to stay / staying / stay|2|Let + người + V nguyên mẫu.
-c|We are going to have the kitchen ___ next month.|paint / painting / painted|2|Have + vật + V3: nhờ người khác sơn.
-c|The doctor had the nurse ___ the patient's temperature.|to take / take / taken|1|Have + người + V nguyên mẫu.
-c|Where did you ___ your hair cut?|make / let / have|2|Have + vật + V3 (nhờ cắt tóc); make và let không mang nghĩa nhờ người khác làm giúp.
+"causative": `c|I had my blood pressure ___ at the clinic yesterday.|check / checked / checking / to check|1|Have + vật + V3: huyết áp được đo bởi người khác.|check=>Have + vật (my blood pressure) cần quá khứ phân từ vì huyết áp được người khác đo; check nguyên mẫu dùng khi have + người.;;checking=>V-ing không dùng trong cấu trúc have + vật + V3 để nói nhờ làm giúp; huyết áp là đối tượng bị đo nên cần checked.;;to check=>Sau have + tân ngữ không dùng to V; ngoài ra huyết áp là vật bị đo nên cần quá khứ phân từ checked.
+c|The teacher made the students ___ the essay again.|to rewrite / rewrite / rewriting / rewrote|1|Make + người + V nguyên mẫu, không có to.|to rewrite=>Sau make + người, động từ nguyên mẫu không có to (made them rewrite); to chỉ xuất hiện ở bị động.;;rewriting=>make + người không đi với V-ing; cần động từ nguyên mẫu trần rewrite.;;rewrote=>rewrote là quá khứ chia thì, nhưng made đã mang thì, nên sau students phải là nguyên mẫu rewrite.
+c|She got her brother ___ her laptop.|repair / to repair / repaired / repairs|1|Get + người + to V.|repair=>get + người cần to V (got her brother to repair); nguyên mẫu trần dùng với have/make/let, không dùng với get.;;repaired=>repaired (V3) dùng khi tân ngữ là vật bị tác động; her brother là người làm việc nên cần to repair.;;repairs=>repairs là hiện tại đơn ngôi thứ ba, không thể đứng sau got her brother để nói nhờ ai làm; cần to repair.
+c|My parents didn't let me ___ out after ten.|to stay / staying / stay / stayed|2|Let + người + V nguyên mẫu.|to stay=>Sau let + tân ngữ động từ nguyên mẫu không có to (let me stay); muốn dùng to V phải đổi thành allow me to stay.;;staying=>let + tân ngữ không đi với V-ing; cần nguyên mẫu trần stay.;;stayed=>stayed là quá khứ, nhưng didn't let đã mang thì phủ định quá khứ; sau me phải dùng nguyên mẫu stay.
+c|We are going to have the kitchen ___ next month.|paint / painting / painted / to paint|2|Have + vật + V3: nhờ người khác sơn.|paint=>Have + vật (the kitchen) cần quá khứ phân từ vì bếp được người khác sơn; nguyên mẫu paint dùng khi have + người.;;painting=>V-ing không dùng trong cấu trúc have + vật + V3; bếp là đối tượng bị sơn nên cần painted.;;to paint=>Sau have + tân ngữ không dùng to V; bếp là vật bị sơn nên cần quá khứ phân từ painted.
+c|The doctor had the nurse ___ the patient's temperature.|to take / take / taken / took|1|Have + người + V nguyên mẫu.|to take=>Sau have + người (the nurse) động từ nguyên mẫu không có to; to V dùng với get.;;taken=>Quá khứ phân từ dùng khi tân ngữ là vật bị tác động; the nurse là người thực hiện nên cần nguyên mẫu take.;;took=>took là quá khứ chia thì, nhưng had đã mang thì nên sau the nurse phải là nguyên mẫu take.
+c|Where did you ___ your hair cut?|make / let / have / do|2|Have + vật + V3 (nhờ cắt tóc); make và let không mang nghĩa nhờ người khác làm giúp.|make=>make + tân ngữ + V3 không mang nghĩa nhờ ai cắt tóc; make dùng với nghĩa bắt buộc người khác làm gì.;;let=>let nghĩa là cho phép và đi với nguyên mẫu, không mang nghĩa nhờ người khác cắt tóc cho mình.;;do=>do your hair cut không phải cấu trúc nhờ làm giúp; muốn nói đi cắt tóc ở tiệm phải dùng have (hoặc get) your hair cut.
 t|I need to ___ my car serviced before the trip. (have / get)|have;get|Have/get + vật + V3: đem xe đi bảo dưỡng.
 t|The manager made us ___ overtime on Friday. (work)|work|Make + người + V nguyên mẫu.
 t|She got the dentist ___ her tooth. (check)|to check|Get + người + to V.
 t|He had his wallet ___ on the bus. (steal)|stolen|Have + vật + V3 cũng dùng cho việc không may xảy ra với mình.
-x|Chọn câu đúng|She had her teeth whitened. / She had her teeth whitening. / She had whitened her teeth by a dentist.|0|Have + vật + V3 diễn tả việc người khác làm giúp.
-x|Chọn câu đúng|He let his son to play outside. / He let his son played outside. / He let his son play outside.|2|Let + tân ngữ + V nguyên mẫu.
+x|Chọn câu đúng|She had her teeth whitened. / She had her teeth whitening. / She had whitened her teeth by a dentist. / She had her teeth to whiten.|0|Have + vật + V3 diễn tả việc người khác làm giúp.|She had her teeth whitening.=>Răng được người khác tẩy nên cần quá khứ phân từ whitened; whitening (V-ing) mang nghĩa chủ động, không đúng.;;She had whitened her teeth by a dentist.=>Đây là quá khứ hoàn thành chủ động, và by a dentist không hợp với chủ ngữ tự làm; ý nhờ nha sĩ cần had her teeth whitened.;;She had her teeth to whiten.=>Sau have + vật không dùng to V; ý được người khác làm giúp cần quá khứ phân từ whitened.
+x|Chọn câu đúng|He let his son to play outside. / He let his son played outside. / He let his son play outside. / He let his son playing outside.|2|Let + tân ngữ + V nguyên mẫu.|He let his son to play outside.=>Sau let + tân ngữ, động từ nguyên mẫu không có to.;;He let his son played outside.=>Sau let + tân ngữ phải dùng nguyên mẫu trần play, không chia quá khứ lần nữa vì let đã mang thì.;;He let his son playing outside.=>let + tân ngữ không đi với V-ing; cần nguyên mẫu trần play.
 f|My mother made me to clean my room.|made me to clean|made me clean|Make + người + V nguyên mẫu, bỏ to.
 o|I had my hair cut yesterday.|Have + vật + V3: đi cắt tóc ở tiệm.
 o|She got him to fix the sink.|Get + người + to V: nhờ/thuyết phục ai làm gì.`,
-"future-perfect": `c|By next June, I ___ my nursing degree.|finished / have finished / will have finished|2|By + mốc tương lai dùng will have V3.
-c|By the time you arrive, the film ___.|started / will have started / have started|1|Việc xong trước mốc tương lai: will have V3.
-c|This time tomorrow, we ___ on a beach in Da Nang.|will be lying / will have lain / lay|0|Việc đang diễn ra tại mốc tương lai dùng will be V-ing.
-c|She ___ the report by 5 p.m., so you can collect it then.|will have finish / will have finished / has finishing|1|Will have + V3.
-c|By 2030, scientists ___ a cure for this disease.|will have find / will have found / will found|1|Will have + V3 (found là V3 của find).
-c|Don't call me at 8 tonight. I ___ dinner with my family.|will be having / will had / am have|0|Đang diễn ra tại mốc tương lai nên dùng will be V-ing.
-c|By the time the ambulance gets here, the nurse ___ the bleeding.|stopped / will have stopped / will have stop|1|Xong trước mốc: will have V3; sau by the time dùng hiện tại đơn.
+"future-perfect": `c|By next June, I ___ my nursing degree.|finished / have finished / will have finished / had finished|2|By + mốc tương lai dùng will have V3.|finished=>Finished là quá khứ đơn, không hợp với By next June ở tương lai; cần will have finished.;;have finished=>Have finished là hiện tại hoàn thành, không biểu thị tương lai; By next June cần will have finished.;;had finished=>Had finished là quá khứ hoàn thành, chỉ việc đã xong trước mốc quá khứ; By next June ở tương lai cần will have finished.
+c|By the time you arrive, the film ___.|started / will have started / have started / will have starting|1|Việc xong trước mốc tương lai: will have V3.|started=>Started là quá khứ đơn, không hợp với tương lai by the time you arrive; cần will have started.;;have started=>Have started là hiện tại hoàn thành, không biểu thị việc sẽ xong trước mốc tương lai; cần will have started.;;will have starting=>Will have starting sai vì sau will have phải là V3 started, không phải V-ing.
+c|This time tomorrow, we ___ on a beach in Da Nang.|will be lying / will have lain / lay / will lying|0|Việc đang diễn ra tại mốc tương lai dùng will be V-ing.|will have lain=>Will have lain là tương lai hoàn thành, diễn tả việc đã xong; This time tomorrow cần việc đang diễn ra nên dùng will be lying.;;lay=>Lay là quá khứ đơn, không hợp với This time tomorrow ở tương lai; cần will be lying.;;will lying=>Will lying thiếu be: sau will phải là động từ nguyên mẫu, nên cần will be lying.
+c|She ___ the report by 5 p.m., so you can collect it then.|will have finish / will have finished / has finishing / will finishing|1|Will have + V3.|will have finish=>Will have finish sai vì sau have phải là V3 finished, không phải nguyên mẫu.;;has finishing=>Has finishing sai cấu trúc: has đi với V3, không đi với V-ing, và by 5 p.m. cần will have finished.;;will finishing=>Will finishing sai vì sau will phải là động từ nguyên mẫu; cần will have finished.
+c|By 2030, scientists ___ a cure for this disease.|will have find / will have found / will found / will have finding|1|Will have + V3 (found là V3 của find).|will have find=>Will have find sai vì sau have phải là V3 found, không phải nguyên mẫu find.;;will found=>Will found thiếu have; sau will phải là động từ nguyên mẫu, và found là V3/quá khứ nên không đứng ở đây.;;will have finding=>Will have finding sai vì sau will have phải dùng V3 found, không dùng V-ing.
+c|Don't call me at 8 tonight. I ___ dinner with my family.|will be having / will had / am have / will be have|0|Đang diễn ra tại mốc tương lai nên dùng will be V-ing.|will had=>Will had sai cấu trúc: sau will phải là nguyên mẫu, không phải had; At 8 tonight cần will be having.;;am have=>Am have sai cấu trúc: have ở nguyên mẫu không thể đứng sau am; Don't call me at 8 tonight cần will be having.;;will be have=>Will be have sai vì sau be phải là V-ing having, không phải nguyên mẫu have.
+c|By the time the ambulance gets here, the nurse ___ the bleeding.|stopped / will have stopped / will have stop / will have stopping|1|Xong trước mốc: will have V3; sau by the time dùng hiện tại đơn.|stopped=>Stopped là quá khứ đơn, không hợp với việc xong trước mốc tương lai; cần will have stopped.;;will have stop=>Will have stop sai vì sau have phải là V3 stopped, không phải nguyên mẫu.;;will have stopping=>Will have stopping sai vì sau will have phải dùng V3 stopped, không dùng V-ing.
 t|By the end of this year, I ___ here for ten years. (be)|will have been;'ll have been|Be dùng V3 là been: will have been.
 t|By the time we get to the cinema, the film ___. (end)|will have ended;'ll have ended|Xong trước mốc tương lai: will have V3.
 t|Next week at this time, I ___ for my IELTS exam. (sit)|will be sitting;'ll be sitting|Đang diễn ra tại mốc tương lai: will be V-ing.
 t|Hurry up! The bakery ___ all its cakes by the time we get there. (sell)|will have sold;'ll have sold|Xong trước mốc tương lai: will have V3 (sold).
-x|Chọn câu đúng|By next week, he will have recovered fully. / By next week, he will have recover fully. / By next week, he will has recovered fully.|0|Will have + V3.
-x|Chọn câu đúng|By the time I will arrive, they will have left. / By the time I arrive, they will have left. / By the time I arrived, they will have left.|1|Sau by the time dùng hiện tại đơn cho tương lai.
+x|Chọn câu đúng|By next week, he will have recovered fully. / By next week, he will have recover fully. / By next week, he will has recovered fully. / By next week, he will have recovering fully.|0|Will have + V3.|By next week, he will have recover fully.=>Recover ở nguyên mẫu sau will have là sai; phải dùng V3 recovered.;;By next week, he will has recovered fully.=>Will has sai vì sau will phải là have; has chỉ dùng thì hiện tại với he/she/it.;;By next week, he will have recovering fully.=>Will have recovering sai vì sau will have phải dùng V3 recovered, không dùng V-ing.
+x|Chọn câu đúng|By the time I will arrive, they will have left. / By the time I arrive, they will have left. / By the time I arrived, they will have left. / By the time I arriving, they will have left.|1|Sau by the time dùng hiện tại đơn cho tương lai.|By the time I will arrive, they will have left.=>Will arrive không dùng sau by the time; mệnh đề thời gian cần hiện tại đơn arrive.;;By the time I arrived, they will have left.=>Arrived là quá khứ đơn, không hợp với will have left ở tương lai; cần hiện tại đơn arrive.;;By the time I arriving, they will have left.=>Arriving là V-ing thiếu trợ động từ, không thể làm động từ chính của mệnh đề thời gian.
 f|By 2028, she will has graduated from medical school.|will has graduated|will have graduated|Sau will luôn là have, không phải has.
 o|By noon, they will have finished the surgery.|By + mốc thời gian dùng will have V3.
 o|I will have saved enough money by December.|Will have V3 + by December: hoàn thành trước mốc.`,
-"mixed-conditionals": `c|If I had taken that job in Berlin, I ___ in Germany now.|would have lived / would be living / had lived|1|Kết quả ở hiện tại (now): would + V.
-c|If she were more careful, she ___ the wrong dose last night.|wouldn't give / hadn't given / wouldn't have given|2|Last night là quá khứ: would have V3.
-c|I wish I ___ medicine; I'd be a doctor by now.|have studied / had studied / would study|1|Tiếc việc quá khứ: wish + had V3.
-c|If only I ___ so shy, I could talk to people easily.|am not / weren't / wouldn't been|1|Tiếc điều trái hiện tại: if only + quá khứ đơn.
-c|He talks as if he ___ the director, but he is only a trainee.|would be / being / were|2|As if + were diễn tả điều không có thật ở hiện tại.
-c|If the ambulance had arrived sooner, he ___ alive today.|will be / would have been / would be|2|Today chỉ hiện tại: would + V.
-c|If I weren't allergic to penicillin, the doctor ___ it for me yesterday.|would prescribe / would have prescribed / had prescribed|1|Yesterday là quá khứ: would have V3.
+"mixed-conditionals": `c|If I had taken that job in Berlin, I ___ in Germany now.|would have lived / would be living / had lived / will be living|1|Kết quả ở hiện tại (now): would + V.|would have lived=>Would have lived là kết quả ở quá khứ, nhưng now cho thấy kết quả ở hiện tại; cần would be living.;;had lived=>Had lived không dùng cho mệnh đề kết quả; mệnh đề chính của câu điều kiện cần would + động từ, ở đây là would be living.;;will be living=>Will be living là thì tương lai thật, không dùng cho kết quả giả định trong câu điều kiện; cần would be living.
+c|If she were more careful, she ___ the wrong dose last night.|wouldn't give / hadn't given / wouldn't have given / won't give|2|Last night là quá khứ: would have V3.|wouldn't give=>Wouldn't give nói về hiện tại, nhưng last night là quá khứ nên kết quả phải là would have + V3.;;hadn't given=>Hadn't given là quá khứ hoàn thành, dùng cho mệnh đề if, không dùng cho mệnh đề kết quả; cần wouldn't have given.;;won't give=>Won't give là tương lai thật, không hợp với last night và không dùng trong câu điều kiện giả định; cần wouldn't have given.
+c|I wish I ___ medicine; I'd be a doctor by now.|have studied / had studied / would study / would have studied|1|Tiếc việc quá khứ: wish + had V3.|have studied=>Sau wish dùng quá khứ lùi một thì để nói tiếc nuối; have studied là hiện tại hoàn thành không hợp, cần had studied.;;would study=>Would study nói về mong muốn tương lai hoặc thay đổi hành vi; để tiếc nuối việc đã không học y cần had studied.;;would have studied=>Sau wish không dùng would have + V3 cho chủ ngữ cùng người nói; tiếc nuối việc quá khứ dùng had studied.
+c|If only I ___ so shy, I could talk to people easily.|am not / weren't / wouldn't been / didn't be|1|Tiếc điều trái hiện tại: if only + quá khứ đơn.|am not=>If only nói về điều ước trái hiện tại nên động từ lùi thì thành were/weren't; am not là hiện tại thật.;;wouldn't been=>Wouldn't been không phải dạng đúng, vì sau would phải có be hoặc have been; cần weren't sau If only cho điều ước hiện tại.;;didn't be=>Be không dùng với trợ động từ didn't trong tình huống này; tính từ shy đi với be, nên dùng weren't.
+c|He talks as if he ___ the director, but he is only a trainee.|would be / being / were / are|2|As if + were diễn tả điều không có thật ở hiện tại.|would be=>Sau as if nói điều trái thực tế dùng quá khứ giả định were, không dùng would be.;;being=>Dạng being một mình không làm động từ chính sau as if; cần quá khứ giả định were.;;are=>Are không hợp với chủ ngữ he (phải là is); hơn nữa để nói điều không có thật (he is only a trainee) sau as if cần were.
+c|If the ambulance had arrived sooner, he ___ alive today.|will be / would have been / would be / would had been|2|Today chỉ hiện tại: would + V.|will be=>Will be là câu điều kiện loại 1 và không hợp với If ... had arrived; mệnh đề chính cần would be để chỉ hệ quả ở hiện tại.;;would have been=>Would have been nói về kết quả trong quá khứ, nhưng today cho thấy hiện tại; cần would be alive.;;would had been=>Would không đi với had been; cấu trúc đúng là would have been hoặc would be, và ở đây vì có today cần would be.
+c|If I weren't allergic to penicillin, the doctor ___ it for me yesterday.|would prescribe / would have prescribed / had prescribed / will prescribe|1|Yesterday là quá khứ: would have V3.|would prescribe=>Would prescribe là kết quả ở hiện tại hoặc tương lai, trong khi yesterday là quá khứ; cần would have prescribed.;;had prescribed=>Had prescribed là quá khứ hoàn thành, dùng cho mệnh đề if, không dùng cho mệnh đề kết quả; cần would have prescribed.;;will prescribe=>Will prescribe là tương lai thật và không hợp với yesterday; câu điều kiện giả định cần would have prescribed.
 t|If we had left earlier, we ___ stuck in traffic now. (not / be)|wouldn't be;would not be|Now là hiện tại nên dùng would + V.
 t|If she were fluent in French, she ___ the job last year. (get)|would have got;would have gotten;'d have got;'d have gotten;would've got;would've gotten|Last year là quá khứ: would have V3.
 t|I wish I ___ so much coffee yesterday; I can't sleep now. (not / drink)|hadn't drunk;had not drunk|Tiếc việc quá khứ: wish + had V3.
 t|She spoke as though she ___ the exam already, but the results weren't out. (pass)|had passed|As though + had V3 diễn tả điều không thật ở quá khứ.
-x|Chọn câu đúng|If I had listened to my doctor, I would be healthier now. / If I listened to my doctor, I would have been healthier now. / If I would listen to my doctor, I would be healthier now.|0|Quá khứ gây kết quả hiện tại: had V3, would + V.
-x|Chọn câu đúng|If I was taller, I would join the police last year. / If I had been taller, I would join the police last year. / If I were taller, I would have joined the police last year.|2|Đặc điểm hiện tại, kết quả quá khứ: quá khứ đơn, would have V3.
+x|Chọn câu đúng|If I had listened to my doctor, I would be healthier now. / If I listened to my doctor, I would have been healthier now. / If I would listen to my doctor, I would be healthier now. / If I had listened to my doctor, I will be healthier now.|0|Quá khứ gây kết quả hiện tại: had V3, would + V.|If I listened to my doctor, I would have been healthier now.=>Mệnh đề if dùng quá khứ đơn nói về hiện tại, trong khi would have been nói về quá khứ; cặp thì bị đảo ngược nên không logic.;;If I would listen to my doctor, I would be healthier now.=>Would không dùng trong mệnh đề if điều kiện thông thường; mệnh đề if phải là had + V3 hoặc quá khứ đơn.;;If I had listened to my doctor, I will be healthier now.=>Will be là tương lai thật, không đi với had listened trong câu điều kiện giả định; kết quả phải là would be.
+x|Chọn câu đúng|If I was taller, I would join the police last year. / If I had been taller, I would join the police last year. / If I were taller, I would have joined the police last year. / If I am taller, I would have joined the police last year.|2|Đặc điểm hiện tại, kết quả quá khứ: quá khứ đơn, would have V3.|If I was taller, I would join the police last year.=>Last year là quá khứ, nhưng would join nói về hiện tại hoặc tương lai; kết quả quá khứ cần would have joined.;;If I had been taller, I would join the police last year.=>Would join không hợp với last year; kết quả của việc trong quá khứ cần would have joined.;;If I am taller, I would have joined the police last year.=>Am là hiện tại thật, không dùng trong mệnh đề if giả định; cần were để nói điều không có thật.
 f|If I would have saved more, I could buy a flat now.|would have saved|had saved|Mệnh đề if không dùng would; dùng had V3.
 o|If I had slept more, I would feel better now.|If + had V3, would + V: kết quả ở hiện tại.
 o|I wish I had accepted that offer.|Wish + had V3 diễn tả sự tiếc nuối quá khứ.`,
-"inversion": `c|Never ___ such a dedicated nurse in all my years on the ward.|have I met / I have met / I met have|0|Never đứng đầu câu thì đảo trợ động từ trước chủ ngữ: have I met.
-c|Hardly had the surgeon finished the operation ___ the power went out.|when / than / while|0|Hardly...when, còn no sooner...than.
-c|No sooner had the patient arrived ___ the alarm sounded.|than / that / as|0|No sooner đi với than (when/that/as đều sai).
-c|Not only ___ the dosage, but she also changed the schedule.|did the doctor reduce / the doctor reduced / reduced the doctor|0|Not only đầu câu: đảo với trợ động từ did + S + V nguyên mẫu.
-c|Only when the results came back ___ the true cause of the problem.|did we understand / we understood / we did understand|0|Only when đầu câu: mệnh đề chính đảo ngữ (did we understand).
-c|Under no circumstances ___ leave the ward without permission.|may patients / patients may / patients are|0|Under no circumstances là cụm phủ định đầu câu nên phải đảo: may patients.
-c|___ I known about the delay, I would have booked an earlier flight.|Had / Would / Did|0|Đảo ngữ điều kiện loại 3: Had + S + V3 thay cho If + had.
+"inversion": `c|Never ___ such a dedicated nurse in all my years on the ward.|have I met / I have met / I met have / have met I|0|Never đứng đầu câu thì đảo trợ động từ trước chủ ngữ: have I met.|I have met=>Never đứng đầu câu mang nghĩa phủ định nên phải đảo trợ động từ trước chủ ngữ (have I met), không giữ trật tự thường.;;I met have=>trật tự này sai hoàn toàn: trợ động từ have không đứng sau phân từ và Never ở đầu câu đòi đảo have lên trước I.;;have met I=>sau Never đúng là đảo trợ động từ lên trước chủ ngữ, nhưng chỉ trợ động từ have đảo (have I met); phân từ met phải đứng sau chủ ngữ I.
+c|Hardly had the surgeon finished the operation ___ the power went out.|when / than / while / that|0|Hardly...when, còn no sooner...than.|than=>than đi với no sooner (No sooner ... than), còn Hardly had ... đi với when.;;while=>while chỉ hai hành động xảy ra song song hoặc đối lập, không dùng để nói việc này vừa xong thì việc kia xảy ra; Hardly đi với when.;;that=>that không thuộc cấu trúc Hardly had + S + V3 ... when; hai vế được nối bằng when.
+c|No sooner had the patient arrived ___ the alarm sounded.|than / that / as / after|0|No sooner đi với than (when/that/as đều sai).|that=>that không dùng trong cấu trúc No sooner ... than; liên từ bắt buộc là than.;;as=>as không thể thay than trong No sooner ... than, vì cấu trúc so sánh này cố định với than.;;after=>after không thuộc cấu trúc No sooner had ... than; hai vế được nối bằng than để chỉ việc vừa xảy ra thì việc kia xảy ra.
+c|Not only ___ the dosage, but she also changed the schedule.|did the doctor reduce / the doctor reduced / reduced the doctor / the doctor did reduce|0|Not only đầu câu: đảo với trợ động từ did + S + V nguyên mẫu.|the doctor reduced=>Not only đứng đầu câu phải đảo trợ động từ trước chủ ngữ, nên không giữ trật tự thường the doctor reduced.;;reduced the doctor=>đảo ngữ với Not only cần trợ động từ did đứng trước chủ ngữ; chỉ đảo động từ chính reduced lên trước the doctor là sai.;;the doctor did reduce=>có trợ động từ did nhưng không đảo lên trước chủ ngữ; sau Not only phải là did + the doctor + reduce.
+c|Only when the results came back ___ the true cause of the problem.|did we understand / we understood / we did understand / understood we|0|Only when đầu câu: mệnh đề chính đảo ngữ (did we understand).|we understood=>Only when ở đầu câu đòi hỏi mệnh đề chính đảo trợ động từ trước chủ ngữ; giữ trật tự thường we understood là sai.;;we did understand=>có did nhưng did phải đứng trước chủ ngữ we; trật tự đúng là did we understand.;;understood we=>không có trợ động từ did để đảo; ở quá khứ đơn chỉ đảo động từ chính là sai, phải dùng did we understand.
+c|Under no circumstances ___ leave the ward without permission.|may patients / patients may / patients are / can't patients|0|Under no circumstances là cụm phủ định đầu câu nên phải đảo: may patients.|patients may=>Under no circumstances là cụm phủ định đứng đầu câu nên phải đảo may lên trước patients.;;patients are=>sau Under no circumstances cần đảo ngữ và động từ khuyết, còn are leave không đúng vì are không đi với động từ nguyên mẫu leave.;;can't patients=>cụm Under no circumstances đã mang nghĩa phủ định nên không thêm n't lần nữa; thêm vào sẽ thành phủ định kép.
+c|___ I known about the delay, I would have booked an earlier flight.|Had / Would / Did / If|0|Đảo ngữ điều kiện loại 3: Had + S + V3 thay cho If + had.|Would=>Would không mở đầu mệnh đề điều kiện đảo ngữ loại 3; cấu trúc đúng là Had + S + V3 (Had I known).;;Did=>Did dùng cho đảo ngữ quá khứ đơn, mà known là phân từ hai và vế sau dùng would have booked nên cần Had.;;If=>If + I known thiếu trợ động từ had; nếu dùng If thì phải nói If I had known, còn câu đang đảo ngữ nên cần Had.
 t|Rarely ___ (we / see, present simple) such a long queue at this clinic on a Monday.|do we see|Rarely đầu câu: đảo trợ động từ do + we + see.
 t|___ (had) the ambulance arrived sooner, the man would have survived.|had|Đảo ngữ điều kiện loại 3: Had + S + V3.
 t|Not until the lights went out ___ (he / realise) the generator was broken.|did he realise;did he realize|Not until đầu câu: mệnh đề chính đảo ngữ với did.
 t|___ (should) you experience any dizziness, stop taking the tablets.|should|Đảo ngữ điều kiện loại 1: Should + S + V.
-x|Chọn câu đúng|Little did she know that the test would change her life. / Little she knew that the test would change her life. / Little knew she did that the test would change her life.|0|Little (nghĩa phủ định) đầu câu: đảo trợ động từ did she know.
-x|Chọn câu đúng|Hardly had we sat down when the fire alarm rang. / Hardly we had sat down when the fire alarm rang. / Hardly had we sat down than the fire alarm rang.|0|Hardly + had + S + V3 + when; không dùng than và không bỏ đảo ngữ.
+x|Chọn câu đúng|Little did she know that the test would change her life. / Little she knew that the test would change her life. / Little knew she did that the test would change her life. / Little she did know that the test would change her life.|0|Little (nghĩa phủ định) đầu câu: đảo trợ động từ did she know.|Little she knew that the test would change her life.=>Little (nghĩa phủ định) ở đầu câu đòi hỏi đảo trợ động từ trước chủ ngữ; không giữ trật tự thường she knew.;;Little knew she did that the test would change her life.=>trật tự bị đảo sai: phải là Little did she know, trợ động từ did đứng trước chủ ngữ rồi mới tới động từ nguyên mẫu.;;Little she did know that the test would change her life.=>có did nhưng không đảo lên trước chủ ngữ; sau Little đúng là did she know.
+x|Chọn câu đúng|Hardly had we sat down when the fire alarm rang. / Hardly we had sat down when the fire alarm rang. / Hardly had we sat down than the fire alarm rang. / Hardly had we sat down while the fire alarm rang.|0|Hardly + had + S + V3 + when; không dùng than và không bỏ đảo ngữ.|Hardly we had sat down when the fire alarm rang.=>Hardly ở đầu câu đòi hỏi đảo had lên trước chủ ngữ (Hardly had we sat); không giữ trật tự thường.;;Hardly had we sat down than the fire alarm rang.=>Hardly đi với when chứ không đi với than; than chỉ dùng với No sooner.;;Hardly had we sat down while the fire alarm rang.=>while chỉ hai việc diễn ra song song, không diễn tả việc này vừa xảy ra thì việc kia đến; Hardly had ... đi với when.
 f|Not only she forgot the appointment, but she also lost the referral letter.|Not only she forgot|Not only did she forget|Sau Not only đầu câu phải đảo: did she forget.
 o|Never have I seen such a calm patient.|Never đầu câu nên đảo have trước I.
 o|Had I known, I would have called earlier.|Had + S + V3 là đảo ngữ điều kiện loại 3.`,
-"participle-clauses": `c|___ along the corridor, the nurse heard a strange noise.|Walking / Walked / Having walk|0|Chủ ngữ the nurse tự đi, hai hành động đồng thời: V-ing.
-c|___ by the heavy workload, the junior doctors asked for extra support.|Overwhelmed / Overwhelming / Having overwhelm|0|Các bác sĩ bị quá tải (nghĩa bị động): V3.
-c|___ the report twice, she submitted it to the committee.|Having checked / Checked / Having been checked|0|Hành động kiểm tra xảy ra trước và cô ấy là người làm: Having + V3.
-c|___ what to do, she asked a colleague for advice.|Not knowing / Knowing not / Not known|0|Phủ định mệnh đề phân từ: Not + V-ing.
-c|The patients ___ in Ward 4 need to be moved tomorrow.|treated / treating / being treat|0|Rút gọn quan hệ bị động: patients (who are) treated.
-c|The drug, ___ in 1998, is still widely prescribed.|first developed / first developing / having first develop|0|Thuốc được phát triển (bị động): V3.
-c|The man ___ the speech is our new director.|giving / given / gave|0|Rút gọn quan hệ chủ động: the man (who is) giving.
+"participle-clauses": `c|___ along the corridor, the nurse heard a strange noise.|Walking / Walked / Having walk / Walk|0|Chủ ngữ the nurse tự đi, hai hành động đồng thời: V-ing.|Walked=>Walked là quá khứ phân từ mang nghĩa bị động, nhưng the nurse tự đi dọc hành lang nên cần nghĩa chủ động Walking.;;Having walk=>Having walk sai dạng vì Having phải đi với quá khứ phân từ walked; hơn nữa hai hành động xảy ra đồng thời nên không cần Having.;;Walk=>Walk là nguyên mẫu, không dùng để mở đầu mệnh đề phân từ rút gọn có nghĩa chủ động.
+c|___ by the heavy workload, the junior doctors asked for extra support.|Overwhelmed / Overwhelming / Having overwhelm / Overwhelm|0|Các bác sĩ bị quá tải (nghĩa bị động): V3.|Overwhelming=>Overwhelming mang nghĩa chủ động (gây quá tải cho người khác), nhưng các bác sĩ bị quá tải nên cần Overwhelmed.;;Having overwhelm=>Having overwhelm sai dạng vì sau Having phải là quá khứ phân từ overwhelmed, và cũng không có ý hành động xảy ra trước.;;Overwhelm=>Overwhelm là động từ nguyên mẫu, không thể mở đầu mệnh đề phân từ rút gọn diễn tả bị động.
+c|___ the report twice, she submitted it to the committee.|Having checked / Checked / Having been checked / Having check|0|Hành động kiểm tra xảy ra trước và cô ấy là người làm: Having + V3.|Checked=>Checked là quá khứ phân từ mang nghĩa bị động, không hợp vì cô ấy là người kiểm tra và việc đó xảy ra trước khi nộp.;;Having been checked=>Having been checked có nghĩa bị động (báo cáo được kiểm tra), nhưng chủ ngữ she tự kiểm tra báo cáo nên cần chủ động.;;Having check=>Having check sai dạng vì sau Having phải là quá khứ phân từ checked, không dùng nguyên mẫu check.
+c|___ what to do, she asked a colleague for advice.|Not knowing / Knowing not / Not known / Don't knowing|0|Phủ định mệnh đề phân từ: Not + V-ing.|Knowing not=>Knowing not đặt not sau động từ, không đúng cấu trúc; phủ định của mệnh đề phân từ đặt Not ở đầu.;;Not known=>Not known mang nghĩa bị động (không được biết), nhưng cô ấy là người không biết nên cần Not knowing chủ động.;;Don't knowing=>Don't knowing trộn trợ động từ don't với V-ing; mệnh đề phân từ phủ định chỉ dùng Not + V-ing.
+c|The patients ___ in Ward 4 need to be moved tomorrow.|treated / treating / being treat / treat|0|Rút gọn quan hệ bị động: patients (who are) treated.|treating=>treating mang nghĩa chủ động, nhưng bệnh nhân được điều trị chứ không đi điều trị ai nên cần treated.;;being treat=>being treat sai dạng vì sau being phải là quá khứ phân từ treated, và dạng rút gọn cũng không cần being.;;treat=>treat là nguyên mẫu, không thể đứng sau danh từ số nhiều the patients để rút gọn mệnh đề quan hệ bị động.
+c|The drug, ___ in 1998, is still widely prescribed.|first developed / first developing / having first develop / first develop|0|Thuốc được phát triển (bị động): V3.|first developing=>first developing mang nghĩa chủ động, nhưng thuốc được phát triển chứ không phát triển thứ khác nên cần bị động.;;having first develop=>having first develop sai dạng vì sau having phải là quá khứ phân từ developed, và nghĩa vẫn không bị động.;;first develop=>first develop là nguyên mẫu, không dùng được trong mệnh đề rút gọn bị động chỉ năm được phát triển.
+c|The man ___ the speech is our new director.|giving / given / gave / gives|0|Rút gọn quan hệ chủ động: the man (who is) giving.|given=>given mang nghĩa bị động, nhưng người đàn ông là người đọc bài phát biểu nên cần giving chủ động.;;gave=>gave là quá khứ đơn, nên the man gave the speech is thiếu từ nối và có hai động từ chia liền nhau.;;gives=>gives là động từ chia, không thể đứng ngay sau danh từ the man để rút gọn mệnh đề quan hệ; thêm is nữa thành hai động từ.
 t|___ (live) in Hanoi for ten years, she knows the city very well.|having lived;living|Hành động kéo dài trước hiện tại: Having lived (hoặc Living).
 t|The documents ___ (attach) to this email contain confidential data.|attached|Tài liệu được đính kèm (bị động): attached.
 t|___ (not / want) to disturb the patient, the nurse spoke quietly.|not wanting|Phủ định mệnh đề phân từ chủ động: Not wanting.
 t|Once ___ (complete), the form should be returned to reception.|completed|Once + V3: biểu mẫu được hoàn thành (bị động).
-x|Chọn câu đúng|Walking to the station, a car almost hit me. / Walking to the station, I was almost hit by a car. / Having walked to the station, a car almost hit me.|1|Chủ ngữ mệnh đề phân từ phải là I; hai câu còn lại bị dangling.
-x|Chọn câu đúng|The students sitting at the back were talking. / The students sat at the back were talking. / The students been sitting at the back were talking.|0|Rút gọn quan hệ chủ động dùng V-ing.
+x|Chọn câu đúng|Walking to the station, a car almost hit me. / Walking to the station, I was almost hit by a car. / Having walked to the station, a car almost hit me. / Walking to the station, almost hit me a car.|1|Chủ ngữ mệnh đề phân từ phải là I; hai câu còn lại bị dangling.|Walking to the station, a car almost hit me.=>Walking to the station, a car almost hit me gán chủ ngữ ngầm là a car, nghĩa là chiếc xe đi bộ, sai về nghĩa (dangling).;;Having walked to the station, a car almost hit me.=>Having walked to the station, a car almost hit me cũng sai vì chủ ngữ ngầm của Having walked là a car chứ không phải I.;;Walking to the station, almost hit me a car.=>Walking to the station, almost hit me a car vừa có chủ ngữ ngầm không rõ vừa đảo trật tự a car sau hit me.
+x|Chọn câu đúng|The students sitting at the back were talking. / The students sat at the back were talking. / The students been sitting at the back were talking. / The students sit at the back were talking.|0|Rút gọn quan hệ chủ động dùng V-ing.|The students sat at the back were talking.=>The students sat at the back were talking dùng sat là quá khứ, thành hai động từ chia liền nhau và thiếu từ nối.;;The students been sitting at the back were talking.=>The students been sitting at the back were talking thiếu have trước been, nên dạng tiếp diễn hoàn thành không hợp lệ.;;The students sit at the back were talking.=>The students sit at the back were talking có hai động từ chia liền nhau không có who; rút gọn đúng phải là sitting.
 f|Having been finished the shift, she went home.|Having been finished|Having finished|Cô ấy là người làm hành động nên dùng chủ động Having finished.
 o|Having finished her shift, she went straight home.|Having + V3 diễn tả hành động xảy ra trước, cùng chủ ngữ she.
 o|The woman standing by the door is my aunt.|standing by the door là mệnh đề quan hệ rút gọn chủ động.`,
-"cleft-sentences": `c|It was the dosage ___ caused the problem, not the drug itself.|that / what / who|0|It-cleft dùng that sau phần nhấn mạnh chỉ vật; who chỉ dùng cho người.
-c|___ I need right now is a quiet place to rest.|What / That / Which|0|Wh-cleft bắt đầu bằng What.
-c|All she wanted ___ to go home and sleep.|was / were / has|0|All she wanted là chủ ngữ số ít, chia quá khứ: was.
-c|It was not until 2019 ___ the hospital installed the new scanner.|that / what / who|0|It was not until + thời gian + that + mệnh đề.
-c|It is Dr Lan ___ you should speak to about the schedule.|who / what / whose|0|Phần nhấn mạnh chỉ người: who (làm tân ngữ thì who/whom/that).
-c|What annoys me most ___ the lack of communication.|is / are / do|0|What annoys me most là chủ ngữ số ít, theo sau là be: is.
-c|What the patients want is ___ treated with respect.|to be / to being / been|0|Sau is trong wh-cleft dùng to V: to be treated.
+"cleft-sentences": `c|It was the dosage ___ caused the problem, not the drug itself.|that / what / who / whose|0|It-cleft dùng that sau phần nhấn mạnh chỉ vật; who chỉ dùng cho người.|what=>what không dùng trong it-cleft sau phần nhấn mạnh the dosage; ở đây cần that nối với mệnh đề caused the problem.;;who=>who chỉ dùng cho người, trong khi the dosage là vật nên không dùng who.;;whose=>whose chỉ sở hữu và cần danh từ theo sau; ở đây phần sau là động từ caused, nên phải dùng that.
+c|___ I need right now is a quiet place to rest.|What / That / Which / Who|0|Wh-cleft bắt đầu bằng What.|That=>That không mở đầu một wh-cleft; mệnh đề chủ ngữ ở dạng này phải bắt đầu bằng What (What I need…).;;Which=>Which không dùng làm từ mở đầu wh-cleft có nghĩa “điều mà”; cần What.;;Who=>Who hỏi/chỉ người, còn ở đây cần nói “điều mà tôi cần” (một nơi yên tĩnh), nên phải dùng What.
+c|All she wanted ___ to go home and sleep.|was / were / has / being|0|All she wanted là chủ ngữ số ít, chia quá khứ: was.|were=>All she wanted là chủ ngữ số ít nên không dùng were; hơn nữa wanted ở quá khứ nên là was.;;has=>has là hiện tại và không phải dạng của be; cấu trúc này cần was (All she wanted was to go…).;;being=>being là V-ing, không thể làm động từ chính của mệnh đề; cần was chia theo chủ ngữ số ít ở quá khứ.
+c|It was not until 2019 ___ the hospital installed the new scanner.|that / what / who / whose|0|It was not until + thời gian + that + mệnh đề.|what=>what không dùng trong It was not until… that…; từ nối đúng là that.;;who=>who chỉ người, còn 2019 là thời gian; cấu trúc It was not until + thời gian + that.;;whose=>whose chỉ sở hữu và cần danh từ đi kèm, không dùng sau mốc thời gian 2019; cần that.
+c|It is Dr Lan ___ you should speak to about the schedule.|who / what / whose / which|0|Phần nhấn mạnh chỉ người: who (làm tân ngữ thì who/whom/that).|what=>what không dùng trong it-cleft nhấn mạnh người; cần who hoặc that.;;whose=>whose chỉ sở hữu và cần danh từ đi sau, trong khi sau đó là chủ ngữ you; ở đây phải dùng who.;;which=>which dùng cho vật, còn Dr Lan là người nên cần who.
+c|What annoys me most ___ the lack of communication.|is / are / do / were|0|What annoys me most là chủ ngữ số ít, theo sau là be: is.|are=>What annoys me most là mệnh đề chủ ngữ số ít nên không dùng are; cần is.;;do=>do là trợ động từ, không thể nối chủ ngữ với phần bổ ngữ the lack of communication; cần động từ be is.;;were=>were là quá khứ và dạng số nhiều; câu ở hiện tại và chủ ngữ số ít nên cần is.
+c|What the patients want is ___ treated with respect.|to be / to being / been / to been|0|Sau is trong wh-cleft dùng to V: to be treated.|to being=>Sau to phải dùng nguyên mẫu (be), không dùng V-ing being.;;been=>been là quá khứ phân từ, cần có have; ở đây cần to be treated là nguyên mẫu bị động.;;to been=>Sau to phải dùng nguyên mẫu be chứ không phải quá khứ phân từ been.
 t|___ (what) worries me is the cost, not the risk.|what|Wh-cleft mở đầu bằng What.
 t|It was my sister ___ (who / that) first told me about this course.|who;that|It-cleft chỉ người dùng who hoặc that.
 t|All you have to do ___ (be) to sign here.|is|All you have to do is (to) V: chia hiện tại số ít.
 t|It was in the library ___ (that / where) I lost my notes.|that;where|It-cleft nhấn mạnh nơi chốn: that (hoặc where).
-x|Chọn câu đúng|It was the nurse who noticed the error first. / It was the nurse what noticed the error first. / The nurse it was who noticed the error first.|0|It-cleft: It was + người + who + V.
-x|Chọn câu đúng|What I enjoy most is working with children. / What I enjoy most it is working with children. / That I enjoy most is working with children.|0|Wh-cleft: What + S + V + is + phần nhấn mạnh, không thêm it.
+x|Chọn câu đúng|It was the nurse who noticed the error first. / It was the nurse what noticed the error first. / The nurse it was who noticed the error first. / It was the nurse who she noticed the error first.|0|It-cleft: It was + người + who + V.|It was the nurse what noticed the error first.=>what không dùng để nối sau phần nhấn mạnh chỉ người trong it-cleft; cần who (hoặc that).;;The nurse it was who noticed the error first.=>Trật tự từ sai: it-cleft phải mở đầu bằng It was rồi mới đến phần nhấn mạnh the nurse.;;It was the nurse who she noticed the error first.=>who đã làm chủ ngữ của noticed, nên không thêm đại từ she nữa; dư chủ ngữ.
+x|Chọn câu đúng|What I enjoy most is working with children. / What I enjoy most it is working with children. / That I enjoy most is working with children. / What I enjoy most are working with children.|0|Wh-cleft: What + S + V + is + phần nhấn mạnh, không thêm it.|What I enjoy most it is working with children.=>Wh-cleft đã có What làm chủ ngữ; thêm it ở trước is là thừa chủ ngữ.;;That I enjoy most is working with children.=>That không mở đầu wh-cleft nghĩa “điều mà”; phải dùng What.;;What I enjoy most are working with children.=>What I enjoy most là chủ ngữ số ít nên động từ là is, không phải are.
 f|It was in 2015 what the clinic opened its new wing.|what|that|It-cleft dùng that sau phần nhấn mạnh, không dùng what.
 o|What she needs is a long holiday.|Wh-cleft: What + S + V + is + phần nhấn mạnh.
 o|It was the delay that upset him.|It-cleft: It was + phần nhấn mạnh + that + mệnh đề.`
@@ -6095,7 +6095,12 @@ const TOEIC5 = [
    "efficiently"
   ],
   "a": 2,
-  "why": "Sau mạo từ 'the' và trước 'of' cần một danh từ: efficiency."
+  "why": "Sau mạo từ 'the' và trước 'of' cần một danh từ: efficiency.",
+  "wrong": {
+   "more efficient": "là dạng so sánh hơn của tính từ; sau mạo từ the và trước giới từ of ở đây cần một danh từ chứ không phải tính từ.",
+   "efficient": "là tính từ nên không đứng được sau the và trước of; vị trí này cần danh từ (efficiency).",
+   "efficiently": "là trạng từ, chỉ bổ nghĩa cho động từ hoặc tính từ, nên không thể làm tân ngữ của improved sau the."
+  }
  },
  {
   "id": "t5-a002",
@@ -6109,7 +6114,12 @@ const TOEIC5 = [
    "significant"
   ],
   "a": 3,
-  "why": "Trước danh từ 'contribution' cần tính từ: significant."
+  "why": "Trước danh từ 'contribution' cần tính từ: significant.",
+  "wrong": {
+   "significance": "là danh từ nên không đứng trước danh từ contribution để bổ nghĩa; ở đây cần tính từ (significant contribution).",
+   "significantly": "là trạng từ, chỉ bổ nghĩa động từ/tính từ, không thể đứng trước danh từ contribution sau her.",
+   "signify": "là động từ nguyên mẫu, không thể đứng giữa her và danh từ contribution; chỗ này cần tính từ."
+  }
  },
  {
   "id": "t5-a003",
@@ -6123,7 +6133,12 @@ const TOEIC5 = [
    "care"
   ],
   "a": 1,
-  "why": "Cần trạng từ bổ nghĩa cho động từ 'read': carefully."
+  "why": "Cần trạng từ bổ nghĩa cho động từ 'read': carefully.",
+  "wrong": {
+   "careful": "là tính từ nên không bổ nghĩa cho động từ read; muốn nói đọc một cách kỹ lưỡng thì phải dùng trạng từ.",
+   "caring": "là dạng V-ing của động từ care (quan tâm), sai nghĩa và không bổ nghĩa được cho động từ read.",
+   "care": "là danh từ/động từ, không phải trạng từ nên không thể bổ nghĩa cho read trong câu này."
+  }
  },
  {
   "id": "t5-a004",
@@ -6137,7 +6152,12 @@ const TOEIC5 = [
    "expansion"
   ],
   "a": 2,
-  "why": "Sau 'plans to' cần động từ nguyên mẫu: expand."
+  "why": "Sau 'plans to' cần động từ nguyên mẫu: expand.",
+  "wrong": {
+   "expansively": "là trạng từ nên không thể đứng sau to; sau plans to cần động từ nguyên mẫu (expand).",
+   "expansive": "là tính từ, không thể đứng ngay sau to khi to đi với động từ; cần động từ nguyên mẫu.",
+   "expansion": "là danh từ nên không dùng ngay sau plans to; ta cần động từ đứng trước tân ngữ its warehouse capacity."
+  }
  },
  {
   "id": "t5-a005",
@@ -6151,7 +6171,12 @@ const TOEIC5 = [
    "trains"
   ],
   "a": 1,
-  "why": "Sau 'the' và trước 'of' cần danh từ: training."
+  "why": "Sau 'the' và trước 'of' cần danh từ: training.",
+  "wrong": {
+   "train": "là động từ nguyên mẫu nên không đứng sau mạo từ the; sau the và trước of cần danh từ hoặc danh động từ (training).",
+   "trained": "là dạng quá khứ phân từ/tính từ, không dùng làm danh từ sau the và trước of ở vị trí này.",
+   "trains": "là động từ chia ngôi thứ ba số ít, không thể đứng sau mạo từ the như một danh từ."
+  }
  },
  {
   "id": "t5-a006",
@@ -6165,7 +6190,12 @@ const TOEIC5 = [
    "rely"
   ],
   "a": 2,
-  "why": "Trước danh từ ghép 'delivery service' cần tính từ: reliable."
+  "why": "Trước danh từ ghép 'delivery service' cần tính từ: reliable.",
+  "wrong": {
+   "reliably": "là trạng từ nên không đứng trước danh từ ghép delivery service; vị trí này cần tính từ để bổ nghĩa.",
+   "reliability": "là danh từ (sự đáng tin cậy), khi đặt trước delivery service sẽ thành cụm danh từ lủng củng và không phù hợp nghĩa câu.",
+   "rely": "là động từ (dựa vào) nên không thể đứng giữa mạo từ the và danh từ delivery service."
+  }
  },
  {
   "id": "t5-a007",
@@ -6179,7 +6209,12 @@ const TOEIC5 = [
    "promptly"
   ],
   "a": 3,
-  "why": "Cần trạng từ bổ nghĩa cho 'submit': promptly."
+  "why": "Cần trạng từ bổ nghĩa cho 'submit': promptly.",
+  "wrong": {
+   "prompt": "là tính từ nên không bổ nghĩa cho động từ submit; ở đây cần trạng từ chỉ cách thức (promptly).",
+   "promptness": "là danh từ (sự nhanh chóng), không thể đứng sau tân ngữ reports để bổ nghĩa cho động từ submit.",
+   "prompted": "là dạng quá khứ/phân từ của prompt (thúc giục), không hợp nghĩa và cấu trúc: nhân viên nộp báo cáo đúng hạn."
+  }
  },
  {
   "id": "t5-a008",
@@ -6193,7 +6228,12 @@ const TOEIC5 = [
    "widely"
   ],
   "a": 1,
-  "why": "Trước danh từ 'range' cần tính từ: wide."
+  "why": "Trước danh từ 'range' cần tính từ: wide.",
+  "wrong": {
+   "width": "là danh từ (chiều rộng), khi đứng trước range sẽ không bổ nghĩa đúng; sau mạo từ a cần tính từ (wide range).",
+   "widen": "là động từ (mở rộng) nên không thể đứng giữa a và danh từ range; cần tính từ.",
+   "widely": "là trạng từ nên không đứng trước danh từ range; trạng từ chỉ bổ nghĩa cho động từ, tính từ hoặc trạng từ khác."
+  }
  },
  {
   "id": "t5-a009",
@@ -6207,7 +6247,12 @@ const TOEIC5 = [
    "impression"
   ],
   "a": 2,
-  "why": "Câu bị động 'was + V3' với chủ ngữ là người: impressed."
+  "why": "Câu bị động 'was + V3' với chủ ngữ là người: impressed.",
+  "wrong": {
+   "impress": "là động từ nguyên mẫu; sau was ở dạng bị động cần quá khứ phân từ (impressed), không dùng nguyên mẫu.",
+   "impressive": "là tính từ chỉ tính chất của vật gây ấn tượng (ấn tượng), còn chủ ngữ là ủy ban bị gây ấn tượng nên phải dùng impressed.",
+   "impression": "là danh từ (ấn tượng) nên không thể đứng sau was by để tạo thành bị động; cần V3 hoặc tính từ -ed."
+  }
  },
  {
   "id": "t5-a010",
@@ -6221,7 +6266,12 @@ const TOEIC5 = [
    "leadership"
   ],
   "a": 3,
-  "why": "Sau tính từ 'strong' cần danh từ không đếm được: leadership."
+  "why": "Sau tính từ 'strong' cần danh từ không đếm được: leadership.",
+  "wrong": {
+   "leader": "là danh từ chỉ người (nhà lãnh đạo), không hợp sau strong ở nghĩa phẩm chất chung; ở đây cần danh từ trừu tượng không đếm được (leadership).",
+   "leading": "là dạng V-ing/tính từ (dẫn đầu) nên không phù hợp nghĩa: strong leading không diễn đạt kỹ năng lãnh đạo.",
+   "lead": "là động từ hoặc danh từ chỉ vị trí dẫn đầu, không phải danh từ trừu tượng chỉ năng lực quản lý mà câu cần."
+  }
  },
  {
   "id": "t5-a011",
@@ -6235,7 +6285,12 @@ const TOEIC5 = [
    "largest"
   ],
   "a": 1,
-  "why": "Cần trạng từ bổ nghĩa cho tính từ 'accurate': largely."
+  "why": "Cần trạng từ bổ nghĩa cho tính từ 'accurate': largely.",
+  "wrong": {
+   "enlarge": "là động từ nguyên mẫu (mở rộng) nên không thể đứng trước tính từ accurate; ở đây cần một trạng từ.",
+   "large": "là tính từ nên không bổ nghĩa được cho tính từ accurate sau was; cần trạng từ để chỉ mức độ.",
+   "largest": "là tính từ so sánh nhất, không thể đứng trước accurate trong câu này và cũng sai nghĩa vì không có so sánh."
+  }
  },
  {
   "id": "t5-a012",
@@ -6249,7 +6304,12 @@ const TOEIC5 = [
    "steady"
   ],
   "a": 3,
-  "why": "Trước danh từ 'growth' cần tính từ: steady."
+  "why": "Trước danh từ 'growth' cần tính từ: steady.",
+  "wrong": {
+   "steadied": "là dạng quá khứ của động từ steady, không đứng trước danh từ growth để diễn tả sự tăng trưởng ổn định như tính từ steady.",
+   "steadily": "là trạng từ nên không thể đứng trước danh từ growth; cần tính từ để bổ nghĩa.",
+   "steadiness": "là danh từ (sự vững vàng), không thể bổ nghĩa cho danh từ growth và tạo cụm danh từ không tự nhiên."
+  }
  },
  {
   "id": "t5-a013",
@@ -6263,7 +6323,12 @@ const TOEIC5 = [
    "sign"
   ],
   "a": 2,
-  "why": "Bị động 'is + V3': signed."
+  "why": "Bị động 'is + V3': signed.",
+  "wrong": {
+   "signature": "là danh từ (chữ ký) nên không đứng sau is để tạo thành bị động; cần quá khứ phân từ (signed).",
+   "signing": "là V-ing, sẽ tạo thì tiếp diễn chủ động is signing, nhưng chủ ngữ the contract không tự ký; cần bị động.",
+   "sign": "là động từ nguyên mẫu, không dùng được sau is trong cấu trúc bị động; cần quá khứ phân từ."
+  }
  },
  {
   "id": "t5-a014",
@@ -6277,7 +6342,12 @@ const TOEIC5 = [
    "tire"
   ],
   "a": 2,
-  "why": "Cần trạng từ bổ nghĩa cho động từ 'worked': tirelessly."
+  "why": "Cần trạng từ bổ nghĩa cho động từ 'worked': tirelessly.",
+  "wrong": {
+   "tireless": "là tính từ nên không bổ nghĩa cho động từ worked; cần trạng từ chỉ cách thức làm việc (tirelessly).",
+   "tiredness": "là danh từ (sự mệt mỏi) nên không thể đứng sau động từ worked để chỉ cách thức làm việc.",
+   "tire": "là động từ nguyên mẫu (làm mệt) nên không hợp sau worked và không mang nghĩa chỉ cách làm việc."
+  }
  },
  {
   "id": "t5-a015",
@@ -6291,7 +6361,12 @@ const TOEIC5 = [
    "qualified"
   ],
   "a": 3,
-  "why": "Sau 'the most' và trước danh từ 'candidate' cần tính từ: qualified."
+  "why": "Sau 'the most' và trước danh từ 'candidate' cần tính từ: qualified.",
+  "wrong": {
+   "qualify": "là động từ nguyên mẫu, không thể đứng giữa the most và danh từ candidate; vị trí này cần tính từ.",
+   "qualifying": "qualifying chỉ dùng trong các cụm như qualifying round (vòng loại), không có nghĩa “đủ tiêu chuẩn” để mô tả ứng viên; muốn nói ứng viên đủ năng lực phải dùng qualified.",
+   "qualification": "là danh từ (bằng cấp) nên không đứng sau the most để bổ nghĩa cho candidate như một tính từ."
+  }
  },
  {
   "id": "t5-a016",
@@ -6305,7 +6380,12 @@ const TOEIC5 = [
    "is sending"
   ],
   "a": 0,
-  "why": "'yesterday' là mốc quá khứ xác định nên dùng quá khứ đơn: sent."
+  "why": "'yesterday' là mốc quá khứ xác định nên dùng quá khứ đơn: sent.",
+  "wrong": {
+   "has sent": "là hiện tại hoàn thành, không dùng với mốc quá khứ xác định yesterday; với yesterday phải dùng quá khứ đơn.",
+   "will send": "là thì tương lai nên mâu thuẫn với yesterday và với việc người nghe cần kiểm tra email ngay bây giờ.",
+   "is sending": "là thì hiện tại tiếp diễn nên không hợp với yesterday; hành động gửi báo cáo đã xảy ra và kết thúc trong quá khứ."
+  }
  },
  {
   "id": "t5-a017",
@@ -6319,7 +6399,12 @@ const TOEIC5 = [
    "have processed"
   ],
   "a": 0,
-  "why": "'By the time + hiện tại' chỉ tương lai nên dùng tương lai hoàn thành: will have processed."
+  "why": "'By the time + hiện tại' chỉ tương lai nên dùng tương lai hoàn thành: will have processed.",
+  "wrong": {
+   "would process": "would process là dạng điều kiện/tương lai trong quá khứ, không dùng được khi mốc By the time + hiện tại đơn nói về tương lai; cần will have processed.",
+   "processed": "là quá khứ đơn nên không đúng với mốc tương lai next week; hành động xong trước mốc tương lai cần will have processed.",
+   "have processed": "hiện tại hoàn thành nói về kết quả tính đến hiện tại, không dùng cho việc sẽ hoàn tất trước lúc kiểm toán viên đến vào tuần sau; cần will have processed."
+  }
  },
  {
   "id": "t5-a018",
@@ -6333,7 +6418,12 @@ const TOEIC5 = [
    "arrived"
   ],
   "a": 1,
-  "why": "Câu điều kiện loại 1: mệnh đề if dùng hiện tại đơn: arrives."
+  "why": "Câu điều kiện loại 1: mệnh đề if dùng hiện tại đơn: arrives.",
+  "wrong": {
+   "would arrive": "là cấu trúc điều kiện loại 2, không dùng trong mệnh đề if của loại 1; mệnh đề chính will open đòi hỏi if + hiện tại đơn.",
+   "will arrive": "là thì tương lai, không dùng trong mệnh đề if của câu điều kiện loại 1; sau if dùng hiện tại đơn để chỉ tương lai.",
+   "arrived": "là quá khứ đơn dùng cho điều kiện loại 2 (không có thật), mâu thuẫn với mệnh đề chính will open nên không đúng ở đây."
+  }
  },
  {
   "id": "t5-a019",
@@ -6347,7 +6437,12 @@ const TOEIC5 = [
    "is using"
   ],
   "a": 1,
-  "why": "Phòng là vật bị tác động và hành động đang diễn ra: is being used."
+  "why": "Phòng là vật bị tác động và hành động đang diễn ra: is being used.",
+  "wrong": {
+   "has used": "là hiện tại hoàn thành chủ động, không phù hợp vì phòng họp không tự dùng; cần bị động is being used vì có until noon today.",
+   "uses": "là hiện tại đơn chủ động, chủ ngữ the conference room không thể thực hiện hành động use; cần bị động.",
+   "is using": "là hiện tại tiếp diễn chủ động, nghĩa là phòng đang dùng thứ gì đó; nhưng phòng là vật được sử dụng nên phải bị động."
+  }
  },
  {
   "id": "t5-a020",
@@ -6361,7 +6456,12 @@ const TOEIC5 = [
    "moving"
   ],
   "a": 3,
-  "why": "Sau 'suggest' dùng V-ing: moving."
+  "why": "Sau 'suggest' dùng V-ing: moving.",
+  "wrong": {
+   "moved": "là quá khứ phân từ, không đi sau suggest; suggest cần V-ing (hoặc mệnh đề that), nên moved không đúng cấu trúc.",
+   "to move": "là to V, nhưng động từ suggest không đi với to-infinitive mà đi với V-ing.",
+   "move": "là động từ nguyên mẫu, không dùng trực tiếp sau suggest trong cấu trúc này; ở đây phải là danh động từ moving."
+  }
  },
  {
   "id": "t5-a021",
@@ -6375,7 +6475,12 @@ const TOEIC5 = [
    "shown"
   ],
   "a": 0,
-  "why": "Cấu trúc bị động 'be required to + V': to show."
+  "why": "Cấu trúc bị động 'be required to + V': to show.",
+  "wrong": {
+   "show": "là động từ nguyên mẫu không có to; cấu trúc bị động be required đi với to-infinitive, nên cần to show.",
+   "showing": "là V-ing, không đi sau are required; cấu trúc be required đòi hỏi to + động từ nguyên mẫu.",
+   "shown": "là quá khứ phân từ nên tạo ra cụm bị động sai; sau are required cần to-infinitive, chỉ rõ việc phải làm."
+  }
  },
  {
   "id": "t5-a022",
@@ -6389,7 +6494,12 @@ const TOEIC5 = [
    "is"
   ],
   "a": 1,
-  "why": "'since 2015' đi với hiện tại hoàn thành: has been."
+  "why": "'since 2015' đi với hiện tại hoàn thành: has been.",
+  "wrong": {
+   "was": "là quá khứ đơn, không đi với since 2015 và vế sau còn nói công ty tiếp tục ở đó tới nay; cần hiện tại hoàn thành.",
+   "will be": "là tương lai nên mâu thuẫn với since 2015 chỉ khoảng thời gian từ quá khứ đến nay.",
+   "is": "là hiện tại đơn, không dùng với since để nói một trạng thái kéo dài từ 2015 đến hiện tại; cần has been."
+  }
  },
  {
   "id": "t5-a023",
@@ -6403,7 +6513,12 @@ const TOEIC5 = [
    "was solving"
   ],
   "a": 3,
-  "why": "Hành động đang diễn ra tại thời điểm quá khứ 'when I called': was solving."
+  "why": "Hành động đang diễn ra tại thời điểm quá khứ 'when I called': was solving.",
+  "wrong": {
+   "will solve": "là tương lai, không hợp với When I called ở quá khứ; hành động xảy ra lúc đó cần quá khứ tiếp diễn.",
+   "has solved": "là hiện tại hoàn thành nên không đi với mốc quá khứ When I called; cần diễn tả hành động đang xảy ra vào lúc đó.",
+   "solves": "là hiện tại đơn, mâu thuẫn với mệnh đề When I called ở quá khứ; thì phải lùi về quá khứ tiếp diễn."
+  }
  },
  {
   "id": "t5-a024",
@@ -6417,7 +6532,12 @@ const TOEIC5 = [
    "will complete"
   ],
   "a": 1,
-  "why": "Điều kiện loại 3 đảo ngữ 'Had + S + V3': would have + V3."
+  "why": "Điều kiện loại 3 đảo ngữ 'Had + S + V3': would have + V3.",
+  "wrong": {
+   "completed": "là quá khứ đơn, không hợp với mệnh đề Had + V3 của điều kiện loại 3; mệnh đề chính cần would have + V3.",
+   "would complete": "là would + V, thuộc điều kiện loại 2 nên không hợp với Had delivered (loại 3 về quá khứ).",
+   "will complete": "là tương lai đơn, không dùng trong điều kiện loại 3 mô tả một sự việc không xảy ra trong quá khứ."
+  }
  },
  {
   "id": "t5-a025",
@@ -6431,7 +6551,12 @@ const TOEIC5 = [
    "introduces"
   ],
   "a": 1,
-  "why": "Chính sách bị giới thiệu (bị động) và có 'last month': was introduced."
+  "why": "Chính sách bị giới thiệu (bị động) và có 'last month': was introduced.",
+  "wrong": {
+   "has introduced": "là hiện tại hoàn thành chủ động, nhưng chính sách không tự giới thiệu và last month là mốc quá khứ xác định; cần bị động quá khứ.",
+   "introduced": "là quá khứ đơn chủ động, nên nghĩa là chính sách tự giới thiệu cái gì đó; chính sách là vật được giới thiệu nên cần bị động.",
+   "introduces": "là hiện tại đơn chủ động, mâu thuẫn với last month và với quan hệ bị động giữa chính sách và hành động giới thiệu."
+  }
  },
  {
   "id": "t5-a026",
@@ -6445,7 +6570,12 @@ const TOEIC5 = [
    "were"
   ],
   "a": 3,
-  "why": "Với 'neither...nor', động từ hòa hợp với danh từ gần nhất 'assistants' (số nhiều): were."
+  "why": "Với 'neither...nor', động từ hòa hợp với danh từ gần nhất 'assistants' (số nhiều): were.",
+  "wrong": {
+   "has been": "là số ít, không hòa hợp với danh từ gần nhất assistants (số nhiều) trong cấu trúc neither...nor; ngoài ra thì hiện tại hoàn thành không hợp ngữ cảnh.",
+   "was": "là quá khứ số ít, không hợp với assistants số nhiều; động từ trong neither...nor hòa hợp với danh từ gần nhất.",
+   "is": "là hiện tại số ít nên không khớp với assistants số nhiều; trong neither...nor chia theo danh từ đứng sau nor."
+  }
  },
  {
   "id": "t5-a027",
@@ -6459,7 +6589,12 @@ const TOEIC5 = [
    "was"
   ],
   "a": 0,
-  "why": "'since early morning' và 'still has not finished' cần hiện tại hoàn thành tiếp diễn: has been working."
+  "why": "'since early morning' và 'still has not finished' cần hiện tại hoàn thành tiếp diễn: has been working.",
+  "wrong": {
+   "is": "là hiện tại đơn, không hợp với since early morning; mốc since cần hiện tại hoàn thành tiếp diễn has been working.",
+   "had": "là quá khứ đơn: had working không đúng ngữ pháp; cấu trúc working on cần trợ động từ be.",
+   "was": "là quá khứ đơn của be, không đi với since và với việc vẫn chưa xong ở hiện tại; cần has been working."
+  }
  },
  {
   "id": "t5-a028",
@@ -6473,7 +6608,12 @@ const TOEIC5 = [
    "have checked"
   ],
   "a": 0,
-  "why": "Hóa đơn là đối tượng bị kiểm tra, mốc tương lai: will be checked."
+  "why": "Hóa đơn là đối tượng bị kiểm tra, mốc tương lai: will be checked.",
+  "wrong": {
+   "will check": "là chủ động, nhưng the invoices là đối tượng bị kiểm tra nên cần bị động; ngoài ra có by the team nên càng phải bị động.",
+   "are checking": "là hiện tại tiếp diễn chủ động, hóa đơn không tự kiểm tra và mốc before the end of the week là tương lai.",
+   "have checked": "là hiện tại hoàn thành chủ động, thiếu bị động và không hợp với mốc tương lai before the end of the week."
+  }
  },
  {
   "id": "t5-a029",
@@ -6487,7 +6627,12 @@ const TOEIC5 = [
    "does"
   ],
   "a": 3,
-  "why": "Đảo ngữ với 'Not only' cần trợ động từ, chủ ngữ số ít 'system': does."
+  "why": "Đảo ngữ với 'Not only' cần trợ động từ, chủ ngữ số ít 'system': does.",
+  "wrong": {
+   "is": "là to be, nhưng câu Not only đảo ngữ trước động từ reduce nguyên mẫu nên cần trợ động từ do/does, không dùng is.",
+   "do": "là trợ động từ số nhiều; chủ ngữ the new system là số ít nên phải dùng does.",
+   "has": "là has dùng cho hiện tại hoàn thành và sau đó phải là V3; ở đây reduce là nguyên mẫu nên cần does."
+  }
  },
  {
   "id": "t5-a030",
@@ -6501,7 +6646,12 @@ const TOEIC5 = [
    "within"
   ],
   "a": 1,
-  "why": "Khoảng giữa hai mốc giờ dùng 'between ... and ...'."
+  "why": "Khoảng giữa hai mốc giờ dùng 'between ... and ...'.",
+  "wrong": {
+   "among": "thường dùng với từ ba đối tượng trở lên, không dùng cho khoảng giữa hai mốc giờ 9 a.m. và 11 a.m.",
+   "during": "chỉ khoảng thời gian trong suốt một sự kiện, không đi với cấu trúc and giữa hai mốc giờ; cần between...and.",
+   "within": "nghĩa là trong vòng, không đi với cấu trúc hai mốc giờ ... and ... nên không đúng ở đây."
+  }
  },
  {
   "id": "t5-a031",
@@ -6515,7 +6665,12 @@ const TOEIC5 = [
    "within"
   ],
   "a": 3,
-  "why": "'within two working days' nghĩa là trong vòng hai ngày làm việc."
+  "why": "'within two working days' nghĩa là trong vòng hai ngày làm việc.",
+  "wrong": {
+   "until": "nghĩa là cho đến khi, không diễn tả giới hạn thời gian trong vòng hai ngày làm việc của việc giao hàng.",
+   "during": "chỉ khoảng thời gian một sự việc diễn ra, không dùng với two working days of receiving ... để nói giới hạn tối đa.",
+   "since": "đi với mốc thời gian bắt đầu, không phù hợp với khoảng thời gian two working days nên sai nghĩa."
+  }
  },
  {
   "id": "t5-a032",
@@ -6529,7 +6684,12 @@ const TOEIC5 = [
    "from"
   ],
   "a": 0,
-  "why": "Mốc thời điểm 2019 với hiện tại hoàn thành dùng 'since'."
+  "why": "Mốc thời điểm 2019 với hiện tại hoàn thành dùng 'since'.",
+  "wrong": {
+   "during": "đi với một khoảng thời gian hoặc sự kiện, không đi với mốc năm 2019; hơn nữa during chỉ trong suốt một giai đoạn.",
+   "for": "đi với khoảng thời gian (for two years), không đi với mốc năm cụ thể như 2019.",
+   "from": "đi với from ... to ... để chỉ khoảng; trong hiện tại hoàn thành với 2019 phải dùng since vì từ quá khứ đến hiện tại."
+  }
  },
  {
   "id": "t5-a033",
@@ -6543,7 +6703,12 @@ const TOEIC5 = [
    "of"
   ],
   "a": 2,
-  "why": "Cụm 'report to + nơi/người': báo danh tại quầy lễ tân."
+  "why": "Cụm 'report to + nơi/người': báo danh tại quầy lễ tân.",
+  "wrong": {
+   "across": "nghĩa là băng qua, không đi với report khi nói báo danh tại quầy lễ tân; cụm đúng là report to.",
+   "on": "report on nghĩa là “báo cáo về (một chủ đề)”, không dùng để nói đến trình diện tại quầy lễ tân; cần report to.",
+   "of": "report of dùng với nghĩa “bản báo cáo về…” (a report of the accident), không dùng để nói trình diện tại một nơi; cần report to."
+  }
  },
  {
   "id": "t5-a034",
@@ -6557,7 +6722,12 @@ const TOEIC5 = [
    "for"
   ],
   "a": 2,
-  "why": "Cụm cố định 'be satisfied with'."
+  "why": "Cụm cố định 'be satisfied with'.",
+  "wrong": {
+   "at": "thường đi với cảm xúc ngạc nhiên hoặc giận, không đi với satisfied; cụm cố định là be satisfied with.",
+   "to": "là giới từ chỉ hướng, không đi với tính từ satisfied; satisfied đòi hỏi with.",
+   "for": "chỉ mục đích hoặc người nhận, không đi với satisfied để nói hài lòng về điều gì."
+  }
  },
  {
   "id": "t5-a035",
@@ -6571,7 +6741,12 @@ const TOEIC5 = [
    "in case of"
   ],
   "a": 2,
-  "why": "'due to' + danh từ chỉ nguyên nhân; các cụm còn lại sai nghĩa."
+  "why": "'due to' + danh từ chỉ nguyên nhân; các cụm còn lại sai nghĩa.",
+  "wrong": {
+   "in spite of": "nghĩa là mặc dù, trái với quan hệ nguyên nhân: tuyết dày là lý do chuyến bay bị hoãn, nên sai nghĩa.",
+   "instead of": "nghĩa là thay vì, không diễn tả nguyên nhân gây ra việc hoãn chuyến bay.",
+   "in case of": "nghĩa là phòng khi, chỉ trường hợp dự phòng chứ không nêu lý do chuyến bay đã bị hoãn do tuyết."
+  }
  },
  {
   "id": "t5-a036",
@@ -6585,7 +6760,12 @@ const TOEIC5 = [
    "with"
   ],
   "a": 2,
-  "why": "Cụm 'apply for' (xin/đăng ký cái gì)."
+  "why": "Cụm 'apply for' (xin/đăng ký cái gì).",
+  "wrong": {
+   "at": "thường chỉ nơi chốn hoặc thời điểm, không đi với apply để nói xin thứ gì; cụm đúng là apply for.",
+   "by": "nghĩa là bởi hoặc bằng, không đi với apply để chỉ thứ muốn xin (apply for).",
+   "with": "đi với phương tiện hoặc đối tượng ở nghĩa khác, không dùng sau apply để nói xin chuyển công tác."
+  }
  },
  {
   "id": "t5-a037",
@@ -6599,7 +6779,12 @@ const TOEIC5 = [
    "than"
   ],
   "a": 0,
-  "why": "Cụm cố định 'be similar to' (giống với)."
+  "why": "Cụm cố định 'be similar to' (giống với).",
+  "wrong": {
+   "as": "là từ so sánh bằng as...as, không đi sau similar; cụm cố định là similar to.",
+   "with": "là giới từ đi với những tính từ như familiar, không dùng với similar; ở đây phải là similar to.",
+   "than": "là từ so sánh hơn, không đi với similar; similar đòi hỏi giới từ to."
+  }
  },
  {
   "id": "t5-a038",
@@ -6613,7 +6798,12 @@ const TOEIC5 = [
    "Despite"
   ],
   "a": 3,
-  "why": "Sau chỗ trống là cụm danh từ nên cần giới từ 'Despite'; Although/Because cần mệnh đề."
+  "why": "Sau chỗ trống là cụm danh từ nên cần giới từ 'Despite'; Although/Because cần mệnh đề.",
+  "wrong": {
+   "However": "là liên từ/trạng từ nối câu, không đứng trước cụm danh từ the rise in fuel prices; cần giới từ chỉ nhượng bộ.",
+   "Although": "là liên từ nhượng bộ cần một mệnh đề đầy đủ, nhưng sau chỗ trống chỉ có cụm danh từ the rise.",
+   "Because": "là liên từ chỉ nguyên nhân cần mệnh đề và sai nghĩa; việc tăng giá nhiên liệu không phải lý do giữ nguyên phí."
+  }
  },
  {
   "id": "t5-a039",
@@ -6627,7 +6817,12 @@ const TOEIC5 = [
    "at"
   ],
   "a": 0,
-  "why": "Cụm cố định 'in charge of'."
+  "why": "Cụm cố định 'in charge of'.",
+  "wrong": {
+   "for": "in charge luôn đi với of; “in charge for” không phải cụm chuẩn (dễ nhầm với responsible for), nên không dùng ở đây.",
+   "to": "là giới từ chỉ hướng, không đi với in charge; cụm đúng là in charge of.",
+   "at": "chỉ vị trí/điểm, không tạo cụm cố định với in charge; ta nói in charge of organizing."
+  }
  },
  {
   "id": "t5-a040",
@@ -6641,7 +6836,12 @@ const TOEIC5 = [
    "over"
   ],
   "a": 0,
-  "why": "Cụm cố định 'under review' nghĩa là đang được xem xét."
+  "why": "Cụm cố định 'under review' nghĩa là đang được xem xét.",
+  "wrong": {
+   "off": "nghĩa là tắt hoặc rời khỏi, không tạo nghĩa đang xem xét; cụm đúng là under review.",
+   "among": "nghĩa là giữa nhiều đối tượng, không tạo cụm cố định với review để chỉ đang được xem xét.",
+   "over": "nghĩa là trên hoặc qua, không đi với review để nói đề xuất đang được xem xét; phải dùng under."
+  }
  },
  {
   "id": "t5-a041",
@@ -6655,7 +6855,12 @@ const TOEIC5 = [
    "so that"
   ],
   "a": 0,
-  "why": "Vế sau là nguyên nhân của việc hủy họp: because."
+  "why": "Vế sau là nguyên nhân của việc hủy họp: because.",
+  "wrong": {
+   "unless": "nghĩa là trừ khi, làm sai nghĩa: giám đốc ốm không phải là điều kiện để cuộc họp bị hủy.",
+   "although": "nghĩa là mặc dù, chỉ sự đối lập; ở đây việc giám đốc ốm là lý do nên không phù hợp.",
+   "so that": "nghĩa là để mà, chỉ mục đích; việc giám đốc ốm là nguyên nhân chứ không phải mục đích hủy họp."
+  }
  },
  {
   "id": "t5-a042",
@@ -6669,7 +6874,12 @@ const TOEIC5 = [
    "Because"
   ],
   "a": 2,
-  "why": "Hai vế đối lập (có máy mới nhưng vẫn chậm): Although."
+  "why": "Hai vế đối lập (có máy mới nhưng vẫn chậm): Although.",
+  "wrong": {
+   "Unless": "nghĩa là trừ khi, không hợp nghĩa; mệnh đề này nêu một việc đã xảy ra chứ không phải điều kiện.",
+   "Since": "nghĩa là bởi vì, nhưng việc lắp máy mới không thể là lý do khiến sản xuất vẫn chậm.",
+   "Because": "nghĩa là bởi vì, mâu thuẫn với nghĩa đối lập: lắp máy mới mà sản xuất vẫn chậm."
+  }
  },
  {
   "id": "t5-a043",
@@ -6683,7 +6893,12 @@ const TOEIC5 = [
    "if"
   ],
   "a": 2,
-  "why": "'will not ... unless' nghĩa là trừ khi bạn xuất trình hóa đơn."
+  "why": "'will not ... unless' nghĩa là trừ khi bạn xuất trình hóa đơn.",
+  "wrong": {
+   "while": "nghĩa là trong khi, không diễn tả điều kiện hoàn tiền; sai nghĩa với việc xuất trình hóa đơn.",
+   "because": "nghĩa là bởi vì, không diễn tả điều kiện; xuất trình hóa đơn không phải nguyên nhân của việc không được hoàn tiền.",
+   "if": "nghĩa là nếu, sẽ nói bạn không được hoàn tiền nếu xuất trình hóa đơn, trái nghĩa với ý đúng cần diễn đạt."
+  }
  },
  {
   "id": "t5-a044",
@@ -6697,7 +6912,12 @@ const TOEIC5 = [
    "because"
   ],
   "a": 2,
-  "why": "Chỉ mục đích: so that + mệnh đề."
+  "why": "Chỉ mục đích: so that + mệnh đề.",
+  "wrong": {
+   "although": "nghĩa là mặc dù, chỉ sự nhượng bộ; kiểm tra hai lần để không có lỗi là mục đích, không phải đối lập.",
+   "unless": "nghĩa là trừ khi, làm sai nghĩa; không thể nói kiểm tra hai lần trừ khi không có lỗi.",
+   "because": "nghĩa là bởi vì, chỉ nguyên nhân; trong khi there would be no mistakes là kết quả mong muốn, tức mục đích."
+  }
  },
  {
   "id": "t5-a045",
@@ -6711,7 +6931,12 @@ const TOEIC5 = [
    "whom"
   ],
   "a": 0,
-  "why": "Đại từ quan hệ thay người, làm chủ ngữ của 'manages': who."
+  "why": "Đại từ quan hệ thay người, làm chủ ngữ của 'manages': who.",
+  "wrong": {
+   "which": "là đại từ quan hệ thay vật, không dùng cho Ms Lan là người làm chủ ngữ của manages.",
+   "whose": "là đại từ chỉ sở hữu, theo sau phải là danh từ (whose branch), nhưng ở đây ngay sau là động từ manages.",
+   "whom": "là dạng tân ngữ của who, không thể làm chủ ngữ của manages; Ms Lan là người thực hiện hành động quản lý."
+  }
  },
  {
   "id": "t5-a046",
@@ -6725,7 +6950,12 @@ const TOEIC5 = [
    "that"
   ],
   "a": 3,
-  "why": "Đại từ quan hệ thay vật làm tân ngữ: that."
+  "why": "Đại từ quan hệ thay vật làm tân ngữ: that.",
+  "wrong": {
+   "whose": "là đại từ chỉ sở hữu, sau phải là danh từ; ở đây sau chỗ trống là chủ ngữ we nên không dùng.",
+   "who": "là đại từ quan hệ thay người, nhưng the brochure là vật nên không dùng.",
+   "what": "là từ hỏi/đại từ không dùng để mở mệnh đề quan hệ bổ nghĩa cho danh từ brochure."
+  }
  },
  {
   "id": "t5-a047",
@@ -6739,7 +6969,12 @@ const TOEIC5 = [
    "unless"
   ],
   "a": 0,
-  "why": "Điều kiện 'nếu bạn gặp sự cố thì gọi': if."
+  "why": "Điều kiện 'nếu bạn gặp sự cố thì gọi': if.",
+  "wrong": {
+   "although": "nghĩa là mặc dù, không phù hợp: không thể nói gọi bàn trợ giúp mặc dù bạn có vấn đề.",
+   "until": "nghĩa là cho đến khi, không diễn tả điều kiện để gọi bàn trợ giúp.",
+   "unless": "nghĩa là trừ khi, làm sai nghĩa; ta nên gọi khi có vấn đề chứ không phải trừ khi có vấn đề."
+  }
  },
  {
   "id": "t5-a048",
@@ -6753,7 +6988,12 @@ const TOEIC5 = [
    "unless"
   ],
   "a": 1,
-  "why": "Cấu trúc 'wait until' nghĩa là đợi đến khi."
+  "why": "Cấu trúc 'wait until' nghĩa là đợi đến khi.",
+  "wrong": {
+   "so": "thường đi với that để chỉ kết quả, không đi sau wait để nói đợi đến khi; cần until.",
+   "since": "chỉ lý do hoặc mốc từ khi, không diễn đạt đợi cho đến khi kỹ thuật viên sửa xong server.",
+   "unless": "nghĩa là trừ khi, làm sai nghĩa; nhân viên được dặn đợi cho tới khi, không phải đợi trừ khi sửa xong."
+  }
  },
  {
   "id": "t5-a049",
@@ -6767,7 +7007,12 @@ const TOEIC5 = [
    "Whereas"
   ],
   "a": 0,
-  "why": "Vế đầu là lý do: Since (bởi vì) + mệnh đề."
+  "why": "Vế đầu là lý do: Since (bởi vì) + mệnh đề.",
+  "wrong": {
+   "Despite": "là giới từ (đi với cụm danh từ hoặc V-ing), không dùng trước một mệnh đề đầy đủ the sales team met its target; hơn nữa nó mang nghĩa nhượng bộ, sai với quan hệ nguyên nhân.",
+   "Instead": "là trạng từ (thay vào đó), không làm liên từ nối hai mệnh đề; ngoài ra sai nghĩa vì câu cần quan hệ nguyên nhân - kết quả.",
+   "Whereas": "nghĩa là trong khi/còn, chỉ đối lập; đạt chỉ tiêu và được thưởng không đối lập mà là nguyên nhân - kết quả."
+  }
  },
  {
   "id": "t5-a050",
@@ -6781,7 +7026,12 @@ const TOEIC5 = [
    "which"
   ],
   "a": 0,
-  "why": "'whether ... or ...' diễn đạt lựa chọn giữa hai khả năng."
+  "why": "'whether ... or ...' diễn đạt lựa chọn giữa hai khả năng.",
+  "wrong": {
+   "what": "là đại từ nghi vấn, không dùng với or để chọn giữa hai khả năng; câu cần whether.",
+   "that": "là từ nối bổ nghĩa cho mệnh đề, không mang nghĩa có hay không; không đi với to open ... or.",
+   "which": "là từ hỏi chọn trong một nhóm, không đi với cấu trúc to open ... or; cần whether để chỉ hai lựa chọn."
+  }
  },
  {
   "id": "t5-a051",
@@ -6795,7 +7045,12 @@ const TOEIC5 = [
    "and"
   ],
   "a": 3,
-  "why": "Cấu trúc 'both ... and ...'."
+  "why": "Cấu trúc 'both ... and ...'.",
+  "wrong": {
+   "but": "but nối hai ý đối lập, còn cấu trúc 'both ... and ...' bắt buộc đi với and; ở đây hai người cùng phê duyệt kế hoạch.",
+   "nor": "nor chỉ đi với neither (neither ... nor ...) trong câu phủ định; câu này khẳng định và mở đầu bằng both nên cần and.",
+   "or": "or đi với either (either ... or ...) để chỉ sự lựa chọn một trong hai, không ghép được với both; cả hai người đều phê duyệt."
+  }
  },
  {
   "id": "t5-a052",
@@ -6809,7 +7064,12 @@ const TOEIC5 = [
    "her"
   ],
   "a": 3,
-  "why": "Sau động từ 'send' cần đại từ tân ngữ: her."
+  "why": "Sau động từ 'send' cần đại từ tân ngữ: her.",
+  "wrong": {
+   "she": "she là đại từ chủ ngữ; sau động từ send cần đại từ tân ngữ chỉ người nhận, nên phải dùng her thay vì she.",
+   "hers": "hers là đại từ sở hữu (của cô ấy) thay cho một danh từ đã nhắc, không dùng làm người nhận sau send; ở đây cần tân ngữ her.",
+   "herself": "herself là đại từ phản thân, chỉ dùng khi chủ thể và tân ngữ là một người; ở đây Anna nhờ Mr Park gửi cho cô, người gửi là Mr Park nên không dùng."
+  }
  },
  {
   "id": "t5-a053",
@@ -6823,7 +7083,12 @@ const TOEIC5 = [
    "them"
   ],
   "a": 1,
-  "why": "'by themselves' nghĩa là tự họ, không cần ai giúp."
+  "why": "'by themselves' nghĩa là tự họ, không cần ai giúp.",
+  "wrong": {
+   "their": "their là tính từ sở hữu và phải đứng trước danh từ; sau giới từ by mà không có danh từ theo sau thì không dùng được their.",
+   "they": "they là đại từ chủ ngữ, không đứng sau giới từ by; sau giới từ cần tân ngữ hoặc đại từ phản thân.",
+   "them": "by them nghĩa là 'bởi họ' (người khác làm), khiến câu lệch nghĩa; ý câu là nhân viên tự làm khảo sát nên cần themselves."
+  }
  },
  {
   "id": "t5-a054",
@@ -6833,11 +7098,16 @@ const TOEIC5 = [
   "opts": [
    "them",
    "it",
-   "those",
+   "these",
    "that"
   ],
   "a": 3,
-  "why": "Thay cho 'office' (số ít) để so sánh: that."
+  "why": "Thay cho 'office' (số ít) để so sánh: that.",
+  "wrong": {
+   "them": "them là đại từ tân ngữ chỉ người, không thay được cho danh từ office trong phép so sánh; sau than cần đại từ thay thế như that (that of ...).",
+   "it": "it không thể đi trước cụm 'of the other managers' để thay cho office; muốn thay danh từ đã nêu và bổ nghĩa bằng of ... phải dùng that/those.",
+   "these": "these là đại từ chỉ định chỉ vật ở gần, không dùng để thay thế danh từ đã nhắc trước trong so sánh 'than ... of ...'; ở đây phải dùng that (thay cho the office)."
+  }
  },
  {
   "id": "t5-a055",
@@ -6851,7 +7121,12 @@ const TOEIC5 = [
    "who"
   ],
   "a": 3,
-  "why": "Thay cho người, làm chủ ngữ của 'wish': who."
+  "why": "Thay cho người, làm chủ ngữ của 'wish': who.",
+  "wrong": {
+   "whom": "whom là đại từ quan hệ làm tân ngữ; trong câu này đại từ làm chủ ngữ của động từ wish nên phải dùng who.",
+   "which": "which dùng cho vật, còn Those ở đây chỉ người (những người muốn tham gia hội thảo) nên phải dùng who.",
+   "whose": "whose chỉ sở hữu và đi trước một danh từ (whose + danh từ); sau chỗ trống là động từ wish nên không dùng được."
+  }
  },
  {
   "id": "t5-a056",
@@ -6865,7 +7140,12 @@ const TOEIC5 = [
    "each"
   ],
   "a": 3,
-  "why": "'each other' diễn tả quan hệ qua lại giữa hai bên."
+  "why": "'each other' diễn tả quan hệ qua lại giữa hai bên.",
+  "wrong": {
+   "every": "every là từ hạn định đứng trước danh từ số ít và không đi với other để chỉ quan hệ qua lại; cụm cố định là each other.",
+   "both": "both other không tạo thành cụm chỉ quan hệ qua lại giữa hai bên; cụm cố định là each other, còn both không đi với other theo nghĩa này.",
+   "one": "one other nghĩa là 'một cái khác nữa', không diễn tả hai phòng ban hợp tác qua lại; muốn nói 'với nhau' phải dùng each other."
+  }
  },
  {
   "id": "t5-a057",
@@ -6879,7 +7159,12 @@ const TOEIC5 = [
    "itself"
   ],
   "a": 2,
-  "why": "Chủ ngữ và tân ngữ là cùng một người (manager tự giới thiệu mình) nên dùng đại từ phản thân: himself."
+  "why": "Chủ ngữ và tân ngữ là cùng một người (manager tự giới thiệu mình) nên dùng đại từ phản thân: himself.",
+  "wrong": {
+   "his": "his là tính từ sở hữu và phải đứng trước danh từ (his team); introduced his to ... thiếu danh từ phía sau nên không thành câu.",
+   "he": "he là đại từ chủ ngữ, không dùng làm tân ngữ sau introduced; ngoài ra chủ ngữ đã là the new manager nên không lặp bằng he.",
+   "itself": "itself là đại từ phản thân chỉ vật hoặc con vật; người quản lý là nam, tự giới thiệu mình nên cần himself."
+  }
  },
  {
   "id": "t5-a058",
@@ -6893,7 +7178,12 @@ const TOEIC5 = [
    "no"
   ],
   "a": 0,
-  "why": "Hai báo giá và 'but' (phủ định): neither of them."
+  "why": "Hai báo giá và 'but' (phủ định): neither of them.",
+  "wrong": {
+   "every": "every là từ hạn định đứng trước danh từ số ít, không đi trực tiếp với 'of them'; câu cần đại từ mang nghĩa phủ định cho hai báo giá.",
+   "any": "any of them dùng trong câu phủ định hoặc nghi vấn; sau but trong câu khẳng định này any không diễn tả đúng ý 'cả hai đều không'.",
+   "no": "no là từ hạn định đứng trước danh từ (no quote) và không đi với 'of them'; muốn dùng với of them phải là none hoặc neither."
+  }
  },
  {
   "id": "t5-a059",
@@ -6907,7 +7197,12 @@ const TOEIC5 = [
    "confirm"
   ],
   "a": 0,
-  "why": "'compensate sb for sth' là bồi thường cho ai về cái gì."
+  "why": "'compensate sb for sth' là bồi thường cho ai về cái gì.",
+  "wrong": {
+   "compete": "compete nghĩa là cạnh tranh và đi với with/against, không có nghĩa bồi thường; câu nói hãng bay trả tiền cho hành lý thất lạc.",
+   "complain": "complain là phàn nàn, do hành khách thực hiện; hãng bay không phàn nàn mà phải bồi thường, và cấu trúc compensate ... for mới khớp.",
+   "confirm": "confirm là xác nhận (đặt chỗ, thông tin), không đi với giới từ for để chỉ chi phí hành lý thất lạc nên sai nghĩa."
+  }
  },
  {
   "id": "t5-a060",
@@ -6921,7 +7216,12 @@ const TOEIC5 = [
    "rent"
   ],
   "a": 2,
-  "why": "Cụm 'submit a quotation' là nộp báo giá."
+  "why": "Cụm 'submit a quotation' là nộp báo giá.",
+  "wrong": {
+   "attend": "attend nghĩa là tham dự (cuộc họp, sự kiện), không kết hợp với danh từ quotation; nhà cung cấp phải nộp báo giá.",
+   "repair": "repair là sửa chữa đồ vật hỏng, không hợp với báo giá; ngữ cảnh là nhà cung cấp gửi báo giá cho công ty.",
+   "rent": "rent nghĩa là thuê hoặc cho thuê, không dùng với quotation; câu cần động từ có nghĩa nộp báo giá là submit."
+  }
  },
  {
   "id": "t5-a061",
@@ -6935,7 +7235,12 @@ const TOEIC5 = [
    "invited"
   ],
   "a": 0,
-  "why": "Đối chiếu hàng với phiếu đóng gói để chắc chắn đủ: checked."
+  "why": "Đối chiếu hàng với phiếu đóng gói để chắc chắn đủ: checked.",
+  "wrong": {
+   "borrowed": "borrowed là mượn, không hợp với việc đối chiếu lô hàng với phiếu đóng gói để chắc chắn không thiếu gì.",
+   "paid": "paid là trả tiền; quản lý kho không trả tiền cho lô hàng bằng cách so với phiếu đóng gói, mà kiểm tra đối chiếu.",
+   "invited": "invited là mời người, không đi với một lô hàng; nghĩa của câu là kiểm tra lô hàng so với phiếu đóng gói."
+  }
  },
  {
   "id": "t5-a062",
@@ -6949,7 +7254,12 @@ const TOEIC5 = [
    "refer"
   ],
   "a": 1,
-  "why": "Muốn được hoàn tiền phải trả lại sản phẩm: return."
+  "why": "Muốn được hoàn tiền phải trả lại sản phẩm: return.",
+  "wrong": {
+   "reserve": "reserve là đặt trước hoặc giữ chỗ, không hợp với điều kiện hoàn tiền; để được hoàn tiền khách phải trả lại sản phẩm.",
+   "retire": "retire nghĩa là nghỉ hưu và dùng cho người, không dùng với sản phẩm làm tân ngữ; sai về nghĩa lẫn cách dùng.",
+   "refer": "refer là nhắc đến hoặc giới thiệu và đi với giới từ to, không nhận trực tiếp tân ngữ the product theo nghĩa trả hàng."
+  }
  },
  {
   "id": "t5-a063",
@@ -6963,7 +7273,12 @@ const TOEIC5 = [
    "tell"
   ],
   "a": 2,
-  "why": "Cụm 'show sb around' là dẫn ai đi tham quan."
+  "why": "Cụm 'show sb around' là dẫn ai đi tham quan.",
+  "wrong": {
+   "say": "say không đi với tân ngữ người rồi giới từ around theo nghĩa dẫn đi tham quan; say chỉ có nghĩa nói ra điều gì.",
+   "speak": "speak là nói chuyện, đi với to/with, không tạo cụm 'speak sb around the factory' để chỉ việc dẫn đi tham quan.",
+   "tell": "tell sb something là nói cho ai biết điều gì, không dùng với around; muốn nói dẫn nhân viên đi vòng nhà máy phải dùng show sb around."
+  }
  },
  {
   "id": "t5-a064",
@@ -6977,7 +7292,12 @@ const TOEIC5 = [
    "ordered"
   ],
   "a": 1,
-  "why": "'offer a discount' là đưa ra ưu đãi giảm giá."
+  "why": "'offer a discount' là đưa ra ưu đãi giảm giá.",
+  "wrong": {
+   "lacked": "lacked nghĩa là thiếu, trái hẳn nghĩa của câu; khách sạn đang đưa ra ưu đãi chứ không thiếu ưu đãi.",
+   "stayed": "stayed là nội động từ nghĩa là ở lại, không nhận tân ngữ a discount; hơn nữa 'has stayed' sai nghĩa.",
+   "ordered": "ordered nghĩa là gọi món hoặc đặt hàng, không hợp với a discount; khách sạn không đặt hàng một ưu đãi mà cung cấp nó."
+  }
  },
  {
   "id": "t5-a065",
@@ -6991,7 +7311,12 @@ const TOEIC5 = [
    "hire"
   ],
   "a": 3,
-  "why": "Cần thêm công nhân khi nhu cầu tăng: hire."
+  "why": "Cần thêm công nhân khi nhu cầu tăng: hire.",
+  "wrong": {
+   "retire": "retire là nghỉ hưu, nội động từ và không nhận tân ngữ extra workers; nhu cầu tăng thì cần tuyển thêm người.",
+   "fire": "fire là sa thải; khi nhu cầu tăng đột ngột, nhà máy không sa thải thêm công nhân mà phải tuyển thêm, nên nghĩa ngược lại.",
+   "resign": "resign là xin thôi việc do chính nhân viên làm, và là nội động từ nên không nhận tân ngữ extra workers."
+  }
  },
  {
   "id": "t5-a066",
@@ -7005,7 +7330,12 @@ const TOEIC5 = [
    "consume"
   ],
   "a": 1,
-  "why": "Kết hợp từ 'conduct a survey' nghĩa là tiến hành khảo sát."
+  "why": "Kết hợp từ 'conduct a survey' nghĩa là tiến hành khảo sát.",
+  "wrong": {
+   "confide": "confide là tâm sự và đi với giới từ in, không kết hợp với danh từ survey; cụm đúng là conduct a survey.",
+   "convey": "convey là truyền đạt ý hoặc thông điệp, không đi với survey theo nghĩa tiến hành khảo sát để tìm nguyên nhân.",
+   "consume": "consume là tiêu thụ (thức ăn, năng lượng), không hợp với survey; khảo sát thì dùng conduct hoặc carry out."
+  }
  },
  {
   "id": "t5-a067",
@@ -7019,7 +7349,12 @@ const TOEIC5 = [
    "remind"
   ],
   "a": 1,
-  "why": "Hàng lỗi được thay miễn phí: replace."
+  "why": "Hàng lỗi được thay miễn phí: replace.",
+  "wrong": {
+   "reply": "reply là nội động từ nghĩa là trả lời, đi với to và không nhận tân ngữ goods; hợp đồng nói đến việc đổi hàng lỗi.",
+   "reduce": "reduce là giảm bớt, không hợp với hàng lỗi miễn phí; giảm số hàng lỗi khác với đổi chúng bằng hàng tốt.",
+   "remind": "remind là nhắc nhở ai đó và cần tân ngữ chỉ người, không dùng với goods; không có nghĩa thay thế hàng lỗi."
+  }
  },
  {
   "id": "t5-a068",
@@ -7033,7 +7368,12 @@ const TOEIC5 = [
    "spend"
   ],
   "a": 0,
-  "why": "Giữ hóa đơn phòng khi kiểm toán: keep."
+  "why": "Giữ hóa đơn phòng khi kiểm toán: keep.",
+  "wrong": {
+   "cancel": "cancel là hủy bỏ; giữ hóa đơn để phòng kiểm toán, nên hủy hóa đơn là trái với lời khuyên của kế toán.",
+   "lend": "lend là cho mượn, không hợp với việc lưu giữ hóa đơn trong bảy năm để phòng khi kiểm toán.",
+   "spend": "spend là tiêu tiền hoặc dành thời gian, không đi với receipts; hóa đơn được lưu giữ chứ không bị tiêu đi."
+  }
  },
  {
   "id": "t5-a069",
@@ -7047,7 +7387,12 @@ const TOEIC5 = [
    "cheerfully"
   ],
   "a": 1,
-  "why": "Đình công làm chậm hàng nên doanh số bị ảnh hưởng xấu: adversely."
+  "why": "Đình công làm chậm hàng nên doanh số bị ảnh hưởng xấu: adversely.",
+  "wrong": {
+   "nearly": "nearly nghĩa là gần như, chỉ mức độ, không nói được doanh số bị tác động theo hướng nào; câu cần trạng từ chỉ tác động tiêu cực do đình công.",
+   "formerly": "formerly nghĩa là trước đây, chỉ thời gian; câu cần trạng từ nói cách doanh số bị ảnh hưởng do đình công chậm giao hàng.",
+   "cheerfully": "cheerfully nghĩa là vui vẻ, không thể mô tả tác động của đình công làm hàng chậm hai tuần lên doanh số."
+  }
  },
  {
   "id": "t5-a070",
@@ -7061,7 +7406,12 @@ const TOEIC5 = [
    "hesitant"
   ],
   "a": 1,
-  "why": "Khách xin bản slide vì bài thuyết trình nhiều thông tin: informative."
+  "why": "Khách xin bản slide vì bài thuyết trình nhiều thông tin: informative.",
+  "wrong": {
+   "expensive": "expensive là đắt tiền; bài thuyết trình đắt không phải lý do khách xin bản slide, và câu cần tính từ chỉ nhiều thông tin.",
+   "crowded": "crowded nghĩa là đông đúc, dùng cho nơi chốn; không hợp để mô tả bài thuyết trình khiến khách muốn xin slide.",
+   "hesitant": "hesitant nghĩa là do dự, ngập ngừng; một bài thuyết trình ngập ngừng sẽ không khiến nhiều khách hàng xin bản slide."
+  }
  },
  {
   "id": "t5-a071",
@@ -7075,7 +7425,12 @@ const TOEIC5 = [
    "applies"
   ],
   "a": 2,
-  "why": "Cụm 'comply with regulations' là tuân thủ quy định."
+  "why": "Cụm 'comply with regulations' là tuân thủ quy định.",
+  "wrong": {
+   "depends": "depends đi với giới từ on (depend on), không đi với with; ngoài ra nghĩa 'phụ thuộc' không hợp với quy định an toàn.",
+   "relies": "relies đi với giới từ on (rely on) nghĩa là dựa vào, không đi với with và không diễn tả việc tuân thủ quy định.",
+   "applies": "applies đi với to (apply to) hoặc for, nghĩa là áp dụng hoặc nộp đơn, không đi với with; muốn nói tuân thủ phải dùng comply with."
+  }
  },
  {
   "id": "t5-a072",
@@ -7089,7 +7444,12 @@ const TOEIC5 = [
    "least"
   ],
   "a": 2,
-  "why": "Có 'than' nên dùng so sánh hơn của danh từ đếm được: fewer complaints than."
+  "why": "Có 'than' nên dùng so sánh hơn của danh từ đếm được: fewer complaints than.",
+  "wrong": {
+   "few": "few là tính từ nguyên mẫu nghĩa là rất ít, không dùng được với than; sau 'received ... complaints than' cần dạng so sánh hơn là fewer.",
+   "the fewest": "the fewest là so sánh nhất và đi với mạo từ, không đi với than; câu có than any other branch nên cần so sánh hơn fewer.",
+   "least": "least dùng trước tính từ hoặc với danh từ không đếm được (least time); complaints là danh từ đếm được số nhiều nên cần fewer, và có than nên không dùng so sánh nhất."
+  }
  },
  {
   "id": "t5-a073",
@@ -7103,7 +7463,12 @@ const TOEIC5 = [
    "as"
   ],
   "a": 1,
-  "why": "Có 'than' nên dùng so sánh hơn: more expensive."
+  "why": "Có 'than' nên dùng so sánh hơn: more expensive.",
+  "wrong": {
+   "most": "most tạo so sánh nhất, đi với the và không dùng với than; câu so sánh hai mẫu máy bằng than nên cần more.",
+   "the more": "the more dùng trong cấu trúc 'the more..., the more...' hoặc khi chỉ hai đối tượng đã xác định; câu có 'than' thì dùng more, không có the.",
+   "as": "as expensive thiếu as thứ hai (as ... as) để so sánh bằng; ở đây đi với than nên là so sánh hơn more expensive than."
+  }
  },
  {
   "id": "t5-a074",
@@ -7117,7 +7482,12 @@ const TOEIC5 = [
    "little"
   ],
   "a": 3,
-  "why": "'time' không đếm được và ngụ ý ít: little."
+  "why": "'time' không đếm được và ngụ ý ít: little.",
+  "wrong": {
+   "a few": "a few đi với danh từ đếm được số nhiều, mà time là danh từ không đếm được; hơn nữa a few mang nghĩa một vài, không hợp ngữ cảnh gấp.",
+   "many": "many chỉ đi với danh từ đếm được số nhiều; time không đếm được, và nghĩa 'nhiều' mâu thuẫn với yêu cầu làm nhanh vì còn ít thời gian.",
+   "few": "few dùng với danh từ đếm được số nhiều (few days); time là danh từ không đếm được nên phải dùng little."
+  }
  },
  {
   "id": "t5-a075",
@@ -7131,7 +7501,12 @@ const TOEIC5 = [
    "Many"
   ],
   "a": 2,
-  "why": "Danh từ số ít 'employee' đi với Every."
+  "why": "Danh từ số ít 'employee' đi với Every.",
+  "wrong": {
+   "Several": "Several đi với danh từ đếm được số nhiều, mà employee ở đây là số ít và động từ who completes chia số ít; cần Every.",
+   "All": "All đi với danh từ số nhiều (All employees), còn employee là số ít nên không dùng được; Every thì đi với danh từ số ít.",
+   "Many": "Many đi với danh từ số nhiều (Many employees), trong khi employee ở đây là số ít và động từ completes chia số ít, nên không hợp."
+  }
  },
  {
   "id": "t5-b001",
@@ -7145,7 +7520,12 @@ const TOEIC5 = [
    "maintenance"
   ],
   "a": 3,
-  "why": "Sau mạo từ 'the' và trước 'of' cần một danh từ: maintenance (sự bảo trì)."
+  "why": "Sau mạo từ 'the' và trước 'of' cần một danh từ: maintenance (sự bảo trì).",
+  "wrong": {
+   "maintain": "maintain là động từ nguyên mẫu, mà sau mạo từ the và trước giới từ of cần một danh từ: the maintenance of fire extinguishers.",
+   "maintained": "maintained là dạng quá khứ hoặc phân từ của động từ, không đứng được sau the và trước of; vị trí này đòi hỏi danh từ.",
+   "maintainable": "maintainable là tính từ nghĩa là có thể bảo trì được; sau the + of cần danh từ, không phải tính từ."
+  }
  },
  {
   "id": "t5-b002",
@@ -7159,7 +7539,12 @@ const TOEIC5 = [
    "efficiencies"
   ],
   "a": 2,
-  "why": "Bổ nghĩa cho động từ 'operates' cần trạng từ: more efficiently."
+  "why": "Bổ nghĩa cho động từ 'operates' cần trạng từ: more efficiently.",
+  "wrong": {
+   "efficient": "efficient là tính từ, mà operates là động từ nên cần trạng từ bổ nghĩa; tính từ không bổ nghĩa cho động từ.",
+   "efficiency": "efficiency là danh từ nghĩa là hiệu quả; sau more bổ nghĩa cho động từ operates cần trạng từ, nên không dùng danh từ.",
+   "efficiencies": "efficiencies là danh từ số nhiều, không thể bổ nghĩa cho động từ operates; vị trí sau more ... than đòi hỏi trạng từ efficiently."
+  }
  },
  {
   "id": "t5-b003",
@@ -7173,7 +7558,12 @@ const TOEIC5 = [
    "details"
   ],
   "a": 1,
-  "why": "Trước danh từ 'CV' cần tính từ: a detailed CV (hồ sơ chi tiết)."
+  "why": "Trước danh từ 'CV' cần tính từ: a detailed CV (hồ sơ chi tiết).",
+  "wrong": {
+   "detail": "detail là danh từ hoặc động từ, không bổ nghĩa cho danh từ CV; trước CV cần tính từ như detailed.",
+   "detailing": "detailing là V-ing, thường mang nghĩa chủ động (đang liệt kê) và không hợp để mô tả một bản CV; CV là bản có nhiều chi tiết nên cần detailed.",
+   "details": "details là danh từ số nhiều, mà a CV đã có a và danh từ CV; không thể xếp hai danh từ như vậy với mạo từ a."
+  }
  },
  {
   "id": "t5-b004",
@@ -7187,7 +7577,12 @@ const TOEIC5 = [
    "selective"
   ],
   "a": 0,
-  "why": "Câu bị động 'was + V3': was selected for the position (được chọn)."
+  "why": "Câu bị động 'was + V3': was selected for the position (được chọn).",
+  "wrong": {
+   "select": "select là động từ nguyên mẫu; sau was cần phân từ hai trong câu bị động (was selected), không dùng nguyên mẫu.",
+   "selection": "selection là danh từ nghĩa là sự lựa chọn; was selection for the position không thành câu, vì cô Tran được chọn chứ không phải là sự lựa chọn.",
+   "selective": "selective là tính từ nghĩa là kén chọn, không hợp với Ms Tran được chọn vào vị trí; câu mang nghĩa bị động nên cần selected."
+  }
  },
  {
   "id": "t5-b005",
@@ -7201,7 +7596,12 @@ const TOEIC5 = [
    "convenient"
   ],
   "a": 3,
-  "why": "Sau mạo từ 'a' và trước danh từ 'way' cần tính từ: a convenient way."
+  "why": "Sau mạo từ 'a' và trước danh từ 'way' cần tính từ: a convenient way.",
+  "wrong": {
+   "conveniently": "conveniently là trạng từ, mà sau mạo từ a và trước danh từ way cần tính từ; trạng từ không bổ nghĩa cho danh từ.",
+   "convenience": "convenience là danh từ, nên a convenience way xếp hai danh từ sai trật tự; trước way cần tính từ convenient.",
+   "conveniences": "conveniences là danh từ số nhiều, không đi với mạo từ a và không bổ nghĩa cho way; vị trí này cần tính từ."
+  }
  },
  {
   "id": "t5-b006",
@@ -7215,7 +7615,12 @@ const TOEIC5 = [
    "delayer"
   ],
   "a": 2,
-  "why": "Sau 'the' và trước 'of' cần danh từ: the delay of the speech. 'began forty minutes later' cho thấy sự chậm trễ."
+  "why": "Sau 'the' và trước 'of' cần danh từ: the delay of the speech. 'began forty minutes later' cho thấy sự chậm trễ.",
+  "wrong": {
+   "delayed": "delayed là tính từ hoặc V-ed (bị trễ); sau the và trước of cần một danh từ chỉ sự chậm trễ, nên the delayed of không hợp.",
+   "delaying": "delaying là V-ing, không đứng sau the và trước of với nghĩa sự chậm trễ; vị trí này đòi hỏi danh từ delay.",
+   "delayer": "delayer là danh từ chỉ người hoặc vật làm trì hoãn, không phải từ thông dụng và không đúng nghĩa; cần danh từ chỉ sự chậm trễ là delay."
+  }
  },
  {
   "id": "t5-b007",
@@ -7229,7 +7634,12 @@ const TOEIC5 = [
    "thoroughest"
   ],
   "a": 1,
-  "why": "Giữa 'a' và danh từ 'review' cần tính từ nguyên mẫu: a thorough review; 'thoroughest' là so sánh nhất, không đi với 'a'."
+  "why": "Giữa 'a' và danh từ 'review' cần tính từ nguyên mẫu: a thorough review; 'thoroughest' là so sánh nhất, không đi với 'a'.",
+  "wrong": {
+   "thoroughly": "thoroughly là trạng từ, không bổ nghĩa cho danh từ review; giữa mạo từ a và danh từ cần tính từ thorough.",
+   "thoroughness": "thoroughness là danh từ nghĩa là sự kỹ lưỡng, nên a thoroughness review xếp hai danh từ sai; cần tính từ trước review.",
+   "thoroughest": "thoroughest là dạng so sánh nhất, phải đi với the (the thoroughest) chứ không đi với mạo từ a; ở đây cần dạng nguyên mẫu thorough."
+  }
  },
  {
   "id": "t5-b008",
@@ -7243,7 +7653,12 @@ const TOEIC5 = [
    "pleasantly"
   ],
   "a": 0,
-  "why": "'be pleased to + V' là cấu trúc cố định (vui mừng khi biết); chủ ngữ là người nên dùng V-ed."
+  "why": "'be pleased to + V' là cấu trúc cố định (vui mừng khi biết); chủ ngữ là người nên dùng V-ed.",
+  "wrong": {
+   "pleasing": "pleasing là tính từ mang nghĩa chủ động (làm hài lòng), dùng cho sự việc; khách khách sạn là người cảm thấy vui nên cần pleased.",
+   "pleasure": "pleasure là danh từ nghĩa là niềm vui; sau were không dùng danh từ này để diễn tả cảm giác của khách, cấu trúc cố định là be pleased to.",
+   "pleasantly": "pleasantly là trạng từ; sau were cần tính từ hoặc phân từ, và 'pleasantly to learn' không phải cấu trúc đúng (cần pleased to learn)."
+  }
  },
  {
   "id": "t5-b009",
@@ -7257,7 +7672,12 @@ const TOEIC5 = [
    "responsible"
   ],
   "a": 3,
-  "why": "Sau 'is' cần tính từ: be responsible for (chịu trách nhiệm về)."
+  "why": "Sau 'is' cần tính từ: be responsible for (chịu trách nhiệm về).",
+  "wrong": {
+   "responsibly": "responsibly là trạng từ nghĩa là một cách có trách nhiệm; sau is cần tính từ để làm vị ngữ: is responsible for.",
+   "responsibility": "responsibility là danh từ; is responsibility for không đúng, vì cấu trúc là be responsible for hoặc have responsibility for.",
+   "responsibilities": "responsibilities là danh từ số nhiều, không đi sau is để diễn tả chịu trách nhiệm về việc lên lịch; cần tính từ responsible."
+  }
  },
  {
   "id": "t5-b010",
@@ -7271,7 +7691,12 @@ const TOEIC5 = [
    "incorrecting"
   ],
   "a": 2,
-  "why": "Trạng từ đứng giữa 'was' và V3 'labelled' để bổ nghĩa: was incorrectly labelled."
+  "why": "Trạng từ đứng giữa 'was' và V3 'labelled' để bổ nghĩa: was incorrectly labelled.",
+  "wrong": {
+   "incorrect": "incorrect là tính từ, mà ở vị trí giữa was và V3 labelled cần trạng từ bổ nghĩa cho động từ: incorrectly.",
+   "incorrectness": "incorrectness là danh từ, không thể đứng giữa was và labelled để bổ nghĩa cho động từ; cần trạng từ.",
+   "incorrecting": "incorrecting không phải từ đúng trong tiếng Anh (động từ là correct), không hợp trong cụm 'was ... labelled'; cần trạng từ incorrectly."
+  }
  },
  {
   "id": "t5-b011",
@@ -7285,7 +7710,12 @@ const TOEIC5 = [
    "enable"
   ],
   "a": 1,
-  "why": "Sau sở hữu cách 's cần danh từ, kèm 'to + V': ability to resolve (khả năng giải quyết)."
+  "why": "Sau sở hữu cách 's cần danh từ, kèm 'to + V': ability to resolve (khả năng giải quyết).",
+  "wrong": {
+   "able": "able là tính từ, mà sau sở hữu cách airline's cần danh từ; hơn nữa tính từ able đi với be able to, không dùng sau 's.",
+   "ably": "ably là trạng từ nghĩa là một cách khéo léo, không đứng sau sở hữu cách 's, nơi cần một danh từ.",
+   "enable": "enable là động từ nghĩa là cho phép; sau airline's cần danh từ, và has greatly improved cần chủ ngữ danh từ như ability."
+  }
  },
  {
   "id": "t5-b012",
@@ -7299,7 +7729,12 @@ const TOEIC5 = [
    "analytically"
   ],
   "a": 0,
-  "why": "Sau tính từ 'careful' và trước 'of' cần danh từ: a careful analysis."
+  "why": "Sau tính từ 'careful' và trước 'of' cần danh từ: a careful analysis.",
+  "wrong": {
+   "analyse": "analyse là động từ nguyên mẫu; sau careful (tính từ) và mạo từ a, trước of cần danh từ: a careful analysis.",
+   "analytic": "analytic là tính từ, mà sau tính từ careful và trước of cần một danh từ; hai tính từ liền nhau không có danh từ làm trung tâm.",
+   "analytically": "analytically là trạng từ, không đứng sau a careful và trước of; vị trí này cần danh từ analysis."
+  }
  },
  {
   "id": "t5-b013",
@@ -7313,7 +7748,12 @@ const TOEIC5 = [
    "steadily"
   ],
   "a": 3,
-  "why": "Bổ nghĩa cho động từ 'rise' cần trạng từ: rise steadily (tăng đều)."
+  "why": "Bổ nghĩa cho động từ 'rise' cần trạng từ: rise steadily (tăng đều).",
+  "wrong": {
+   "steady": "steady là tính từ; rise là động từ nên cần trạng từ bổ nghĩa như steadily, tính từ không đứng sau động từ rise theo nghĩa này.",
+   "steadiness": "steadiness là danh từ nghĩa là sự ổn định; sau động từ rise không dùng danh từ này làm bổ ngữ mà cần trạng từ.",
+   "steadied": "steadied là dạng quá khứ của động từ steady (làm ổn định); trước rise đã có to nên không thể thêm dạng động từ này."
+  }
  },
  {
   "id": "t5-b014",
@@ -7327,7 +7767,12 @@ const TOEIC5 = [
    "relevancy"
   ],
   "a": 2,
-  "why": "Trước danh từ 'experience' cần tính từ: relevant experience (kinh nghiệm liên quan)."
+  "why": "Trước danh từ 'experience' cần tính từ: relevant experience (kinh nghiệm liên quan).",
+  "wrong": {
+   "relevance": "relevance là danh từ, mà trước danh từ experience cần tính từ; relevance experience xếp hai danh từ và sai nghĩa.",
+   "relevantly": "relevantly là trạng từ ít dùng, không bổ nghĩa cho danh từ experience; trước danh từ cần tính từ relevant.",
+   "relevancy": "relevancy là danh từ (cách viết khác của relevance); vị trí trước danh từ experience cần một tính từ, nên không dùng được."
+  }
  },
  {
   "id": "t5-b015",
@@ -7341,7 +7786,12 @@ const TOEIC5 = [
    "implementable"
   ],
   "a": 1,
-  "why": "Sau sở hữu cách 'Dr Kim's' và trước 'of' cần danh từ: implementation (việc triển khai)."
+  "why": "Sau sở hữu cách 'Dr Kim's' và trước 'of' cần danh từ: implementation (việc triển khai).",
+  "wrong": {
+   "implemented": "implemented là dạng quá khứ hoặc V3 của động từ; sau sở hữu cách Dr Kim's và trước of cần một danh từ.",
+   "implement": "implement vừa là động từ nguyên mẫu vừa có nghĩa là công cụ; ở đây cần danh từ chỉ việc triển khai hệ thống, nên dùng implementation.",
+   "implementable": "implementable là tính từ nghĩa là có thể thực hiện được; sau sở hữu cách Dr Kim's cần danh từ chứ không phải tính từ."
+  }
  },
  {
   "id": "t5-b016",
@@ -7355,7 +7805,12 @@ const TOEIC5 = [
    "has inspected"
   ],
   "a": 0,
-  "why": "'yesterday' là mốc quá khứ xác định nên dùng quá khứ đơn: inspected."
+  "why": "'yesterday' là mốc quá khứ xác định nên dùng quá khứ đơn: inspected.",
+  "wrong": {
+   "inspects": "inspects là hiện tại đơn, nhưng yesterday chỉ một mốc quá khứ và found cũng ở quá khứ; cần quá khứ đơn inspected.",
+   "will inspect": "will inspect chỉ tương lai, mâu thuẫn với yesterday và found trong cùng câu; sự việc đã xảy ra rồi.",
+   "has inspected": "hiện tại hoàn thành không đi với trạng từ chỉ mốc quá khứ xác định như yesterday; trường hợp này dùng quá khứ đơn."
+  }
  },
  {
   "id": "t5-b017",
@@ -7369,7 +7824,12 @@ const TOEIC5 = [
    "has worked"
   ],
   "a": 3,
-  "why": "'since 2015' đi với hiện tại hoàn thành: has worked."
+  "why": "'since 2015' đi với hiện tại hoàn thành: has worked.",
+  "wrong": {
+   "worked": "worked là quá khứ đơn, không đi với since 2015 để nói việc kéo dài đến hiện tại; since cần hiện tại hoàn thành.",
+   "works": "works là hiện tại đơn, không diễn tả khoảng thời gian kéo dài từ 2015 đến nay; since đòi hỏi hiện tại hoàn thành has worked.",
+   "is working": "is working là hiện tại tiếp diễn, nhấn mạnh việc đang xảy ra lúc này và không đi với since 2015; cần hiện tại hoàn thành."
+  }
  },
  {
   "id": "t5-b018",
@@ -7383,7 +7843,12 @@ const TOEIC5 = [
    "unloading"
   ],
   "a": 2,
-  "why": "Câu điều kiện loại 1: If + hiện tại đơn, ... will + V."
+  "why": "Câu điều kiện loại 1: If + hiện tại đơn, ... will + V.",
+  "wrong": {
+   "unloaded": "unloaded là quá khứ đơn, không hợp với mệnh đề If hiện tại đơn chỉ tương lai; mệnh đề chính cần will + V.",
+   "would unload": "would unload dùng cho câu điều kiện loại 2 (giả định không có thật) với If + quá khứ đơn; ở đây If arrives là hiện tại, nên cần will.",
+   "unloading": "unloading là V-ing, không có trợ động từ nên không làm được động từ chính của mệnh đề; cần will unload."
+  }
  },
  {
   "id": "t5-b019",
@@ -7397,7 +7862,12 @@ const TOEIC5 = [
    "opening"
   ],
   "a": 1,
-  "why": "Lịch trình cố định trong tương lai dùng hiện tại đơn: opens at 8 a.m. tomorrow."
+  "why": "Lịch trình cố định trong tương lai dùng hiện tại đơn: opens at 8 a.m. tomorrow.",
+  "wrong": {
+   "opened": "opened là quá khứ đơn, mâu thuẫn với tomorrow chỉ tương lai; lịch trình cố định ở tương lai dùng hiện tại đơn opens.",
+   "has opened": "has opened là hiện tại hoàn thành, không đi với tomorrow; việc mở cửa chưa xảy ra mà là lịch trình sắp tới.",
+   "opening": "opening là V-ing, thiếu trợ động từ nên không làm được động từ chính; cần hiện tại đơn opens cho lịch trình."
+  }
  },
  {
   "id": "t5-b020",
@@ -7411,7 +7881,12 @@ const TOEIC5 = [
    "require"
   ],
   "a": 0,
-  "why": "Chủ ngữ 'visitors' là người bị yêu cầu nên dùng bị động số nhiều: are required to."
+  "why": "Chủ ngữ 'visitors' là người bị yêu cầu nên dùng bị động số nhiều: are required to.",
+  "wrong": {
+   "requires": "requires là động từ chủ động chia số ít, không hợp với chủ ngữ số nhiều visitors; hơn nữa visitors bị yêu cầu nên cần bị động.",
+   "is requiring": "is requiring chia số ít, không hợp với chủ ngữ số nhiều All visitors, và mang nghĩa chủ động (đang yêu cầu) trong khi khách bị yêu cầu.",
+   "require": "require chia số nhiều nhưng ở dạng chủ động, nghĩa là khách đi yêu cầu người khác; visitors là người bị yêu cầu nên cần are required."
+  }
  },
  {
   "id": "t5-b021",
@@ -7425,7 +7900,12 @@ const TOEIC5 = [
    "had organised"
   ],
   "a": 3,
-  "why": "'By the time + quá khứ đơn' cần quá khứ hoàn thành cho hành động xảy ra trước: had organised."
+  "why": "'By the time + quá khứ đơn' cần quá khứ hoàn thành cho hành động xảy ra trước: had organised.",
+  "wrong": {
+   "has organised": "has organised là hiện tại hoàn thành, không hợp với By the time + quá khứ đơn arrived; việc sắp xếp xảy ra trước đó nên cần quá khứ hoàn thành.",
+   "organises": "organises là hiện tại đơn, không phù hợp với mốc quá khứ arrived của kiểm toán viên; cần had organised.",
+   "will have organised": "will have organised là tương lai hoàn thành, dùng với By the time + hiện tại đơn; ở đây auditors arrived ở quá khứ nên không dùng."
+  }
  },
  {
   "id": "t5-b022",
@@ -7439,7 +7919,12 @@ const TOEIC5 = [
    "expanded"
   ],
   "a": 2,
-  "why": "'suggest' đi với V-ing: suggested expanding."
+  "why": "'suggest' đi với V-ing: suggested expanding.",
+  "wrong": {
+   "to expand": "suggest không đi với to-V; sau suggest phải dùng V-ing (suggested expanding) hoặc mệnh đề that.",
+   "expand": "expand ở dạng nguyên mẫu không đi trực tiếp sau suggested (trong tiếng Anh Anh cần mệnh đề that hoặc V-ing); với ngữ cảnh này cần V-ing.",
+   "expanded": "expanded là quá khứ hoặc V3, không đi sau suggested như tân ngữ; suggest đòi hỏi V-ing hoặc mệnh đề that."
+  }
  },
  {
   "id": "t5-b023",
@@ -7453,7 +7938,12 @@ const TOEIC5 = [
    "is installing"
   ],
   "a": 1,
-  "why": "Thiết bị là đối tượng bị tác động, thời điểm tương lai: bị động will be installed."
+  "why": "Thiết bị là đối tượng bị tác động, thời điểm tương lai: bị động will be installed.",
+  "wrong": {
+   "installs": "installs là chủ động hiện tại đơn, nhưng the fridge là vật được lắp đặt, và before next Monday chỉ tương lai; cần bị động.",
+   "has installed": "has installed là chủ động hiện tại hoàn thành, nghĩa là tủ lạnh tự lắp đặt thứ gì đó; tủ là đối tượng bị lắp và việc sẽ xảy ra trong tương lai.",
+   "is installing": "is installing là chủ động tiếp diễn, nghĩa là tủ lạnh đang lắp đặt thứ khác; tủ là vật được lắp nên phải dùng bị động will be installed."
+  }
  },
  {
   "id": "t5-b024",
@@ -7467,7 +7957,12 @@ const TOEIC5 = [
    "has been"
   ],
   "a": 0,
-  "why": "Với 'neither...nor', động từ hòa hợp với danh từ gần nhất 'technicians' (số nhiều); 'last week' là quá khứ: were."
+  "why": "Với 'neither...nor', động từ hòa hợp với danh từ gần nhất 'technicians' (số nhiều); 'last week' là quá khứ: were.",
+  "wrong": {
+   "was": "was là số ít, nhưng với neither ... nor động từ hòa hợp với danh từ gần nhất technicians (số nhiều) nên cần were.",
+   "is": "is chia số ít ở hiện tại, mâu thuẫn với last week chỉ quá khứ và với technicians số nhiều.",
+   "has been": "has been là hiện tại hoàn thành số ít, không đi với last week (quá khứ xác định) và không hòa hợp với technicians số nhiều."
+  }
  },
  {
   "id": "t5-b025",
@@ -7481,7 +7976,12 @@ const TOEIC5 = [
    "to hire"
   ],
   "a": 3,
-  "why": "'decide' đi với to-V: decided to hire."
+  "why": "'decide' đi với to-V: decided to hire.",
+  "wrong": {
+   "hiring": "hiring là V-ing, nhưng decide đi với to-V chứ không đi với V-ing; cần decided to hire.",
+   "hire": "hire là nguyên mẫu không có to; sau decided phải có to (decided to hire).",
+   "hired": "hired là dạng quá khứ, không đi sau decided mà không có to; sau decide cần to-V."
+  }
  },
  {
   "id": "t5-b026",
@@ -7495,7 +7995,12 @@ const TOEIC5 = [
    "including"
   ],
   "a": 2,
-  "why": "Số liệu là vật bị 'bao gồm' nên dùng bị động quá khứ (Last quarter): were included."
+  "why": "Số liệu là vật bị 'bao gồm' nên dùng bị động quá khứ (Last quarter): were included.",
+  "wrong": {
+   "included": "là dạng chủ động, nhưng số liệu không tự \"bao gồm\" mà được đưa vào báo cáo; ở đây cần dạng bị động, và câu thiếu cả trợ động từ be.",
+   "have included": "là thì hiện tại hoàn thành chủ động, không hợp với Last quarter (mốc quá khứ đã kết thúc) và cũng không mang nghĩa bị động.",
+   "including": "là dạng V-ing, không thể làm động từ chính của mệnh đề; câu thiếu động từ chia thì (were included)."
+  }
  },
  {
   "id": "t5-b027",
@@ -7509,7 +8014,12 @@ const TOEIC5 = [
    "repairs"
   ],
   "a": 1,
-  "why": "Hành động đang diễn ra song song trong quá khứ (workers continued...): quá khứ tiếp diễn was repairing; 'will repair/repairs' sai thì, 'has repaired' không hợp mệnh đề quá khứ."
+  "why": "Hành động đang diễn ra song song trong quá khứ (workers continued...): quá khứ tiếp diễn was repairing; 'will repair/repairs' sai thì, 'has repaired' không hợp mệnh đề quá khứ.",
+  "wrong": {
+   "will repair": "là thì tương lai, trong khi mệnh đề chính continued ở quá khứ nên hành động song song cũng phải ở quá khứ.",
+   "has repaired": "là hiện tại hoàn thành, không dùng được sau While để diễn tả hành động đang diễn ra trong quá khứ cùng lúc với continued packing.",
+   "repairs": "là hiện tại đơn, lệch thì với continued (quá khứ) nên không ăn khớp về thời gian trong câu."
+  }
  },
  {
   "id": "t5-b028",
@@ -7523,7 +8033,12 @@ const TOEIC5 = [
    "has sent"
   ],
   "a": 0,
-  "why": "Điều kiện loại 3: If + had + V3, ... would have + V3."
+  "why": "Điều kiện loại 3: If + had + V3, ... would have + V3.",
+  "wrong": {
+   "sent": "là quá khứ đơn, dùng trong điều kiện loại 2; vế chính would have met là loại 3 nên mệnh đề if phải là quá khứ hoàn thành.",
+   "would send": "là would + V trong mệnh đề if; would không đứng ngay sau if trong điều kiện này, và thì cũng không khớp với would have met.",
+   "has sent": "là hiện tại hoàn thành, không dùng được trong mệnh đề if của điều kiện không có thật ở quá khứ (cần had sent)."
+  }
  },
  {
   "id": "t5-b029",
@@ -7537,7 +8052,12 @@ const TOEIC5 = [
    "cancel"
   ],
   "a": 3,
-  "why": "Sau động từ khuyết thiếu 'can' dùng động từ nguyên mẫu: can cancel."
+  "why": "Sau động từ khuyết thiếu 'can' dùng động từ nguyên mẫu: can cancel.",
+  "wrong": {
+   "cancelling": "là dạng V-ing; sau động từ khuyết thiếu can phải dùng động từ nguyên mẫu không to, không dùng V-ing.",
+   "cancelled": "là dạng quá khứ/V3; sau can không chia thì mà phải dùng nguyên mẫu, hơn nữa câu nói về khả năng hiện tại.",
+   "cancels": "có đuôi -s dành cho chủ ngữ ngôi thứ ba số ít; sau động từ khuyết thiếu can động từ không thêm -s dù chủ ngữ là Customers."
+  }
  },
  {
   "id": "t5-b030",
@@ -7551,7 +8071,12 @@ const TOEIC5 = [
    "of"
   ],
   "a": 2,
-  "why": "Dùng 'on' trước thứ/ngày: on Thursday afternoon."
+  "why": "Dùng 'on' trước thứ/ngày: on Thursday afternoon.",
+  "wrong": {
+   "in": "thường đi với tháng, năm, mùa (in July); với thứ trong tuần phải dùng on, nên in Thursday afternoon không đúng.",
+   "at": "dùng cho giờ giấc cụ thể (at 3 p.m.) hoặc điểm nhất định; không đi với tên thứ trong tuần.",
+   "of": "không phải giới từ chỉ thời gian; of Thursday afternoon không tạo thành cụm chỉ thời điểm sửa thang máy."
+  }
  },
  {
   "id": "t5-b031",
@@ -7565,7 +8090,12 @@ const TOEIC5 = [
    "under"
   ],
   "a": 1,
-  "why": "'by email' là cụm cố định chỉ phương tiện gửi."
+  "why": "'by email' là cụm cố định chỉ phương tiện gửi.",
+  "wrong": {
+   "to": "đi với to + người nhận (send it to the office), không tạo cụm chỉ phương tiện gửi; to email nghĩa không hợp trong chỗ trống này.",
+   "at": "là giới từ chỉ nơi chốn hoặc thời điểm cụ thể; phương tiện gửi hồ sơ dùng by (by email), không dùng at email.",
+   "under": "nghĩa là dưới/theo (under the rules), không đi với email để chỉ phương tiện gửi; under email là cụm không tồn tại."
+  }
  },
  {
   "id": "t5-b032",
@@ -7579,7 +8109,12 @@ const TOEIC5 = [
    "at"
   ],
   "a": 0,
-  "why": "Cụm cố định: be satisfied with (hài lòng với)."
+  "why": "Cụm cố định: be satisfied with (hài lòng với).",
+  "wrong": {
+   "of": "không đi với satisfied; cụm cố định là be satisfied with. Người Việt hay dịch theo \"hài lòng về\" nên dễ nhầm sang of.",
+   "for": "thường đi với những tính từ như responsible for, famous for; satisfied không kết hợp với for để nói hài lòng với điều gì.",
+   "at": "chỉ dùng với những tính từ như good at, surprised at; satisfied đòi giới từ with nên at không đúng."
+  }
  },
  {
   "id": "t5-b033",
@@ -7593,7 +8128,12 @@ const TOEIC5 = [
    "at"
   ],
   "a": 3,
-  "why": "'at the check-in counter' chỉ vị trí tại quầy; các giới từ còn lại không hợp nghĩa."
+  "why": "'at the check-in counter' chỉ vị trí tại quầy; các giới từ còn lại không hợp nghĩa.",
+  "wrong": {
+   "on": "là giới từ chỉ bề mặt tiếp xúc; show passports on the counter không phải cách nói về làm thủ tục tại quầy, và vị trí chuẩn là at.",
+   "into": "nghĩa là vào trong; show passports into the counter không hợp nghĩa vì không có chuyển động đi vào quầy.",
+   "among": "nghĩa là ở giữa nhiều người hoặc vật; không dùng với một quầy cụ thể nên among the counter vô nghĩa."
+  }
  },
  {
   "id": "t5-b034",
@@ -7607,7 +8147,12 @@ const TOEIC5 = [
    "toward"
   ],
   "a": 2,
-  "why": "Cụm cố định: within walking distance of (trong khoảng cách đi bộ tới)."
+  "why": "Cụm cố định: within walking distance of (trong khoảng cách đi bộ tới).",
+  "wrong": {
+   "between": "dùng giữa hai điểm, nên không đi với walking distance of; cụm cố định là within walking distance of.",
+   "among": "dùng với nhóm từ ba đối tượng trở lên, nhất là người hoặc vật; không đi với distance trong cụm cố định này.",
+   "toward": "nghĩa là về phía; toward walking distance of không phải cụm cố định và không diễn đạt khoảng cách trong tầm đi bộ."
+  }
  },
  {
   "id": "t5-b035",
@@ -7621,7 +8166,12 @@ const TOEIC5 = [
    "under"
   ],
   "a": 1,
-  "why": "Cụm cố định: in accordance with (theo đúng)."
+  "why": "Cụm cố định: in accordance with (theo đúng).",
+  "wrong": {
+   "on": "thường chỉ bề mặt hoặc ngày giờ (on time, on Monday); cụm cố định là in accordance with, không phải on accordance with.",
+   "by": "dùng chỉ phương tiện, người thực hiện hoặc thời hạn (by Friday); không tạo cụm accordance với nghĩa theo đúng quy định.",
+   "under": "đi với những cụm như under regulations, nhưng không đi với danh từ accordance; under accordance with không tồn tại."
+  }
  },
  {
   "id": "t5-b036",
@@ -7635,7 +8185,12 @@ const TOEIC5 = [
    "According to"
   ],
   "a": 0,
-  "why": "Giá nhiên liệu tăng nhưng phí không đổi, quan hệ nhượng bộ: Despite. 'Because of' sẽ sai logic."
+  "why": "Giá nhiên liệu tăng nhưng phí không đổi, quan hệ nhượng bộ: Despite. 'Because of' sẽ sai logic.",
+  "wrong": {
+   "Because of": "chỉ nguyên nhân; nhưng giá nhiên liệu tăng mà phí vẫn giữ nguyên là hai ý trái ngược, nên dùng nguyên nhân sẽ sai logic.",
+   "Instead of": "nghĩa là thay vì; không nói về việc phí không đổi dù giá tăng, nên không hợp quan hệ nhượng bộ ở đây.",
+   "According to": "nghĩa là theo như (nguồn tin); không diễn đạt quan hệ đối lập giữa giá tăng và phí giữ nguyên."
+  }
  },
  {
   "id": "t5-b037",
@@ -7649,7 +8204,12 @@ const TOEIC5 = [
    "in"
   ],
   "a": 3,
-  "why": "Cụm cố định: in recognition of (để ghi nhận)."
+  "why": "Cụm cố định: in recognition of (để ghi nhận).",
+  "wrong": {
+   "at": "chỉ thời điểm hoặc nơi chốn; cụm cố định nghĩa là để ghi nhận là in recognition of, không dùng at recognition of.",
+   "on": "thường đi với ngày và bề mặt; on recognition of không phải cụm cố định để nói về việc ghi nhận thành tích.",
+   "with": "không tạo cụm với recognition of; with có nghĩa cùng hoặc bằng, nên được thăng chức with recognition of không hợp nghĩa."
+  }
  },
  {
   "id": "t5-b038",
@@ -7663,7 +8223,12 @@ const TOEIC5 = [
    "among"
   ],
   "a": 2,
-  "why": "Cấu trúc 'between ... and ...' chỉ khoảng thời gian từ 9 giờ đến 5 giờ."
+  "why": "Cấu trúc 'between ... and ...' chỉ khoảng thời gian từ 9 giờ đến 5 giờ.",
+  "wrong": {
+   "during": "chỉ khoảng thời gian một sự việc xảy ra liên tục (during the week), không đi với cấu trúc giờ mở cửa from 9 a.m. and 5 p.m.",
+   "since": "chỉ mốc bắt đầu kéo dài đến hiện tại; không đi với and 5 p.m. và không nói về khoảng giờ mở cửa.",
+   "among": "dùng với nhiều người hoặc vật, không chỉ hai mốc thời gian; cấu trúc between ... and ... mới đúng cho khoảng 9 a.m. và 5 p.m."
+  }
  },
  {
   "id": "t5-b039",
@@ -7677,7 +8242,12 @@ const TOEIC5 = [
    "on"
   ],
   "a": 1,
-  "why": "Cụm cố định: be in charge of (phụ trách)."
+  "why": "Cụm cố định: be in charge of (phụ trách).",
+  "wrong": {
+   "for": "đi với responsible for, nhưng với in charge phải dùng of; người Việt hay nhầm vì nghĩa phụ trách cho gần giống responsible for.",
+   "with": "không kết hợp với in charge; cụm cố định là be in charge of, with không tạo nghĩa phụ trách.",
+   "on": "thường chỉ bề mặt hoặc chủ đề (on the table, a book on law); không đi với in charge để nói phụ trách việc gì."
+  }
  },
  {
   "id": "t5-b040",
@@ -7691,7 +8261,12 @@ const TOEIC5 = [
    "of"
   ],
   "a": 0,
-  "why": "Cụm cố định: be fluent in + ngôn ngữ."
+  "why": "Cụm cố định: be fluent in + ngôn ngữ.",
+  "wrong": {
+   "by": "dùng chỉ phương tiện hoặc tác nhân (by bus); không đi với fluent, vì fluent in là cụm cố định chỉ ngôn ngữ thành thạo.",
+   "for": "thường đi với những tính từ như famous for hay responsible for; fluent không đi với for khi nói về ngôn ngữ.",
+   "of": "chỉ sở hữu hoặc thành phần; fluent of English không tồn tại, cụm đúng là fluent in English."
+  }
  },
  {
   "id": "t5-b041",
@@ -7705,7 +8280,12 @@ const TOEIC5 = [
    "because"
   ],
   "a": 3,
-  "why": "Vế sau là nguyên nhân của việc hoãn họp: because."
+  "why": "Vế sau là nguyên nhân của việc hoãn họp: because.",
+  "wrong": {
+   "so": "chỉ kết quả, nên đặt trước vế kết quả; ở đây vế sau là nguyên nhân (stuck in traffic) nên so không hợp quan hệ.",
+   "although": "chỉ sự nhượng bộ (mặc dù); việc kẹt xe và hoãn họp có quan hệ nguyên nhân, không phải đối lập.",
+   "but": "chỉ sự đối lập; không diễn đạt lý do hoãn họp, nên quan hệ nguyên nhân kết quả bị sai."
+  }
  },
  {
   "id": "t5-b042",
@@ -7719,7 +8299,12 @@ const TOEIC5 = [
    "nor"
   ],
   "a": 2,
-  "why": "Cấu trúc 'either ... or ...' (hoặc ... hoặc)."
+  "why": "Cấu trúc 'either ... or ...' (hoặc ... hoặc).",
+  "wrong": {
+   "and": "không đi với either; cấu trúc lựa chọn là either ... or ..., còn either ... and ... không tồn tại.",
+   "but": "chỉ sự đối lập; nó không đi với either để diễn đạt lựa chọn trả bằng thẻ hoặc chuyển khoản.",
+   "nor": "thường đi với neither (neither ... nor ...), mang nghĩa phủ định; ở đây câu khẳng định với either nên phải dùng or."
+  }
  },
  {
   "id": "t5-b043",
@@ -7733,7 +8318,12 @@ const TOEIC5 = [
    "Whether"
   ],
   "a": 1,
-  "why": "Chuyến bay trễ là nguyên nhân bỏ lỡ hoạt động: Because."
+  "why": "Chuyến bay trễ là nguyên nhân bỏ lỡ hoạt động: Because.",
+  "wrong": {
+   "Although": "chỉ sự nhượng bộ (mặc dù); nhưng việc lỡ hoạt động là hệ quả của chuyến bay trễ chứ không đối lập với nó.",
+   "Unless": "nghĩa là trừ khi, thuộc điều kiện; chuyến bay trễ là sự việc đã xảy ra, không phải một điều kiện.",
+   "Whether": "dùng cho mệnh đề lựa chọn hoặc nghi vấn (whether or not), không chỉ lý do; câu này cần liên từ chỉ nguyên nhân."
+  }
  },
  {
   "id": "t5-b044",
@@ -7747,7 +8337,12 @@ const TOEIC5 = [
    "since"
   ],
   "a": 0,
-  "why": "Điều kiện 'nếu bạn gặp sự cố' dùng if."
+  "why": "Điều kiện 'nếu bạn gặp sự cố' dùng if.",
+  "wrong": {
+   "unless": "nghĩa là trừ khi; Please call unless you have trouble sẽ hiểu thành đừng gọi nếu gặp sự cố, ngược nghĩa lời nhắc.",
+   "although": "chỉ sự nhượng bộ (mặc dù); không có ý đối lập giữa gọi bộ phận hỗ trợ và gặp sự cố đăng nhập.",
+   "since": "chỉ thời gian hoặc lý do (kể từ khi, vì), không diễn đạt điều kiện nếu bạn gặp sự cố trong lời nhắc này."
+  }
  },
  {
   "id": "t5-b045",
@@ -7761,7 +8356,12 @@ const TOEIC5 = [
    "until"
   ],
   "a": 3,
-  "why": "'not ... until' nghĩa là chưa ... cho đến khi."
+  "why": "'not ... until' nghĩa là chưa ... cho đến khi.",
+  "wrong": {
+   "while": "là liên từ chỉ thời gian (trong khi); sau will not resume production while ... nghĩa không logic về việc chờ kiểm tra an toàn.",
+   "although": "chỉ sự nhượng bộ (mặc dù); not ... although không diễn đạt điều kiện chờ được duyệt rồi mới hoạt động lại.",
+   "whereas": "chỉ sự đối lập giữa hai ý (trong khi đó); không biểu thị mốc thời gian chờ cho đến khi kiểm định duyệt."
+  }
  },
  {
   "id": "t5-b046",
@@ -7775,7 +8375,12 @@ const TOEIC5 = [
    "as long as"
   ],
   "a": 2,
-  "why": "Hai vế đối lập (ngân sách giảm nhưng doanh số tăng): even though."
+  "why": "Hai vế đối lập (ngân sách giảm nhưng doanh số tăng): even though.",
+  "wrong": {
+   "so that": "chỉ mục đích hoặc kết quả; doanh số tăng không phải mục đích của việc cắt ngân sách, nên nghĩa không hợp.",
+   "in case": "nghĩa là phòng khi; không mang nghĩa nhượng bộ, trong khi câu cần diễn tả doanh số tăng bất chấp ngân sách giảm.",
+   "as long as": "nghĩa là miễn là (điều kiện); sẽ thành doanh số tăng miễn là ngân sách giảm, vô lý so với quan hệ đối lập thực tế."
+  }
  },
  {
   "id": "t5-b047",
@@ -7789,7 +8394,12 @@ const TOEIC5 = [
    "whereas"
   ],
   "a": 1,
-  "why": "'so that' chỉ mục đích (để không mất dữ liệu)."
+  "why": "'so that' chỉ mục đích (để không mất dữ liệu).",
+  "wrong": {
+   "in spite of": "đi với danh từ hoặc V-ing (in spite of the delay) và mang nghĩa nhượng bộ; nó không dẫn một mệnh đề no data is lost.",
+   "as if": "nghĩa là như thể; mệnh đề sau là mục đích của việc lưu tệp chứ không phải một sự so sánh giả định.",
+   "whereas": "chỉ sự đối lập giữa hai vế; việc lưu tệp thường xuyên và không mất dữ liệu có quan hệ mục đích chứ không đối lập."
+  }
  },
  {
   "id": "t5-b048",
@@ -7803,7 +8413,12 @@ const TOEIC5 = [
    "for example"
   ],
   "a": 0,
-  "why": "Vế sau nêu điểm yếu, đối lập với điểm mạnh: however."
+  "why": "Vế sau nêu điểm yếu, đối lập với điểm mạnh: however.",
+  "wrong": {
+   "moreover": "bổ sung thêm một ý cùng hướng; nhưng cô ấy có kỹ năng tốt, thiếu kinh nghiệm là hai ý trái ngược, nên không dùng moreover.",
+   "therefore": "chỉ kết quả; thiếu kinh nghiệm quản lý không phải hệ quả của kỹ năng kỹ thuật tốt nên therefore sai logic.",
+   "for example": "dùng để đưa ví dụ minh họa; vế sau là một điểm yếu, không phải ví dụ cho kỹ năng kỹ thuật tốt."
+  }
  },
  {
   "id": "t5-b049",
@@ -7817,7 +8432,12 @@ const TOEIC5 = [
    "otherwise"
   ],
   "a": 3,
-  "why": "'otherwise' nghĩa là nếu không thì, nêu hậu quả: không có biên lai sẽ không trả hàng được."
+  "why": "'otherwise' nghĩa là nếu không thì, nêu hậu quả: không có biên lai sẽ không trả hàng được.",
+  "wrong": {
+   "therefore": "chỉ kết quả; việc giữ biên lai là điều kiện chứ không phải hệ quả, nên you will not be able to return không phải kết quả của vế trước.",
+   "moreover": "bổ sung thêm một ý cùng hướng; vế sau nêu hậu quả của việc không giữ biên lai, không phải thông tin thêm.",
+   "besides": "cũng bổ sung ý (hơn nữa, ngoài ra); không tạo nghĩa nếu không thì như yêu cầu của câu."
+  }
  },
  {
   "id": "t5-b050",
@@ -7831,7 +8451,12 @@ const TOEIC5 = [
    "Until"
   ],
   "a": 2,
-  "why": "'Since' (vì) nêu lý do khách sạn kín phòng nên cần đặt sớm."
+  "why": "'Since' (vì) nêu lý do khách sạn kín phòng nên cần đặt sớm.",
+  "wrong": {
+   "Unless": "nghĩa là trừ khi; Unless the hotel is fully booked sẽ ngược logic vì lời khuyên đặt phòng sớm là do khách sạn kín phòng.",
+   "Whether": "dùng cho mệnh đề lựa chọn (liệu có hay không); không biểu thị lý do kín phòng nên chưa phù hợp với vế khuyên đặt sớm.",
+   "Until": "chỉ mốc thời gian (cho đến khi); đứng trước the hotel is fully booked sẽ thành chờ đến khi kín phòng, không hợp nghĩa."
+  }
  },
  {
   "id": "t5-b051",
@@ -7845,7 +8470,12 @@ const TOEIC5 = [
    "so"
   ],
   "a": 1,
-  "why": "Hai vế đối lập (dễ dùng nhưng cần vài ngày): although."
+  "why": "Hai vế đối lập (dễ dùng nhưng cần vài ngày): although.",
+  "wrong": {
+   "because": "because chỉ nguyên nhân; dễ dùng và mất vài ngày để học hết tính năng là hai ý trái nhau chứ không phải nguyên nhân kết quả.",
+   "unless": "unless nghĩa là trừ khi (điều kiện); không diễn đạt đối lập giữa dễ dùng và cần vài ngày học hết tính năng.",
+   "so": "so chỉ kết quả (nên); 'dễ dùng, nên mất vài ngày để học hết tính năng' vô lý vì vế sau là điểm trái ngược, không phải hệ quả của dễ dùng; ngoài ra so là liên từ nối hai mệnh đề, còn 'it does take' nhấn mạnh sự nhượng bộ nên cần although."
+  }
  },
  {
   "id": "t5-b052",
@@ -7859,7 +8489,12 @@ const TOEIC5 = [
    "whom"
   ],
   "a": 0,
-  "why": "Đại từ quan hệ sở hữu đứng trước danh từ 'contract': whose contract."
+  "why": "Đại từ quan hệ sở hữu đứng trước danh từ 'contract': whose contract.",
+  "wrong": {
+   "who": "thay cho người làm chủ ngữ và không đi ngay trước danh từ contract; muốn chỉ sở hữu của nhà cung cấp phải dùng whose.",
+   "which": "thay cho vật và không chỉ sở hữu; supplier là người/công ty, và chỗ trống cần từ sở hữu đứng trước contract.",
+   "whom": "là tân ngữ của mệnh đề quan hệ chỉ người; không thể đứng trước danh từ để chỉ hợp đồng của nhà cung cấp."
+  }
  },
  {
   "id": "t5-b053",
@@ -7873,7 +8508,12 @@ const TOEIC5 = [
    "themselves"
   ],
   "a": 3,
-  "why": "Chủ ngữ và tân ngữ cùng chỉ một đối tượng nên dùng đại từ phản thân: themselves."
+  "why": "Chủ ngữ và tân ngữ cùng chỉ một đối tượng nên dùng đại từ phản thân: themselves.",
+  "wrong": {
+   "them": "là đại từ tân ngữ nhưng chủ ngữ và tân ngữ cùng chỉ một đối tượng là new employees, nên phải dùng đại từ phản thân; them chỉ nhóm khác.",
+   "their": "là tính từ sở hữu, phải đứng trước danh từ; sau introduce cần một tân ngữ hoàn chỉnh chứ không phải tính từ sở hữu.",
+   "theirs": "là đại từ sở hữu (của họ) và không làm tân ngữ của introduce; cần dạng phản thân khi tân ngữ trùng với chủ ngữ."
+  }
  },
  {
   "id": "t5-b054",
@@ -7887,7 +8527,12 @@ const TOEIC5 = [
    "they"
   ],
   "a": 2,
-  "why": "Trước danh từ 'badges' cần tính từ sở hữu: their."
+  "why": "Trước danh từ 'badges' cần tính từ sở hữu: their.",
+  "wrong": {
+   "them": "là đại từ tân ngữ, không đứng trước danh từ badges; trước danh từ cần tính từ sở hữu.",
+   "theirs": "là đại từ sở hữu, đứng một mình thay cho cả cụm danh từ; không thể đứng trước danh từ badges.",
+   "they": "là đại từ chủ ngữ, không thể đứng ngay trước danh từ để chỉ sở hữu; cần tính từ sở hữu their."
+  }
  },
  {
   "id": "t5-b055",
@@ -7901,7 +8546,12 @@ const TOEIC5 = [
    "its"
   ],
   "a": 1,
-  "why": "Thay cho 'my laptop' (số ít, làm tân ngữ) dùng 'it'."
+  "why": "Thay cho 'my laptop' (số ít, làm tân ngữ) dùng 'it'.",
+  "wrong": {
+   "them": "là số nhiều, không thay được cho my laptop là một vật số ít; cần đại từ số ít it.",
+   "itself": "là đại từ phản thân, dùng khi tân ngữ trùng chủ ngữ; Anna mang laptop về chứ không phải mang chính Anna, nên itself sai.",
+   "its": "là tính từ sở hữu, phải đứng trước danh từ (its case); ở đây sau brought cần tân ngữ thay cho laptop."
+  }
  },
  {
   "id": "t5-b056",
@@ -7915,7 +8565,12 @@ const TOEIC5 = [
    "whose"
   ],
   "a": 0,
-  "why": "'Those' chỉ người; đại từ quan hệ làm chủ ngữ cho 'wish' là who."
+  "why": "'Those' chỉ người; đại từ quan hệ làm chủ ngữ cho 'wish' là who.",
+  "wrong": {
+   "which": "thay cho vật hoặc sự việc, trong khi Those ở đây chỉ người muốn tham dự; người phải dùng who.",
+   "whom": "dùng làm tân ngữ sau giới từ hoặc động từ; ở đây đại từ quan hệ là chủ ngữ của wish nên whom không đúng.",
+   "whose": "chỉ sở hữu và phải đứng trước danh từ; sau chỗ trống là động từ wish chứ không phải danh từ."
+  }
  },
  {
   "id": "t5-b057",
@@ -7924,12 +8579,17 @@ const TOEIC5 = [
   "q": "Our training programmes are quite different from ___ offered by competitors in the region.",
   "opts": [
    "that",
-   "ones",
+   "theirs",
    "these",
    "those"
   ],
   "a": 3,
-  "why": "So sánh với 'programmes' số nhiều đã nhắc nên dùng đại từ thay thế số nhiều: 'those offered by...'; 'that' dành cho danh từ số ít."
+  "why": "So sánh với 'programmes' số nhiều đã nhắc nên dùng đại từ thay thế số nhiều: 'those offered by...'; 'that' dành cho danh từ số ít.",
+  "wrong": {
+   "that": "that là đại từ thay cho danh từ số ít hoặc không đếm được; programmes là số nhiều nên 'that offered by' không khớp, phải dùng those.",
+   "theirs": "theirs là đại từ sở hữu (của họ) và không đi với phân từ 'offered by competitors' để thay cho programmes; ở đây cần those.",
+   "these": "these chỉ những vật ở gần người nói, không dùng thay thế danh từ đã nhắc trước đó khi có cụm bổ nghĩa 'offered by ...'; cấu trúc chuẩn là those offered by."
+  }
  },
  {
   "id": "t5-b058",
@@ -7943,7 +8603,12 @@ const TOEIC5 = [
    "all"
   ],
   "a": 2,
-  "why": "'each' làm đại từ đi với động từ số ít 'has'; 'both/all' đòi 'have', 'every' không đứng một mình."
+  "why": "'each' làm đại từ đi với động từ số ít 'has'; 'both/all' đòi 'have', 'every' không đứng một mình.",
+  "wrong": {
+   "every": "đi với danh từ số ít ngay sau nó (every department) và không đứng một mình làm chủ ngữ như đại từ; sau and cần đại từ như each.",
+   "both": "đi với động từ số nhiều have; ở đây động từ has là số ít, và hai phòng ban không cùng một lúc duyệt mọi khoản chi.",
+   "all": "đi với động từ số nhiều và chỉ cả nhóm từ ba trở lên; has là số ít nên không khớp với all."
+  }
  },
  {
   "id": "t5-b059",
@@ -7957,7 +8622,12 @@ const TOEIC5 = [
    "mine"
   ],
   "a": 1,
-  "why": "Sau 'let' cần tân ngữ: let Ms Tran or me know."
+  "why": "Sau 'let' cần tân ngữ: let Ms Tran or me know.",
+  "wrong": {
+   "I": "là đại từ chủ ngữ; sau let (hoặc sau or nối với Ms Tran làm tân ngữ của let) phải dùng đại từ tân ngữ me.",
+   "my": "là tính từ sở hữu, cần danh từ theo sau; sau or không có danh từ nên my không dùng được.",
+   "mine": "là đại từ sở hữu (của tôi), không làm tân ngữ của let; Ms Tran or mine sẽ thành Ms Tran hoặc đồ của tôi, sai nghĩa."
+  }
  },
  {
   "id": "t5-b060",
@@ -7971,7 +8641,12 @@ const TOEIC5 = [
    "himself"
   ],
   "a": 0,
-  "why": "Sau giới từ 'to' cần đại từ tân ngữ: him."
+  "why": "Sau giới từ 'to' cần đại từ tân ngữ: him.",
+  "wrong": {
+   "he": "là đại từ chủ ngữ; sau giới từ to phải dùng đại từ tân ngữ him.",
+   "his": "là đại từ sở hữu (của anh ấy); give it back to his sẽ thành trả cho của anh ấy, không tự nhiên và sai vai trò.",
+   "himself": "là đại từ phản thân, chỉ dùng khi tân ngữ trùng với chủ ngữ; chủ ngữ là you ngầm hiểu nên himself không đúng."
+  }
  },
  {
   "id": "t5-b061",
@@ -7985,7 +8660,12 @@ const TOEIC5 = [
    "fasten"
   ],
   "a": 3,
-  "why": "Collocation: fasten seat belts (thắt dây an toàn)."
+  "why": "Collocation: fasten seat belts (thắt dây an toàn).",
+  "wrong": {
+   "open": "nghĩa là mở; không đi với seat belts, dây an toàn thì thắt (fasten) chứ không mở khi xe đang chạy.",
+   "carry": "nghĩa là mang, xách; không đi với seat belts theo nghĩa thắt dây an toàn.",
+   "borrow": "nghĩa là mượn; không hợp với seat belts và không phải hành động cần làm khi xe chạy."
+  }
  },
  {
   "id": "t5-b062",
@@ -7999,7 +8679,12 @@ const TOEIC5 = [
    "predict"
   ],
   "a": 2,
-  "why": "'fragile' gợi việc xử lý cẩn thận: handle the boxes carefully."
+  "why": "'fragile' gợi việc xử lý cẩn thận: handle the boxes carefully.",
+  "wrong": {
+   "design": "nghĩa là thiết kế; nhân viên không thiết kế những chiếc hộp, và việc nội dung dễ vỡ cần xử lý cẩn thận.",
+   "hire": "nghĩa là thuê; không hợp với boxes carefully vì hàng dễ vỡ cần được xử lý chứ không thuê.",
+   "predict": "nghĩa là dự đoán; không hợp nghĩa với the boxes carefully, hàng dễ vỡ cần bốc xếp cẩn thận."
+  }
  },
  {
   "id": "t5-b063",
@@ -8013,7 +8698,12 @@ const TOEIC5 = [
    "vacancy"
   ],
   "a": 1,
-  "why": "Collocation: registration form (mẫu đăng ký); các từ khác không hợp nghĩa."
+  "why": "Collocation: registration form (mẫu đăng ký); các từ khác không hợp nghĩa.",
+  "wrong": {
+   "ceiling": "nghĩa là trần nhà; online ceiling form không có nghĩa và không liên quan đến mẫu đặt phòng.",
+   "catering": "nghĩa là việc cung cấp đồ ăn thức uống; catering form không phải mẫu đặt phòng với tên và hộ chiếu.",
+   "vacancy": "nghĩa là chỗ trống (phòng trống); vacancy form không phải mẫu bạn tự điền tên và hộ chiếu để đặt phòng."
+  }
  },
  {
   "id": "t5-b064",
@@ -8027,7 +8717,12 @@ const TOEIC5 = [
    "salaries"
   ],
   "a": 0,
-  "why": "'maps and a list of museums' là nội dung của tờ rơi: brochures."
+  "why": "'maps and a list of museums' là nội dung của tờ rơi: brochures.",
+  "wrong": {
+   "complaints": "nghĩa là lời phàn nàn; văn phòng du lịch không phát miễn phí lời phàn nàn kèm bản đồ và danh sách bảo tàng.",
+   "invoices": "nghĩa là hóa đơn; hóa đơn không bao gồm bản đồ hay danh sách bảo tàng cho khách tham quan.",
+   "salaries": "nghĩa là tiền lương; tiền lương không phải thứ phát miễn phí cho du khách kèm bản đồ."
+  }
  },
  {
   "id": "t5-b065",
@@ -8041,7 +8736,12 @@ const TOEIC5 = [
    "charge"
   ],
   "a": 3,
-  "why": "Collocation: charge a fee (thu phí)."
+  "why": "Collocation: charge a fee (thu phí).",
+  "wrong": {
+   "pay": "nghĩa là trả tiền; ngân hàng là bên thu phí chứ không trả phí cho khách, nên pay a fee sai chiều.",
+   "spend": "nghĩa là tiêu tiền; không hợp với a fee on transfers vì ngân hàng thu phí chứ không tiêu phí.",
+   "lend": "nghĩa là cho vay; không đi với fee, và ngân hàng không cho vay phí chuyển tiền quốc tế."
+  }
  },
  {
   "id": "t5-b066",
@@ -8055,7 +8755,12 @@ const TOEIC5 = [
    "suit"
   ],
   "a": 2,
-  "why": "Collocation: comply with standards (tuân thủ tiêu chuẩn)."
+  "why": "Collocation: comply with standards (tuân thủ tiêu chuẩn).",
+  "wrong": {
+   "apply": "nghĩa là áp dụng; apply with không tạo nghĩa tuân thủ tiêu chuẩn, vì cụm đúng là comply with standards.",
+   "attend": "nghĩa là tham dự; attend with không hợp nghĩa và không đi với standards.",
+   "suit": "nghĩa là phù hợp với ai hoặc hợp cho ai; suit không đi với giới từ with để chỉ sự tuân thủ tiêu chuẩn."
+  }
  },
  {
   "id": "t5-b067",
@@ -8069,7 +8774,12 @@ const TOEIC5 = [
    "acquisition"
   ],
   "a": 1,
-  "why": "'hotel ... for the night' nghĩa là chỗ ở: accommodation."
+  "why": "'hotel ... for the night' nghĩa là chỗ ở: accommodation.",
+  "wrong": {
+   "admission": "nghĩa là sự vào cửa, vé vào; free hotel admission không chỉ chỗ nghỉ qua đêm cho hành khách bị kẹt.",
+   "appointment": "nghĩa là cuộc hẹn; hotel appointment không hợp nghĩa khi hãng bay cung cấp chỗ ở qua đêm.",
+   "acquisition": "nghĩa là sự thu mua; hotel acquisition là việc mua lại khách sạn, không phải chỗ ở qua đêm."
+  }
  },
  {
   "id": "t5-b068",
@@ -8083,7 +8793,12 @@ const TOEIC5 = [
    "invest"
   ],
   "a": 0,
-  "why": "Collocation: submit a list for approval (nộp danh sách để duyệt)."
+  "why": "Collocation: submit a list for approval (nộp danh sách để duyệt).",
+  "wrong": {
+   "admit": "nghĩa là thừa nhận hoặc kết nạp; không đi với danh sách trình lên giám đốc để duyệt.",
+   "reserve": "nghĩa là đặt trước hoặc giữ lại; reserve the list không hợp nghĩa với việc nộp danh sách cho giám đốc duyệt.",
+   "invest": "nghĩa là đầu tư; không đi với danh sách ứng viên và cấu trúc to the director for approval."
+  }
  },
  {
   "id": "t5-b069",
@@ -8097,7 +8812,12 @@ const TOEIC5 = [
    "ensure"
   ],
   "a": 3,
-  "why": "'ensure that' nghĩa là đảm bảo rằng; các từ còn lại không đi với mệnh đề that."
+  "why": "'ensure that' nghĩa là đảm bảo rằng; các từ còn lại không đi với mệnh đề that.",
+  "wrong": {
+   "ensue": "là động từ nghĩa xảy ra sau đó (và hiếm dùng); không đi với mệnh đề that, dễ nhầm vì có hình thức gần giống ensure.",
+   "inquire": "nghĩa là hỏi, tìm hiểu; thường đi với about hoặc if, không dùng để yêu cầu bảo đảm điều gì xảy ra.",
+   "enrol": "nghĩa là đăng ký tham gia; không đi với mệnh đề that và không mang nghĩa đảm bảo."
+  }
  },
  {
   "id": "t5-b070",
@@ -8111,7 +8831,12 @@ const TOEIC5 = [
    "shift"
   ],
   "a": 2,
-  "why": "Collocation: payment plan (kế hoạch trả góp) cho người không trả hết một lần."
+  "why": "Collocation: payment plan (kế hoạch trả góp) cho người không trả hết một lần.",
+  "wrong": {
+   "route": "nghĩa là tuyến đường; payment route không phải cụm cố định để chỉ kế hoạch trả góp.",
+   "ticket": "nghĩa là vé; payment ticket không phải kế hoạch cho bệnh nhân chia nhỏ khoản trả.",
+   "shift": "nghĩa là ca làm; payment shift không phải cách trả góp cho bệnh nhân."
+  }
  },
  {
   "id": "t5-b071",
@@ -8125,7 +8850,12 @@ const TOEIC5 = [
    "require"
   ],
   "a": 1,
-  "why": "'places are limited' gợi việc đăng ký trước: register in advance."
+  "why": "'places are limited' gợi việc đăng ký trước: register in advance.",
+  "wrong": {
+   "resign": "nghĩa là từ chức; không hợp với việc tham dự hội thảo, và places are limited gợi việc đăng ký trước.",
+   "retire": "nghĩa là nghỉ hưu; không liên quan đến tham dự workshop hay đặt chỗ trước.",
+   "require": "nghĩa là yêu cầu; require in advance không hợp vì chủ ngữ là người tham dự, họ cần đăng ký chứ không yêu cầu."
+  }
  },
  {
   "id": "t5-b072",
@@ -8139,7 +8869,12 @@ const TOEIC5 = [
    "admitted"
   ],
   "a": 0,
-  "why": "'force somebody to V' (buộc ai làm gì); các từ khác không đi với cấu trúc tân ngữ + to-V."
+  "why": "'force somebody to V' (buộc ai làm gì); các từ khác không đi với cấu trúc tân ngữ + to-V.",
+  "wrong": {
+   "suggested": "nghĩa là đề nghị; suggest không đi với cấu trúc tân ngữ + to V, nên suggested the team to close sai ngữ pháp.",
+   "reported": "nghĩa là báo cáo; reported không đi với tân ngữ + to V, và đường ống bị rò không báo cáo ai đó.",
+   "admitted": "nghĩa là thừa nhận; admitted không đi với tân ngữ + to V và không hợp nghĩa khi đường ống rò gây buộc đóng phòng."
+  }
  },
  {
   "id": "t5-b073",
@@ -8153,7 +8888,12 @@ const TOEIC5 = [
    "a few"
   ],
   "a": 3,
-  "why": "'tickets' đếm được số nhiều: a few; 'a little/much' dùng với danh từ không đếm được, 'every' đi với danh từ số ít."
+  "why": "'tickets' đếm được số nhiều: a few; 'a little/much' dùng với danh từ không đếm được, 'every' đi với danh từ số ít.",
+  "wrong": {
+   "a little": "dùng với danh từ không đếm được (a little water); tickets là danh từ đếm được số nhiều nên không dùng.",
+   "much": "dùng chủ yếu với danh từ không đếm được và trong câu phủ định hoặc nghi vấn; tickets đếm được nên much sai.",
+   "every": "đi với danh từ số ít (every ticket) và không mang nghĩa còn lại một ít; tickets là số nhiều."
+  }
  },
  {
   "id": "t5-b074",
@@ -8167,7 +8907,12 @@ const TOEIC5 = [
    "too"
   ],
   "a": 2,
-  "why": "'far' nhấn mạnh so sánh hơn: far more participants."
+  "why": "'far' nhấn mạnh so sánh hơn: far more participants.",
+  "wrong": {
+   "very": "chỉ bổ nghĩa tính từ hoặc trạng từ nguyên cấp (very good); không đứng trước more để nhấn mạnh so sánh hơn.",
+   "most": "dùng như most participants (hầu hết người tham dự), không nhấn mạnh so sánh hơn với than last year's.",
+   "too": "chỉ mức độ quá mức (too many); too more không tồn tại, và nghĩa thành quá nhiều, trái cấu trúc so sánh với than."
+  }
  },
  {
   "id": "t5-b075",
@@ -8181,7 +8926,12 @@ const TOEIC5 = [
    "much"
   ],
   "a": 1,
-  "why": "'Of all' là so sánh nhất: the most reliable."
+  "why": "'Of all' là so sánh nhất: the most reliable.",
+  "wrong": {
+   "more": "dùng so sánh hơn giữa hai đối tượng (more reliable than); Of all the suppliers là so sánh nhất nên cần the most.",
+   "as": "dùng trong so sánh bằng (as reliable as) và cần thêm as phía sau; không dùng cho so sánh nhất với Of all.",
+   "much": "bổ nghĩa so sánh hơn (much more reliable), không tạo so sánh nhất; much reliable đứng một mình cũng sai."
+  }
  }
 ];
 /* TOEIC Part 6 */
@@ -9051,7 +9801,12 @@ const CLOZE_MC = [
      "set"
     ],
     "a": 0,
-    "why": "\"Get up\" nghĩa là thức dậy rời giường; \"took/put/set up early\" không đúng nghĩa."
+    "why": "\"Get up\" nghĩa là thức dậy rời giường; \"took/put/set up early\" không đúng nghĩa.",
+    "wrong": {
+     "took": "cụm take up early không có nghĩa thức dậy; muốn nói dậy sớm phải dùng get up, còn take up nghĩa là bắt đầu một sở thích.",
+     "put": "put up là dựng lên hoặc cho ở nhờ, không diễn tả việc rời giường vào buổi sáng như ngữ cảnh câu này.",
+     "set": "set up nghĩa là thành lập hoặc dựng; Anna dậy sớm vì muốn đi chợ nên cần get up, không phải set up."
+    }
    },
    {
     "opts": [
@@ -9061,7 +9816,12 @@ const CLOZE_MC = [
      "said"
     ],
     "a": 0,
-    "why": "\"Took a bag\" = mang theo túi; \"made/did/said a bag\" không tạo thành cụm hợp lý."
+    "why": "\"Took a bag\" = mang theo túi; \"made/did/said a bag\" không tạo thành cụm hợp lý.",
+    "wrong": {
+     "made": "make đi với những thứ được tạo ra; ở đây Anna chỉ mang theo một cái túi và tiền để đi chợ nên cần took, không phải tự làm ra cái túi.",
+     "did": "did dùng với việc làm (do homework, do the job), không đi với bag; câu này cần động từ mang nghĩa cầm theo.",
+     "said": "động từ said là nói, theo sau là lời nói chứ không phải vật như a bag and some money; câu cần động từ chỉ việc mang theo."
+    }
    },
    {
     "opts": [
@@ -9071,7 +9831,12 @@ const CLOZE_MC = [
      "empty"
     ],
     "a": 0,
-    "why": "\"with lots of people\" nên chợ \"busy\" (đông đúc); \"empty\" mâu thuẫn."
+    "why": "\"with lots of people\" nên chợ \"busy\" (đông đúc); \"empty\" mâu thuẫn.",
+    "wrong": {
+     "heavy": "heavy là nặng, dùng cho vật; chợ có nhiều người xem hoa quả thì phải mô tả là đông đúc (busy), không phải nặng.",
+     "tall": "tall là cao, dùng cho người hoặc toà nhà; không mô tả được một khu chợ đông người như trong câu.",
+     "empty": "empty là vắng, trống, trái nghĩa với with lots of people ở vế sau, nên mâu thuẫn với ý chợ đông."
+    }
    },
    {
     "opts": [
@@ -9081,7 +9846,12 @@ const CLOZE_MC = [
      "rich"
     ],
     "a": 0,
-    "why": "Cô ấy chọn táo thay thế nên cà chua \"too expensive\" (quá đắt)."
+    "why": "Cô ấy chọn táo thay thế nên cà chua \"too expensive\" (quá đắt).",
+    "wrong": {
+     "cheap": "cheap là rẻ; nếu cà chua rẻ thì Anna không có lý do chọn táo thay thế, và too cheap for her cũng không hợp lý.",
+     "free": "free là miễn phí; too free for her vô nghĩa, và không giải thích được việc cô đổi sang mua táo.",
+     "rich": "rich là giàu, dùng cho người chứ không dùng cho cà chua; câu cần tính từ nói về giá cả của món hàng."
+    }
    },
    {
     "opts": [
@@ -9091,7 +9861,12 @@ const CLOZE_MC = [
      "Until"
     ],
     "a": 0,
-    "why": "\"While she was paying\": while + mệnh đề chia thì tiếp diễn; during cần danh từ."
+    "why": "\"While she was paying\": while + mệnh đề chia thì tiếp diễn; during cần danh từ.",
+    "wrong": {
+     "During": "during phải đi với danh từ (during the shopping), còn ở đây sau chỗ trống là mệnh đề she was paying nên không dùng được.",
+     "Since": "since chỉ mốc thời gian bắt đầu hoặc lý do, không diễn tả hai việc xảy ra cùng lúc như gặp bạn khi đang trả tiền.",
+     "Until": "until nghĩa là cho đến khi và đi với việc kéo dài đến một mốc; không hợp với việc gặp bạn trong lúc đang trả tiền."
+    }
    },
    {
     "opts": [
@@ -9101,7 +9876,12 @@ const CLOZE_MC = [
      "miss"
     ],
     "a": 0,
-    "why": "\"open a small shop selling bread\" = mở một cửa hàng bán bánh mì."
+    "why": "\"open a small shop selling bread\" = mở một cửa hàng bán bánh mì.",
+    "wrong": {
+     "close": "close là đóng cửa; Minh định làm một cửa hàng bánh mì mới và Anna hy vọng nó thành công nên phải là mở, không phải đóng.",
+     "break": "break a shop không có nghĩa trong ngữ cảnh này; hy vọng thành công chỉ hợp với việc mở cửa hàng mới.",
+     "miss": "miss là bỏ lỡ hoặc nhớ, không đi với a small shop theo nghĩa kinh doanh, và trái với ý đang hy vọng thành công."
+    }
    },
    {
     "opts": [
@@ -9111,7 +9891,12 @@ const CLOZE_MC = [
      "wished"
     ],
     "a": 0,
-    "why": "\"carried her shopping home\" = xách đồ mua về nhà; các từ khác sai nghĩa."
+    "why": "\"carried her shopping home\" = xách đồ mua về nhà; các từ khác sai nghĩa.",
+    "wrong": {
+     "wore": "wore là mặc hoặc đeo (quần áo, mũ); không ai mặc đồ mua sắm về nhà, câu cần xách đồ nên dùng carried.",
+     "kicked": "kicked là đá; đá đồ mua về nhà không hợp lý và không phải cách nói tự nhiên với shopping.",
+     "wished": "wished là ước, theo sau là mệnh đề hoặc to-V, không nhận tân ngữ her shopping rồi đến home."
+    }
    },
    {
     "opts": [
@@ -9121,7 +9906,12 @@ const CLOZE_MC = [
      "suggested"
     ],
     "a": 0,
-    "why": "\"decided to go\": chỉ decided đi với to-V; enjoyed/finished + V-ing, suggested + V-ing/that."
+    "why": "\"decided to go\": chỉ decided đi với to-V; enjoyed/finished + V-ing, suggested + V-ing/that.",
+    "wrong": {
+     "enjoyed": "enjoy phải đi với V-ing (enjoyed going), không đi với to go như trong câu này.",
+     "finished": "finish cũng đi với V-ing và nghĩa hoàn thành, không hợp với việc quay lại chợ tuần sau khi chưa làm.",
+     "suggested": "suggest đi với V-ing hoặc that-clause, không đi với to-V; hơn nữa Anna tự quyết cho mình nên cần decided."
+    }
    }
   ]
  },
@@ -9139,7 +9929,12 @@ const CLOZE_MC = [
      "sorry"
     ],
     "a": 0,
-    "why": "Tin vui (new job) nên \"pleased to tell you\"; bored/angry/sorry không hợp."
+    "why": "Tin vui (new job) nên \"pleased to tell you\"; bored/angry/sorry không hợp.",
+    "wrong": {
+     "bored": "bored là chán; tin có việc làm mới là tin vui nên không thể nói chán khi báo tin này.",
+     "angry": "angry là tức giận; không hợp với tin vui về công việc mới và không đi tự nhiên với to tell you.",
+     "sorry": "sorry to tell you dùng khi báo tin buồn, trái với tin vui I've got a new job nên không phù hợp."
+    }
    },
    {
     "opts": [
@@ -9149,7 +9944,12 @@ const CLOZE_MC = [
      "miss"
     ],
     "a": 0,
-    "why": "\"save time\" = tiết kiệm thời gian vì văn phòng gần ga."
+    "why": "\"save time\" = tiết kiệm thời gian vì văn phòng gần ga.",
+    "wrong": {
+     "win": "win dùng với giải thưởng hay cuộc thi, không dùng cho time; ở đây là tiết kiệm thời gian nhờ văn phòng gần ga.",
+     "earn": "earn là kiếm (tiền, sự tôn trọng), không đi với time theo nghĩa này; câu nói về việc đi làm ít mất thời gian.",
+     "miss": "miss a lot of time không hợp lý; văn phòng gần ga thì tốn ít thời gian đi lại chứ không bỏ lỡ nó."
+    }
    },
    {
     "opts": [
@@ -9159,7 +9959,12 @@ const CLOZE_MC = [
      "told"
     ],
     "a": 0,
-    "why": "\"showed me round the building\" = dẫn tôi đi tham quan; các từ khác không đi với \"me round\"."
+    "why": "\"showed me round the building\" = dẫn tôi đi tham quan; các từ khác không đi với \"me round\".",
+    "wrong": {
+     "looked": "looked round là nhìn quanh, và tự nó không có tân ngữ chỉ người me; người dẫn đi tham quan phải dùng showed.",
+     "made": "made me round the building không phải cấu trúc đúng; make không có nghĩa dẫn ai đi tham quan.",
+     "told": "told me là nói với tôi, nhưng không đi với round the building để chỉ việc dẫn đi vòng quanh toà nhà."
+    }
    },
    {
     "opts": [
@@ -9169,7 +9974,12 @@ const CLOZE_MC = [
      "having"
     ],
     "a": 0,
-    "why": "\"I'm learning a lot\": công việc khó nên học nhiều; know không dùng thì tiếp diễn."
+    "why": "\"I'm learning a lot\": công việc khó nên học nhiều; know không dùng thì tiếp diễn.",
+    "wrong": {
+     "knowing": "know là động từ chỉ trạng thái, thường không dùng thì tiếp diễn; câu cần việc học được nhiều thứ mới.",
+     "being": "I'm being a lot không có nghĩa vì being cần bổ ngữ; câu muốn nói mình học được nhiều điều mỗi ngày.",
+     "having": "I'm having a lot every day thiếu danh từ rõ nghĩa và không diễn tả việc học nhiều điều từ công việc khó."
+    }
    },
    {
     "opts": [
@@ -9179,7 +9989,12 @@ const CLOZE_MC = [
      "hold"
     ],
     "a": 0,
-    "why": "\"get up early\" = dậy sớm; put/make/hold up không đúng nghĩa."
+    "why": "\"get up early\" = dậy sớm; put/make/hold up không đúng nghĩa.",
+    "wrong": {
+     "put": "put up là dựng lên hay cho ở nhờ; put up early không có nghĩa dậy sớm, cần get up.",
+     "make": "make up là trang điểm hay bịa ra; make up early không diễn tả việc thức dậy lúc sáu giờ.",
+     "hold": "hold up là giơ lên hoặc cướp, hoàn toàn không có nghĩa thức dậy như câu này cần."
+    }
    },
    {
     "opts": [
@@ -9189,7 +10004,12 @@ const CLOZE_MC = [
      "wet"
     ],
     "a": 0,
-    "why": "Dậy lúc sáu giờ nên chiều \"feel tired\"."
+    "why": "Dậy lúc sáu giờ nên chiều \"feel tired\".",
+    "wrong": {
+     "tall": "tall là cao, chỉ chiều cao; không dùng để diễn tả cảm giác mệt vào buổi chiều sau khi dậy sớm.",
+     "rich": "rich là giàu có; không liên quan đến việc dậy lúc sáu giờ nên chiều cảm thấy mệt.",
+     "wet": "wet là ướt, không đi với feel để chỉ trạng thái cơ thể do dậy sớm; câu cần tired."
+    }
    },
    {
     "opts": [
@@ -9199,7 +10019,12 @@ const CLOZE_MC = [
      "hold"
     ],
     "a": 0,
-    "why": "\"keep in touch\" là cụm cố định = giữ liên lạc."
+    "why": "\"keep in touch\" là cụm cố định = giữ liên lạc.",
+    "wrong": {
+     "have": "have in touch không phải cụm cố định; cụm đúng giữ liên lạc là keep in touch (hoặc get in touch).",
+     "make": "make in touch không tồn tại trong tiếng Anh; chỉ có keep in touch hoặc get in touch.",
+     "hold": "hold in touch không phải cách nói; cụm cố định cần dùng là keep in touch."
+    }
    },
    {
     "opts": [
@@ -9209,7 +10034,12 @@ const CLOZE_MC = [
      "down"
     ],
     "a": 0,
-    "why": "\"write back soon\" = sớm trả lời thư (đáp lại \"Thank you for your email\")."
+    "why": "\"write back soon\" = sớm trả lời thư (đáp lại \"Thank you for your email\").",
+    "wrong": {
+     "out": "write out nghĩa là chép ra hay viết đầy đủ, không có nghĩa viết thư trả lời; muốn trả lời thư phải dùng write back.",
+     "over": "write over là viết đè lên, không có nghĩa viết thư đáp lại như Lan được mong đợi.",
+     "down": "write down là ghi lại (vào giấy), không phải viết thư hồi âm cho người đã gửi email."
+    }
    }
   ]
  },
@@ -9227,7 +10057,12 @@ const CLOZE_MC = [
      "fallen"
     ],
     "a": 0,
-    "why": "\"turned from ... into ...\" = chuyển từ ... thành; become không đi với into."
+    "why": "\"turned from ... into ...\" = chuyển từ ... thành; become không đi với into.",
+    "wrong": {
+     "become": "become không đi với from ... into; become dùng với bổ ngữ trực tiếp, còn câu này có from ... into nên cần turned.",
+     "made": "made from ... into không đúng nghĩa; make từ nguyên liệu, không diễn tả sự thay đổi thành một thứ khác như câu này.",
+     "fallen": "fallen from ... into hàm ý rơi xuống một tình trạng tệ hơn, không hợp với việc làm việc tại nhà dần trở thành hình thức phổ biến."
+    }
    },
    {
     "opts": [
@@ -9237,7 +10072,12 @@ const CLOZE_MC = [
      "ignorant"
     ],
     "a": 0,
-    "why": "\"fearing that staff would be less productive\" cho thấy họ \"sceptical\" (hoài nghi)."
+    "why": "\"fearing that staff would be less productive\" cho thấy họ \"sceptical\" (hoài nghi).",
+    "wrong": {
+     "enthusiastic": "enthusiastic là nhiệt tình; mâu thuẫn với vế sau nói họ lo nhân viên kém hiệu quả khi không bị giám sát.",
+     "grateful": "grateful là biết ơn; không hợp với nỗi lo ở vế sau và không đi với about the idea để chỉ sự hoài nghi.",
+     "ignorant": "ignorant là thiếu hiểu biết; câu nói họ lo ngại về năng suất chứ không nói họ không biết gì về ý tưởng."
+    }
    },
    {
     "opts": [
@@ -9247,7 +10087,12 @@ const CLOZE_MC = [
      "taken"
     ],
     "a": 0,
-    "why": "\"studies have shown that\" là cách nói chuẩn; told/given/taken không đi với that-clause."
+    "why": "\"studies have shown that\" là cách nói chuẩn; told/given/taken không đi với that-clause.",
+    "wrong": {
+     "told": "tell cần tân ngữ người (told people that) và studies không nói chuyện; câu cần động từ chỉ kết quả nghiên cứu là shown.",
+     "given": "given that là cụm với nghĩa xét rằng, không đi với several studies have để nêu kết luận nghiên cứu.",
+     "taken": "taken that không tạo thành cụm với that-clause để nói về kết quả nghiên cứu; câu cần have shown that."
+    }
    },
    {
     "opts": [
@@ -9257,7 +10102,12 @@ const CLOZE_MC = [
      "comparison"
     ],
     "a": 0,
-    "why": "\"blurred boundary\" = ranh giới giữa công việc và đời tư bị mờ; agreement/contact/comparison không đi với \"between professional and private life\" theo nghĩa này."
+    "why": "\"blurred boundary\" = ranh giới giữa công việc và đời tư bị mờ; agreement/contact/comparison không đi với \"between professional and private life\" theo nghĩa này.",
+    "wrong": {
+     "agreement": "agreement là sự đồng ý, không phải thứ bị mờ đi giữa công việc và đời tư.",
+     "contact": "contact là liên lạc; the contact between professional and private life không có nghĩa hợp lý trong câu về sự lẫn lộn.",
+     "comparison": "comparison là sự so sánh, không diễn tả ranh giới giữa hai mảng cuộc sống bị mờ đi, nên không hợp nghĩa."
+    }
    },
    {
     "opts": [
@@ -9267,7 +10117,12 @@ const CLOZE_MC = [
      "give"
     ],
     "a": 0,
-    "why": "\"take place\" = diễn ra, cụm cố định."
+    "why": "\"take place\" = diễn ra, cụm cố định.",
+    "wrong": {
+     "make": "make place không phải cụm cố định; take place mới có nghĩa diễn ra, như các cuộc trò chuyện ở bếp văn phòng.",
+     "have": "have place không có nghĩa là diễn ra; cụm cố định đúng là take place.",
+     "give": "give place không dùng để nói về sự việc diễn ra; cần cụm take place."
+    }
    },
    {
     "opts": [
@@ -9277,7 +10132,12 @@ const CLOZE_MC = [
      "fix"
     ],
     "a": 0,
-    "why": "\"deal with\" đi với giới từ with; solve/face/fix + tân ngữ trực tiếp."
+    "why": "\"deal with\" đi với giới từ with; solve/face/fix + tân ngữ trực tiếp.",
+    "wrong": {
+     "solve": "solve là ngoại động từ, đi thẳng với tân ngữ (solve problems), nên không thể có with theo sau như trong chỗ trống.",
+     "face": "face cũng là ngoại động từ không đi với with; thêm vào đó face with problems sai cấu trúc ở vị trí này.",
+     "fix": "fix là ngoại động từ (fix problems), không đi với giới từ with sau nó như câu yêu cầu."
+    }
    },
    {
     "opts": [
@@ -9287,7 +10147,12 @@ const CLOZE_MC = [
      "pull"
     ],
     "a": 0,
-    "why": "\"have the best of both worlds\" là thành ngữ = tận dụng được cả hai mặt tốt; wear/sit/pull không tạo thành cụm hợp lý."
+    "why": "\"have the best of both worlds\" là thành ngữ = tận dụng được cả hai mặt tốt; wear/sit/pull không tạo thành cụm hợp lý.",
+    "wrong": {
+     "wear": "wear là mặc, đeo; wear the best of both worlds không phải thành ngữ hợp lý trong câu.",
+     "sit": "sit không có tân ngữ trực tiếp là the best of both worlds; thành ngữ cần dùng là have the best of both worlds.",
+     "pull": "pull là kéo; không tạo thành cụm hợp nghĩa với the best of both worlds."
+    }
    },
    {
     "opts": [
@@ -9297,7 +10162,12 @@ const CLOZE_MC = [
      "Instead"
     ],
     "a": 0,
-    "why": "Câu kết luận nên dùng \"Overall\" (nhìn chung)."
+    "why": "Câu kết luận nên dùng \"Overall\" (nhìn chung).",
+    "wrong": {
+     "Besides": "besides nghĩa là ngoài ra, dùng để thêm ý; câu cuối đang rút ra kết luận chung nên không hợp.",
+     "Otherwise": "otherwise nghĩa là nếu không thì, dùng nêu hệ quả trái ngược; không phù hợp với câu tổng kết cuối đoạn.",
+     "Instead": "instead nghĩa là thay vào đó, đối lập với điều vừa nói; câu cuối chỉ tổng kết chứ không nêu phương án thay thế."
+    }
    }
   ]
  },
@@ -9315,7 +10185,12 @@ const CLOZE_MC = [
      "keep"
     ],
     "a": 0,
-    "why": "\"make up one's mind\" = quyết định."
+    "why": "\"make up one's mind\" = quyết định.",
+    "wrong": {
+     "take": "take up one's mind không phải thành ngữ; thành ngữ đúng với nghĩa quyết định là make up one's mind.",
+     "put": "put up one's mind không tồn tại; put up chỉ có nghĩa dựng lên hay cho ở nhờ.",
+     "keep": "keep up one's mind không phải thành ngữ cho việc quyết định; keep up nghĩa là duy trì."
+    }
    },
    {
     "opts": [
@@ -9325,7 +10200,12 @@ const CLOZE_MC = [
      "turned"
     ],
     "a": 0,
-    "why": "\"point out that\" = chỉ ra rằng."
+    "why": "\"point out that\" = chỉ ra rằng.",
+    "wrong": {
+     "carried": "carried out nghĩa là thực hiện; she carried out that he could return không đúng nghĩa và sai cấu trúc với that-clause.",
+     "brought": "brought out là đưa ra hay phát hành; không hợp nghĩa với that-clause nêu ý kiến.",
+     "turned": "turned out that nghĩa là hóa ra, không cho phép chủ ngữ she làm chủ thể gợi ý như trong câu."
+    }
    },
    {
     "opts": [
@@ -9335,7 +10215,12 @@ const CLOZE_MC = [
      "hold"
     ],
     "a": 0,
-    "why": "\"take a chance\" = liều một phen, cụm cố định."
+    "why": "\"take a chance\" = liều một phen, cụm cố định.",
+    "wrong": {
+     "make": "make a chance không có nghĩa liều thử; nếu dùng thì nghĩa là tạo cơ hội, còn câu nói Daniel chấp nhận rủi ro.",
+     "have": "have a chance nghĩa là có cơ hội; không diễn tả quyết định mạo hiểm của Daniel.",
+     "hold": "hold a chance không phải cách nói; cụm cố định đúng là take a chance."
+    }
    },
    {
     "opts": [
@@ -9345,7 +10230,12 @@ const CLOZE_MC = [
      "do"
     ],
     "a": 0,
-    "why": "\"make oneself understood\" = làm cho người khác hiểu mình."
+    "why": "\"make oneself understood\" = làm cho người khác hiểu mình.",
+    "wrong": {
+     "give": "give oneself understood không phải cấu trúc đúng; cấu trúc cố định với nghĩa làm cho người khác hiểu là make oneself understood.",
+     "keep": "keep himself understood nghĩa là giữ cho mình được hiểu, không diễn tả việc cố gắng để người khác hiểu mình lần đầu.",
+     "do": "do himself understood không phải cụm đúng; muốn nói làm cho người khác hiểu thì dùng make oneself understood."
+    }
    },
    {
     "opts": [
@@ -9355,7 +10245,12 @@ const CLOZE_MC = [
      "normal"
     ],
     "a": 0,
-    "why": "\"get used to\" = làm quen với."
+    "why": "\"get used to\" = làm quen với.",
+    "wrong": {
+     "usual": "usual là tính từ thường lệ; get usual to không có nghĩa, phải dùng used với to để làm quen.",
+     "habit": "habit là danh từ nên không đứng sau get; cụm get a habit of khác cấu trúc và không có to ngay sau.",
+     "normal": "normal là bình thường; get normal to không phải cấu trúc làm quen, cần get used to."
+    }
    },
    {
     "opts": [
@@ -9365,7 +10260,12 @@ const CLOZE_MC = [
      "doubtful"
     ],
     "a": 0,
-    "why": "Nhìn lại, anh vui vì không để nỗi sợ ngăn cản: \"glad that\"."
+    "why": "Nhìn lại, anh vui vì không để nỗi sợ ngăn cản: \"glad that\".",
+    "wrong": {
+     "sorry": "sorry là hối tiếc, trái với ý anh vui mừng vì đã không để nỗi sợ ngăn cản mình.",
+     "afraid": "afraid that he did not let fear stop him mâu thuẫn về nghĩa: anh không còn sợ mà là vui vì quyết định của mình.",
+     "doubtful": "doubtful là nghi ngờ; mâu thuẫn với việc anh nhìn lại và hài lòng về quyết định đã làm."
+    }
    },
    {
     "opts": [
@@ -9375,7 +10275,12 @@ const CLOZE_MC = [
      "avoided"
     ],
     "a": 0,
-    "why": "\"miss the chance of a lifetime\" = bỏ lỡ cơ hội đời người; failed/shared/avoided không hợp collocation hoặc nghĩa."
+    "why": "\"miss the chance of a lifetime\" = bỏ lỡ cơ hội đời người; failed/shared/avoided không hợp collocation hoặc nghĩa.",
+    "wrong": {
+     "failed": "fail the chance không phải collocation; nghĩa cần là bỏ lỡ cơ hội đời người nếu ở nhà, tức là missed.",
+     "shared": "shared the chance là chia sẻ cơ hội; không hợp với giả định nếu ở lại nhà thì mất cơ hội.",
+     "avoided": "avoided the chance là chủ động tránh cơ hội; câu giả định này nói anh sẽ vô tình mất cơ hội nếu ở nhà."
+    }
    },
    {
     "opts": [
@@ -9385,7 +10290,12 @@ const CLOZE_MC = [
      "thanks"
     ],
     "a": 0,
-    "why": "\"contrary to warnings\" = trái với lời cảnh báo; anh vẫn thích công việc."
+    "why": "\"contrary to warnings\" = trái với lời cảnh báo; anh vẫn thích công việc.",
+    "wrong": {
+     "according": "according phải đi với to nhưng nghĩa là theo như; theo lời cảnh báo thì công việc buồn, mâu thuẫn với việc anh vẫn thích.",
+     "owing": "owing to nghĩa là do; do lời cảnh báo mà anh thích công việc thì vô lý, vì câu mang nghĩa trái ngược.",
+     "thanks": "thanks to nghĩa là nhờ có; nhờ lời cảnh báo mà anh thích công việc là phi logic, vì đây là sự đối lập."
+    }
    }
   ]
  },
@@ -9403,7 +10313,12 @@ const CLOZE_MC = [
      "claim"
     ],
     "a": 0,
-    "why": "\"require periods of quiet\" = cần những khoảng yên tĩnh; request/order/claim không hợp nghĩa."
+    "why": "\"require periods of quiet\" = cần những khoảng yên tĩnh; request/order/claim không hợp nghĩa.",
+    "wrong": {
+     "request": "request là yêu cầu (thường từ người này tới người khác), không hợp với brains cần khoảng yên tĩnh như một nhu cầu.",
+     "order": "order là ra lệnh hoặc đặt hàng; bộ não không ra lệnh cho khoảng yên tĩnh, câu nói nhu cầu nên cần require.",
+     "claim": "claim là tuyên bố hay khẳng định; brains claim periods of quiet vô nghĩa vì câu nói về nhu cầu của não bộ."
+    }
    },
    {
     "opts": [
@@ -9413,7 +10328,12 @@ const CLOZE_MC = [
      "blow"
     ],
     "a": 0,
-    "why": "\"carve out time\" = dành riêng thời gian."
+    "why": "\"carve out time\" = dành riêng thời gian.",
+    "wrong": {
+     "pour": "pour out time không có nghĩa dành thời gian; pour là rót chất lỏng, còn carve out time mới là dành riêng thời gian.",
+     "wipe": "wipe out nghĩa là xoá sạch; wipe out time for it mâu thuẫn với ý ít ai chủ động dành thời gian yên tĩnh.",
+     "blow": "blow out là thổi tắt; blow out time không phải cụm có nghĩa dành thời gian."
+    }
    },
    {
     "opts": [
@@ -9423,7 +10343,12 @@ const CLOZE_MC = [
      "devoted"
     ],
     "a": 0,
-    "why": "Nhân viên than phiền nên môi trường \"detrimental to\" (có hại); conducive mâu thuẫn."
+    "why": "Nhân viên than phiền nên môi trường \"detrimental to\" (có hại); conducive mâu thuẫn.",
+    "wrong": {
+     "conducive": "conducive to nghĩa là có lợi cho; mâu thuẫn với việc nhân viên than phiền không thể nghe mình suy nghĩ.",
+     "indifferent": "indifferent to nghĩa là thờ ơ; môi trường làm việc không thể thờ ơ với sự tập trung, câu cần nghĩa gây hại.",
+     "devoted": "devoted to là tận tụy, dành cho; không dùng cho văn phòng mở khi nhân viên phàn nàn về tiếng ồn."
+    }
    },
    {
     "opts": [
@@ -9433,7 +10358,12 @@ const CLOZE_MC = [
      "solved"
     ],
     "a": 0,
-    "why": "\"responded to this problem by creating\" = ứng phó với vấn đề."
+    "why": "\"responded to this problem by creating\" = ứng phó với vấn đề.",
+    "wrong": {
+     "resolved": "resolved to là quyết tâm làm gì, không đi với this problem by creating; cần động từ nghĩa phản ứng lại là responded.",
+     "replied": "replied to dùng cho việc trả lời lời nói hoặc thư; không dùng cho việc giải quyết một vấn đề bằng hành động.",
+     "solved": "solved không đi với giới từ to; solve là ngoại động từ nên cấu trúc solved to this problem sai."
+    }
    },
    {
     "opts": [
@@ -9443,7 +10373,12 @@ const CLOZE_MC = [
      "assure"
     ],
     "a": 0,
-    "why": "\"contend that\" = cho rằng; convince/persuade/assure cần tân ngữ người."
+    "why": "\"contend that\" = cho rằng; convince/persuade/assure cần tân ngữ người.",
+    "wrong": {
+     "convince": "convince cần tân ngữ người (convince someone that), mà sau chỗ trống không có tân ngữ nên không dùng được.",
+     "persuade": "persuade cũng cần tân ngữ người trước that-clause (persuade them that), còn trong câu thì không có.",
+     "assure": "assure phải có tân ngữ chỉ người (assure us that); câu không có nên không đúng cấu trúc."
+    }
    },
    {
     "opts": [
@@ -9453,7 +10388,12 @@ const CLOZE_MC = [
      "numerous"
     ],
     "a": 0,
-    "why": "\"evidence\" không đếm được: \"ample evidence\"; many/few/numerous sai."
+    "why": "\"evidence\" không đếm được: \"ample evidence\"; many/few/numerous sai.",
+    "wrong": {
+     "many": "many chỉ đi với danh từ đếm được số nhiều; evidence là danh từ không đếm được nên không dùng many.",
+     "few": "few đi với danh từ đếm được số nhiều và mang nghĩa ít; evidence không đếm được, và nghĩa ít cũng mâu thuẫn với phần sau.",
+     "numerous": "numerous chỉ dùng với danh từ đếm được số nhiều; evidence không đếm được nên không hợp, và còn sai với there is."
+    }
    },
    {
     "opts": [
@@ -9463,7 +10403,12 @@ const CLOZE_MC = [
      "down"
     ],
     "a": 0,
-    "why": "\"out of hand\" là thành ngữ = bác bỏ ngay lập tức."
+    "why": "\"out of hand\" là thành ngữ = bác bỏ ngay lập tức.",
+    "wrong": {
+     "off": "off hand có nghĩa không chuẩn bị trước, là off the cuff; thành ngữ dismiss out of hand cần giới từ out.",
+     "away": "away of hand không phải thành ngữ; nghĩa bác bỏ ngay là dismiss out of hand.",
+     "down": "down of hand không tồn tại; thành ngữ cố định chỉ có out of hand."
+    }
    },
    {
     "opts": [
@@ -9473,7 +10418,12 @@ const CLOZE_MC = [
      "lose"
     ],
     "a": 0,
-    "why": "\"cost little but may yield benefits\" = tốn ít nhưng có lợi; chủ ngữ số nhiều nên cost."
+    "why": "\"cost little but may yield benefits\" = tốn ít nhưng có lợi; chủ ngữ số nhiều nên cost.",
+    "wrong": {
+     "pay": "pay little but yield benefits không hợp ngữ cảnh; pay chỉ đúng khi nói trả tiền hoặc có lời, còn câu nói tốn ít công sức.",
+     "charge": "charge là tính phí; chủ ngữ là vài phút yên tĩnh nên không thể đòi phí ai cả.",
+     "lose": "lose little nghĩa là mất ít; và but may yield benefits cho thấy cần nghĩa tốn ít chi phí, không phải mất đi thứ gì."
+    }
    }
   ]
  },
@@ -9491,7 +10441,12 @@ const CLOZE_MC = [
      "perform"
     ],
     "a": 0,
-    "why": "\"tackle the problem\" = giải quyết vấn đề."
+    "why": "\"tackle the problem\" = giải quyết vấn đề.",
+    "wrong": {
+     "enclose": "enclose là đính kèm hoặc bao quanh; không đi với the problem of congestion theo nghĩa giải quyết.",
+     "depart": "depart là rời đi, nội động từ nên không nhận tân ngữ the problem, và không có nghĩa xử lý vấn đề.",
+     "perform": "perform là biểu diễn hoặc thực hiện một nhiệm vụ; perform the problem không tự nhiên, câu cần nghĩa giải quyết."
+    }
    },
    {
     "opts": [
@@ -9501,7 +10456,12 @@ const CLOZE_MC = [
      "announce"
     ],
     "a": 0,
-    "why": "Xây đường nhằm \"ease the pressure\" = giảm áp lực."
+    "why": "Xây đường nhằm \"ease the pressure\" = giảm áp lực.",
+    "wrong": {
+     "intensify": "intensify nghĩa là làm tăng; xây thêm đường để giảm áp lực chứ không làm áp lực tăng, nên mâu thuẫn với ngữ cảnh.",
+     "provoke": "provoke là khiêu khích hoặc gây ra phản ứng; provoke the pressure không hợp nghĩa của việc xây thêm đường.",
+     "announce": "announce là thông báo, nên announce the pressure vô nghĩa, câu cần nghĩa làm giảm áp lực."
+    }
    },
    {
     "opts": [
@@ -9511,7 +10471,12 @@ const CLOZE_MC = [
      "let"
     ],
     "a": 0,
-    "why": "\"persuade sb to do\" đúng cấu trúc; make/let không có to, suggest không dùng vậy."
+    "why": "\"persuade sb to do\" đúng cấu trúc; make/let không có to, suggest không dùng vậy.",
+    "wrong": {
+     "suggest": "suggest drivers to leave sai cấu trúc; suggest đi với that-clause hoặc V-ing, không đi với tân ngữ + to-V.",
+     "make": "make drivers to leave sai vì make + tân ngữ + V nguyên mẫu không có to; hơn nữa make mang nghĩa bắt buộc, không hợp.",
+     "let": "let drivers to leave sai cấu trúc vì let + tân ngữ + V nguyên mẫu không có to; và let là cho phép, không phải khuyến khích."
+    }
    },
    {
     "opts": [
@@ -9521,7 +10486,12 @@ const CLOZE_MC = [
      "welcomed"
     ],
     "a": 0,
-    "why": "Phí vào trung tâm làm giảm xe: \"cut the number\"; các từ khác ngược nghĩa."
+    "why": "Phí vào trung tâm làm giảm xe: \"cut the number\"; các từ khác ngược nghĩa.",
+    "wrong": {
+     "raised": "raised the number là làm tăng số lượng xe; mâu thuẫn với việc sức ép giảm khi phí vào trung tâm được áp dụng.",
+     "doubled": "doubled nghĩa là gấp đôi, trái với ý số xe giảm mạnh; phí vào trung tâm nhằm giảm xe chứ không làm tăng.",
+     "welcomed": "welcomed là chào đón, không đi hợp với the number of vehicles dramatically theo nghĩa thay đổi con số."
+    }
    },
    {
     "opts": [
@@ -9531,7 +10501,12 @@ const CLOZE_MC = [
      "draw"
     ],
     "a": 0,
-    "why": "\"make the point that\" = nêu quan điểm rằng."
+    "why": "\"make the point that\" = nêu quan điểm rằng.",
+    "wrong": {
+     "take": "take the point that không phải cụm cố định để nêu ý kiến; take the point nghĩa là hiểu quan điểm, không phải đưa ra.",
+     "hold": "hold the point that không phải cụm đúng; hold không diễn tả việc nêu quan điểm của những người phản đối.",
+     "draw": "draw the point that không tồn tại; draw a conclusion thì có, còn nêu quan điểm là make the point that."
+    }
    },
    {
     "opts": [
@@ -9541,7 +10516,12 @@ const CLOZE_MC = [
      "viewed"
     ],
     "a": 0,
-    "why": "\"It remains to be seen whether\" = còn phải chờ xem, cụm cố định."
+    "why": "\"It remains to be seen whether\" = còn phải chờ xem, cụm cố định.",
+    "wrong": {
+     "looked": "looked không tạo cụm với it remains to be; chỉ có it remains to be seen, mang nghĩa còn phải chờ xem.",
+     "watched": "watched không dùng trong cấu trúc bị động it remains to be ...; cụm cố định là it remains to be seen.",
+     "viewed": "viewed không đi với it remains to be whether; viewed whether sai nghĩa và cấu trúc, cần seen."
+    }
    },
    {
     "opts": [
@@ -9551,7 +10531,12 @@ const CLOZE_MC = [
      "turn"
     ],
     "a": 0,
-    "why": "\"make the situation worse\" = làm tình hình tệ hơn."
+    "why": "\"make the situation worse\" = làm tình hình tệ hơn.",
+    "wrong": {
+     "do": "do the situation worse sai vì do không đi với bổ ngữ tính từ worse; cấu trúc đúng là make + tân ngữ + tính từ.",
+     "cause": "cause the situation worse sai cấu trúc; cause + tân ngữ + to-V hoặc cause + danh từ, không có tính từ theo sau.",
+     "turn": "turn the situation worse sai; turn dùng với nghĩa biến thành (turn into) hoặc trở nên, không đi với tân ngữ + tính từ này."
+    }
    },
    {
     "opts": [
@@ -9561,7 +10546,12 @@ const CLOZE_MC = [
      "hinge"
     ],
     "a": 0,
-    "why": "\"require cooperation\" là ngoại động từ; depend/rely/hinge cần giới từ on."
+    "why": "\"require cooperation\" là ngoại động từ; depend/rely/hinge cần giới từ on.",
+    "wrong": {
+     "depend": "depend phải có on đi sau, mà chỗ trống có tân ngữ trực tiếp cooperation nên không đúng cấu trúc.",
+     "rely": "rely phải đi với on (rely on cooperation), còn câu này không có giới từ nên không dùng được.",
+     "hinge": "hinge phải đi với on (hinge on cooperation); không có on thì sai cấu trúc ngữ pháp."
+    }
    }
   ]
  },
@@ -9579,7 +10569,12 @@ const CLOZE_MC = [
      "run"
     ],
     "a": 0,
-    "why": "\"go away\" = biến mất, hết (cơn ho). \"pass away\" nghĩa là qua đời; \"leave/run away\" không dùng với cơn ho."
+    "why": "\"go away\" = biến mất, hết (cơn ho). \"pass away\" nghĩa là qua đời; \"leave/run away\" không dùng với cơn ho.",
+    "wrong": {
+     "pass": "pass away là cách nói giảm nói tránh của \"qua đời\", không thể dùng cho một cơn ho kéo dài; câu cần nghĩa là cơn ho biến mất.",
+     "leave": "leave away không phải cụm động từ trong tiếng Anh; cơn ho không thể \"rời đi\" kiểu đó, cụm đúng với nghĩa biến mất là go away.",
+     "run": "run away nghĩa là chạy trốn, dùng cho người hoặc con vật; một cơn ho không \"chạy trốn\", nên không hợp với chủ ngữ a bad cough."
+    }
    },
    {
     "opts": [
@@ -9589,7 +10584,12 @@ const CLOZE_MC = [
      "attend"
     ],
     "a": 0,
-    "why": "\"wait for + khoảng thời gian\"; \"await\" và \"expect\" cần tân ngữ trực tiếp, \"attend\" không hợp nghĩa."
+    "why": "\"wait for + khoảng thời gian\"; \"await\" và \"expect\" cần tân ngữ trực tiếp, \"attend\" không hợp nghĩa.",
+    "wrong": {
+     "await": "await là ngoại động từ, đi thẳng với tân ngữ (await the result) và không đi với for; ở đây sau chỗ trống là for almost forty minutes nên cần wait.",
+     "expect": "expect nghĩa là mong đợi, dự đoán một việc sẽ xảy ra và không đi với for + khoảng thời gian; người bệnh ngồi chờ đến lượt nên phải dùng wait.",
+     "attend": "attend nghĩa là tham dự (a meeting, a class) và không tạo nghĩa chờ đợi; người bệnh ở phòng chờ là đang chờ đến lượt chứ không đi dự sự kiện nào."
+    }
    },
    {
     "opts": [
@@ -9599,7 +10599,12 @@ const CLOZE_MC = [
      "set"
     ],
     "a": 0,
-    "why": "Cụm cố định \"take someone's temperature\" = đo nhiệt độ."
+    "why": "Cụm cố định \"take someone's temperature\" = đo nhiệt độ.",
+    "wrong": {
+     "made": "make không đi với temperature theo nghĩa đo nhiệt độ; nếu dùng make a temperature thì thành nghĩa lạ, cụm đúng của y tế là take someone's temperature.",
+     "put": "put chỉ việc đặt một vật vào chỗ nào đó, nên put my temperature không tạo nghĩa đo nhiệt độ; cần động từ take trong cụm cố định.",
+     "set": "set my temperature nghe như chỉnh nhiệt độ của một thiết bị (lò sưởi, máy điều hòa), không phải đo thân nhiệt người bệnh."
+    }
    },
    {
     "opts": [
@@ -9609,7 +10614,12 @@ const CLOZE_MC = [
      "manners"
     ],
     "a": 0,
-    "why": "Bác sĩ hỏi về triệu chứng: \"whether I had a fever or a headache\" là các symptoms."
+    "why": "Bác sĩ hỏi về triệu chứng: \"whether I had a fever or a headache\" là các symptoms.",
+    "wrong": {
+     "ingredients": "ingredients là nguyên liệu (của món ăn, thuốc); bác sĩ không hỏi về nguyên liệu mà hỏi về triệu chứng như sốt, đau đầu ở vế sau.",
+     "results": "results là kết quả (xét nghiệm, thi cử); bệnh nhân chưa làm xét nghiệm gì, còn fever và headache là biểu hiện bệnh, tức symptoms.",
+     "manners": "manners là phép lịch sự, cách cư xử; sốt hay đau đầu không phải là manners, và bác sĩ hỏi về tình trạng bệnh chứ không về cách cư xử."
+    }
    },
    {
     "opts": [
@@ -9619,7 +10629,12 @@ const CLOZE_MC = [
      "bring"
     ],
     "a": 0,
-    "why": "\"give up\" = từ bỏ; ba phương án còn lại không tạo thành cụm hợp nghĩa với \"up exercise\"."
+    "why": "\"give up\" = từ bỏ; ba phương án còn lại không tạo thành cụm hợp nghĩa với \"up exercise\".",
+    "wrong": {
+     "put": "put up with là chịu đựng và put up là dựng lên; put up exercise không có nghĩa từ bỏ tập thể dục như câu cần diễn đạt.",
+     "set": "set up nghĩa là thành lập, thiết lập; set up exercise không có nghĩa là bỏ tập luyện, trong khi cụm đúng là give up.",
+     "bring": "bring up là nuôi dạy hoặc đưa ra một vấn đề; bring up exercise không diễn tả việc ngừng tập, vốn cần give up."
+    }
    },
    {
     "opts": [
@@ -9629,7 +10644,12 @@ const CLOZE_MC = [
      "sold"
     ],
     "a": 0,
-    "why": "Bệnh nhân đến nhà thuốc để lấy thuốc: \"collected the medicine\". Borrowed/lent/sold sai logic."
+    "why": "Bệnh nhân đến nhà thuốc để lấy thuốc: \"collected the medicine\". Borrowed/lent/sold sai logic.",
+    "wrong": {
+     "borrowed": "borrowed là mượn; ở hiệu thuốc người ta mua hoặc lấy thuốc theo đơn chứ không mượn thuốc, nên không hợp logic.",
+     "lent": "lent là cho mượn, tức bệnh nhân là người đưa thuốc cho người khác; nhưng cô ấy đến hiệu thuốc để nhận thuốc theo đơn nên nghĩa bị ngược.",
+     "sold": "sold là bán; bệnh nhân cầm đơn đến hiệu thuốc là để lấy thuốc, không phải người bán thuốc, nên không hợp nghĩa."
+    }
    },
    {
     "opts": [
@@ -9639,7 +10659,12 @@ const CLOZE_MC = [
      "well"
     ],
     "a": 0,
-    "why": "\"much better\" là dạng so sánh hơn sau \"feel\"; \"much best/good/well\" sai ngữ pháp."
+    "why": "\"much better\" là dạng so sánh hơn sau \"feel\"; \"much best/good/well\" sai ngữ pháp.",
+    "wrong": {
+     "best": "best là so sánh nhất của good/well và thường đi với the; much không đứng trước best theo cách này, mà cần so sánh hơn sau đó là much better.",
+     "good": "good là tính từ ở dạng nguyên mức, không đi với much; much chỉ bổ nghĩa cho dạng so sánh hơn như better, và câu nói về sự cải thiện nên cần better.",
+     "well": "well ở dạng nguyên mức, không đi với much để chỉ sự hơn kém; câu có Now ... much gợi ý so sánh với lúc ốm nên phải dùng better."
+    }
    },
    {
     "opts": [
@@ -9649,7 +10674,12 @@ const CLOZE_MC = [
      "by"
     ],
     "a": 0,
-    "why": "Cụm cố định \"in advance\" = trước, từ trước."
+    "why": "Cụm cố định \"in advance\" = trước, từ trước.",
+    "wrong": {
+     "at": "at đi với thời điểm hoặc địa điểm cụ thể (at noon, at the door); nghĩa \"trước, từ trước\" phải dùng cụm cố định in advance.",
+     "on": "on đi với ngày, thứ (on Monday) hoặc bề mặt; cụm on advance không tồn tại, nghĩa từ trước đúng phải là in advance.",
+     "by": "by advance không phải cụm cố định; by dùng cho hạn chót (by Friday) hay phương tiện, còn nghĩa đặt lịch trước phải là in advance."
+    }
    }
   ]
  },
@@ -9667,7 +10697,12 @@ const CLOZE_MC = [
      "in"
     ],
     "a": 0,
-    "why": "\"set off for\" = lên đường đi đến; \"set up/down/in\" không hợp nghĩa."
+    "why": "\"set off for\" = lên đường đi đến; \"set up/down/in\" không hợp nghĩa.",
+    "wrong": {
+     "up": "set up nghĩa là thành lập hay dựng lên (set up a business); không hợp với việc lên đường đến một ngôi làng, cần set off.",
+     "down": "set down nghĩa là đặt xuống hoặc ghi lại; nó không diễn tả việc bắt đầu một chuyến đi tới ngôi làng, cần set off for.",
+     "in": "set in dùng cho điều khó chịu bắt đầu kéo dài (winter set in); nó không đi với for và không có nghĩa khởi hành đi đâu."
+    }
    },
    {
     "opts": [
@@ -9677,7 +10712,12 @@ const CLOZE_MC = [
      "made"
     ],
     "a": 0,
-    "why": "\"The journey took six hours\": chủ ngữ là chuyến đi nên dùng \"took\"; \"spent\" cần chủ ngữ là người."
+    "why": "\"The journey took six hours\": chủ ngữ là chuyến đi nên dùng \"took\"; \"spent\" cần chủ ngữ là người.",
+    "wrong": {
+     "spent": "spent cần chủ ngữ là người (we spent six hours travelling); ở đây chủ ngữ là the journey nên phải dùng took.",
+     "passed": "passed dùng cho thời gian trôi qua (the time passed) hoặc đi ngang qua; the journey passed six hours không tạo nghĩa chuyến đi mất sáu giờ.",
+     "made": "made không đi với khoảng thời gian trong cấu trúc chuyến đi kéo dài bao lâu; cấu trúc đúng là The journey took + khoảng thời gian."
+    }
    },
    {
     "opts": [
@@ -9687,7 +10727,12 @@ const CLOZE_MC = [
      "came"
     ],
     "a": 0,
-    "why": "\"reach + địa điểm\" không cần giới từ; arrived/got/came cần \"at/in/to\"."
+    "why": "\"reach + địa điểm\" không cần giới từ; arrived/got/came cần \"at/in/to\".",
+    "wrong": {
+     "arrived": "arrived là nội động từ, cần giới từ at/in (arrived at the village); sau chỗ trống là the village, không có giới từ nên phải dùng reached.",
+     "got": "got muốn đến nơi phải có giới từ (got to the village); không có to thì got the village chỉ nghĩa là nhận được ngôi làng, sai nghĩa.",
+     "came": "came cũng là nội động từ và cần giới từ (came to the village); đứng thẳng trước tân ngữ the village mà không có giới từ là sai."
+    }
    },
    {
     "opts": [
@@ -9697,7 +10742,12 @@ const CLOZE_MC = [
      "did"
     ],
     "a": 0,
-    "why": "Cụm cố định \"give someone a warm welcome\"."
+    "why": "Cụm cố định \"give someone a warm welcome\".",
+    "wrong": {
+     "made": "make a welcome không phải cách nói tự nhiên; cụm cố định chào đón nồng nhiệt là give someone a warm welcome.",
+     "took": "took không đi với welcome theo nghĩa chào đón ai; take a welcome không tạo nghĩa chủ nhà đón khách, cần give.",
+     "did": "do không kết hợp với welcome; do thường đi với việc làm (do homework, do a favour), còn chào đón phải là give a warm welcome."
+    }
    },
    {
     "opts": [
@@ -9707,7 +10757,12 @@ const CLOZE_MC = [
      "replaced"
     ],
     "a": 0,
-    "why": "\"The weather changed suddenly\" = thời tiết đổi đột ngột; moved/stopped/replaced không đi với weather hoặc trái logic (trời bắt đầu mưa)."
+    "why": "\"The weather changed suddenly\" = thời tiết đổi đột ngột; moved/stopped/replaced không đi với weather hoặc trái logic (trời bắt đầu mưa).",
+    "wrong": {
+     "moved": "moved nghĩa là di chuyển hay xúc động; thời tiết không tự di chuyển, và vế sau là trời bắt đầu mưa nên cần nghĩa là thời tiết thay đổi.",
+     "stopped": "stopped nghĩa là ngừng; nếu thời tiết dừng lại thì không thể suddenly và it started to rain heavily ở sau, vì trời mưa là thay đổi chứ không phải dừng.",
+     "replaced": "replaced là thay thế một vật bằng vật khác và cần tân ngữ; the weather replaced suddenly thiếu tân ngữ và không hợp nghĩa."
+    }
    },
    {
     "opts": [
@@ -9717,7 +10772,12 @@ const CLOZE_MC = [
      "stopped"
     ],
     "a": 0,
-    "why": "\"had forgotten to bring\" = đã quên mang; \"forgotten\" là quá khứ phân từ phù hợp với \"had\"."
+    "why": "\"had forgotten to bring\" = đã quên mang; \"forgotten\" là quá khứ phân từ phù hợp với \"had\".",
+    "wrong": {
+     "missed": "missed nghĩa là bỏ lỡ hoặc nhớ; had missed to bring là sai cấu trúc vì miss không đi với to-V, trong khi forget to bring mới đúng.",
+     "lost": "lost là mất (vật sở hữu); had lost to bring không thành cấu trúc, vì lose không đi với to-V và không diễn tả việc quên mang.",
+     "stopped": "stopped to bring nghĩa là dừng lại để mang, trái với ý họ chưa chuẩn bị áo mưa; ý đúng là quên mang, tức had forgotten to bring."
+    }
    },
    {
     "opts": [
@@ -9727,7 +10787,12 @@ const CLOZE_MC = [
      "away"
     ],
     "a": 0,
-    "why": "\"was over\" = đã kết thúc; \"the storm was out/off/away\" không tự nhiên."
+    "why": "\"was over\" = đã kết thúc; \"the storm was out/off/away\" không tự nhiên.",
+    "wrong": {
+     "out": "the storm was out không tự nhiên; out dùng cho lửa, đèn (the fire is out), còn khi cơn bão kết thúc thì dùng was over.",
+     "off": "was off thường nghĩa là bị hủy hoặc tắt (the match is off); nó không diễn tả cơn bão đã kết thúc như was over.",
+     "away": "was away nghĩa là vắng mặt, không có ở đó; cơn bão không \"đi vắng\", muốn nói cơn bão đã qua thì dùng was over."
+    }
    },
    {
     "opts": [
@@ -9737,7 +10802,12 @@ const CLOZE_MC = [
      "demand"
     ],
     "a": 0,
-    "why": "\"recommend something to someone\" = giới thiệu cho ai; \"advise it to\" sai cấu trúc."
+    "why": "\"recommend something to someone\" = giới thiệu cho ai; \"advise it to\" sai cấu trúc.",
+    "wrong": {
+     "advise": "advise không đi với cấu trúc advise something to someone; advise nghĩa là khuyên và đi với tân ngữ chỉ người (advise you to go), còn giới thiệu cho ai thì dùng recommend.",
+     "insist": "insist thường đi với on hay that (insist on going); insist the place to anyone không đúng cấu trúc và nghĩa khẳng khăng không hợp vế sau.",
+     "demand": "demand nghĩa là đòi hỏi mạnh mẽ, không dùng được với một nơi chốn và to anyone; người kể chỉ muốn giới thiệu nơi này nên cần recommend."
+    }
    }
   ]
  },
@@ -9755,7 +10825,12 @@ const CLOZE_MC = [
      "turn"
     ],
     "a": 0,
-    "why": "\"have set up\" = thiết lập, xây dựng; \"turned/taken/given up\" không hợp nghĩa với \"simulation centres\"."
+    "why": "\"have set up\" = thiết lập, xây dựng; \"turned/taken/given up\" không hợp nghĩa với \"simulation centres\".",
+    "wrong": {
+     "take": "have taken up nghĩa là bắt đầu một sở thích hay chiếm thời gian; take up simulation centres không có nghĩa là thành lập trung tâm.",
+     "give": "give up nghĩa là từ bỏ; nếu các trường đã give up simulation centres thì trái với việc học viên đang luyện tập ở đó ở vế sau.",
+     "turn": "turn up nghĩa là xuất hiện hoặc vặn to lên; turn up simulation centres không diễn tả việc thành lập trung tâm mô phỏng."
+    }
    },
    {
     "opts": [
@@ -9765,7 +10840,12 @@ const CLOZE_MC = [
      "join"
     ],
     "a": 0,
-    "why": "Cụm cố định \"take part in\" = tham gia."
+    "why": "Cụm cố định \"take part in\" = tham gia.",
+    "wrong": {
+     "make": "make part không phải cụm cố định; make thường đi với mistake, decision, còn tham gia vào một việc là take part in.",
+     "have": "have part không tạo nghĩa tham gia; muốn nói tham gia vào một tình huống thì dùng cụm cố định take part in.",
+     "join": "join là ngoại động từ, đi thẳng với tân ngữ (join a scenario); join part in không tồn tại và dư chữ part."
+    }
    },
    {
     "opts": [
@@ -9775,7 +10855,12 @@ const CLOZE_MC = [
      "have"
     ],
     "a": 0,
-    "why": "Collocation \"make mistakes\" (mắc lỗi)."
+    "why": "Collocation \"make mistakes\" (mắc lỗi).",
+    "wrong": {
+     "do": "do không đi với mistakes theo nghĩa mắc lỗi; collocation đúng là make mistakes, còn do thường dùng cho do homework, do research.",
+     "take": "take mistakes không phải collocation; take dùng cho take a chance, take a risk, còn mắc lỗi phải là make mistakes.",
+     "have": "have mistakes ít dùng và không tự nhiên cho nghĩa phạm lỗi khi tập luyện; cụm chuẩn là make mistakes, đặc biệt sau to."
+    }
    },
    {
     "opts": [
@@ -9785,7 +10870,12 @@ const CLOZE_MC = [
      "printed"
     ],
     "a": 0,
-    "why": "Buổi tập được ghi hình: \"recorded on video\"; written/drawn/printed không đi với video."
+    "why": "Buổi tập được ghi hình: \"recorded on video\"; written/drawn/printed không đi với video.",
+    "wrong": {
+     "written": "written là quá khứ phân từ của write, chỉ việc viết ra giấy; không thể write something on video, còn buổi tập được ghi hình là recorded.",
+     "drawn": "drawn là vẽ hoặc kéo; một buổi tập không thể được vẽ lên video, mà phải được ghi lại bằng video, tức recorded.",
+     "printed": "printed là in ra giấy; video là hình ảnh động nên không thể printed on video, trong khi recorded on video mới là cụm tự nhiên."
+    }
    },
    {
     "opts": [
@@ -9795,7 +10885,12 @@ const CLOZE_MC = [
      "rescue"
     ],
     "a": 0,
-    "why": "\"replace a real human being\" = thay thế người thật; các từ còn lại sai nghĩa."
+    "why": "\"replace a real human being\" = thay thế người thật; các từ còn lại sai nghĩa.",
+    "wrong": {
+     "remove": "remove nghĩa là loại bỏ, lấy đi; nói mô hình không bao giờ loại bỏ được một con người thật thì không hợp nghĩa với việc so sánh mô hình và người thật.",
+     "repair": "repair là sửa chữa; người thật không phải là vật hỏng cần sửa, nên a model can never repair a real human being vô nghĩa trong ngữ cảnh.",
+     "rescue": "rescue là cứu, giải cứu; câu đang bàn mô hình có thể thay thế người thật hay không chứ không bàn việc cứu người, nên cần replace."
+    }
    },
    {
     "opts": [
@@ -9805,7 +10900,12 @@ const CLOZE_MC = [
      "Similarly"
     ],
     "a": 0,
-    "why": "Câu trước nêu chỉ trích, câu sau nêu kết quả trái chiều nên cần liên từ nhượng bộ \"Nevertheless\"."
+    "why": "Câu trước nêu chỉ trích, câu sau nêu kết quả trái chiều nên cần liên từ nhượng bộ \"Nevertheless\".",
+    "wrong": {
+     "Therefore": "Therefore chỉ kết quả của ý trước; ở đây câu trước là lời chỉ trích, câu sau nêu kết quả tích cực đối lập, nên cần liên từ nhượng bộ như Nevertheless.",
+     "Besides": "Besides nghĩa là hơn nữa, thêm vào đó để bổ sung cùng chiều; câu sau lại nêu điều tương phản với lời chỉ trích, nên không hợp.",
+     "Similarly": "Similarly nghĩa là tương tự, cùng chiều với ý trước; nhưng câu sau mâu thuẫn với lời chỉ trích về mô hình, nên cần Nevertheless."
+    }
    },
    {
     "opts": [
@@ -9815,7 +10915,12 @@ const CLOZE_MC = [
      "taken"
     ],
     "a": 0,
-    "why": "Collocation \"make a difference\" = tạo ra sự khác biệt."
+    "why": "Collocation \"make a difference\" = tạo ra sự khác biệt.",
+    "wrong": {
+     "done": "done không đi với difference trong cụm này; do thường dùng với do good, do harm, còn tạo ra sự khác biệt là make a difference.",
+     "given": "given a difference không phải collocation; give nghĩa là đưa, tặng, còn cụm cố định nói việc gì đó có tác động là make a difference.",
+     "taken": "taken a difference không tạo nghĩa có tác động; take đi với take a decision, take a risk, còn tạo ra sự khác biệt phải là make."
+    }
    },
    {
     "opts": [
@@ -9825,7 +10930,12 @@ const CLOZE_MC = [
      "mercy"
     ],
     "a": 0,
-    "why": "Cụm cố định \"at the expense of\" = gây thiệt hại cho; \"at the mercy of\" nghĩa là bị phụ thuộc, sai ngữ cảnh \"cannot afford to learn\"."
+    "why": "Cụm cố định \"at the expense of\" = gây thiệt hại cho; \"at the mercy of\" nghĩa là bị phụ thuộc, sai ngữ cảnh \"cannot afford to learn\".",
+    "wrong": {
+     "benefit": "at the benefit of không phải cụm cố định; cụm gần nghĩa là for the benefit of, còn học trên bệnh nhân gây thiệt hại phải là at the expense of.",
+     "request": "at the request of nghĩa là theo yêu cầu của; vẫn không hợp, vì câu nói học bằng cách gây thiệt hại cho bệnh nhân, cần at the expense of.",
+     "mercy": "at the mercy of nghĩa là bị phụ thuộc, chịu sự chi phối của; nó không diễn tả việc học mà làm bệnh nhân bị thiệt, vốn là at the expense of."
+    }
    }
   ]
  },
@@ -9843,7 +10953,12 @@ const CLOZE_MC = [
      "confident"
     ],
     "a": 0,
-    "why": "Câu sau nói \"She worried\", nên ban đầu cô ấy hoài nghi: \"sceptical\"."
+    "why": "Câu sau nói \"She worried\", nên ban đầu cô ấy hoài nghi: \"sceptical\".",
+    "wrong": {
+     "enthusiastic": "enthusiastic nghĩa là hào hứng, trái với câu sau she worried that she would feel lonely; người đang lo lắng thì không hào hứng.",
+     "grateful": "grateful nghĩa là biết ơn; công ty vừa đưa ra chính sách làm việc từ xa và Anna lo lắng, nên cô ấy không thể biết ơn về ý tưởng đó.",
+     "confident": "confident nghĩa là tự tin; điều đó mâu thuẫn với vế sau she worried that..., vì lo lắng nghĩa là cô ấy hoài nghi về ý tưởng."
+    }
    },
    {
     "opts": [
@@ -9853,7 +10968,12 @@ const CLOZE_MC = [
      "join"
     ],
     "a": 0,
-    "why": "\"separate A from B\" = tách A khỏi B; combine/connect/join không đi với \"from\"."
+    "why": "\"separate A from B\" = tách A khỏi B; combine/connect/join không đi với \"from\".",
+    "wrong": {
+     "combine": "combine nghĩa là kết hợp và đi với with; combine work from private life sai giới từ và ngược nghĩa vì cô ấy lo khó tách bạch hai thứ.",
+     "connect": "connect đi với with/to, không đi với from; ngoài ra nghĩa kết nối ngược với nỗi lo khó phân biệt công việc và đời tư.",
+     "join": "join nghĩa là tham gia, nối lại, và không đi với from theo cách này; câu cần động từ đi với from để nói tách công việc ra khỏi đời tư."
+    }
    },
    {
     "opts": [
@@ -9863,7 +10983,12 @@ const CLOZE_MC = [
      "passed"
     ],
     "a": 0,
-    "why": "\"her view has changed\" = quan điểm đã thay đổi; \"however\" báo hiệu sự đối lập."
+    "why": "\"her view has changed\" = quan điểm đã thay đổi; \"however\" báo hiệu sự đối lập.",
+    "wrong": {
+     "grown": "grown nghĩa là lớn lên hoặc tăng dần; her view has grown không tạo nghĩa quan điểm thay đổi, và view không phải thứ phát triển kích thước.",
+     "risen": "risen dùng cho số lượng, giá cả tăng (prices have risen); quan điểm thay đổi hoàn toàn thì dùng changed, không phải rise.",
+     "passed": "passed là đi qua, trôi qua; her view has passed completely không tạo nghĩa, trong khi however báo hiệu quan điểm đổi sang hướng ngược."
+    }
    },
    {
     "opts": [
@@ -9873,7 +10998,12 @@ const CLOZE_MC = [
      "get"
     ],
     "a": 0,
-    "why": "Cụm cố định \"take advantage of\" = tận dụng."
+    "why": "Cụm cố định \"take advantage of\" = tận dụng.",
+    "wrong": {
+     "make": "make advantage không tạo thành cụm cố định; cụm đúng nghĩa tận dụng là take advantage of, đi với of sau chỗ trống.",
+     "have": "have advantage of không thành cụm tận dụng; have an advantage over nghĩa là có lợi thế hơn, còn tận dụng buổi sáng yên tĩnh phải là take advantage of.",
+     "get": "get advantage không phải cụm cố định, thường nói get an advantage; nghĩa tận dụng hơn nữa cần cụm có of là take advantage of."
+    }
    },
    {
     "opts": [
@@ -9883,7 +11013,12 @@ const CLOZE_MC = [
      "rose"
     ],
     "a": 0,
-    "why": "\"has risen\": nội động từ ở thì hiện tại hoàn thành; \"raised\" cần tân ngữ, \"rose\" sai thì."
+    "why": "\"has risen\": nội động từ ở thì hiện tại hoàn thành; \"raised\" cần tân ngữ, \"rose\" sai thì.",
+    "wrong": {
+     "raised": "raised là ngoại động từ, cần tân ngữ (has raised the productivity); ở đây productivity là chủ ngữ của has ... slightly nên phải dùng nội động từ risen.",
+     "arisen": "arisen là của arise nghĩa là nảy sinh, xuất hiện (a problem has arisen); không dùng để nói năng suất tăng lên nhẹ.",
+     "rose": "rose là quá khứ đơn của rise; sau has cần quá khứ phân từ risen, và has rose sai thì quá khứ phân từ."
+    }
    },
    {
     "opts": [
@@ -9893,7 +11028,12 @@ const CLOZE_MC = [
      "reserve"
     ],
     "a": 0,
-    "why": "Những cuộc trò chuyện ngẫu nhiên khó \"recreate\" (tái tạo) trong họp trực tuyến."
+    "why": "Những cuộc trò chuyện ngẫu nhiên khó \"recreate\" (tái tạo) trong họp trực tuyến.",
+    "wrong": {
+     "resist": "resist nghĩa là chống lại, cưỡng lại; những cuộc trò chuyện tình cờ khó mà resist trong cuộc họp online thì không hợp nghĩa.",
+     "rescue": "rescue là cứu thoát; không ai cứu các cuộc trò chuyện bên máy pha cà phê, câu cần nói chúng khó được tái tạo trong họp trực tuyến.",
+     "reserve": "reserve nghĩa là đặt trước hoặc để dành; không hợp với những cuộc trò chuyện ngẫu nhiên, vốn khó tái tạo, tức recreate."
+    }
    },
    {
     "opts": [
@@ -9903,7 +11043,12 @@ const CLOZE_MC = [
      "made"
     ],
     "a": 0,
-    "why": "\"has set up a weekly lunch\" = tổ chức bữa trưa hằng tuần; các cụm còn lại không hợp nghĩa."
+    "why": "\"has set up a weekly lunch\" = tổ chức bữa trưa hằng tuần; các cụm còn lại không hợp nghĩa.",
+    "wrong": {
+     "put": "put up chỉ dựng lên, treo lên hoặc cho ai ở nhờ (put up a tent, put up a guest); put up a weekly lunch không có nghĩa là lập ra một bữa trưa định kỳ.",
+     "taken": "take up thường nói về một người bắt đầu theo đuổi sở thích, môn học (take up yoga) hoặc chiếm thời gian, chỗ; một nhóm lập ra bữa trưa định kỳ phải dùng set up, không dùng has taken up.",
+     "made": "make up là bịa ra, trang điểm hoặc làm lành; has made up a weekly lunch không có nghĩa là tổ chức một bữa trưa hằng tuần như câu cần."
+    }
    },
    {
     "opts": [
@@ -9913,7 +11058,12 @@ const CLOZE_MC = [
      "preference"
     ],
     "a": 0,
-    "why": "Cụm cố định \"have no choice\" = không còn lựa chọn nào khác."
+    "why": "Cụm cố định \"have no choice\" = không còn lựa chọn nào khác.",
+    "wrong": {
+     "selection": "selection là sự tuyển chọn, tập hợp các thứ được chọn; have no selection không phải cụm cố định, cụm đúng khi không còn cách khác là have no choice.",
+     "decision": "decision đi với make/take (make a decision), không đi với have trong nghĩa này; have no decision không tạo nghĩa không còn lựa chọn nào khác.",
+     "preference": "preference là sở thích ưu tiên; have no preference nghĩa là không thiên về cái nào, khác với không có lựa chọn nào, vốn là have no choice."
+    }
    }
   ]
  },
@@ -9931,7 +11081,12 @@ const CLOZE_MC = [
      "replaced"
     ],
     "a": 0,
-    "why": "\"separate the weak from the strong\" = phân biệt người yếu với người mạnh."
+    "why": "\"separate the weak from the strong\" = phân biệt người yếu với người mạnh.",
+    "wrong": {
+     "removed": "removed nghĩa là loại bỏ; remove the weak from the strong không phải ý của câu, vì thử thách không loại bỏ người yếu mà phân biệt họ với người mạnh.",
+     "protected": "protected nghĩa là bảo vệ, và protect the weak from the strong trái với ý của câu, vì ca trực dài được coi là phép thử, không phải để che chở người yếu.",
+     "replaced": "replaced là thay thế A bằng B (replace the weak with the strong); với from thì sai cấu trúc, và nghĩa không phải phân biệt người yếu với người mạnh."
+    }
    },
    {
     "opts": [
@@ -9941,7 +11096,12 @@ const CLOZE_MC = [
      "talked"
     ],
     "a": 0,
-    "why": "\"Studies have shown that...\" = các nghiên cứu cho thấy; told/spoken/talked sai cấu trúc."
+    "why": "\"Studies have shown that...\" = các nghiên cứu cho thấy; told/spoken/talked sai cấu trúc.",
+    "wrong": {
+     "told": "told cần tân ngữ chỉ người (told us that...); Studies have told that là sai, vì nghiên cứu không nói với ai cụ thể, cần shown that.",
+     "spoken": "spoken không đi với that và không dùng với studies theo nghĩa cho thấy; speak là nói bằng lời, còn nghiên cứu chứng minh thì dùng shown.",
+     "talked": "talked là nói chuyện và đi với about/to, không đi với that; Studies have talked that không đúng, câu cần Studies have shown that."
+    }
    },
    {
     "opts": [
@@ -9951,7 +11111,12 @@ const CLOZE_MC = [
      "unlikely"
     ],
     "a": 0,
-    "why": "\"insisting that...\" cho thấy họ vẫn không bị thuyết phục: \"unconvinced\"."
+    "why": "\"insisting that...\" cho thấy họ vẫn không bị thuyết phục: \"unconvinced\".",
+    "wrong": {
+     "unaware": "unaware nghĩa là không hay biết và thường cần of (unaware of the evidence); vế sau insisting that long hours teach resilience cho thấy họ vẫn khăng khăng giữ ý kiến sau khi có bằng chứng, tức là không bị thuyết phục chứ không phải thiếu thông tin.",
+     "unharmed": "unharmed nghĩa là không bị tổn hại, thường nói về người hay vật sau tai nạn; không diễn tả thái độ của các bác sĩ cấp cao trước bằng chứng mới.",
+     "unlikely": "unlikely nghĩa là không chắc xảy ra, thường đi với to-V hoặc that (unlikely to change); remain unlikely đứng một mình không diễn tả thái độ không bị thuyết phục của họ."
+    }
    },
    {
     "opts": [
@@ -9961,7 +11126,12 @@ const CLOZE_MC = [
      "otherwise"
     ],
     "a": 0,
-    "why": "Ý kiến của người phê bình đối lập với các chuyên gia cao cấp nên dùng \"however\"."
+    "why": "Ý kiến của người phê bình đối lập với các chuyên gia cao cấp nên dùng \"however\".",
+    "wrong": {
+     "therefore": "therefore chỉ kết quả của ý trước; ở đây ý các nhà phê bình đối lập với ý của bác sĩ cấp cao, nên cần however.",
+     "similarly": "similarly nghĩa là tương tự, nối hai ý cùng chiều; nhưng người phê bình phản bác quan điểm của các bác sĩ cấp cao, nên không hợp.",
+     "otherwise": "otherwise nghĩa là nếu không thì, nêu hậu quả của điều kiện trái ngược; nó không dùng để chen vào mà nối ý đối lập như however."
+    }
    },
    {
     "opts": [
@@ -9971,7 +11141,12 @@ const CLOZE_MC = [
      "ignored"
     ],
     "a": 0,
-    "why": "Bệnh viện giới hạn độ dài ca trực: \"capped\"; extended/doubled/ignored trái với \"encouraging\" về sau."
+    "why": "Bệnh viện giới hạn độ dài ca trực: \"capped\"; extended/doubled/ignored trái với \"encouraging\" về sau.",
+    "wrong": {
+     "extended": "extended nghĩa là kéo dài thêm; bệnh viện kéo dài ca trực thì trái với việc kết quả khả quan và lỗi giảm, nên không hợp.",
+     "doubled": "doubled là tăng gấp đôi; nếu độ dài ca trực tăng gấp đôi thì sai nhiều hơn chứ không giảm gần một phần năm như vế sau.",
+     "ignored": "ignored là phớt lờ; nếu bệnh viện phớt lờ độ dài ca trực thì không thể là một phản ứng và errors fell ở sau sẽ vô lý."
+    }
    },
    {
     "opts": [
@@ -9981,7 +11156,12 @@ const CLOZE_MC = [
      "among"
     ],
     "a": 0,
-    "why": "\"within twelve months of the change\" = trong vòng 12 tháng kể từ thay đổi."
+    "why": "\"within twelve months of the change\" = trong vòng 12 tháng kể từ thay đổi.",
+    "wrong": {
+     "until": "until là cho đến khi, đi với mốc thời gian; within twelve months of the change dùng within để chỉ trong vòng, còn until không đi với of the change.",
+     "since": "since đi với mốc bắt đầu trong quá khứ (since 2020) và thường dùng với thì hoàn thành; since twelve months of the change sai cấu trúc.",
+     "among": "among nghĩa là giữa nhiều người, nhiều vật; twelve months là khoảng thời gian, không thể dùng among, cần within chỉ trong vòng."
+    }
    },
    {
     "opts": [
@@ -9991,7 +11171,12 @@ const CLOZE_MC = [
      "flat"
     ],
     "a": 0,
-    "why": "Cụm cố định \"stretched thin\" = quá tải, thiếu người."
+    "why": "Cụm cố định \"stretched thin\" = quá tải, thiếu người.",
+    "wrong": {
+     "short": "stretched short không phải cụm cố định; cụm đúng chỉ quá tải thiếu nhân lực là stretched thin, còn short thường đi với short of.",
+     "narrow": "narrow là hẹp, dùng cho đường, phạm vi; stretched narrow không phải collocation, và không diễn tả lịch trực quá tải vì thiếu người.",
+     "flat": "flat là phẳng, bằng; stretched flat không dùng cho lịch trực, cụm cố định nghĩa là quá tải là stretched thin."
+    }
    },
    {
     "opts": [
@@ -10001,7 +11186,12 @@ const CLOZE_MC = [
      "lack"
     ],
     "a": 0,
-    "why": "\"a sign of weakness\" = dấu hiệu của sự yếu đuối; các từ còn lại sai nghĩa."
+    "why": "\"a sign of weakness\" = dấu hiệu của sự yếu đuối; các từ còn lại sai nghĩa.",
+    "wrong": {
+     "price": "price là giá cả, chi phí; a price of weakness không tự nhiên, vì xin nghỉ ngơi là dấu hiệu của sự yếu đuối trong mắt người khác, tức a sign.",
+     "level": "level là mức độ; a level of weakness không phù hợp, vì câu nói việc xin nghỉ không còn bị coi là biểu hiện của sự yếu đuối.",
+     "lack": "lack nghĩa là sự thiếu; a lack of weakness lại là thiếu sự yếu đuối, và vì có of nên nghĩa bị đảo ngược so với ý của câu."
+    }
    }
   ]
  },
@@ -10019,7 +11209,12 @@ const CLOZE_MC = [
      "depart"
     ],
     "a": 0,
-    "why": "\"differ from ... by\" = khác nhau một khoảng; \"depart from noon\" vô nghĩa."
+    "why": "\"differ from ... by\" = khác nhau một khoảng; \"depart from noon\" vô nghĩa.",
+    "wrong": {
+     "distinguish": "distinguish nghĩa là phân biệt và đi với between/from (distinguish A from B); noon in one city không thể tự phân biệt, cần differ from để nói khác nhau.",
+     "divide": "divide nghĩa là chia ra, và thường có tân ngữ; noon in one city could divide from noon... không đúng, vì giờ trưa không chia cắt mà khác nhau.",
+     "depart": "depart nghĩa là khởi hành, rời đi và đi với from một địa điểm; giờ trưa không thể khởi hành khỏi giờ trưa của thành phố khác."
+    }
    },
    {
     "opts": [
@@ -10029,7 +11224,12 @@ const CLOZE_MC = [
      "proceeded"
     ],
     "a": 0,
-    "why": "\"hardly mattered\" = hầu như không quan trọng, vì hành trình chậm."
+    "why": "\"hardly mattered\" = hầu như không quan trọng, vì hành trình chậm.",
+    "wrong": {
+     "occurred": "occurred nghĩa là xảy ra; hardly occurred nói rằng việc đó hiếm khi xảy ra, nhưng câu cần nói điều đó không quan trọng với người đi bộ, tức mattered.",
+     "resulted": "resulted đi với in/from (resulted in); hardly resulted đứng một mình thiếu giới từ nên không hợp, trong khi mattered tự đủ nghĩa.",
+     "proceeded": "proceeded nghĩa là tiến hành, tiếp tục; hardly proceeded không nói về việc chênh lệch giờ có quan trọng hay không, vốn là ý của câu."
+    }
    },
    {
     "opts": [
@@ -10039,7 +11239,12 @@ const CLOZE_MC = [
      "ran"
     ],
     "a": 0,
-    "why": "\"keep the same time\" = chạy cùng một giờ; các động từ khác không đi với \"the same time\"."
+    "why": "\"keep the same time\" = chạy cùng một giờ; các động từ khác không đi với \"the same time\".",
+    "wrong": {
+     "held": "held the same time không phải cụm tự nhiên; hold dùng cho hold a meeting, hold a record, còn nghĩa chạy đúng giờ thống nhất là keep the same time.",
+     "stood": "stood nghĩa là đứng; stood the same time không tạo nghĩa nhà ga dùng cùng một giờ, và stand không kết hợp với time như vậy.",
+     "ran": "ran là chạy, và run không đi với the same time theo nghĩa giữ giờ chung cho cả nhà ga; chủ ngữ là station nên phải dùng keep."
+    }
    },
    {
     "opts": [
@@ -10049,7 +11254,12 @@ const CLOZE_MC = [
      "allow"
     ],
     "a": 0,
-    "why": "Một giờ quốc gia là cách duy nhất để \"avoid chaos\"; các phương án khác phi logic."
+    "why": "Một giờ quốc gia là cách duy nhất để \"avoid chaos\"; các phương án khác phi logic.",
+    "wrong": {
+     "cause": "cause chaos là gây ra hỗn loạn, trái logic vì giờ quốc gia thống nhất sinh ra để chấm dứt hỗn loạn chứ không gây ra nó.",
+     "spread": "spread chaos là làm hỗn loạn lan rộng; công ty muốn thống nhất giờ để tránh hỗn loạn, nên làm lan rộng nó là phi lý.",
+     "allow": "allow chaos là cho phép hỗn loạn xảy ra; ý của công ty là tìm cách ngăn hỗn loạn, nên cần avoid chứ không phải allow."
+    }
    },
    {
     "opts": [
@@ -10059,7 +11269,12 @@ const CLOZE_MC = [
      "enjoying"
     ],
     "a": 0,
-    "why": "Họ phản đối vì sợ: \"fearing that their independence was under threat\"."
+    "why": "Họ phản đối vì sợ: \"fearing that their independence was under threat\".",
+    "wrong": {
+     "hoping": "hoping that nghĩa là hy vọng; nhưng hy vọng rằng quyền độc lập đang bị đe dọa thì vô lý, họ phản đối vì sợ, tức fearing.",
+     "wishing": "wishing that thường đi với mệnh đề giả định; wishing that their independence was under threat nghĩa là ước họ đang bị đe dọa, vô lý với việc họ kháng cự.",
+     "enjoying": "enjoying nghĩa là thích thú; enjoying that their independence was under threat không hợp lý, vì thấy bị đe dọa thì phản đối vì lo sợ chứ không vui thích."
+    }
    },
    {
     "opts": [
@@ -10069,7 +11284,12 @@ const CLOZE_MC = [
      "deny"
     ],
     "a": 0,
-    "why": "\"came to accept the new system\" = dần chấp nhận, vì lợi ích thực tế rõ ràng; oppose/doubt/deny trái với \"however\" và \"benefits\"."
+    "why": "\"came to accept the new system\" = dần chấp nhận, vì lợi ích thực tế rõ ràng; oppose/doubt/deny trái với \"however\" và \"benefits\".",
+    "wrong": {
+     "oppose": "oppose nghĩa là phản đối; however và practical benefits cho thấy công chúng đã chuyển từ phản đối sang chấp nhận, nên oppose không hợp.",
+     "doubt": "doubt nghĩa là nghi ngờ; vế sau nói lợi ích thực tế không thể bỏ qua, nên công chúng không còn nghi ngờ mà dần chấp nhận.",
+     "deny": "deny nghĩa là phủ nhận, chối; deny the new system mâu thuẫn với however và benefits, vì họ dần chấp nhận hệ thống mới."
+    }
    },
    {
     "opts": [
@@ -10079,7 +11299,12 @@ const CLOZE_MC = [
      "repair"
     ],
     "a": 0,
-    "why": "\"impossible to ignore\" = không thể làm ngơ trước lợi ích thực tế."
+    "why": "\"impossible to ignore\" = không thể làm ngơ trước lợi ích thực tế.",
+    "wrong": {
+     "borrow": "borrow nghĩa là mượn; không thể borrow lợi ích thực tế, và impossible to borrow vô nghĩa, trong khi ignore là phớt lờ.",
+     "lend": "lend nghĩa là cho mượn; lợi ích không được cho mượn, nên impossible to lend không hợp nghĩa của câu.",
+     "repair": "repair nghĩa là sửa chữa; lợi ích thực tế không phải vật hỏng cần sửa, nên impossible to repair không phải ý của câu."
+    }
    },
    {
     "opts": [
@@ -10089,7 +11314,12 @@ const CLOZE_MC = [
      "extended"
     ],
     "a": 0,
-    "why": "\"embedded in daily life\" = ăn sâu vào đời sống; các từ còn lại không đi với \"in daily life\"."
+    "why": "\"embedded in daily life\" = ăn sâu vào đời sống; các từ còn lại không đi với \"in daily life\".",
+    "wrong": {
+     "embarked": "embarked đi với on (embark on a journey) và thường chỉ việc bắt đầu một hành trình; embarked in daily life sai giới từ và nghĩa.",
+     "enrolled": "enrolled nghĩa là đăng ký, ghi danh (enrolled in a course); không dùng cho một hệ thống ăn sâu vào đời sống hàng ngày.",
+     "extended": "extended nghĩa là mở rộng, kéo dài; extended in daily life không diễn tả sự ăn sâu, và cụm in daily life hợp với embedded."
+    }
    }
   ]
  },
@@ -10107,7 +11337,12 @@ const CLOZE_MC = [
      "hold on"
     ],
     "a": 0,
-    "why": "\"Carry out tasks\" là cụm cố định (thực hiện nhiệm vụ); các cụm còn lại không đi với tasks trong nghĩa này."
+    "why": "\"Carry out tasks\" là cụm cố định (thực hiện nhiệm vụ); các cụm còn lại không đi với tasks trong nghĩa này.",
+    "wrong": {
+     "bring up": "Bring up nghĩa là nêu vấn đề hoặc nuôi nấng, không dùng để nói tế bào thực hiện nhiều nhiệm vụ đòi hỏi cao; carry out mới là thực hiện nhiệm vụ.",
+     "put off": "Put off nghĩa là trì hoãn, trái với ý tế bào phải làm đồng thời nhiều nhiệm vụ cùng lúc; cần carry out (thực hiện).",
+     "hold on": "Hold on là nội động từ (chờ, bám chặt) nên không có tân ngữ several demanding tasks theo sau; nghĩa cũng không phù hợp."
+    }
    },
    {
     "opts": [
@@ -10117,7 +11352,12 @@ const CLOZE_MC = [
      "smell"
     ],
     "a": 1,
-    "why": "Tế bào lấy năng lượng từ ánh sáng mặt trời hoặc thức ăn: \"sunlight or food\"."
+    "why": "Tế bào lấy năng lượng từ ánh sáng mặt trời hoặc thức ăn: \"sunlight or food\".",
+    "wrong": {
+     "shade": "Tế bào lấy năng lượng từ ánh sáng mặt trời hoặc chất dinh dưỡng; bóng râm (shade) không phải nguồn năng lượng, nên không hợp với sunlight or ___.",
+     "silence": "Silence là sự im lặng, không phải nguồn năng lượng cho tế bào; vế sunlight or ___ cần một nguồn như food.",
+     "smell": "Smell là mùi, không cung cấp năng lượng cho tế bào, nên không thể đứng song song với sunlight như một nguồn năng lượng."
+    }
    },
    {
     "opts": [
@@ -10127,7 +11367,12 @@ const CLOZE_MC = [
      "achieve"
     ],
     "a": 2,
-    "why": "\"Remain as cells\" nghĩa là vẫn còn là tế bào; \"become as\" không đúng nghĩa."
+    "why": "\"Remain as cells\" nghĩa là vẫn còn là tế bào; \"become as\" không đúng nghĩa.",
+    "wrong": {
+     "become": "Become as cells không tự nhiên: become đi với danh từ/tính từ trực tiếp, và nghĩa trở thành tế bào sai ý, vì ý cần là vẫn duy trì là tế bào (remain).",
+     "replace": "Replace là thay thế, cần tân ngữ; câu này nói tế bào không thể tiếp tục tồn tại như tế bào nếu thiếu năng lượng nên cần remain.",
+     "achieve": "Achieve là đạt được (mục tiêu, thành tích), không đi với as cells và không diễn tả việc duy trì trạng thái là tế bào."
+    }
    },
    {
     "opts": [
@@ -10137,7 +11382,12 @@ const CLOZE_MC = [
      "runs"
     ],
     "a": 3,
-    "why": "\"Supply runs out\" nghĩa là nguồn cung cạn kiệt, cụm cố định."
+    "why": "\"Supply runs out\" nghĩa là nguồn cung cạn kiệt, cụm cố định.",
+    "wrong": {
+     "breaks": "Breaks out dùng cho dịch bệnh, chiến tranh bùng nổ; nguồn glucose bị cạn kiệt phải dùng runs out.",
+     "pulls": "Pulls out là rút ra/rút lui, không diễn tả nguồn cung glucose bị cạn; cụm đúng là runs out.",
+     "sits": "Sits out là ngồi ngoài không tham gia, không hợp với chủ ngữ the supply of glucose; cần runs out (cạn kiệt)."
+    }
    },
    {
     "opts": [
@@ -10147,7 +11397,12 @@ const CLOZE_MC = [
      "measure"
     ],
     "a": 1,
-    "why": "Để có thời gian sửa chữa, tế bào tạm dừng chu kỳ: \"pause the cell cycle\"."
+    "why": "Để có thời gian sửa chữa, tế bào tạm dừng chu kỳ: \"pause the cell cycle\".",
+    "wrong": {
+     "ignore": "Ignore là phớt lờ, trong khi ngữ cảnh cho biết tế bào phát hiện tổn thương rồi cho hệ thống sửa chữa có thời gian làm việc, nên phải dừng chu kỳ lại.",
+     "invent": "Invent là phát minh, không thể áp dụng cho chu kỳ tế bào; ý cần là tạm dừng để sửa chữa.",
+     "measure": "Measure là đo đạc; đo chu kỳ tế bào không giúp hệ thống sửa chữa có thêm thời gian, nên không hợp với vế phía sau."
+    }
    },
    {
     "opts": [
@@ -10157,7 +11412,12 @@ const CLOZE_MC = [
      "between"
     ],
     "a": 2,
-    "why": "Hormone từ cơ quan ở xa là tín hiệu \"outside\" tế bào; inside sai nghĩa, against/between sai ngữ pháp."
+    "why": "Hormone từ cơ quan ở xa là tín hiệu \"outside\" tế bào; inside sai nghĩa, against/between sai ngữ pháp.",
+    "wrong": {
+     "inside": "Inside the cell nghĩa là bên trong tế bào, mâu thuẫn với ví dụ hormone do cơ quan ở xa tiết ra, vốn là tín hiệu từ bên ngoài.",
+     "against": "Against the cell nghĩa là chống lại tế bào, không hợp nghĩa; tín hiệu đến từ bên ngoài tế bào chứ không chống lại nó.",
+     "between": "Between cần hai đối tượng (between X and Y) và không hợp nghĩa, nên between the cell không thành cụm đúng; ý cần là outside."
+    }
    },
    {
     "opts": [
@@ -10167,7 +11427,12 @@ const CLOZE_MC = [
      "Setting"
     ],
     "a": 1,
-    "why": "\"Depending on the signal\" nghĩa là tùy theo tín hiệu."
+    "why": "\"Depending on the signal\" nghĩa là tùy theo tín hiệu.",
+    "wrong": {
+     "Taking": "Taking on the signal nghĩa là tiếp nhận/đảm nhận, không có nghĩa tùy theo tín hiệu; cần Depending on.",
+     "Ending": "Ending on the signal nghĩa là kết thúc ở tín hiệu, không diễn tả sự phụ thuộc của phản ứng vào tín hiệu.",
+     "Setting": "Setting on the signal không phải cụm có nghĩa tùy theo; muốn nói phản ứng thay đổi theo tín hiệu thì dùng Depending on."
+    }
    },
    {
     "opts": [
@@ -10177,7 +11442,12 @@ const CLOZE_MC = [
      "metabolism"
     ],
     "a": 3,
-    "why": "Tổng các phản ứng hóa học của tế bào gọi là \"metabolism\" (chuyển hóa)."
+    "why": "Tổng các phản ứng hóa học của tế bào gọi là \"metabolism\" (chuyển hóa).",
+    "wrong": {
+     "capsule": "Capsule là vỏ nang (của vi khuẩn), không phải tổng hợp các phản ứng đồng hóa và dị hóa của tế bào.",
+     "nucleus": "Nucleus là nhân tế bào, một cấu trúc chứ không phải tập hợp phản ứng; câu nói both kinds of reaction make up the cell's metabolism.",
+     "lesion": "Lesion là tổn thương mô, không liên quan đến các phản ứng xây dựng và phân giải phân tử của tế bào."
+    }
    }
   ],
   "unit": "M1"
@@ -10196,7 +11466,12 @@ const CLOZE_MC = [
      "deposit"
     ],
     "a": 2,
-    "why": "Cấu trúc 'differentiate into' = biệt hóa thành; 'differ' không đi với 'into' theo nghĩa này, deposit/defend sai nghĩa."
+    "why": "Cấu trúc 'differentiate into' = biệt hóa thành; 'differ' không đi với 'into' theo nghĩa này, deposit/defend sai nghĩa.",
+    "wrong": {
+     "defend": "Defend là bảo vệ, thường đi với against/from, không đi với into; stem cell trở thành các loại tế bào chuyên biệt nên cần differentiate into.",
+     "differ": "Differ là khác nhau và đi với from, không đi với into; ý câu là biệt hóa thành các loại tế bào chuyên biệt.",
+     "deposit": "Deposit là gửi, đặt xuống, không hợp với chủ ngữ stem cells và không diễn tả việc biệt hóa thành loại tế bào khác."
+    }
    },
    {
     "opts": [
@@ -10206,7 +11481,12 @@ const CLOZE_MC = [
      "isolated"
     ],
     "a": 3,
-    "why": "'isolated from the inner cell mass' = được phân lập từ khối tế bào bên trong; các từ còn lại sai nghĩa."
+    "why": "'isolated from the inner cell mass' = được phân lập từ khối tế bào bên trong; các từ còn lại sai nghĩa.",
+    "wrong": {
+     "invaded": "Invaded là xâm lấn, không hợp: tế bào gốc phôi được lấy riêng ra khỏi khối tế bào bên trong, không phải xâm lấn khối đó.",
+     "imitated": "Imitated là bắt chước, vô nghĩa với tế bào gốc và không đi với from the inner cell mass.",
+     "insulated": "Insulated là bọc cách nhiệt/cách điện hoặc che chắn khỏi tác động bên ngoài, không có nghĩa là tách tế bào gốc ra khỏi khối tế bào bên trong; cần isolated from."
+    }
    },
    {
     "opts": [
@@ -10216,7 +11496,12 @@ const CLOZE_MC = [
      "requesting"
     ],
     "a": 0,
-    "why": "'replenishing damaged tissue' = bổ sung, tái tạo mô tổn thương; các từ khác vô nghĩa trong ngữ cảnh."
+    "why": "'replenishing damaged tissue' = bổ sung, tái tạo mô tổn thương; các từ khác vô nghĩa trong ngữ cảnh.",
+    "wrong": {
+     "resisting": "Resisting là chống lại; tế bào gốc hoạt động như hệ thống sửa chữa nên không thể chống lại mô tổn thương mà phải bổ sung nó.",
+     "repeating": "Repeating là lặp lại, không phù hợp: tế bào gốc không lặp lại mô tổn thương mà tái tạo, bổ sung mô đó.",
+     "requesting": "Requesting là yêu cầu, vô nghĩa với tế bào gốc và mô tổn thương; ý cần là bổ sung, thay mới mô (replenishing)."
+    }
    },
    {
     "opts": [
@@ -10226,7 +11511,12 @@ const CLOZE_MC = [
      "instantly"
     ],
     "a": 1,
-    "why": "'divide indefinitely' (phân chia vô hạn) đối lập với 'only a limited number of times'."
+    "why": "'divide indefinitely' (phân chia vô hạn) đối lập với 'only a limited number of times'.",
+    "wrong": {
+     "incorrectly": "Incorrectly là một cách sai, không mô tả khả năng phân chia của tế bào gốc, và không đối lập với only a limited number of times.",
+     "immediately": "Immediately là ngay lập tức, nói về thời điểm; câu cần đối lập với số lần phân chia có hạn nên phải là indefinitely.",
+     "instantly": "Instantly là tức thì, nói về tốc độ, không đối lập với việc tế bào tiền thân chỉ phân chia một số lần giới hạn."
+    }
    },
    {
     "opts": [
@@ -10236,7 +11526,12 @@ const CLOZE_MC = [
      "least"
     ],
     "a": 3,
-    "why": "'the least risk of all' = so sánh nhất với danh từ không đếm được; less/lower không đi với 'of all', fewest dùng cho danh từ đếm được."
+    "why": "'the least risk of all' = so sánh nhất với danh từ không đếm được; less/lower không đi với 'of all', fewest dùng cho danh từ đếm được.",
+    "wrong": {
+     "less": "Less là so sánh hơn của little, chỉ so sánh hai đối tượng; cấu trúc the ... risk of all the types cần dạng so sánh nhất là the least.",
+     "lower": "Lower là so sánh hơn, dùng khi so sánh hai đối tượng; of all the types đòi hỏi so sánh nhất (the least/the lowest), nên the lower risk of all the types sai.",
+     "fewest": "Fewest dùng với danh từ đếm được số nhiều (fewest risks), còn risk ở đây là số ít nên phải dùng least."
+    }
    },
    {
     "opts": [
@@ -10246,7 +11541,12 @@ const CLOZE_MC = [
      "explained"
     ],
     "a": 2,
-    "why": "'must be extracted by drilling' = được lấy ra bằng cách khoan; các từ khác sai nghĩa."
+    "why": "'must be extracted by drilling' = được lấy ra bằng cách khoan; các từ khác sai nghĩa.",
+    "wrong": {
+     "expanded": "Expanded là mở rộng, không hợp: tủy xương cần được lấy ra bằng cách đưa kim vào xương, không phải làm nó phình ra.",
+     "expired": "Expired nghĩa là hết hạn, vô nghĩa với bone marrow và by inserting a needle; cần extracted.",
+     "explained": "Explained là được giải thích, không thể thực hiện bằng cách đưa kim vào xương; ý cần là lấy tủy ra (extracted)."
+    }
    },
    {
     "opts": [
@@ -10256,7 +11556,12 @@ const CLOZE_MC = [
      "returned"
     ],
     "a": 3,
-    "why": "'returned to the donor' = trả lại cho người hiến; các từ khác không đi với tân ngữ này."
+    "why": "'returned to the donor' = trả lại cho người hiến; các từ khác không đi với tân ngữ này.",
+    "wrong": {
+     "replied": "Replied là trả lời, dùng với người và đi với to; không diễn tả việc truyền phần máu còn lại trở lại cho người hiến.",
+     "retreated": "Retreated là rút lui, không thể là bị động của máu hay các thành phần còn lại và không hợp nghĩa với to the donor.",
+     "reverted": "Reverted to nghĩa là quay trở lại trạng thái cũ, nội động từ nên không dùng ở bị động be reverted; ý cần là được truyền trả (returned)."
+    }
    },
    {
     "opts": [
@@ -10266,7 +11571,12 @@ const CLOZE_MC = [
      "transmission"
     ],
     "a": 0,
-    "why": "'bone marrow transplantation' = ghép tủy xương; transcription là phiên mã, không dùng ở đây."
+    "why": "'bone marrow transplantation' = ghép tủy xương; transcription là phiên mã, không dùng ở đây.",
+    "wrong": {
+     "translation": "Translation là quá trình dịch mã tổng hợp protein, không phải ghép; trong liệu pháp y khoa cần bone marrow transplantation.",
+     "transcription": "Transcription là phiên mã DNA thành RNA, không dùng cho liệu pháp dùng tế bào gốc; cần transplantation (ghép tủy xương).",
+     "transmission": "Transmission là sự lây truyền (bệnh) hoặc truyền tín hiệu, không phải liệu pháp ghép tủy xương."
+    }
    }
   ],
   "unit": "M2"
@@ -10285,7 +11595,12 @@ const CLOZE_MC = [
      "fibre"
     ],
     "a": 0,
-    "why": "Tóc mọc từ nang lông (hair follicle) nằm trong trung bì; gland, nail, fibre không phải nơi tóc mọc ra."
+    "why": "Tóc mọc từ nang lông (hair follicle) nằm trong trung bì; gland, nail, fibre không phải nơi tóc mọc ra.",
+    "wrong": {
+     "gland": "Gland là tuyến, nhưng tóc không mọc từ tuyến mà từ nang lông (follicle) nằm trong lớp bì; tuyến chỉ được nhắc ở phần sau.",
+     "nail": "Nail là móng, không phải nơi tóc mọc ra, và câu sau còn nói riêng về móng.",
+     "fibre": "Fibre là sợi, không phải một cấu trúc trong lớp bì để tóc mọc ra từ đó; cần hair follicle."
+    }
    },
    {
     "opts": [
@@ -10295,7 +11610,12 @@ const CLOZE_MC = [
      "length"
     ],
     "a": 1,
-    "why": "Màu tóc phụ thuộc vào lượng melanin: \"the amount of melanin\" (danh từ không đếm được, không dùng number)."
+    "why": "Màu tóc phụ thuộc vào lượng melanin: \"the amount of melanin\" (danh từ không đếm được, không dùng number).",
+    "wrong": {
+     "shape": "Shape là hình dạng; màu tóc phụ thuộc vào lượng sắc tố melanin chứ không phụ thuộc hình dạng của nó.",
+     "number": "Number dùng cho danh từ đếm được, còn melanin là danh từ không đếm được nên phải dùng the amount of.",
+     "length": "Length là chiều dài, không liên quan đến màu tóc; câu nói màu tóc bạc khi sắc tố không còn được tạo ra, tức là phụ thuộc vào lượng melanin."
+    }
    },
    {
     "opts": [
@@ -10305,7 +11625,12 @@ const CLOZE_MC = [
      "roots"
     ],
     "a": 2,
-    "why": "Móng bảo vệ phần đầu ngón tay, ngón chân: \"the tips of the fingers and toes\"."
+    "why": "Móng bảo vệ phần đầu ngón tay, ngón chân: \"the tips of the fingers and toes\".",
+    "wrong": {
+     "layers": "Layers là các lớp; ngón tay, ngón chân không có phần nào được gọi là lớp để móng bảo vệ, mà móng bảo vệ phần đầu nhạy cảm (tips).",
+     "shafts": "Shafts là thân (ví dụ thân lông), không dùng để chỉ phần nhạy cảm ở đầu ngón tay, ngón chân.",
+     "roots": "Roots là gốc, nằm ở phía trong; móng bảo vệ phần đầu ngón (tips), không phải phần gốc."
+    }
    },
    {
     "opts": [
@@ -10315,7 +11640,12 @@ const CLOZE_MC = [
      "vessels"
     ],
     "a": 3,
-    "why": "Móng có màu hồng nhờ mạng mạch máu nhỏ bên dưới: \"tiny blood vessels\"."
+    "why": "Móng có màu hồng nhờ mạng mạch máu nhỏ bên dưới: \"tiny blood vessels\".",
+    "wrong": {
+     "glands": "Glands là tuyến, không nằm dưới móng tạo màu hồng; màu hồng do máu chảy trong các mạch máu nhỏ (blood vessels).",
+     "fibres": "Blood fibres không phải cụm có nghĩa; máu chảy trong mạch máu (blood vessels), không phải trong sợi.",
+     "follicles": "Follicles là nang (nang lông), không có cụm blood follicles; màu hồng của móng do mạch máu bên dưới."
+    }
    },
    {
     "opts": [
@@ -10325,7 +11655,12 @@ const CLOZE_MC = [
      "regulates"
     ],
     "a": 0,
-    "why": "Bã nhờn làm trơn da và tóc: \"lubricates the skin and hair\"; các động từ kia không đi với tân ngữ này."
+    "why": "Bã nhờn làm trơn da và tóc: \"lubricates the skin and hair\"; các động từ kia không đi với tân ngữ này.",
+    "wrong": {
+     "evaporates": "Evaporates là bốc hơi, không hợp với bã nhờn tác động lên da và tóc; sebum làm trơn, không bốc hơi.",
+     "excretes": "Excretes là bài tiết, chủ ngữ sebum chính là chất được bài tiết nên không thể tự bài tiết da và tóc.",
+     "regulates": "Regulates là điều hòa, thường dùng cho nhiệt độ hoặc hormone; bã nhờn không điều hòa da mà làm trơn (lubricates) da và tóc."
+    }
    },
    {
     "opts": [
@@ -10335,7 +11670,12 @@ const CLOZE_MC = [
      "cool"
     ],
     "a": 1,
-    "why": "Quá nhiều chất bã làm tắc lỗ chân lông rồi gây mụn: \"block the pores\"; open làm ngược logic."
+    "why": "Quá nhiều chất bã làm tắc lỗ chân lông rồi gây mụn: \"block the pores\"; open làm ngược logic.",
+    "wrong": {
+     "nourish": "Nourish là nuôi dưỡng, nghe như điều tích cực, nhưng mụn do tắc lỗ chân lông; nuôi dưỡng lỗ chân lông không dẫn đến mụn.",
+     "open": "Open là mở ra, nghĩa ngược lại: chính việc lỗ chân lông bị bít tắc mới gây mụn.",
+     "cool": "Cool là làm mát, thường gắn với mồ hôi; làm mát lỗ chân lông không dẫn đến mụn."
+    }
    },
    {
     "opts": [
@@ -10345,7 +11685,12 @@ const CLOZE_MC = [
      "eccrine"
     ],
     "a": 2,
-    "why": "Mồ hôi đặc hơn, bắt đầu từ tuổi dậy thì, là của tuyến apocrine; eccrine vừa được nhắc ở vế trước."
+    "why": "Mồ hôi đặc hơn, bắt đầu từ tuổi dậy thì, là của tuyến apocrine; eccrine vừa được nhắc ở vế trước.",
+    "wrong": {
+     "sebaceous": "Sebaceous là tuyến bã nhờn, tiết sebum chứ không tiết mồ hôi, và đã được nhắc ở câu trước; mồ hôi đặc hơn có mùi là của tuyến apocrine.",
+     "mammary": "Mammary là tuyến vú, tiết sữa, không phải tuyến mồ hôi đặc có mùi do vi khuẩn.",
+     "eccrine": "Eccrine đã được nhắc ở vế trước và whereas đối lập nó với loại thứ hai, nên chỗ trống phải là loại tuyến khác (apocrine)."
+    }
    },
    {
     "opts": [
@@ -10355,7 +11700,12 @@ const CLOZE_MC = [
      "break"
     ],
     "a": 3,
-    "why": "Cụm \"break it down\" (phân hủy): vi khuẩn phân hủy mồ hôi nên mới có mùi."
+    "why": "Cụm \"break it down\" (phân hủy): vi khuẩn phân hủy mồ hôi nên mới có mùi.",
+    "wrong": {
+     "put": "Put it down nghĩa là đặt xuống hoặc viết ra, không diễn tả việc vi khuẩn phân hủy mồ hôi dẫn đến mùi.",
+     "make": "Make it down không phải cụm động từ có nghĩa; vi khuẩn phân hủy mồ hôi phải dùng break it down.",
+     "go": "Go it down không thành cụm có nghĩa, và go là nội động từ nên không nhận tân ngữ it."
+    }
    }
   ],
   "unit": "M3"
@@ -10374,7 +11724,12 @@ const CLOZE_MC = [
      "menisci"
     ],
     "a": 0,
-    "why": "Xương di chuyển so với nhau tại \"joints\" (khớp); sutures không cử động, ligaments và menisci không phải nơi xương trượt."
+    "why": "Xương di chuyển so với nhau tại \"joints\" (khớp); sutures không cử động, ligaments và menisci không phải nơi xương trượt.",
+    "wrong": {
+     "sutures": "Sutures là đường khớp sọ, ngay câu sau nói chúng không cử động, nên không thể là nơi xương di chuyển so với nhau.",
+     "ligaments": "Ligaments là dây chằng, giữ xương lại với nhau chứ không phải nơi xương di chuyển; vị trí đó là khớp.",
+     "menisci": "Menisci là đệm sụn trong khớp gối, không phải nơi các xương cử động so với nhau; cần joints."
+    }
    },
    {
     "opts": [
@@ -10384,7 +11739,12 @@ const CLOZE_MC = [
      "fall"
     ],
     "a": 0,
-    "why": "\"come together\" nghĩa là gặp nhau - khớp là nơi các xương gặp nhau; \"turn/cut/fall together\" không tạo thành cụm có nghĩa này."
+    "why": "\"come together\" nghĩa là gặp nhau - khớp là nơi các xương gặp nhau; \"turn/cut/fall together\" không tạo thành cụm có nghĩa này.",
+    "wrong": {
+     "turn": "Turn together không tạo thành cụm có nghĩa khớp là nơi các xương gặp nhau; cụm đúng là come together.",
+     "cut": "Cut together không có nghĩa là gặp nhau; khớp là nơi các xương gặp nhau nên cần come together.",
+     "fall": "Fall together không diễn tả việc các xương gặp nhau ở khớp (fall apart mới là sụp đổ, rã ra); cụm đúng là come together."
+    }
    },
    {
     "opts": [
@@ -10394,7 +11754,12 @@ const CLOZE_MC = [
      "drained"
     ],
     "a": 0,
-    "why": "Đầu xương được phủ (\"covered\") bởi một lớp sụn trong; \"filled/packed/drained with a layer\" sai nghĩa."
+    "why": "Đầu xương được phủ (\"covered\") bởi một lớp sụn trong; \"filled/packed/drained with a layer\" sai nghĩa.",
+    "wrong": {
+     "filled": "Filled with a layer nghĩa là đổ đầy bằng một lớp, không hợp: lớp sụn nằm phủ trên đầu xương chứ không lấp đầy đầu xương.",
+     "packed": "Packed with a layer nghĩa là nhồi đầy, không hợp với lớp sụn mỏng phủ ngoài đầu xương.",
+     "drained": "Drained là rút hết chất lỏng, vô nghĩa với a layer of smooth hyaline cartilage; cần covered (phủ)."
+    }
    },
    {
     "opts": [
@@ -10404,7 +11769,12 @@ const CLOZE_MC = [
      "empties"
     ],
     "a": 0,
-    "why": "Dịch khớp làm trơn khớp và giảm ma sát: \"lubricates the joint and reduces friction\"."
+    "why": "Dịch khớp làm trơn khớp và giảm ma sát: \"lubricates the joint and reduces friction\".",
+    "wrong": {
+     "dissolves": "Dissolves là làm tan; dịch khớp không làm tan khớp, mà làm trơn khớp và giảm ma sát.",
+     "hardens": "Hardens là làm cứng, ngược với and reduces friction; dịch khớp làm khớp trơn chứ không làm cứng.",
+     "empties": "Empties là làm rỗng, không hợp với tân ngữ the joint; dịch khớp lấp đầy khoảng trống và bôi trơn."
+    }
    },
    {
     "opts": [
@@ -10414,7 +11784,12 @@ const CLOZE_MC = [
      "replace"
     ],
     "a": 0,
-    "why": "Gân nối cơ với xương: \"attach muscle to bone\"; các từ còn lại sai nghĩa."
+    "why": "Gân nối cơ với xương: \"attach muscle to bone\"; các từ còn lại sai nghĩa.",
+    "wrong": {
+     "divide": "Divide là chia tách, ngược nghĩa: gân nối cơ với xương để xương cử động được, chứ không tách chúng ra.",
+     "cover": "Cover muscle to bone sai cấu trúc, vì cover không đi với to; hơn nữa gân không che cơ mà nối cơ với xương.",
+     "replace": "Replace là thay thế, không đi với to bone; gân không thay cơ mà nối cơ với xương để xương cử động."
+    }
    },
    {
     "opts": [
@@ -10424,7 +11799,12 @@ const CLOZE_MC = [
      "easily"
     ],
     "a": 0,
-    "why": "Sụn không có mạch máu nên hồi phục \"slowly\"; các từ kia mâu thuẫn với \"no blood supply\"."
+    "why": "Sụn không có mạch máu nên hồi phục \"slowly\"; các từ kia mâu thuẫn với \"no blood supply\".",
+    "wrong": {
+     "quickly": "Quickly mâu thuẫn với vế Cartilage has no blood supply: không có mạch máu thì mô tổn thương hồi phục chậm, không nhanh.",
+     "rapidly": "Rapidly (nhanh chóng) trái với ý sụn không có mạch máu nên hồi phục chậm.",
+     "easily": "Easily là dễ dàng, nhưng không có mạch máu nuôi thì mô khó hồi phục; chỗ trống cần nghĩa là chậm (slowly)."
+    }
    },
    {
     "opts": [
@@ -10434,7 +11814,12 @@ const CLOZE_MC = [
      "safe"
     ],
     "a": 0,
-    "why": "\"prone to injury\" = dễ bị tổn thương; các từ còn lại trái nghĩa với ý \"problems include...\"."
+    "why": "\"prone to injury\" = dễ bị tổn thương; các từ còn lại trái nghĩa với ý \"problems include...\".",
+    "wrong": {
+     "immune": "Immune thường đi với to nhưng nghĩa là miễn nhiễm; khớp chịu tải nặng không miễn nhiễm với chấn thương, và vế sau kể các vấn đề thường gặp.",
+     "resistant": "Resistant to injury nghĩa là chống chịu chấn thương, trái với vế sau nói các vấn đề phổ biến như bong gân, trật khớp.",
+     "safe": "Safe to injury sai kết hợp từ (phải là safe from), và safe nghĩa là an toàn, ngược với ý khớp hay bị chấn thương."
+    }
    },
    {
     "opts": [
@@ -10444,7 +11829,12 @@ const CLOZE_MC = [
      "Instead"
     ],
     "a": 0,
-    "why": "Câu sau đưa ví dụ về một loại khớp hoạt dịch nên dùng \"For example\"; However/Therefore/Instead sai logic."
+    "why": "Câu sau đưa ví dụ về một loại khớp hoạt dịch nên dùng \"For example\"; However/Therefore/Instead sai logic.",
+    "wrong": {
+     "However": "However báo hiệu ý đối lập, nhưng câu sau chỉ đưa một ví dụ cụ thể về khớp hoạt dịch chứ không đối lập với câu trước.",
+     "Therefore": "Therefore nêu kết quả, nhưng khớp gối là ví dụ chứ không phải hệ quả của câu trước.",
+     "Instead": "Instead nghĩa là thay vào đó, không hợp: câu sau không thay thế ý trước mà nêu ví dụ minh họa."
+    }
    }
   ],
   "unit": "M4"
@@ -10463,7 +11853,12 @@ const CLOZE_MC = [
      "number"
     ],
     "a": 0,
-    "why": "'lies at the front of the shin' mô tả vị trí nên chọn 'location'."
+    "why": "'lies at the front of the shin' mô tả vị trí nên chọn 'location'.",
+    "wrong": {
+     "size": "Size là kích thước; ví dụ chỉ nói cơ nằm ở phía trước cẳng chân, tức là vị trí chứ không phải kích thước.",
+     "shape": "Shape là hình dạng; shape được nhắc riêng ở phần sau với cơ delta hình tam giác, còn câu này mô tả vị trí.",
+     "number": "Number là số đầu bám (hai đầu, bốn đầu) được nhắc ở phần sau; tibialis anterior được đặt tên theo vị trí."
+    }
    },
    {
     "opts": [
@@ -10473,7 +11868,12 @@ const CLOZE_MC = [
      "separates"
     ],
     "a": 0,
-    "why": "Cơ ức đòn chũm nối xương ức và xương đòn với sọ: 'connects ... to'."
+    "why": "Cơ ức đòn chũm nối xương ức và xương đòn với sọ: 'connects ... to'.",
+    "wrong": {
+     "leans": "Leans (nghiêng) không đi với to the skull theo kiểu nối hai xương với xương sọ; cơ này nối xương ức, xương đòn với sọ.",
+     "covers": "Covers là che phủ; cơ ức đòn chũm không che phủ xương mà nối xương ức và xương đòn với xương sọ (connects ... to).",
+     "separates": "Separates là tách ra, trái nghĩa với việc cơ nối xương ức và xương đòn với xương sọ; cần connects."
+    }
    },
    {
     "opts": [
@@ -10483,7 +11883,12 @@ const CLOZE_MC = [
      "puts"
     ],
     "a": 0,
-    "why": "Cụm cố định 'play a role' (đóng vai trò)."
+    "why": "Cụm cố định 'play a role' (đóng vai trò).",
+    "wrong": {
+     "makes": "Makes a role không phải cụm cố định; cụm đúng là play a role (đóng vai trò).",
+     "does": "Does a role không đúng; người bản ngữ dùng play a role chứ không dùng do a role.",
+     "puts": "Puts a role không có nghĩa, và puts không kết hợp với role; cụm cố định là play a role."
+    }
    },
    {
     "opts": [
@@ -10493,7 +11898,12 @@ const CLOZE_MC = [
      "thinnest"
     ],
     "a": 0,
-    "why": "'maximus' nghĩa là lớn nhất; 'as its name suggests' gợi 'largest'."
+    "why": "'maximus' nghĩa là lớn nhất; 'as its name suggests' gợi 'largest'.",
+    "wrong": {
+     "smallest": "Smallest trái nghĩa với maximus (lớn nhất) trong tên gluteus maximus, cụm as its name suggests.",
+     "middle": "The middle of the three là cơ gluteus medius, không phải maximus; as its name suggests (maximus = lớn nhất) cần the largest.",
+     "thinnest": "Thinnest là mỏng nhất, nói về độ dày; tên maximus chỉ kích thước lớn nhất, ngược với thinnest."
+    }
    },
    {
     "opts": [
@@ -10503,7 +11913,12 @@ const CLOZE_MC = [
      "arc"
     ],
     "a": 0,
-    "why": "Cụm cố định 'at an angle' (nghiêng một góc) chỉ cơ chéo."
+    "why": "Cụm cố định 'at an angle' (nghiêng một góc) chỉ cơ chéo.",
+    "wrong": {
+     "edge": "At an edge không phải cụm có nghĩa chỉ hướng sợi cơ chạy nghiêng; cụm đúng là at an angle.",
+     "end": "At an end không diễn tả hướng chéo của sợi cơ; cụm đúng là at an angle (nghiêng một góc).",
+     "arc": "At an arc không tự nhiên trong tiếng Anh; sợi cơ chạy nghiêng thì dùng at an angle."
+    }
    },
    {
     "opts": [
@@ -10513,7 +11928,12 @@ const CLOZE_MC = [
      "owing to"
     ],
     "a": 0,
-    "why": "'such as a supinator' đưa ví dụ cho cơ đặt tên theo chức năng."
+    "why": "'such as a supinator' đưa ví dụ cho cơ đặt tên theo chức năng.",
+    "wrong": {
+     "instead of": "Instead of nghĩa là thay vì, nhưng ở đây a supinator chỉ là ví dụ của cơ đặt theo chức năng.",
+     "in spite of": "In spite of nghĩa là mặc dù, dùng cho ý nhượng bộ, không hợp với việc đưa ví dụ a supinator.",
+     "owing to": "Owing to nghĩa là do bởi, chỉ nguyên nhân, không hợp với việc nêu ví dụ cho cơ đặt tên theo hành động."
+    }
    },
    {
     "opts": [
@@ -10523,7 +11943,12 @@ const CLOZE_MC = [
      "scarcely"
     ],
     "a": 0,
-    "why": "'simply because' = chỉ đơn giản là vì; các từ còn lại mang nghĩa phủ định, sai logic."
+    "why": "'simply because' = chỉ đơn giản là vì; các từ còn lại mang nghĩa phủ định, sai logic.",
+    "wrong": {
+     "hardly": "Hardly because mang nghĩa phủ định (hầu như không), trái với ý hai quy tắc được dùng cùng lúc là lý do tên có hai từ.",
+     "never": "Never because nghĩa là không bao giờ vì, mâu thuẫn với việc tên hai từ là có lý do (hai quy tắc).",
+     "scarcely": "Scarcely là hầu như không, nghĩa phủ định, nên scarcely because trái ý câu; cần simply because."
+    }
    },
    {
     "opts": [
@@ -10533,7 +11958,12 @@ const CLOZE_MC = [
      "reject"
     ],
     "a": 0,
-    "why": "Biết quy tắc thì có thể 'predict' (đoán) chức năng cơ từ tên."
+    "why": "Biết quy tắc thì có thể 'predict' (đoán) chức năng cơ từ tên.",
+    "wrong": {
+     "prevent": "Prevent là ngăn chặn; biết quy tắc đặt tên thì có thể đoán chức năng chứ không ngăn chặn chức năng của cơ.",
+     "repair": "Repair là sửa chữa; biết quy tắc đặt tên không giúp sửa chữa chức năng cơ, mà giúp đoán nó.",
+     "reject": "Reject là bác bỏ, trái với ý biết quy tắc để đoán công việc của cơ chỉ từ tên."
+    }
    }
   ],
   "unit": "M5"
@@ -10552,7 +11982,12 @@ const CLOZE_MC = [
      "smelled"
     ],
     "a": 0,
-    "why": "Mầm bệnh quá nhỏ nên không thể nhìn thấy nếu không có kính hiển vi: \"too small to be seen\"."
+    "why": "Mầm bệnh quá nhỏ nên không thể nhìn thấy nếu không có kính hiển vi: \"too small to be seen\".",
+    "wrong": {
+     "heard": "Heard là nghe thấy; mầm bệnh quá nhỏ để nhìn thấy khi không có kính hiển vi, vì kính hiển vi hỗ trợ thị giác chứ không phải thính giác.",
+     "tasted": "Tasted là nếm; kính hiển vi liên quan đến việc nhìn, không phải nếm, nên không hợp.",
+     "smelled": "Smelled là ngửi; kính hiển vi chỉ giúp nhìn, không giúp ngửi, nên không hợp với without a microscope."
+    }
    },
    {
     "opts": [
@@ -10562,7 +11997,12 @@ const CLOZE_MC = [
      "multiply"
     ],
     "a": 3,
-    "why": "Vi-rút chỉ nhân lên được khi vào tế bào chủ: \"cannot multiply itself unless it enters a host cell\"."
+    "why": "Vi-rút chỉ nhân lên được khi vào tế bào chủ: \"cannot multiply itself unless it enters a host cell\".",
+    "wrong": {
+     "remove": "Remove là loại bỏ; vi-rút không tự loại bỏ chính nó khi vào tế bào chủ, mà tự nhân lên (reproduce itself) nhờ tế bào chủ.",
+     "absorb": "Absorb là hấp thụ; vi-rút không thể absorb itself, collocation đúng là multiply/reproduce itself khi nói về sự nhân lên.",
+     "borrow": "Borrow là mượn; borrow itself không có nghĩa hợp lý, trong khi ý câu là vi-rút chỉ nhân lên (multiply) được khi vào tế bào chủ."
+    }
    },
    {
     "opts": [
@@ -10572,7 +12012,12 @@ const CLOZE_MC = [
      "opposed"
     ],
     "a": 1,
-    "why": "Sau \"Not all bacteria are harmful\", vế tiếp là có loại cần thiết cho sức khỏe: \"essential to the health\"."
+    "why": "Sau \"Not all bacteria are harmful\", vế tiếp là có loại cần thiết cho sức khỏe: \"essential to the health\".",
+    "wrong": {
+     "harmful": "Harmful lặp lại ý Not all bacteria are harmful; chữ actually báo hiệu vế tiếp theo phải trái lại, nghĩa là có ích.",
+     "careless": "Careless là bất cẩn, chỉ người và hành vi, không hợp để mô tả vi khuẩn đối với sức khỏe.",
+     "opposed": "Opposed to nghĩa là phản đối, không hợp với some bacteria are actually ... to the health of the body; actually báo hiệu ý trái lại là có lợi (essential)."
+    }
    },
    {
     "opts": [
@@ -10582,7 +12027,12 @@ const CLOZE_MC = [
      "treatment"
     ],
     "a": 2,
-    "why": "\"a bacterial disease\" (bệnh do vi khuẩn), đối lập với \"a viral disease\" ở vế trước."
+    "why": "\"a bacterial disease\" (bệnh do vi khuẩn), đối lập với \"a viral disease\" ở vế trước.",
+    "wrong": {
+     "symptom": "Symptom là triệu chứng, không thể nói bệnh lao là a bacterial symptom; cần danh từ chỉ bệnh để đối lập với a viral disease.",
+     "medicine": "Medicine là thuốc, không phải a bacterial medicine; câu nói bệnh lao là bệnh do vi khuẩn.",
+     "treatment": "Treatment là điều trị, không phải bản chất của bệnh lao, nên a bacterial treatment sai nghĩa."
+    }
    },
    {
     "opts": [
@@ -10592,7 +12042,12 @@ const CLOZE_MC = [
      "whereas"
     ],
     "a": 3,
-    "why": "\"whereas\" nối hai vế đối lập: kháng sinh trị được vi khuẩn, còn vi-rút thì không đáp ứng."
+    "why": "\"whereas\" nối hai vế đối lập: kháng sinh trị được vi khuẩn, còn vi-rút thì không đáp ứng.",
+    "wrong": {
+     "because": "Because chỉ nguyên nhân, nhưng vi-rút không đáp ứng kháng sinh không phải lý do vi khuẩn chữa được bằng kháng sinh.",
+     "so": "So chỉ kết quả, nhưng vi-rút không đáp ứng không phải hệ quả của việc kháng sinh chữa được vi khuẩn.",
+     "unless": "Unless nghĩa là trừ khi, tạo điều kiện, nhưng ở đây hai mệnh đề đối lập nhau chứ không có điều kiện."
+    }
    },
    {
     "opts": [
@@ -10602,7 +12057,12 @@ const CLOZE_MC = [
      "replace"
     ],
     "a": 1,
-    "why": "Niêm mạc không có lớp da bên ngoài che chắn: \"no outer layer of skin to protect them\"."
+    "why": "Niêm mạc không có lớp da bên ngoài che chắn: \"no outer layer of skin to protect them\".",
+    "wrong": {
+     "invite": "Invite là mời, trái ngược với ý niêm mạc không có lớp da che chắn; câu nói thiếu lớp bảo vệ, không phải mời vi-rút vào.",
+     "produce": "Produce là tạo ra; lớp da bên ngoài không tạo ra niêm mạc, mà ý là bảo vệ nó.",
+     "replace": "Replace là thay thế, không hợp: không có lớp da ngoài để bảo vệ niêm mạc, chứ không phải để thay thế nó."
+    }
    },
    {
     "opts": [
@@ -10612,7 +12072,12 @@ const CLOZE_MC = [
      "transmission"
     ],
     "a": 2,
-    "why": "Chỉ có tiêm chủng mới là biện pháp \"available\" để phòng nhiễm vi-rút: \"vaccination against infection\"."
+    "why": "Chỉ có tiêm chủng mới là biện pháp \"available\" để phòng nhiễm vi-rút: \"vaccination against infection\".",
+    "wrong": {
+     "diagnosis": "Diagnosis là chẩn đoán, và không thể có chẩn đoán chống lại sự nhiễm trùng nên against infection không đi kèm.",
+     "infection": "Chỗ trống đã nằm trước against infection, nên infection against infection lặp từ và vô nghĩa; cần vaccination (tiêm chủng).",
+     "transmission": "Transmission là sự lây truyền, mà transmission against infection không hợp nghĩa; cần biện pháp phòng ngừa là vaccination."
+    }
    },
    {
     "opts": [
@@ -10622,7 +12087,12 @@ const CLOZE_MC = [
      "eradicating"
     ],
     "a": 3,
-    "why": "Mục tiêu của nghiên cứu là xóa sổ vi-rút nguy hiểm: \"in the hope of eradicating\"."
+    "why": "Mục tiêu của nghiên cứu là xóa sổ vi-rút nguy hiểm: \"in the hope of eradicating\".",
+    "wrong": {
+     "spreading": "Spreading là lan truyền; nghiên cứu hi vọng xóa sổ vi-rút chứ không phải làm chúng lan ra, nhất là với dangerous viruses altogether.",
+     "creating": "Creating là tạo ra, trái với hi vọng của các nhà khoa học là loại bỏ vi-rút nguy hiểm.",
+     "ignoring": "Ignoring là phớt lờ; nhà khoa học tiếp tục nghiên cứu để loại bỏ vi-rút, không phải để phớt lờ chúng."
+    }
    }
   ],
   "unit": "M6"
@@ -15969,7 +17439,877 @@ const WORD_DEFS = {
 "x-collocations:give-rise-to": "to cause something to begin or exist",
 "x-collocations:on-a-regular-basis": "again and again at fixed or similar times",
 "x-collocations:at-the-expense-of": "with a bad effect on something else",
-"x-collocations:gain-access-to": "to get the chance to use or reach something"
+"x-collocations:gain-access-to": "to get the chance to use or reach something",
+"core-verbs:attract": "to make people interested in coming or looking",
+"core-verbs:depend": "to be decided or affected by something else",
+"core-verbs:divide": "to separate something into smaller parts or groups",
+"core-verbs:ignore": "to pay no attention to someone or something",
+"core-verbs:last": "to continue for a period of time",
+"core-verbs:rely": "to trust someone or something to do what you need",
+"core-verbs:represent": "to speak or act officially for another person or group",
+"core-verbs:repeat": "to say or do something again",
+"core-verbs:reply": "to answer someone in speech or writing",
+"core-verbs:recommend": "to say that something is good or suitable for someone to try",
+"core-verbs:accomplish": "to succeed in finishing something difficult",
+"core-verbs:acquire": "to get or learn something, often through effort or skill",
+"core-verbs:commit": "to promise to give your time or effort to something",
+"core-verbs:confirm": "to say or show that something is definitely true or arranged",
+"core-verbs:resolve": "to find a solution to a problem or disagreement",
+"core-verbs:regulate": "to control something by rules or laws",
+"core-verbs:reveal": "to make something known that was secret or hidden",
+"core-verbs:undergo": "to experience a change or something unpleasant",
+"core-verbs:tackle": "to try to deal with a difficult problem",
+"core-verbs:overlook": "to fail to notice or consider something",
+"core-verbs:bolster": "to make something stronger or more likely to succeed",
+"core-verbs:disrupt": "to stop something from continuing in the normal way",
+"core-verbs:perceive": "to understand or think of something in a particular way",
+"core-verbs:reinforce": "to make an idea, feeling or structure stronger",
+"core-verbs:scrutinise": "to examine something very carefully",
+"core-adj:awkward": "making you feel embarrassed or uncomfortable",
+"core-adj:hesitant": "slow to act or speak because you are not sure",
+"core-adj:reasonably": "to a fairly good degree",
+"core-adj:cautious": "careful to avoid danger or mistakes",
+"core-adj:reasonable": "fair and sensible, not too much",
+"core-adj:ordinary": "not special or different in any way",
+"core-adj:optional": "not required, but possible to choose",
+"core-adj:convenient": "easy to use or reach and not causing problems",
+"core-adj:properly": "in a correct or suitable way",
+"core-adj:hardly": "almost not at all",
+"core-adj:ambitious": "having a strong wish to be successful or powerful",
+"core-adj:vague": "not clear or exact in meaning or detail",
+"core-adj:tough": "difficult or hard to deal with",
+"core-adj:genuine": "real and sincere, not false or pretended",
+"core-adj:mutual": "felt or done equally by two or more people",
+"core-adj:rapidly": "at a very high speed or rate",
+"core-adj:widespread": "found or happening in many places or among many people",
+"core-adj:versatile": "able to do many different things or be used in many ways",
+"core-adj:dramatic": "sudden, surprising or very large",
+"core-adj:inadequate": "not good enough or not enough for a purpose",
+"core-adj:meticulous": "very careful and paying great attention to small details",
+"core-adj:stringent": "very strict and difficult to avoid",
+"core-adj:rigorous": "done very carefully and strictly with great attention to detail",
+"core-adj:elusive": "difficult to find, catch or achieve",
+"core-adj:fleeting": "lasting for a very short time",
+"core-nouns:gap": "a difference between two things, people or groups",
+"core-nouns:foundation": "the basic idea or part that something else grows from",
+"core-nouns:barrier": "something that stops people from doing or achieving something",
+"core-nouns:evaluation": "a careful judgement of how good or useful something is",
+"core-nouns:milestone": "an important event or stage in a process",
+"core-nouns:dispute": "a serious disagreement between people or groups",
+"core-nouns:initiative": "a new plan or action started to solve a problem",
+"core-nouns:misconception": "a wrong idea that many people believe",
+"core-nouns:hazard": "something that may cause danger or harm",
+"core-nouns:phenomenon": "something that exists or happens and can be observed, often unusual",
+"core-nouns:reputation": "the opinion that people generally have about someone or something",
+"core-nouns:boundary": "a line that marks the edge of an area or limit",
+"core-nouns:limit": "the greatest amount or level that is allowed or possible",
+"core-nouns:version": "a particular form of something that is different from earlier ones",
+"core-nouns:tool": "something that helps you do a job or reach a goal",
+"core-nouns:fault": "responsibility for a mistake or something bad that happens",
+"core-nouns:impact": "a strong effect that something has on a person or situation",
+"core-nouns:standard": "a level of quality that is expected or accepted",
+"core-nouns:recommendation": "advice about what should be done",
+"core-nouns:structure": "the way the parts of something are arranged or put together",
+"core-nouns:tendency": "something that a person or thing often does or is likely to do",
+"core-nouns:anomaly": "something that is different from what is normal or expected",
+"core-nouns:inertia": "a lack of energy or wish to change things",
+"core-nouns:ethos": "the main beliefs and attitudes of a group or organisation",
+"core-nouns:hurdle": "a problem that must be dealt with before you can succeed",
+"core-nouns:repercussion": "an indirect and usually bad result of an action or event",
+"people:toddler": "a very young child who is just learning to walk",
+"people:widow": "a woman whose husband has died",
+"people:pensioner": "a person who receives money from the state after retiring",
+"people:youngster": "a young person, especially a child or teenager",
+"people:childhood": "the time when someone is a child",
+"people:best-friend": "the friend you like and trust more than any other",
+"people:stepfather": "the man who is married to your mother but is not your father",
+"people:grow-old": "to become an elderly person",
+"people:bachelor": "a man who has never been married",
+"people:godmother": "a woman who promises to help a child's religious education and care",
+"people:offspring": "a person's child or an animal's young",
+"people:newlywed": "a person who has recently got married",
+"people:foster-parent": "an adult who looks after a child who is not legally theirs",
+"people:widower": "a man whose wife has died",
+"people:companion": "a person or animal you spend a lot of time with",
+"people:idol": "a person who is admired and loved by many people",
+"people:confidant": "a person you trust enough to share private matters with",
+"people:adolescent": "a young person who is changing from a child into an adult",
+"people:stepchild": "a child of your husband or wife from an earlier relationship",
+"people:fellow": "sharing the same job, situation or interest as you",
+"people:kinship": "the fact of being related by family",
+"people:lineage": "the line of ancestors from whom a person comes",
+"people:elder": "an older person who is respected in a community",
+"people:namesake": "a person or thing with the same name as another",
+"people:compatriot": "a person from the same country as you",
+"daily:wardrobe": "a tall cupboard for hanging clothes in",
+"daily:sweep": "to clean a floor by pushing dirt away with a brush",
+"daily:mop": "to clean a floor with a wet cloth on a stick",
+"daily:broom": "a brush with a long handle used for cleaning floors",
+"daily:bucket": "a round open container with a handle for carrying water",
+"daily:light-bulb": "a glass object that produces light from electricity",
+"daily:plug-in": "to connect a machine to the electricity supply",
+"daily:switch-off": "to stop a machine or light from working by using a switch",
+"daily:hang-up": "to put something on a hook so that it hangs",
+"daily:tidy-up": "to make a place neat by putting things where they belong",
+"daily:declutter": "to remove things you do not need from a place",
+"daily:clutter": "a lot of things in a messy and untidy state",
+"daily:pantry": "a small room or cupboard where food is stored",
+"daily:hallway": "a passage inside a building with doors leading to rooms",
+"daily:oversleep": "to sleep longer than you meant to",
+"daily:doze-off": "to fall asleep for a short time without planning to",
+"daily:unplug": "to disconnect a machine from the electricity supply",
+"daily:thermostat": "a device that keeps a room at a chosen temperature",
+"daily:insulation": "material that stops heat or sound from escaping",
+"daily:odd-job": "a small job of a kind that is not part of your regular work",
+"daily:dwelling": "a house or other place where people live",
+"daily:residence": "a house or place where someone lives",
+"daily:upkeep": "the work and money needed to keep something in good condition",
+"daily:refurbish": "to clean and repair a place so that it looks new",
+"daily:lodger": "a person who pays to live in a room in someone's home",
+"food:beef": "the meat from a cow",
+"food:pork": "the meat from a pig",
+"food:lamb": "the meat from a young sheep",
+"food:seafood": "fish and sea animals that are eaten as food",
+"food:shrimp": "a small sea animal with a curved body and a tail, eaten as food",
+"food:mushroom": "a fungus with a round top that you can often eat",
+"food:cabbage": "a large round vegetable with thick green leaves",
+"food:cucumber": "a long green vegetable eaten raw in salads",
+"food:yogurt": "a thick sour food made from milk",
+"food:vinegar": "a sour liquid used to give flavour to food",
+"food:marinate": "to soak meat or fish in a sauce before cooking it",
+"food:simmer": "to cook gently in liquid just below boiling point",
+"food:whisk": "to mix food quickly with a fork or special tool",
+"food:sprinkle": "to scatter small pieces or drops of something over a surface",
+"food:garnish": "to decorate food with a small amount of something extra",
+"food:fillet": "a piece of meat or fish with the bones removed",
+"food:dough": "a thick mixture of flour and water used to make bread",
+"food:broth": "a thin soup made by boiling meat or vegetables in water",
+"food:stew": "a meal of meat and vegetables cooked slowly in liquid",
+"food:tender": "easy to cut or chew because it is soft",
+"food:gourmet": "of high quality and prepared with great skill",
+"food:palatable": "having a pleasant taste",
+"food:devour": "to eat something quickly and hungrily",
+"food:culinary": "connected with cooking or food",
+"food:succulent": "juicy and delicious",
+"clothes:bracelet": "a piece of jewellery worn around the wrist",
+"clothes:earring": "a piece of jewellery worn on the ear",
+"clothes:purse": "a small bag or case for carrying money",
+"clothes:handbag": "a small bag that a woman carries for her personal things",
+"clothes:sunglasses": "dark glasses that protect your eyes from bright light",
+"clothes:collar": "the part of a shirt or coat that goes around the neck",
+"clothes:hanger": "a shaped piece of wire or plastic for hanging clothes",
+"clothes:outfit": "a set of clothes worn together",
+"clothes:ring": "a small circle of metal worn on a finger",
+"clothes:fashionable": "popular and modern at the present time",
+"clothes:baggy": "hanging loosely because it is too big",
+"clothes:trendy": "following the newest ideas in fashion",
+"clothes:garment": "a piece of clothing",
+"clothes:hem": "the folded and sewn edge at the bottom of a piece of clothing",
+"clothes:thread": "a long thin piece of cotton or silk used for sewing",
+"clothes:lining": "a layer of material covering the inside of a piece of clothing",
+"clothes:button-up": "to fasten a piece of clothing with its buttons",
+"clothes:attire": "clothes, especially of a particular type",
+"clothes:apparel": "clothes, especially when sold in shops",
+"clothes:threadbare": "so old and worn that the cloth has become very thin",
+"clothes:ensemble": "a set of clothes chosen to be worn together",
+"time:a-while": "a period of time, usually not very long",
+"time:for-ages": "for a very long time",
+"time:in-time": "early enough to do something",
+"time:at-the-moment": "now; at this time",
+"time:afterwards": "at a later time",
+"time:once-in-a-while": "not often; sometimes",
+"time:ever-since": "from a past time until now",
+"time:every-other-day": "once in every two days",
+"time:in-a-moment": "after a very short time",
+"time:at-once": "immediately; without any delay",
+"time:for-the-time-being": "for now, but not permanently",
+"time:by-the-time": "at the moment when something happens",
+"time:prompt": "done quickly or without delay",
+"time:straight-away": "immediately, without waiting",
+"time:timely": "happening at a good or useful moment",
+"time:span": "the length of time something lasts",
+"time:at-short-notice": "with very little warning beforehand",
+"time:in-due-course": "at the proper time in the future",
+"time:transient": "lasting only a short time",
+"time:in-retrospect": "when thinking about the past with new understanding",
+"places:downtown": "the main business area of a city",
+"places:post-office": "a building where you can send letters and parcels",
+"places:high-street": "the main street of a town where most shops are",
+"places:sightseeing-tour": "a trip to see the famous places of an area",
+"places:entrance": "the place where you go into a building",
+"places:exit": "the way out of a building or place",
+"places:pier": "a long structure that goes out into the sea",
+"places:canyon": "a deep narrow valley with steep sides",
+"places:waterfall": "a place where a river falls from a high place",
+"places:cliff": "a high steep wall of rock, often by the sea",
+"places:lighthouse": "a tall tower with a bright light to warn ships",
+"places:shopping-mall": "a large covered area with many shops",
+"places:residential-area": "a part of a town where people live",
+"places:industrial-area": "a part of a town with many factories",
+"places:outskirts": "the parts of a town far from the centre",
+"places:seafront": "the part of a town next to the sea",
+"places:relocate": "to move to a different place to live or work",
+"places:tourist-trap": "a place that is crowded and expensive for visitors",
+"places:hotspot": "a place that is very popular or lively",
+"places:district": "a part of a town or country",
+"places:town-hall": "the building where a town's local government works",
+"places:nightlife": "entertainment available in the evening, such as bars and clubs",
+"places:vicinity": "the area near a particular place",
+"places:secluded": "quiet and private, far from other people",
+"places:bustling": "full of busy activity",
+"places:periphery": "the outer edge of an area",
+"places:metropolitan": "relating to a large, important city",
+"transport:land": "to come down onto the ground from the air",
+"transport:check-in-desk": "the place at an airport where you register for a flight",
+"transport:get-a-lift": "to be taken somewhere in someone else's car",
+"transport:pull-over": "to move a vehicle to the side of the road and stop",
+"transport:run-out-of-petrol": "to have no more fuel in a vehicle",
+"transport:engine": "the part of a vehicle that makes it move",
+"transport:tyre": "a rubber ring around a wheel",
+"transport:zebra-crossing": "a place marked with stripes where people cross the road",
+"transport:cabin": "a room or space for passengers in a plane or ship",
+"transport:transit": "the process of moving people or things from one place to another",
+"transport:on-board": "on a ship, plane or train",
+"transport:toll": "money you pay to use a road or bridge",
+"transport:reverse": "to drive a vehicle backwards",
+"transport:brake": "a part of a vehicle used for slowing down or stopping",
+"transport:steering-wheel": "the wheel a driver turns to control direction",
+"transport:accelerate": "to go faster",
+"transport:sat-nav": "a device in a car that tells you the way",
+"transport:public-transit": "a system of buses and trains for the public",
+"transport:windscreen": "the large glass window at the front of a car",
+"transport:crew": "the people who work on a ship or plane",
+"transport:seat-reservation": "an arrangement to keep a seat for you",
+"transport:congested": "blocked because there are too many vehicles",
+"transport:gridlocked": "completely blocked by traffic so nothing can move",
+"transport:navigate": "to find the way to a place",
+"transport:aviation": "the activity of flying aircraft",
+"leisure:hang-out": "to spend time relaxing with friends",
+"leisure:stay-in": "to remain at home instead of going out",
+"leisure:entertainment": "things such as films and music that people enjoy",
+"leisure:enjoyable": "giving you pleasure",
+"leisure:amusement-park": "a place with rides and games for fun",
+"leisure:mess-around": "to spend time doing silly or unimportant things",
+"leisure:chat-room": "a place on the internet where people talk by writing",
+"leisure:outdoors": "outside, not in a building",
+"leisure:karaoke-bar": "a place where customers sing songs to recorded music",
+"leisure:roller-coaster": "a fast ride at a fun park with steep hills",
+"leisure:hobbyist": "a person who does an activity for pleasure",
+"leisure:leisurely": "slow and relaxed, without hurry",
+"leisure:pursuit": "an activity that you do regularly for pleasure",
+"leisure:spectacle": "an impressive public show or sight",
+"leisure:diversion": "something that takes your attention away and amuses you",
+"leisure:dabble": "to try an activity in a casual way",
+"leisure:pastime": "something you do for fun in your free time",
+"leisure:unwind": "to relax after a period of work or worry",
+"leisure:recreation": "activities that people do for enjoyment",
+"leisure:stage": "a raised area where people perform",
+"leisure:rehearse": "to practise a play or song before performing it",
+"leisure:admission": "the money you pay to enter a place",
+"leisure:thrilling": "very exciting and enjoyable",
+"leisure:gig": "a live music show",
+"leisure:stroll": "a slow, relaxed walk",
+"leisure:binge-watch": "to watch many episodes of a show one after another",
+"work:negotiate": "to discuss something in order to reach an agreement",
+"work:work-ethic": "a belief in the value of working hard and doing a job well",
+"work:team-leader": "a person in charge of a small group of workers",
+"work:job-satisfaction": "the feeling of being happy with the work you do",
+"work:workplace-culture": "the shared attitudes and habits of the people in a company",
+"work:take-on": "to accept work or responsibility",
+"work:get-promoted": "to be given a more senior job in the same organisation",
+"work:clock-in": "to record the time you arrive at work",
+"work:overworked": "made to work too much",
+"work:workstation": "a desk and equipment where one person does their work",
+"work:entitlement": "the official right to have or receive something",
+"work:downsize": "to make a business smaller by reducing the number of workers",
+"work:efficiency": "the ability to work well without wasting time or effort",
+"work:breadwinner": "the person in a family who earns most of the money",
+"work:sick-leave": "time away from work that you are paid for because you are ill",
+"work:trainee": "a person who is learning how to do a job",
+"work:pension": "money paid regularly to a person who has stopped working because of age",
+"work:cover-letter": "a letter sent with a job application to explain why you want the job",
+"work:lay-off": "to end the employment of a worker because there is not enough work",
+"work:quit": "to leave a job or stop doing something",
+"work:self-employed": "working for yourself instead of for a company",
+"work:business-trip": "a journey made for work reasons",
+"work:dress-code": "rules about what clothes people must wear in a place",
+"work:paperwork": "written work such as forms and reports that must be completed",
+"school:attendance": "the fact of being present at a place such as a school",
+"school:textbook": "a book that teaches a particular subject to students",
+"school:kindergarten": "a school or class for very young children before primary school",
+"school:primary-school": "a school for children between about five and eleven years old",
+"school:secondary-school": "a school for children older than eleven",
+"school:principal": "the person in charge of a school",
+"school:tuition": "money paid for teaching, or the teaching itself",
+"school:detention": "a punishment in which a pupil must stay at school after lessons",
+"school:report-card": "a paper showing a pupil's marks and a teacher's comments",
+"school:boarding-school": "a school where pupils live as well as study",
+"school:seminar": "a class where a small group discusses a subject with a teacher",
+"school:lecturer": "a teacher who gives talks to students at a university",
+"school:graduation": "the ceremony or time when a student gets a degree",
+"school:diploma": "an official paper showing that you have finished a course",
+"school:mock-exam": "a practice test taken before the real exam",
+"school:revision": "the act of studying again what you have learned before a test",
+"school:cheat": "to break the rules in order to win or get an advantage",
+"school:bully": "to hurt or frighten someone weaker again and again",
+"school:distance-learning": "a way of studying in which students learn away from the school",
+"school:multiple-choice": "a type of test where you choose the right answer from several",
+"school:academic": "relating to education, especially study at a college or university",
+"school:thesis": "a long piece of research written for a higher university degree",
+"school:undergraduate": "a university student who is working for a first degree",
+"school:postgraduate": "relating to study done after getting a first university degree",
+"school:faculty": "a large department of a university that teaches one group of subjects",
+"body:breathe": "to take air into your body and send it out again",
+"body:swallow": "to make food or drink go down your throat",
+"body:blood": "the red liquid that flows around the body",
+"body:sneeze": "to suddenly blow air out of your nose and mouth without control",
+"body:cough": "to push air out of your throat with a sudden noise",
+"body:sweat": "the salty liquid that comes out of your skin when you are hot",
+"body:scar": "a mark left on the skin after a wound has healed",
+"body:fist": "a hand with the fingers tightly closed",
+"body:blink": "to close and open your eyes quickly",
+"body:yawn": "to open your mouth wide and breathe in, usually when sleepy",
+"body:joint": "a part of the body where two bones meet",
+"body:spine": "the line of connected bones down the middle of your back",
+"body:skeleton": "the frame of bones that supports a body",
+"body:organ": "a part of the body that has a particular job",
+"body:reflex": "an automatic body reaction that you cannot control",
+"body:stamina": "the physical or mental strength to keep going for a long time",
+"body:metabolism": "the chemical processes in the body that change food into energy",
+"body:physique": "the shape and size of a person's body",
+"body:digestion": "the process by which the body breaks down food",
+"body:circulation": "the movement of blood around the body",
+"body:agility": "the ability to move quickly and easily",
+"body:dexterity": "skill in using your hands",
+"body:endurance": "the ability to continue an activity for a long time despite difficulty",
+"body:coordination": "the ability to move different parts of the body together smoothly",
+"body:vitality": "great energy and strength of body and mind",
+"feelings:ashamed": "feeling bad because of something wrong you have done",
+"feelings:delighted": "very pleased and happy",
+"feelings:relieved": "happy because something worrying has ended or did not happen",
+"feelings:thrilled": "extremely excited and pleased",
+"feelings:furious": "feeling extremely angry about something",
+"feelings:terrified": "feeling extremely afraid of something",
+"feelings:hopeful": "believing that something good will happen",
+"feelings:annoyed": "slightly angry or impatient",
+"feelings:miserable": "very unhappy and uncomfortable",
+"feelings:confused": "not able to think clearly or understand something",
+"feelings:envious": "wishing you had what another person has",
+"feelings:homesick": "sad because you are away from home and miss it",
+"feelings:nostalgic": "feeling happy and a little sad when you remember the past",
+"feelings:self-esteem": "the feeling of respect and confidence you have for yourself",
+"feelings:anxiety": "a feeling of worry and fear about what may happen",
+"feelings:sensitive": "easily hurt or upset by what people say or do",
+"feelings:fed-up": "bored, tired or annoyed with something that has gone on too long",
+"feelings:mixed-feelings": "two opposite emotions about the same thing at the same time",
+"feelings:cope-with": "to deal successfully with a difficult situation",
+"feelings:bottle-up": "to hide strong feelings and not let them show",
+"feelings:melancholy": "a deep, quiet sadness that lasts a long time",
+"feelings:exasperated": "very annoyed because something keeps happening or does not change",
+"feelings:euphoric": "feeling extremely happy and excited",
+"feelings:remorse": "a strong feeling of sadness about something wrong you have done",
+"feelings:bewildered": "very confused because you cannot understand something",
+"shopping:complaint": "a statement that you are unhappy about something you bought",
+"shopping:shopping-centre": "a large building with many shops inside it",
+"shopping:window-shopping": "looking at goods in shop windows without planning to buy them",
+"shopping:shopping-trolley": "a metal cart that you push around a shop to carry goods",
+"shopping:special-offer": "a lower price available for a short time",
+"shopping:pay-back": "to return money that you borrowed",
+"shopping:label": "a piece of paper or cloth on a product giving information about it",
+"shopping:shopper": "a person who is buying things in shops",
+"shopping:price-tag": "a small label showing how much something costs",
+"shopping:take-back": "to return something you bought to the shop",
+"shopping:retailer": "a person or company that sells goods directly to the public",
+"shopping:wholesale": "relating to selling goods in large amounts, usually to shops",
+"shopping:extravagant": "spending or costing much more than is necessary",
+"shopping:overspend": "to spend more money than you can afford",
+"shopping:subscription": "a regular payment to receive a product or service",
+"shopping:rip-off": "something that costs far more than it is worth",
+"shopping:good-value": "worth the amount of money you pay for it",
+"shopping:bulk": "a large amount or quantity of something",
+"shopping:price-range": "the set of prices between a lowest and highest amount",
+"shopping:frugal": "careful about spending money and avoiding waste",
+"shopping:consumerism": "the belief that buying and owning more goods is important",
+"shopping:lavish": "very rich, generous and expensive",
+"shopping:markup": "an amount added to the cost of goods to set the selling price",
+"nature:insect": "a very small creature with six legs, such as an ant or a fly",
+"nature:valley": "a low area of land between hills or mountains",
+"nature:desert": "a large dry area with little rain and few plants",
+"nature:volcano": "a mountain that can throw out hot melted rock and gas",
+"nature:earthquake": "a sudden strong shaking of the ground",
+"nature:coast": "the land beside the sea",
+"nature:rainfall": "the amount of rain that falls in a place over a period",
+"nature:scenery": "the natural views of a place, such as hills and lakes",
+"nature:wild": "living or growing in nature, not looked after by people",
+"nature:tide": "the regular rising and falling of the sea level",
+"nature:species": "a group of animals or plants of the same kind",
+"nature:predator": "an animal that hunts and eats other animals",
+"nature:glacier": "a huge slow-moving mass of ice in a mountain area",
+"nature:erosion": "the gradual wearing away of land by water or wind",
+"nature:fertile": "able to produce plenty of crops or plants",
+"nature:tropical": "relating to the hot, wet parts of the world near the equator",
+"nature:vegetation": "plants in general, especially those growing in one area",
+"nature:nocturnal": "active during the night rather than the day",
+"nature:migrate": "to move from one region to another at a certain time of year",
+"nature:hurricane": "a violent storm with very strong winds and heavy rain",
+"nature:ecological": "relating to living things and their surroundings",
+"nature:pristine": "clean, fresh and untouched by people",
+"nature:preservation": "the act of keeping something safe and in its original state",
+"nature:indigenous": "naturally existing in a place rather than coming from elsewhere",
+"nature:devastation": "severe damage or destruction over a large area",
+"tech:technology": "machines, tools and methods developed from scientific knowledge",
+"tech:invention": "a new device or method that someone has created",
+"tech:gadget": "a small useful machine or tool",
+"tech:connect": "to join one device to another so they work together",
+"tech:virtual": "existing on a computer or the internet, not in the real world",
+"tech:offline": "not connected to the internet",
+"tech:folder": "a place on a computer where you keep a group of files",
+"tech:hard-drive": "the part of a computer that stores files and programs",
+"tech:crash": "to suddenly stop working, as a computer does",
+"tech:scan": "to copy a page into a computer using a special machine",
+"tech:upgrade": "to change something to a newer and better version",
+"tech:glitch": "a small fault that stops a machine or program working properly",
+"tech:server": "a powerful computer that provides data to other computers",
+"tech:interface": "the way a program looks and lets a user control it",
+"tech:compatible": "able to work together with another device or system",
+"tech:cutting-edge": "using the newest and most advanced methods or ideas",
+"tech:router": "a device that sends internet signals around a building",
+"tech:open-source": "with a design that anyone is free to use and change",
+"tech:patch": "a small piece of code that repairs a fault in a program",
+"tech:user-friendly": "easy for people to understand and use",
+"tech:ubiquitous": "seeming to be found everywhere at the same time",
+"tech:cyberattack": "an attempt to damage or steal data from computer systems",
+"tech:sophisticated": "highly developed, advanced and complicated",
+"tech:redundant": "no longer needed because of something newer",
+"tech:scalable": "able to be made larger or smaller easily",
+"society:society": "all the people living together in a country or community",
+"society:culture": "the customs, beliefs and way of life of a group of people",
+"society:charity": "an organisation that collects money to help people in need",
+"society:homeless": "having no place to live",
+"society:custom": "a traditional way of behaving in a particular group or place",
+"society:generation-gap": "a difference in views between old and young people",
+"society:wealthy": "having a lot of money or property",
+"society:lifestyle-choice": "a decision about how you want to live",
+"society:multicultural": "including people from many different cultures",
+"society:community-centre": "a building where local people meet for activities",
+"society:minority": "a small group of people different from the main group",
+"society:prejudice": "an unfair opinion formed without enough knowledge",
+"society:stereotype": "a fixed and often untrue idea about a type of person",
+"society:authority": "an official organisation with the power to make decisions",
+"society:corruption": "dishonest behaviour by people in power, usually for money",
+"society:privilege": "a special advantage that only some people have",
+"society:social-class": "a group of people with a similar level of money and status",
+"society:ageing-population": "a country where the average age of people is rising",
+"society:integration": "the process of becoming a full part of a group",
+"society:public-opinion": "the views that most people in a society hold",
+"society:socioeconomic": "relating to both money and social position",
+"society:grassroots": "involving ordinary people rather than leaders or large organisations",
+"society:solidarity": "unity and support among people who share an aim",
+"society:scrutiny": "careful and close examination, often by the public",
+"society:mainstream": "accepted by most people and seen as normal",
+"verbs:move-in": "to start living in a new home",
+"verbs:get-back": "to return to a place",
+"verbs:put-away": "to place something where it is normally kept",
+"verbs:keep-up-with": "to stay at the same level or speed as someone or something",
+"verbs:sign-up": "to put your name on a list to join something",
+"verbs:let-down": "to disappoint someone by not doing what you promised",
+"verbs:stick-to": "to continue to follow a plan, rule or choice",
+"verbs:drop-off": "to take someone or something somewhere and leave them there",
+"verbs:fill-up": "to make something completely full",
+"verbs:make-up-for": "to do something good to repair a bad situation",
+"verbs:take-over": "to gain control of something or start doing a job from someone",
+"verbs:hold-back": "to stop yourself or others from moving or showing feelings",
+"verbs:fall-apart": "to break into pieces or stop working properly",
+"verbs:stand-for": "to be a short form of something or to represent an idea",
+"verbs:get-away-with": "to avoid punishment for doing something wrong",
+"verbs:catch-up-with": "to reach someone who is ahead of you",
+"verbs:come-across": "to find or meet something by chance",
+"verbs:turn-into": "to change and become something different",
+"verbs:point-out": "to tell someone a fact that they did not notice",
+"verbs:run-into": "to meet someone by chance",
+"verbs:crack-down-on": "to take strong action to stop bad or illegal behaviour",
+"verbs:iron-out": "to solve small problems in a plan or system",
+"verbs:play-down": "to make something seem less important than it really is",
+"verbs:scale-back": "to make something smaller or less ambitious",
+"academic:summary": "a short account that gives only the main points",
+"academic:chart": "a picture that shows facts or numbers in a clear way",
+"academic:diagram": "a simple drawing that explains how something works",
+"academic:predict": "to say what you think will happen in the future",
+"academic:volume": "the amount of something",
+"academic:criticism": "a statement that says what is wrong with something",
+"academic:investigate": "to try to find out the facts about something",
+"academic:overview": "a short general description of something",
+"academic:statistics": "numbers that show facts about something",
+"academic:emphasis": "special importance given to something",
+"academic:specific": "clear and exact rather than general",
+"academic:evaluate": "to judge how good or useful something is",
+"academic:justify": "to show that a decision or action is reasonable",
+"academic:exclude": "to leave something out or not allow it",
+"academic:modify": "to change something slightly to improve it",
+"academic:implement": "to put a plan or decision into action",
+"academic:illustrate": "to show the meaning of something using examples or pictures",
+"academic:equivalent": "something that has the same value or meaning as another thing",
+"academic:contradict": "to say or show the opposite of something",
+"academic:transform": "to change something completely",
+"academic:monitor": "to watch something carefully over a period of time",
+"academic:logic": "a clear way of thinking where each idea follows from another",
+"academic:substantiate": "to give evidence that shows something is true",
+"academic:elaborate": "to give more details about something",
+"academic:manipulate": "to control or influence someone or something in a clever, unfair way",
+"academic:accumulate": "to gather or increase in amount over time",
+"academic:incorporate": "to include something as a part of something larger",
+"academic:scope": "the range of things that something deals with",
+"academic:abstract": "existing as an idea rather than as a physical thing",
+"academic:attribute": "to say that something is caused by or belongs to someone",
+"discourse:for-instance": "used to give an example",
+"discourse:in-conclusion": "used to begin the last part of a talk or essay",
+"discourse:as-well-as": "used to add another thing to what you said",
+"discourse:what-is-more": "used to add a stronger or extra point",
+"discourse:after-all": "used to give a reason that should not be forgotten",
+"discourse:by-the-way": "used to add a new or less related topic",
+"discourse:in-the-end": "finally, after a long time or process",
+"discourse:to-be-honest": "used to say what you really think",
+"discourse:so-far": "up to the present moment",
+"discourse:to-begin-with": "used to introduce the first point",
+"discourse:above-all": "used to show the most important point",
+"discourse:on-the-contrary": "used to say the opposite of what was said",
+"discourse:as-for": "used to talk about a new but related subject",
+"discourse:apart-from": "except for or in addition to",
+"discourse:even-so": "in spite of what was just said",
+"discourse:in-general": "usually or in most cases",
+"discourse:in-particular": "used to show that you mean one thing more than others",
+"discourse:all-things-considered": "after thinking about every important fact",
+"discourse:by-and-large": "in most cases or on the whole",
+"discourse:to-a-certain-extent": "partly but not completely",
+"discourse:for-the-most-part": "mostly or in most cases",
+"idioms:give-it-a-try": "to attempt something to see if you can do it",
+"idioms:do-your-best": "to try as hard as you can",
+"idioms:on-purpose": "deliberately, not by accident",
+"idioms:in-a-mess": "dirty, untidy or in a bad state",
+"idioms:by-heart": "so that you can remember it completely",
+"idioms:for-a-while": "for a short period of time",
+"idioms:take-your-time": "to do something slowly without hurrying",
+"idioms:take-a-chance": "to do something that might fail but could bring a good result",
+"idioms:change-your-mind": "to decide something different from before",
+"idioms:keep-an-eye-on": "to watch something carefully",
+"idioms:hit-the-nail-on-the-head": "to say exactly what is true about a situation",
+"idioms:out-of-the-blue": "suddenly and without warning",
+"idioms:spill-the-beans": "to tell a secret by mistake",
+"idioms:get-the-hang-of": "to learn how to do something",
+"idioms:let-off-steam": "to get rid of strong feelings by doing something active",
+"idioms:look-on-the-bright-side": "to think about the good parts of a bad situation",
+"idioms:sit-on-the-fence": "to avoid choosing between two sides",
+"idioms:in-no-time": "after only a very short period of time",
+"idioms:make-a-difference": "to have a good effect on something",
+"idioms:miss-the-point": "to fail to understand the main idea",
+"idioms:go-the-extra-mile": "to make a special effort to do more than expected",
+"idioms:jump-the-gun": "to do something too soon",
+"idioms:go-back-to-the-drawing-board": "to start again because an idea did not work",
+"idioms:the-elephant-in-the-room": "an obvious problem that everyone avoids talking about",
+"idioms:a-leap-of-faith": "a risky action taken without being sure of the result",
+"idioms:throw-in-the-towel": "to stop trying because you cannot succeed",
+"t-office:photocopier": "a machine that makes copies of documents",
+"t-office:brainstorm": "to think of many ideas quickly with a group",
+"t-office:follow-up": "to do something more about a matter after an earlier action",
+"t-office:attend": "to be present at an event or meeting",
+"t-office:assign": "to give someone a job or piece of work to do",
+"t-office:stationery": "paper, pens and other things used for writing",
+"t-office:cubicle": "a small space in an office separated by low walls",
+"t-office:forward": "to send a message you received to another person",
+"t-office:handout": "a paper given to people at a talk or meeting",
+"t-office:prioritize": "to decide which things are most important and deal with them first",
+"t-office:collaborate": "to work together with others to achieve something",
+"t-office:take-minutes": "to write down what is said and decided at a meeting",
+"t-office:time-management": "the skill of planning how to use your time well",
+"t-office:multitask": "to do several jobs at the same time",
+"t-office:ground-rules": "basic rules for how people should act in a group",
+"t-office:action-item": "a task that someone agrees to do after a meeting",
+"t-office:wrap-up": "to bring something to an end",
+"t-office:reconvene": "to meet again after a pause or break",
+"t-office:take-on-board": "to accept and consider an idea or piece of advice",
+"t-office:ramifications": "the possible results of an action, often complicated ones",
+"t-office:delegation": "the act of giving work or power to someone else",
+"t-hr:recruitment": "the process of finding and employing new people",
+"t-hr:dismiss": "to make someone leave their job",
+"t-hr:work-experience": "time spent doing a job that teaches you useful skills",
+"t-hr:shortlist": "to put a name on a small list of people chosen from many",
+"t-hr:notice-period": "the time between telling your employer you will leave and your last day",
+"t-hr:raise": "an increase in the money you are paid",
+"t-hr:flexible-hours": "a system where workers can choose when they start and finish",
+"t-hr:skilled": "having the training and ability to do a job well",
+"t-hr:probationary": "relating to a short test period at the start of a new job",
+"t-hr:onboarding": "the process of helping new employees learn about a company",
+"t-hr:job-description": "a written list of the tasks and duties of a job",
+"t-hr:dismissal": "the act of ending someone's employment",
+"t-hr:talent": "people who have a natural ability or skill",
+"t-hr:probation-period": "a short time at the start of a job to see if you are suitable",
+"t-hr:headcount": "the total number of people employed by a company",
+"t-hr:job-security": "the feeling that you will not lose your job",
+"t-hr:career-path": "the series of jobs a person may have during their working life",
+"t-hr:disciplinary": "connected with punishing people who break rules",
+"t-hr:grievance": "a formal complaint about unfair treatment at work",
+"t-hr:severance": "money paid to a worker who has to leave a job",
+"t-hr:headhunt": "to find and offer a job to someone who already works elsewhere",
+"t-hr:poach": "to persuade someone to leave a company and work for yours",
+"t-finance:savings": "money that you have saved and not spent",
+"t-finance:overdraft": "an arrangement to spend more money than you have in your account",
+"t-finance:bank-statement": "a paper showing the money going in and out of your account",
+"t-finance:instalment": "one of several regular payments for something you buy",
+"t-finance:fee": "an amount of money you pay for a service",
+"t-finance:wages": "money paid to a worker, usually every week",
+"t-finance:cheque": "a printed form you sign to pay from your bank account",
+"t-finance:transfer": "a payment sent from one bank account to another",
+"t-finance:fund": "an amount of money saved for a particular purpose",
+"t-finance:accountant": "a person whose job is to manage and check money records",
+"t-finance:capital": "money that is used to start or grow a business",
+"t-finance:dividend": "a share of profit paid to people who own part of a firm",
+"t-finance:break-even": "to earn just enough money to cover your costs",
+"t-finance:overhead": "regular costs of running a business, such as rent",
+"t-finance:bankrupt": "unable to pay the money you owe",
+"t-finance:tax-return": "a form on which you report your income to the government",
+"t-finance:credit-score": "a number showing how reliable you are at paying back money",
+"t-finance:financial": "connected with money and how it is managed",
+"t-finance:depreciation": "the loss in value of something over time",
+"t-finance:liquidity": "how easily a company can find cash to pay its bills",
+"t-finance:surplus": "an amount of money left over after paying for everything",
+"t-finance:embezzle": "to steal money that you were trusted to look after",
+"t-finance:accrue": "to grow in amount slowly over a period of time",
+"t-marketing:commercial": "an advertisement on television or radio",
+"t-marketing:loyalty": "the feeling of always staying with the same shop or brand",
+"t-marketing:sales-figures": "numbers that show how much a company has sold",
+"t-marketing:billboard": "a large board by a road with an advertisement on it",
+"t-marketing:flyer": "a small printed paper that advertises something",
+"t-marketing:best-seller": "a product that is bought by very large numbers of people",
+"t-marketing:sales-team": "a group of workers whose job is to sell products",
+"t-marketing:newsletter": "a short report sent regularly to people who ask for it",
+"t-marketing:promotional": "used to advertise or help sell something",
+"t-marketing:packaging-design": "how a box or wrapper for a product looks",
+"t-marketing:customer-base": "all the people who regularly buy from a company",
+"t-marketing:target-market": "the group of customers a company most wants to sell to",
+"t-marketing:branding": "the work of creating a clear name and image for a product",
+"t-marketing:word-of-mouth": "a way of spreading news by people talking to each other",
+"t-marketing:differentiate": "to make something different from similar things",
+"t-marketing:upselling": "persuading a customer to buy a more expensive version",
+"t-marketing:market-research": "the study of what customers want and buy",
+"t-marketing:niche": "a small, special part of the market with its own customers",
+"t-marketing:rebranding": "changing the name and image of a company or product",
+"t-marketing:saturate": "to fill a market so full that nothing more can be sold",
+"t-marketing:consumer-behaviour": "the way people choose and buy products",
+"t-marketing:lucrative": "producing a lot of money",
+"t-marketing:rebrand": "to give a company or product a new name and image",
+"t-logistics:track": "to follow the progress of something as it moves",
+"t-logistics:ship": "to send goods to a customer by road, air or sea",
+"t-logistics:stock": "the goods that a shop or company has available",
+"t-logistics:shipping-cost": "the money you pay to have goods sent to you",
+"t-logistics:tracking-number": "a code that lets you see where a package is",
+"t-logistics:shelf-life": "the length of time a product can be kept before it goes bad",
+"t-logistics:forklift": "a small vehicle for lifting and moving heavy goods",
+"t-logistics:pallet": "a flat wooden base on which goods are stacked and moved",
+"t-logistics:container": "a big metal box used for sending goods by sea",
+"t-logistics:logistics": "the planning of how goods are stored and moved",
+"t-logistics:distributor": "a company that supplies goods to shops",
+"t-logistics:lead-time": "the time between ordering something and receiving it",
+"t-logistics:bulk-order": "a large order of many items at one time",
+"t-logistics:tariff": "a tax on goods that come into a country",
+"t-logistics:supply-chain": "the whole system of making and moving a product to buyers",
+"t-logistics:restock": "to fill a shop with new goods after the old ones are sold",
+"t-logistics:consignment": "a load of goods that is sent to someone",
+"t-logistics:consolidate": "to combine several things into one single unit",
+"t-logistics:bottleneck": "a place or stage where progress is slowed down",
+"t-logistics:reconcile": "to check that two sets of records match",
+"t-logistics:just-in-time": "delivering parts exactly when they are needed, not earlier",
+"t-travel:expense-report": "a form listing money spent on a work trip",
+"t-travel:conference-pass": "a card that gives you the right to attend an event",
+"t-travel:carry-on": "a small bag that you take with you on a plane",
+"t-travel:terminal": "a large building at an airport where passengers wait",
+"t-travel:currency-exchange": "a place where you change one country's money for another",
+"t-travel:time-zone": "an area of the world that has the same standard time",
+"t-travel:travel-agency": "a company that arranges trips and bookings for people",
+"t-travel:visitor": "a person who comes to see a place or person",
+"t-travel:sleeper-train": "a train with beds for passengers during the night",
+"t-travel:connecting-flight": "a second flight you take to continue a journey",
+"t-travel:business-class": "a more comfortable and expensive part of a plane",
+"t-travel:per-diem": "a fixed amount paid each day for costs while travelling",
+"t-travel:overbook": "to accept more bookings than there are seats or rooms",
+"t-travel:keynote": "the main speech at a conference that sets its theme",
+"t-travel:trade-fair": "a big event where companies show their products",
+"t-travel:name-badge": "a small card with your name worn on your clothes",
+"t-travel:travel-insurance": "insurance that pays if something goes wrong on a trip",
+"t-travel:red-eye": "a flight that leaves at night and arrives early in the morning",
+"t-travel:boarding-gate": "the exit in an airport where you get on your plane",
+"t-travel:plenary": "a session of a conference attended by all the delegates",
+"t-travel:forfeit": "to lose something as a punishment or because of a rule",
+"i-education:peer-pressure": "the strong influence of people of your own age to behave as they do",
+"i-education:educated": "having had a good level of schooling and knowledge",
+"i-education:gifted": "having a very high natural ability in something",
+"i-education:illiterate": "not able to read or write",
+"i-education:motivation": "the reason or desire that makes you want to do something",
+"i-education:concentration": "the ability to give all your attention to one thing",
+"i-education:memorise": "to learn something so well that you can remember it exactly",
+"i-education:bilingual": "able to speak two languages equally well",
+"i-education:rote-learning": "a way of learning by repeating facts until you remember them",
+"i-education:scholar": "a person with great knowledge of an academic subject",
+"i-education:specialise": "to focus on one particular subject or activity",
+"i-education:dormitory": "a large building where students live and sleep",
+"i-education:headteacher": "the person in charge of a school",
+"i-education:tutorial": "a lesson for a small group of students with a teacher",
+"i-education:pronunciation": "the way in which a word is said",
+"i-education:laboratory": "a room with special equipment where scientific work is done",
+"i-education:experiment": "a scientific test done to find out or prove something",
+"i-environment:solar-power": "electricity or heat produced using energy from the sun",
+"i-environment:litter": "small pieces of rubbish left lying in a public place",
+"i-environment:reuse": "to use something again instead of throwing it away",
+"i-environment:damage": "to harm or spoil something so that it is no longer in good condition",
+"i-environment:preserve": "to protect something so that it stays in its original state",
+"i-environment:rainforest": "a thick tropical forest where it rains a lot",
+"i-environment:chemical": "a substance made by or used in chemistry",
+"i-environment:harm": "damage or injury caused to a person or thing",
+"i-environment:wind-turbine": "a tall machine with blades that turns wind into electricity",
+"i-environment:extinction": "the state of no longer existing, when a type of animal has completely died out",
+"i-environment:toxic": "poisonous and dangerous to people, animals or the environment",
+"i-environment:pesticide": "a chemical used to kill insects that damage crops",
+"i-environment:compost": "a mixture of rotted plants and food used to improve soil",
+"i-environment:smog": "dirty air made of smoke and fog, common in big cities",
+"i-environment:nuclear": "using the energy released from the centre of atoms",
+"i-environment:recyclable": "able to be processed and used again",
+"i-environment:threat": "something that may cause harm or danger",
+"i-environment:overexploitation": "using a natural resource so much that it cannot recover",
+"i-technology:search-engine": "a website that lets you look for information on the internet",
+"i-technology:virus": "a harmful program that spreads between computers and damages files",
+"i-technology:spam": "unwanted messages sent to many people, usually advertising",
+"i-technology:plug": "the part at the end of a wire that connects a machine to electricity",
+"i-technology:charger": "a device used to put electricity into a battery",
+"i-technology:inbox": "the place in an email account where new messages arrive",
+"i-technology:emoji": "a small picture used in messages to show a feeling",
+"i-technology:cyber-security": "the protection of computers and networks from attack or theft",
+"i-technology:data-breach": "an event in which private information is seen or stolen by unauthorised people",
+"i-technology:hack": "to get into a computer system without permission",
+"i-technology:outdated": "no longer modern or useful because newer versions exist",
+"i-technology:virtual-reality": "a computer-made world that you can look at and feel part of using special glasses",
+"i-technology:broadband": "a fast internet connection that can carry a lot of data",
+"i-technology:podcast": "a recorded programme that you can download and listen to online",
+"i-technology:firewall": "a security system that keeps harmful traffic out of a computer network",
+"i-technology:phishing": "the crime of tricking people into giving private information by fake messages",
+"i-technology:wearable": "designed to be worn on the body, like a watch",
+"i-technology:cybercrime": "illegal activity carried out using computers or the internet",
+"i-technology:biometric": "using body features like fingerprints or the face to identify a person",
+"i-health:vitamin": "a natural substance in food that your body needs to stay healthy",
+"i-health:gain-weight": "to become heavier",
+"i-health:vaccine": "a substance that protects the body against a disease",
+"i-health:painkiller": "a medicine that reduces pain",
+"i-health:overweight": "heavier than is healthy for your height",
+"i-health:recovery": "the process of becoming healthy again after being ill or hurt",
+"i-health:fatigue": "a feeling of great tiredness",
+"i-health:preventive": "intended to stop something bad from happening",
+"i-health:physical-activity": "any movement of the body that uses energy, such as walking or sport",
+"i-health:wellness": "the state of being in good health, especially as an active goal",
+"i-health:insomnia": "a long-term problem with being unable to sleep",
+"i-health:meditation": "the practice of staying quiet and focusing your mind to relax",
+"i-health:mindfulness": "the practice of focusing calmly on what you feel and think right now",
+"i-health:dehydrated": "having lost too much water from the body",
+"i-health:flexibility": "the ability of the body to bend and move easily",
+"i-health:sedentary-lifestyle": "a way of living in which you sit down for most of the day",
+"i-health:holistic": "dealing with the whole of something rather than just separate parts",
+"i-health:immunity": "the body's ability to resist a particular infection",
+"i-health:sanitary": "relating to cleanliness and the protection of health",
+"i-urban:apartment-block": "a large building divided into many homes",
+"i-urban:highway": "a main road for fast traffic between cities",
+"i-urban:resident": "a person who lives in a particular place",
+"i-urban:shelter": "a place that protects people from bad weather or danger",
+"i-urban:skyline": "the shape made by tall buildings against the sky",
+"i-urban:residential": "containing mainly homes rather than offices or factories",
+"i-urban:pedestrian-zone": "a street or area where cars are not allowed",
+"i-urban:overcrowded": "containing too many people or things",
+"i-urban:urban-sprawl": "the uncontrolled spread of a city into the countryside",
+"i-urban:redevelop": "to build new buildings in an area to improve it",
+"i-urban:homelessness": "the state of having no place to live",
+"i-urban:flyover": "a road or bridge built above another road",
+"i-urban:pothole": "a hole in the surface of a road",
+"i-urban:demolish": "to destroy a building completely",
+"i-urban:developer": "a person or company that builds new houses or buildings to sell",
+"i-urban:zoning": "the dividing of land into areas with different official uses",
+"i-urban:dilapidated": "old and in very bad condition because it has not been cared for",
+"i-urban:megacity": "a huge city with more than ten million people",
+"i-urban:municipal": "relating to the government of a town or city",
+"i-urban:lease": "a legal agreement to rent a building or land for a period",
+"i-crime:burglary": "the crime of entering a building to steal things",
+"i-crime:suspect": "a person thought to have committed a crime",
+"i-crime:innocent": "not having done anything wrong or illegal",
+"i-crime:trial": "a legal process where a court decides if someone is guilty",
+"i-crime:lawyer": "a person whose job is to give legal advice and represent people",
+"i-crime:security": "the protection of people and places from danger or crime",
+"i-crime:shoplift": "to steal goods from a shop while pretending to buy",
+"i-crime:criminal": "a person who has committed a crime",
+"i-crime:convict": "to officially decide in court that someone is guilty of a crime",
+"i-crime:prosecute": "to take legal action against someone accused of a crime",
+"i-crime:verdict": "the decision of a court about whether someone is guilty",
+"i-crime:jury": "a group of ordinary people who decide if someone is guilty",
+"i-crime:vandalism": "the deliberate damage of public or private property",
+"i-crime:smuggle": "to take goods secretly and illegally into or out of a country",
+"i-crime:bribery": "the crime of giving money to get an unfair advantage",
+"i-crime:offence": "an act that breaks the law",
+"i-crime:acquit": "to decide officially that someone is not guilty of a crime",
+"i-crime:perpetrator": "a person who commits a crime or does something harmful",
+"i-crime:accomplice": "a person who helps another person to commit a crime",
+"i-economy:inflation": "a general rise in prices over time",
+"i-economy:import": "to bring goods into a country from abroad to sell them",
+"i-economy:wage": "money paid regularly to a worker, often by the hour or week",
+"i-economy:tourism": "the business of providing holidays and services for visitors",
+"i-economy:employment": "the state of having paid work",
+"i-economy:boom": "a sudden rapid growth in business or economic activity",
+"i-economy:trade-union": "an organisation of workers that protects their rights",
+"i-economy:monopoly": "complete control of a market by one company",
+"i-economy:subsidy": "money given by the state to help an industry keep prices low",
+"i-economy:economic-growth": "an increase in the amount of goods and services a country produces",
+"i-economy:stock-market": "a place where shares in companies are bought and sold",
+"i-economy:labour-market": "the supply of workers and the demand for jobs in a place",
+"i-economy:downturn": "a fall in economic or business activity",
+"i-economy:trade-deficit": "the situation where a country buys more from abroad than it sells",
+"i-economy:import-duty": "a tax paid on goods brought in from another country",
+"i-economy:price-war": "a fight between companies to sell the same goods at lower prices",
+"i-economy:austerity": "a government policy of strict cuts in spending to reduce debt",
+"i-economy:fiscal": "relating to government money, especially taxes and spending",
+"i-economy:stagnation": "a long period with no growth or progress",
+"i-media:broadcast": "to send out a programme on television or radio",
+"i-media:publish": "to print and sell a book, newspaper or article",
+"i-media:reporter": "a person who finds and tells news for a newspaper or television",
+"i-media:subscribe": "to pay or sign up to receive a service regularly",
+"i-media:media": "television, radio, newspapers and the internet as a group",
+"i-media:blog": "a website where a person regularly writes their thoughts",
+"i-media:subtitle": "words at the bottom of a screen that translate speech",
+"i-media:news-bulletin": "a short programme of the latest news on television or radio",
+"i-media:editor": "a person who decides what is printed in a newspaper or book",
+"i-media:coverage": "the amount of attention a news event gets in the media",
+"i-media:tabloid": "a newspaper with short stories, big headlines and lots of gossip",
+"i-media:press-freedom": "the right of newspapers to report without government control",
+"i-media:sponsor": "to give money to an event or person in return for advertising",
+"i-media:viral": "spreading very quickly among many people on the internet",
+"i-media:hoax": "a trick to make people believe something false",
+"i-media:press-release": "an official statement given to journalists",
+"i-media:impartial": "not supporting one side more than another; fair",
+"i-media:defamation": "the act of harming someone's good name by saying false things",
+"i-media:editorial": "a newspaper article giving the opinion of its editors",
+"x-collocations:pay-a-visit": "to go and see someone or somewhere for a short time",
+"x-collocations:take-a-risk": "to do something that might have a bad result",
+"x-collocations:set-a-goal": "to decide what you want to achieve",
+"x-collocations:break-the-rules": "to do something that is not allowed",
+"x-collocations:make-a-complaint": "to say officially that you are unhappy about something",
+"x-collocations:give-advice": "to tell someone what you think they should do",
+"x-collocations:do-research": "to study a subject carefully to find new facts",
+"x-collocations:get-a-refund": "to receive your money back for something you returned",
+"x-collocations:pay-by-credit-card": "to use a bank card to buy something and pay later",
+"x-collocations:draw-a-conclusion": "to decide something is true after thinking about the facts",
+"x-collocations:make-a-profit": "to earn more money than you spend",
+"x-collocations:reach-an-agreement": "to settle a disagreement so that everyone accepts the result",
+"x-collocations:meet-the-requirements": "to have everything that is officially needed",
+"x-collocations:come-to-a-conclusion": "to form a final opinion after thinking carefully",
+"x-collocations:make-a-contribution": "to give help, money or ideas to something",
+"x-collocations:take-responsibility-for": "to accept that you are the person who must deal with something",
+"x-collocations:take-the-initiative": "to act first without waiting to be told",
+"x-collocations:strike-a-balance": "to find a fair middle point between two different things",
+"x-collocations:shed-light-on": "to help explain something that was not clear",
+"x-collocations:turn-a-blind-eye-to": "to pretend not to notice something wrong",
+"x-collocations:call-into-question": "to make people doubt whether something is true or right"
 };
 
 /* ===== Từ điển giao diện VI-EN (dùng cho nút chuyển ngôn ngữ). Khóa: đoạn chữ tiếng Việt trong giao diện, {1} {2} là giá trị chèn lúc chạy. ===== */
@@ -17502,5 +19842,1319 @@ const I18N_EN = {
 "Giọng Anh-Mỹ, Anh-Anh, tốc độ đọc": "US and UK voices, reading speed",
 "Sao lưu, khôi phục, đặt lại": "Back up, restore, reset",
 "Đã bật": "On",
-"Chưa bật": "Off"
+"Chưa bật": "Off",
+"Vì sao “": "Why “",
+"” chưa đúng:": "” is not right:"
+};
+
+/* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */
+const HW_PATCH = {
+ "L:G1#1.0": {
+  "opts": [
+   "He's a medical student.",
+   "He's a teacher.",
+   "He's a nurse.",
+   "He's a doctor."
+  ],
+  "a": 0,
+  "wrong": {
+   "He's a teacher.": "Minh tự nói mình là sinh viên y (I'm a medical student); trong đoạn hội thoại không ai nhắc đến nghề giáo viên.",
+   "He's a nurse.": "Đây là nghề của Anna chứ không phải của Minh; Anna nói I'm a nurse, còn Minh nói mình là sinh viên y.",
+   "He's a doctor.": "Minh mới chỉ là sinh viên y (medical student), chưa phải bác sĩ; đoạn hội thoại không nói anh ấy là doctor."
+  }
+ },
+ "L:G1#1.1": {
+  "opts": [
+   "At City Hospital",
+   "At a pharmacy",
+   "At a school",
+   "At a bank"
+  ],
+  "a": 0,
+  "wrong": {
+   "At a pharmacy": "Anna nói rõ mình làm việc ở City Hospital, đoạn hội thoại không hề nhắc đến hiệu thuốc.",
+   "At a school": "Anna là y tá làm ở City Hospital nên không làm ở trường học; trong hội thoại không có chi tiết nào về trường.",
+   "At a bank": "Anna là y tá và nói I work at City Hospital, nên ngân hàng mâu thuẫn với thông tin trong hội thoại."
+  }
+ },
+ "L:G1#2": {
+  "opts": [
+   "is",
+   "am",
+   "are",
+   "be"
+  ],
+  "a": 1,
+  "wrong": {
+   "is": "Is đi với chủ ngữ số ít ngôi thứ ba (he/she/it), còn chủ ngữ I luôn đi với am.",
+   "are": "Are dùng với you/we/they và danh từ số nhiều; chủ ngữ I phải đi với am.",
+   "be": "Be là dạng nguyên mẫu, không chia theo chủ ngữ; sau I ở thì hiện tại đơn phải dùng am, không nói I be."
+  }
+ },
+ "L:G1#3": {
+  "opts": [
+   "is",
+   "am",
+   "are",
+   "be"
+  ],
+  "a": 0,
+  "wrong": {
+   "am": "Am chỉ đi với chủ ngữ I; chủ ngữ She là ngôi thứ ba số ít nên cần is.",
+   "are": "Are đi với you/we/they và danh từ số nhiều; She là số ít nên không dùng are.",
+   "be": "Be là dạng nguyên mẫu, không dùng làm động từ chia sau chủ ngữ She ở thì hiện tại đơn; phải dùng is."
+  }
+ },
+ "L:G2#1.0": {
+  "opts": [
+   "At five thirty",
+   "At six",
+   "At seven",
+   "At eight"
+  ],
+  "a": 2,
+  "wrong": {
+   "At five thirty": "Năm giờ rưỡi là lúc Linh thức dậy (gets up), không phải lúc bắt đầu ca làm.",
+   "At six": "Sáu giờ là giờ Linh ăn sáng (has breakfast); ca làm chỉ bắt đầu sau đó, lúc bảy giờ.",
+   "At eight": "Đoạn văn nói cô ấy bắt đầu ca làm lúc seven, không phải tám giờ."
+  }
+ },
+ "L:G2#1.1": {
+  "opts": [
+   "Hungry",
+   "Happy",
+   "Tired",
+   "Angry"
+  ],
+  "a": 2,
+  "wrong": {
+   "Hungry": "Đoạn văn nói cô ấy luôn thấy mệt (tired) sau ca đêm; không có chi tiết nào về việc cô ấy đói.",
+   "Happy": "Bài nói cô ấy always feels tired, tức là mệt mỏi chứ không phải vui vẻ.",
+   "Angry": "Không có chi tiết nào về việc Linh tức giận; bài chỉ nói cô ấy mệt sau ca đêm."
+  }
+ },
+ "L:G2#3": {
+  "opts": [
+   "drink",
+   "drinking",
+   "drinks",
+   "to drink"
+  ],
+  "a": 2,
+  "wrong": {
+   "drink": "Chủ ngữ She là ngôi thứ ba số ít nên động từ ở hiện tại đơn phải thêm -s; drink không có -s chỉ đi với I/you/we/they.",
+   "drinking": "Dạng V-ing không thể đứng một mình làm động từ chính sau trạng từ never; cần động từ chia ở hiện tại đơn là drinks.",
+   "to drink": "Sau chủ ngữ và trạng từ never cần một động từ đã chia, không dùng to + động từ; câu đúng là She never drinks coffee."
+  }
+ },
+ "L:G3#1.0": {
+  "opts": [
+   "Coffee",
+   "Water",
+   "Juice",
+   "Tea"
+  ],
+  "a": 1,
+  "wrong": {
+   "Coffee": "Khách chỉ gọi a glass of water; cà phê không được nhắc đến trong hội thoại.",
+   "Juice": "Khách xin một ly nước lọc (water), không gọi nước ép.",
+   "Tea": "Trong hội thoại khách không gọi trà mà chọn a glass of water."
+  }
+ },
+ "L:G3#1.1": {
+  "opts": [
+   "Curry",
+   "Peanuts",
+   "Chicken",
+   "Fish"
+  ],
+  "a": 1,
+  "wrong": {
+   "Curry": "Khách chỉ nói cà ri cay nên không gọi; việc dị ứng được nói riêng là peanuts.",
+   "Chicken": "Khách gọi súp gà (chicken soup) nên chắc chắn không dị ứng với gà; dị ứng là đậu phộng.",
+   "Fish": "Hội thoại không hề nhắc đến cá; khách nói rõ mình dị ứng với peanuts."
+  }
+ },
+ "L:G3#2": {
+  "opts": [
+   "Could",
+   "Do",
+   "Am",
+   "Does"
+  ],
+  "a": 0,
+  "wrong": {
+   "Do": "Do I have the bill? có nghĩa là hỏi thật sự tôi có hóa đơn không, không phải lời nhờ lịch sự; muốn xin hóa đơn cần Could I have...?",
+   "Am": "Am không đứng trước I have như trợ động từ; Am I have là sai cấu trúc câu hỏi.",
+   "Does": "Does đi với chủ ngữ số ít ngôi thứ ba (he/she/it), không đi với I; ngoài ra nó cũng không tạo lời xin lịch sự."
+  }
+ },
+ "L:G3#3": {
+  "opts": [
+   "some",
+   "an",
+   "many",
+   "two"
+  ],
+  "a": 0,
+  "wrong": {
+   "an": "An chỉ đứng trước danh từ đếm được số ít bắt đầu bằng nguyên âm; ở đây water là danh từ không đếm được nên không dùng an.",
+   "many": "Many chỉ đi với danh từ đếm được số nhiều; water không đếm được nên phải dùng some hoặc a glass of.",
+   "two": "Two đi với danh từ đếm được số nhiều (two glasses, two bottles); water không đếm được nên không đứng ngay sau two."
+  }
+ },
+ "L:G4#1.0": {
+  "opts": [
+   "The ground floor",
+   "The second floor",
+   "The first floor",
+   "The third floor"
+  ],
+  "a": 0,
+  "wrong": {
+   "The second floor": "Người nói khẳng định hiệu thuốc ở ground floor (tầng trệt), không phải tầng hai.",
+   "The first floor": "Hiệu thuốc nằm ở tầng trệt (ground floor); trong hội thoại không nói tầng một.",
+   "The third floor": "Hội thoại chỉ nói hiệu thuốc ở ground floor, và còn bảo đi thang máy xuống, nên tầng ba là sai."
+  }
+ },
+ "L:G4#1.1": {
+  "opts": [
+   "The main entrance",
+   "The café",
+   "The lift",
+   "The stairs"
+  ],
+  "a": 1,
+  "wrong": {
+   "The main entrance": "Hiệu thuốc ở đối diện (opposite) lối vào chính chứ không ở cạnh; next to khác với opposite.",
+   "The lift": "Thang máy chỉ là nơi người hỏi đi xuống; vị trí cạnh hiệu thuốc là quán café.",
+   "The stairs": "Cầu thang không được nhắc đến; hiệu thuốc nằm cạnh quán café (next to the café)."
+  }
+ },
+ "L:G4#2": {
+  "opts": [
+   "are",
+   "have",
+   "is",
+   "has"
+  ],
+  "a": 0,
+  "wrong": {
+   "have": "Have là động từ chỉ sở hữu, không dùng để nói có tồn tại; cấu trúc There + be (are/is) mới diễn tả sự tồn tại.",
+   "is": "There is đi với danh từ số ít; two lifts là số nhiều nên phải dùng There are.",
+   "has": "Has là dạng của động từ have (sở hữu) và không tạo cấu trúc There + be; câu đúng là There are two lifts."
+  }
+ },
+ "L:G5#1.0": {
+  "opts": [
+   "She went to work.",
+   "She visited her grandparents.",
+   "She watched a film.",
+   "She played football."
+  ],
+  "a": 1,
+  "wrong": {
+   "She went to work.": "Hoa kể thứ Bảy cô ấy đi thăm ông bà, không nhắc đến chuyện đi làm.",
+   "She watched a film.": "Xem phim là việc Hoa làm vào Chủ nhật ở nhà, không phải thứ Bảy.",
+   "She played football.": "Hoa không hề nhắc đến đá bóng; thứ Bảy cô ấy đi thăm ông bà (visited my grandparents)."
+  }
+ },
+ "L:G5#1.1": {
+  "opts": [
+   "It was raining.",
+   "She was ill.",
+   "She was tired.",
+   "She had homework."
+  ],
+  "a": 2,
+  "wrong": {
+   "It was raining.": "Hoa không nhắc đến trời mưa; lý do cô ấy ở nhà là vì rất mệt (I was really tired).",
+   "She was ill.": "Hoa nói mình mệt (tired) chứ không nói bị ốm; mệt và ốm là hai ý khác nhau.",
+   "She had homework.": "Không có chi tiết nào về bài tập; Hoa giải thích rõ là cô ấy really tired."
+  }
+ },
+ "L:G5#3": {
+  "opts": [
+   "have",
+   "had",
+   "has",
+   "having"
+  ],
+  "a": 0,
+  "wrong": {
+   "had": "Sau Did, động từ phải ở dạng nguyên mẫu vì Did đã mang dấu thì quá khứ; had là quá khứ nên bị lặp thì.",
+   "has": "Has là dạng chia của ngôi thứ ba số ít ở hiện tại; sau Did phải dùng nguyên mẫu have.",
+   "having": "Sau Did (hoặc do/does), động từ chính dùng nguyên mẫu không to, không thêm -ing; câu đúng là Did you have breakfast?"
+  }
+ },
+ "L:G6#1.0": {
+  "opts": [
+   "See a film",
+   "Study",
+   "Work",
+   "Go shopping"
+  ],
+  "a": 1,
+  "wrong": {
+   "See a film": "Xem phim là kế hoạch buổi tối chứ không phải buổi sáng; buổi sáng người này sẽ học.",
+   "Work": "Không có chi tiết nào về đi làm; người nói bảo buổi sáng sẽ học (study).",
+   "Go shopping": "Mua sắm không được nhắc đến; buổi sáng thứ Bảy anh ấy sẽ học (I'm going to study in the morning)."
+  }
+ },
+ "L:G6#1.1": {
+  "opts": [
+   "At seven in the evening",
+   "On Sunday",
+   "In the morning",
+   "At nine at night"
+  ],
+  "a": 0,
+  "wrong": {
+   "On Sunday": "Họ hẹn gặp vào thứ Bảy buổi tối, không phải Chủ nhật; Sunday không xuất hiện trong hội thoại.",
+   "In the morning": "Buổi sáng người kia bận học nên họ hẹn buổi tối (How about the evening?).",
+   "At nine at night": "Họ hẹn gặp lúc bảy giờ (Let's meet at seven), không phải chín giờ."
+  }
+ },
+ "L:G6#2": {
+  "opts": [
+   "–",
+   "for",
+   "to",
+   "at"
+  ],
+  "a": 2,
+  "wrong": {
+   "–": "Sau be going phải có to rồi mới đến động từ nguyên mẫu; bỏ to thì cấu trúc be going to bị thiếu.",
+   "for": "For là giới từ chỉ mục đích hoặc thời gian, không nằm trong cấu trúc be going to + động từ.",
+   "at": "At là giới từ chỉ vị trí hoặc thời điểm, không thể thay to trong be going to + động từ nguyên mẫu."
+  }
+ },
+ "L:M1#1.0": {
+  "opts": [
+   "A headache, a cough, a fever and a sore throat",
+   "Only a fever and dizziness",
+   "A stomachache and back pain",
+   "A rash and swollen legs"
+  ],
+  "a": 0,
+  "wrong": {
+   "Only a fever and dizziness": "Bệnh nhân còn đau đầu, ho và đau họng, và còn nói không chóng mặt; vì vậy chỉ sốt và chóng mặt là sai.",
+   "A stomachache and back pain": "Bệnh nhân không hề nhắc đến đau bụng hay đau lưng; các triệu chứng là đau đầu, ho, sốt, đau họng.",
+   "A rash and swollen legs": "Phát ban và phù chân không được nhắc đến; bệnh nhân kể đau đầu, ho, sốt và đau họng."
+  }
+ },
+ "L:M1#1.1": {
+  "opts": [
+   "He doesn't feel dizzy.",
+   "He feels dizzy in the morning.",
+   "He feels very dizzy and weak.",
+   "He sometimes feels dizzy when he stands up."
+  ],
+  "a": 0,
+  "wrong": {
+   "He feels dizzy in the morning.": "Bác sĩ hỏi Do you feel dizzy? và bệnh nhân đáp No, I don't, nên không có chuyện chóng mặt vào buổi sáng.",
+   "He feels very dizzy and weak.": "Bệnh nhân phủ nhận chóng mặt (No, I don't), nên không thể nói là rất chóng mặt và yếu.",
+   "He sometimes feels dizzy when he stands up.": "Bệnh nhân trả lời No, I don't khi được hỏi về chóng mặt, nên không có chuyện thỉnh thoảng chóng mặt khi đứng dậy."
+  },
+  "q": "Which of these does the patient say about dizziness?",
+  "why": "Do you feel dizzy? – No, I don't."
+ },
+ "L:M1#2.0": {
+  "opts": [
+   "Headache and sore throat",
+   "Only a fever",
+   "Headache, dry cough and fever",
+   "Cough and sore throat"
+  ],
+  "a": 2,
+  "wrong": {
+   "Headache and sore throat": "Họng của Nam không đau (his throat doesn't hurt), nên sore throat không phải triệu chứng của anh ấy.",
+   "Only a fever": "Nam còn đau đầu và ho khan; không chỉ có sốt mà thôi.",
+   "Cough and sore throat": "Nam có ho khan nhưng họng không đau; hơn nữa đáp án này bỏ sót đau đầu và sốt."
+  }
+ },
+ "L:M1#2.1": {
+  "opts": [
+   "His throat doesn't hurt.",
+   "His throat hurts when he swallows.",
+   "His throat hurts a lot.",
+   "His throat hurts only at night."
+  ],
+  "a": 0,
+  "wrong": {
+   "His throat hurts when he swallows.": "Đoạn văn nói his throat doesn't hurt, tức là họng không đau, kể cả khi nuốt.",
+   "His throat hurts a lot.": "Họng của Nam không đau chút nào (his throat doesn't hurt), nên nói đau nhiều là trái với đoạn văn.",
+   "His throat hurts only at night.": "Đoạn văn nói họng anh ấy không đau, không có chuyện chỉ đau vào ban đêm."
+  },
+  "q": "What does the text say about Nam's throat?",
+  "why": "…his throat doesn't hurt."
+ },
+ "L:M1#3": {
+  "opts": [
+   "is",
+   "have",
+   "has",
+   "does"
+  ],
+  "a": 2,
+  "wrong": {
+   "is": "Is cần đi với tính từ hoặc danh từ chỉ trạng thái; muốn nói bị đau họng dùng have/has a sore throat, không dùng is.",
+   "have": "Have đi với I/you/we/they; chủ ngữ She là ngôi thứ ba số ít nên phải dùng has.",
+   "does": "Does là trợ động từ và không thể thay động từ chính chỉ sở hữu ở khẳng định; câu đúng là She has a sore throat."
+  }
+ },
+ "L:M1#4": {
+  "opts": [
+   "(không có mạo từ)",
+   "an",
+   "a",
+   "many"
+  ],
+  "a": 0,
+  "wrong": {
+   "an": "An dùng trước danh từ đếm được số ít; back pain là danh từ không đếm được, và back còn bắt đầu bằng phụ âm.",
+   "a": "A dùng trước danh từ đếm được số ít; back pain là danh từ không đếm được nên nói I have back pain, không dùng a.",
+   "many": "Many chỉ đi với danh từ đếm được số nhiều; back pain không đếm được nên không dùng many (phải là much hoặc không mạo từ)."
+  }
+ },
+ "L:M2#1.0": {
+  "opts": [
+   "A headache for three days",
+   "A cough for three days",
+   "She missed an appointment",
+   "A broken arm"
+  ],
+  "a": 0,
+  "wrong": {
+   "A cough for three days": "Bệnh nhân nói mình bị đau đầu nặng ba ngày (bad headache), không phải ho; chỉ có khoảng thời gian là trùng.",
+   "She missed an appointment": "Cô ấy đến khám vì đau đầu và lo lắng; không có chi tiết nào về việc lỡ hẹn.",
+   "A broken arm": "Gãy tay không được nhắc đến; vấn đề chính của bệnh nhân là đau đầu kéo dài ba ngày."
+  }
+ },
+ "L:M2#1.1": {
+  "opts": [
+   "I'm sorry to hear that. Let's talk about it.",
+   "That's normal.",
+   "Don't worry.",
+   "It's probably nothing."
+  ],
+  "a": 0,
+  "wrong": {
+   "That's normal.": "Cách nói này gạt đi nỗi lo của bệnh nhân thay vì thể hiện đồng cảm, nên chưa phải cách đáp tốt như bác sĩ trong hội thoại.",
+   "Don't worry.": "Bảo bệnh nhân đừng lo nghe như phủ nhận cảm xúc của họ, không thể hiện sự đồng cảm và không mời họ kể thêm.",
+   "It's probably nothing.": "Câu này đoán trước và hạ thấp vấn đề khi chưa khám, có thể làm bệnh nhân thấy không được lắng nghe."
+  }
+ },
+ "L:M2#2": {
+  "opts": [
+   "What's your problem?",
+   "How can I help you today?",
+   "Why are you here?",
+   "Tell me your symptoms now."
+  ],
+  "a": 1,
+  "wrong": {
+   "What's your problem?": "Câu này nghe thô và hơi trách móc, vì problem có thể bị hiểu là bệnh nhân gây phiền; không phù hợp để mở đầu lịch sự.",
+   "Why are you here?": "Câu này nghe như chất vấn hoặc đuổi khéo, thiếu sự ân cần cần có khi bắt đầu một buổi khám.",
+   "Tell me your symptoms now.": "Đây là câu mệnh lệnh, nghe thiếu lịch sự và gây áp lực, không phải câu hỏi mở để bệnh nhân tự kể."
+  }
+ },
+ "L:M2#6": {
+  "opts": [
+   "ap-POINT-ment",
+   "ap-point-MENT",
+   "AP-point-ment",
+   "AP-POINT-MENT"
+  ],
+  "a": 0,
+  "wrong": {
+   "ap-point-MENT": "Âm cuối -ment là hậu tố không nhận trọng âm; danh từ này nhấn ở âm thứ hai là -POINT-.",
+   "AP-point-ment": "Âm đầu ap- ở đây đọc nhẹ /ə/ và không mang trọng âm; trọng âm rơi vào âm thứ hai là POINT.",
+   "AP-POINT-MENT": "Một từ tiếng Anh chỉ có một trọng âm chính; nhấn cả ba âm tiết là sai, trọng âm đúng chỉ ở âm POINT."
+  }
+ },
+ "L:M3#1.0": {
+  "opts": [
+   "Gradually",
+   "After an accident",
+   "Suddenly",
+   "On Tuesday evening"
+  ],
+  "a": 0,
+  "wrong": {
+   "After an accident": "Bệnh nhân không nhắc đến tai nạn; cơn đau đầu bắt đầu từ từ (gradually) và nhẹ lúc đầu.",
+   "Suddenly": "Bác sĩ hỏi suddenly hay gradually và bệnh nhân chọn gradually, nên không phải đột ngột.",
+   "On Tuesday evening": "Câu hỏi hỏi cách khởi phát, không phải thời điểm; ngoài ra cơn đau bắt đầu vào sáng thứ Hai, không phải tối thứ Ba."
+  }
+ },
+ "L:M3#1.1": {
+  "opts": [
+   "It has stopped.",
+   "It's getting worse.",
+   "It's getting better.",
+   "It stays the same."
+  ],
+  "a": 1,
+  "wrong": {
+   "It has stopped.": "Bệnh nhân nói almost constant now, tức là gần như đau liên tục chứ chưa hết.",
+   "It's getting better.": "Bệnh nhân trả lời Worse, I think nên cơn đau nặng hơn, không phải đỡ hơn.",
+   "It stays the same.": "Bệnh nhân nói đau nhẹ lúc đầu rồi đang nặng dần (Worse), nên không phải giữ nguyên."
+  }
+ },
+ "L:M3#2": {
+  "opts": [
+   "for",
+   "ago",
+   "since",
+   "during"
+  ],
+  "a": 0,
+  "wrong": {
+   "ago": "Ago đứng sau khoảng thời gian để chỉ điều xảy ra trong quá khứ (two weeks ago), và không đi với thì hiện tại hoàn thành.",
+   "since": "Since đi với mốc thời gian bắt đầu (since Monday), còn two weeks là một khoảng thời gian nên cần for.",
+   "during": "During đi với danh từ chỉ một giai đoạn có sẵn (during the night), không đi trực tiếp với số lượng như two weeks; ở đây cần for."
+  }
+ },
+ "L:M3#3": {
+  "opts": [
+   "for",
+   "ago",
+   "since",
+   "from"
+  ],
+  "a": 2,
+  "wrong": {
+   "for": "For đi với khoảng thời gian (for two weeks), còn last Friday là một mốc thời gian nên không dùng for.",
+   "ago": "Ago đi sau khoảng thời gian (three days ago) và không nằm trước mốc last Friday.",
+   "from": "Với thì hiện tại hoàn thành kéo dài tới bây giờ, mốc bắt đầu đi với since; from thường đi cùng to/until, không diễn đạt như vậy."
+  }
+ },
+ "L:M4#1.0": {
+  "opts": [
+   "Throbbing",
+   "Sharp",
+   "Burning",
+   "Stabbing"
+  ],
+  "a": 2,
+  "wrong": {
+   "Throbbing": "Throbbing là đau giật theo nhịp mạch, còn bệnh nhân mô tả đau rát (burning).",
+   "Sharp": "Sharp là đau nhói, buốt; bệnh nhân nói rõ đau rát (a burning pain).",
+   "Stabbing": "Stabbing là cảm giác như bị đâm; bệnh nhân mô tả cơn đau là rát bỏng (burning)."
+  }
+ },
+ "L:M4#1.1": {
+  "opts": [
+   "9 out of 10",
+   "3 out of 10",
+   "6 out of 10",
+   "1 out of 10"
+  ],
+  "a": 2,
+  "wrong": {
+   "9 out of 10": "Bệnh nhân chấm khoảng sáu điểm (About six), chưa tới mức chín.",
+   "3 out of 10": "Bệnh nhân nói đau khoảng sáu trên thang mười, nặng hơn mức ba.",
+   "1 out of 10": "Mức một là gần như không đau, trong khi bệnh nhân đánh giá khoảng sáu (About six)."
+  }
+ },
+ "L:M4#1.2": {
+  "opts": [
+   "Spicy food",
+   "Lying down",
+   "Milk",
+   "Walking"
+  ],
+  "a": 0,
+  "wrong": {
+   "Lying down": "Bệnh nhân không nhắc đến tư thế nằm; điều làm đau nặng hơn là ăn đồ cay.",
+   "Milk": "Sữa làm cơn đau đỡ hơn một chút (makes it a little better), nên không làm đau nặng hơn.",
+   "Walking": "Đi bộ không được nhắc đến; bệnh nhân nói đau nặng hơn sau khi ăn đồ cay."
+  }
+ },
+ "L:M4#3": {
+  "opts": [
+   "start",
+   "spread",
+   "hurt",
+   "stay"
+  ],
+  "a": 1,
+  "wrong": {
+   "start": "Start to your left arm không nói về sự lan; cần động từ chỉ cơn đau lan sang vị trí khác là spread.",
+   "hurt": "Hurt nghĩa là đau và không đi với to + vị trí để nói đau lan tới; ở đây cần spread to.",
+   "stay": "Stay là ở lại một chỗ và không đi với to your left arm; câu hỏi này hỏi cơn đau có lan (spread) tới tay trái không."
+  }
+ },
+ "L:M5#1.0": {
+  "opts": [
+   "A slow heart rate",
+   "A fast heart rate",
+   "Heart inflammation",
+   "Liver inflammation"
+  ],
+  "a": 0,
+  "wrong": {
+   "A fast heart rate": "A fast heart rate là tachycardia; brady- nghĩa là chậm nên bradycardia là nhịp tim chậm.",
+   "Heart inflammation": "Viêm tim cần hậu tố -itis; bradycardia không có -itis và brady- nghĩa là chậm.",
+   "Liver inflammation": "Viêm gan là hepatitis (hepat + itis); bradycardia nói về nhịp tim chậm chứ không liên quan đến gan."
+  }
+ },
+ "L:M5#1.1": {
+  "opts": [
+   "-itis",
+   "tachy",
+   "hepat",
+   "brady"
+  ],
+  "a": 0,
+  "wrong": {
+   "tachy": "Tachy- nghĩa là nhanh (như tachycardia), không phải viêm.",
+   "hepat": "Hepat- nghĩa là gan; chỉ khi ghép với -itis mới thành viêm gan.",
+   "brady": "Brady- nghĩa là chậm; bài viết nói phần mang nghĩa viêm là -itis."
+  }
+ },
+ "L:M5#4": {
+  "opts": [
+   "surgical removal of a kidney",
+   "inflammation of the kidney",
+   "kidney pain",
+   "a scan of the kidney"
+  ],
+  "a": 0,
+  "wrong": {
+   "inflammation of the kidney": "Viêm thận là nephritis với hậu tố -itis, còn -ectomy nghĩa là cắt bỏ nên nephrectomy không phải viêm.",
+   "kidney pain": "Đau thận dùng hậu tố -algia hoặc -dynia; -ectomy chỉ phẫu thuật cắt bỏ.",
+   "a scan of the kidney": "Chụp chiếu thận dùng các từ khác như -graphy; -ectomy nghĩa là phẫu thuật cắt bỏ một cơ quan."
+  }
+ },
+ "L:M5#5": {
+  "opts": [
+   "car-di-OL-o-gy",
+   "CAR-di-ol-o-gy",
+   "car-DI-ol-o-gy",
+   "car-di-o-LOG-y"
+  ],
+  "a": 0,
+  "wrong": {
+   "CAR-di-ol-o-gy": "Với từ tận cùng bằng -ology, trọng âm rơi vào âm ngay trước -logy nên không nhấn ở âm đầu.",
+   "car-DI-ol-o-gy": "Trọng âm của từ tận cùng -ology rơi vào âm -ol-, không phải âm thứ hai.",
+   "car-di-o-LOG-y": "Từ này đọc là car-di-OL-o-gy với 5 âm tiết; tách thành o-LOG-y là sai và trọng âm nằm ở -OL-."
+  }
+ },
+ "L:M5#6": {
+  "opts": [
+   "You have hepatitis secondary to viral aetiology.",
+   "It's a liver thing.",
+   "Your liver is inflamed. It's probably caused by a virus.",
+   "Don't worry about it; it's nothing serious."
+  ],
+  "a": 2,
+  "wrong": {
+   "You have hepatitis secondary to viral aetiology.": "Câu này dùng quá nhiều thuật ngữ chuyên môn (secondary, aetiology) nên bệnh nhân khó hiểu.",
+   "It's a liver thing.": "Cách nói này quá mơ hồ và cẩu thả, không giải thích rõ bệnh gì hay nguyên nhân gì.",
+   "Don't worry about it; it's nothing serious.": "Câu này gạt đi vấn đề và không giải thích gì, trong khi viêm gan là bệnh cần theo dõi và điều trị."
+  }
+ },
+ "L:M6#1.0": {
+  "opts": [
+   "Once a day",
+   "Twice a day",
+   "Three times a day",
+   "Four times a day"
+  ],
+  "a": 1,
+  "wrong": {
+   "Once a day": "Bác sĩ dặn uống một viên hai lần mỗi ngày (twice a day), không phải một lần.",
+   "Three times a day": "Bác sĩ nói hai lần mỗi ngày (before breakfast and before dinner), không phải ba lần.",
+   "Four times a day": "Bốn lần mỗi ngày là quá nhiều; bác sĩ dặn đúng liều là hai lần, trước bữa sáng và trước bữa tối."
+  }
+ },
+ "L:M6#1.1": {
+  "opts": [
+   "Asks the patient to explain the plan back",
+   "Asks 'Do you understand?'",
+   "Gives a leaflet",
+   "Tells the patient to read the box"
+  ],
+  "a": 0,
+  "wrong": {
+   "Asks 'Do you understand?'": "Bác sĩ không hỏi Do you understand?; ông yêu cầu bệnh nhân nói lại cách dùng thuốc, tức là teach-back.",
+   "Gives a leaflet": "Đoạn hội thoại không nhắc đến tờ rơi; bác sĩ kiểm tra bằng cách nhờ bệnh nhân nhắc lại kế hoạch.",
+   "Tells the patient to read the box": "Bác sĩ không bảo bệnh nhân đọc hộp thuốc mà tự yêu cầu họ nói lại cách uống."
+  }
+ },
+ "L:M6#2": {
+  "opts": [
+   "You have hypertension.",
+   "Your blood pressure is higher than it should be.",
+   "Your BP is elevated.",
+   "Your hypertensive state requires optimisation."
+  ],
+  "a": 1,
+  "wrong": {
+   "You have hypertension.": "Hypertension là thuật ngữ y khoa mà nhiều bệnh nhân không hiểu, nên chưa phù hợp để giải thích.",
+   "Your BP is elevated.": "BP là từ viết tắt và elevated khá chuyên môn, bệnh nhân bình thường có thể không hiểu.",
+   "Your hypertensive state requires optimisation.": "Câu này dùng từ quá chuyên môn (hypertensive, optimisation), khó hiểu với bệnh nhân."
+  }
+ },
+ "L:M6#4": {
+  "opts": [
+   "should to",
+   "should",
+   "must to",
+   "can to"
+  ],
+  "a": 1,
+  "wrong": {
+   "should to": "Sau should dùng động từ nguyên mẫu không có to; should to là sai.",
+   "must to": "Must là động từ khuyết thiếu nên đi thẳng với động từ nguyên mẫu, không thêm to.",
+   "can to": "Can là động từ khuyết thiếu, sau nó không có to; hơn nữa can nói về khả năng chứ không phải lời khuyên."
+  }
+ },
+ "L:M6#7": {
+  "opts": [
+   "PRE-scribe",
+   "pre-SCRIBE",
+   "PRE-SCRIBE",
+   "pre-SCRI-be"
+  ],
+  "a": 1,
+  "wrong": {
+   "PRE-scribe": "Động từ prescribe nhấn ở âm thứ hai, vì tiền tố pre- ở động từ này đọc nhẹ /prɪ/; nhấn âm đầu là sai.",
+   "PRE-SCRIBE": "Một từ chỉ có một trọng âm chính; nhấn cả hai âm tiết là sai, trọng âm đúng chỉ ở -SCRIBE.",
+   "pre-SCRI-be": "Từ prescribe chỉ có hai âm tiết là pre- và -scribe; tách thành ba âm tiết là sai."
+  }
+ },
+ "ME:mx-m1#10": {
+  "opts": [
+   "Prokaryotic cells keep their DNA in a nucleoid region that is not enclosed by a membrane.",
+   "Prokaryotic cells have a nucleus surrounded by a membrane.",
+   "Prokaryotic cells contain mitochondria that make most of their ATP.",
+   "Prokaryotic cells have a Golgi apparatus and a rough ER inside the cell."
+  ],
+  "a": 0,
+  "q": "Which statement about prokaryotic cells is correct?",
+  "wrong": {
+   "Prokaryotic cells have a nucleus surrounded by a membrane.": "Nhân có màng bao quanh là đặc điểm của tế bào nhân thực; tế bào nhân sơ không có nhân thật nên DNA nằm tự do ở vùng nhân.",
+   "Prokaryotic cells contain mitochondria that make most of their ATP.": "Tế bào nhân sơ không có ty thể hay bào quan có màng; ATP được tạo ở màng sinh chất, còn ty thể chỉ có ở tế bào nhân thực.",
+   "Prokaryotic cells have a Golgi apparatus and a rough ER inside the cell.": "Bộ Golgi và lưới nội chất hạt đều là bào quan có màng của tế bào nhân thực, tế bào nhân sơ không có chúng."
+  }
+ },
+ "ME:mx-m1#11": {
+  "opts": [
+   "Ribosomes attached to the rough ER mainly make lipids for the cell membrane.",
+   "Ribosomes attached to the rough ER mainly make proteins that will enter a membrane, stay in an organelle or be secreted.",
+   "Ribosomes attached to the rough ER mainly make proteins that stay free in the cytosol.",
+   "Ribosomes attached to the rough ER mainly produce ATP for the cell."
+  ],
+  "a": 1,
+  "q": "Which statement about ribosomes on the rough ER is correct?",
+  "wrong": {
+   "Ribosomes attached to the rough ER mainly make lipids for the cell membrane.": "Lipid chủ yếu được tổng hợp ở lưới nội chất trơn; ribosome trên lưới nội chất hạt có nhiệm vụ tổng hợp protein, không phải lipid.",
+   "Ribosomes attached to the rough ER mainly make proteins that stay free in the cytosol.": "Protein ở lại bào tương do ribosome tự do tạo ra; ribosome gắn lưới nội chất hạt tạo protein cho màng, bào quan hoặc để tiết ra ngoài.",
+   "Ribosomes attached to the rough ER mainly produce ATP for the cell.": "ATP được tạo chủ yếu ở ty thể; ribosome chỉ dịch mã mRNA thành protein và không sản xuất năng lượng cho tế bào."
+  }
+ },
+ "ME:mx-m1#12": {
+  "opts": [
+   "Enzymes are lipids that store energy in cells.",
+   "Enzymes are used up completely each time they speed up a reaction.",
+   "Enzymes are proteins that speed up chemical reactions in cells.",
+   "Enzymes slow down reactions so that cells do not overheat."
+  ],
+  "a": 2,
+  "q": "Which statement about enzymes is correct?",
+  "wrong": {
+   "Enzymes are lipids that store energy in cells.": "Enzyme là protein chứ không phải lipid, và chức năng của chúng là xúc tác phản ứng, không phải dự trữ năng lượng như mỡ.",
+   "Enzymes are used up completely each time they speed up a reaction.": "Chất xúc tác không bị tiêu hao trong phản ứng; một enzyme được dùng đi dùng lại nhiều lần với nhiều phân tử cơ chất.",
+   "Enzymes slow down reactions so that cells do not overheat.": "Enzyme làm giảm năng lượng hoạt hóa nên phản ứng nhanh hơn; chúng không làm chậm phản ứng hay có vai trò làm mát tế bào."
+  }
+ },
+ "ME:mx-m1#13": {
+  "opts": [
+   "Lysosome enzymes work best in strongly basic conditions.",
+   "Lysosome enzymes work best at the neutral pH of the cytosol.",
+   "Lysosome enzymes mainly produce ATP for the cell.",
+   "Lysosome enzymes work best in acidic conditions."
+  ],
+  "a": 3,
+  "q": "Which statement about lysosome enzymes is correct?",
+  "wrong": {
+   "Lysosome enzymes work best in strongly basic conditions.": "Bên trong lysosome có pH acid; enzyme ở đây thích nghi với acid và gần như mất hoạt tính trong môi trường kiềm mạnh.",
+   "Lysosome enzymes work best at the neutral pH of the cytosol.": "Nếu hoạt động tốt ở pH trung tính của bào tương thì lysosome vỡ sẽ gây hại; thực tế chúng kém hoạt động ở đó nên tế bào được bảo vệ.",
+   "Lysosome enzymes mainly produce ATP for the cell.": "Enzyme lysosome phân giải đại phân tử và bào quan già; việc tạo phần lớn ATP là của ty thể chứ không phải của lysosome."
+  }
+ },
+ "ME:mx-m1#14": {
+  "opts": [
+   "Most of a eukaryotic cell's ATP is made in its mitochondria.",
+   "Most of a eukaryotic cell's ATP is made in its nucleus.",
+   "Most of a eukaryotic cell's ATP is made in its Golgi apparatus.",
+   "Most of a eukaryotic cell's ATP is made in its lysosomes."
+  ],
+  "a": 0,
+  "q": "Where is most of a eukaryotic cell's ATP made?",
+  "wrong": {
+   "Most of a eukaryotic cell's ATP is made in its nucleus.": "Nhân chứa DNA và điều khiển hoạt động tế bào, không thực hiện hô hấp hiếu khí nên không phải nơi tạo phần lớn ATP.",
+   "Most of a eukaryotic cell's ATP is made in its Golgi apparatus.": "Bộ Golgi biến đổi, phân loại và đóng gói protein, lipid; nó không có chuỗi chuyền electron để tạo ATP với lượng lớn.",
+   "Most of a eukaryotic cell's ATP is made in its lysosomes.": "Lysosome chứa enzyme tiêu hóa để phân giải chất thải và bào quan hỏng, còn ATP chủ yếu do ty thể tạo ra."
+  }
+ },
+ "ME:mx-m2#10": {
+  "opts": [
+   "DNA is usually single-stranded, whereas RNA is mostly double-stranded.",
+   "DNA is usually double-stranded, whereas RNA is mostly single-stranded.",
+   "Both DNA and RNA are usually double-stranded.",
+   "DNA contains the sugar ribose, whereas RNA contains deoxyribose."
+  ],
+  "a": 1,
+  "q": "Which statement about DNA and RNA is correct?",
+  "wrong": {
+   "DNA is usually single-stranded, whereas RNA is mostly double-stranded.": "Phát biểu này đảo ngược sự thật: ADN thường là chuỗi xoắn kép, còn ARN chủ yếu chỉ có một mạch.",
+   "Both DNA and RNA are usually double-stranded.": "ARN thường chỉ có một mạch đơn (dù có thể gấp lại tạo cấu trúc), nên không thể nói cả hai đều chủ yếu hai mạch.",
+   "DNA contains the sugar ribose, whereas RNA contains deoxyribose.": "Đường bị nói ngược: ADN chứa đường deoxyribose, còn ARN chứa đường ribose, cho nên phát biểu này không chính xác."
+  }
+ },
+ "ME:mx-m2#11": {
+  "opts": [
+   "Each hydrogen bond between DNA bases is very strong, and this alone makes DNA stable.",
+   "DNA is stable mainly because its bases are joined by covalent bonds across the two strands.",
+   "Each hydrogen bond between DNA bases is weak, but the huge number of them together makes DNA stable.",
+   "Hydrogen bonds between DNA bases are so weak that they play no role in holding the strands together."
+  ],
+  "a": 2,
+  "q": "Which statement about the stability of DNA is correct?",
+  "wrong": {
+   "Each hydrogen bond between DNA bases is very strong, and this alone makes DNA stable.": "Từng liên kết hydro giữa các base là yếu; độ bền của ADN đến từ số lượng rất lớn liên kết cùng nhau, không phải sức mạnh của một liên kết.",
+   "DNA is stable mainly because its bases are joined by covalent bonds across the two strands.": "Hai mạch ADN được giữ với nhau bằng liên kết hydro giữa các base; liên kết cộng hóa trị chỉ nối các nucleotide dọc theo cùng một mạch.",
+   "Hydrogen bonds between DNA bases are so weak that they play no role in holding the strands together.": "Liên kết hydro tuy yếu nhưng chính chúng ghép hai mạch lại với nhau; vì vậy không thể nói chúng không có vai trò."
+  }
+ },
+ "ME:mx-m2#12": {
+  "opts": [
+   "During mitosis, recombination between sister chromosomes usually creates new combinations of alleles.",
+   "During mitosis, homologous chromosomes pair up and exchange segments in every cell cycle.",
+   "Mitosis produces four genetically different cells through crossing over.",
+   "During mitosis, sister chromosomes are usually identical, so recombination between them does not create new combinations of alleles."
+  ],
+  "a": 3,
+  "q": "Which statement about mitosis is correct?",
+  "wrong": {
+   "During mitosis, recombination between sister chromosomes usually creates new combinations of alleles.": "Hai nhiễm sắc thể chị em thường giống hệt nhau, nên dù có trao đổi đoạn cũng không tạo tổ hợp alen mới.",
+   "During mitosis, homologous chromosomes pair up and exchange segments in every cell cycle.": "Sự bắt cặp và trao đổi chéo giữa các nhiễm sắc thể tương đồng là đặc trưng của giảm phân, không phải của nguyên phân.",
+   "Mitosis produces four genetically different cells through crossing over.": "Nguyên phân tạo hai tế bào con giống hệt tế bào mẹ; việc tạo bốn tế bào khác nhau nhờ trao đổi chéo thuộc về giảm phân."
+  }
+ },
+ "ME:mx-m2#13": {
+  "opts": [
+   "Recombinant DNA can be produced in the laboratory, for example for vaccine development.",
+   "Recombinant DNA can only be found in nature and cannot be made in the laboratory.",
+   "Recombinant DNA is made only from RNA viruses and has no use in vaccine development.",
+   "Recombinant DNA can be produced in the laboratory, but it is never used in medicine."
+  ],
+  "a": 0,
+  "q": "Which statement about recombinant DNA is correct?",
+  "wrong": {
+   "Recombinant DNA can only be found in nature and cannot be made in the laboratory.": "Các nhà khoa học có thể nối các đoạn ADN từ nguồn khác nhau trong phòng thí nghiệm để tạo ADN tái tổ hợp, nên không chỉ có trong tự nhiên.",
+   "Recombinant DNA is made only from RNA viruses and has no use in vaccine development.": "ADN tái tổ hợp được tạo bằng cách ghép các đoạn ADN và được dùng rộng rãi để sản xuất vắc-xin, không giới hạn ở virus ARN.",
+   "Recombinant DNA can be produced in the laboratory, but it is never used in medicine.": "ADN tái tổ hợp được ứng dụng nhiều trong y học, chẳng hạn sản xuất vắc-xin hay insulin, nên không thể nói là không bao giờ dùng."
+  }
+ },
+ "ME:mx-m2#14": {
+  "opts": [
+   "A benign tumor can spread to other parts of the body by metastasis.",
+   "A benign tumor does not spread to other parts of the body by metastasis.",
+   "Only benign tumors can spread by metastasis, while malignant tumors stay in place.",
+   "Benign and malignant tumors spread equally by metastasis."
+  ],
+  "a": 1,
+  "q": "Which statement about benign tumors is correct?",
+  "wrong": {
+   "A benign tumor can spread to other parts of the body by metastasis.": "Di căn là đặc điểm của u ác tính; u lành tính thường lớn tại chỗ, có vỏ bao và không lan sang cơ quan khác.",
+   "Only benign tumors can spread by metastasis, while malignant tumors stay in place.": "Phát biểu này đảo ngược sự thật: chính u ác tính mới có khả năng di căn, còn u lành tính thì không.",
+   "Benign and malignant tumors spread equally by metastasis.": "Hai loại u khác nhau ở điểm này: chỉ u ác tính di căn, nên không thể nói cả hai lan rộng như nhau."
+  }
+ },
+ "ME:mx-m3#10": {
+  "opts": [
+   "Hair grows on every part of the body surface, including the palms of the hands and the soles of the feet.",
+   "Hair grows on the palms and the soles but not on the scalp.",
+   "Hair grows on most of the body surface, but not on the palms and the soles.",
+   "Hair grows only on the head and the face."
+  ],
+  "a": 2,
+  "q": "Which statement about hair on the body is correct?",
+  "wrong": {
+   "Hair grows on every part of the body surface, including the palms of the hands and the soles of the feet.": "Lòng bàn tay và lòng bàn chân không có nang lông, cũng như môi, nên không thể nói lông mọc ở mọi vùng.",
+   "Hair grows on the palms and the soles but not on the scalp.": "Da đầu có rất nhiều nang lông, còn lòng bàn tay và bàn chân thì không có, nên phát biểu này nói ngược hoàn toàn.",
+   "Hair grows only on the head and the face.": "Lông mọc ở phần lớn bề mặt cơ thể như tay, chân, thân mình, chứ không chỉ ở đầu và mặt."
+  }
+ },
+ "ME:mx-m3#11": {
+  "opts": [
+   "The epidermis contains many blood vessels that supply it directly.",
+   "The epidermis is the deepest layer of the skin.",
+   "The epidermis is made mostly of adipose tissue.",
+   "The epidermis contains no blood vessels."
+  ],
+  "a": 3,
+  "q": "Which statement about the epidermis is correct?",
+  "wrong": {
+   "The epidermis contains many blood vessels that supply it directly.": "Thượng bì không có mạch máu; tế bào ở đây nhận chất nuôi khuếch tán từ các mạch máu của lớp trung bì bên dưới.",
+   "The epidermis is the deepest layer of the skin.": "Thượng bì là lớp ngoài cùng của da; lớp sâu hơn là trung bì và dưới da, nên phát biểu này nói ngược vị trí.",
+   "The epidermis is made mostly of adipose tissue.": "Thượng bì là biểu mô lát tầng sừng hóa; mô mỡ nằm ở lớp dưới da chứ không tạo nên thượng bì."
+  }
+ },
+ "ME:mx-m3#12": {
+  "opts": [
+   "Nails get their hardness mainly from keratin.",
+   "Nails get their hardness mainly from melanin.",
+   "Nails get their hardness mainly from calcium deposited as in bone.",
+   "Nails get their hardness mainly from sebum secreted by sebaceous glands."
+  ],
+  "a": 0,
+  "q": "What gives the nails their hardness?",
+  "wrong": {
+   "Nails get their hardness mainly from melanin.": "Melanin chỉ là sắc tố quyết định màu da, tóc; độ cứng của móng đến từ protein keratin được tích tụ dày đặc.",
+   "Nails get their hardness mainly from calcium deposited as in bone.": "Móng không có chất nền khoáng hóa như xương; chúng cứng nhờ các tế bào chết chứa đầy keratin.",
+   "Nails get their hardness mainly from sebum secreted by sebaceous glands.": "Bã nhờn chỉ làm da và lông mềm, nhờn; nó không làm móng cứng, vì độ cứng đến từ keratin."
+  }
+ },
+ "ME:mx-m3#13": {
+  "opts": [
+   "The sweat of the apocrine glands is thinner and more watery than the sweat of the eccrine glands.",
+   "The sweat of the apocrine glands is thicker than the sweat of the eccrine glands.",
+   "Apocrine glands are found all over the body, whereas eccrine glands occur only in the armpits.",
+   "Apocrine glands secrete sebum, whereas eccrine glands secrete sweat."
+  ],
+  "a": 1,
+  "q": "Which statement about sweat glands is correct?",
+  "wrong": {
+   "The sweat of the apocrine glands is thinner and more watery than the sweat of the eccrine glands.": "Tuyến apocrine tiết dịch đặc, chứa nhiều chất hữu cơ hơn; chính tuyến eccrine mới tiết mồ hôi loãng, chủ yếu là nước.",
+   "Apocrine glands are found all over the body, whereas eccrine glands occur only in the armpits.": "Tuyến eccrine phân bố khắp cơ thể, còn tuyến apocrine chỉ ở vùng nách, bẹn; phát biểu này đảo ngược sự phân bố.",
+   "Apocrine glands secrete sebum, whereas eccrine glands secrete sweat.": "Bã nhờn do tuyến bã tiết ra; cả tuyến apocrine và eccrine đều là tuyến mồ hôi, không tiết bã nhờn."
+  }
+ },
+ "ME:mx-m3#14": {
+  "opts": [
+   "A third-degree burn damages only the epidermis and is usually very painful.",
+   "A third-degree burn damages the epidermis and the upper dermis and forms blisters.",
+   "A third-degree burn destroys all layers of the skin, and the burned area itself is usually painless.",
+   "A third-degree burn leaves the nerve endings intact, so the area is intensely painful."
+  ],
+  "a": 2,
+  "q": "Which statement about third-degree burns is correct?",
+  "wrong": {
+   "A third-degree burn damages only the epidermis and is usually very painful.": "Bỏng chỉ ở thượng bì là bỏng độ một; bỏng độ ba phá hủy toàn bộ các lớp da và thường ít đau vì thần kinh bị hủy.",
+   "A third-degree burn damages the epidermis and the upper dermis and forms blisters.": "Mô tả tổn thương thượng bì và một phần trung bì, có phồng nước là bỏng độ hai, nhẹ hơn bỏng độ ba nhiều.",
+   "A third-degree burn leaves the nerve endings intact, so the area is intensely painful.": "Bỏng độ ba phá hủy cả đầu mút thần kinh nên vùng bỏng thường tê, không đau dữ dội như bỏng nông."
+  }
+ },
+ "ME:mx-m4#10": {
+  "opts": [
+   "Calcitonin causes calcium to be released from bone into the blood.",
+   "Calcitonin is secreted by the parathyroid glands and raises blood calcium.",
+   "Calcitonin is made by the pituitary gland and stimulates osteoclasts to break down bone.",
+   "Calcitonin causes extra calcium to be taken out of the blood and added to the bone matrix."
+  ],
+  "a": 3,
+  "q": "What does calcitonin do?",
+  "wrong": {
+   "Calcitonin causes calcium to be released from bone into the blood.": "Đó là tác dụng của hormone tuyến cận giáp (PTH); calcitonin làm ngược lại, đưa canxi từ máu vào xương.",
+   "Calcitonin is secreted by the parathyroid glands and raises blood calcium.": "Calcitonin do tuyến giáp tiết ra chứ không phải tuyến cận giáp, và tác dụng của nó là hạ canxi máu.",
+   "Calcitonin is made by the pituitary gland and stimulates osteoclasts to break down bone.": "Calcitonin không do tuyến yên tiết ra và ức chế chứ không kích thích hủy cốt bào phá xương."
+  }
+ },
+ "ME:mx-m4#11": {
+  "opts": [
+   "The appendicular skeleton includes the limbs and the girdles that attach them.",
+   "The appendicular skeleton includes the skull and the ribs.",
+   "The appendicular skeleton includes the vertebral column and the sternum.",
+   "The appendicular skeleton includes only the bones of the hands and the feet."
+  ],
+  "a": 0,
+  "q": "Which structures belong to the appendicular skeleton?",
+  "wrong": {
+   "The appendicular skeleton includes the skull and the ribs.": "Sọ và xương sườn thuộc bộ xương trục cùng với cột sống; bộ xương chi chỉ gồm xương chi và các đai.",
+   "The appendicular skeleton includes the vertebral column and the sternum.": "Cột sống và xương ức đều thuộc bộ xương trục, là trục trung tâm của cơ thể chứ không phải phần chi.",
+   "The appendicular skeleton includes only the bones of the hands and the feet.": "Bộ xương chi còn có xương cánh tay, đùi, cẳng chân, cẳng tay và các đai vai, đai chậu, nên không chỉ có bàn tay và bàn chân."
+  }
+ },
+ "ME:mx-m4#12": {
+  "opts": [
+   "Acromegaly that starts after puberty makes a person much taller because long bones lengthen.",
+   "Acromegaly that starts after puberty does not change a person's overall height, but some bones, such as those of the hands and the lower jaw, may keep growing.",
+   "Acromegaly is caused by too little growth hormone and results in short stature.",
+   "Acromegaly that starts after puberty shrinks the hands and the lower jaw."
+  ],
+  "a": 1,
+  "q": "Which statement about acromegaly that starts after puberty is correct?",
+  "wrong": {
+   "Acromegaly that starts after puberty makes a person much taller because long bones lengthen.": "Sau tuổi dậy thì sụn tăng trưởng đã đóng nên xương dài không dài thêm, vì vậy chiều cao không thay đổi.",
+   "Acromegaly is caused by too little growth hormone and results in short stature.": "Bệnh to đầu chi do thừa hormone tăng trưởng; thiếu hormone này ở trẻ em mới gây lùn tuyến yên.",
+   "Acromegaly that starts after puberty shrinks the hands and the lower jaw.": "Thừa hormone tăng trưởng khiến xương bàn tay và xương hàm dưới to ra, chứ không làm chúng nhỏ lại."
+  }
+ },
+ "ME:mx-m4#13": {
+  "opts": [
+   "Cartilage contains many blood vessels and nerves.",
+   "Cartilage has many blood vessels but no nerves.",
+   "Cartilage has no blood vessels and no nerves.",
+   "Cartilage has no blood vessels but is richly supplied with nerves, so it hurts when damaged."
+  ],
+  "a": 2,
+  "q": "Which statement about cartilage is correct?",
+  "wrong": {
+   "Cartilage contains many blood vessels and nerves.": "Sụn không có mạch máu và thần kinh, nên chất dinh dưỡng chỉ khuếch tán chậm tới tế bào sụn, vì vậy sụn lành rất chậm.",
+   "Cartilage has many blood vessels but no nerves.": "Sụn vô mạch, tức không chứa mạch máu; đó là lý do chấn thương sụn lâu liền hơn xương.",
+   "Cartilage has no blood vessels but is richly supplied with nerves, so it hurts when damaged.": "Sụn cũng không có thần kinh, nên bản thân sụn không cảm nhận đau; đau khớp thường đến từ các mô xung quanh."
+  }
+ },
+ "ME:mx-m4#14": {
+  "opts": [
+   "A greenstick fracture is a complete break in which the bone ends pierce the skin.",
+   "A greenstick fracture is seen mainly in elderly people with brittle bones.",
+   "A greenstick fracture is a break in which the bone is crushed into many fragments.",
+   "A greenstick fracture is an incomplete break in which the bone bends, and it is seen mainly in children."
+  ],
+  "a": 3,
+  "q": "Which statement about greenstick fractures is correct?",
+  "wrong": {
+   "A greenstick fracture is a complete break in which the bone ends pierce the skin.": "Gãy xương hở với đầu xương xuyên da là gãy hở; gãy cành tươi là gãy không hoàn toàn và xương chỉ bị cong.",
+   "A greenstick fracture is seen mainly in elderly people with brittle bones.": "Gãy cành tươi gặp chủ yếu ở trẻ em vì xương còn mềm, dẻo; xương người già giòn thường gãy hoàn toàn.",
+   "A greenstick fracture is a break in which the bone is crushed into many fragments.": "Xương vỡ thành nhiều mảnh là gãy vụn; gãy cành tươi chỉ là vết gãy không hoàn toàn ở một phía xương."
+  }
+ },
+ "ME:mx-m5#10": {
+  "opts": [
+   "Skeletal muscle is the only muscle type in the body that is under voluntary control.",
+   "Cardiac muscle is the only muscle type under voluntary control.",
+   "Smooth muscle is the only muscle type under voluntary control.",
+   "All three muscle types are under voluntary control."
+  ],
+  "a": 0,
+  "q": "Which statement about voluntary control of muscle is correct?",
+  "wrong": {
+   "Cardiac muscle is the only muscle type under voluntary control.": "Cơ tim co một cách tự động, ngoài ý muốn; chỉ cơ vân (cơ xương) mới chịu sự điều khiển có ý thức.",
+   "Smooth muscle is the only muscle type under voluntary control.": "Cơ trơn ở thành ruột, mạch máu hoạt động không theo ý muốn, được điều khiển bởi hệ thần kinh tự chủ và hormone.",
+   "All three muscle types are under voluntary control.": "Chỉ cơ vân là tự ý; cơ tim và cơ trơn là cơ không tự ý, nên không thể nói cả ba loại đều theo ý muốn."
+  }
+ },
+ "ME:mx-m5#11": {
+  "opts": [
+   "Cardiac muscle needs a signal from a motor neuron before every single heartbeat.",
+   "Cardiac muscle can contract on its own, without a motor neuron signal for each heartbeat.",
+   "Cardiac muscle contracts only when the person voluntarily decides to make it beat.",
+   "Skeletal muscle, like cardiac muscle, contracts spontaneously without any nerve input."
+  ],
+  "a": 1,
+  "q": "Which statement about cardiac muscle is correct?",
+  "wrong": {
+   "Cardiac muscle needs a signal from a motor neuron before every single heartbeat.": "Cơ tim có khả năng tự phát nhịp (autorhythmic); hệ thần kinh và hormone chỉ điều chỉnh tốc độ chứ không khởi động từng nhịp.",
+   "Cardiac muscle contracts only when the person voluntarily decides to make it beat.": "Cơ tim là cơ không tự ý; con người không thể chủ động làm tim đập hay ngừng bằng ý muốn.",
+   "Skeletal muscle, like cardiac muscle, contracts spontaneously without any nerve input.": "Cơ vân cần tín hiệu từ nơron vận động để co; chỉ cơ tim mới tự phát nhịp mà không cần tín hiệu từ nơron."
+  }
+ },
+ "ME:mx-m5#12": {
+  "q": "Which statement about muscle origins is correct?",
+  "opts": [
+   "A muscle with three origins is called a triceps.",
+   "A muscle with two origins is called a triceps.",
+   "A muscle with four origins is called a biceps.",
+   "A muscle with three origins is called a quadriceps."
+  ],
+  "a": 0,
+  "wrong": {
+   "A muscle with two origins is called a triceps.": "Tiền tố tri- nghĩa là ba, còn bi- mới là hai; cơ có hai điểm bám khởi đầu là biceps, không phải triceps.",
+   "A muscle with four origins is called a biceps.": "Biceps chỉ có hai điểm bám khởi đầu; cơ có bốn điểm bám khởi đầu là quadriceps (quad- nghĩa là bốn).",
+   "A muscle with three origins is called a quadriceps.": "Quadriceps có bốn điểm bám khởi đầu chứ không phải ba; cơ có ba điểm bám khởi đầu mới là triceps."
+  }
+ },
+ "ME:mx-m5#13": {
+  "q": "Which statement about cerebral palsy is correct?",
+  "opts": [
+   "Cerebral palsy is a condition that gets steadily worse over time.",
+   "Cerebral palsy is a non-progressive condition caused by damage to the motor areas of the brain.",
+   "Cerebral palsy is an infectious disease spread by a virus from person to person.",
+   "Cerebral palsy is caused by damage to the muscles themselves, not the brain."
+  ],
+  "a": 1,
+  "wrong": {
+   "Cerebral palsy is a condition that gets steadily worse over time.": "Bại não là tình trạng không tiến triển: tổn thương não đã xảy ra từ trước và không nặng dần theo thời gian như câu này nói.",
+   "Cerebral palsy is an infectious disease spread by a virus from person to person.": "Bại não do tổn thương vùng vận động của não, không phải bệnh nhiễm trùng và không lây từ người này sang người khác.",
+   "Cerebral palsy is caused by damage to the muscles themselves, not the brain.": "Nguyên nhân nằm ở não (vùng điều khiển vận động) chứ không phải do chính các cơ bị tổn thương; cơ chỉ bị ảnh hưởng gián tiếp."
+  }
+ },
+ "ME:mx-m5#14": {
+  "q": "Which statement about tetanus vaccination is correct?",
+  "opts": [
+   "Booster vaccinations against tetanus are recommended about every year.",
+   "Tetanus vaccination is needed only once in childhood and never again.",
+   "Booster vaccinations against tetanus are recommended about every ten years.",
+   "Booster vaccinations against tetanus are only needed after a person has had the disease."
+  ],
+  "a": 2,
+  "wrong": {
+   "Booster vaccinations against tetanus are recommended about every year.": "Mũi nhắc uốn ván không cần hằng năm; khoảng 10 năm một lần là đủ để duy trì khả năng bảo vệ.",
+   "Tetanus vaccination is needed only once in childhood and never again.": "Miễn dịch giảm dần theo thời gian nên người lớn vẫn cần tiêm nhắc lại khoảng 10 năm một lần, không phải chỉ tiêm một lần thời thơ ấu.",
+   "Booster vaccinations against tetanus are only needed after a person has had the disease.": "Mũi nhắc là để phòng bệnh từ trước, không đợi đến khi mắc bệnh; uốn ván rất nguy hiểm nên phải tiêm nhắc định kỳ."
+  }
+ },
+ "ME:mx-m6#10": {
+  "q": "Which statement about mature red blood cells is correct?",
+  "opts": [
+   "Mature red blood cells contain a single large nucleus that controls the cell.",
+   "Mature red blood cells produce antibodies against germs.",
+   "Mature red blood cells are mainly responsible for blood clotting.",
+   "Mature red blood cells have no nucleus and are shaped like biconcave discs."
+  ],
+  "a": 3,
+  "wrong": {
+   "Mature red blood cells contain a single large nucleus that controls the cell.": "Hồng cầu trưởng thành đã mất nhân; chỉ bạch cầu mới có nhân, nên hồng cầu có chỗ chứa nhiều huyết sắc tố hơn.",
+   "Mature red blood cells produce antibodies against germs.": "Kháng thể do một loại bạch cầu (tế bào B) sản xuất; hồng cầu có nhiệm vụ chuyên chở oxy chứ không chống vi trùng.",
+   "Mature red blood cells are mainly responsible for blood clotting.": "Đông máu là việc của tiểu cầu cùng các yếu tố đông máu; hồng cầu chủ yếu vận chuyển oxy bằng huyết sắc tố."
+  }
+ },
+ "ME:mx-m6#11": {
+  "q": "Which statement about antibodies is correct?",
+  "opts": [
+   "Antibodies lock onto an antigen and mark it, so that other cells can destroy it.",
+   "Antibodies are produced by red blood cells and carry oxygen to antigens.",
+   "Antibodies are made by platelets and seal wounds by forming clots.",
+   "Antibodies are the substances on the surface of germs that the body attacks."
+  ],
+  "a": 0,
+  "wrong": {
+   "Antibodies are produced by red blood cells and carry oxygen to antigens.": "Kháng thể do tế bào B (một loại bạch cầu) tạo ra; hồng cầu mới là tế bào mang oxy và không sản xuất kháng thể.",
+   "Antibodies are made by platelets and seal wounds by forming clots.": "Tiểu cầu giúp đông máu, còn kháng thể thuộc hệ miễn dịch, gắn vào kháng nguyên chứ không bịt vết thương.",
+   "Antibodies are the substances on the surface of germs that the body attacks.": "Chất trên bề mặt vi trùng bị cơ thể tấn công là kháng nguyên; kháng thể là phân tử do cơ thể tạo ra để gắn vào chúng."
+  }
+ },
+ "ME:mx-m6#12": {
+  "q": "Which statement about tuberculosis is correct?",
+  "opts": [
+   "Tuberculosis is a viral disease, so it responds well to antibiotics.",
+   "Tuberculosis is a bacterial disease, so it can be treated with antibiotics.",
+   "Tuberculosis is a fungal disease caused by a mould growing in the lungs.",
+   "Tuberculosis is a genetic disorder that is passed on only through the genes."
+  ],
+  "a": 1,
+  "wrong": {
+   "Tuberculosis is a viral disease, so it responds well to antibiotics.": "Lao là bệnh do vi khuẩn chứ không phải vi-rút, và kháng sinh vốn không có tác dụng với vi-rút nên câu này sai cả hai vế.",
+   "Tuberculosis is a fungal disease caused by a mould growing in the lungs.": "Lao do vi khuẩn Mycobacterium gây ra, không phải do nấm mốc; vì vậy thuốc điều trị là kháng sinh chứ không phải thuốc kháng nấm.",
+   "Tuberculosis is a genetic disorder that is passed on only through the genes.": "Lao là bệnh nhiễm trùng lây qua đường hô hấp do vi khuẩn, không phải rối loạn di truyền truyền qua gen từ cha mẹ."
+  }
+ },
+ "ME:mx-m6#13": {
+  "q": "Which statement about haemophilia is correct?",
+  "opts": [
+   "Haemophilia is an infection in which bacteria destroy the clotting factors.",
+   "Haemophilia is a disorder in which the blood clots too easily inside the vessels.",
+   "Haemophilia is an inherited disorder in which the blood lacks enough clotting factors.",
+   "Haemophilia is a cancer in which white blood cells multiply out of control."
+  ],
+  "a": 2,
+  "wrong": {
+   "Haemophilia is an infection in which bacteria destroy the clotting factors.": "Ưa chảy máu là bệnh di truyền do thiếu yếu tố đông máu từ gốc, không phải nhiễm khuẩn phá hủy các yếu tố này.",
+   "Haemophilia is a disorder in which the blood clots too easily inside the vessels.": "Ngược lại: người bệnh thiếu yếu tố đông máu nên máu khó đông và chảy lâu; đông máu quá mức là một vấn đề khác.",
+   "Haemophilia is a cancer in which white blood cells multiply out of control.": "Bệnh ung thư bạch cầu là bệnh khác; ưa chảy máu liên quan đến các yếu tố đông máu, không phải tăng sinh bất thường của bạch cầu."
+  }
+ },
+ "ME:mx-m6#14": {
+  "q": "Which statement about lymphocytes is correct?",
+  "opts": [
+   "Lymphocytes that mature in the thymus gland become B cells.",
+   "Lymphocytes that mature in the thymus gland become red blood cells.",
+   "Lymphocytes that mature in the thymus gland become platelets.",
+   "Lymphocytes that mature in the thymus gland become T cells."
+  ],
+  "a": 3,
+  "wrong": {
+   "Lymphocytes that mature in the thymus gland become B cells.": "Lympho bào trưởng thành ở tuyến ức thành tế bào T; tế bào B trưởng thành ở tủy xương nên không phải ở tuyến ức.",
+   "Lymphocytes that mature in the thymus gland become red blood cells.": "Hồng cầu được tạo ra từ tủy xương và không phải là lympho bào; tuyến ức chỉ giúp lympho bào trở thành tế bào T.",
+   "Lymphocytes that mature in the thymus gland become platelets.": "Tiểu cầu là mảnh tế bào từ tủy xương phục vụ đông máu, không phải lympho bào; tuyến ức làm trưởng thành tế bào T."
+  }
+ },
+ "CE:C1": {
+  "opts": [
+   "It's just stress. There's nothing to worry about.",
+   "From what you've told me, this sounds like a tension headache. It's very common, and nothing you've described suggests a tumour. Stress and short sleep can trigger it.",
+   "You have a tension-type cephalalgia secondary to psychosocial stressors.",
+   "I'll refer you for an urgent brain scan to rule out a tumour, just in case."
+  ],
+  "a": 1,
+  "wrong": {
+   "It's just stress. There's nothing to worry about.": "gạt bỏ cảm xúc của bệnh nhân bằng câu “just stress” và không trả lời mối lo về u não, nên bà Miller vẫn không yên tâm.",
+   "You have a tension-type cephalalgia secondary to psychosocial stressors.": "dùng thuật ngữ chuyên môn (cephalalgia, psychosocial stressors) mà bệnh nhân khó hiểu, nên không giúp bà hiểu và bớt lo.",
+   "I'll refer you for an urgent brain scan to rule out a tumour, just in case.": "làm bệnh nhân hoảng hơn: đề nghị chụp não khẩn cấp khi triệu chứng không gợi ý u, nên vừa không hợp lý vừa gây lo lắng thừa."
+  }
+ },
+ "CE:C2": {
+  "opts": [
+   "It's only gastritis, not cancer. Just stop the ibuprofen.",
+   "It sounds like the lining of your stomach is irritated, probably by the ibuprofen. There are no warning signs today, but I understand your worry about your father, so let's talk about a test to look inside your stomach.",
+   "You've got NSAID-induced peptic ulcer disease.",
+   "You definitely have an ulcer, and it could be early cancer like your father's."
+  ],
+  "a": 1,
+  "wrong": {
+   "It's only gastritis, not cancer. Just stop the ibuprofen.": "nói chắc chắn là không phải ung thư và chỉ bảo ngừng thuốc, không thừa nhận nỗi lo về cha và không bàn bước kiểm tra tiếp theo.",
+   "You've got NSAID-induced peptic ulcer disease.": "dùng thuật ngữ y khoa (NSAID, peptic ulcer disease) mà bệnh nhân khó hiểu, đồng thời không nhắc đến mối lo về ung thư của ông.",
+   "You definitely have an ulcer, and it could be early cancer like your father's.": "khẳng định chắc chắn khi chưa kiểm tra và nhắc đến ung thư một cách gây hoảng sợ, trong khi hiện chưa có dấu hiệu báo động."
+  }
+ },
+ "CE:C3": {
+  "opts": [
+   "You have pneumonia, so you must be admitted.",
+   "I think you may have a chest infection called pneumonia. I understand hospital is frightening after what happened to your husband. First I'd like to check your breathing, oxygen level and blood pressure, and then we can decide together what's safest.",
+   "Don't worry, antibiotics will sort it out.",
+   "You must go to hospital now; there is no point discussing it."
+  ],
+  "a": 1,
+  "wrong": {
+   "You have pneumonia, so you must be admitted.": "vừa ra chẩn đoán chắc chắn khi chưa khám, vừa áp đặt nhập viện, không để ý đến nỗi sợ bệnh viện của bà và không giải thích gì.",
+   "Don't worry, antibiotics will sort it out.": "trấn an suông rằng kháng sinh sẽ khỏi, bỏ qua nỗi lo của bà và chưa đánh giá mức độ nặng; kháng sinh cũng không phải lúc nào cũng đủ.",
+   "You must go to hospital now; there is no point discussing it.": "ép buộc nhập viện, không lắng nghe nỗi sợ của bà Brown và không cùng bà quyết định, nên làm bà thêm sợ và khó hợp tác."
+  }
+ },
+ "CE:C4": {
+  "opts": [
+   "You have acute pharyngitis; antibiotics are contraindicated.",
+   "This looks like a viral throat infection, and antibiotics don't work against viruses. It usually settles in about a week. Paracetamol or ibuprofen, plenty of fluids and rest will help. Please come back if it gets worse or you can't swallow.",
+   "It's nothing. Just go home.",
+   "Sore throats are always serious, so I will start strong antibiotics right now."
+  ],
+  "a": 1,
+  "wrong": {
+   "You have acute pharyngitis; antibiotics are contraindicated.": "dùng thuật ngữ khó hiểu và chỉ nói “chống chỉ định”, không giải thích vì sao hay hướng dẫn chăm sóc và khi nào cần quay lại.",
+   "It's nothing. Just go home.": "gạt bỏ mối lo của Anna, không hướng dẫn giảm đau hay cách chăm sóc và không dặn dấu hiệu cần quay lại khám.",
+   "Sore throats are always serious, so I will start strong antibiotics right now.": "trái kiến thức y khoa: đau họng thường do vi-rút nên kháng sinh không có tác dụng, dùng kháng sinh mạnh vừa vô ích vừa có hại."
+  }
+ },
+ "CE:C5": {
+  "opts": [
+   "One high reading means nothing. Don't worry about it.",
+   "Your hypertension requires lifelong antihypertensives.",
+   "High blood pressure often has no symptoms, but over time it can damage the heart, brain and kidneys. I understand why you're worried after your father's stroke. First, let's check it properly at home for a week. Then we can decide together about lifestyle changes and whether you need medicine.",
+   "You have dangerous blood pressure and must start tablets today."
+  ],
+  "a": 2,
+  "wrong": {
+   "One high reading means nothing. Don't worry about it.": "xem nhẹ chỉ số huyết áp cao và mối lo về đột quỵ của cha ông, không giải thích gì và không đề nghị theo dõi thêm.",
+   "Your hypertension requires lifelong antihypertensives.": "dùng thuật ngữ khó hiểu và áp đặt phải uống thuốc suốt đời, không cùng ông cân nhắc thay đổi lối sống hay theo dõi huyết áp tại nhà.",
+   "You have dangerous blood pressure and must start tablets today.": "kết luận vội và gây hoảng sợ chỉ từ một lần đo, bắt đầu thuốc ngay mà chưa xác nhận chẩn đoán hay bàn với bệnh nhân."
+  }
+ },
+ "CE:C6": {
+  "opts": [
+   "Your symptoms could be caused by diabetes, which means the body can't control the sugar in your blood properly. A blood test will tell us for sure. Most people with type 2 diabetes don't start with insulin. Diet, activity and tablets usually come first, and they help protect your eyes, kidneys and feet.",
+   "You have hyperglycaemia secondary to insulin resistance.",
+   "You will need insulin, just like your mother.",
+   "Don't worry about the sugar. Just eat less sweet food and come back in a year."
+  ],
+  "a": 0,
+  "wrong": {
+   "You have hyperglycaemia secondary to insulin resistance.": "dùng thuật ngữ (hyperglycaemia, insulin resistance) mà bà Tran khó hiểu và không trả lời nỗi sợ tiêm insulin hay mất thị lực.",
+   "You will need insulin, just like your mother.": "khẳng định chắc chắn phải dùng insulin dựa trên tiền sử mẹ, trong khi chưa xét nghiệm và đa số người tiểu đường tuýp 2 chưa cần insulin ngay.",
+   "Don't worry about the sugar. Just eat less sweet food and come back in a year.": "trấn an quá mức và hoãn một năm dù bà có triệu chứng mệt, khát; cần xét nghiệm máu sớm chứ không thể bỏ qua."
+  }
+ },
+ "CE:C7": {
+  "opts": [
+   "You have a lumbar strain. Imaging is not indicated.",
+   "It's just a pulled muscle. Go back to work tomorrow.",
+   "This sounds like a strained back muscle. It's very common and usually gets better within a few weeks. An X-ray wouldn't show the muscle and wouldn't change the treatment. Staying gently active helps more than bed rest. Come back straight away if you get numbness between your legs or problems passing urine.",
+   "Your back may be badly damaged, so we must book an urgent MRI scan."
+  ],
+  "a": 2,
+  "wrong": {
+   "You have a lumbar strain. Imaging is not indicated.": "dùng thuật ngữ (lumbar strain, imaging is not indicated) khó hiểu và không giải thích vì sao không cần chụp, nên ông Vo không được trấn an hay dặn dấu hiệu cần quay lại.",
+   "It's just a pulled muscle. Go back to work tomorrow.": "gạt bỏ cơn đau và bảo đi làm ngay mà không giải thích gì, không hướng dẫn vận động hay dặn dấu hiệu cảnh báo cần quay lại.",
+   "Your back may be badly damaged, so we must book an urgent MRI scan.": "gây lo lắng và không cần thiết: đau lưng thông thường không có dấu hiệu báo động thì chụp MRI khẩn không thay đổi cách điều trị."
+  }
+ },
+ "CE:C8": {
+  "opts": [
+   "This looks like a bladder infection. It's very common in women and isn't a sign that you've done anything wrong. A short course of antibiotics should clear it within a few days, and drinking enough fluids helps. Please come back if you get a fever or pain in your back.",
+   "Just drink more water. It's nothing.",
+   "You have cystitis, most likely caused by E. coli.",
+   "You may have a serious infection that you got from your boyfriend, so he must be treated too."
+  ],
+  "a": 0,
+  "wrong": {
+   "Just drink more water. It's nothing.": "hời hợt, chỉ khuyên uống nước mà không nhận ra viêm bàng quang cần điều trị và không dặn dấu hiệu quay lại, như sốt hay đau lưng.",
+   "You have cystitis, most likely caused by E. coli.": "dùng thuật ngữ (cystitis, E. coli) khó hiểu, không trấn an về lo lắng liên quan bạn trai và không giải thích cách điều trị hay dặn quay lại.",
+   "You may have a serious infection that you got from your boyfriend, so he must be treated too.": "mang tính phán xét và đổ lỗi cho bạn trai mà chưa có cơ sở, khiến cô Le xấu hổ và lo lắng thay vì được giải thích đơn giản."
+  }
+ },
+ "CE:C9": {
+  "opts": [
+   "Your pain could be coming from your heart, so to be safe we need to do a heart tracing now and get you to hospital by ambulance straight away. I'll stay with you while we arrange it.",
+   "You're probably having an MI, so we need troponins.",
+   "It's probably gas, but let's check next week.",
+   "I'm sorry, I can't say what this is. Please see your GP when you can."
+  ],
+  "a": 0,
+  "wrong": {
+   "You're probably having an MI, so we need troponins.": "dùng viết tắt và thuật ngữ (MI, troponins) làm ông Do hoảng sợ, đồng thời không nói rõ phải làm gì ngay lúc này.",
+   "It's probably gas, but let's check next week.": "đoán là đầy hơi và hẹn kiểm tra tuần sau, trong khi đau ngực có thể là cấp cứu tim mạch cần xử trí ngay.",
+   "I'm sorry, I can't say what this is. Please see your GP when you can.": "né tránh vấn đề và hoãn gặp bác sĩ gia đình, trong khi đau ngực có thể nguy hiểm đến tính mạng nên cần hành động khẩn."
+  }
+ },
+ "CE:C10": {
+  "opts": [
+   "It's most likely a stomach bug from the food, and it usually settles in a few days. The most important thing is to replace the fluid you're losing with oral rehydration solution, little and often. Wash your hands well so it doesn't spread. Come back if you see blood, or if you can't keep fluids down.",
+   "You have infective gastroenteritis; oral rehydration therapy is indicated.",
+   "Just take the loperamide and go to work.",
+   "You have a serious infection, so you must stop eating and drinking for two days."
+  ],
+  "a": 0,
+  "wrong": {
+   "You have infective gastroenteritis; oral rehydration therapy is indicated.": "dùng thuật ngữ (infective gastroenteritis, oral rehydration therapy) khó hiểu, không hướng dẫn cụ thể cách bù nước hay phòng lây.",
+   "Just take the loperamide and go to work.": "khuyên dùng loperamide và đi làm, bỏ qua việc bù nước quan trọng nhất, nguy cơ lây cho người khác và dấu hiệu cần quay lại.",
+   "You have a serious infection, so you must stop eating and drinking for two days.": "vừa trái y khoa vừa nguy hiểm: nhịn ăn uống hai ngày làm mất nước nặng hơn; người bị nôn và tiêu chảy cần uống bù nước từng ít một."
+  }
+ },
+ "CE:C11": {
+  "opts": [
+   "You have atopic dermatitis. Apply a topical corticosteroid twice daily.",
+   "This is eczema, a dry and sensitive skin condition that often runs in families. It isn't contagious. Using a moisturiser every day and a soap substitute helps prevent flare-ups. For flare-ups, a steroid cream used for a short time as directed is safe and won't thin your skin.",
+   "It's just dry skin. Buy any lotion.",
+   "It's probably an allergy to something you ate; steroid creams are dangerous and should never be used."
+  ],
+  "a": 1,
+  "wrong": {
+   "You have atopic dermatitis. Apply a topical corticosteroid twice daily.": "dùng thuật ngữ (atopic dermatitis, topical corticosteroid) khó hiểu và không trả lời mối lo về lây hay mỏng da của cô Dang.",
+   "It's just dry skin. Buy any lotion.": "gạt bỏ vấn đề, không giải thích eczema, không nói đến lây nhiễm hay chăm sóc da và chỉ bảo mua đại một loại kem dưỡng.",
+   "It's probably an allergy to something you ate; steroid creams are dangerous and should never be used.": "thông tin sai: bôi corticoid ngắn ngày đúng chỉ dẫn là an toàn; câu này còn đổ cho dị ứng thức ăn khi chưa có cơ sở và dọa bệnh nhân."
+  }
+ },
+ "CE:C12": {
+  "opts": [
+   "You have OA with degenerative changes; imaging isn't required.",
+   "This sounds like osteoarthritis, which is wear and repair in the joint. It's very common and doesn't usually lead to a wheelchair. Strengthening exercises and keeping active are the best treatment, and losing a little weight takes pressure off the knee. A painkiller gel rubbed on the knee is safer for your stomach and blood pressure than ibuprofen tablets.",
+   "It's your age. There's nothing we can do.",
+   "It's likely a torn cartilage, so you should rest completely and avoid walking."
+  ],
+  "a": 1,
+  "wrong": {
+   "You have OA with degenerative changes; imaging isn't required.": "dùng viết tắt và thuật ngữ (OA, degenerative changes) khó hiểu, không trấn an nỗi sợ ngồi xe lăn hay hướng dẫn điều trị.",
+   "It's your age. There's nothing we can do.": "bi quan và bỏ mặc bệnh nhân khi nói không làm được gì; thực tế tập luyện, vận động và giảm cân đều giúp ích cho thoái hóa khớp.",
+   "It's likely a torn cartilage, so you should rest completely and avoid walking.": "khuyên nghỉ hoàn toàn và tránh đi lại, trái với khuyến cáo: thoái hóa khớp cần vận động, nghỉ ngơi quá nhiều làm khớp cứng và yếu cơ hơn."
+  }
+ },
+ "CE:C13": {
+  "opts": [
+   "Thank you for telling me. That took courage. What you're describing sounds like depression. It's a common illness, not a weakness, and it can get better. There are options besides tablets, like talking therapy and slowly doing more of the things you used to enjoy. What we talk about here stays confidential. Let's make a plan for what to do if the dark thoughts get stronger, and I'd like to see you again next week.",
+   "You have major depressive disorder, so I'll start an SSRI.",
+   "Everyone feels like this sometimes. Just cheer up.",
+   "I'm sorry you feel that way. It's probably just stress, so a holiday should sort it out."
+  ],
+  "a": 0,
+  "wrong": {
+   "You have major depressive disorder, so I'll start an SSRI.": "chẩn đoán và kê SSRI ngay bằng thuật ngữ, không ghi nhận cảm xúc, không tôn trọng mong muốn của ông và không cùng lập kế hoạch.",
+   "Everyone feels like this sometimes. Just cheer up.": "xem nhẹ cảm xúc bằng câu “cheer up”, coi trầm cảm như chuyện cố gắng là hết, nên bệnh nhân thấy không được thấu hiểu.",
+   "I'm sorry you feel that way. It's probably just stress, so a holiday should sort it out.": "đoán là căng thẳng và đề nghị đi nghỉ, bỏ qua dấu hiệu trầm cảm và ý nghĩ đen tối mà ông nhắc đến, nên thiếu kế hoạch an toàn."
+  }
+ }
 };

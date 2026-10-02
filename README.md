@@ -12,7 +12,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.14 (02.10.26).
 - **Hôm nay**: gợi ý việc nên làm, mục tiêu thời gian mỗi ngày, chuỗi ngày học liên tiếp.
 
 **Từ vựng**
-- **Thư viện từ vựng** khoảng 2.800 từ theo chủ đề và cấp độ: phổ thông A1 đến C1, luyện thi (TOEIC, IELTS, VSTEP), họ từ, kết hợp từ, và y khoa (giải phẫu, sinh lý, bệnh học, lâm sàng, giáo trình M1 đến M6). Có câu ví dụ, phiên âm và định nghĩa tiếng Anh cho từ B1 trở lên.
+- **Thư viện từ vựng** khoảng 3.800 từ (hơn 3.100 từ phổ thông) theo chủ đề và cấp độ: phổ thông A1 đến C1, luyện thi (TOEIC, IELTS, VSTEP), họ từ, kết hợp từ, và y khoa (giải phẫu, sinh lý, bệnh học, lâm sàng, giáo trình M1 đến M6). Có câu ví dụ, phiên âm và định nghĩa tiếng Anh cho từ B1 trở lên.
 - **Luyện tập** (một trang): ôn thẻ đến hạn bằng thuật toán FSRS (mỗi từ có thẻ nhìn từ nhớ nghĩa và thẻ nhìn nghĩa gõ lại từ, kèm hướng dẫn chấm), rồi các bài tập theo dạng.
 - **Thư viện thuật ngữ y khoa**: luyện ghép thuật ngữ từ tiền tố, gốc, hậu tố, bảng hình vị và thuật ngữ mẫu có ô tìm kiếm trong một trang.
 
@@ -21,7 +21,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.14 (02.10.26).
 - **Bài tập theo dạng** trong Luyện tập: chọn từ và gõ từ điền đoạn văn, viết lại câu với từ cho sẵn, dẫn tới Đọc hiểu. Bài tập chương của giáo trình y khoa nằm ở trang từng chặng M1 đến M6.
 - **Kho luyện đọc**: khoảng 66 đoạn ngắn từ A2 đến C1 (gồm tài liệu y khoa), mỗi đoạn có câu hỏi kèm bằng chứng; chạm vào từ để xem nghĩa và thêm vào lịch ôn.
 - **Thư viện mẫu viết** (đang hoàn thiện): danh mục mẫu thư, đơn, email, văn bản y khoa và bài luận; nội dung sẽ bổ sung dần.
-- Mọi câu trắc nghiệm được viết để chỉ có **một đáp án đúng**, có giải thích tiếng Việt.
+- Mọi câu trắc nghiệm có **4 lựa chọn** và chỉ **một đáp án đúng**. Khi chọn sai, ứng dụng giải thích **vì sao lựa chọn đó sai** (bài tập ngữ pháp, TOEIC Part 5, điền đoạn văn) rồi mới nêu đáp án đúng. Riêng đúng/sai/không có thông tin trong Kho luyện đọc và bài nghe phân biệt cặp âm giữ dạng 3 hoặc 2 lựa chọn theo đúng bản chất của dạng bài.
 
 **Phát âm và giọng đọc** (Phát âm nằm trong menu Thư viện, giọng đọc nằm trong Cài đặt)
 - **Thư viện 44 âm tiếng Anh**: cách đặt lưỡi, môi, lỗi sai thường gặp, từ ví dụ, cặp âm tối thiểu, bài nghe phân biệt.
@@ -72,7 +72,7 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 ## Thêm nội dung
 
 - **Từ vựng**: mỗi dòng trong `content-library.js` có dạng `từ|từ loại|nghĩa|câu ví dụ`. Thêm dòng vào đúng cấp độ (`A1`…`C1`, hoặc `T1`/`T2` cho y khoa) của chủ đề. Mã thẻ ôn tính theo chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả từ đã có người học.
-- **Bài tập ngữ pháp**: trong phần `content-curriculum.js` của `content-study.js`, mỗi dòng của `GRAMMAR_BANK` là một câu hỏi: `c|câu có ___|A / B / C|chỉ số đúng|giải thích` (chọn đáp án), `x|Chọn câu đúng|câu 1 / câu 2 / câu 3|chỉ số|giải thích`, `t|câu có ___ (gợi ý)|đáp án 1;đáp án 2|giải thích` (gõ), `f|câu có lỗi|từ sai|sửa thành|giải thích` (tìm lỗi), `o|câu hoàn chỉnh|giải thích` (sắp xếp). Chỉ số bắt đầu từ 0, mỗi câu trắc nghiệm phải có đúng một đáp án hợp lệ.
+- **Bài tập ngữ pháp**: trong phần `content-curriculum.js` của `content-study.js`, mỗi dòng của `GRAMMAR_BANK` là một câu hỏi: `c|câu có ___|A / B / C / D|chỉ số đúng|giải thích|A=>vì sao A sai;;B=>vì sao B sai;;…` (chọn đáp án), `x|Chọn câu đúng|câu 1 / câu 2 / câu 3|chỉ số|giải thích`, `t|câu có ___ (gợi ý)|đáp án 1;đáp án 2|giải thích` (gõ), `f|câu có lỗi|từ sai|sửa thành|giải thích` (tìm lỗi), `o|câu hoàn chỉnh|giải thích` (sắp xếp). Chỉ số bắt đầu từ 0, mỗi câu trắc nghiệm phải có đúng một đáp án hợp lệ.
 
 ## Giới hạn
 

@@ -684,3 +684,36 @@ body:has(.home) { background-image: radial-gradient(900px 420px at 85% -80px, co
 .set-ic svg { width: 20px; height: 20px; }
 .set-sub { padding: 12px 0; border-top: 1px solid var(--rule); }
 .set-sub:first-of-type { border-top: 0; }
+.why-wrong { margin-top: 8px; padding: 10px 12px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--bad) 35%, var(--rule)); background: var(--bad-soft); font-size: 14px; line-height: 1.5; }
+.why-wrong b { color: var(--bad); }
+/* ===== iPhone / màn hình hẹp ===== */
+.icon-btn[data-act="say"] { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+.icon-btn[data-act="say"] svg { width: 24px; height: 24px; stroke-width: 2; }
+.mini svg { width: 18px; height: 18px; }
+.more-list { display: grid; gap: 10px; padding-bottom: 8px; }
+.more-item { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--rule); text-decoration: none; color: inherit; }
+.more-item:active { background: var(--sunk); }
+.more-item b { font-size: 16px; }
+.more-go { font-size: 24px; color: var(--muted); line-height: 1; }
+body { overflow-x: clip; }
+@media (max-width: 520px) {
+  .topbar { padding: 8px 12px; gap: 8px; }
+  .topbar .toolbar { min-width: 0; flex: 1 1 auto; justify-content: flex-end; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
+  .topbar .toolbar::-webkit-scrollbar { display: none; }
+  .toolbar .tb-group, .toolbar .tb { flex: none; }
+  .toolbar .tb[data-act="tbRate"] { display: none; }
+  .tb-group .tb { min-width: 30px; height: 32px; padding: 0 6px; }
+  .seg-b { width: 26px !important; height: 28px !important; }
+  #timer { display: none; }
+  .page { padding-left: 14px; padding-right: 14px; }
+  .home-hero { padding: 18px 16px 16px; border-radius: 20px; }
+  .quote-card.in-hero { padding: 12px; }
+}
+@media (max-width: 520px) {
+  .lw { flex-wrap: nowrap !important; align-items: flex-start !important; padding: 12px; }
+  .lw-main { flex: 1 1 0 !important; min-width: 0; }
+  .lw-act { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch !important; gap: 6px !important; width: 44px; }
+  .lw-act .mini, .lw-act .chip { justify-content: center; width: 100%; padding: 0; text-align: center; font-size: 12px; }
+  .lw-act .chip { padding: 4px 0; }
+}
+@media (max-width: 520px) { .lw-act .mini { height: 32px; min-height: 0; } .lw-act .icon-btn { width: 44px; height: 40px; } }
