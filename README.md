@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.11.2 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.14 (02.10.26).
 
 ## Tính năng
 
@@ -13,14 +13,14 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.11.2 (02.10.26).
 
 **Từ vựng**
 - **Thư viện từ vựng** khoảng 2.800 từ theo chủ đề và cấp độ: phổ thông A1 đến C1, luyện thi (TOEIC, IELTS, VSTEP), họ từ, kết hợp từ, và y khoa (giải phẫu, sinh lý, bệnh học, lâm sàng, giáo trình M1 đến M6). Có câu ví dụ, phiên âm và định nghĩa tiếng Anh cho từ B1 trở lên.
-- **Ôn tập** bằng thuật toán FSRS: mỗi từ có thẻ nhìn từ nhớ nghĩa và thẻ nhìn nghĩa gõ lại từ.
-- **Từ của tôi**: danh sách từ đã học, lọc theo mức nhớ.
+- **Luyện tập** (một trang): ôn thẻ đến hạn bằng thuật toán FSRS (mỗi từ có thẻ nhìn từ nhớ nghĩa và thẻ nhìn nghĩa gõ lại từ, kèm hướng dẫn chấm), rồi các bài tập theo dạng.
+- **Thư viện thuật ngữ y khoa**: luyện ghép thuật ngữ từ tiền tố, gốc, hậu tố, bảng hình vị và thuật ngữ mẫu có ô tìm kiếm trong một trang.
 
 **Ngữ pháp, luyện đề, đọc, viết**
 - **Thư viện ngữ pháp** 40 điểm (A1 đến C1) với công thức, cách dùng, ví dụ, lỗi sai thường gặp và ngân hàng hơn 500 câu bài tập.
-- **Luyện đề**: hai đề thi thử (điền từ vào câu, điền vào đoạn văn), chọn từ và gõ từ điền đoạn văn, viết lại câu với từ cho sẵn. Bài tập chương của giáo trình y khoa nằm ở trang từng chặng M1 đến M6.
+- **Bài tập theo dạng** trong Luyện tập: chọn từ và gõ từ điền đoạn văn, viết lại câu với từ cho sẵn, dẫn tới Đọc hiểu. Bài tập chương của giáo trình y khoa nằm ở trang từng chặng M1 đến M6.
 - **Kho luyện đọc**: khoảng 66 đoạn ngắn từ A2 đến C1 (gồm tài liệu y khoa), mỗi đoạn có câu hỏi kèm bằng chứng; chạm vào từ để xem nghĩa và thêm vào lịch ôn.
-- **Viết và nói**: 9 đề kèm bảng tự chấm theo bốn tiêu chí.
+- **Thư viện mẫu viết** (đang hoàn thiện): danh mục mẫu thư, đơn, email, văn bản y khoa và bài luận; nội dung sẽ bổ sung dần.
 - Mọi câu trắc nghiệm được viết để chỉ có **một đáp án đúng**, có giải thích tiếng Việt.
 
 **Phát âm và giọng đọc** (Phát âm nằm trong menu Thư viện, giọng đọc nằm trong Cài đặt)
@@ -29,7 +29,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.11.2 (02.10.26).
 - Giọng người thật cho từ đơn, giọng máy xếp hạng theo chất lượng cho câu, trang Giọng đọc để chọn giọng.
 
 **Theo dõi và tiện ích**
-- **Mục tiêu và tiến bộ** (một trang): thống kê thời gian học và chuỗi ngày, tiến độ lộ trình, biểu đồ ra-đa mức hoàn thiện kỹ năng theo lượng luyện tập (100 lượt luyện là 100%), lịch học dạng bảng nhiệt chọn theo tháng và năm, cùng phần thiết lập mục tiêu.
+- **Mục tiêu và tiến bộ** (một trang): thống kê thời gian học và chuỗi ngày, biểu đồ ra-đa mức hoàn thiện kỹ năng (100% là học và làm hết nội dung hiện có), cùng phần thiết lập mục tiêu. Lịch học dạng bảng nhiệt nằm ở trang Hôm nay.
 - **Mục tiêu** và **kiểm tra đầu vào** ước lượng vốn từ.
 - **Cài đặt** gom thành các nhóm thu gọn (Học tập, Giọng đọc, Đồng bộ, Dữ liệu). Đồng bộ thiết bị qua GitHub Gist, sao lưu và khôi phục bằng file, giao diện sáng tối, dùng được trên điện thoại và máy tính bảng.
 - **Ngôn ngữ giao diện Việt hoặc Anh**: nút VI/EN trên thanh công cụ. Chỉ dịch phần giao diện; nghĩa tiếng Việt của từ và nội dung bài học giữ nguyên.
@@ -67,7 +67,7 @@ Không đổi thứ tự thẻ `<script>` trong `index.html`: ba file `content-*
 
 ## Đồng bộ giữa các thiết bị
 
-Vào mục Đồng bộ thiết bị, tạo một fine-grained token trên GitHub với duy nhất quyền **Gists: Read and write**, dán vào app. App tạo một Gist bí mật `tnkhoi-english-sync.json` và gộp dữ liệu hai chiều khi mở app, mỗi 3 phút và khi rời trang. Trên thiết bị thứ hai, dán cùng mã. Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm lấy mức cao nhất, từ “đã biết” lấy hợp của hai bên, thời gian học cộng theo từng thiết bị, cài đặt lấy bản sửa sau cùng. Mã truy cập chỉ lưu trên thiết bị, không nằm trong file sao lưu hay trong Gist. Đồng bộ chỉ hoạt động trên GitHub Pages hoặc khi mở file trực tiếp.
+Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained token trên GitHub với duy nhất quyền **Gists: Read and write**, dán vào app. App tạo một Gist bí mật `tnkhoi-english-sync.json` và gộp dữ liệu hai chiều khi mở app, mỗi 3 phút và khi rời trang. Trên thiết bị thứ hai, dán cùng mã. Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm lấy mức cao nhất, từ “đã biết” lấy hợp của hai bên, thời gian học cộng theo từng thiết bị, cài đặt lấy bản sửa sau cùng. Mã truy cập chỉ lưu trên thiết bị, không nằm trong file sao lưu hay trong Gist. Đồng bộ chỉ hoạt động trên GitHub Pages hoặc khi mở file trực tiếp.
 
 ## Thêm nội dung
 

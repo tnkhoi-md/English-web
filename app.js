@@ -345,7 +345,7 @@ let ROUTE = parseRoute();
 function parseRoute() { const h = location.hash.replace(/^#\/?/, ""); const [name, arg] = h.split("/"); return { name: name || "today", arg: arg || "" }; }
 function isStudyRoute() {
   const r = ROUTE; if (!r) return false;
-  return r.name === "lesson" || (r.name === "review" && r.arg === "go") || (r.name === "clinic" && !!r.arg) || (r.name === "sounds" && !!r.arg) || (r.name === "words" && r.arg === "build");
+  return r.name === "lesson" || (r.name === "review" && r.arg === "go") || (r.name === "clinic" && !!r.arg) || (r.name === "sounds" && !!r.arg);
 }
 function isFocus() { const r = ROUTE; return r.name === "lesson" || (r.name === "review" && r.arg === "go") || (r.name === "clinic" && !!r.arg); }
 addEventListener("hashchange", () => {
@@ -355,7 +355,6 @@ addEventListener("hashchange", () => {
   if (r.name === "review" && r.arg === "go" && !(prev.name === "review" && prev.arg === "go")) startReview();
   if (r.name === "clinic" && r.arg && (!CL || CL.id !== r.arg || CL.phase === "report")) { if (!startCase(r.arg)) { location.hash = "#/clinic"; return; } }
   if (r.name === "sounds" && r.arg && (!SD || SD.set !== r.arg)) startDrill(r.arg);
-  if (r.name === "words" && r.arg === "build" && !B) startBuild();
   if (isStudyRoute() && !(prev.name === r.name && prev.arg === r.arg)) TT.session = 0;
   render(true);
 });
@@ -373,7 +372,7 @@ function paintTimer() {
 /* ---------------- Shell ---------------- */
 const NAV = [
   ["Học", [["today", "Hôm nay"], ["path", "Lộ trình"], ["review", "Ôn tập"], ["clinic", "Phòng khám ảo"]]],
-  ["Luyện", [["sounds", "Phát âm"], ["words", "Sổ từ và thuật ngữ"]]],
+  ["Luyện", [["sounds", "Phát âm"], ["words", "Thư viện thuật ngữ y khoa"]]],
   ["Của bạn", [["progress", "Tiến bộ"], ["settings", "Cài đặt"], ["about", "Góc tác giả"]]]
 ];
 function shell(content) {
@@ -427,7 +426,7 @@ function weakestStep() {
   const pct = Math.round(w.p * 100), why = `${SKILLS[w.k]} đang là kỹ năng yếu nhất: ${pct}% trên ${w.n} lần làm gần đây.`;
   if (w.k === "pron") { const set = Object.keys(PAIRS).sort((a, b) => acc(a) - acc(b))[0]; return { kind: "sounds", short: "luyện âm " + PAIRS[set].title, title: `Luyện cặp âm ${PAIRS[set].title}`, why, href: `#/sounds/${set}`, cta: "Luyện âm", est: 5 }; }
   if (w.k === "clinical" || w.k === "speaking") { const ready = c => c.rec.every(id => S.lessons[id]?.done) ? 0 : 1; const c = CASES.slice().sort((a, b) => ready(a) - ready(b) || (S.cases[a.id]?.best || 0) - (S.cases[b.id]?.best || 0))[0]; return { kind: "clinic", short: "khám ca " + c.vi.toLowerCase(), title: `Luyện ca "${c.vi}"`, why, href: `#/clinic/${c.id}`, cta: "Vào phòng khám", est: 15 }; }
-  if (w.k === "vocab") return { kind: "lab", short: "ghép thuật ngữ", title: "Ghép thuật ngữ y khoa", why, href: "#/words/build", cta: "Luyện", est: 5 };
+  if (w.k === "vocab") return { kind: "lab", short: "ghép thuật ngữ", title: "Ghép thuật ngữ y khoa", why, href: "#/words", cta: "Luyện", est: 5 };
   const done = LESSONS.filter(l => S.lessons[l.id]?.done).sort((a, b) => S.lessons[a.id].best - S.lessons[b.id].best)[0];
   return done ? { kind: "lesson", short: "học lại bài " + done.id, title: `Học lại: ${done.title}`, why: why + ` Bài này có điểm thấp nhất (${Math.round(S.lessons[done.id].best * 100)}%).`, href: `#/lesson/${done.id}`, cta: "Học lại", est: done.min } : null;
 }
@@ -978,7 +977,7 @@ function viewAbout() {
     <section class="panel stack" style="margin-top:14px"><p style="font-family:var(--en);font-size:22px">“Built for learning. Improved through learning.”</p><p class="muted small">Phiên bản ${APP.version} (${APP.build}). Xây dựng bởi ${APP.author}. ${APP.credit}</p></section>`;
 }
 function viewMore() {
-  return `<section class="page-head"><h1>Thêm</h1></section><div class="panel"><div class="list">${[["sounds", "Phát âm", "Cặp âm người Việt hay nhầm"], ["words", "Sổ từ và thuật ngữ", "Từ đã học, hình vị, ghép thuật ngữ"], ["progress", "Tiến bộ", "Kỹ năng, thời gian, lịch học"], ["settings", "Cài đặt", "Giọng đọc, mục tiêu, sao lưu dữ liệu"], ["about", "Góc tác giả", "Mục đích, triết lý, phương pháp"]].map(([id, t, s]) => `<a class="item link" href="#/${id}"><span class="grow"><span class="t">${t}</span><br><span class="s">${s}</span></span></a>`).join("")}</div></div>`;
+  return `<section class="page-head"><h1>Thêm</h1></section><div class="panel"><div class="list">${[["sounds", "Phát âm", "Cặp âm người Việt hay nhầm"], ["words", "Thư viện thuật ngữ y khoa", "Hình vị, thuật ngữ mẫu, luyện ghép"], ["progress", "Tiến bộ", "Kỹ năng, thời gian, lịch học"], ["settings", "Cài đặt", "Giọng đọc, mục tiêu, sao lưu dữ liệu"], ["about", "Góc tác giả", "Mục đích, triết lý, phương pháp"]].map(([id, t, s]) => `<a class="item link" href="#/${id}"><span class="grow"><span class="t">${t}</span><br><span class="s">${s}</span></span></a>`).join("")}</div></div>`;
 }
 
 /* ---------------- Actions ---------------- */
@@ -1316,9 +1315,9 @@ Object.assign(ICONS, {
   search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>'
 });
 const NAV4 = [
-  ["Học", [["today", "Hôm nay", "home", "#e0773a"], ["goals", "Mục tiêu", "target", "#d9486b"], ["path", "Lộ trình", "path", "#3158d4"], ["review", "Ôn tập", "cards", "#7a63d6"], ["clinic", "Phòng khám ảo", "steth", "#0a8f78"]]],
-  ["Từ vựng", [["library", "Thư viện từ vựng", "book", "#c9862c"], ["words", "Từ của tôi", "bookmark", "#0f8c8c"], ["sounds", "Phát âm", "wave", "#2f8fd8"]]],
-  ["Của bạn", [["progress", "Tiến bộ", "chart", "#3c9a4f"], ["sync", "Đồng bộ thiết bị", "cloud", "#4a67d8"], ["settings", "Cài đặt", "gear", "#607d8b"], ["about", "Góc tác giả", "user", "#8a6a4c"]]]
+  ["Học", [["today", "Hôm nay", "home", "#e0773a"], ["goals", "Mục tiêu", "target", "#d9486b"], ["path", "Lộ trình", "path", "#3158d4"], ["review", "Luyện tập", "cards", "#7a63d6"], ["clinic", "Phòng khám ảo", "steth", "#0a8f78"]]],
+  ["Từ vựng", [["library", "Thư viện từ vựng", "book", "#c9862c"], ["words", "Thuật ngữ y khoa", "bookmark", "#0f8c8c"], ["sounds", "Phát âm", "wave", "#2f8fd8"]]],
+  ["Của bạn", [["progress", "Tiến bộ", "chart", "#3c9a4f"], ["settings", "Cài đặt", "gear", "#607d8b"], ["about", "Góc tác giả", "user", "#8a6a4c"]]]
 ];
 
 /* ---------------- Toolbar & shell ---------------- */
@@ -1332,14 +1331,14 @@ function toolbar() {
     <button class="tb acc-tog" data-act="tbAccent" title="Đổi giọng Anh-Mỹ / Anh-Anh" aria-label="Giọng ${st.accent === "uk" ? "Anh-Anh" : "Anh-Mỹ"}. Bấm để đổi"><span class="${st.accent === "us" ? "on" : ""}">US</span><span class="${st.accent === "uk" ? "on" : ""}">UK</span></button>
     ${rateBtn()}
     <button class="tb" data-act="tbTheme" title="Giao diện ${th[1]}, bấm để đổi" aria-label="Giao diện ${th[1]}. Bấm để đổi">${ic(th[0], 18)}</button>
-    <a class="tb sync-dot s-${sy}" href="#/sync" title="${esc(syncTitle())}" aria-label="${esc(syncTitle())}">${ic("cloud", 18)}<i></i></a>
+    <a class="tb sync-dot s-${sy}" href="#/settings/sync" title="${esc(syncTitle())}" aria-label="${esc(syncTitle())}">${ic("cloud", 18)}<i></i></a>
     <span id="timer" class="timer-pill" aria-live="off"></span></div>`;
 }
 shell = function (content) {
   const due = dueList().length, cur = ROUTE.name;
   const nav = NAV4.map(([g, items]) => `<div class="nav-group">${g}</div>` + items.map(([id, label, icon, col]) => `<a href="#/${id}" style="--ni:${col}" ${cur === id ? 'aria-current="page"' : ""}><span class="ni">${ic(icon, 17)}</span><span class="nl">${label}</span>${id === "review" && due ? `<span class="badge" aria-label="${due} thẻ đến hạn">${due}</span>` : ""}</a>`).join("")).join("");
-  const bottom = [["today", "Hôm nay", "home"], ["path", "Lộ trình", "path"], ["library", "Thư viện", "book"], ["review", "Ôn tập", "cards"], ["more", "Thêm", "more"]];
-  const moreIds = ["more", "goals", "clinic", "sounds", "words", "progress", "settings", "about", "sync"];
+  const bottom = [["today", "Hôm nay", "home"], ["path", "Lộ trình", "path"], ["library", "Thư viện", "book"], ["review", "Luyện tập", "cards"], ["more", "Thêm", "more"]];
+  const moreIds = ["more", "templates", "goals", "clinic", "sounds", "words", "progress", "settings", "about", "sync"];
   return `<div class="shell">
     <aside class="side"><a class="brand" href="#/today"><span class="brand-mark" aria-hidden="true">${logo()}</span><span class="brand-name">Tnkhoi English<small>Thông dụng và Y khoa</small></span></a>
       <nav class="nav" aria-label="Điều hướng chính">${nav}</nav>
@@ -1542,20 +1541,16 @@ wordListHtml = function () {
   });
   LIB.forEach(t => { const items = t.words.filter(w => isLearned(w) && match(w.w, w.vi)); if (items.length) groups.push({ key: t.id, icon: t.icon, color: t.color, title: t.title, sub: t.vi, rows: items.map(w => wordRow(w, false)) }); });
   if (!groups.length) return WQ ? `<p class="muted">Không có từ nào khớp “${esc(WQ)}”.</p>` : `<div class="empty"><p>Chưa có từ nào. Học xong một bài, hoặc chọn “Ôn”, “Biết” trong Thư viện từ vựng.</p><div class="row"><a class="btn primary" href="#/library">Mở thư viện</a><a class="btn" href="#/path">Lộ trình</a></div></div>`;
-  return groups.map(g => `<details class="wgroup" style="--tc:${g.color}" ${q || groups.length <= 4 ? "open" : ""}><summary><span class="ti">${g.icon}</span><span class="grow"><b>${esc(g.title)}</b>${g.sub ? ` <span class="muted small">${esc(g.sub)}</span>` : ""}</span><span class="chip">${g.rows.length}</span></summary><div class="lw-list">${g.rows.join("")}</div></details>`).join("");
+  return groups.map(g => `<details class="wgroup" style="--tc:${g.color}" ${q ? "open" : ""}><summary><span class="ti">${g.icon}</span><span class="grow"><b>${esc(g.title)}</b>${g.sub ? ` <span class="muted small">${esc(g.sub)}</span>` : ""}</span><span class="chip">${g.rows.length}</span></summary><div class="lw-list">${g.rows.join("")}</div></details>`).join("");
 };
-const _viewWords = viewWords;
-viewWords = () => _viewWords().replace('<h1>Sổ từ và thuật ngữ</h1>', '<h1>Từ của tôi</h1><p class="lede">Các từ bạn đã học, gom theo chủ đề. Muốn thêm từ mới, mở <a href="#/library">Thư viện từ vựng</a>.</p>').replace(">Sổ từ<", ">Từ đã học<");
 
 /* ---------------- Progress & More & Settings additions ---------------- */
 const _viewProgress = viewProgress;
 viewProgress = () => _viewProgress() + `<section class="panel stack" style="margin-top:14px"><h3>Thư viện từ vựng</h3>${GEN_LEVELS.map(l => { const c = coverage2(genLevelWords(l)); return `<div class="skill"><span class="lv lv-${l}">${l}</span><div class="bar"><i style="width:${c.p * 100}%"></i></div><span class="n">${c.d}/${c.n}</span></div>`; }).join("")}${STAGES.map(([id, n]) => { const c = coverage2(stageWords(id)); return `<div class="skill track-med"><span>${n}</span><div class="bar"><i style="width:${c.p * 100}%;background:var(--accent)"></i></div><span class="n">${c.d}/${c.n}</span></div>`; }).join("")}</section>`;
 viewMore = function () {
-  const items = [["goals", "🎯", "Mục tiêu và tiến bộ", "Lộ trình, kỹ năng, lịch học, mục tiêu"], ["clinic", "🩺", "Phòng khám ảo", "Hỏi bệnh 3 ca bệnh ảo"], ["words", "🔖", "Từ của tôi", "Từ đã học theo chủ đề, hình vị, ghép thuật ngữ"], ["phonemes", "🔊", "Phát âm", "44 âm, cặp âm, kho từ phát âm"], ["sync", "☁️", "Đồng bộ thiết bị", "Học tiếp trên iPad, điện thoại, máy tính"], ["settings", "⚙️", "Cài đặt", "Giọng đọc, sao lưu dữ liệu"], ["about", "✍️", "Góc tác giả", "Mục đích, triết lý, phương pháp"]];
+  const items = [["goals", "🎯", "Mục tiêu và tiến bộ", "Lộ trình, kỹ năng, lịch học, mục tiêu"], ["clinic", "🩺", "Phòng khám ảo", "Hỏi bệnh 3 ca bệnh ảo"], ["words", "🔖", "Thư viện thuật ngữ y khoa", "Hình vị, thuật ngữ mẫu, luyện ghép"], ["templates", "✉️", "Thư viện mẫu viết", "Thư, đơn, email: đang hoàn thiện"], ["phonemes", "🔊", "Phát âm", "44 âm, cặp âm, kho từ phát âm"], ["settings", "⚙️", "Cài đặt", "Giọng đọc, sao lưu dữ liệu"], ["about", "✍️", "Góc tác giả", "Mục đích, triết lý, phương pháp"]];
   return `<section class="page-head"><h1>Thêm</h1></section><div class="panel"><div class="list">${items.map(([id, i, t, s]) => `<a class="item link" href="#/${id}"><span class="ti">${i}</span><span class="grow"><span class="t">${t}</span><br><span class="s">${s}</span></span></a>`).join("")}</div></div>`;
 };
-const _viewSettings = viewSettings;
-viewSettings = () => _viewSettings().replace('<section class="panel" style="margin-top:14px"><h3>Dữ liệu</h3>', `<section class="panel stack" style="margin-top:14px"><div class="row between"><h3>☁️ Đồng bộ thiết bị</h3><a class="btn small" href="#/sync">${syncCfg().token ? "Quản lý" : "Bật đồng bộ"}</a></div><p class="muted small">${esc(syncTitle())}.</p></section><section class="panel" style="margin-top:14px"><h3>Dữ liệu</h3>`);
 
 /* ---------------- Sync (GitHub Gist) ---------------- */
 const SYNC = { status: "idle", msg: "", pending: false, busy: false };
@@ -1603,7 +1598,7 @@ async function syncNow(manual) {
     c.lastSync = Date.now(); saveCfg(c); SYNC.status = "ok"; SYNC.msg = ""; SYNC.pending = false;
     if (manual) toast("Đã đồng bộ.");
     if (!isFocus()) render(); else paintSync();
-  } catch (e) { SYNC.status = "err"; SYNC.msg = e.message || "không rõ"; paintSync(); if (manual) toast(SYNC.msg); if (ROUTE.name === "sync") render(); }
+  } catch (e) { SYNC.status = "err"; SYNC.msg = e.message || "không rõ"; paintSync(); if (manual) toast(SYNC.msg); if (ROUTE.name === "sync" || ROUTE.name === "settings") render(); }
   finally { SYNC.busy = false; }
 }
 setInterval(() => { const c = syncCfg(); if (c.token && c.auto !== false && SYNC.pending && !document.hidden) syncNow(false); }, 180000);
@@ -2276,7 +2271,7 @@ function lessonItem(l, k) {
 function lessonsSection(u) {
   const done = u.lessons.filter(id => S.lessons[id]?.done).length;
   const core = u.core.length ? `<div class="lgroup"><div class="lg-h"><span class="ti">💬</span><span class="grow"><b>Bài giao tiếp</b><br><span class="muted small">Hội thoại, mẫu câu và lỗi sai thường gặp</span></span></div><div class="list">${u.core.map(id => lessonItem(LESSON_BY[id], "★")).join("")}</div></div>` : "";
-  const groups = u.groups.map(g => { const t = LIB_BY[g.tid], d = g.ids.filter(id => S.lessons[id]?.done).length; return `<details class="lgroup" style="--tc:${t.color}" ${d < g.ids.length && g === u.groups.find(x => x.ids.some(id => !S.lessons[id]?.done)) ? "open" : ""}><summary class="lg-h"><span class="ti">${t.icon}</span><span class="grow"><b lang="en">${esc(t.title)}</b> <span class="lv lv-${g.lvl}">${lvName(g.lvl)}</span><br><span class="muted small">${esc(t.vi)}</span></span><span class="chip ${d === g.ids.length ? "good" : ""}">${d}/${g.ids.length} bài</span></summary><div class="list">${g.ids.map(id => lessonItem(LESSON_BY[id], LESSON_BY[id].part)).join("")}</div></details>`; }).join("");
+  const groups = u.groups.map(g => { const t = LIB_BY[g.tid], d = g.ids.filter(id => S.lessons[id]?.done).length; return `<details class="lgroup" style="--tc:${t.color}" ><summary class="lg-h"><span class="ti">${t.icon}</span><span class="grow"><b lang="en">${esc(t.title)}</b> <span class="lv lv-${g.lvl}">${lvName(g.lvl)}</span><br><span class="muted small">${esc(t.vi)}</span></span><span class="chip ${d === g.ids.length ? "good" : ""}">${d}/${g.ids.length} bài</span></summary><div class="list">${g.ids.map(id => lessonItem(LESSON_BY[id], LESSON_BY[id].part)).join("")}</div></details>`; }).join("");
   return `<section class="panel stack" style="margin-top:14px"><div class="row between"><h3>📖 Học phần <span class="muted small">${done}/${u.lessons.length} bài</span></h3>${unitWords(u).some(w => wStatus(w) === "new") ? `<button class="btn small" data-act="randLesson" data-u="${u.id}">🎲 Bài ngẫu nhiên (5 từ chưa học)</button>` : ""}</div>
     <p class="muted small">Mỗi bài dạy ${LESSON_SIZE} từ của một nhóm từ vựng trong chặng, cùng cấu trúc với các bài G và M: học từ, kiểm tra nghĩa, điền từ, từ loại, nghe hiểu, sắp xếp câu, chép chính tả, viết đúng, phát âm và nói. Học xong, các từ vào lịch ôn tập và được tính vào tiến độ của Thư viện.</p>${core}${groups}</section>`;
 }
@@ -2431,7 +2426,7 @@ const _start45 = startPractice;
 startPractice = function (arg) {
   const m = /^([ed])-(.+)$/.exec(arg || ""); if (!m) return _start45(arg);
   let items, title, back, track = "gen";
-  if (m[1] === "e") { const s = EX_BY[m[2]]; if (!s) return false; items = s.build(); title = s.title; back = "#/exam"; }
+  if (m[1] === "e") { const s = EX_BY[m[2]]; if (!s) return false; items = s.build(); title = s.title; back = "#/review"; }
   else { const p = RD_BY[m[2]]; if (!p) return false; items = readingItems(p); title = p.title; back = "#/reading/" + p.id; if (p.topic === "medical") track = "med"; }
   if (!items.length) return false;
   PX = { arg, kind: m[1], id: arg, title, back, track, items, i: 0, st: items.map(() => ({})), saved: false };
@@ -2506,29 +2501,36 @@ pxFinish = function () {
 
 /* ---------------- Trang Luyện đề ---------------- */
 Object.assign(ICONS, { clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', cal: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>', flame: '<path d="M12 3c1 3 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/>', trophy: '<path d="M8 4h8v5a4 4 0 01-8 0zM8 6H5v2a3 3 0 003 3M16 6h3v2a3 3 0 01-3 3M12 13v4M9 20h6"/>', exam: '<path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/>', reading: '<path d="M3 5h7a2 2 0 012 2v12a2 2 0 00-2-2H3zM21 5h-7a2 2 0 00-2 2v12a2 2 0 012-2h7z"/>' });
-NAV4[0][1].splice(3, 0, ["exam", "Luyện đề", "exam", "#d9486b"]);
 NAV4[1][1].splice(1, 0, ["reading", "Kho luyện đọc", "reading", "#2f8fd8"]);
+NAV4[1][1].splice(2, 0, ["templates", "Thư viện mẫu viết", "exam", "#c9862c"]);
 const _isStudy45 = isStudyRoute;
 isStudyRoute = () => _isStudy45() || (ROUTE.name === "reading" && !!ROUTE.arg) || (ROUTE.name === "writing" && !!ROUTE.arg);
 const scoreChip = r => r ? `<span class="chip ${r.best >= 0.7 ? "good" : "acc"}">${Math.round(r.best * 100)}%</span>` : `<span class="chip">chưa làm</span>`;
 const lk = (u, t) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`;
-function viewExam() {
+/* Bài tập theo dạng: xếp theo kỹ năng được rèn; mỗi dạng bài một hàng cùng bố cục (tên, mô tả, hình thức, mức, tiến độ). */
+function examSections() {
+  const rest = EX_SETS.filter(x => x.id !== "t5-exam" && x.id !== "t6-exam");
   const card = s => `<a class="gcard" href="#/practice/e-${s.id}"><div class="row between"><span class="lv lv-${s.lvl}">${s.lvlText}</span>${scoreChip(exRes("e-" + s.id))}</div><b>${esc(s.title)}</b><span class="muted small">${esc(s.sub)}</span></a>`;
-  const mocks = EX_SETS.filter(x => x.id === "t5-exam" || x.id === "t6-exam"), rest = EX_SETS.filter(x => !mocks.includes(x));
-  const done = EX_SETS.filter(x => exRes("e-" + x.id)).length, rdDone = RD_ALL.filter(x => exRes("d-" + x.id)).length, wrDone = WR_ITEMS.filter(x => exRes("w-" + x.id)).length;
-  const tile = (href, ic_, title, sub, prog) => `<a class="ex-tile" href="${href}"><span class="ex-ic">${ic(ic_, 22)}</span><span class="grow"><b>${title}</b><br><span class="muted small">${sub}</span></span><span class="chip">${prog}</span></a>`;
-  const group = ([g, name, desc]) => { const ss = rest.filter(x => x.group === g); if (!ss.length) return ""; const d = ss.filter(x => exRes("e-" + x.id)).length;
-    return `<details class="ex-group" ${g === "cm" ? "open" : ""}><summary><span class="grow"><b>${name}</b><br><span class="muted small">${desc}</span></span><span class="chip">${d}/${ss.length}</span></summary><div class="topics">${ss.map(card).join("")}</div></details>`; };
-  return `<section class="page-head"><h1>Luyện đề</h1><p class="lede">Các dạng bài thường gặp trong các kỳ thi tiếng Anh. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích bằng tiếng Việt. Đạt từ 70% là qua bộ đề.</p></section>
-    <div class="ex-tiles">${tile("#/reading", "reading", "Đọc hiểu", `${RD_ALL.length} đoạn văn, mỗi đoạn 5 câu hỏi`, `${rdDone}/${RD_ALL.length}`)}${tile("#/writing", "exam", "Viết và nói", `${WR_ITEMS.length} đề, tự chấm theo tiêu chí`, `${wrDone}/${WR_ITEMS.length}`)}</div>
-    ${mocks.length ? `<h2 class="sec-h">Đề thi thử</h2><p class="muted small" style="margin:-4px 0 10px">Làm liền một mạch, đúng số câu của đề thi thật.</p><div class="topics">${mocks.map(card).join("")}</div>` : ""}
-    <h2 class="sec-h">Luyện theo dạng bài</h2>
-    ${EX_GROUPS.map(group).join("")}
-    ${EX_SETS.length ? "" : `<div class="empty"><p>Chưa có bộ đề nào.</p></div>`}
-    <details class="ex-group"><summary><span class="grow"><b>Mẹo làm bài</b></span></summary><div class="stack" style="padding:6px 4px 10px">
-      <p><b>Điền từ vào câu</b>: đọc cả câu rồi mới nhìn lựa chọn. Xác định chỗ trống cần loại từ gì trước khi nghĩ đến nghĩa.</p>
-      <p><b>Điền đoạn văn</b>: đọc cả đoạn, vì nhiều chỗ trống phụ thuộc câu trước và câu sau.</p>
-      <p><b>Viết lại câu</b>: nhận ra cấu trúc đang kiểm tra (bị động, tường thuật, điều kiện, so sánh…) rồi dùng đúng từ cho sẵn, không đổi dạng.</p></div></details>`;
+  const head = (icon, title, desc, meta, d, n) => `<span class="ex-ic">${ic(icon, 22)}</span><span class="grow"><b>${title}</b><br><span class="muted small">${desc}</span><br><span class="ex-meta">${meta}</span></span><span class="ex-prog"><span class="bar"><i style="width:${n ? Math.round(d / n * 100) : 0}%"></i></span><span class="muted small">${d}/${n}</span></span>`;
+  const lvlOf = ss => { const o = ["A1", "A2", "B1", "B2", "C1"], l = ss.map(x => x.lvl).filter(x => o.includes(x)).sort((p, q) => o.indexOf(p) - o.indexOf(q)); return l.length ? (l[0] === l[l.length - 1] ? l[0] : l[0] + "–" + l[l.length - 1]) : ""; };
+  const setType = (g, icon, title, desc, format, tip) => {
+    const ss = rest.filter(x => x.group === g); if (!ss.length) return "";
+    const d = ss.filter(x => exRes("e-" + x.id)).length;
+    return `<details class="ex-group ex-type"><summary>${head(icon, title, desc, `${format} · ${lvlOf(ss)}`, d, ss.length)}</summary><p class="ex-tip"><b>Cách làm.</b> ${tip}</p><div class="topics">${ss.map(card).join("")}</div></details>`;
+  };
+  const linkType = (href, icon, title, desc, meta, d, n) => `<a class="ex-group ex-type ex-link" href="${href}"><div class="ex-sum">${head(icon, title, desc, meta, d, n)}</div></a>`;
+  const sec = (title, aim, body) => body.trim() ? `<section class="ex-sec"><h3 class="ex-sec-h">${title}</h3><p class="muted small ex-sec-aim">${aim}</p>${body}</section>` : "";
+  const rdDone = RD_ALL.filter(x => exRes("d-" + x.id)).length, wrDone = WR_ITEMS.filter(x => exRes("w-" + x.id)).length;
+  const out = [
+    sec("Từ vựng và ngữ pháp trong ngữ cảnh", "Dùng đúng từ, kết hợp từ và từ nối khi đọc cả đoạn.",
+      setType("cm", "exam", "Chọn từ điền đoạn văn", "Chọn từ đúng cho mỗi chỗ trống: từ vựng, kết hợp từ, cụm động từ, từ nối.", "8 chỗ trống, 4 lựa chọn", "Đọc cả đoạn trước, vì nhiều chỗ trống phụ thuộc câu trước và câu sau. Xác định loại từ cần điền rồi mới nghĩ đến nghĩa.")
+      + setType("co", "exam", "Gõ từ điền đoạn văn", "Gõ đúng một từ cho mỗi chỗ trống: mạo từ, giới từ, trợ động từ, đại từ quan hệ, từ nối.", "8 chỗ trống, gõ từ", "Đoán chức năng ngữ pháp của chỗ trống (giới từ, mạo từ, trợ động từ…), rồi đọc lại câu với từ đã điền để kiểm tra.")),
+    sec("Cấu trúc câu", "Diễn đạt cùng một ý bằng cấu trúc khác.",
+      setType("kw", "grammar", "Viết lại câu", "Điền 2 đến 5 từ, gồm từ cho sẵn (không đổi dạng), để câu thứ hai cùng nghĩa câu thứ nhất.", "10 câu mỗi lượt", "Nhận ra cấu trúc đang kiểm tra (bị động, tường thuật, điều kiện, so sánh…) rồi dùng đúng từ cho sẵn, không đổi dạng.")),
+    sec("Đọc", "Tìm thông tin và bằng chứng trong đoạn văn.",
+      linkType("#/reading", "reading", "Đọc hiểu", "Đoạn văn ngắn kèm câu hỏi có bằng chứng; chạm vào từ để xem nghĩa.", `${RD_ALL.length} đoạn, 5 câu hỏi mỗi đoạn · ${lvlOf(RD_ALL.map(x => ({ lvl: x.lvl })))}`, rdDone, RD_ALL.length))
+  ].join("");
+  return `<div class="ex-secs">${out}</div>${EX_SETS.length ? "" : `<div class="empty"><p>Chưa có bộ đề nào.</p></div>`}`;
 }
 
 /* ---------------- Kho luyện đọc ---------------- */
@@ -2609,7 +2611,8 @@ function viewWriting() {
       <p class="muted small">0 chưa đạt, 1 còn yếu, 2 khá, 3 tốt. Điểm trung bình hiện tại: <b>${Math.round(100 * tot / 12)}%</b>.</p>
       <div class="row"><button class="btn primary" data-act="wrSave">Lưu tự đánh giá</button><a class="btn quiet" href="#/writing">Chọn đề khác</a></div></section>`;
 }
-EXTRA_VIEWS.exam = viewExam; EXTRA_VIEWS.reading = viewReading; EXTRA_VIEWS.writing = viewWriting;
+EXTRA_VIEWS.exam = () => { location.replace("#/review"); return ""; }; EXTRA_VIEWS.reading = viewReading; EXTRA_VIEWS.writing = () => ROUTE.arg ? viewWriting() : (location.replace("#/templates"), "");
+EXTRA_VIEWS.templates = viewTemplates;
 Object.assign(ACT, {
   wrScore(el) { WR.chk[+el.dataset.i] = +el.dataset.v; WR.text = document.getElementById("wrText")?.value ?? WR.text; render(); },
   wrSave() { const id = ROUTE.arg, tot = WR.chk.reduce((a, b) => a + b, 0) / 12; S.exam = S.exam || {}; const p = S.exam["w-" + id]; S.exam["w-" + id] = { best: Math.max(p?.best || 0, tot), n: (p?.n || 0) + 1, last: Date.now() }; evidence(id[0] === "w" ? "writing" : "speaking", tot >= 0.5, "wr:" + id); touch(); save(); location.hash = "#/writing"; }
@@ -2625,27 +2628,94 @@ Object.assign(ACT, {
 });
 addEventListener("hashchange", () => { if (ROUTE.name !== "reading") { RDF.sel = ""; RDF.gist = false; } });
 
+/* ---------------- Thư viện thuật ngữ y khoa: hình vị, thuật ngữ mẫu và luyện ghép trong một trang ---------------- */
+function buildGameHtml() {
+  if (!B) startBuild();
+  if (B.round >= BUILD_N) return `<div class="stack"><div class="row" style="gap:18px"><div class="result-num">${B.score}/${BUILD_N}</div><p class="muted">thuật ngữ ghép đúng ngay lần đầu</p></div><div><button class="btn primary" data-act="buildAgain">Luyện lượt mới</button></div></div>`;
+  const t = B.order[B.round];
+  return `<div class="stack"><div class="row between"><span class="step-kind">Thuật ngữ ${B.round + 1}/${BUILD_N}</span><span class="muted small">đúng ${B.score}</span></div>
+    <p class="q" lang="en" style="font-size:22px">${esc(t.m)}</p><p class="muted">${esc(t.vi)}</p>
+    <div class="tiles answer">${B.ans.map((k, i) => `<button class="tile" data-act="bOut" data-i="${i}" ${B.done ? "disabled" : ""} lang="en">${esc(B.pool[k])}</button>`).join("") || '<span class="muted small" style="padding:8px">Chạm các mảnh theo thứ tự tiền tố, gốc, hậu tố.</span>'}</div>
+    <div class="tiles">${B.pool.map((p, k) => `<button class="tile ${B.ans.includes(k) ? "used" : ""}" data-act="bIn" data-k="${k}" ${B.done || B.ans.includes(k) ? "disabled" : ""} lang="en">${esc(p)}</button>`).join("")}</div>
+    ${B.done ? `<div class="feedback ${B.ok ? "ok" : "no"}" role="status"><b>${B.ok ? "Đúng." : "Đáp án:"}</b> <span class="en" lang="en" style="font-size:19px">${esc(t.t)}</span> = ${t.p.map(esc).join(" + ")}</div><div class="row">${hear(t.t)}<button class="btn primary" data-act="bNext">Thuật ngữ tiếp</button></div>`
+      : `<div class="row"><button class="btn" data-act="bReset">Xếp lại</button><button class="btn primary" data-act="bCheck" ${B.ans.length ? "" : "disabled"}>Kiểm tra</button></div>${B.tries ? `<div class="feedback no">Chưa đúng. Thử lại một lần.</div>` : ""}`}</div>`;
+}
+viewWords = function () {
+  const grp = (type, title, hint) => `<details class="ex-group mt-group"><summary>${title} <span class="chip">${MORPHEMES.filter(m => m[0] === type).length}</span></summary><p class="muted small" style="margin:0 0 6px">${hint}</p><div class="mt-grid">${MORPHEMES.filter(m => m[0] === type).map(([, f, en, vi, ex]) => `<div class="mt-card" data-q="${esc(norm(f + " " + en + " " + vi + " " + ex))}"><b lang="en">${esc(f)}</b><span lang="en">${esc(en)}</span><span class="muted small">${esc(vi)}</span><span class="mt-ex row" lang="en">${esc(ex)} ${hear(ex)}</span></div>`).join("")}</div></details>`;
+  const terms = `<details class="ex-group mt-group"><summary>Thuật ngữ mẫu <span class="chip">${TERMS.length}</span></summary><p class="muted small" style="margin:0 0 6px">Mỗi thuật ngữ tách thành các mảnh: tiền tố, gốc, hậu tố.</p><div class="mt-terms">${TERMS.map(t => `<div class="mt-term" data-q="${esc(norm(t.t + " " + t.m + " " + t.vi))}"><span class="row"><b lang="en">${esc(t.t)}</b>${hear(t.t)}</span><span class="muted small" lang="en">${t.p.map(esc).join(" + ")}</span><span lang="en">${esc(t.m)}</span><span class="muted small">${esc(t.vi)}</span></div>`).join("")}</div></details>`;
+  return `<section class="page-head"><h1>Thư viện thuật ngữ y khoa</h1><p class="lede">Phần lớn thuật ngữ y khoa ghép từ gốc Hy Lạp và La-tinh. Nhớ các mảnh hình vị là đoán được nghĩa của hàng trăm từ: luyện ghép trước, rồi tra bảng bên dưới.</p></section>
+    <section class="panel track-med mt-practice"><h2 style="margin:0 0 10px">Luyện ghép thuật ngữ</h2>${buildGameHtml()}</section>
+    <h2 class="sec-h" style="margin-top:22px">Tra hình vị và thuật ngữ</h2>
+    <input class="search" id="msearch" type="search" placeholder="Tìm mảnh, nghĩa hoặc thuật ngữ…" aria-label="Tìm hình vị hoặc thuật ngữ"><p class="muted small" id="mcount" style="margin:6px 0 0"></p>
+    <div class="stack" style="margin-top:12px">${grp("prefix", "Tiền tố", "Đứng đầu từ, cho biết mức độ, vị trí hoặc số lượng.")}${grp("root", "Gốc từ", "Phần mang nghĩa chính, thường là một cơ quan hoặc bộ phận.")}${grp("suffix", "Hậu tố", "Đứng cuối từ, cho biết bệnh lý, thủ thuật hoặc triệu chứng.")}${terms}</div>`;
+};
+addEventListener("input", e => {
+  if (!e.target || e.target.id !== "msearch") return;
+  const q = norm(e.target.value); let n = 0;
+  document.querySelectorAll(".mt-card, .mt-term").forEach(c => { const ok = !q || c.dataset.q.includes(q); c.hidden = !ok; if (ok) n++; });
+  document.querySelectorAll(".mt-group").forEach(g => { const any = g.querySelector(".mt-card:not([hidden]), .mt-term:not([hidden])"); g.hidden = !any; if (q && any) g.open = true; });
+  const el = document.getElementById("mcount"); if (el) el.textContent = q ? `${n} kết quả` : "";
+});
+
+/* ---------------- Thư viện mẫu viết (khung trang, nội dung đang hoàn thiện) ---------------- */
+const TPL_GROUPS = [
+  ["Thư cá nhân", ["Thư gửi bạn", "Thư cảm ơn", "Thư xin lỗi", "Thư mời", "Thư chúc mừng"]],
+  ["Thư phàn nàn và yêu cầu", ["Thư phàn nàn", "Thư yêu cầu hoàn tiền", "Thư hỏi thông tin"]],
+  ["Đơn từ", ["Đơn xin việc", "Đơn xin nghỉ học, nghỉ phép", "Đơn xin thực tập", "Đơn xin học bổng"]],
+  ["Email công việc", ["Email xin hẹn", "Email phản hồi", "Email nhắc việc", "Email giới thiệu bản thân"]],
+  ["Văn bản y khoa", ["Thư gửi bệnh nhân", "Thư giới thiệu chuyển tuyến", "Tóm tắt bệnh án", "Báo cáo ca bệnh"]],
+  ["Bài luận", ["Nêu ý kiến", "Ưu điểm và nhược điểm", "Giải pháp cho một vấn đề"]]
+];
+function viewTemplates() {
+  return `<section class="page-head"><h1>Thư viện mẫu viết</h1><p class="lede">Các mẫu thư, đơn và email để bạn tham khảo cấu trúc và cách diễn đạt khi viết bằng tiếng Anh.</p></section>
+    <div class="feedback ok" role="status"><b>Đang hoàn thiện.</b> Hiện trang chỉ có danh mục đề mục; nội dung từng mẫu sẽ được bổ sung dần.</div>
+    <div class="stack" style="margin-top:14px">${TPL_GROUPS.map(([g, items]) => `<section class="panel stack"><h3 style="margin:0">${g}</h3><div class="list">${items.map(t => `<div class="item"><span class="grow"><span class="t">${t}</span></span><span class="chip">Sắp có</span></div>`).join("")}</div></section>`).join("")}</div>`;
+}
 /* ---------------- Mục tiêu và tiến bộ (gộp trang Tiến bộ vào Mục tiêu) ---------------- */
-const RADAR_TARGET = 100; /* mỗi kỹ năng đạt 100% sau 100 lượt luyện */
-/* Biểu đồ ra-đa: mỗi trục là một kỹ năng, bán kính là mức hoàn thiện theo lượng luyện tập (lượt luyện, đúng hay sai đều tính). */
+/* Biểu đồ ra-đa: 100% của mỗi kỹ năng là học và làm hết nội dung hiện có của kỹ năng đó. Mẫu số lấy từ kho nội dung nên tự đổi khi thêm hoặc bớt bài. */
+const SKILL_HOW = {
+  vocab: "Học hết các từ trong thư viện: học bài, hoặc thêm từ vào lịch ôn rồi ôn đều.",
+  grammar: "Làm hết bộ câu hỏi của từng điểm ngữ pháp trong Thư viện ngữ pháp, đạt từ 80%.",
+  listening: "Hoàn thành hết các bài học và học phần (có phần nghe chép và nghe chọn).",
+  reading: "Làm hết các đoạn trong Kho luyện đọc.",
+  speaking: "Làm hết các ca trong Phòng khám ảo.",
+  writing: "Tạm chưa tính: sẽ cập nhật khi Thư viện mẫu viết hoàn thiện.",
+  pron: "Luyện hết các cặp âm trong Phát âm, đạt từ 80% đúng.",
+  clinical: "Khám hết các ca bệnh trong Phòng khám ảo, đạt từ 80%."
+};
+function skillCoverage() {
+  const cl = x => Math.max(0, Math.min(1, x)), avg = a => a.length ? a.reduce((p, q) => p + q, 0) / a.length : 0;
+  const rdSeen = new Set(S.log.filter(e => e.k === "reading" && /^rd:/.test(e.src)).map(e => e.src));
+  const learnedKeys = Object.entries(S.cards).filter(([k, c]) => /:p$/.test(k) && c.state !== "new").length;
+  const wr = kind => WR_ITEMS.filter(w => (w.kind === "viết") === (kind === "writing"));
+  const wrCov = kind => avg(wr(kind).map(w => cl((S.exam?.["w-" + w.id]?.best || 0) / 0.5)));
+  const caseCov = avg(CASES.map(c => cl((S.cases[c.id]?.best || 0) / 0.8)));
+  return {
+    vocab: cl(learnedKeys / Math.max(1, Object.keys(LIB_WORD).length)),
+    grammar: avg(GRAMMAR.map(g => cl((S.gram[g.id]?.best || 0) / 0.8))),
+    listening: avg(LESSONS.concat(GEN_LESSONS).map(l => S.lessons[l.id]?.done ? 1 : 0)),
+    reading: cl(rdSeen.size / Math.max(1, READING.length)),
+    speaking: caseCov,
+    writing: wrCov("writing"),
+    pron: avg(Object.keys(PAIRS).map(id => { const p = S.pron[id]; return p && p.n ? cl(p.n / 3) * cl((p.ok / p.n) / 0.8) : 0; })),
+    clinical: caseCov
+  };
+}
 function radarPanel() {
-  const ks = Object.entries(SKILLS), n = ks.length, cx = 170, cy = 150, R = 100;
+  const ks = Object.entries(SKILLS), n = ks.length, cx = 170, cy = 150, R = 100, cov = skillCoverage();
   const pt = (i, r) => { const a = -Math.PI / 2 + 2 * Math.PI * i / n; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
-  const cnt = ks.map(([k]) => S.log.filter(e => e.k === k).length), val = cnt.map(c => Math.min(1, c / RADAR_TARGET));
+  const val = ks.map(([k]) => cov[k] || 0), pc = v => Math.round(v * 100) + "%";
   const rings = [0.25, 0.5, 0.75, 1].map(f => `<polygon points="${ks.map((_, i) => pt(i, R * f).map(v => v.toFixed(1)).join(",")).join(" ")}" class="rd-ring"/>`).join("");
   const axes = ks.map((_, i) => { const [x, y] = pt(i, R); return `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" class="rd-axis"/>`; }).join("");
   const poly = val.map((v, i) => pt(i, R * v).map(x => x.toFixed(1)).join(",")).join(" ");
-  const dots = val.map((v, i) => { if (!cnt[i]) return ""; const [x, y] = pt(i, R * v); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" class="rd-dot"/>`; }).join("");
-  const labels = ks.map(([, name], i) => { const [x, y] = pt(i, R + 22), anchor = Math.abs(x - cx) < 8 ? "middle" : x > cx ? "start" : "end"; return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${anchor}" class="rd-lbl">${name}</text>`; }).join("");
-  const rows = ks.map(([, name], i) => `<span class="rd-row"><span>${name}</span><b>${Math.round(val[i] * 100)}%</b><span class="muted small">${cnt[i]} lượt</span></span>`).join("");
+  const dots = val.map((v, i) => { if (!v) return ""; const [x, y] = pt(i, R * v); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" class="rd-dot"/>`; }).join("");
+  const labels = ks.map(([, name], i) => { const [x, y] = pt(i, R + 22), anchor = Math.abs(x - cx) < 8 ? "middle" : x > cx ? "start" : "end"; return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${anchor}" class="rd-lbl">${name} ${pc(val[i])}</text>`; }).join("");
   return `<section class="panel stack"><h3>Kỹ năng</h3>
-    <svg class="radar" viewBox="-50 0 440 300" role="img" aria-label="Biểu đồ ra-đa mức hoàn thiện kỹ năng: ${ks.map(([, nm], i) => nm + " " + Math.round(val[i] * 100) + "%").join(", ")}">${rings}${axes}${cnt.some(c => c) ? `<polygon points="${poly}" class="rd-area"/>` : ""}${dots}${labels}</svg>
-    <div class="rd-rows">${rows}</div>
-    <p class="muted small">Mức hoàn thiện của mỗi kỹ năng tăng theo số lượt luyện tập: ${RADAR_TARGET} lượt là 100%. Mỗi câu hỏi, thẻ ôn hoặc bài tập bạn làm tính một lượt, dù đúng hay sai. Kỹ năng chưa luyện nằm ở tâm.</p></section>`;
+    <svg class="radar" viewBox="-70 0 480 300" role="img" aria-label="Biểu đồ ra-đa mức hoàn thiện kỹ năng: ${ks.map(([, nm], i) => nm + " " + pc(val[i])).join(", ")}">${rings}${axes}${val.some(v => v) ? `<polygon points="${poly}" class="rd-area"/>` : ""}${dots}${labels}</svg></section>`;
 }
 /* Bảng nhiệt theo tháng và năm (thay cho các biểu đồ 7, 14 ngày và 12 tuần). */
 const HM = { y: new Date().getFullYear(), m: new Date().getMonth() };
-function heatmapPanel() {
+function heatmapPanel(compact) {
   const days = new Date(HM.y, HM.m + 1, 0).getDate(), lead = (new Date(HM.y, HM.m, 1).getDay() + 6) % 7, todayKey = dayKey();
   let tot = 0, act = 0, best = 0; const cells = [];
   for (let i = 0; i < lead; i++) cells.push('<i class="hm-pad"></i>');
@@ -2657,6 +2727,9 @@ function heatmapPanel() {
   const MON_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const chips = Array.from({ length: 12 }, (_, i) => `<button class="exm-btn ${i === HM.m ? "on" : ""}" data-act="hmMonth" data-m="${i}" aria-pressed="${i === HM.m}">${LANG === "en" ? MON_EN[i] : "T" + (i + 1)}</button>`).join("");
   const now = new Date(), isNow = HM.y === now.getFullYear() && HM.m === now.getMonth();
+  if (compact) return `<section class="panel stack hm-compact" aria-label="Lịch học"><div class="row between"><h3 style="margin:0">Lịch học</h3><span class="row" style="gap:6px"><button class="btn quiet small" data-act="hmStep" data-d="-1" aria-label="Tháng trước">‹</button><b>${LANG === "en" ? MON_EN[HM.m] : "Tháng " + (HM.m + 1)}/${HM.y}</b><button class="btn quiet small" data-act="hmStep" data-d="1" aria-label="Tháng sau">›</button></span></div>
+    <div class="hm-grid" role="img" aria-label="Lịch học tháng ${HM.m + 1} năm ${HM.y}">${(LANG === "en" ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]).map(x => `<span class="hm-h">${x}</span>`).join("")}${cells.join("")}</div>
+    <div class="row between"><span class="muted small">${act} ngày có học, ${Math.round(tot)} phút</span><span class="heat-legend muted small"><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i></span></div></section>`;
   return `<section class="panel stack"><div class="row between"><h3 style="margin:0">Lịch học</h3><span class="row" style="gap:6px"><button class="btn quiet small" data-act="hmYear" data-d="-1" aria-label="Năm trước">‹</button><b>${HM.y}</b><button class="btn quiet small" data-act="hmYear" data-d="1" aria-label="Năm sau">›</button>${isNow ? "" : '<button class="btn quiet small" data-act="hmNow">Tháng này</button>'}</span></div>
     <div class="lv-filter" role="group" aria-label="Chọn tháng">${chips}</div>
     <div class="hm-grid" role="img" aria-label="Lịch học tháng ${HM.m + 1} năm ${HM.y}">${(LANG === "en" ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]).map(x => `<span class="hm-h">${x}</span>`).join("")}${cells.join("")}</div>
@@ -2667,12 +2740,7 @@ function progressBody() {
   const st = cardStats(), days = Object.values(S.time.days).filter(v => v >= 60).length;
   const tiles = [["clock", "#3158d4", fmtDur(S.time.total).replace(" phút", "p").replace(" giờ ", "g "), "tổng thời gian học"], ["cal", "#0f8c8c", days, "ngày có học"], ["flame", "#e0622f", streak(), "ngày liên tiếp"], ["trophy", "#1b7a45", st.mature, "thẻ đã vững"]]
     .map(([ic_, col, v, l]) => `<div class="stat"><span class="stat-ic" style="--ic:${col}">${ic(ic_, 18)}</span><b>${v}</b><span>${l}</span></div>`).join("");
-  const gu = UNITS.filter(u => u.track === "gen"), mu = UNITS.filter(u => u.track === "med");
-  const pctOf = us => us.length ? us.reduce((a, u) => a + Math.min(1, unitParts(u).pct), 0) / us.length : 0, passed = us => us.filter(u => unitParts(u).pct >= 0.8).length;
-  const cur = gu.find(u => unitParts(u).pct < 0.8);
-  const bar = (label, p, n) => `<div class="skill"><span>${label}</span><div class="bar"><i style="width:${Math.min(100, p * 100)}%"></i></div><span class="n">${n}</span></div>`;
-  const path = `<section class="panel stack"><div class="row between"><h3 style="margin:0">Lộ trình</h3><a class="btn quiet small" href="#/path">Mở lộ trình</a></div>${bar("Phổ thông", pctOf(gu), `${passed(gu)}/${gu.length} chặng`)}${bar("Y khoa", pctOf(mu), `${passed(mu)}/${mu.length} chặng`)}<p class="muted small">${cur ? `Đang học chặng <b>${esc(cur.code)}</b>, ${esc(cur.vi)}. ` : "Bạn đã qua mọi chặng phổ thông. "}Qua chặng khi đạt 80%.</p></section>`;
-  return `<div class="panel" style="margin-top:14px"><div class="grid4">${tiles}</div></div><div class="stack" style="margin-top:14px">${path}${radarPanel()}${heatmapPanel()}</div><h2 class="sec-h" style="margin-top:22px">Thiết lập mục tiêu</h2>`;
+  return `<div class="panel" style="margin-top:14px"><div class="grid4">${tiles}</div></div><div class="stack" style="margin-top:14px">${radarPanel()}</div><h2 class="sec-h" style="margin-top:22px">Thiết lập mục tiêu</h2>`;
 }
 const _viewGoals47 = viewGoals;
 viewGoals = function () {
@@ -2684,6 +2752,7 @@ viewProgress = function () { location.replace("#/goals"); return viewGoals(); };
 NAV4.forEach(g => { g[1] = g[1].filter(x => x[0] !== "progress"); });
 NAV4[0][1].forEach(x => { if (x[0] === "goals") x[1] = "Mục tiêu và tiến bộ"; });
 Object.assign(ACT, {
+  hmStep(el) { const d = new Date(HM.y, HM.m + +el.dataset.d, 1); HM.y = d.getFullYear(); HM.m = d.getMonth(); render(); },
   hmMonth(el) { HM.m = +el.dataset.m; render(); },
   hmYear(el) { HM.y += +el.dataset.d; render(); },
   hmNow() { const n = new Date(); HM.y = n.getFullYear(); HM.m = n.getMonth(); render(); }
@@ -2698,7 +2767,7 @@ toolbar = function () {
     <div class="tb-group" role="group" aria-label="Giọng đọc"><span class="tb-cap">Giọng đọc</span>
       <button class="tb acc-tog" data-act="tbAccent" title="Đổi giọng Anh-Mỹ / Anh-Anh" aria-label="Giọng ${st.accent === "uk" ? "Anh-Anh" : "Anh-Mỹ"}. Bấm để đổi"><span class="${st.accent === "us" ? "on" : ""}">US</span><span class="${st.accent === "uk" ? "on" : ""}">UK</span></button>${rateBtn()}</div>
     <div class="tb-group" role="group" aria-label="Giao diện"><span class="tb-cap">Giao diện</span>${themeSeg}</div>
-    <div class="tb-group" role="group" aria-label="Đồng bộ"><span class="tb-cap">Đồng bộ</span><a class="tb sync-dot s-${sy}" href="#/sync" title="${esc(syncTitle())}" aria-label="${esc(syncTitle())}">${ic("cloud", 18)}<i></i></a></div>
+    <div class="tb-group" role="group" aria-label="Đồng bộ"><span class="tb-cap">Đồng bộ</span><a class="tb sync-dot s-${sy}" href="#/settings/sync" title="${esc(syncTitle())}" aria-label="${esc(syncTitle())}">${ic("cloud", 18)}<i></i></a></div>
     <span id="timer" class="timer-pill" aria-live="off"></span></div>`;
 };
 ACT.tbThemeSet = function (el) { const st = S.settings; st.theme = el.dataset.t; S.settingsAt = Date.now(); touch(); save(); applyTheme(); render(); };
@@ -2713,7 +2782,7 @@ viewToday = function () {
     <div class="ts-card ts-main"><div class="row between"><b>Hôm nay</b><span class="muted small">${mins}/${goal} phút</span></div><div class="bar"><i style="width:${pct}%;${pct >= 100 ? "background:var(--good)" : ""}"></i></div></div>
     <a class="ts-card" href="#/review"><b>${due}</b><span class="muted small">thẻ đến hạn</span></a>
     <div class="ts-card"><b>${stk}</b><span class="muted small">ngày liên tiếp</span></div></section>
-    <nav class="quick" aria-label="Lối tắt"><a class="btn" href="#/review">${ic("cards", 16)} Ôn tập</a><a class="btn" href="#/exam">${ic("exam", 16)} Luyện đề</a><a class="btn" href="#/reading">${ic("reading", 16)} Đọc</a><a class="btn" href="#/path">${ic("path", 16)} Lộ trình</a></nav>`;
+    <nav class="quick" aria-label="Lối tắt"><a class="btn" href="#/review">${ic("cards", 16)} Luyện tập</a><a class="btn" href="#/reading">${ic("reading", 16)} Đọc</a><a class="btn" href="#/path">${ic("path", 16)} Lộ trình</a></nav>`;
   const i = h.indexOf("</section>"); h = i < 0 ? strip + h : h.slice(0, i + 10) + strip + h.slice(i + 10);
   /* Mục tiêu hôm nay: thêm biểu tượng vào ba ô số liệu. */
   const gi = h.indexOf("<h3>Mục tiêu hôm nay</h3>");
@@ -2722,21 +2791,31 @@ viewToday = function () {
   return h;
 };
 
+/* Trang chính: khung "Tiếp tục học hôm nay" (kế hoạch + lối tắt) cạnh khung "Mục tiêu hôm nay". */
+const _viewToday49 = viewToday;
+viewToday = function () {
+  const h = _viewToday49();
+  const hd = h.indexOf("</section>"), qm = h.match(/<section class="quote-card"[\s\S]*?<\/section>/), gi = h.indexOf('<div class="grid2 goal-strip"');
+  if (hd < 0 || !qm || gi < 0) return h;
+  const qEnd = qm.index + qm[0].length;
+  const mid2 = h.slice(qEnd, gi).replace(/<div class="why">(?:(?!<a )[\s\S])*?<\/div>/g, "").replace(/ <span class="muted small">(khoảng \d+ phút)<\/span>/g, ' <span class="chip">$1</span>');
+  const secs = (S.time.days || {})[dayKey(Date.now())] || 0, goal = S.settings.goal, mins = Math.floor(secs / 60), pct = Math.min(100, Math.round(100 * mins / goal));
+  const date = new Date().toLocaleDateString(LOC(), { weekday: "long", day: "numeric", month: "long" });
+  const due = dueList().length, stk = streak(), cards = Object.keys(S.cards).length;
+  const st = (icn, col, v, l) => `<div class="stat"><span class="stat-ic" style="--ic:${col}">${ic(icn, 18)}</span><b>${v}</b><span>${l}</span></div>`;
+  const hello = `<section class="home-hero"><div class="hh-top"><div><h1 class="home-hello">${greeting()}, ${esc(S.settings.name || "bạn")}</h1><p class="hh-date">${esc(date.charAt(0).toUpperCase() + date.slice(1))}</p></div><span class="hh-badge" title="Chuỗi ngày học">${ic("flame", 18)}<b>${stk}</b></span></div>${qm[0].replace("quote-card", "quote-card in-hero")}</section>`;
+  return `<div class="home">` + hello + `<div class="today-note-wrap">
+    <section class="panel today-note" aria-label="Tiếp tục học hôm nay"><div class="row between"><h3 style="margin:0">Tiếp tục học hôm nay</h3><span class="chip ${pct >= 100 ? "good" : "acc"}">${mins}/${goal} phút</span></div>${mid2}</section></div>
+    <div class="today-row"><aside class="panel stack today-goal" aria-label="Mục tiêu hôm nay"><div class="row between"><h3 style="margin:0">Mục tiêu hôm nay</h3><span class="muted small">${pct}%</span></div>
+      <div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${goal}" aria-valuenow="${mins}" aria-label="Phút học hôm nay"><i style="width:${pct}%"></i></div>
+      <p class="muted small" style="margin:0">${mins}/${goal} phút. Chỉ tính thời gian bạn đang làm bài.</p>
+      <div class="goal-stats-col">${st("flame", "#e0622f", stk, "ngày liên tiếp")}${st("cards", "#7a63d6", due, "thẻ đến hạn")}${st("book", "#3158d4", cards, "thẻ đã có")}</div>
+      <p class="muted small" style="margin:0">Một ngày được tính vào chuỗi khi học từ 5 phút.</p></aside>${heatmapPanel(true)}</div>` + `</div>`;
+};
 /* ---------------- Từ của tôi: thống kê, lọc theo mức nhớ, dòng gọn ---------------- */
 const WF = { st: "" };
 const WF_OPTS = [["", "Tất cả"], ["moi", "Mới"], ["dang", "Đang học"], ["cung", "Đang củng cố"], ["vung", "Đã vững"]];
 const WF_MAP = { "mới": "moi", "đang học": "dang", "đang củng cố": "cung", "đã vững": "vung" };
-const _viewWords45 = viewWords;
-viewWords = function () {
-  let h = _viewWords45();
-  if ((ROUTE.arg || "list") !== "list") return h;
-  const c = cardStats(), due = dueList().length;
-  const strip = `<div class="word-stats"><div class="ts-card"><b>${c.total}</b><span class="muted small">thẻ</span></div><div class="ts-card"><b>${c.learning + c.new}</b><span class="muted small">mới và đang học</span></div><div class="ts-card"><b>${c.young}</b><span class="muted small">đang củng cố</span></div><div class="ts-card"><b>${c.mature}</b><span class="muted small">đã vững</span></div></div>
-    <div class="row" style="margin:10px 0"><a class="btn primary small" href="#/review">${due ? `Ôn ${due} thẻ đến hạn` : "Mở Ôn tập"}</a><a class="btn small" href="#/library">Thêm từ từ Thư viện</a></div>`;
-  const filt = `<div class="lv-filter" id="wfilter" role="group" aria-label="Lọc theo mức nhớ">${WF_OPTS.map(([v, l]) => `<button class="exm-btn ${WF.st === v ? "on" : ""}" data-act="wfSt" data-v="${v}">${l}</button>`).join("")}</div><p class="muted small" id="wcount" style="margin:6px 0 0"></p>`;
-  h = h.replace(/(<p class="lede">[\s\S]*?<\/p>)/, "$1" + strip);
-  return h.replace('<div id="wlist"', filt + '<div id="wlist"');
-};
 function applyWF() {
   const list = document.getElementById("wlist"); if (!list) return;
   let shown = 0;
@@ -2752,20 +2831,21 @@ afterRender = function () { _afterRender45(); if (ROUTE.name === "words") applyW
 const _viewReview45 = viewReview;
 viewReview = function () {
   if (ROUTE.arg === "go") return _viewReview45();
-  const st = cardStats(); if (!st.total) return _viewReview45();
-  const due = dueList().length, fc = forecast(7), max = Math.max(1, ...fc);
+  const st = cardStats(), due = dueList().length, fc = forecast(7), max = Math.max(1, ...fc), wk = fc.reduce((a, b) => a + b, 0);
   const nextDue = Object.values(S.cards).map(c => c.due).filter(t => t > Date.now()).sort((a, b) => a - b)[0];
   const parts = [["new", "Mới", st.new], ["learning", "Đang học", st.learning], ["young", "Đang củng cố", st.young], ["mature", "Đã vững", st.mature]];
   const seg = parts.map(([k, l, n]) => n ? `<i class="rv-${k}" style="flex:${n}" title="${l}: ${n}"></i>` : "").join("");
   const legend = parts.map(([k, l, n]) => `<span class="rv-key"><i class="rv-${k}"></i>${l} <b>${n}</b></span>`).join("");
-  const wk = fc.reduce((a, b) => a + b, 0);
   const grades = [["1", "Quên", "again", "Không nhớ ra."], ["2", "Khó", "hard", "Nhớ ra nhưng rất chật vật."], ["3", "Nhớ", "good", "Nhớ ra sau một chút suy nghĩ."], ["4", "Dễ", "easy", "Nhớ ngay lập tức."]];
-  return `<section class="page-head"><h1>Ôn tập</h1><p class="lede">FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ: nhìn từ nhớ nghĩa, và nhìn nghĩa gõ lại từ.</p></section>
-    <section class="panel rv-hero ${due ? "has-due" : ""}"><div><div class="rv-num">${due}</div><div class="muted">thẻ đến hạn bây giờ</div></div>
-      <div class="rv-cta">${due ? `<a class="btn primary" href="#/review/go">Bắt đầu ôn ${due} thẻ</a><span class="muted small">khoảng ${Math.max(1, Math.round(due * 0.5))} phút</span>` : `<span class="chip good">Đã xong hết thẻ đến hạn</span><span class="muted small">${nextDue ? "Thẻ tiếp theo sau " + fmtIvl(nextDue - Date.now()) + "." : ""}</span>`}</div></section>
-    <section class="panel stack" style="margin-top:14px"><div class="row between"><h3 style="margin:0">Mức nhớ của ${st.total} thẻ</h3><a class="btn quiet small" href="#/words">Xem từ</a></div><div class="rv-stack" role="img" aria-label="Phân bố mức nhớ">${seg}</div><div class="rv-legend">${legend}</div></section>
-    <section class="panel stack" style="margin-top:14px"><div class="row between"><h3 style="margin:0">7 ngày tới</h3><span class="muted small">${wk} thẻ</span></div><div class="bars">${fc.map((v, i) => `<div title="${v} thẻ"><span>${v}</span><i style="height:${Math.max(v ? 6 : 0, Math.round(v / max * 80))}px"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></section>
-    <details class="panel rv-help" style="margin-top:14px"><summary><b>Chấm thế nào cho đúng</b> <span class="muted small">(phím 1 đến 4, cách để lật thẻ)</span></summary><div class="rv-grades">${grades.map(([k, l, c, d]) => `<div class="rv-g rv-g-${c}"><b><kbd>${k}</kbd> ${l}</b><span>${d}</span></div>`).join("")}</div><p class="muted small">Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch.</p></details>`;
+  const hero = `<section class="panel rv-hero ${due ? "has-due" : ""}"><div><div class="rv-num">${due}</div><div class="muted">thẻ đến hạn bây giờ</div></div>
+      <div class="rv-cta">${due ? `<a class="btn primary" href="#/review/go">Bắt đầu ôn ${due} thẻ</a><span class="muted small">khoảng ${Math.max(1, Math.round(due * 0.5))} phút</span>` : st.total ? `<span class="chip good">Đã xong hết thẻ đến hạn</span><span class="muted small">${nextDue ? "Thẻ tiếp theo sau " + fmtIvl(nextDue - Date.now()) + "." : ""}</span>` : `<span class="muted small">Chưa có thẻ nào. Học xong một bài, từ của bài sẽ thành thẻ ôn tập.</span><a class="btn" href="#/path">Mở lộ trình</a>`}</div></section>`;
+  const cards = st.total ? `<div class="grid2" style="margin-top:14px">
+      <section class="panel stack"><h3 style="margin:0">Mức nhớ của ${st.total} thẻ</h3><div class="rv-stack" role="img" aria-label="Phân bố mức nhớ">${seg}</div><div class="rv-legend">${legend}</div></section>
+      <section class="panel stack"><div class="row between"><h3 style="margin:0">7 ngày tới</h3><span class="muted small">${wk} thẻ</span></div><div class="bars">${fc.map((v, i) => `<div title="${v} thẻ"><span>${v}</span><i style="height:${Math.max(v ? 6 : 0, Math.round(v / max * 80))}px"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></section></div>` : "";
+  const help = `<details class="panel rv-help" style="margin-top:14px"><summary><b>Chấm thế nào cho đúng</b> <span class="muted small">(phím 1 đến 4, cách để lật thẻ)</span></summary><div class="rv-grades">${grades.map(([k, l, c, d]) => `<div class="rv-g rv-g-${c}"><b><kbd>${k}</kbd> ${l}</b><span>${d}</span></div>`).join("")}</div><p class="muted small">Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch. FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ: nhìn từ nhớ nghĩa, và nhìn nghĩa gõ lại từ.</p></details>`;
+  return `<section class="page-head"><h1>Luyện tập</h1><p class="lede">Ôn thẻ đến hạn trước, rồi làm bài theo dạng. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích; đạt từ 70% là qua bộ đề.</p></section>
+    <h2 class="sec-h" style="margin-top:6px">Ôn thẻ</h2>${hero}${cards}${help}
+    <h2 class="sec-h" style="margin-top:22px">Bài tập theo dạng</h2>${examSections()}`;
 };
 
 /* Trang chủ: bỏ khối "Xem trước một từ" và "Lỗi sai thường gặp". */
@@ -2796,7 +2876,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.11.2"; APP.build = "01.10.26";
+APP.version = "4.18.2"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3014,26 +3094,43 @@ addEventListener("hashchange", () => { if (ROUTE.name !== "phonemes" || (PQ && P
 /* ---------------- Cài đặt thu gọn; Phát âm nằm ở Thư viện ---------------- */
 NAV4.forEach(g => { g[1] = g[1].filter(x => x[0] !== "voices"); });
 const _viewSettings48 = viewSettings;
+/* Đồng bộ thiết bị gộp vào Cài đặt: lấy nội dung từ trang đồng bộ cũ (bỏ phần đầu trang). */
+const _viewSyncFull = viewSync;
+viewSync = () => { location.replace("#/settings/sync"); return ""; };
+const SET_OPEN = new Set();
+function syncSectionBody() { const full = _viewSyncFull(), lede = /<p class="lede">([\s\S]*?)<\/p>/.exec(full); return `<p class="muted small">${lede ? lede[1] : ""}</p>` + full.replace(/<section class="page-head">[\s\S]*?<\/section>/, "").replace(/<section class="panel stack"( style="[^"]*")?>/g, '<div class="stack set-sub">').replace(/<\/section>/g, "</div>"); }
+const SET_META = {
+  "Học tập": ["target", "#3158d4", "Tên, mục tiêu thời gian, từ mới mỗi ngày"],
+  "Giọng đọc": ["speaker", "#0a8f78", "Giọng Anh-Mỹ, Anh-Anh, tốc độ đọc"],
+  "Đồng bộ thiết bị": ["cloud", "#4a67d8", "Học tiếp trên iPad, điện thoại, máy tính"],
+  "Dữ liệu": ["gear", "#607d8b", "Sao lưu, khôi phục, đặt lại"]
+};
 viewSettings = function () {
   let h = _viewSettings48();
   const secs = [];
   h = h.replace(/<section class="panel[^"]*"[^>]*>([\s\S]*?)<\/section>/g, (m, inner) => {
     const t = /<h3>([\s\S]*?)<\/h3>/.exec(inner); if (!t) return m;
-    const title = t[1].replace(/<[^>]+>/g, "").trim();
-    let body = inner.replace(t[0], "");
+    const title = t[1].replace(/<[^>]+>/g, "").replace(/^[^\p{L}\p{N}]+/u, "").trim();
+    let body = inner.replace(/<div class="row between"><h3>[\s\S]*?<\/h3>(?:<a [^>]*>[\s\S]*?<\/a>)?<\/div>/, "").replace(t[0], "");
     if (/^Giọng đọc/.test(title)) body += `<a class="item link" href="#/voices"><span class="grow"><b>Trang Giọng đọc</b><br><span class="muted small">Nghe thử, xếp hạng giọng, bật tắt giọng người thật</span></span></a>`;
     secs.push([title, body]); return `\u0000${secs.length - 1}\u0000`;
   });
-  let k = 0;
-  const parts = secs.map(([title, inner]) => `<details class="ex-group" ${k++ === 0 ? "open" : ""}><summary><span class="grow"><b>${title}</b></span></summary><div class="stack" style="padding:0 2px 12px">${inner}</div></details>`);
-  return h.replace(/(\u0000\d+\u0000)+/, parts.join("")).replace(/\u0000\d+\u0000/g, "");
+  const di = secs.findIndex(x => /^Dữ liệu/.test(x[0])); secs.splice(di < 0 ? secs.length : di, 0, ["Đồng bộ thiết bị", syncSectionBody()]);
+  const parts = secs.map(([title, inner]) => {
+    const key = Object.keys(SET_META).find(k => title.startsWith(k)), [icn, col, desc] = SET_META[key] || ["gear", "#607d8b", ""];
+    const open = SET_OPEN.has(key) || (key === "Đồng bộ thiết bị" && ROUTE.arg === "sync");
+    const chip = key === "Đồng bộ thiết bị" ? `<span class="chip ${syncCfg().token ? "good" : ""}">${syncCfg().token ? "Đã bật" : "Chưa bật"}</span>` : "";
+    return `<details class="ex-group set-group" data-k="${esc(key || title)}" ${open ? "open" : ""}><summary><span class="set-ic" style="--ic:${col}">${ic(icn, 20)}</span><span class="grow"><b>${title}</b><br><span class="muted small">${desc}</span></span>${chip}</summary><div class="stack" style="padding:0 2px 12px">${inner}</div></details>`;
+  });
+  return h.replace(/(\u0000\d+\u0000)+/, () => parts.join("")).replace(/\u0000\d+\u0000/g, "");
 };
+document.addEventListener("toggle", e => { const d = e.target; if (d && d.classList && d.classList.contains("set-group")) { if (d.open) SET_OPEN.add(d.dataset.k); else SET_OPEN.delete(d.dataset.k); } }, true);
 /* ---------------- Góc tác giả (thiết kế lại, gồm Nguồn tham khảo) ---------------- */
 viewAbout = function () {
   const lnk = (u, t) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`;
   const cards = [["🎯", "Mục đích", "Phục vụ tự học ngoại ngữ lâu dài: tiếng Anh phổ thông làm nền tảng, tiếng Anh y khoa và học thuật phát triển dần theo năng lực."], ["🧭", "Triết lý", "Không phải học càng nhiều càng tốt, mà là học đúng thứ mình cần tiếp theo. Ưu tiên lượng kiến thức thu được trên mỗi phút học, không phải số bài đã hoàn thành."], ["🔧", "Luôn hoàn thiện", "Chương trình học, giao diện, thuật toán gợi ý, ôn tập, phát âm và nội dung chuyên ngành đều được thử nghiệm và cải tiến liên tục."]];
   const methods = [["🔀", "Hai mạch song song", "Mỗi mẫu ngữ pháp ở mạch phổ thông được dùng lại ở mạch y khoa cùng cấp độ, để một lần học phục vụ hai mục đích."], ["🔁", "Ôn tập ngắt quãng FSRS", "Thuật toán mã nguồn mở, hẹn ôn đúng lúc bạn sắp quên. Cần ít lượt ôn hơn thuật toán SM-2 cũ để đạt cùng mức ghi nhớ."], ["🩺", "Hỏi bệnh theo SOCRATES và ICE", "Phòng khám ảo mô phỏng các tiêu chí giao tiếp lâm sàng, gồm cả việc tìm hiểu quan điểm và mối lo của bệnh nhân."], ["🗣️", "Bám sát lỗi hay gặp", "Cặp âm tối thiểu, âm cuối, đuôi -s và -ed, mạo từ và những lỗi dịch từng chữ như “I am headache” được đưa vào ngay từ đầu."], ["✅", "Mỗi câu một đáp án", "Câu trắc nghiệm được viết và rà soát để chỉ có một đáp án hợp lệ, kèm giải thích bằng tiếng Việt."], ["📈", "Dựa trên việc bạn thực sự làm", "Mức hoàn thiện kỹ năng tính từ số lượt luyện thật; thời gian học chỉ tính khi bạn đang làm bài hoặc đọc."]];
-  const src = (title, body, open) => `<details class="ex-group" ${open ? "open" : ""}><summary><span class="grow"><b>${title}</b></span></summary><div class="stack" style="padding:0 2px 12px">${body}</div></details>`;
+  const src = (title, body, open) => `<details class="ex-group"><summary><span class="grow"><b>${title}</b></span></summary><div class="stack" style="padding:0 2px 12px">${body}</div></details>`;
   return `<section class="about-hero"><span class="brand-mark about-mark" aria-hidden="true">${logo()}</span><div><h1>Góc tác giả</h1><p class="lede" style="margin:4px 0 8px">Một dự án cá nhân của <b>${APP.author}</b>, xây dựng như một không gian học tập riêng và một thử nghiệm về cách công nghệ hỗ trợ việc tự học lâu dài.</p><div class="exrow"><span class="chip">Phiên bản ${APP.version}</span><span class="chip">${APP.build}</span><span class="chip">${APP.credit}</span></div></div></section>
     <section class="panel stack"><h2 style="margin:0">Học ngoại ngữ theo cách của chính mình.</h2>
       <p>Thay vì dùng nhiều công cụ rời rạc cho từ vựng, ngữ pháp, nghe, phát âm, giao tiếp và đọc hiểu, đây là một hệ thống thống nhất, dần thích nghi với chính người học.</p>
