@@ -2,12 +2,12 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.10.7 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.11.2 (02.10.26).
 
 ## Tính năng
 
 **Học theo lộ trình**
-- **Lộ trình** gồm 24 chặng: 12 chặng phổ thông (A1.1 đến C1) và 12 chặng y khoa (M1 đến M6 theo giáo trình tiếng Anh y khoa cơ bản, L1 đến L6 về giao tiếp lâm sàng và thuật ngữ mở rộng). Mỗi chặng gom từ vựng, ngữ pháp, phát âm, bài học và một bài kiểm tra chặng (đạt 80% là qua chặng).
+- **Lộ trình** gồm 24 chặng: 12 chặng phổ thông (A1.1 đến C1) và 12 chặng y khoa (M1 đến M6 về tiếng Anh y khoa cơ bản, L1 đến L6 về giao tiếp lâm sàng và thuật ngữ mở rộng). Mỗi chặng gom từ vựng, ngữ pháp, phát âm, bài học và một bài kiểm tra chặng (đạt 80% là qua chặng).
 - **Bài học tự sinh**: mỗi nhóm từ của chặng được chia thành các học phần 5 từ (nghe, nói, chính tả, điền từ, sắp xếp câu, phát âm…), cộng 12 bài học viết tay và 13 ca bệnh trong Phòng khám ảo.
 - **Hôm nay**: gợi ý việc nên làm, mục tiêu thời gian mỗi ngày, chuỗi ngày học liên tiếp.
 
@@ -32,6 +32,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.10.7 (02.10.26).
 - **Mục tiêu và tiến bộ** (một trang): thống kê thời gian học và chuỗi ngày, tiến độ lộ trình, biểu đồ ra-đa mức hoàn thiện kỹ năng theo lượng luyện tập (100 lượt luyện là 100%), lịch học dạng bảng nhiệt chọn theo tháng và năm, cùng phần thiết lập mục tiêu.
 - **Mục tiêu** và **kiểm tra đầu vào** ước lượng vốn từ.
 - **Cài đặt** gom thành các nhóm thu gọn (Học tập, Giọng đọc, Đồng bộ, Dữ liệu). Đồng bộ thiết bị qua GitHub Gist, sao lưu và khôi phục bằng file, giao diện sáng tối, dùng được trên điện thoại và máy tính bảng.
+- **Ngôn ngữ giao diện Việt hoặc Anh**: nút VI/EN trên thanh công cụ. Chỉ dịch phần giao diện; nghĩa tiếng Việt của từ và nội dung bài học giữ nguyên.
 
 ## Nguồn học liệu
 

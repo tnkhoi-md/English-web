@@ -450,7 +450,7 @@ function greeting() { const h = new Date().getHours(); return h < 11 ? "Chào bu
 function viewToday() {
   const plan = planToday();
   const first = !Object.keys(S.lessons).length && !S.log.length;
-  const date = new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "long" });
+  const date = new Date().toLocaleDateString(LOC(), { weekday: "long", day: "numeric", month: "long" });
   let headline;
   if (first) headline = "Bắt đầu với hai bài đầu tiên.";
   else if (!plan.length) headline = "Bạn đã học hết các bài hiện có. Hôm nay hãy giữ nhịp ôn tập.";
@@ -723,7 +723,7 @@ function viewReview() {
     return `<section class="page-head"><h1>Ôn tập</h1><p class="lede">Thuật toán FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ: nhìn từ nhớ nghĩa, và nhìn nghĩa gõ lại từ.</p></section>
       ${st.total ? `<div class="panel stack"><div class="grid3"><div class="stat"><b>${due}</b><span>đến hạn bây giờ</span></div><div class="stat"><b>${st.learning + st.new}</b><span>mới hoặc đang học</span></div><div class="stat"><b>${st.mature}</b><span>đã vững (từ 21 ngày)</span></div></div>
         <div class="row">${due ? `<a class="btn primary" href="#/review/go">Bắt đầu ôn ${due} thẻ</a>` : `<p class="muted">Không có thẻ đến hạn. ${nextDue ? "Thẻ tiếp theo đến hạn sau " + fmtIvl(nextDue - Date.now()) + "." : ""}</p>`}</div></div>
-        <div class="panel stack" style="margin-top:14px"><h3>Số thẻ đến hạn 7 ngày tới</h3><div class="bars">${fc.map((v, i) => `<div><span>${v}</span><i style="height:${v / max * 90}%"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString("vi-VN", { weekday: "short" })}</span></div>`).join("")}</div></div>
+        <div class="panel stack" style="margin-top:14px"><h3>Số thẻ đến hạn 7 ngày tới</h3><div class="bars">${fc.map((v, i) => `<div><span>${v}</span><i style="height:${v / max * 90}%"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></div>
         <div class="panel stack" style="margin-top:14px"><h3>Chấm thế nào cho đúng</h3><p><b>Quên</b>: không nhớ ra. <b>Khó</b>: nhớ ra nhưng rất chật vật. <b>Nhớ</b>: nhớ ra sau một chút suy nghĩ. <b>Dễ</b>: nhớ ngay lập tức. Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch.</p><p class="muted small">Trên bàn phím: phím cách để lật thẻ, phím 1 đến 4 để chấm.</p></div>`
         : `<div class="empty"><p>Chưa có thẻ nào. Học xong một bài, 6 từ của bài sẽ thành 12 thẻ ôn tập.</p><a class="btn primary" href="#/path">Mở lộ trình</a></div>`}`;
   }
@@ -1323,7 +1323,7 @@ const NAV4 = [
 
 /* ---------------- Toolbar & shell ---------------- */
 const RATES = [0.75, 0.9, 1, 1.1];
-function syncTitle() { const c = syncCfg(); if (!c.token) return "Chưa bật đồng bộ thiết bị"; return { busy: "Đang đồng bộ…", ok: "Đã đồng bộ " + (c.lastSync ? new Date(c.lastSync).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }) : ""), err: "Lỗi đồng bộ: " + SYNC.msg }[SYNC.status] || "Đồng bộ đang bật"; }
+function syncTitle() { const c = syncCfg(); if (!c.token) return "Chưa bật đồng bộ thiết bị"; return { busy: "Đang đồng bộ…", ok: "Đã đồng bộ " + (c.lastSync ? new Date(c.lastSync).toLocaleTimeString(LOC(), { hour: "2-digit", minute: "2-digit" }) : ""), err: "Lỗi đồng bộ: " + SYNC.msg }[SYNC.status] || "Đồng bộ đang bật"; }
 function rateBtn() { return `<button class="tb" data-act="tbRate" title="Tốc độ đọc, bấm để đổi" aria-label="Tốc độ đọc ${S.settings.rate} lần. Bấm để đổi">${ic("gauge", 18)}<span>${+S.settings.rate.toFixed(2)}×</span></button>`; }
 function toolbar() {
   const st = S.settings, th = { system: ["auto", "theo thiết bị"], light: ["sun", "sáng"], dark: ["moon", "tối"] }[st.theme];
@@ -1413,7 +1413,7 @@ function viewGoals() {
   const sel = (id, opts, v) => `<select id="${id}">${opts.map(([val, lab]) => `<option value="${val}" ${val === v ? "selected" : ""}>${lab}</option>`).join("")}</select>`;
   return `<section class="page-head"><h1>Mục tiêu học tập</h1><p class="lede">Hai mục tiêu song song: tiếng Anh phổ thông từ con số 0 đến C1, và tiếng Anh y khoa cơ bản bắt đầu từ thuật ngữ giải phẫu, sinh lý, bệnh học. Trang Hôm nay tự chia từ mới mỗi ngày theo các mục tiêu này.</p></section>
     <section class="panel stack"><h3>Thiết lập</h3>
-      <div class="setting"><div><b>Trình độ phổ thông hiện tại</b><div class="s">${g.placed ? `Kiểm tra đầu vào ngày ${new Date(g.placed.at).toLocaleDateString("vi-VN")}: ${g.placed.level}.` : "Chưa làm kiểm tra đầu vào."} <a href="#/placement">Làm kiểm tra (25 câu)</a></div></div>${sel("goalLevel", CEFR.map(([id, n]) => [id, n]), g.gen.level)}</div>
+      <div class="setting"><div><b>Trình độ phổ thông hiện tại</b><div class="s">${g.placed ? `Kiểm tra đầu vào ngày ${new Date(g.placed.at).toLocaleDateString(LOC())}: ${g.placed.level}.` : "Chưa làm kiểm tra đầu vào."} <a href="#/placement">Làm kiểm tra (25 câu)</a></div></div>${sel("goalLevel", CEFR.map(([id, n]) => [id, n]), g.gen.level)}</div>
       <div class="setting"><div><b>Mục tiêu phổ thông</b></div>${sel("goalTarget", [["A2", "A2"], ["B1", "B1"], ["B2", "B2"], ["C1", "C1"]], g.gen.target)}</div>
       <div class="setting"><div><b>Hạn đạt mục tiêu phổ thông</b><div class="s">Không bắt buộc. Dùng để tính số từ cần học mỗi ngày.</div></div><input type="date" id="goalDate" class="field" style="width:auto;font:inherit;padding:8px 10px" value="${g.gen.date}"></div>
       <div class="setting"><div><b>Giai đoạn y khoa đang tập trung</b></div>${sel("medStage", STAGES.map(([id, n]) => [id, n]), g.med.stage)}</div>
@@ -2654,11 +2654,12 @@ function heatmapPanel() {
     tot += m; if (m >= 1) act++; best = Math.max(best, m);
     cells.push(`<i class="hm-d l${lv}${dayKey(t) === todayKey ? " today" : ""}" title="${d}/${HM.m + 1}/${HM.y}: ${Math.round(m)} phút"><b>${d}</b></i>`);
   }
-  const chips = Array.from({ length: 12 }, (_, i) => `<button class="exm-btn ${i === HM.m ? "on" : ""}" data-act="hmMonth" data-m="${i}" aria-pressed="${i === HM.m}">T${i + 1}</button>`).join("");
+  const MON_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const chips = Array.from({ length: 12 }, (_, i) => `<button class="exm-btn ${i === HM.m ? "on" : ""}" data-act="hmMonth" data-m="${i}" aria-pressed="${i === HM.m}">${LANG === "en" ? MON_EN[i] : "T" + (i + 1)}</button>`).join("");
   const now = new Date(), isNow = HM.y === now.getFullYear() && HM.m === now.getMonth();
   return `<section class="panel stack"><div class="row between"><h3 style="margin:0">Lịch học</h3><span class="row" style="gap:6px"><button class="btn quiet small" data-act="hmYear" data-d="-1" aria-label="Năm trước">‹</button><b>${HM.y}</b><button class="btn quiet small" data-act="hmYear" data-d="1" aria-label="Năm sau">›</button>${isNow ? "" : '<button class="btn quiet small" data-act="hmNow">Tháng này</button>'}</span></div>
     <div class="lv-filter" role="group" aria-label="Chọn tháng">${chips}</div>
-    <div class="hm-grid" role="img" aria-label="Lịch học tháng ${HM.m + 1} năm ${HM.y}">${["T2", "T3", "T4", "T5", "T6", "T7", "CN"].map(x => `<span class="hm-h">${x}</span>`).join("")}${cells.join("")}</div>
+    <div class="hm-grid" role="img" aria-label="Lịch học tháng ${HM.m + 1} năm ${HM.y}">${(LANG === "en" ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]).map(x => `<span class="hm-h">${x}</span>`).join("")}${cells.join("")}</div>
     <div class="heat-legend muted small"><span>Ít</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>Nhiều</span></div>
     <p class="muted small">Tháng ${HM.m + 1}/${HM.y}: ${act} ngày có học, tổng ${Math.round(tot)} phút${best ? `, nhiều nhất ${Math.round(best)} phút một ngày` : ""}. Mục tiêu mỗi ngày ${S.settings.goal} phút.</p></section>`;
 }
@@ -2763,7 +2764,7 @@ viewReview = function () {
     <section class="panel rv-hero ${due ? "has-due" : ""}"><div><div class="rv-num">${due}</div><div class="muted">thẻ đến hạn bây giờ</div></div>
       <div class="rv-cta">${due ? `<a class="btn primary" href="#/review/go">Bắt đầu ôn ${due} thẻ</a><span class="muted small">khoảng ${Math.max(1, Math.round(due * 0.5))} phút</span>` : `<span class="chip good">Đã xong hết thẻ đến hạn</span><span class="muted small">${nextDue ? "Thẻ tiếp theo sau " + fmtIvl(nextDue - Date.now()) + "." : ""}</span>`}</div></section>
     <section class="panel stack" style="margin-top:14px"><div class="row between"><h3 style="margin:0">Mức nhớ của ${st.total} thẻ</h3><a class="btn quiet small" href="#/words">Xem từ</a></div><div class="rv-stack" role="img" aria-label="Phân bố mức nhớ">${seg}</div><div class="rv-legend">${legend}</div></section>
-    <section class="panel stack" style="margin-top:14px"><div class="row between"><h3 style="margin:0">7 ngày tới</h3><span class="muted small">${wk} thẻ</span></div><div class="bars">${fc.map((v, i) => `<div title="${v} thẻ"><span>${v}</span><i style="height:${Math.max(v ? 6 : 0, Math.round(v / max * 80))}px"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString("vi-VN", { weekday: "short" })}</span></div>`).join("")}</div></section>
+    <section class="panel stack" style="margin-top:14px"><div class="row between"><h3 style="margin:0">7 ngày tới</h3><span class="muted small">${wk} thẻ</span></div><div class="bars">${fc.map((v, i) => `<div title="${v} thẻ"><span>${v}</span><i style="height:${Math.max(v ? 6 : 0, Math.round(v / max * 80))}px"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></section>
     <details class="panel rv-help" style="margin-top:14px"><summary><b>Chấm thế nào cho đúng</b> <span class="muted small">(phím 1 đến 4, cách để lật thẻ)</span></summary><div class="rv-grades">${grades.map(([k, l, c, d]) => `<div class="rv-g rv-g-${c}"><b><kbd>${k}</kbd> ${l}</b><span>${d}</span></div>`).join("")}</div><p class="muted small">Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch.</p></details>`;
 };
 
@@ -2795,7 +2796,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.10.7"; APP.build = "01.10.26";
+APP.version = "4.11.2"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3056,6 +3057,7 @@ viewAbout = function () {
    Giao diện được viết bằng tiếng Việt; khi chọn EN, mỗi đoạn chữ hiển thị được tra trong từ điển I18N_EN (content-study.js)
    rồi thay bằng bản tiếng Anh. Câu có số hoặc tên xen vào được nhận dạng theo mẫu {1}, {2}. Đoạn nào chưa có bản dịch giữ tiếng Việt.
    Nội dung học (nghĩa tiếng Việt của từ, giải thích ngữ pháp trong bài) không bị dịch. */
+const LOC = () => (LANG === "en" ? "en-US" : "vi-VN");
 let LANG = (() => { try { return localStorage.getItem("tnk_lang") === "en" ? "en" : "vi"; } catch (e) { return "vi"; } })();
 const I18N = (() => {
   const exact = new Map(), pats = [];
