@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.9.1 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.10.7 (02.10.26).
 
 ## Tính năng
 
@@ -18,22 +18,24 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.9.1 (02.10.26).
 
 **Ngữ pháp, luyện đề, đọc, viết**
 - **Thư viện ngữ pháp** 40 điểm (A1 đến C1) với công thức, cách dùng, ví dụ, lỗi sai thường gặp và ngân hàng hơn 500 câu bài tập.
-- **Luyện đề**: TOEIC Part 5 và 6 (có thi thử), điền đoạn văn kiểu Cambridge (chọn từ và gõ từ), viết lại câu với từ cho sẵn, bài tập chương cho giáo trình y khoa.
+- **Luyện đề**: hai đề thi thử (điền từ vào câu, điền vào đoạn văn), chọn từ và gõ từ điền đoạn văn, viết lại câu với từ cho sẵn. Bài tập chương của giáo trình y khoa nằm ở trang từng chặng M1 đến M6.
 - **Kho luyện đọc**: khoảng 66 đoạn ngắn từ A2 đến C1 (gồm tài liệu y khoa), mỗi đoạn có câu hỏi kèm bằng chứng; chạm vào từ để xem nghĩa và thêm vào lịch ôn.
 - **Viết và nói**: 9 đề kèm bảng tự chấm theo bốn tiêu chí.
 - Mọi câu trắc nghiệm được viết để chỉ có **một đáp án đúng**, có giải thích tiếng Việt.
 
-**Phát âm và giọng đọc**
-- **44 âm tiếng Anh**: cách đặt lưỡi, môi, lỗi sai thường gặp, từ ví dụ, cặp âm tối thiểu, bài nghe phân biệt.
-- **Kho từ phát âm**: chữ câm, trọng âm, đuôi -ed/-s, cụm phụ âm, thuật ngữ y khoa; nghe giọng Anh-Mỹ và Anh-Anh, tự nói để máy nhận dạng.
+**Phát âm và giọng đọc** (Phát âm nằm trong menu Thư viện, giọng đọc nằm trong Cài đặt)
+- **Thư viện 44 âm tiếng Anh**: cách đặt lưỡi, môi, lỗi sai thường gặp, từ ví dụ, cặp âm tối thiểu, bài nghe phân biệt.
+- **Cặp âm tối thiểu** và **Kho từ phát âm**: chữ câm, trọng âm, đuôi -ed/-s, cụm phụ âm, thuật ngữ y khoa; nghe giọng Anh-Mỹ và Anh-Anh, tự nói để máy nhận dạng.
 - Giọng người thật cho từ đơn, giọng máy xếp hạng theo chất lượng cho câu, trang Giọng đọc để chọn giọng.
 
 **Theo dõi và tiện ích**
-- **Tiến bộ**: lộ trình, vốn từ theo cấp độ, ngữ pháp và luyện đề, biểu đồ ra-đa kỹ năng, lịch học 14 ngày và 12 tuần.
+- **Mục tiêu và tiến bộ** (một trang): thống kê thời gian học và chuỗi ngày, tiến độ lộ trình, biểu đồ ra-đa mức hoàn thiện kỹ năng theo lượng luyện tập (100 lượt luyện là 100%), lịch học dạng bảng nhiệt chọn theo tháng và năm, cùng phần thiết lập mục tiêu.
 - **Mục tiêu** và **kiểm tra đầu vào** ước lượng vốn từ.
-- **Đồng bộ thiết bị** qua GitHub Gist, sao lưu và khôi phục bằng file, giao diện sáng tối, dùng được trên điện thoại và máy tính bảng.
+- **Cài đặt** gom thành các nhóm thu gọn (Học tập, Giọng đọc, Đồng bộ, Dữ liệu). Đồng bộ thiết bị qua GitHub Gist, sao lưu và khôi phục bằng file, giao diện sáng tối, dùng được trên điện thoại và máy tính bảng.
 
 ## Nguồn học liệu
+
+Danh sách này cũng hiển thị trong mục **Góc tác giả** của ứng dụng.
 
 - **Nội dung do tác giả biên soạn**: toàn bộ từ vựng (ví dụ, nghĩa, định nghĩa tiếng Anh), bài học, câu hỏi ngữ pháp, đề luyện, bài đọc, ca bệnh và đề viết nói được viết mới cho ứng dụng, không sao chép từ đề thi hay sách. Danh sách từ đối chiếu cấp độ với khung CEFR và các danh mục từ phổ biến (Oxford 3000, NGSL, TSL) chỉ như danh mục kiểm tra, không sao chép định nghĩa.
 - **Giọng đọc người thật**: lấy qua [Free Dictionary API](https://dictionaryapi.dev) (dữ liệu Wiktionary và Wikimedia Commons, giấy phép CC BY-SA); khi không có bản ghi hoặc mất mạng, app dùng giọng máy của thiết bị.
@@ -46,6 +48,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.9.1 (02.10.26).
 |---|---|
 | `index.html` | Trang chính, nạp 4 file script theo đúng thứ tự (cache-bust `?v=...`) |
 | `styles.css` | Giao diện |
+| `logo.svg` | Logo ứng dụng, quả địa cầu và đường điện tim (cũng được nhúng sẵn trong `app.js` và `index.html` làm favicon) |
 | `content-lessons.js` | Bài học, ca bệnh ảo, hình vị, tình huống phòng khám |
 | `content-library.js` | Thư viện từ vựng phổ thông, luyện thi và y khoa |
 | `content-study.js` | Ngữ pháp, lộ trình và ngân hàng bài tập, 44 âm, bài đọc, dữ liệu Luyện đề, định nghĩa tiếng Anh |

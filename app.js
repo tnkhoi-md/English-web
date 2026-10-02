@@ -8,6 +8,9 @@
 /* ============================================================
    CORE · utils, state, migration, FSRS, time, speech
    ============================================================ */
+/* Logo: quả địa cầu (quốc tế) cắt ngang bởi đường điện tim (y khoa) trên nền xanh đậm. */
+let _logoN = 0;
+const logo = () => { const id = "tkg" + (++_logoN); return '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b3f8b"/><stop offset="1" stop-color="#0a7f86"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#'+id+')"/><g fill="none" stroke="#fff" stroke-linecap="round"><circle cx="32" cy="32" r="19" stroke-width="2.6"/><ellipse cx="32" cy="32" rx="8" ry="19" stroke-width="2" opacity=".75"/><path d="M14.5 24.5c11 4 24 4 35 0M14.5 39.5c11-4 24-4 35 0" stroke-width="1.8" opacity=".55"/></g><path d="M6 33h15l4-8 5 17 4-12 3 3h21" fill="none" stroke="#1b3f8b" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/><path d="M6 33h15l4-8 5 17 4-12 3 3h21" fill="none" stroke="#6ff2cf" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'; };
 const APP = { name: "Tnkhoi English", version: "3.3", build: "30.9.26", author: "Nguyên Khôi", credit: "© KhoiTN-MD" };
 const KEY = "tnkhoi_english_v3";
 const LESSONS = [...GENERAL, ...MEDICAL];
@@ -379,10 +382,10 @@ function shell(content) {
   const bottom = [["today", "Hôm nay", "home"], ["path", "Lộ trình", "path"], ["review", "Ôn tập", "cards"], ["clinic", "Ca bệnh", "steth"], ["more", "Thêm", "more"]];
   const moreIds = ["more", "sounds", "words", "progress", "settings", "about"];
   return `<div class="shell">
-    <aside class="side"><a class="brand" href="#/today"><span class="brand-mark" aria-hidden="true">Tk</span><span class="brand-name">Tnkhoi English<small>Thông dụng và Y khoa</small></span></a>
+    <aside class="side"><a class="brand" href="#/today"><span class="brand-mark" aria-hidden="true">${logo()}</span><span class="brand-name">Tnkhoi English<small>Thông dụng và Y khoa</small></span></a>
       <nav class="nav" aria-label="Điều hướng chính">${nav}</nav>
       <div class="side-foot">Phiên bản ${APP.version} (${APP.build})<br>Xây dựng bởi ${APP.author}<br>${APP.credit}</div></aside>
-    <div class="main"><header class="topbar"><a class="mobile-brand" href="#/today" style="color:inherit;text-decoration:none"><span class="brand-mark" aria-hidden="true">Tk</span>Tnkhoi English</a><span id="timer" class="timer-pill" aria-live="off"></span></header>
+    <div class="main"><header class="topbar"><a class="mobile-brand" href="#/today" style="color:inherit;text-decoration:none"><span class="brand-mark" aria-hidden="true">${logo()}</span>Tnkhoi English</a><span id="timer" class="timer-pill" aria-live="off"></span></header>
       <main id="page" class="page" tabindex="-1">${content}</main></div>
   </div>
   <nav class="bottom" aria-label="Điều hướng">${bottom.map(([id, l, i]) => `<a href="#/${id}" ${(cur === id || (id === "more" && moreIds.includes(cur))) ? 'aria-current="page"' : ""}>${ic(i, 22)}<span>${l}</span>${id === "review" && due ? `<span class="badge">${due}</span>` : ""}</a>`).join("")}</nav>`;
@@ -1338,10 +1341,10 @@ shell = function (content) {
   const bottom = [["today", "Hôm nay", "home"], ["path", "Lộ trình", "path"], ["library", "Thư viện", "book"], ["review", "Ôn tập", "cards"], ["more", "Thêm", "more"]];
   const moreIds = ["more", "goals", "clinic", "sounds", "words", "progress", "settings", "about", "sync"];
   return `<div class="shell">
-    <aside class="side"><a class="brand" href="#/today"><span class="brand-mark" aria-hidden="true">Tk</span><span class="brand-name">Tnkhoi English<small>Thông dụng và Y khoa</small></span></a>
+    <aside class="side"><a class="brand" href="#/today"><span class="brand-mark" aria-hidden="true">${logo()}</span><span class="brand-name">Tnkhoi English<small>Thông dụng và Y khoa</small></span></a>
       <nav class="nav" aria-label="Điều hướng chính">${nav}</nav>
       <div class="side-foot">Phiên bản ${APP.version} (${APP.build})<br>Xây dựng bởi ${APP.author}<br>${APP.credit}</div></aside>
-    <div class="main"><header class="topbar"><a class="mobile-brand" href="#/today" style="color:inherit;text-decoration:none"><span class="brand-mark" aria-hidden="true">Tk</span><span class="mb-name">Tnkhoi English</span></a>${toolbar()}</header>
+    <div class="main"><header class="topbar"><a class="mobile-brand" href="#/today" style="color:inherit;text-decoration:none"><span class="brand-mark" aria-hidden="true">${logo()}</span><span class="mb-name">Tnkhoi English</span></a>${toolbar()}</header>
       <main id="page" class="page" tabindex="-1">${content}</main></div>
   </div>
   <nav class="bottom" aria-label="Điều hướng">${bottom.map(([id, l, i]) => `<a href="#/${id}" ${(cur === id || (id === "more" && moreIds.includes(cur)) || (id === "library" && cur === "library")) ? 'aria-current="page"' : ""}>${ic(i, 22)}<span>${l}</span>${id === "review" && due ? `<span class="badge">${due}</span>` : ""}</a>`).join("")}</nav>`;
@@ -1531,19 +1534,24 @@ wordListHtml = function () {
   const q = norm(WQ), qv = WQ.trim().toLowerCase();
   const match = (w, vi) => !q || norm(w).includes(q) || vi.toLowerCase().includes(qv);
   const groups = [];
-  LESSONS.filter(l => S.lessons[l.id]?.done).forEach(l => { const items = l.words.map((w, i) => ({ w, i })).filter(x => match(x.w.w, x.w.vi)); if (items.length) groups.push({ key: l.id, icon: l.track === "med" ? "🩺" : "📘", color: l.track === "med" ? "#0a8f78" : "#3158d4", title: `Bài ${l.id}: ${l.title}`, rows: items.map(({ w, i }) => { const c = S.cards[`${l.id}:${i}:p`]; const s = !c || c.state === "new" ? ["mới", ""] : c.state !== "review" ? ["đang học", "acc"] : c.s >= 21 ? ["đã vững", "good"] : ["đang củng cố", "acc"]; return `<div class="lw" style="--tc:${l.track === "med" ? "#0a8f78" : "#3158d4"}"><div class="lw-main"><div class="row" style="gap:8px"><span class="lw-w" lang="en">${esc(w.w)}</span><span class="pos">${esc(ipaOf(w))}</span></div><div class="lw-vi">${esc(w.vi)}</div></div><div class="lw-act">${hear(w.w)}<span class="chip ${s[1]}">${s[0]}</span></div></div>`; }) }); });
+  /* Từ trong các học phần nền tảng: gom theo mạch (phổ thông, y khoa) thay vì mỗi bài một nhóm. */
+  ["gen", "med"].forEach(tr => {
+    const done = LESSONS.filter(l => l.track === tr && S.lessons[l.id]?.done), rows = [], seen = new Set(), titles = [];
+    done.forEach(l => { let used = false; l.words.forEach((w, i) => { if (!match(w.w, w.vi)) return; const k = w.w.toLowerCase(); if (seen.has(k)) return; seen.add(k); used = true; const c = S.cards[`${l.id}:${i}:p`]; const st = !c || c.state === "new" ? ["mới", ""] : c.state !== "review" ? ["đang học", "acc"] : c.s >= 21 ? ["đã vững", "good"] : ["đang củng cố", "acc"]; rows.push(`<div class="lw" style="--tc:${tr === "med" ? "#0a8f78" : "#3158d4"}"><div class="lw-main"><div class="row" style="gap:8px"><span class="lw-w" lang="en">${esc(w.w)}</span><span class="pos">${esc(ipaOf(w))}</span></div><div class="lw-vi">${esc(w.vi)}</div></div><div class="lw-act">${hear(w.w)}<span class="chip ${st[1]}">${st[0]}</span></div></div>`); }); if (used) titles.push(l.title); });
+    if (rows.length) groups.push({ key: "core-" + tr, icon: tr === "med" ? "🩺" : "📘", color: tr === "med" ? "#0a8f78" : "#3158d4", title: tr === "med" ? "Nền tảng y khoa" : "Nền tảng phổ thông", sub: titles.join(", "), rows });
+  });
   LIB.forEach(t => { const items = t.words.filter(w => isLearned(w) && match(w.w, w.vi)); if (items.length) groups.push({ key: t.id, icon: t.icon, color: t.color, title: t.title, sub: t.vi, rows: items.map(w => wordRow(w, false)) }); });
   if (!groups.length) return WQ ? `<p class="muted">Không có từ nào khớp “${esc(WQ)}”.</p>` : `<div class="empty"><p>Chưa có từ nào. Học xong một bài, hoặc chọn “Ôn”, “Biết” trong Thư viện từ vựng.</p><div class="row"><a class="btn primary" href="#/library">Mở thư viện</a><a class="btn" href="#/path">Lộ trình</a></div></div>`;
   return groups.map(g => `<details class="wgroup" style="--tc:${g.color}" ${q || groups.length <= 4 ? "open" : ""}><summary><span class="ti">${g.icon}</span><span class="grow"><b>${esc(g.title)}</b>${g.sub ? ` <span class="muted small">${esc(g.sub)}</span>` : ""}</span><span class="chip">${g.rows.length}</span></summary><div class="lw-list">${g.rows.join("")}</div></details>`).join("");
 };
 const _viewWords = viewWords;
-viewWords = () => _viewWords().replace('<h1>Sổ từ và thuật ngữ</h1>', '<h1>Từ của tôi</h1><p class="lede">Các từ bạn đã học, gom theo bài và chủ đề. Muốn thêm từ mới, mở <a href="#/library">Thư viện từ vựng</a>.</p>').replace(">Sổ từ<", ">Từ đã học<");
+viewWords = () => _viewWords().replace('<h1>Sổ từ và thuật ngữ</h1>', '<h1>Từ của tôi</h1><p class="lede">Các từ bạn đã học, gom theo chủ đề. Muốn thêm từ mới, mở <a href="#/library">Thư viện từ vựng</a>.</p>').replace(">Sổ từ<", ">Từ đã học<");
 
 /* ---------------- Progress & More & Settings additions ---------------- */
 const _viewProgress = viewProgress;
 viewProgress = () => _viewProgress() + `<section class="panel stack" style="margin-top:14px"><h3>Thư viện từ vựng</h3>${GEN_LEVELS.map(l => { const c = coverage2(genLevelWords(l)); return `<div class="skill"><span class="lv lv-${l}">${l}</span><div class="bar"><i style="width:${c.p * 100}%"></i></div><span class="n">${c.d}/${c.n}</span></div>`; }).join("")}${STAGES.map(([id, n]) => { const c = coverage2(stageWords(id)); return `<div class="skill track-med"><span>${n}</span><div class="bar"><i style="width:${c.p * 100}%;background:var(--accent)"></i></div><span class="n">${c.d}/${c.n}</span></div>`; }).join("")}</section>`;
 viewMore = function () {
-  const items = [["goals", "🎯", "Mục tiêu học tập", "0 đến C1 và lộ trình y khoa"], ["clinic", "🩺", "Phòng khám ảo", "Hỏi bệnh 3 ca bệnh ảo"], ["words", "🔖", "Từ của tôi", "Từ đã học theo chủ đề, hình vị, ghép thuật ngữ"], ["sounds", "🔊", "Phát âm", "Cặp âm người Việt hay nhầm"], ["progress", "📈", "Tiến bộ", "Kỹ năng, thời gian, lịch học"], ["sync", "☁️", "Đồng bộ thiết bị", "Học tiếp trên iPad, điện thoại, máy tính"], ["settings", "⚙️", "Cài đặt", "Giọng đọc, sao lưu dữ liệu"], ["about", "✍️", "Góc tác giả", "Mục đích, triết lý, phương pháp"]];
+  const items = [["goals", "🎯", "Mục tiêu và tiến bộ", "Lộ trình, kỹ năng, lịch học, mục tiêu"], ["clinic", "🩺", "Phòng khám ảo", "Hỏi bệnh 3 ca bệnh ảo"], ["words", "🔖", "Từ của tôi", "Từ đã học theo chủ đề, hình vị, ghép thuật ngữ"], ["phonemes", "🔊", "Phát âm", "44 âm, cặp âm, kho từ phát âm"], ["sync", "☁️", "Đồng bộ thiết bị", "Học tiếp trên iPad, điện thoại, máy tính"], ["settings", "⚙️", "Cài đặt", "Giọng đọc, sao lưu dữ liệu"], ["about", "✍️", "Góc tác giả", "Mục đích, triết lý, phương pháp"]];
   return `<section class="page-head"><h1>Thêm</h1></section><div class="panel"><div class="list">${items.map(([id, i, t, s]) => `<a class="item link" href="#/${id}"><span class="ti">${i}</span><span class="grow"><span class="t">${t}</span><br><span class="s">${s}</span></span></a>`).join("")}</div></div>`;
 };
 const _viewSettings = viewSettings;
@@ -2387,17 +2395,14 @@ const T5_CATS = {
   quant: ["Lượng từ, so sánh, mạo từ", "Lượng từ, so sánh hơn và nhất, mạo từ."]
 };
 const EX_GROUPS = [
-  ["t5", "TOEIC Part 5: điền từ vào câu", "Mỗi câu có một chỗ trống và bốn lựa chọn. Mỗi lượt lấy ngẫu nhiên tối đa 15 câu."],
-  ["t6", "TOEIC Part 6: điền vào đoạn văn", "Thư, thông báo hoặc bài báo có bốn chỗ trống, trong đó một chỗ chọn nguyên câu."],
-  ["cm", "Điền đoạn văn: chọn từ", "Tám chỗ trống, mỗi chỗ bốn lựa chọn (kiểu Cambridge). Kiểm tra từ vựng, kết hợp từ, cụm động từ, từ nối."],
-  ["co", "Điền đoạn văn: gõ từ", "Tám chỗ trống, mỗi chỗ gõ đúng một từ (mạo từ, giới từ, trợ động từ, đại từ quan hệ, từ nối)."],
-  ["kw", "Viết lại câu với từ cho sẵn", "Điền 2 đến 5 từ, gồm từ cho sẵn (không đổi dạng), để câu thứ hai cùng nghĩa với câu thứ nhất. Mỗi lượt lấy 10 câu."],
-  ["med", "Giáo trình Y khoa: bài tập chương", "Thuật ngữ, thành phần từ, đúng/sai và hiểu bài của sáu chặng M1 đến M6. Mỗi lượt lấy ngẫu nhiên các câu của một chương."]
+  ["cm", "Chọn từ điền đoạn văn", "Tám chỗ trống, mỗi chỗ bốn lựa chọn. Kiểm tra từ vựng, kết hợp từ, cụm động từ, từ nối."],
+  ["co", "Gõ từ điền đoạn văn", "Tám chỗ trống, mỗi chỗ gõ đúng một từ (mạo từ, giới từ, trợ động từ, đại từ quan hệ, từ nối)."],
+  ["kw", "Viết lại câu", "Điền 2 đến 5 từ, gồm từ cho sẵn (không đổi dạng), để câu thứ hai cùng nghĩa với câu thứ nhất. Mỗi lượt lấy 10 câu."]
 ];
 const EX_SETS = [], EX_BY = {};
 function addSet(s) { EX_SETS.push(s); EX_BY[s.id] = s; }
 function t5Item(q) { return shuffleItemOpts({ t: "c", q: q.q, opts: q.opts.slice(), a: q.a, why: q.why, skill: q.cat === "vocab" ? "vocab" : "grammar", src: "t5:" + q.cat }); }
-if (D_T5.length >= 30) addSet({ id: "t5-exam", group: "t5", title: "Thi thử Part 5 (30 câu)", sub: "Mô phỏng đề TOEIC hiện hành: 30 câu hoàn thành câu, lấy ngẫu nhiên từ cả ngân hàng", lvl: "B2", lvlText: "B1–B2", n: 30, build: () => shuffle(D_T5).slice(0, 30).map(t5Item) });
+if (D_T5.length >= 30) addSet({ id: "t5-exam", group: "t5", title: "Đề thi thử: điền từ vào câu", sub: "30 câu, lấy ngẫu nhiên từ cả ngân hàng, mỗi câu bốn lựa chọn", lvl: "B2", lvlText: "B1–B2", n: 30, build: () => shuffle(D_T5).slice(0, 30).map(t5Item) });
 Object.keys(T5_CATS).forEach(cat => { const bank = D_T5.filter(q => q.cat === cat); if (bank.length) addSet({ id: "t5-" + cat, group: "t5", title: T5_CATS[cat][0], sub: T5_CATS[cat][1] + ` (${bank.length} câu)`, lvl: "B2", lvlText: "B1–B2", n: Math.min(15, bank.length), build: () => shuffle(bank).slice(0, 15).map(t5Item) }); });
 if (D_T5.length) addSet({ id: "t5-mix", group: "t5", title: "Trộn mọi dạng", sub: `20 câu ngẫu nhiên từ cả ${D_T5.length} câu`, lvl: "B2", lvlText: "B1–B2", n: Math.min(20, D_T5.length), build: () => shuffle(D_T5).slice(0, 20).map(t5Item) });
 function gapItems(p, typed) {
@@ -2408,7 +2413,7 @@ function gapItems(p, typed) {
     const [opts, a] = shuffleChoice(g.opts, g.a); return { ...base, t: "p", opts, a, sentence: g.type === "sentence" };
   });
 }
-if (D_T6.length >= 4) addSet({ id: "t6-exam", group: "t6", title: "Thi thử Part 6 (4 đoạn, 16 câu)", sub: "Mô phỏng đề TOEIC hiện hành: 4 đoạn, mỗi đoạn 4 chỗ trống", lvl: "B2", lvlText: "B1–B2", n: 16, build: () => shuffle(D_T6).slice(0, 4).flatMap(p => gapItems(p, false)) });
+if (D_T6.length >= 4) addSet({ id: "t6-exam", group: "t6", title: "Đề thi thử: điền vào đoạn văn", sub: "4 đoạn, 16 chỗ trống, có chỗ chọn nguyên câu", lvl: "B2", lvlText: "B1–B2", n: 16, build: () => shuffle(D_T6).slice(0, 4).flatMap(p => gapItems(p, false)) });
 D_T6.forEach((p, i) => addSet({ id: p.id, group: "t6", title: `${p.title}`, sub: `${capW(p.genre)}, 4 chỗ trống`, lvl: p.lvl, lvlText: p.lvl, n: 4, build: () => gapItems(p, false) }));
 D_CM.forEach((p, i) => addSet({ unit: p.unit, id: p.id, group: "cm", title: `${p.title}`, sub: "8 chỗ trống, chọn từ", lvl: p.lvl, lvlText: p.lvl, n: 8, build: () => gapItems(p, false) }));
 D_CO.forEach((p, i) => addSet({ unit: p.unit, id: p.id, group: "co", title: `${p.title}`, sub: "8 chỗ trống, gõ từ", lvl: p.lvl, lvlText: p.lvl, n: 8, build: () => gapItems(p, true) }));
@@ -2507,34 +2512,23 @@ const _isStudy45 = isStudyRoute;
 isStudyRoute = () => _isStudy45() || (ROUTE.name === "reading" && !!ROUTE.arg) || (ROUTE.name === "writing" && !!ROUTE.arg);
 const scoreChip = r => r ? `<span class="chip ${r.best >= 0.7 ? "good" : "acc"}">${Math.round(r.best * 100)}%</span>` : `<span class="chip">chưa làm</span>`;
 const lk = (u, t) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`;
-function sourcesPanel() {
-  return `<section class="panel stack" style="margin-top:22px"><h3>Nguồn chính thức và nguồn mở để luyện thêm</h3>
-    <p class="muted small">Toàn bộ câu hỏi và đoạn văn trong app do tác giả tự biên soạn, không sao chép từ đề thi hay sách. Danh sách dưới đây là nơi bạn có thể tìm đặc tả đề thi chính thức và văn bản đọc thêm có giấy phép cho phép. Thông tin giấy phép ghi theo trang của từng nguồn khi tra cứu ngày 01.10.2026, hãy đọc lại điều khoản trước khi sao chép.</p>
-    <div class="list">
-      <div class="item"><span class="grow"><b>Đặc tả đề thi chính thức</b><br><span class="small">${lk("https://www.ets.org/toeic/about/listening-reading.html", "TOEIC Listening & Reading (ETS)")} · ${lk("https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-reading", "IELTS Academic Reading")} · ${lk("https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/format/", "Cambridge B2 First")} · ${lk("https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/format/", "Cambridge C1 Advanced")} · ${lk("https://vstep.vnu.edu.vn/test-format/", "VSTEP.3-5 (ĐHQG Hà Nội)")}</span></span></div>
-      <div class="item"><span class="grow"><b>Văn bản đọc thêm, được sao chép kèm ghi công</b><br><span class="small">${lk("https://learningenglish.voanews.com", "VOA Learning English")} (nội dung VOA tự viết thuộc phạm vi công cộng, ghi nguồn) · ${lk("https://medlineplus.gov", "MedlinePlus")} (trừ A.D.A.M. và chuyên khảo thuốc) · ${lk("https://www.nhs.uk", "NHS")} (Open Government Licence v3.0, không dùng logo và hình) · ${lk("https://www.gutenberg.org", "Project Gutenberg")} (sách thuộc phạm vi công cộng) · ${lk("https://tatoeba.org", "Tatoeba")} (câu ví dụ, CC BY 2.0 FR)</span></span></div>
-      <div class="item"><span class="grow"><b>Văn bản mở, bản phái sinh phải giữ cùng giấy phép (CC BY-SA)</b><br><span class="small">${lk("https://simple.wikipedia.org", "Simple English Wikipedia")} · ${lk("https://en.wikibooks.org", "Wikibooks")}</span></span></div>
-      <div class="item"><span class="grow"><b>Chỉ để tham khảo, không sao chép</b><br><span class="small">Đề thi chính thức của ETS, IELTS và Cambridge; English Vocabulary Profile; British Council LearnEnglish.</span></span></div>
-    </div></section>`;
-}
 function viewExam() {
   const card = s => `<a class="gcard" href="#/practice/e-${s.id}"><div class="row between"><span class="lv lv-${s.lvl}">${s.lvlText}</span>${scoreChip(exRes("e-" + s.id))}</div><b>${esc(s.title)}</b><span class="muted small">${esc(s.sub)}</span></a>`;
   const mocks = EX_SETS.filter(x => x.id === "t5-exam" || x.id === "t6-exam"), rest = EX_SETS.filter(x => !mocks.includes(x));
   const done = EX_SETS.filter(x => exRes("e-" + x.id)).length, rdDone = RD_ALL.filter(x => exRes("d-" + x.id)).length, wrDone = WR_ITEMS.filter(x => exRes("w-" + x.id)).length;
   const tile = (href, ic_, title, sub, prog) => `<a class="ex-tile" href="${href}"><span class="ex-ic">${ic(ic_, 22)}</span><span class="grow"><b>${title}</b><br><span class="muted small">${sub}</span></span><span class="chip">${prog}</span></a>`;
   const group = ([g, name, desc]) => { const ss = rest.filter(x => x.group === g); if (!ss.length) return ""; const d = ss.filter(x => exRes("e-" + x.id)).length;
-    return `<details class="ex-group" ${g === "t5" ? "open" : ""}><summary><span class="grow"><b>${name}</b><br><span class="muted small">${desc}</span></span><span class="chip">${d}/${ss.length}</span></summary><div class="topics">${ss.map(card).join("")}</div></details>`; };
-  return `<section class="page-head"><h1>Luyện đề</h1><p class="lede">Các dạng bài thường gặp trong TOEIC, VSTEP, IELTS và Cambridge. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích bằng tiếng Việt. Đạt từ 70% là qua bộ đề.</p></section>
+    return `<details class="ex-group" ${g === "cm" ? "open" : ""}><summary><span class="grow"><b>${name}</b><br><span class="muted small">${desc}</span></span><span class="chip">${d}/${ss.length}</span></summary><div class="topics">${ss.map(card).join("")}</div></details>`; };
+  return `<section class="page-head"><h1>Luyện đề</h1><p class="lede">Các dạng bài thường gặp trong các kỳ thi tiếng Anh. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích bằng tiếng Việt. Đạt từ 70% là qua bộ đề.</p></section>
     <div class="ex-tiles">${tile("#/reading", "reading", "Đọc hiểu", `${RD_ALL.length} đoạn văn, mỗi đoạn 5 câu hỏi`, `${rdDone}/${RD_ALL.length}`)}${tile("#/writing", "exam", "Viết và nói", `${WR_ITEMS.length} đề, tự chấm theo tiêu chí`, `${wrDone}/${WR_ITEMS.length}`)}</div>
-    ${mocks.length ? `<h2 class="sec-h">Thi thử TOEIC</h2><p class="muted small" style="margin:-4px 0 10px">Đúng số câu của đề hiện hành. Làm liền một mạch như đi thi.</p><div class="topics">${mocks.map(card).join("")}</div>` : ""}
-    <h2 class="sec-h">Luyện theo dạng bài <span class="muted small">${done}/${EX_SETS.length} bộ đã làm</span></h2>
+    ${mocks.length ? `<h2 class="sec-h">Đề thi thử</h2><p class="muted small" style="margin:-4px 0 10px">Làm liền một mạch, đúng số câu của đề thi thật.</p><div class="topics">${mocks.map(card).join("")}</div>` : ""}
+    <h2 class="sec-h">Luyện theo dạng bài</h2>
     ${EX_GROUPS.map(group).join("")}
     ${EX_SETS.length ? "" : `<div class="empty"><p>Chưa có bộ đề nào.</p></div>`}
-    <details class="ex-group"><summary><span class="grow"><b>Cách luyện hiệu quả</b></span></summary><div class="stack" style="padding:6px 4px 10px">
-      <p><b>Part 5</b>: đọc cả câu rồi mới nhìn lựa chọn. Xác định chỗ trống cần loại từ gì trước khi nghĩ đến nghĩa.</p>
-      <p><b>Part 6 và điền đoạn văn</b>: đọc cả đoạn, vì nhiều chỗ trống phụ thuộc câu trước và câu sau.</p>
-      <p><b>Viết lại câu</b>: nhận ra cấu trúc đang kiểm tra (bị động, tường thuật, điều kiện, so sánh…) rồi dùng đúng từ cho sẵn, không đổi dạng.</p></div></details>
-    <details class="ex-group"><summary><span class="grow"><b>Nguồn chính thức và nguồn mở</b></span></summary>${sourcesPanel().replace('<section class="panel stack" style="margin-top:22px"><h3>Nguồn chính thức và nguồn mở để luyện thêm</h3>', '<section class="stack">').replace(/<\/section>$/, "</section>")}</details>`;
+    <details class="ex-group"><summary><span class="grow"><b>Mẹo làm bài</b></span></summary><div class="stack" style="padding:6px 4px 10px">
+      <p><b>Điền từ vào câu</b>: đọc cả câu rồi mới nhìn lựa chọn. Xác định chỗ trống cần loại từ gì trước khi nghĩ đến nghĩa.</p>
+      <p><b>Điền đoạn văn</b>: đọc cả đoạn, vì nhiều chỗ trống phụ thuộc câu trước và câu sau.</p>
+      <p><b>Viết lại câu</b>: nhận ra cấu trúc đang kiểm tra (bị động, tường thuật, điều kiện, so sánh…) rồi dùng đúng từ cho sẵn, không đổi dạng.</p></div></details>`;
 }
 
 /* ---------------- Kho luyện đọc ---------------- */
@@ -2631,75 +2625,68 @@ Object.assign(ACT, {
 });
 addEventListener("hashchange", () => { if (ROUTE.name !== "reading") { RDF.sel = ""; RDF.gist = false; } });
 
-/* ---------------- Tiến bộ: bổ sung lộ trình, vốn từ theo cấp, ngữ pháp, luyện đề ---------------- */
-
-/* Biểu đồ ra-đa kỹ năng: mỗi trục là một kỹ năng, bán kính là tỉ lệ đúng ngay lần đầu (đã hiệu chỉnh khi ít dữ liệu). */
+/* ---------------- Mục tiêu và tiến bộ (gộp trang Tiến bộ vào Mục tiêu) ---------------- */
+const RADAR_TARGET = 100; /* mỗi kỹ năng đạt 100% sau 100 lượt luyện */
+/* Biểu đồ ra-đa: mỗi trục là một kỹ năng, bán kính là mức hoàn thiện theo lượng luyện tập (lượt luyện, đúng hay sai đều tính). */
 function radarPanel() {
   const ks = Object.entries(SKILLS), n = ks.length, cx = 170, cy = 150, R = 100;
   const pt = (i, r) => { const a = -Math.PI / 2 + 2 * Math.PI * i / n; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
-  const sc = ks.map(([k]) => skillScore(k));
+  const cnt = ks.map(([k]) => S.log.filter(e => e.k === k).length), val = cnt.map(c => Math.min(1, c / RADAR_TARGET));
   const rings = [0.25, 0.5, 0.75, 1].map(f => `<polygon points="${ks.map((_, i) => pt(i, R * f).map(v => v.toFixed(1)).join(",")).join(" ")}" class="rd-ring"/>`).join("");
   const axes = ks.map((_, i) => { const [x, y] = pt(i, R); return `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" class="rd-axis"/>`; }).join("");
-  const poly = sc.map((s, i) => pt(i, R * (s.p == null ? 0 : s.p)).map(v => v.toFixed(1)).join(",")).join(" ");
-  const dots = sc.map((s, i) => { if (s.p == null) return ""; const [x, y] = pt(i, R * s.p); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" class="rd-dot"/>`; }).join("");
+  const poly = val.map((v, i) => pt(i, R * v).map(x => x.toFixed(1)).join(",")).join(" ");
+  const dots = val.map((v, i) => { if (!cnt[i]) return ""; const [x, y] = pt(i, R * v); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" class="rd-dot"/>`; }).join("");
   const labels = ks.map(([, name], i) => { const [x, y] = pt(i, R + 22), anchor = Math.abs(x - cx) < 8 ? "middle" : x > cx ? "start" : "end"; return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${anchor}" class="rd-lbl">${name}</text>`; }).join("");
-  const have = sc.filter(s => s.p != null);
-  const rows = ks.map(([, name], i) => `<span class="rd-row"><span>${name}</span><b>${sc[i].p == null ? "chưa có" : Math.round(sc[i].p * 100) + "%"}</b><span class="muted small">${sc[i].n ? sc[i].n + " lần" : ""}</span></span>`).join("");
+  const rows = ks.map(([, name], i) => `<span class="rd-row"><span>${name}</span><b>${Math.round(val[i] * 100)}%</b><span class="muted small">${cnt[i]} lượt</span></span>`).join("");
   return `<section class="panel stack"><h3>Kỹ năng</h3>
-    <svg class="radar" viewBox="-50 0 440 300" role="img" aria-label="Biểu đồ ra-đa kỹ năng: ${ks.map(([, nm], i) => nm + " " + (sc[i].p == null ? "chưa có" : Math.round(sc[i].p * 100) + "%")).join(", ")}">${rings}${axes}${have.length ? `<polygon points="${poly}" class="rd-area"/>` : ""}${dots}${labels}</svg>
+    <svg class="radar" viewBox="-50 0 440 300" role="img" aria-label="Biểu đồ ra-đa mức hoàn thiện kỹ năng: ${ks.map(([, nm], i) => nm + " " + Math.round(val[i] * 100) + "%").join(", ")}">${rings}${axes}${cnt.some(c => c) ? `<polygon points="${poly}" class="rd-area"/>` : ""}${dots}${labels}</svg>
     <div class="rd-rows">${rows}</div>
-    <p class="muted small">Bán kính là tỉ lệ đúng ngay lần đầu trong 40 lần gần nhất của mỗi kỹ năng, được hiệu chỉnh khi còn ít dữ liệu. Kỹ năng chưa luyện nằm ở tâm. Số lần cho biết điểm đáng tin đến đâu.</p></section>`;
+    <p class="muted small">Mức hoàn thiện của mỗi kỹ năng tăng theo số lượt luyện tập: ${RADAR_TARGET} lượt là 100%. Mỗi câu hỏi, thẻ ôn hoặc bài tập bạn làm tính một lượt, dù đúng hay sai. Kỹ năng chưa luyện nằm ở tâm.</p></section>`;
 }
-const _viewProgress45 = viewProgress;
-viewProgress = function () {
-  let h = _viewProgress45();
-  h = h.replace('class="grid3" style="grid-template-columns:repeat(4,minmax(0,1fr))"', 'class="grid4"');
-  { const kinds = [["clock", "#3158d4"], ["cal", "#0f8c8c"], ["flame", "#e0622f"], ["trophy", "#1b7a45"]]; let n = 0;
-    h = h.replace(/<div class="stat"><b>/g, m => { const k = kinds[n++]; return k ? `<div class="stat"><span class="stat-ic" style="--ic:${k[1]}">${ic(k[0], 18)}</span><b>` : m; }); }
-  h = h.replace(/<i style="height:([\d.]+)%/g, (m, v) => `<i style="height:${Math.round(v * 0.8)}px`);
-  /* Bỏ hai mục "Bài học và thẻ", "Phòng khám và phát âm"; thay biểu đồ thanh kỹ năng bằng biểu đồ ra-đa. */
-  const dropSec = title => { const i = h.indexOf(`<h3>${title}</h3>`); if (i < 0) return; const a = h.lastIndexOf("<section", i), b = h.indexOf("</section>", i); if (a >= 0 && b > i) h = h.slice(0, a) + h.slice(b + 10); };
-  dropSec("Bài học và thẻ"); dropSec("Phòng khám và phát âm");
-  h = h.replace(/<div class="grid2" style="margin-top:14px">\s*<\/div>/g, "");
-  { const i = h.indexOf("<h3>Kỹ năng</h3>"); if (i >= 0) { const a = h.lastIndexOf("<section", i), b = h.indexOf("</section>", i); h = h.slice(0, a) + radarPanel() + h.slice(b + 10); } }
-  h = h.replace('<p class="lede">Mọi con số ở đây đến từ việc bạn thực sự đã làm. Không có điểm khởi tạo sẵn.</p>', '<p class="lede">Mọi con số ở đây đến từ việc bạn thực sự đã làm. Không có điểm khởi tạo sẵn.</p>');
-  h = h.replace('<h3>12 tuần</h3><div class="heat"', '<h3>12 tuần</h3><div class="heat-legend muted small"><span>Ít</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>Nhiều</span></div><div class="heat"');
-  const bar = (label, cls, p, n) => `<div class="skill ${cls}"><span>${label}</span><div class="bar"><i style="width:${Math.min(100, p * 100)}%;${cls ? "background:var(--lc)" : ""}"></i></div><span class="n">${n}</span></div>`;
-  /* Lộ trình */
+/* Bảng nhiệt theo tháng và năm (thay cho các biểu đồ 7, 14 ngày và 12 tuần). */
+const HM = { y: new Date().getFullYear(), m: new Date().getMonth() };
+function heatmapPanel() {
+  const days = new Date(HM.y, HM.m + 1, 0).getDate(), lead = (new Date(HM.y, HM.m, 1).getDay() + 6) % 7, todayKey = dayKey();
+  let tot = 0, act = 0, best = 0; const cells = [];
+  for (let i = 0; i < lead; i++) cells.push('<i class="hm-pad"></i>');
+  for (let d = 1; d <= days; d++) {
+    const t = new Date(HM.y, HM.m, d, 12).getTime(), m = (S.time.days[dayKey(t)] || 0) / 60, lv = m <= 0 ? 0 : m < 5 ? 1 : m < 15 ? 2 : m < 30 ? 3 : 4;
+    tot += m; if (m >= 1) act++; best = Math.max(best, m);
+    cells.push(`<i class="hm-d l${lv}${dayKey(t) === todayKey ? " today" : ""}" title="${d}/${HM.m + 1}/${HM.y}: ${Math.round(m)} phút"><b>${d}</b></i>`);
+  }
+  const chips = Array.from({ length: 12 }, (_, i) => `<button class="exm-btn ${i === HM.m ? "on" : ""}" data-act="hmMonth" data-m="${i}" aria-pressed="${i === HM.m}">T${i + 1}</button>`).join("");
+  const now = new Date(), isNow = HM.y === now.getFullYear() && HM.m === now.getMonth();
+  return `<section class="panel stack"><div class="row between"><h3 style="margin:0">Lịch học</h3><span class="row" style="gap:6px"><button class="btn quiet small" data-act="hmYear" data-d="-1" aria-label="Năm trước">‹</button><b>${HM.y}</b><button class="btn quiet small" data-act="hmYear" data-d="1" aria-label="Năm sau">›</button>${isNow ? "" : '<button class="btn quiet small" data-act="hmNow">Tháng này</button>'}</span></div>
+    <div class="lv-filter" role="group" aria-label="Chọn tháng">${chips}</div>
+    <div class="hm-grid" role="img" aria-label="Lịch học tháng ${HM.m + 1} năm ${HM.y}">${["T2", "T3", "T4", "T5", "T6", "T7", "CN"].map(x => `<span class="hm-h">${x}</span>`).join("")}${cells.join("")}</div>
+    <div class="heat-legend muted small"><span>Ít</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>Nhiều</span></div>
+    <p class="muted small">Tháng ${HM.m + 1}/${HM.y}: ${act} ngày có học, tổng ${Math.round(tot)} phút${best ? `, nhiều nhất ${Math.round(best)} phút một ngày` : ""}. Mục tiêu mỗi ngày ${S.settings.goal} phút.</p></section>`;
+}
+function progressBody() {
+  const st = cardStats(), days = Object.values(S.time.days).filter(v => v >= 60).length;
+  const tiles = [["clock", "#3158d4", fmtDur(S.time.total).replace(" phút", "p").replace(" giờ ", "g "), "tổng thời gian học"], ["cal", "#0f8c8c", days, "ngày có học"], ["flame", "#e0622f", streak(), "ngày liên tiếp"], ["trophy", "#1b7a45", st.mature, "thẻ đã vững"]]
+    .map(([ic_, col, v, l]) => `<div class="stat"><span class="stat-ic" style="--ic:${col}">${ic(ic_, 18)}</span><b>${v}</b><span>${l}</span></div>`).join("");
   const gu = UNITS.filter(u => u.track === "gen"), mu = UNITS.filter(u => u.track === "med");
-  const pctOf = us => us.length ? us.reduce((a, u) => a + Math.min(1, unitParts(u).pct), 0) / us.length : 0;
-  const passed = us => us.filter(u => unitParts(u).pct >= 0.8).length;
+  const pctOf = us => us.length ? us.reduce((a, u) => a + Math.min(1, unitParts(u).pct), 0) / us.length : 0, passed = us => us.filter(u => unitParts(u).pct >= 0.8).length;
   const cur = gu.find(u => unitParts(u).pct < 0.8);
-  const pathPanel = `<section class="panel stack"><div class="row between"><h3 style="margin:0">Lộ trình</h3><a class="btn quiet small" href="#/path">Mở lộ trình</a></div>
-    ${bar("Phổ thông", "", pctOf(gu), `${passed(gu)}/${gu.length} chặng`)}${bar("Y khoa", "", pctOf(mu), `${passed(mu)}/${mu.length} chặng`)}
-    <p class="muted small">${cur ? `Đang học chặng <b>${esc(cur.code)}</b>, ${esc(cur.vi)}. ` : "Bạn đã qua mọi chặng phổ thông. "}Qua chặng khi đạt 80%.</p></section>`;
-  /* Vốn từ theo cấp độ */
-  const lvRows = ["A1", "A2", "B1", "B2", "C1"].map(l => { const ws = LIB.filter(t => t.track === "gen").flatMap(t => t.words).filter(w => w.lvl === l), d = ws.filter(isLearned).length; return bar(l, "lv-" + l, ws.length ? d / ws.length : 0, `${d}/${ws.length}`); }).join("");
-  const medRows = ["T1", "T2"].map(l => { const ws = LIB.filter(t => t.track === "med").flatMap(t => t.words).filter(w => w.lvl === l), d = ws.filter(isLearned).length; return bar(lvName(l), "lv-" + l, ws.length ? d / ws.length : 0, `${d}/${ws.length}`); }).join("");
-  const vocabPanel = `<section class="panel stack"><div class="row between"><h3 style="margin:0">Vốn từ theo cấp độ</h3><a class="btn quiet small" href="#/library">Thư viện</a></div>${lvRows}<div class="divider"></div>${medRows}<p class="muted small">Tính từ đã học hoặc đã đánh dấu biết. Mục tiêu thực tế là hoàn thành A1 và A2 trước, sau đó mới sang B1.</p></section>`;
-  /* Ngữ pháp, luyện đề, đọc */
-  const gDone = GRAMMAR.filter(g => (S.gram[g.id]?.best || 0) >= 0.7).length;
-  const gRows = ["A1", "A2", "B1", "B2", "C1"].map(l => { const gs = GRAMMAR.filter(g => g.lvl === l), d = gs.filter(g => (S.gram[g.id]?.best || 0) >= 0.7).length; return bar(l, "lv-" + l, gs.length ? d / gs.length : 0, `${d}/${gs.length}`); }).join("");
-  const ex = S.exam || {}, exDone = EX_SETS.filter(s => ex["e-" + s.id]), rdDone = RD_ALL.filter(p => ex["d-" + p.id]);
-  const avg = a => a.length ? Math.round(100 * a.reduce((x, y) => x + y, 0) / a.length) + "%" : "chưa có";
-  const exAvg = avg(exDone.map(s => ex["e-" + s.id].best)), rdAvg = avg(rdDone.map(p => ex["d-" + p.id].best));
-  const recent = Object.entries(ex).sort((a, b) => b[1].last - a[1].last).slice(0, 5).map(([k, v]) => {
-    const id = k.slice(2), s = k[0] === "e" ? EX_BY[id] : RD_BY[id]; if (!s) return "";
-    return `<a class="item link" href="${k[0] === "e" ? "#/practice/" + k : "#/reading/" + id}"><span class="grow">${esc(s.title)}<br><span class="muted small">${k[0] === "e" ? "Luyện đề" : "Đọc hiểu"}, ${new Date(v.last).toLocaleDateString("vi-VN")}, ${v.n} lượt</span></span><span class="chip ${v.best >= 0.7 ? "good" : "acc"}">${Math.round(v.best * 100)}%</span></a>`;
-  }).join("");
-  const examPanel = `<section class="panel stack"><div class="row between"><h3 style="margin:0">Ngữ pháp, luyện đề và đọc</h3><a class="btn quiet small" href="#/exam">Luyện đề</a></div>
-    ${bar("Ngữ pháp", "", GRAMMAR.length ? gDone / GRAMMAR.length : 0, `${gDone}/${GRAMMAR.length}`)}
-    ${bar("Bộ đề", "", EX_SETS.length ? exDone.length / EX_SETS.length : 0, `${exDone.length}/${EX_SETS.length}${exDone.length ? ", TB " + exAvg : ""}`)}
-    ${bar("Bài đọc", "", RD_ALL.length ? rdDone.length / RD_ALL.length : 0, `${rdDone.length}/${RD_ALL.length}${rdDone.length ? ", TB " + rdAvg : ""}`)}
-    <details><summary class="muted small" style="cursor:pointer">Ngữ pháp theo cấp độ</summary>${gRows}</details>
-    ${recent ? `<h4 style="margin:6px 0 0">Làm gần đây</h4><div class="list">${recent}</div>` : `<p class="muted small">Chưa làm bộ đề hay bài đọc nào.</p>`}</section>`;
-  /* Gợi ý từ kỹ năng yếu nhất */
-  const sk = Object.entries(SKILLS).map(([k, name]) => [name, skillScore(k)]).filter(([, s]) => s.n >= 5).sort((a, b) => a[1].p - b[1].p)[0];
-  const tip = sk ? `<div class="feedback ${sk[1].p < 0.6 ? "no" : "ok"}" style="margin-top:14px"><b>Kỹ năng cần chú ý:</b> ${sk[0]} (${Math.round(sk[1].p * 100)}% đúng ngay lần đầu, ${sk[1].n} lần). ${{ "Ngữ pháp": "Làm thêm bộ đề trong Luyện đề.", "Đọc": "Chọn một bài ở Kho luyện đọc.", "Từ vựng": "Ôn thẻ đến hạn trong mục Ôn tập." }[sk[0]] || "Luyện thêm ở mục Lộ trình."}</div>` : "";
-  const block = `<div class="grid2" style="margin-top:14px">${pathPanel}${vocabPanel}</div><div style="margin-top:14px">${examPanel}</div>${tip}`;
-  const i = h.indexOf('<div class="grid2" style="margin-top:14px">');
-  return i < 0 ? h + block : h.slice(0, i) + block + h.slice(i);
+  const bar = (label, p, n) => `<div class="skill"><span>${label}</span><div class="bar"><i style="width:${Math.min(100, p * 100)}%"></i></div><span class="n">${n}</span></div>`;
+  const path = `<section class="panel stack"><div class="row between"><h3 style="margin:0">Lộ trình</h3><a class="btn quiet small" href="#/path">Mở lộ trình</a></div>${bar("Phổ thông", pctOf(gu), `${passed(gu)}/${gu.length} chặng`)}${bar("Y khoa", pctOf(mu), `${passed(mu)}/${mu.length} chặng`)}<p class="muted small">${cur ? `Đang học chặng <b>${esc(cur.code)}</b>, ${esc(cur.vi)}. ` : "Bạn đã qua mọi chặng phổ thông. "}Qua chặng khi đạt 80%.</p></section>`;
+  return `<div class="panel" style="margin-top:14px"><div class="grid4">${tiles}</div></div><div class="stack" style="margin-top:14px">${path}${radarPanel()}${heatmapPanel()}</div><h2 class="sec-h" style="margin-top:22px">Thiết lập mục tiêu</h2>`;
+}
+const _viewGoals47 = viewGoals;
+viewGoals = function () {
+  const h = _viewGoals47().replace("<h1>Mục tiêu học tập</h1>", "<h1>Mục tiêu và tiến bộ</h1>");
+  const i = h.indexOf("</section>"); return i < 0 ? h : h.slice(0, i + 10) + progressBody() + h.slice(i + 10);
 };
+/* Trang Tiến bộ cũ đã gộp vào Mục tiêu: đường dẫn #/progress chuyển sang #/goals. */
+viewProgress = function () { location.replace("#/goals"); return viewGoals(); };
+NAV4.forEach(g => { g[1] = g[1].filter(x => x[0] !== "progress"); });
+NAV4[0][1].forEach(x => { if (x[0] === "goals") x[1] = "Mục tiêu và tiến bộ"; });
+Object.assign(ACT, {
+  hmMonth(el) { HM.m = +el.dataset.m; render(); },
+  hmYear(el) { HM.y += +el.dataset.d; render(); },
+  hmNow() { const n = new Date(); HM.y = n.getFullYear(); HM.m = n.getMonth(); render(); }
+});
 
 /* ---------------- Thanh công cụ: phân nhóm công tắc ---------------- */
 toolbar = function () {
@@ -2808,7 +2795,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.9.1"; APP.build = "01.10.26";
+APP.version = "4.10.7"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3023,5 +3010,113 @@ document.addEventListener("change", e => { if (e.target.id === "setHuman") { S.s
 addEventListener("hashchange", () => { if (ROUTE.name !== "phonemes" || (PQ && PQ.id !== ROUTE.arg)) PQ = null; });
 
 /* ---------------- Start ---------------- */
+/* ---------------- Cài đặt thu gọn; Phát âm nằm ở Thư viện ---------------- */
+NAV4.forEach(g => { g[1] = g[1].filter(x => x[0] !== "voices"); });
+const _viewSettings48 = viewSettings;
+viewSettings = function () {
+  let h = _viewSettings48();
+  const secs = [];
+  h = h.replace(/<section class="panel[^"]*"[^>]*>([\s\S]*?)<\/section>/g, (m, inner) => {
+    const t = /<h3>([\s\S]*?)<\/h3>/.exec(inner); if (!t) return m;
+    const title = t[1].replace(/<[^>]+>/g, "").trim();
+    let body = inner.replace(t[0], "");
+    if (/^Giọng đọc/.test(title)) body += `<a class="item link" href="#/voices"><span class="grow"><b>Trang Giọng đọc</b><br><span class="muted small">Nghe thử, xếp hạng giọng, bật tắt giọng người thật</span></span></a>`;
+    secs.push([title, body]); return `\u0000${secs.length - 1}\u0000`;
+  });
+  let k = 0;
+  const parts = secs.map(([title, inner]) => `<details class="ex-group" ${k++ === 0 ? "open" : ""}><summary><span class="grow"><b>${title}</b></span></summary><div class="stack" style="padding:0 2px 12px">${inner}</div></details>`);
+  return h.replace(/(\u0000\d+\u0000)+/, parts.join("")).replace(/\u0000\d+\u0000/g, "");
+};
+/* ---------------- Góc tác giả (thiết kế lại, gồm Nguồn tham khảo) ---------------- */
+viewAbout = function () {
+  const lnk = (u, t) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`;
+  const cards = [["🎯", "Mục đích", "Phục vụ tự học ngoại ngữ lâu dài: tiếng Anh phổ thông làm nền tảng, tiếng Anh y khoa và học thuật phát triển dần theo năng lực."], ["🧭", "Triết lý", "Không phải học càng nhiều càng tốt, mà là học đúng thứ mình cần tiếp theo. Ưu tiên lượng kiến thức thu được trên mỗi phút học, không phải số bài đã hoàn thành."], ["🔧", "Luôn hoàn thiện", "Chương trình học, giao diện, thuật toán gợi ý, ôn tập, phát âm và nội dung chuyên ngành đều được thử nghiệm và cải tiến liên tục."]];
+  const methods = [["🔀", "Hai mạch song song", "Mỗi mẫu ngữ pháp ở mạch phổ thông được dùng lại ở mạch y khoa cùng cấp độ, để một lần học phục vụ hai mục đích."], ["🔁", "Ôn tập ngắt quãng FSRS", "Thuật toán mã nguồn mở, hẹn ôn đúng lúc bạn sắp quên. Cần ít lượt ôn hơn thuật toán SM-2 cũ để đạt cùng mức ghi nhớ."], ["🩺", "Hỏi bệnh theo SOCRATES và ICE", "Phòng khám ảo mô phỏng các tiêu chí giao tiếp lâm sàng, gồm cả việc tìm hiểu quan điểm và mối lo của bệnh nhân."], ["🗣️", "Bám sát lỗi hay gặp", "Cặp âm tối thiểu, âm cuối, đuôi -s và -ed, mạo từ và những lỗi dịch từng chữ như “I am headache” được đưa vào ngay từ đầu."], ["✅", "Mỗi câu một đáp án", "Câu trắc nghiệm được viết và rà soát để chỉ có một đáp án hợp lệ, kèm giải thích bằng tiếng Việt."], ["📈", "Dựa trên việc bạn thực sự làm", "Mức hoàn thiện kỹ năng tính từ số lượt luyện thật; thời gian học chỉ tính khi bạn đang làm bài hoặc đọc."]];
+  const src = (title, body, open) => `<details class="ex-group" ${open ? "open" : ""}><summary><span class="grow"><b>${title}</b></span></summary><div class="stack" style="padding:0 2px 12px">${body}</div></details>`;
+  return `<section class="about-hero"><span class="brand-mark about-mark" aria-hidden="true">${logo()}</span><div><h1>Góc tác giả</h1><p class="lede" style="margin:4px 0 8px">Một dự án cá nhân của <b>${APP.author}</b>, xây dựng như một không gian học tập riêng và một thử nghiệm về cách công nghệ hỗ trợ việc tự học lâu dài.</p><div class="exrow"><span class="chip">Phiên bản ${APP.version}</span><span class="chip">${APP.build}</span><span class="chip">${APP.credit}</span></div></div></section>
+    <section class="panel stack"><h2 style="margin:0">Học ngoại ngữ theo cách của chính mình.</h2>
+      <p>Thay vì dùng nhiều công cụ rời rạc cho từ vựng, ngữ pháp, nghe, phát âm, giao tiếp và đọc hiểu, đây là một hệ thống thống nhất, dần thích nghi với chính người học.</p>
+      <p>Ứng dụng ghi nhận những gì bạn đã biết, tìm ra phần còn thiếu, chọn điều đáng học tiếp theo và biến nó thành những phiên học ngắn, có bằng chứng, dùng được trong thực tế.</p></section>
+    <div class="about-cards">${cards.map(([i, t, d]) => `<section class="panel stack"><span class="about-ic">${i}</span><h3 style="margin:0">${t}</h3><p class="muted">${d}</p></section>`).join("")}</div>
+    <h2 class="sec-h">Phương pháp</h2>
+    <div class="panel"><div class="list">${methods.map(([i, t, d]) => `<div class="item"><span class="ti">${i}</span><span class="grow"><b>${t}</b><br><span class="muted small">${d}</span></span></div>`).join("")}</div></div>
+    <h2 class="sec-h">Nguồn tham khảo</h2>
+    ${src("Nội dung và danh mục tham khảo", `<p>Toàn bộ từ vựng (ví dụ, nghĩa, định nghĩa tiếng Anh), bài học, câu hỏi, bài đọc, đề luyện, ca bệnh và đề viết nói do tác giả biên soạn cho ứng dụng, không sao chép từ đề thi hay sách.</p>
+      <p>Cấp độ từ vựng đối chiếu với khung CEFR, có tham khảo NGSL và TOEIC Service List (Browne, Culligan và Phillips, CC BY-SA 4.0) và Oxford 3000 như danh mục kiểm tra, không sao chép định nghĩa. Ngữ pháp theo tiến trình của English Grammar Profile và British Council.</p>
+      <p>Phòng khám ảo bám theo hướng dẫn NICE (NG84, NG136, NG59, NG226, CG95, hướng dẫn UTI của UKHSA) và tiêu chuẩn chẩn đoán đái tháo đường của WHO. Câu ngạn ngữ là câu truyền thống thuộc phạm vi công cộng.</p>`, true)}
+    ${src("Phiên âm và giọng đọc", `<p>Phiên âm theo Cambridge Dictionary. Bản ghi phát âm người thật và phiên âm bổ sung lấy qua ${lnk("https://dictionaryapi.dev", "Free Dictionary API")} từ dữ liệu Wiktionary và Wikimedia Commons, giấy phép CC BY-SA. Khi không có bản ghi hoặc mất mạng, ứng dụng dùng giọng máy của thiết bị.</p>`)}
+    ${src("Đặc tả đề thi chính thức", `<p class="muted small">Dùng để đối chiếu định dạng đề, không sao chép đề.</p><p>${lnk("https://www.ets.org/toeic/about/listening-reading.html", "TOEIC Listening & Reading (ETS)")} · ${lnk("https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-reading", "IELTS Academic Reading")} · ${lnk("https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/format/", "Cambridge B2 First")} · ${lnk("https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/format/", "Cambridge C1 Advanced")} · ${lnk("https://vstep.vnu.edu.vn/test-format/", "VSTEP.3-5 (ĐHQG Hà Nội)")}</p>`)}
+    ${src("Nguồn mở để học thêm", `<p class="muted small">Giấy phép ghi theo trang của từng nguồn khi tra cứu ngày 01.10.2026; hãy đọc lại điều khoản trước khi sao chép.</p>
+      <p><b>Dùng được kèm ghi công:</b> ${lnk("https://learningenglish.voanews.com", "VOA Learning English")} (nội dung VOA tự viết thuộc phạm vi công cộng) · ${lnk("https://medlineplus.gov", "MedlinePlus")} (trừ A.D.A.M. và chuyên khảo thuốc) · ${lnk("https://www.nhs.uk", "NHS")} (Open Government Licence v3.0, không dùng logo và hình) · ${lnk("https://www.gutenberg.org", "Project Gutenberg")} (sách thuộc phạm vi công cộng) · ${lnk("https://tatoeba.org", "Tatoeba")} (câu ví dụ, CC BY 2.0 FR).</p>
+      <p><b>Phái sinh phải giữ cùng giấy phép (CC BY-SA):</b> ${lnk("https://simple.wikipedia.org", "Simple English Wikipedia")} · ${lnk("https://en.wikibooks.org", "Wikibooks")}.</p>
+      <p><b>Chỉ để tham khảo, không sao chép:</b> đề thi chính thức của ETS, IELTS và Cambridge; English Vocabulary Profile; British Council LearnEnglish.</p>`)}
+    <section class="panel stack about-quote"><p style="font-family:var(--en);font-size:22px;margin:0">“Built for learning. Improved through learning.”</p></section>`;
+};
+/* ---------------- Ngôn ngữ giao diện VI/EN ----------------
+   Giao diện được viết bằng tiếng Việt; khi chọn EN, mỗi đoạn chữ hiển thị được tra trong từ điển I18N_EN (content-study.js)
+   rồi thay bằng bản tiếng Anh. Câu có số hoặc tên xen vào được nhận dạng theo mẫu {1}, {2}. Đoạn nào chưa có bản dịch giữ tiếng Việt.
+   Nội dung học (nghĩa tiếng Việt của từ, giải thích ngữ pháp trong bài) không bị dịch. */
+let LANG = (() => { try { return localStorage.getItem("tnk_lang") === "en" ? "en" : "vi"; } catch (e) { return "vi"; } })();
+const I18N = (() => {
+  const exact = new Map(), pats = [];
+  for (const [k, v] of Object.entries(typeof I18N_EN !== "undefined" ? I18N_EN : {})) {
+    if (/\{\d+\}/.test(k)) {
+      const order = [];
+      const re = "^" + k.split(/(\{\d+\})/).map(p => { const m = /^\{(\d+)\}$/.exec(p); if (m) { order.push(+m[1]); return "(.+?)"; } return p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("") + "$";
+      pats.push({ re: new RegExp(re, "s"), order, v, len: k.length });
+    } else exact.set(k, v);
+  }
+  pats.sort((a, b) => b.len - a.len);
+  return { exact, pats };
+})();
+const VI_RE = /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+function trEn(text, d = 0) {
+  const core = text.replace(/\s+/g, " ").trim(); if (!core) return null;
+  let v = I18N.exact.get(core);
+  if (v === undefined) for (const p of I18N.pats) {
+    const m = p.re.exec(core); if (!m) continue;
+    const args = {}; p.order.forEach((n, i) => { const raw = m[i + 1]; args[n] = d < 2 ? (trEn(raw, d + 1) ?? raw) : raw; });
+    v = p.v.replace(/\{(\d+)\}/g, (x, n) => args[n] ?? x); break;
+  }
+  return v === undefined ? null : v;
+}
+const TR_SKIP = ".lw-vi, .example-vi, .spec-vi, textarea, input, script, style";
+function trNode(n) {
+  const t = n.nodeValue; if (!t || !t.trim()) return;
+  const core = t.replace(/\s+/g, " ").trim(); if (!VI_RE.test(core) && !I18N.exact.has(core)) return;
+  if (n.parentElement && n.parentElement.closest(TR_SKIP)) return;
+  const v = trEn(t); if (v == null || v === core) return;
+  n.nodeValue = (/^\s/.test(t) ? " " : "") + v + (/\s$/.test(t) ? " " : "");
+}
+function trTree(root) {
+  if (!root) return;
+  if (root.nodeType === 3) { trNode(root); return; }
+  if (root.nodeType !== 1) return;
+  const w = document.createTreeWalker(root, 4); const nodes = []; let n; while ((n = w.nextNode())) nodes.push(n);
+  nodes.forEach(trNode);
+  const els = root.querySelectorAll ? root.querySelectorAll("[title],[aria-label],[placeholder]") : [];
+  [root, ...els].forEach(el => { if (!el.getAttribute) return; ["title", "aria-label", "placeholder"].forEach(a => { const v = el.getAttribute(a); if (v && VI_RE.test(v)) { const r = trEn(v); if (r != null) el.setAttribute(a, r); } }); });
+}
+const TR_OPTS = { childList: true, subtree: true, characterData: true };
+let TR_OBS = null;
+function trStart() {
+  if (TR_OBS || typeof MutationObserver === "undefined") return;
+  TR_OBS = new MutationObserver(recs => {
+    if (LANG !== "en") return;
+    TR_OBS.disconnect();
+    recs.forEach(r => { if (r.type === "characterData") trNode(r.target); else r.addedNodes.forEach(trTree); });
+    TR_OBS.observe(document.body, TR_OPTS);
+  });
+  TR_OBS.observe(document.body, TR_OPTS);
+}
+const _afterRender49 = afterRender;
+afterRender = function () { _afterRender49(); document.documentElement.lang = LANG; if (LANG === "en") { trTree(document.getElementById("app")); trStart(); } };
+const _toolbar49 = toolbar;
+toolbar = function () {
+  const grp = `<div class="tb-group" role="group" aria-label="Ngôn ngữ"><span class="tb-cap">Ngôn ngữ</span><button class="tb acc-tog" data-act="tbLang" title="Đổi ngôn ngữ giao diện giữa tiếng Việt và tiếng Anh" aria-label="Ngôn ngữ giao diện: ${LANG === "en" ? "tiếng Anh" : "tiếng Việt"}. Bấm để đổi"><span class="${LANG === "vi" ? "on" : ""}">VI</span><span class="${LANG === "en" ? "on" : ""}">EN</span></button></div>`;
+  return _toolbar49().replace('<span id="timer"', grp + '<span id="timer"');
+};
+ACT.tbLang = function () { LANG = LANG === "en" ? "vi" : "en"; try { localStorage.setItem("tnk_lang", LANG); } catch (e) {} render(); };
+if (LANG === "en") trStart();
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
