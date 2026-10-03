@@ -756,3 +756,31 @@ body.side-folded .edge-toggle svg { transform: rotate(-90deg); }
   body.side-folded .edge-toggle svg { transform: rotate(180deg); }
 }
 body.focus .edge-toggle { display: none; }
+.bi-dup { display: none !important; }
+/* ===== Mẫu viết và dạng bài mới ===== */
+.tpl-parts { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.tpl-parts li { display: grid; gap: 2px; }
+.tpl-parts b { font-family: var(--en); font-size: 17px; }
+.tpl-ex { font-family: var(--en); color: var(--muted); font-size: 15px; background: var(--sunk); padding: 8px 10px; border-radius: 10px; margin-top: 4px; }
+.tpl-model { background: var(--sunk); border-radius: 14px; padding: 14px 16px; display: grid; gap: 10px; }
+.tpl-line { margin: 0; font-family: var(--en); font-size: 16.5px; line-height: 1.6; white-space: pre-wrap; }
+.tpl-n { display: inline-grid; place-items: center; min-width: 17px; height: 17px; margin-left: 3px; border-radius: 9px; background: var(--accent); color: #fff; font: 700 10px/1 var(--ui); vertical-align: super; padding: 0 4px; }
+.tpl-notes p { margin: 4px 0; font-size: 14px; color: var(--muted); }
+.tpl-points { margin: 0 0 8px; padding-left: 20px; }
+.tpl-check { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.tpl-check li { display: flex; gap: 8px; align-items: baseline; font-size: 14px; color: var(--muted); }
+.tpl-check li.ok { color: var(--good); font-weight: 600; }
+.tpl-tick { width: 18px; text-align: center; }
+textarea.field { width: 100%; resize: vertical; font: 16px/1.55 var(--en); padding: 12px; }
+.tile.sent { text-align: left; white-space: normal; line-height: 1.45; width: 100%; font-family: var(--en); }
+.tiles.sents { display: grid; gap: 8px; }
+.so-ans { margin: 0 0 10px; padding-left: 22px; display: grid; gap: 8px; }
+.mp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.mp-col { display: grid; gap: 8px; align-content: start; }
+.mp-col .choice.sel { border-color: var(--accent); background: var(--accent-soft); }
+.cf-list { display: grid; gap: 8px; }
+.cf-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 12px; flex-wrap: wrap; }
+.cf-row.right { border-color: var(--good); background: var(--good-soft); }
+.cf-row.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.cf-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.cf-btns .tile.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }

@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.21.3 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.22.1 (02.10.26).
 
 ## Tính năng
 
@@ -18,9 +18,9 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.21.3 (02.10.26).
 
 **Ngữ pháp, luyện đề, đọc, viết**
 - **Thư viện ngữ pháp** 40 điểm (A1 đến C1) với công thức, cách dùng, ví dụ, lỗi sai thường gặp và ngân hàng hơn 500 câu bài tập.
-- **Bài tập theo dạng** trong Luyện tập: chọn từ và gõ từ điền đoạn văn, viết lại câu với từ cho sẵn, dẫn tới Đọc hiểu. Bài tập chương của giáo trình y khoa nằm ở trang từng chặng M1 đến M6.
+- **Bài tập theo dạng** trong Luyện tập, xếp theo kỹ năng: chọn từ và gõ từ điền đoạn văn, viết lại câu; **cấu tạo từ** (điền câu và điền đoạn văn, 90 câu và 8 đoạn); **đọc**: Đọc hiểu, TOEIC Part 7 (đọc 1 đến 3 văn bản, 14 bộ) và nối tiêu đề với đoạn (10 bài); **nghe hiểu** hội thoại, thông báo, tin nhắn thoại (20 bài, giọng đọc của trình duyệt); **từ vựng đa dạng**: nối cặp, phân loại, đồng nghĩa và trái nghĩa, tìm từ khác loại, kết hợp từ; **viết**: sắp xếp câu thành đoạn và luyện nhanh theo từng mẫu. Bài tập chương của giáo trình y khoa nằm ở trang từng chặng M1 đến M6.
 - **Kho luyện đọc**: khoảng 66 đoạn ngắn từ A2 đến C1 (gồm tài liệu y khoa), mỗi đoạn có câu hỏi kèm bằng chứng; chạm vào từ để xem nghĩa và thêm vào lịch ôn.
-- **Thư viện mẫu viết** (đang hoàn thiện): danh mục mẫu thư, đơn, email, văn bản y khoa và bài luận; nội dung sẽ bổ sung dần.
+- **Thư viện mẫu viết** (23 mẫu: thư cá nhân, thư phàn nàn và yêu cầu, đơn từ, email công việc, văn bản y khoa, bài luận): mỗi mẫu có khi nào dùng, cấu trúc, cụm diễn đạt có nghe, bài mẫu có chú thích, lỗi thường gặp, bài luyện nhanh (điền cụm, chọn giọng điệu, sắp xếp câu) và bài **viết lại theo mẫu** với bảng kiểm tự động; kết quả tính vào kỹ năng Viết trên biểu đồ.
 - Mọi câu trắc nghiệm có **4 lựa chọn** và chỉ **một đáp án đúng**. Khi chọn sai, ứng dụng giải thích **vì sao lựa chọn đó sai** (bài tập ngữ pháp, TOEIC Part 5, điền đoạn văn) rồi mới nêu đáp án đúng. Riêng đúng/sai/không có thông tin trong Kho luyện đọc và bài nghe phân biệt cặp âm giữ dạng 3 hoặc 2 lựa chọn theo đúng bản chất của dạng bài.
 
 **Phát âm và giọng đọc** (Phát âm nằm trong menu Thư viện, giọng đọc nằm trong Cài đặt)

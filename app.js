@@ -2554,7 +2554,25 @@ function examSections() {
     sec("Cấu trúc câu", "Diễn đạt cùng một ý bằng cấu trúc khác.",
       setType("kw", "grammar", "Viết lại câu", "Điền 2 đến 5 từ, gồm từ cho sẵn (không đổi dạng), để câu thứ hai cùng nghĩa câu thứ nhất.", "10 câu mỗi lượt", "Nhận ra cấu trúc đang kiểm tra (bị động, tường thuật, điều kiện, so sánh…) rồi dùng đúng từ cho sẵn, không đổi dạng.")),
     sec("Đọc", "Tìm thông tin và bằng chứng trong đoạn văn.",
-      linkType("#/reading", "reading", "Đọc hiểu", "Đoạn văn ngắn kèm câu hỏi có bằng chứng; chạm vào từ để xem nghĩa.", `${RD_ALL.length} đoạn, 5 câu hỏi mỗi đoạn · ${lvlOf(RD_ALL.map(x => ({ lvl: x.lvl })))}`, rdDone, RD_ALL.length))
+      linkType("#/reading", "reading", "Đọc hiểu", "Đoạn văn ngắn kèm câu hỏi có bằng chứng; chạm vào từ để xem nghĩa.", `${RD_ALL.length} đoạn, 5 câu hỏi mỗi đoạn · ${lvlOf(RD_ALL.map(x => ({ lvl: x.lvl })))}`, rdDone, RD_ALL.length)
+ + setType("p7", "reading", "TOEIC Part 7: đọc hiểu văn bản", "Email, thông báo, quảng cáo, chuỗi tin nhắn; câu hỏi mục đích, chi tiết, suy luận, từ trong ngữ cảnh và đối chiếu nhiều văn bản.", "1 đến 3 văn bản, 3 đến 5 câu", "Đọc câu hỏi trước rồi quét văn bản tìm đúng thông tin. Câu “NOT” cần loại ba ý có trong bài. Với nhiều văn bản, câu đối chiếu cần thông tin ở cả hai nơi.")
+      + setType("mh", "reading", "Nối tiêu đề với đoạn", "Chọn tiêu đề nêu ý chính của từng đoạn văn (kiểu IELTS).", "5 đoạn, mỗi đoạn chọn 1 trong 4 tiêu đề", "Tìm ý chính (thường ở câu đầu hoặc câu cuối), không chọn tiêu đề chỉ nói một chi tiết hay nói quá rộng."))
+    ,
+    sec("Cấu tạo từ", "Biến đổi từ cho sẵn thành đúng loại từ và nghĩa.",
+      setType("wf", "grammar", "Cấu tạo từ: điền câu", "Gõ dạng đúng của từ cho sẵn (danh từ, tính từ, trạng từ, tiền tố phủ định…).", "10 câu mỗi lượt, gõ từ", "Xác định loại từ cần ở chỗ trống (sau mạo từ, trước danh từ, sau động từ…) rồi chọn hậu tố; nhớ xét thêm dạng phủ định và số nhiều.")
+      + setType("wp", "grammar", "Cấu tạo từ: điền đoạn văn", "Đoạn văn 8 chỗ trống, mỗi chỗ gõ dạng đúng của từ cho sẵn (kiểu Cambridge).", "8 chỗ trống, gõ từ", "Đọc cả đoạn để biết nghĩa tích cực hay tiêu cực, rồi mới chọn tiền tố hoặc hậu tố.")),
+    sec("Nghe", "Nghe hội thoại, thông báo, tin nhắn thoại và trả lời câu hỏi.",
+      setType("lc", "reading", "Nghe hiểu (kiểu TOEIC Part 3 và 4)", "Nghe bằng giọng đọc của trình duyệt, chọn đáp án; bản ghi hiện sau khi trả lời.", "3 câu mỗi bài nghe", "Đọc câu hỏi trước khi bấm nghe. Chú ý chi tiết thay đổi (kế hoạch bị đổi, giờ mới) vì đáp án nhiễu hay là thông tin cũ.")),
+    sec("Từ vựng đa dạng", "Học và ôn từ bằng nhiều hình thức khác nhau.",
+      setType("mp", "cards", "Nối cặp", "Nối 5 từ tiếng Anh với nghĩa tiếng Việt, lấy từ thư viện từ vựng.", "6 lượt mỗi bộ", "Nối những cặp chắc chắn trước, các cặp còn lại sẽ dễ loại trừ.")
+      + setType("cf", "cards", "Phân loại", "Xếp 8 từ vào hai nhóm chủ đề.", "6 lượt mỗi bộ", "Nghĩ xem từ thường xuất hiện ở đâu hoặc dùng để làm gì.")
+      + setType("syn", "grammar", "Đồng nghĩa và trái nghĩa", "Chọn từ gần nghĩa hoặc trái nghĩa với từ in đậm, xét theo câu có sẵn.", "12 câu mỗi lượt", "Xét nghĩa trong câu chứ không chỉ nghĩa phổ biến nhất của từ.")
+      + setType("odd", "grammar", "Tìm từ khác loại", "Chọn từ không cùng nhóm với ba từ còn lại.", "12 câu mỗi lượt", "Tìm đặc điểm chung của ba từ trước (nghĩa, loại từ, mức trang trọng) rồi loại từ lệch.")
+      + setType("col", "grammar", "Kết hợp từ", "Chọn từ đi cùng đúng trong cụm cố định.", "12 câu mỗi lượt", "Ghi nhớ cả cụm thay vì từng từ riêng lẻ.")),
+    sec("Viết", "Luyện cấu trúc và cách diễn đạt của từng loại văn bản.",
+      linkType("#/templates", "grammar", "Thư viện mẫu viết", "Hướng dẫn, bài mẫu có chú thích và bài viết lại theo mẫu cho thư, đơn, email, văn bản y khoa và bài luận.", `${TPL.length} mẫu`, TPL.filter(x => exRes("tw-" + x.id)).length, Math.max(1, TPL.length))
+      + setType("so", "reading", "Sắp xếp câu thành đoạn", "Sắp các câu lấy từ bài mẫu thành đoạn văn hợp lý.", "8 đoạn mỗi lượt", "Tìm câu mở đầu, rồi dựa vào từ nối và đại từ để đặt các câu tiếp theo.")
+      + setType("wt", "exam", "Luyện nhanh theo từng mẫu", "Điền cụm vào bài mẫu, chọn giọng điệu, sắp xếp câu cho từng loại văn bản.", "11 câu mỗi mẫu", "Chú ý mức trang trọng của văn bản khi chọn cụm."))
   ].join("");
   return `<div class="ex-secs">${out}</div>${EX_SETS.length ? "" : `<div class="empty"><p>Chưa có bộ đề nào.</p></div>`}`;
 }
@@ -2914,7 +2932,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.21.3"; APP.build = "01.10.26";
+APP.version = "4.22.1"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3192,6 +3210,212 @@ viewAbout = function () {
    Giao diện được viết bằng tiếng Việt; khi chọn EN, mỗi đoạn chữ hiển thị được tra trong từ điển I18N_EN (content-study.js)
    rồi thay bằng bản tiếng Anh. Câu có số hoặc tên xen vào được nhận dạng theo mẫu {1}, {2}. Đoạn nào chưa có bản dịch giữ tiếng Việt.
    Nội dung học (nghĩa tiếng Việt của từ, giải thích ngữ pháp trong bài) không bị dịch. */
+/* ================= Dạng bài mới, đa dạng hóa luyện tập và luyện viết theo mẫu ================= */
+const TPL = typeof WRITING_TPL !== "undefined" ? WRITING_TPL : [], TPL_BY = Object.fromEntries(TPL.map(t => [t.id, t]));
+const X_P7 = typeof P7_SETS !== "undefined" ? P7_SETS : [], X_WFS = typeof WF_SENT !== "undefined" ? WF_SENT : [], X_WFP = typeof WF_PASS !== "undefined" ? WF_PASS : [];
+const X_MH = typeof MH_SETS !== "undefined" ? MH_SETS : [], X_LC = typeof LC_SETS !== "undefined" ? LC_SETS : [];
+const X_SYN = typeof SYN_ITEMS !== "undefined" ? SYN_ITEMS : [], X_ODD = typeof ODD_ITEMS !== "undefined" ? ODD_ITEMS : [], X_COL = typeof COL_ITEMS !== "undefined" ? COL_ITEMS : [];
+const shufMC = it => { const [o, a] = shuffleChoice(it.opts, it.a); it.opts = o; it.a = a; return it; };
+const lvKey = l => (l === "A1" || l === "A2" ? "A" : l);
+
+/* --- Tạo câu hỏi cho các bộ mới --- */
+function p7Items(s) {
+  const text = s.texts.map(x => `[${x.label}]\n${x.body}`).join("\n\n");
+  return s.qs.map(q => shufMC({ t: "k", pass: { id: s.id, title: s.title, text }, q: q.q, opts: q.opts.slice(), a: q.a, ev: q.ev, why: q.why, wrong: q.wrong, kind: q.kind, skill: "reading", src: "p7:" + s.id }));
+}
+function mhItems(s) {
+  const text = s.paras.map(p => `${p.label}. ${p.text}`).join("\n\n");
+  return s.items.map(i => shufMC({ t: "k", pass: { id: s.id, title: s.title, text }, q: `Choose the best heading for paragraph ${i.para}.`, opts: i.opts.slice(), a: i.a, why: i.why, wrong: i.wrong, kind: "heading", skill: "reading", src: "mh:" + s.id }));
+}
+function lcItems(s) { return s.qs.map(q => shufMC({ t: "au", setTitle: s.title, script: s.script, q: q.q, opts: q.opts.slice(), a: q.a, why: q.why, wrong: q.wrong, skill: "listening", src: "lc:" + s.id })); }
+const wfItem = x => ({ t: "wf", s: x.s, root: x.root, ans: x.ans.slice(), why: x.why, skill: "vocab", src: "wf:" + x.id });
+function wpItems(p) { return gapItems({ id: p.id, title: p.title, text: p.text, gaps: p.gaps.map(g => ({ ans: g.ans, why: g.why })) }, true).map((it, k) => ({ ...it, root: p.gaps[k].root, skill: "vocab", src: "wp:" + p.id })); }
+const synItem = x => shufMC({ t: "x", q: `${x.q} “${x.ex}”`, opts: x.opts.slice(), a: x.a, why: x.why, wrong: x.wrong, skill: "vocab", src: "syn" });
+const oddItem = x => shufMC({ t: "x", q: x.q, opts: x.opts.slice(), a: x.a, why: x.why, wrong: x.wrong, skill: "vocab", src: "odd" });
+const colItem = x => shufMC({ t: "c", q: x.q, opts: x.opts.slice(), a: x.a, why: x.why, wrong: x.wrong, skill: "vocab", src: "col" });
+const soItem = (o, src) => ({ t: "so", title: o.title, sents: o.sentences.slice(), why: o.why, skill: "writing", src });
+function tplItems(t) {
+  return [...t.gaps.map(g => shufMC({ t: "c", q: g.q, opts: g.opts.slice(), a: g.a, why: g.why, wrong: g.wrong, skill: "writing", src: "tpl:" + t.id })), ...t.tone.map(g => shufMC({ t: "x", q: g.q, opts: g.opts.slice(), a: g.a, why: g.why, wrong: g.wrong, skill: "writing", src: "tpl:" + t.id })), ...t.order.map(o => soItem(o, "tpl:" + t.id))];
+}
+/* Nối cặp và phân loại: tự sinh từ thư viện từ vựng. */
+const MP_POOL = (() => { const out = []; LIB.filter(t => t.track === "gen").forEach(t => t.words.forEach(w => { if (!/[·\s]/.test(w.w) && w.vi && w.vi.length <= 22 && !/[(,;]/.test(w.vi) && w.pos && /^(n|v|adj)$/.test(w.pos.trim())) out.push({ w: w.w, vi: w.vi, lvl: w.lvl, top: t.id }); })); return out; })();
+function mpItems(levels, rounds) {
+  const pool = MP_POOL.filter(x => levels.includes(x.lvl)), byTop = {}; pool.forEach(x => (byTop[x.top] = byTop[x.top] || []).push(x));
+  const tops = shuffle(Object.keys(byTop).filter(k => byTop[k].length >= 8)), items = [];
+  for (let r = 0; r < rounds && tops.length; r++) {
+    const t = tops[r % tops.length], seen = new Set(), pick = [];
+    shuffle(byTop[t]).forEach(x => { if (pick.length < 5 && !seen.has(x.vi.toLowerCase())) { seen.add(x.vi.toLowerCase()); pick.push(x); } });
+    if (pick.length === 5) items.push({ t: "mp", pairs: pick.map(x => [x.w, x.vi]), why: pick.map(x => `${x.w} = ${x.vi}`).join("; "), skill: "vocab", src: "mp" });
+  }
+  return items;
+}
+const CF_PAIRS = [["food", "body"], ["clothes", "transport"], ["people", "places"], ["nature", "feelings"], ["work", "leisure"], ["school", "food"]];
+function cfItems(rounds) {
+  const items = [];
+  for (let r = 0; r < rounds; r++) {
+    const [a, b] = CF_PAIRS[r % CF_PAIRS.length], ta = LIB_BY[a], tb = LIB_BY[b]; if (!ta || !tb) continue;
+    const okW = (t, o) => t.words.filter(w => ["A1", "A2", "B1"].includes(w.lvl) && !/[·\s]/.test(w.w) && /^n$/.test((w.pos || "").trim()) && !o.words.some(x => x.w.toLowerCase() === w.w.toLowerCase()));
+    const wa = shuffle(okW(ta, tb)).slice(0, 4), wb = shuffle(okW(tb, ta)).slice(0, 4); if (wa.length < 4 || wb.length < 4) continue;
+    const cats = [ta.title, tb.title];
+    items.push({ t: "cf", cats, items: shuffle([...wa.map(w => [w.w, 0]), ...wb.map(w => [w.w, 1])]), why: `${cats[0]}: ${wa.map(w => w.w).join(", ")}. ${cats[1]}: ${wb.map(w => w.w).join(", ")}.`, skill: "vocab", src: "cf" });
+  }
+  return items;
+}
+
+/* --- Đăng ký các bộ đề --- */
+const pickN = (arr, n) => shuffle(arr).slice(0, n);
+X_P7.forEach(s => addSet({ id: s.id, group: "p7", title: s.title, sub: `${s.texts.length} văn bản, ${s.qs.length} câu`, lvl: s.lvl, lvlText: s.lvl, n: s.qs.length, build: () => p7Items(s) }));
+X_MH.forEach(s => addSet({ id: s.id, group: "mh", title: s.title, sub: "5 đoạn, chọn tiêu đề phù hợp nhất", lvl: s.lvl, lvlText: s.lvl, n: 5, build: () => mhItems(s) }));
+X_LC.forEach(s => addSet({ id: s.id, group: "lc", title: s.title, sub: `${{ conversation: "Hội thoại", announcement: "Thông báo", voicemail: "Tin nhắn thoại", talk: "Bài nói", interview: "Phỏng vấn" }[s.kind] || "Nghe"}, 3 câu`, lvl: s.lvl, lvlText: s.lvl, n: 3, build: () => lcItems(s) }));
+["B1", "B2", "C1"].forEach(l => { const b = X_WFS.filter(x => x.lvl === l); if (b.length) addSet({ id: "wf-" + l.toLowerCase(), group: "wf", title: `Cấu tạo từ, mức ${l}`, sub: `Ngân hàng ${b.length} câu, mỗi lượt 10 câu`, lvl: l, lvlText: l, n: Math.min(10, b.length), build: () => pickN(b, 10).map(wfItem) }); });
+X_WFP.forEach(p => addSet({ id: p.id, group: "wp", title: p.title, sub: "Đoạn văn 8 chỗ trống, gõ dạng đúng của từ cho sẵn", lvl: p.lvl, lvlText: p.lvl, n: 8, build: () => wpItems(p) }));
+[["B1", "B1"], ["B2", "B2"], ["C1", "C1"]].forEach(([l]) => { const sy = X_SYN.filter(x => x.lvl === l), od = X_ODD.filter(x => (l === "B1" ? ["A2", "B1"] : [l]).includes(x.lvl)), co = X_COL.filter(x => x.lvl === l);
+  if (sy.length) addSet({ id: "syn-" + l.toLowerCase(), group: "syn", title: `Đồng nghĩa và trái nghĩa, mức ${l}`, sub: `Ngân hàng ${sy.length} câu, mỗi lượt 12 câu`, lvl: l, lvlText: l, n: Math.min(12, sy.length), build: () => pickN(sy, 12).map(synItem) });
+  if (od.length) addSet({ id: "odd-" + l.toLowerCase(), group: "odd", title: `Tìm từ khác loại, mức ${l === "B1" ? "A2–B1" : l}`, sub: `Ngân hàng ${od.length} câu, mỗi lượt 12 câu`, lvl: l, lvlText: l === "B1" ? "A2–B1" : l, n: Math.min(12, od.length), build: () => pickN(od, 12).map(oddItem) });
+  if (co.length) addSet({ id: "col-" + l.toLowerCase(), group: "col", title: `Kết hợp từ, mức ${l}`, sub: `Ngân hàng ${co.length} câu, mỗi lượt 12 câu`, lvl: l, lvlText: l, n: Math.min(12, co.length), build: () => pickN(co, 12).map(colItem) }); });
+addSet({ id: "mp-a", group: "mp", title: "Nối cặp, mức A1–A2", sub: "6 lượt, mỗi lượt nối 5 từ với nghĩa", lvl: "A2", lvlText: "A1–A2", n: 6, build: () => mpItems(["A1", "A2"], 6) });
+addSet({ id: "mp-b1", group: "mp", title: "Nối cặp, mức B1", sub: "6 lượt, mỗi lượt nối 5 từ với nghĩa", lvl: "B1", lvlText: "B1", n: 6, build: () => mpItems(["B1"], 6) });
+addSet({ id: "mp-b2", group: "mp", title: "Nối cặp, mức B2–C1", sub: "6 lượt, mỗi lượt nối 5 từ với nghĩa", lvl: "B2", lvlText: "B2–C1", n: 6, build: () => mpItems(["B2", "C1"], 6) });
+addSet({ id: "cf-1", group: "cf", title: "Phân loại từ theo chủ đề", sub: "6 lượt, mỗi lượt xếp 8 từ vào 2 nhóm", lvl: "A2", lvlText: "A1–B1", n: 6, build: () => cfItems(6) });
+TPL.forEach(t => addSet({ id: "wt-" + t.id, group: "wt", title: t.title, sub: "Điền cụm vào bài mẫu, chọn giọng điệu, sắp xếp câu", lvl: t.lvl, lvlText: t.lvl, n: 11, build: () => tplItems(t) }));
+if (TPL.length) addSet({ id: "so-all", group: "so", title: "Sắp xếp câu thành đoạn", sub: "Mỗi lượt 8 đoạn lấy từ các bài mẫu", lvl: "B1", lvlText: "A2–C1", n: 8, build: () => pickN(TPL.flatMap(t => t.order.map(o => soItem(o, "tpl:" + t.id))), 8) });
+
+/* --- Hiển thị và chấm các loại câu mới --- */
+Object.assign(PX_LABEL, { wf: "cấu tạo từ", au: "nghe hiểu", so: "sắp xếp đoạn", mp: "nối cặp", cf: "phân loại" });
+Object.assign(NEWT, { wf: 1, au: 1, so: 1, mp: 1, cf: 1 });
+const pxInput = (st, ph) => `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="pxCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="${ph}" aria-label="Câu trả lời"><button class="btn primary" data-act="pxCheck" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>`;
+const _itemLabel52 = itemLabel, _itemAnswer52 = itemAnswer;
+itemLabel = it => it.t === "wf" ? it.s : it.t === "au" ? it.q : it.t === "so" ? (it.title || "Sắp xếp câu thành đoạn") : it.t === "mp" ? "Nối từ với nghĩa" : it.t === "cf" ? "Phân loại: " + it.cats.join(" / ") : _itemLabel52(it);
+itemAnswer = it => it.t === "wf" ? it.ans.join(" / ") : it.t === "au" ? it.opts[it.a] : it.t === "so" ? it.sents.join(" ") : it.t === "mp" ? it.pairs.map(p => `${p[0]} = ${p[1]}`).join("; ") : it.t === "cf" ? it.items.map(([w, c]) => `${w}: ${it.cats[c]}`).join("; ") : _itemAnswer52(it);
+const _pxBody52 = pxBody;
+pxBody = function (it, st) {
+  if (it.t === "po" && it.root) return _pxBody52(it, st).replace(/(Gõ MỘT từ cho chỗ trống \(\d+\)\.)/, `$1 Từ cho sẵn: <span class="keybox" lang="en">${esc(it.root)}</span>`);
+  if (!NEWT[it.t] || !["wf", "au", "so", "mp", "cf"].includes(it.t)) return _pxBody52(it, st);
+  const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. ${capW(PX_LABEL[it.t])}</span>`;
+  let body = "";
+  if (it.t === "wf") body = `<p class="muted">Điền dạng đúng của từ cho sẵn vào chỗ trống.</p><p class="cloze" lang="en">${gapify(it.s, st.done ? it.ans[0] : "")}</p><p style="margin:10px 0"><span class="keybox" lang="en">${esc(it.root)}</span></p>${pxInput(st, "Gõ từ đã biến đổi")}`;
+  else if (it.t === "au") body = `<p class="muted small">${esc(it.setTitle)}: nghe rồi chọn đáp án. Bạn có thể nghe lại.</p><div class="row"><button class="btn primary" data-act="pxPlayAu">${ic("speaker", 18)} Nghe</button><button class="btn" data-act="pxPlayAu" data-slow="1">Nghe chậm</button></div><p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p><div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}</div>${st.done ? `<details class="ex-group"><summary><span class="grow"><b>Bản ghi</b></span></summary><div class="stack" lang="en" style="padding:0 2px 10px">${it.script.map(l => `<p style="margin:2px 0"><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div></details>` : ""}`;
+  else if (it.t === "so") {
+    if (!st.pool) { st.tiles = it.sents.slice(); do { st.pool = shuffle(st.tiles.map((x, k) => k)); } while (st.tiles.length > 2 && st.pool.every((v, k) => v === k)); st.ans = []; }
+    body = `<p class="muted">${esc(it.title || "")} Chạm các câu theo đúng thứ tự để tạo thành đoạn văn hợp lý.</p><ol class="so-ans" lang="en">${st.ans.map((k, j) => `<li><button class="tile sent" data-act="pxOut" data-j="${j}" ${st.done ? "disabled" : ""}>${esc(st.tiles[k])}</button></li>`).join("") || `<li class="muted small">Chạm các câu bên dưới.</li>`}</ol>
+      <div class="tiles sents" lang="en">${st.pool.map(k => `<button class="tile sent ${st.ans.includes(k) ? "used" : ""}" data-act="pxIn" data-k="${k}" ${st.done || st.ans.includes(k) ? "disabled" : ""}>${esc(st.tiles[k])}</button>`).join("")}</div>
+      ${st.done ? "" : `<div class="row"><button class="btn" data-act="pxReset">Xếp lại</button><button class="btn primary" data-act="pxOrder" ${st.ans.length === st.tiles.length ? "" : "disabled"}>Kiểm tra</button></div>`}`;
+  } else if (it.t === "mp") {
+    if (!st.init) { st.init = true; st.rord = shuffle(it.pairs.map((_, k) => k)); st.matched = []; st.sel = -1; st.err = 0; st.wr = -1; }
+    body = `<p class="muted">Chạm một từ rồi chạm nghĩa tương ứng. Sai tối đa 1 lần vẫn tính là đạt.</p><div class="mp-grid"><div class="mp-col" lang="en">${it.pairs.map(([en], k) => `<button class="choice ${st.matched.includes(k) ? "right" : st.sel === k ? "sel" : ""}" data-act="mpL" data-k="${k}" ${st.matched.includes(k) || st.done ? "disabled" : ""}>${esc(en)}</button>`).join("")}</div><div class="mp-col">${st.rord.map(k => `<button class="choice ${st.matched.includes(k) ? "right" : st.wr === k ? "wrong" : ""}" data-act="mpR" data-k="${k}" ${st.matched.includes(k) || st.done ? "disabled" : ""}>${esc(it.pairs[k][1])}</button>`).join("")}</div></div><p class="muted small">Đã nối ${st.matched.length}/${it.pairs.length}; nối sai ${st.err} lần.</p>`;
+  } else if (it.t === "cf") {
+    st.pk = st.pk || {};
+    body = `<p class="muted">Xếp mỗi từ vào đúng nhóm.</p><div class="cf-list">${it.items.map(([w, c], k) => { const p = st.pk[k]; const cls = st.done ? (p === c ? "right" : "wrong") : ""; return `<div class="cf-row ${cls}"><span class="en" lang="en"><b>${esc(w)}</b></span><span class="cf-btns">${it.cats.map((n, ci) => `<button class="tile ${p === ci ? "on" : ""}" data-act="cfSet" data-k="${k}" data-c="${ci}" ${st.done ? "disabled" : ""}>${esc(n)}</button>`).join("")}</span></div>`; }).join("")}</div>${st.done ? "" : `<div class="row"><button class="btn primary" data-act="cfCheck" ${Object.keys(st.pk).length === it.items.length ? "" : "disabled"}>Kiểm tra</button></div>`}`;
+  }
+  let fb = "";
+  if (st.done) { fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && ["so", "mp", "cf"].includes(it.t) ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${esc(it.why || "")}</div>${!st.ok && it.t === "au" ? wrongWhy(it, st.pick) : ""}`; }
+  return lbl + body + fb;
+};
+const _pxCheck52 = ACT.pxCheck;
+ACT.pxCheck = function () {
+  const it = PX.items[PX.i]; if (it.t !== "wf") return _pxCheck52();
+  const st = PX.st[PX.i]; if (st.done) return; st.val = $("#pxIn")?.value || ""; const v = norm(st.val); if (!v) return;
+  pxMark(it.ans.some(a => norm(a) === v));
+};
+const _pxOrder52 = ACT.pxOrder;
+ACT.pxOrder = function () { const it = PX.items[PX.i]; if (it.t !== "so") return _pxOrder52(); const st = PX.st[PX.i]; pxMark(st.ans.every((k, j) => k === j)); };
+Object.assign(ACT, {
+  pxPlayAu(el) { const it = PX.items[PX.i], who = {}; let n = 0; sayLines(it.script.map(l => { if (!(l[0] in who)) who[l[0]] = n++ % 2; return { text: l[1], who: who[l[0]], slow: !!el.dataset.slow }; })); },
+  mpL(el) { const st = PX.st[PX.i]; if (st.done) return; st.sel = +el.dataset.k; st.wr = -1; speakNow(PX.items[PX.i].pairs[st.sel][0]); render(); },
+  mpR(el) { const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done || st.sel < 0) return; const k = +el.dataset.k; if (k === st.sel) { st.matched.push(k); st.sel = -1; st.wr = -1; if (st.matched.length === it.pairs.length) { pxMark(st.err <= 1); return; } } else { st.err++; st.wr = k; st.sel = -1; } render(); },
+  cfSet(el) { const st = PX.st[PX.i]; if (st.done) return; st.pk = st.pk || {}; st.pk[+el.dataset.k] = +el.dataset.c; render(); },
+  cfCheck() { const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; pxMark(it.items.every(([, c], k) => st.pk[k] === c)); }
+});
+
+const viewTemplatesStub = viewTemplates;
+/* --- Thư viện mẫu viết: danh mục, trang hướng dẫn, luyện viết lại theo mẫu --- */
+const TPL_ORDER = [
+  ["Thư cá nhân", ["tpl-friend", "tpl-thanks", "tpl-apology", "tpl-invite", "tpl-congrats"]],
+  ["Thư phàn nàn và yêu cầu", ["tpl-complaint", "tpl-refund", "tpl-enquiry"]],
+  ["Đơn từ", ["tpl-jobapp", "tpl-leave", "tpl-internship", "tpl-scholarship"]],
+  ["Email công việc", ["tpl-em-appt", "tpl-em-reply", "tpl-em-remind", "tpl-em-intro"]],
+  ["Văn bản y khoa", ["tpl-pt-letter", "tpl-referral", "tpl-summary", "tpl-casereport"]],
+  ["Bài luận", ["tpl-es-opinion", "tpl-es-adv", "tpl-es-prob"]]
+];
+const REG_VI = { informal: "Thân mật", neutral: "Trung tính", formal: "Trang trọng" };
+const tplWords = t => (t.match(/[A-Za-z0-9'’\-]+/g) || []).length;
+function tplChecks(tp, text) {
+  const t = text.toLowerCase(), w = tplWords(text), tk = tp.task;
+  const res = tk.checks.map(c => ({ vi: c.vi, ok: c.any.some(a => t.includes(a.toLowerCase())) }));
+  res.push({ vi: `Độ dài ${tk.min} đến ${tk.max} từ (hiện ${w})`, ok: w >= tk.min && w <= tk.max + 40 });
+  return res;
+}
+function tplDraft(id) { try { return localStorage.getItem("tnk_tpl_" + id) || ""; } catch (e) { return ""; } }
+function viewTplList() {
+  const done = id => exRes("tw-" + id), prac = id => exRes("e-wt-" + id);
+  const card = id => { const t = TPL_BY[id]; if (!t) return ""; const w = done(id), p = prac(id);
+    return `<a class="gcard" href="#/templates/${id}"><div class="row between"><span class="lv lv-${t.lvl}">${t.lvl}</span><span class="chip">${REG_VI[t.register] || ""}</span></div><b>${esc(t.title)}</b><span class="muted small" lang="en">${esc(t.en)}</span><span class="row" style="gap:6px;flex-wrap:wrap"><span class="chip ${w && w.best >= 0.8 ? "good" : ""}">${w ? "Viết " + Math.round(w.best * 100) + "%" : "Chưa viết"}</span><span class="chip ${p && p.best >= 0.7 ? "good" : ""}">${p ? "Luyện " + Math.round(p.best * 100) + "%" : "Chưa luyện"}</span></span></a>`; };
+  const total = TPL.length, wd = TPL.filter(t => done(t.id)).length;
+  return `<section class="page-head"><h1>Thư viện mẫu viết</h1><p class="lede">Mỗi mẫu gồm cấu trúc, cụm diễn đạt, bài mẫu có chú thích, lỗi thường gặp, bài luyện nhanh và bài viết lại theo mẫu có bảng kiểm tự động. Đã viết ${wd}/${total} mẫu.</p></section>
+    <div class="stack">${TPL_ORDER.map(([g, ids]) => ids.some(id => TPL_BY[id]) ? `<section class="panel stack"><h3 style="margin:0">${g}</h3><div class="topics">${ids.map(card).join("")}</div></section>` : "").join("")}</div>`;
+}
+function viewTplDetail(t) {
+  const w = exRes("tw-" + t.id), p = exRes("e-wt-" + t.id);
+  const notesAt = {}; t.model.notes.forEach((n, i) => (notesAt[n.line] = notesAt[n.line] || []).push(i + 1));
+  const model = t.model.lines.map((l, i) => `<p class="tpl-line" lang="en">${esc(l)}${(notesAt[i] || []).map(n => `<sup class="tpl-n">${n}</sup>`).join("")}</p>`).join("");
+  return `<section class="page-head"><a class="muted small" href="#/templates">Thư viện mẫu viết</a><h1>${esc(t.title)}</h1><p class="lede" lang="en" style="margin:0">${esc(t.en)}</p><div class="exrow"><span class="lv lv-${t.lvl}">${t.lvl}</span><span class="chip">${REG_VI[t.register] || ""}</span></div></section>
+    <div class="stack">
+    <section class="panel stack"><h3 style="margin:0">Khi nào dùng</h3><p>${esc(t.when)}</p></section>
+    <section class="panel stack"><h3 style="margin:0">Cấu trúc</h3><ol class="tpl-parts">${t.parts.map(x => `<li><b lang="en">${esc(x.name)}</b><span>${esc(x.vi)}</span><span class="tpl-ex" lang="en">${esc(x.ex).replace(/\n/g, "<br>")}</span></li>`).join("")}</ol></section>
+    <section class="panel stack"><h3 style="margin:0">Cụm diễn đạt hữu ích</h3><div class="list">${t.phrases.map(x => `<div class="item"><span class="grow"><span class="t" lang="en">${esc(x.en)}</span><br><span class="s">${esc(x.vi)} <span class="muted small">(${esc(x.use)})</span></span></span>${hear(x.en.replace(/\.\.\./g, ""))}</div>`).join("")}</div></section>
+    <section class="panel stack"><div class="row between"><h3 style="margin:0">Bài mẫu</h3>${hear(t.model.lines.join(" "), "Nghe bài mẫu")}</div><div class="tpl-model">${model}</div>
+      <div class="tpl-notes">${t.model.notes.map((n, i) => `<p><sup class="tpl-n">${i + 1}</sup> ${esc(n.vi)}</p>`).join("")}</div></section>
+    <section class="panel stack"><h3 style="margin:0">Lỗi thường gặp</h3>${t.mistakes.map(m => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(m.x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(m.v)}</span><span class="why">${esc(m.why)}</span></div>`).join("")}</section>
+    <section class="panel stack track-med"><h3 style="margin:0">Luyện tập</h3>
+      <div class="ex-tiles"><a class="ex-tile" href="#/practice/e-wt-${t.id}"><span class="ex-ic">${ic("exam", 22)}</span><span class="grow"><b>Luyện nhanh</b><br><span class="muted small">Điền cụm vào bài mẫu, chọn giọng điệu, sắp xếp câu. 11 câu.</span></span><span class="chip">${p ? Math.round(p.best * 100) + "%" : "chưa làm"}</span></a>
+      <a class="ex-tile" href="#/templates/${t.id}:write"><span class="ex-ic">${ic("grammar", 22)}</span><span class="grow"><b>Viết lại theo mẫu</b><br><span class="muted small">Viết bài của bạn cho một tình huống mới, có bảng kiểm tự động.</span></span><span class="chip">${w ? Math.round(w.best * 100) + "%" : "chưa viết"}</span></a></div></section>
+    </div>`;
+}
+function tplCheckHtml(tp, text) { return tplChecks(tp, text).map(c => `<li class="${c.ok ? "ok" : ""}"><span class="tpl-tick" aria-hidden="true">${c.ok ? "✓" : "○"}</span><span>${esc(c.vi)}</span></li>`).join(""); }
+const TPLW = { show: false, saved: null };
+function viewTplWrite(t) {
+  const draft = tplDraft(t.id), tk = t.task;
+  return `<section class="page-head"><a class="muted small" href="#/templates/${t.id}">${esc(t.title)}</a><h1>Viết lại theo mẫu</h1><p class="lede" style="margin:0">Dùng cấu trúc và cụm diễn đạt của mẫu để viết bài của riêng bạn cho tình huống dưới đây.</p></section>
+    <div class="stack">
+    <section class="panel stack"><h3 style="margin:0">Tình huống</h3><p lang="en">${esc(tk.scenario)}</p><p class="muted">${esc(tk.scenario_vi)}</p><p class="small"><b>Cần có:</b></p><ul class="tpl-points" lang="en">${tk.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul><p class="muted small">Độ dài gợi ý: ${tk.min} đến ${tk.max} từ.</p></section>
+    <section class="panel stack"><div class="row between"><h3 style="margin:0">Bài của bạn</h3><span class="muted small" id="tplWc">${tplWords(draft)} từ</span></div>
+      <textarea id="tplText" class="field" rows="12" lang="en" spellcheck="true" placeholder="Viết bài bằng tiếng Anh ở đây…" aria-label="Bài viết của bạn">${esc(draft)}</textarea>
+      <ul class="tpl-check" id="tplCheck">${tplCheckHtml(t, draft)}</ul>
+      <div class="row"><button class="btn primary" data-act="tplSave">Chấm và lưu</button><button class="btn" data-act="tplModel">${TPLW.show ? "Ẩn bài mẫu" : "Xem bài mẫu để so sánh"}</button><a class="btn quiet" href="#/templates/${t.id}">Về hướng dẫn</a></div>
+      ${TPLW.saved ? `<div class="feedback ${TPLW.saved >= 0.8 ? "ok" : "no"}" role="status"><b>Đã lưu: ${Math.round(TPLW.saved * 100)}% mục trong bảng kiểm.</b> ${TPLW.saved >= 0.8 ? "Bài viết đạt yêu cầu. Hãy so với bài mẫu để học thêm cách diễn đạt." : "Bổ sung các mục chưa tích rồi chấm lại. Bảng kiểm chỉ kiểm tra cấu trúc và nội dung chính, không chấm ngữ pháp: hãy tự đọc lại và so với bài mẫu."}</div>` : ""}</section>
+    ${TPLW.show ? `<section class="panel stack"><h3 style="margin:0">Bài mẫu</h3><div class="tpl-model">${t.model.lines.map(l => `<p class="tpl-line" lang="en">${esc(l)}</p>`).join("")}</div></section>` : ""}
+    </div>`;
+}
+viewTemplates = function () {
+  const [id, mode] = (ROUTE.arg || "").split(":");
+  if (id && TPL_BY[id]) return mode === "write" ? viewTplWrite(TPL_BY[id]) : viewTplDetail(TPL_BY[id]);
+  return TPL.length ? viewTplList() : viewTemplatesStub();
+};
+EXTRA_VIEWS.templates = viewTemplates;
+addEventListener("input", e => {
+  if (!e.target || e.target.id !== "tplText") return;
+  const [id] = (ROUTE.arg || "").split(":"), t = TPL_BY[id]; if (!t) return;
+  const v = e.target.value; try { localStorage.setItem("tnk_tpl_" + id, v); } catch (x) { }
+  const wc = document.getElementById("tplWc"), ck = document.getElementById("tplCheck"); if (wc) wc.textContent = tplWords(v) + " từ"; if (ck) ck.innerHTML = tplCheckHtml(t, v);
+});
+addEventListener("hashchange", () => { TPLW.show = false; TPLW.saved = null; });
+Object.assign(ACT, {
+  tplModel() { TPLW.show = !TPLW.show; render(); },
+  tplSave() {
+    const [id] = (ROUTE.arg || "").split(":"), t = TPL_BY[id]; if (!t) return; const v = $("#tplText")?.value || "";
+    const r = tplChecks(t, v), frac = r.filter(x => x.ok).length / r.length; TPLW.saved = frac;
+    S.exam = S.exam || {}; const p = S.exam["tw-" + id]; S.exam["tw-" + id] = { best: Math.max(p?.best || 0, frac), n: (p?.n || 0) + 1, last: Date.now() };
+    evidence("writing", frac >= 0.8, "tpl:" + id); touch(); save(); render();
+  }
+});
+if (typeof SKILL_HOW !== "undefined") SKILL_HOW.writing = "Với từng mẫu trong Thư viện mẫu viết: viết lại theo mẫu (đạt từ 80% bảng kiểm) và làm bài luyện nhanh (đạt từ 70%).";
+const _skillCoverage52 = skillCoverage;
+skillCoverage = function () {
+  const c = _skillCoverage52();
+  if (TPL.length) { const cl = x => Math.max(0, Math.min(1, x)); c.writing = TPL.reduce((a, t) => a + 0.6 * cl(((exRes("tw-" + t.id) || {}).best || 0) / 0.8) + 0.4 * cl(((exRes("e-wt-" + t.id) || {}).best || 0) / 0.7), 0) / TPL.length; }
+  return c;
+};
+
 /* ---------------- Tùy chỉnh giao diện: cỡ chữ, thu gọn thanh công cụ và menu (lưu theo từng thiết bị) ---------------- */
 const FS_LEVELS = [0.9, 1, 1.12, 1.25, 1.4], FS_NAMES = ["Nhỏ", "Vừa", "Lớn", "Rất lớn", "Cực lớn"];
 const UI = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem("tnk_ui") || "{}") || {}; } catch (e) { o = {}; } return { tb: !!o.tb, side: !!o.side, fs: Math.min(FS_LEVELS.length - 1, Math.max(0, Number.isInteger(o.fs) ? o.fs : 1)) }; })();
@@ -3257,11 +3481,22 @@ function trEn(text, d = 0) {
   }
   return v === undefined ? null : v;
 }
+let _SUBS = null;
+function subTitleSet() {
+  if (_SUBS) return _SUBS;
+  _SUBS = new Set();
+  const add = o => { if (o && typeof o.vi === "string") { const v = o.vi.replace(/\s+/g, " ").trim(); if (v.length >= 3) _SUBS.add(v); } };
+  [typeof LIB !== "undefined" ? LIB : [], typeof GRAMMAR !== "undefined" ? GRAMMAR : [], typeof UNITS !== "undefined" ? UNITS : [], typeof LESSONS !== "undefined" ? LESSONS : [], typeof GEN_LESSONS !== "undefined" ? GEN_LESSONS : [], typeof CASES !== "undefined" ? CASES : [], typeof MED_EX !== "undefined" ? MED_EX : []].forEach(arr => arr.forEach(add));
+  UNITS.forEach(u => (u.groups || []).forEach(add));
+  return _SUBS;
+}
 const TR_SKIP = ".lw-vi, .example-vi, .spec-vi, textarea, input, script, style";
 function trNode(n) {
   const t = n.nodeValue; if (!t || !t.trim()) return;
   const core = t.replace(/\s+/g, " ").trim(); if (!VI_RE.test(core) && !I18N.exact.has(core)) return;
   if (n.parentElement && n.parentElement.closest(TR_SKIP)) return;
+  /* Tiếng Anh: bỏ chú thích tiếng Việt đứng cạnh tiêu đề tiếng Anh (chủ đề, điểm ngữ pháp, chặng, bài học) để khỏi lặp nghĩa tiêu đề. */
+  if (n.parentElement && subTitleSet().has(core) && !n.parentElement.closest(".lw, .choice, button, .chip, select, option, textarea")) { n.parentElement.classList.add("bi-dup"); return; }
   const v = trEn(t); if (v == null || v === core) return;
   n.nodeValue = (/^\s/.test(t) ? " " : "") + v + (/\s$/.test(t) ? " " : "");
 }
