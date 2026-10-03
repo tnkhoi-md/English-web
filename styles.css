@@ -819,3 +819,4 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .def-q { font-size: 21px; line-height: 1.45; margin: 4px 0 6px; font-family: var(--serif, inherit); }
 .def-hint { gap: 10px; align-items: center; margin-bottom: 10px; }
 .vi-hint { color: var(--muted, #5b6675); font-size: 15px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--gen, #3158d4) 10%, transparent); }
+.lw-ex::before, .ex-item > .example::before, .example.eg::before { content: "E.g: "; font-style: normal; font-weight: 700; font-size: .86em; letter-spacing: .02em; color: var(--gen, #3158d4); margin-right: 2px; }

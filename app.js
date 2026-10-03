@@ -503,7 +503,7 @@ function viewToday() {
         <div class="grid3"><div class="stat"><b>${streak()}</b><span>ngày liên tiếp</span></div><div class="stat"><b>${dueList().length}</b><span>thẻ đến hạn</span></div><div class="stat"><b>${Object.keys(S.cards).length}</b><span>thẻ đã có</span></div></div>
         <p class="muted small">Chỉ tính thời gian bạn đang làm bài. Một ngày được tính vào chuỗi khi học từ 5 phút.</p></div>
       <div class="panel stack ${wod.l.track === "med" ? "track-med" : "track-gen"}"><div class="row between"><h3>${pool.length ? "Một từ để nói to hôm nay" : "Xem trước một từ"}</h3>${hear(wod.w.w)}</div>
-        ${specimen(wod.w, "sm")}${partsHtml(wod.w.parts)}<p><b>${esc(wod.w.vi)}</b></p><p class="example" lang="en">${esc(wod.w.ex)}</p></div>
+        ${specimen(wod.w, "sm")}${partsHtml(wod.w.parts)}<p><b>${esc(wod.w.vi)}</b></p><p class="example eg" lang="en">${esc(wod.w.ex)}</p></div>
     </div>
     <div class="panel stack" style="margin-top:14px"><div class="row between"><h3>Lỗi sai thường gặp</h3><a class="muted small" href="#/lesson/${tip.l}">từ ${(LESSON_BY[tip.l] || {}).title || tip.l}</a></div>
       <div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(tip.x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(tip.v)}</span><span class="why">${esc(tip.why)}</span></div></div>`;
