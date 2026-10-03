@@ -244,13 +244,29 @@ function voicePair() {
   const v2 = vs.find(v => v.name === S.settings.voice2) || pool.find(v => v !== v1) || v1;
   return [v1, v2];
 }
-function stopSpeech() { SPEECH.token++; SPEECH.busy = false; if (TTS_OK) speechSynthesis.cancel(); document.querySelectorAll(".line.speaking").forEach(e => e.classList.remove("speaking")); }
-function say(text, opt = {}) {
+function stopSpeech() { SPEECH.token++; SPEECH.busy = false; if (SPEECH.audio) { const a = SPEECH.audio; SPEECH.audio = null; try { a.pause(); } catch { } } if (TTS_OK) speechSynthesis.cancel(); document.querySelectorAll(".line.speaking").forEach(e => e.classList.remove("speaking")); }
+/* Âm thanh thu sẵn (giọng Mỹ, tạo bằng Piper) cho bài nghe và câu ví dụ; thiếu file thì đọc bằng giọng máy. */
+function audioHash(s) { let x = 0x811c9dc5, y = 0x1234567; for (let i = 0; i < s.length; i++) { const ch = s.charCodeAt(i); x = Math.imul(x ^ ch, 0x01000193) >>> 0; y = (y * 31 + ch) >>> 0; } return x.toString(16).padStart(8, "0") + y.toString(16).padStart(8, "0"); }
+function recordedUrl(text, who) {
+  if (typeof AUDIO_MAP === "undefined" || S.settings.accent === "uk") return null;
+  const h = audioHash((who ? 1 : 0) + "|" + String(text).split(/\s+/).join(" ").trim());
+  return AUDIO_MAP[h] ? `audio/${h}.mp3` : null;
+}
+function playRecorded(url, rate) {
   return new Promise(res => {
+    const a = new Audio(url); SPEECH.audio = a; a.preservesPitch = true; a.playbackRate = rate;
+    let fin = false; const done = ok => { if (fin) return; fin = true; if (SPEECH.audio === a) SPEECH.audio = null; SPEECH.busy = false; markActive(); res(ok); };
+    a.onended = () => done(true); a.onerror = () => done(false); a.onpause = () => done(true);
+    SPEECH.busy = true; markActive(); a.play().catch(() => done(false));
+  });
+}
+function say(text, opt = {}) {
+  const rate = clamp((opt.rate || S.settings.rate) * (opt.slow ? 0.78 : 1), 0.5, 1.3), url = recordedUrl(text, opt.who);
+  const synth = () => new Promise(res => {
     if (!TTS_OK) { toast("Trình duyệt này không hỗ trợ đọc văn bản."); return res(); }
     const [v1, v2] = voicePair(); const who = opt.who || 0;
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = langCode(); u.rate = clamp((opt.rate || S.settings.rate) * (opt.slow ? 0.78 : 1), 0.5, 1.3);
+    u.lang = langCode(); u.rate = rate;
     const v = who ? v2 : v1; if (v) u.voice = v;
     u.pitch = who && v1 === v2 ? 1.18 : who ? 1 : 0.96;
     SPEECH.busy = true; markActive();
@@ -258,6 +274,7 @@ function say(text, opt = {}) {
     u.onend = done; u.onerror = done;
     speechSynthesis.speak(u);
   });
+  return url ? playRecorded(url, rate).then(ok => ok ? undefined : synth()) : synth();
 }
 async function sayLines(lines, onLine) {
   stopSpeech(); const my = SPEECH.token;
@@ -629,9 +646,12 @@ const STEP = {
   mcq(step, st) { return `<span class="step-kind">${KIND[step.k]}</span><p class="q" lang="en" style="font-size:22px">${esc(step.q)}</p>${choicesHtml(step, st, -1)}`; },
   cloze(step, st) {
     const shown = st.done ? (step.opts ? step.opts[step.a] : step.a[0]) : "";
-    const sent = esc(step.s).replace("___", `<span class="gap">${shown ? esc(shown) : "&nbsp;"}</span>`);
-    if (step.opts) return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">Chọn từ điền vào chỗ trống.</p><p class="cloze" lang="en">${sent}</p>${step.hint ? `<p class="muted small">Gợi ý, ${esc(step.hint)}</p>` : ""}${choicesHtml({ opts: step.opts, a: step.a, why: step.why, wrong: step.wrong }, st, -1)}`;
-    return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">Gõ từ còn thiếu.</p><p class="cloze" lang="en">${sent}</p>${step.hint ? `<p class="muted small">Gợi ý, ${esc(step.hint)}</p>` : ""}
+    const sent = esc(step.s || "").replace("___", `<span class="gap">${shown ? esc(shown) : "&nbsp;"}</span>`);
+    /* Dạng nghĩa Anh-Anh: đọc định nghĩa rồi chọn hoặc gõ từ; gợi ý tiếng Việt nằm sau nút bấm. */
+    const prompt = step.def ? `<p class="def-q" lang="en">${esc(step.def)}</p><div class="row def-hint"><button class="btn quiet small" data-act="toggleVi">${st.vi ? "Ẩn gợi ý" : "Gợi ý tiếng Việt"}</button>${st.vi ? `<span class="vi-hint">${esc(step.vi)}</span>` : ""}</div>${step.hint && !step.opts ? `<p class="muted small">Gợi ý, ${esc(step.hint)}</p>` : ""}`
+      : `<p class="cloze" lang="en">${sent}</p>${step.hint ? `<p class="muted small">Gợi ý, ${esc(step.hint)}</p>` : ""}`;
+    if (step.opts) return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">${step.def ? "Đọc nghĩa tiếng Anh, chọn từ phù hợp." : "Chọn từ điền vào chỗ trống."}</p>${prompt}${choicesHtml({ opts: step.opts, a: step.a, why: step.why, wrong: step.wrong }, st, -1)}`;
+    return `<span class="step-kind">${KIND[step.k]}</span><p class="muted">${step.def ? "Đọc nghĩa tiếng Anh rồi gõ từ đó." : "Gõ từ còn thiếu."}</p>${prompt}
       <div class="row"><input class="field" id="ans" style="flex:1;min-width:180px" value="${esc(st.val || "")}" data-enter="checkCloze" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Từ còn thiếu"><button class="btn primary" data-act="checkCloze" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>
       ${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Đúng, chỉ sai chính tả nhẹ." : "Đúng.") : "Đáp án: " + esc(step.a[0]) + "."}</b> ${esc(step.why)}</div>` : st.tries ? `<div class="feedback no" role="status"><b>Chưa đúng.</b> Thử lại một lần.</div>` : ""}`;
   },
@@ -736,7 +756,7 @@ function viewReview() {
   if (ROUTE.arg !== "go") {
     const st = cardStats(), due = dueList().length, fc = forecast(7), max = Math.max(1, ...fc);
     const nextDue = Object.values(S.cards).map(c => c.due).filter(t => t > Date.now()).sort((a, b) => a - b)[0];
-    return `<section class="page-head"><h1>Ôn tập</h1><p class="lede">Thuật toán FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ: nhìn từ nhớ nghĩa, và nhìn nghĩa gõ lại từ.</p></section>
+    return `<section class="page-head"><h1>Ôn tập</h1><p class="lede">Thuật toán FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ (nhận biết nghĩa và gợi nhớ từ). Mỗi lần ôn, thẻ hiện dưới một trong nhiều hình thức: lật thẻ, chọn nghĩa, nghe và chọn, chọn định nghĩa, điền vào câu, đoán từ từ định nghĩa, sắp xếp chữ cái, nghe và gõ.</p></section>
       ${st.total ? `<div class="panel stack"><div class="grid3"><div class="stat"><b>${due}</b><span>đến hạn bây giờ</span></div><div class="stat"><b>${st.learning + st.new}</b><span>mới hoặc đang học</span></div><div class="stat"><b>${st.mature}</b><span>đã vững (từ 21 ngày)</span></div></div>
         <div class="row">${due ? `<a class="btn primary" href="#/review/go">Bắt đầu ôn ${due} thẻ</a>` : `<p class="muted">Không có thẻ đến hạn. ${nextDue ? "Thẻ tiếp theo đến hạn sau " + fmtIvl(nextDue - Date.now()) + "." : ""}</p>`}</div></div>
         <div class="panel stack" style="margin-top:14px"><h3>Số thẻ đến hạn 7 ngày tới</h3><div class="bars">${fc.map((v, i) => `<div><span>${v}</span><i style="height:${v / max * 90}%"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></div>
@@ -1802,13 +1822,24 @@ function viewGrammar() {
       <p><b>IELTS</b>: không có bài ngữ pháp riêng. “Grammatical Range and Accuracy” là một trong bốn tiêu chí chấm Writing và Speaking, thưởng điểm cho câu phức viết đúng.</p>
       <p><b>VSTEP</b>: bốn kỹ năng, mỗi kỹ năng 25%. Ngữ pháp được chấm trong Viết và Nói.</p></section>`;
 }
+/* Lý thuyết ngữ pháp trình bày dạng danh sách có màu: tóm tắt, công thức, cách dùng, dấu hiệu, lưu ý. */
+const GP_COL = ["#3158d4", "#0a8f78", "#c9862c", "#7a63d6", "#d9486b", "#2f8fd8"];
+function grammarTheoryHtml(g, fallback) {
+  const t = typeof GRAMMAR_THEORY !== "undefined" ? GRAMMAR_THEORY[g.id] : null; if (!t) return fallback;
+  const hear2 = x => hear(x.replace(/\.\.\./g, "").replace(/[()\/]/g, " "));
+  return `<section class="gp-sum" role="note"><span class="gp-ic">${ic("target", 18)}</span><span>${esc(t.summary)}</span></section>
+    <section class="panel stack gp-sec gp-f"><h3>Công thức</h3><ul class="gp-list">${t.formulas.map((f, i) => `<li><span class="gp-label" style="--c:${GP_COL[i % GP_COL.length]}">${esc(f.label)}</span><div class="gp-pat" lang="en">${esc(f.pattern)}</div><div class="gp-fex" lang="en">${esc(f.ex)}${hear(f.ex)}</div></li>`).join("")}</ul></section>
+    <section class="panel stack gp-sec gp-u"><h3>Cách dùng</h3><ol class="gp-uses">${t.uses.map((u, i) => `<li style="--c:${GP_COL[i % GP_COL.length]}"><div class="gp-ut"><b>${esc(u.title)}</b><span>${esc(u.detail)}</span></div><div class="gp-uex"><span class="en" lang="en">${esc(u.ex)}</span><span class="vi">${esc(u.exvi)}</span>${hear(u.ex)}</div></li>`).join("")}</ol></section>
+    ${t.signals && t.signals.length ? `<section class="panel stack gp-sec gp-s"><h3>Dấu hiệu nhận biết</h3><div class="gp-chips" lang="en">${t.signals.map((x, i) => `<span class="gp-chip" style="--c:${GP_COL[(i + 2) % GP_COL.length]}">${esc(x)}</span>`).join("")}</div></section>` : ""}
+    <section class="panel stack gp-sec gp-c"><h3>Cần nhớ</h3><ul class="gp-caut">${t.cautions.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>`;
+}
 function viewGrammarPoint(g) {
   if (!GQ || GQ.id !== g.id) GQ = { id: g.id, st: g.quiz.map(() => ({})) };
   const qs = g.quiz.map(([q, opts, a, why, wrong]) => ({ q, opts, a, why, wrong }));
   const allDone = GQ.st.every(s => s.done), ok = GQ.st.filter(s => s.ok).length;
   const i = GRAMMAR.indexOf(g), prev = GRAMMAR[i - 1], next = GRAMMAR[i + 1];
   return `<section class="page-head"><a class="muted small" href="#/grammar">Thư viện ngữ pháp</a><div class="row"><span class="lv lv-${g.lvl}">${g.lvl}</span><span class="exrow">${g.exams.map(e => `<span class="exm exm-${e}">${e}</span>`).join("")}</span></div><h1 lang="en">${esc(g.title)}</h1><p class="lede">${esc(g.vi)}</p></section>
-    <div class="grid2"><section class="panel stack track-gen accent"><h3>Công thức</h3><p style="white-space:pre-line">${esc(g.form)}</p></section><section class="panel stack"><h3>Cách dùng</h3><p>${esc(g.use)}</p></section></div>
+    ${grammarTheoryHtml(g, `<div class="grid2"><section class="panel stack track-gen accent"><h3>Công thức</h3><p style="white-space:pre-line">${esc(g.form)}</p></section><section class="panel stack"><h3>Cách dùng</h3><p>${esc(g.use)}</p></section></div>`)}
     <section class="panel stack" style="margin-top:14px"><h3>Ví dụ</h3><div class="ex-list">${g.ex.map(([en, vi]) => `<div class="ex-item"><span class="en" lang="en">${esc(en)}</span><span class="vi">${esc(vi)}</span>${hear(en)}</div>`).join("")}</div></section>
     <section class="panel stack" style="margin-top:14px"><h3>Lỗi sai thường gặp</h3><div>${g.err.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div></section>
     <section class="panel stack" style="margin-top:14px"><div class="row between"><h3>Luyện tập</h3>${allDone ? `<span class="chip ${ok === qs.length ? "good" : "acc"}">đúng ${ok}/${qs.length}</span>` : ""}</div>
@@ -1916,9 +1947,22 @@ APP.version = "4.2"; APP.build = "02.10.26";
 const UNIT_BY = Object.fromEntries(UNITS.map(u => [u.id, u]));
 UNITS.forEach(u => { u.cases = u.cases || []; u.pron = u.pron || []; });
 /* Giải thích vì sao một lựa chọn sai: it.wrong = { "lựa chọn": "lý do" }. */
+/* Trong lời giải thích tiếng Việt, cụm tiếng Anh chưa có dấu ngoặc kép được tự bọc “…” để tách khỏi phần giải thích. */
+const VI_PLAIN = new Set("cho ba ta sau nam nay em con nha xe que ban bao chi anh cam tay may mat mua nhu nho la da ma na co bo ca trong cong hang tong ong".split(" "));
+const EN_T = "(?<![A-Za-zÀ-ỹ])(?:[A-Za-z][A-Za-z'’-]*|V\\d)(?![A-Za-zÀ-ỹ])", EN_SEP = "(?:\\s*[+\\/]\\s*|\\s+)";
+const EN_RUN = new RegExp(EN_T + "(?:" + EN_SEP + EN_T + ")+", "g");
+function quoteEn(s) {
+  s = String(s == null ? "" : s);
+  if (!/[À-ỹ]/.test(s)) return s;
+  return s.split(/(“[^”]*”|"[^"]*")/).map((seg, i) => i % 2 ? seg : seg.replace(EN_RUN, m => {
+    const toks = m.split(/[\s+\/]+/).filter(Boolean);
+    return toks.some(t => VI_PLAIN.has(t.toLowerCase())) ? m : "“" + m + "”";
+  })).join("");
+}
+const escQ = s => esc(quoteEn(s));
 function wrongWhy(it, idx) {
   const opt = it && it.opts && idx != null ? it.opts[idx] : null, r = opt != null && it.wrong ? it.wrong[opt] : "";
-  return r ? `<div class="why-wrong" role="note"><b>Vì sao “<span lang="en">${esc(opt)}</span>” chưa đúng:</b> ${esc(r)}</div>` : "";
+  return r ? `<div class="why-wrong" role="note"><b>Vì sao “<span lang="en">${esc(opt)}</span>” chưa đúng:</b> ${escQ(r)}</div>` : "";
 }
 function parseWrongMap(str) { const m = {}; (str || "").split(";;").forEach(x => { const i = x.indexOf("=>"); if (i > 0) m[x.slice(0, i).trim()] = x.slice(i + 2).trim(); }); return m; }
 function parseBank(txt) {
@@ -2060,7 +2104,7 @@ viewGrammarPoint = function (g) {
   const i = GRAMMAR.indexOf(g), prev = GRAMMAR[i - 1], next = GRAMMAR[i + 1], r = S.gram[g.id], us = unitsWithGrammar(g.id);
   const types = [...new Set(g.bank.map(b => b.t))].map(t => PX_LABEL[t]).join(", ");
   return `<section class="page-head"><a class="muted small" href="#/grammar">Thư viện ngữ pháp</a><div class="row"><span class="lv lv-${g.lvl}">${g.lvl}</span><span class="exrow">${g.exams.map(e => `<span class="exm exm-${e}">${e}</span>`).join("")}</span></div><h1 lang="en">${esc(g.title)}</h1><p class="lede">${esc(g.vi)}</p>${us.length ? `<div class="row" style="gap:6px"><span class="muted small">Thuộc chặng:</span>${unitLinks(us)}</div>` : ""}</section>
-    <div class="grid2"><section class="panel stack track-gen accent"><h3>Công thức</h3><p style="white-space:pre-line">${esc(g.form)}</p></section><section class="panel stack"><h3>Cách dùng</h3><p>${esc(g.use)}</p></section></div>
+    ${grammarTheoryHtml(g, `<div class="grid2"><section class="panel stack track-gen accent"><h3>Công thức</h3><p style="white-space:pre-line">${esc(g.form)}</p></section><section class="panel stack"><h3>Cách dùng</h3><p>${esc(g.use)}</p></section></div>`)}
     <section class="panel stack" style="margin-top:14px"><h3>Ví dụ</h3><div class="ex-list">${g.ex.map(([en, vi]) => `<div class="ex-item"><span class="en" lang="en">${esc(en)}</span><span class="vi">${esc(vi)}</span>${hear(en)}</div>`).join("")}</div></section>
     <section class="panel stack" style="margin-top:14px"><h3>Lỗi sai thường gặp</h3><div>${g.err.map(([x, v, why]) => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(x)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(v)}</span><span class="why">${esc(why)}</span></div>`).join("")}</div></section>
     <section class="panel stack practice-cta" style="margin-top:14px"><div class="row between"><h3>✍️ Luyện tập</h3>${r ? `<span class="chip ${r.best >= 0.7 ? "good" : "acc"}">tốt nhất ${Math.round(r.best * 100)}%, ${r.n} lượt</span>` : `<span class="chip">chưa luyện</span>`}</div>
@@ -2134,7 +2178,7 @@ function pxBody(it, st) {
   let fb = "";
   if (st.done) {
     const answer = it.t === "c" || it.t === "x" ? it.opts[it.a] : it.t === "t" || it.t === "s" ? it.ans[0] : it.t === "o" ? it.s : it.t === "f" ? `${it.wrong} → ${it.fix}` : it.t === "m" ? it.w.vi : it.w.w;
-    fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> ${!st.ok || it.t === "f" || st.typo ? `<span class="en" lang="en">${esc(it.t === "f" ? "Sửa: " + it.wrong + " → " + it.fix : answer)}</span>. ` : ""}${esc(it.why || "")}</div>${!st.ok && (it.t === "c" || it.t === "x") ? wrongWhy(it, st.pick) : ""}${it.w ? `<div class="row">${hear(it.w.w)}${it.w.ex ? `<span class="example" lang="en" style="font-size:16px">${esc(it.w.ex)}</span>` : ""}</div>` : it.t === "o" ? `<div>${hear(it.s)}</div>` : ""}`;
+    fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> ${!st.ok || it.t === "f" || st.typo ? `<span class="en" lang="en">${esc(it.t === "f" ? "Sửa: " + it.wrong + " → " + it.fix : answer)}</span>. ` : ""}${escQ(it.why || "")}</div>${!st.ok && (it.t === "c" || it.t === "x") ? wrongWhy(it, st.pick) : ""}${it.w ? `<div class="row">${hear(it.w.w)}${it.w.ex ? `<span class="example" lang="en" style="font-size:16px">${esc(it.w.ex)}</span>` : ""}</div>` : it.t === "o" ? `<div>${hear(it.s)}</div>` : ""}`;
   }
   return lbl + body + fb;
 }
@@ -2151,7 +2195,7 @@ function pxFinish() {
   const pass = PX.kind === "u" ? 0.8 : 0.7;
   return `<span class="step-kind">Kết quả</span><h1>${esc(PX.title)}</h1><div class="row" style="gap:18px"><div class="result-num">${Math.round(sc * 100)}%</div><p class="muted">${ok}/${tot} câu đúng<br>${sc >= pass ? "Đạt yêu cầu." : `Cần ${Math.round(pass * 100)}% để đạt.`}</p></div>
     <div>${Object.entries(by).map(([t, [o, n]]) => `<div class="skill"><span>${PX_LABEL[t]}</span><div class="bar"><i style="width:${o / n * 100}%"></i></div><span class="n">${o}/${n}</span></div>`).join("")}</div>
-    ${wrong.length ? `<h3>Xem lại câu sai</h3><div class="list">${wrong.map(([it]) => `<div class="item"><span class="grow"><span class="s">${PX_LABEL[it.t]}</span><br><span class="en" lang="en">${esc(it.q && it.t !== "x" && it.t !== "m" && it.t !== "r" && it.t !== "s" ? it.q : it.s || (it.w ? it.w.w : it.q))}</span><br><span class="small"><b>Đáp án:</b> <span lang="en">${esc(it.t === "c" || it.t === "x" ? it.opts[it.a] : it.t === "t" || it.t === "s" ? it.ans[0] : it.t === "o" ? it.s : it.t === "f" ? it.wrong + " → " + it.fix : it.t === "m" ? it.w.vi : it.w.w)}</span></span><br><span class="muted small">${esc(it.why || "")}</span></span></div>`).join("")}</div>` : `<div class="feedback ok">Không sai câu nào.</div>`}
+    ${wrong.length ? `<h3>Xem lại câu sai</h3><div class="list">${wrong.map(([it]) => `<div class="item"><span class="grow"><span class="s">${PX_LABEL[it.t]}</span><br><span class="en" lang="en">${esc(it.q && it.t !== "x" && it.t !== "m" && it.t !== "r" && it.t !== "s" ? it.q : it.s || (it.w ? it.w.w : it.q))}</span><br><span class="small"><b>Đáp án:</b> <span lang="en">${esc(it.t === "c" || it.t === "x" ? it.opts[it.a] : it.t === "t" || it.t === "s" ? it.ans[0] : it.t === "o" ? it.s : it.t === "f" ? it.wrong + " → " + it.fix : it.t === "m" ? it.w.vi : it.w.w)}</span></span><br><span class="muted small">${escQ(it.why || "")}</span></span></div>`).join("")}</div>` : `<div class="feedback ok">Không sai câu nào.</div>`}
     <div class="row">${wrong.length ? `<button class="btn primary" data-act="pxRetryWrong">Làm lại ${wrong.length} câu sai</button>` : ""}<button class="btn" data-act="pxRestart">Làm lượt mới</button><a class="btn quiet" href="${PX.back}">Quay lại</a></div>`;
 }
 function viewPractice() {
@@ -2223,10 +2267,13 @@ function buildGenSteps(l, unitIdx, part) {
   const steps = [];
   shuffle(ws.filter(w => !/·/.test(w.w))).slice(0, 2).forEach(w => { const opts = shuffle([w.w, ...others(w, 3)]); steps.push({ t: "mcq", k: "vocab", q: `Which word means “${w.vi}”?`, opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` }); });
   /* Câu điền từ: kèm gợi ý nghĩa tiếng Việt của từ cần điền. Gợi ý này là thứ phân biệt đáp án đúng với các từ còn lại (cùng từ loại, khác nghĩa), nên không có hai đáp án cùng đúng. */
-  withEx.slice(0, 2).forEach(w => {
+  /* Điền từ theo nghĩa Anh-Anh (không dùng câu ví dụ để điền); nghĩa tiếng Việt chỉ hiện khi bấm gợi ý. Từ chưa có định nghĩa thì dùng câu ví dụ như cũ. */
+  const defWords = ws.filter(w => !/·/.test(w.w) && defOf(w)), defPick = defWords.length >= 2 ? defWords : withEx;
+  defPick.slice(0, 2).forEach(w => {
     const lesson = rankDistractors(w, ws, 3), more = lesson.length < 3 ? rankDistractors(w, pool.filter(x => !lesson.includes(x)), 3 - lesson.length) : [];
     const opts = shuffle([w.w, ...lesson.map(x => x.w), ...more.map(x => x.w)]);
-    if (opts.length >= 4) steps.push({ t: "cloze", k: "vocab", s: blank(w), hint: `nghĩa của từ cần điền: ${hintOf(w)}`, opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` });
+    const d = defOf(w), why = `${w.w}: ${w.vi}.${w.ex ? ` Ví dụ: “${w.ex}”` : ""}`;
+    if (opts.length >= 4) steps.push(d ? { t: "cloze", k: "vocab", def: d, vi: hintOf(w), opts, a: opts.indexOf(w.w), why } : { t: "cloze", k: "vocab", s: blank(w), hint: `nghĩa của từ cần điền: ${hintOf(w)}`, opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` });
   });
   const cls = ws.filter(w => !/·/.test(w.w) && w.pos);
   if (cls.length >= 3) steps.push({ t: "classify", k: "vocab", title: "Word classes", q: "Mỗi từ thuộc từ loại nào?", opts: ["danh từ", "động từ", "tính từ", "khác"], items: cls.map(w => [w.w, posIndex(w.pos)]), why: "n là danh từ, v là động từ, adj là tính từ. Trạng từ (adv), cụm từ (phr), giới từ (prep)… xếp vào loại khác. Một số từ có nhiều từ loại; ở đây tính theo nghĩa đang học." });
@@ -2242,7 +2289,7 @@ function buildGenSteps(l, unitIdx, part) {
   const dsent = sent[1] || (withEx.length > 1 ? withEx[1].ex : null);
   if (dsent && dsent.split(/\s+/).length <= 14) steps.push({ t: "dict", k: "listening", s: dsent, vi: "Nghe câu có từ mới rồi chép lại." });
   const sp = ws.filter(w => !/·/.test(w.w)).slice(-1)[0];
-  if (sp) { const tHint = `nghĩa: ${hintOf(sp)}; bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`; steps.push(sp.ex && wordRe(sp).test(sp.ex) ? { t: "cloze", k: "writing", s: blank(sp), hint: tHint, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : { t: "cloze", k: "writing", s: `“${sp.vi}” in English: ___`, hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `${sp.w}: ${sp.vi}.` }); }
+  if (sp) { const tHint = `nghĩa: ${hintOf(sp)}; bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, spDef = defOf(sp); steps.push(spDef ? { t: "cloze", k: "writing", def: spDef, vi: hintOf(sp), hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : sp.ex && wordRe(sp).test(sp.ex) ? { t: "cloze", k: "writing", s: blank(sp), hint: tHint, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : { t: "cloze", k: "writing", s: `“${sp.vi}” in English: ___`, hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `${sp.w}: ${sp.vi}.` }); }
   steps.push({ t: "pairs", set: PAIR_KEYS[(unitIdx * 3 + part) % PAIR_KEYS.length] });
   const fam = ws.every(w => /·/.test(w.w)); const spk = (fam ? ws : ws.filter(w => !/·/.test(w.w))).slice(0, 4);
   steps.push({ t: "speak", title: "Use the new words", prompt: `Say or write one short sentence with each word: ${spk.map(w => baseWord(w.w)).join(", ")}.`, vi: fam ? "Nói hoặc viết mỗi họ từ một câu, dùng ít nhất dạng đầu tiên của họ từ." : "Nói hoặc viết mỗi từ một câu ngắn. Máy kiểm tra bạn đã dùng đủ các từ chưa.", models: spk.map(w => w.ex || `${capFirst(baseWord(w.w))}.`), kw: spk.map(w => fam ? w.w.split(" · ").map(x => x.toLowerCase()) : [baseWord(w.w).toLowerCase()]), labels: spk.map(w => baseWord(w.w)) });
@@ -2379,7 +2426,7 @@ const _mergeAlias = mergeState; mergeState = (a, b) => _mergeAlias(migrateAliase
 S = load();
 
 /* ---------------- Định nghĩa tiếng Anh (B1 trở lên) ---------------- */
-const defOf = w => (typeof WORD_DEFS !== "undefined" && WORD_DEFS[w.key]) || "";
+function defOf(w) { const k = w.key || (w.lw && w.lw.key); return (typeof WORD_DEFS !== "undefined" && k && WORD_DEFS[k]) || ""; }
 const _wordRow46 = wordRow;
 wordRow = (w, a, b) => { const h = _wordRow46(w, a, b), d = defOf(w); return d ? h.replace(/(<div class="lw-vi">[^<]*<\/div>)/, `$1<div class="lw-def" lang="en">${esc(d)}</div>`) : h; };
 const RD_ALL = typeof READING !== "undefined" ? READING : [];
@@ -2429,7 +2476,7 @@ if (D_T5.length) addSet({ id: "t5-mix", group: "t5", title: "Trộn mọi dạng
 function gapItems(p, typed) {
   const fills = p.gaps.map(g => typed ? g.ans[0] : g.opts[g.a]);
   return p.gaps.map((g, k) => {
-    const base = { pass: { id: p.id, title: p.title, text: p.text, fills }, gap: k, why: g.why, wrong: g.wrong, skill: "grammar", src: "ex:" + p.id };
+    const base = { pass: { id: p.id, title: p.title, text: p.text, fills }, gap: k, why: g.why, wrong: g.wrong, mean: g.mean, gram: g.gram, clue: g.clue, skill: "grammar", src: "ex:" + p.id };
     if (typed) return { ...base, t: "po", ans: g.ans.slice() };
     const [opts, a] = shuffleChoice(g.opts, g.a); return { ...base, t: "p", opts, a, sentence: g.type === "sentence" };
   });
@@ -2463,6 +2510,8 @@ const NEWT = { k: 1, p: 1, po: 1, w: 1 };
 const PXV = { hide: false };
 
 /* ---------------- Hiển thị câu hỏi ---------------- */
+/* Giải thích có cấu trúc (nghĩa, ngữ pháp, dấu hiệu) cho câu điền đoạn văn. */
+const whyBlock = it => (it.mean || it.gram) ? `<ul class="why-list">${it.mean ? `<li class="w-mean"><b>Nghĩa:</b> ${escQ(it.mean)}</li>` : ""}${it.gram ? `<li class="w-gram"><b>Ngữ pháp:</b> ${escQ(it.gram)}</li>` : ""}${it.clue ? `<li class="w-clue"><b>Dấu hiệu:</b> ${escQ(it.clue)}</li>` : ""}</ul>` : esc(it.why || "");
 function passageParas(text, mapTok) { return text.split(/\n\n/).map(par => `<p>${mapTok ? mapTok(par) : esc(par)}</p>`).join(""); }
 function gapPassage(it, st) {
   const cur = it.gap, fills = it.pass.fills;
@@ -2493,7 +2542,7 @@ pxBody = function (it, st) {
   let fb = "";
   if (st.done) {
     const ev = it.t === "k" && it.ev ? ` <span class="muted small">Bằng chứng trong bài: “<span lang="en">${esc(it.ev)}</span>”.</span>` : "";
-    fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && it.t !== "w" && it.t !== "po" ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${esc(it.why || "")}${ev}</div>${!st.ok && it.opts && st.pick != null ? wrongWhy(it, st.pick) : ""}`;
+    fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && it.t !== "w" && it.t !== "po" ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${whyBlock(it)}${ev}</div>${!st.ok && it.opts && st.pick != null ? wrongWhy(it, st.pick) : ""}`;
   }
   return lbl + body + fb;
 };
@@ -2521,7 +2570,7 @@ pxFinish = function () {
   const wrong = PX.items.map((it, k) => [it, PX.st[k]]).filter(([, s]) => !s.ok);
   return `<span class="step-kind">Kết quả</span><h1>${esc(PX.title)}</h1><div class="row" style="gap:18px"><div class="result-num">${Math.round(sc * 100)}%</div><p class="muted">${ok}/${tot} câu đúng<br>${sc >= 0.7 ? "Đạt yêu cầu." : "Cần 70% để đạt."}</p></div>
     <div>${Object.entries(by).map(([t, [o, n]]) => `<div class="skill"><span>${PX_LABEL[t]}</span><div class="bar"><i style="width:${o / n * 100}%"></i></div><span class="n">${o}/${n}</span></div>`).join("")}</div>
-    ${wrong.length ? `<h3>Xem lại câu sai</h3><div class="list">${wrong.map(([it]) => `<div class="item"><span class="grow"><span class="s">${PX_LABEL[it.t]}</span><br><span class="en" lang="en">${esc(itemLabel(it))}</span><br><span class="small"><b>Đáp án:</b> <span lang="en">${esc(itemAnswer(it))}</span></span><br><span class="muted small">${esc(it.why || "")}</span></span></div>`).join("")}</div>` : `<div class="feedback ok">Không sai câu nào.</div>`}
+    ${wrong.length ? `<h3>Xem lại câu sai</h3><div class="list">${wrong.map(([it]) => `<div class="item"><span class="grow"><span class="s">${PX_LABEL[it.t]}</span><br><span class="en" lang="en">${esc(itemLabel(it))}</span><br><span class="small"><b>Đáp án:</b> <span lang="en">${esc(itemAnswer(it))}</span></span><br><span class="muted small">${escQ(it.why || "")}</span></span></div>`).join("")}</div>` : `<div class="feedback ok">Không sai câu nào.</div>`}
     <div class="row">${wrong.length ? `<button class="btn primary" data-act="pxRetryWrong">Làm lại ${wrong.length} câu sai</button>` : ""}<button class="btn" data-act="pxRestart">Làm lượt mới</button><a class="btn quiet" href="${PX.back}">Quay lại</a></div>`;
 };
 
@@ -2898,7 +2947,7 @@ viewReview = function () {
   const cards = st.total ? `<div class="grid2" style="margin-top:14px">
       <section class="panel stack"><h3 style="margin:0">Mức nhớ của ${st.total} thẻ</h3><div class="rv-stack" role="img" aria-label="Phân bố mức nhớ">${seg}</div><div class="rv-legend">${legend}</div></section>
       <section class="panel stack"><div class="row between"><h3 style="margin:0">7 ngày tới</h3><span class="muted small">${wk} thẻ</span></div><div class="bars">${fc.map((v, i) => `<div title="${v} thẻ"><span>${v}</span><i style="height:${Math.max(v ? 6 : 0, Math.round(v / max * 80))}px"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></section></div>` : "";
-  const help = `<details class="panel rv-help" style="margin-top:14px"><summary><b>Chấm thế nào cho đúng</b> <span class="muted small">(phím 1 đến 4, cách để lật thẻ)</span></summary><div class="rv-grades">${grades.map(([k, l, c, d]) => `<div class="rv-g rv-g-${c}"><b><kbd>${k}</kbd> ${l}</b><span>${d}</span></div>`).join("")}</div><p class="muted small">Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch. FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ: nhìn từ nhớ nghĩa, và nhìn nghĩa gõ lại từ.</p></details>`;
+  const help = `<details class="panel rv-help" style="margin-top:14px"><summary><b>Chấm thế nào cho đúng</b> <span class="muted small">(phím 1 đến 4, cách để lật thẻ)</span></summary><div class="rv-grades">${grades.map(([k, l, c, d]) => `<div class="rv-g rv-g-${c}"><b><kbd>${k}</kbd> ${l}</b><span>${d}</span></div>`).join("")}</div><p class="muted small">Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch. FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ (nhận biết nghĩa và gợi nhớ từ). Mỗi lần ôn, thẻ hiện dưới một trong nhiều hình thức: lật thẻ, chọn nghĩa, nghe và chọn, chọn định nghĩa, điền vào câu, đoán từ từ định nghĩa, sắp xếp chữ cái, nghe và gõ.</p></details>`;
   return `<section class="page-head"><h1>Luyện tập</h1><p class="lede">Ôn thẻ đến hạn trước, rồi làm bài theo dạng. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích; đạt từ 70% là qua bộ đề.</p></section>
     <h2 class="sec-h" style="margin-top:6px">Ôn thẻ</h2>${hero}${cards}${help}
     <h2 class="sec-h" style="margin-top:22px">Bài tập theo dạng</h2>${examSections()}`;
@@ -2932,7 +2981,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.22.1"; APP.build = "01.10.26";
+APP.version = "4.23.1"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3308,7 +3357,7 @@ pxBody = function (it, st) {
     body = `<p class="muted">Xếp mỗi từ vào đúng nhóm.</p><div class="cf-list">${it.items.map(([w, c], k) => { const p = st.pk[k]; const cls = st.done ? (p === c ? "right" : "wrong") : ""; return `<div class="cf-row ${cls}"><span class="en" lang="en"><b>${esc(w)}</b></span><span class="cf-btns">${it.cats.map((n, ci) => `<button class="tile ${p === ci ? "on" : ""}" data-act="cfSet" data-k="${k}" data-c="${ci}" ${st.done ? "disabled" : ""}>${esc(n)}</button>`).join("")}</span></div>`; }).join("")}</div>${st.done ? "" : `<div class="row"><button class="btn primary" data-act="cfCheck" ${Object.keys(st.pk).length === it.items.length ? "" : "disabled"}>Kiểm tra</button></div>`}`;
   }
   let fb = "";
-  if (st.done) { fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && ["so", "mp", "cf"].includes(it.t) ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${esc(it.why || "")}</div>${!st.ok && it.t === "au" ? wrongWhy(it, st.pick) : ""}`; }
+  if (st.done) { fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && ["so", "mp", "cf"].includes(it.t) ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${escQ(it.why || "")}</div>${!st.ok && it.t === "au" ? wrongWhy(it, st.pick) : ""}`; }
   return lbl + body + fb;
 };
 const _pxCheck52 = ACT.pxCheck;
@@ -3418,7 +3467,7 @@ skillCoverage = function () {
 
 /* ---------------- Tùy chỉnh giao diện: cỡ chữ, thu gọn thanh công cụ và menu (lưu theo từng thiết bị) ---------------- */
 const FS_LEVELS = [0.9, 1, 1.12, 1.25, 1.4], FS_NAMES = ["Nhỏ", "Vừa", "Lớn", "Rất lớn", "Cực lớn"];
-const UI = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem("tnk_ui") || "{}") || {}; } catch (e) { o = {}; } return { tb: !!o.tb, side: !!o.side, fs: Math.min(FS_LEVELS.length - 1, Math.max(0, Number.isInteger(o.fs) ? o.fs : 1)) }; })();
+const UI = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem("tnk_ui") || "{}") || {}; } catch (e) { o = {}; } return { tb: !!o.tb, side: !!o.side, mute: !!o.mute, rev: o.rev === "classic" ? "classic" : "auto", fs: Math.min(FS_LEVELS.length - 1, Math.max(0, Number.isInteger(o.fs) ? o.fs : 1)) }; })();
 function saveUI() { try { localStorage.setItem("tnk_ui", JSON.stringify(UI)); } catch (e) { } }
 function applyUI() {
   const b = document.body, r = document.documentElement; if (!b) return;
@@ -3453,6 +3502,154 @@ const _viewSettings51 = viewSettings;
 viewSettings = function () {
   const row = `<div class="setting"><div><b>Cỡ chữ</b><div class="s">Phóng to hoặc thu nhỏ nội dung học trên thiết bị này.</div></div><div class="seg-tog" role="group" aria-label="Cỡ chữ">${FS_NAMES.map((n, i) => `<button data-act="fsPick" data-i="${i}" aria-pressed="${UI.fs === i}">${n}</button>`).join("")}</div></div>`;
   return _viewSettings51().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, (m) => m + row);
+};
+applyUI();
+
+/* ---------------- Học im lặng (bỏ qua phần nghe) ---------------- */
+Object.assign(ICONS, { mute: '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/>' });
+const _say53 = say; say = function (t, o) { return UI.mute ? Promise.resolve() : _say53(t, o); };
+const _applyUI53 = applyUI; applyUI = function () { _applyUI53(); if (document.body) document.body.classList.toggle("mute", UI.mute); };
+const _toolbar53 = toolbar;
+toolbar = function () {
+  const g = `<div class="tb-group tb-mute" role="group" aria-label="Âm thanh"><button class="tb ${UI.mute ? "on" : ""}" data-act="uiMute" aria-pressed="${UI.mute}" title="Học im lặng: bỏ qua phần nghe và nói" aria-label="Học im lặng">${ic("mute", 18)}</button></div>`;
+  return _toolbar53().replace('<span id="timer"', g + '<span id="timer"');
+};
+const _focusBar53 = focusBar;
+focusBar = (segs, label) => _focusBar53(segs, label).replace('<span id="timer"', `<button class="tb ${UI.mute ? "on" : ""}" data-act="uiMute" aria-pressed="${UI.mute}" title="Học im lặng: bỏ qua phần nghe và nói" aria-label="Học im lặng">${ic("mute", 18)}</button><span id="timer"`);
+ACT.uiMute = function () { UI.mute = !UI.mute; saveUI(); applyUI(); stopSpeech(); toast(UI.mute ? "Đã bật học im lặng: bỏ qua phần nghe và nói." : "Đã tắt học im lặng."); render(); };
+const _buildLesson53 = buildLesson;
+buildLesson = function (l) { const x = _buildLesson53(l); if (UI.mute) x.steps = x.steps.filter(s => s.t !== "dict" && s.t !== "speak"); return x; };
+const _stepListen53 = STEP.listen;
+STEP.listen = (step, st) => { if (UI.mute) st.show = true; return _stepListen53(step, st); };
+const _viewLesson53 = viewLesson;
+viewLesson = function () {
+  let h = _viewLesson53(); if (!L) return h; const step = L.steps[L.i];
+  if (step && (step.t === "dict" || step.t === "listen")) h = h.replace('<button class="btn primary" data-act="stepNext"', '<button class="btn quiet" data-act="stepSkip">Bỏ qua phần nghe</button><button class="btn primary" data-act="stepNext"');
+  return h;
+};
+ACT.stepSkip = () => ACT.stepNext();
+const _startPractice53 = startPractice;
+startPractice = function (arg) {
+  const ok = _startPractice53(arg); if (!ok || !UI.mute) return ok;
+  const keep = PX.items.filter(it => it.t !== "l"); if (!keep.length) return false;
+  if (keep.length !== PX.items.length) { PX.items = keep; PX.st = keep.map(() => ({})); }
+  return ok;
+};
+const _pxBody53 = pxBody;
+pxBody = function (it, st) {
+  let h = _pxBody53(it, st);
+  if (it.t === "l" && !st.done) h += `<div class="row" style="margin-top:10px"><button class="btn quiet small" data-act="pxSkip">Bỏ qua câu nghe này</button></div>`;
+  if (it.t === "au") {
+    if (UI.mute || st.reveal) { h = h.replace(/<div class="row"><button class="btn primary" data-act="pxPlayAu">[\s\S]*?<\/button><button class="btn" data-act="pxPlayAu" data-slow="1">[\s\S]*?<\/button><\/div>/, `<div class="dialogue" lang="en">${it.script.map(l => `<div class="line"><span class="who">${esc(l[0])}</span><div><div class="en">${esc(l[1])}</div></div></div>`).join("")}</div>`); }
+    if (!st.done) h += `<div class="row" style="margin-top:10px">${UI.mute || st.reveal ? "" : `<button class="btn quiet small" data-act="pxShowScript">Không nghe được? Hiện bản ghi</button>`}<button class="btn quiet small" data-act="pxSkip">Bỏ qua câu này</button></div>`;
+  }
+  return h;
+};
+Object.assign(ACT, {
+  pxShowScript() { PX.st[PX.i].reveal = true; render(); },
+  pxSkip() { PX.items.splice(PX.i, 1); PX.st.splice(PX.i, 1); if (!PX.items.length) { location.hash = PX.back || "#/review"; return; } render(); }
+});
+
+/* ---------------- Thẻ ôn tập nhiều hình thức ---------------- */
+const REV_LABEL = { mcvi: "Chọn nghĩa của từ", lmc: "Nghe và chọn nghĩa", mcdef: "Chọn định nghĩa tiếng Anh", mcen: "Chọn từ tiếng Anh cho nghĩa", clmc: "Điền từ vào câu", defw: "Đoán từ từ định nghĩa", scr: "Sắp xếp chữ cái", ltype: "Nghe và gõ lại từ" };
+const revBase = info => info.lw || (info.w && info.w.lw) || null;
+const revDef = info => { const b = revBase(info); return b ? defOf(b) : ""; };
+function revDistract(info, n, needDef) {
+  const b = revBase(info), w = info.w;
+  let pool = [...(b ? b.topic.words : []), ...(info.l && info.l.words ? info.l.words : [])].filter(x => x && x.w && x.vi && x.w.toLowerCase() !== w.w.toLowerCase() && !/·/.test(x.w));
+  if (needDef) pool = pool.filter(x => defOf(x));
+  return rankDistractors(w, pool, n);
+}
+function revEligible(info) {
+  const w = info.w, ok = {}, def = revDef(info), p3 = revDistract(info, 3, false).length >= 3;
+  if (info.dir === "r") { ok.flash = 1; if (p3) ok.mcvi = 1; if (def && revDistract(info, 3, true).length >= 3) ok.mcdef = 1; if (p3 && !UI.mute) ok.lmc = 1; }
+  else { ok.type = 1; if (p3) ok.mcen = 1; if (p3 && w.ex && blankIn(w.ex, w.w)) ok.clmc = 1; if (def && p3) ok.defw = 1; if (/^[A-Za-z]{4,13}$/.test(w.w)) ok.scr = 1; if (!UI.mute) ok.ltype = 1; }
+  return ok;
+}
+const REV_W = {
+  r: { new: { mcvi: 5, flash: 2, mcdef: 1 }, young: { flash: 3, mcvi: 2, mcdef: 2, lmc: 1 }, mature: { flash: 3, mcdef: 2, lmc: 2 } },
+  p: { new: { mcen: 4, clmc: 3, scr: 2, type: 1 }, young: { type: 3, clmc: 2, scr: 2, defw: 2, mcen: 1, ltype: 1 }, mature: { type: 4, scr: 2, defw: 2, ltype: 2, clmc: 1 } }
+};
+function pickRevMode(id) {
+  const info = cardInfo(id), c = S.cards[id]; if (!info) return "flash";
+  if (UI.rev === "classic") return info.dir === "r" ? "flash" : "type";
+  const stage = c.state === "review" ? (c.s >= 21 ? "mature" : "young") : "new", ok = revEligible(info), wt = REV_W[info.dir][stage];
+  let cand = Object.entries(wt).filter(([k]) => ok[k]); if (!cand.length) return info.dir === "r" ? "flash" : "type";
+  if (cand.length > 1 && R && R.lastMode) { const alt = cand.filter(([k]) => k !== R.lastMode); if (alt.length) cand = alt; }
+  let r = Math.random() * cand.reduce((a, [, x]) => a + x, 0); for (const [k, x] of cand) { r -= x; if (r <= 0) { R.lastMode = k; return k; } } R.lastMode = cand[0][0]; return cand[0][0];
+}
+function revPrepare(info, m, st) {
+  const w = info.w, mk = (right, wrongs, f) => { const o = shuffle([{ t: f(right), ex: "" , r: 1 }, ...wrongs.map(x => ({ t: f(x), ex: x }))]); return o; };
+  st.ready = true; st.t0 = Date.now();
+  if (m === "mcvi" || m === "lmc") { const d = revDistract(info, 3, false); st.opts = shuffle([{ t: w.vi, r: 1 }, ...d.map(x => ({ t: x.vi, src: x.w }))]); st.kind = "mc"; }
+  else if (m === "mcdef") { const d = revDistract(info, 3, true); st.opts = shuffle([{ t: revDef(info), r: 1 }, ...d.map(x => ({ t: defOf(x), src: x.w }))]); st.kind = "mc"; }
+  else if (m === "mcen" || m === "clmc" || m === "defw") { const d = revDistract(info, 3, false); st.opts = shuffle([{ t: w.w, r: 1 }, ...d.map(x => ({ t: x.w, src: x.vi }))]); st.kind = "mc"; }
+  else if (m === "scr") { st.kind = "scr"; st.tiles = w.w.split(""); do { st.pool = shuffle(st.tiles.map((_, k) => k)); } while (st.pool.every((v, k) => v === k)); st.ans = []; }
+  else st.kind = "type";
+  if (st.opts) st.a = st.opts.findIndex(o => o.r);
+}
+function revFeedback(info, st) {
+  const w = info.w, mine = st.opts && st.pick != null ? st.opts[st.pick] : null;
+  let why = "";
+  if (!st.ok && mine && mine.src) why = `<div class="why-wrong" role="note"><b>Vì sao “<span lang="en">${esc(mine.t.length > 60 ? mine.t.slice(0, 60) + "…" : mine.t)}</span>” chưa đúng:</b> ${REV_SRC_TXT[R.mode](mine.src, w)}</div>`;
+  return `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> <span class="en" lang="en" style="font-size:19px">${esc(w.w)}</span> <span class="muted">${esc(ipaOf(w))}</span><br><span>${esc(w.vi)}</span></div>${why}<div class="row">${hear(w.w)}${w.ex ? hear(w.ex, "Nghe câu") + `<span class="example" lang="en" style="font-size:17px">${esc(w.ex)}</span>` : ""}</div>`;
+}
+const REV_SRC_TXT = {
+  mcvi: (src) => `đó là nghĩa của từ “<span lang="en">${esc(src)}</span>”, không phải của từ đang hỏi.`,
+  lmc: (src) => `đó là nghĩa của từ “<span lang="en">${esc(src)}</span>”, không phải của từ bạn vừa nghe.`,
+  mcdef: (src) => `đó là định nghĩa của từ “<span lang="en">${esc(src)}</span>”.`,
+  mcen: (src, w) => `từ này nghĩa là “${esc(src)}”, không phải “${esc(w.vi)}”.`,
+  clmc: (src, w) => `từ này nghĩa là “${esc(src)}”, không hợp với gợi ý nghĩa “${esc(w.vi)}” của chỗ trống.`,
+  defw: (src, w) => `từ này nghĩa là “${esc(src)}”, không khớp với định nghĩa đã cho.`
+};
+function revCommit(g) {
+  const id = R.cur, c = schedule(S.cards[id], g); S.cards[id] = c;
+  evidence("vocab", g >= 3, "review"); R.n++; if (g === 1) R.again++; if (c.due - Date.now() < 20 * MIN) R.queue.push(id); touch();
+}
+function viewRevMode() {
+  const info = cardInfo(R.cur), c = S.cards[R.cur], w = info.w, m = R.mode, st = R.mst, left = R.queue.length + 1;
+  if (!st.ready) revPrepare(info, m, st);
+  if (!st.played && !st.done && (m === "lmc" || m === "ltype")) { st.played = true; setTimeout(() => speakNow(w.w), 300); }
+  const optsHtml = () => `<div class="choices">${st.opts.map((o, k) => { const cls = st.done ? (o.r ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="rvPick" data-o="${k}" ${st.done ? "disabled" : ""} ${m === "mcvi" || m === "lmc" || m === "mcdef" ? "" : 'lang="en"'}>${esc(o.t)}</button>`; }).join("")}</div>`;
+  let body = "";
+  if (m === "mcvi") body = `<div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div>${optsHtml()}</div>`;
+  else if (m === "lmc") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button><button class="btn" data-act="rvPlay" data-slow="1">Nghe chậm</button></div>${optsHtml()}</div>`;
+  else if (m === "mcdef") body = `<div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div><span class="pos">${esc(w.pos || "")}</span>${optsHtml()}</div>`;
+  else if (m === "mcen") body = `<div class="flash"><p style="font-size:26px;font-weight:600">${esc(w.vi)}</p><span class="pos">${esc(w.pos || "")}</span>${optsHtml()}</div>`;
+  else if (m === "clmc") { const bl = blankIn(w.ex, w.w); body = `<div class="flash"><p class="cloze" lang="en" style="font-size:22px">${bl}</p><p class="muted small">Gợi ý nghĩa của từ cần điền: ${esc(w.vi)}</p>${optsHtml()}</div>`; }
+  else if (m === "defw") body = `<div class="flash"><p lang="en" style="font-size:20px;font-style:italic">${esc(revDef(info))}</p><span class="pos">${esc(w.pos || "")}</span>${optsHtml()}</div>`;
+  else if (m === "scr") body = `<div class="flash"><p style="font-size:26px;font-weight:600">${esc(w.vi)}</p><span class="pos">${esc(w.pos || "")}</span><div class="tiles answer" lang="en">${st.ans.map((k, j) => `<button class="tile" data-act="rvScrOut" data-j="${j}" ${st.done ? "disabled" : ""}>${esc(st.tiles[k])}</button>`).join("") || '<span class="muted small" style="padding:8px">Chạm các chữ cái theo đúng thứ tự.</span>'}</div><div class="tiles" lang="en">${st.pool.map(k => `<button class="tile ${st.ans.includes(k) ? "used" : ""}" data-act="rvScrIn" data-k="${k}" ${st.done || st.ans.includes(k) ? "disabled" : ""}>${esc(st.tiles[k])}</button>`).join("")}</div>${st.done ? "" : `<div class="row"><button class="btn" data-act="rvScrReset">Xếp lại</button></div>`}</div>`;
+  else if (m === "ltype") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button><button class="btn" data-act="rvPlay" data-slow="1">Nghe chậm</button></div><p class="muted small">Nghe rồi gõ lại đúng từ. Gợi ý nghĩa: ${esc(w.vi)}</p><div class="row"><input class="field" id="rvAns" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="rvTypeCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Gõ từ bạn nghe được">${st.done ? "" : `<button class="btn primary" data-act="rvTypeCheck">Kiểm tra</button>`}</div></div>`;
+  const fb = st.done ? revFeedback(info, st) : "";
+  const act = st.done ? `<div class="step-actions"><button class="btn primary" data-act="rvNext" style="width:100%">Tiếp tục</button></div>` : "";
+  return `<div class="track-${info.l.track}">${focusBar(null, `Còn ${left} thẻ`)}<div class="focus-page"><article class="step-card"><span class="step-kind">${REV_LABEL[m]}</span>${body}${fb}<p class="muted small">Từ ${esc(info.l.title)}${c.state === "new" ? ", thẻ mới" : c.lapses ? ", đã quên " + c.lapses + " lần" : ""}</p></article>${act}</div></div>`;
+}
+const _nextCard53 = nextCard;
+nextCard = function () { _nextCard53(); if (R.cur) { R.mode = pickRevMode(R.cur); R.mst = {}; if (R.mode !== "flash" && R.mode !== "type") R.phase = "mode"; } };
+const _viewReview53 = viewReview;
+viewReview = function () { if (ROUTE.arg === "go") { if (!R) startReview(); if (R && R.cur && R.phase === "mode") return viewRevMode(); } return _viewReview53(); };
+function revFinish(ok, typo) { const st = R.mst; st.done = true; st.ok = ok; st.typo = !!typo; revCommit(ok ? (typo ? 2 : 3) : 1); render(); speakNow(cardInfo(R.cur).w.w); }
+Object.assign(ACT, {
+  rvPick(el) { const st = R.mst; if (st.done) return; st.pick = +el.dataset.o; revFinish(st.pick === st.a, false); },
+  rvPlay(el) { speakNow(cardInfo(R.cur).w.w, { slow: !!el.dataset.slow }); },
+  rvNext() { stopSpeech(); nextCard(); render(); if (!R.cur) save(); },
+  rvScrIn(el) { const st = R.mst; if (st.done) return; st.ans.push(+el.dataset.k); if (st.ans.length === st.tiles.length) { const w = cardInfo(R.cur).w.w; revFinish(st.ans.map(k => st.tiles[k]).join("") === w, false); } else render(); },
+  rvScrOut(el) { const st = R.mst; if (st.done) return; st.ans.splice(+el.dataset.j, 1); render(); },
+  rvScrReset() { R.mst.ans = []; render(); },
+  rvTypeCheck() { const st = R.mst; if (st.done) return; const w = cardInfo(R.cur).w; st.val = $("#rvAns")?.value || ""; const v = norm(st.val), t = norm(w.w); if (!v) return; const typo = v !== t && t.length > 4 && lev(v, t) <= 1; revFinish(v === t || typo, typo); },
+  revModeSet(el) { UI.rev = el.dataset.v === "classic" ? "classic" : "auto"; saveUI(); render(); }
+});
+document.addEventListener("keydown", e => {
+  if (ROUTE.name !== "review" || ROUTE.arg !== "go" || !R || !R.cur || R.phase !== "mode" || e.target.matches("input, textarea")) return;
+  const st = R.mst; if (!st) return;
+  if (!st.done && st.opts && /^[1-4]$/.test(e.key)) { e.preventDefault(); ACT.rvPick({ dataset: { o: String(+e.key - 1) } }); }
+  else if (st.done && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); ACT.rvNext(); }
+});
+const _viewSettings53 = viewSettings;
+viewSettings = function () {
+  const rows = `<div class="setting"><div><b>Học im lặng</b><div class="s">Bỏ qua phần nghe và nói để học ở nơi không bật được âm thanh: ẩn nút nghe, bỏ bài chép chính tả và bài nói, bài nghe hiểu hiện bản ghi.</div></div><div class="seg-tog" role="group" aria-label="Học im lặng"><button data-act="uiMute" aria-pressed="${!UI.mute}">Tắt</button><button data-act="uiMute" aria-pressed="${UI.mute}">Bật</button></div></div>
+    <div class="setting"><div><b>Hình thức thẻ ôn</b><div class="s">Tự động đa dạng: mỗi lần ôn thẻ xuất hiện dưới một trong 8 hình thức, dễ hơn với thẻ mới và khó hơn với thẻ đã vững. Hoặc chỉ dùng 2 kiểu cổ điển.</div></div><div class="seg-tog" role="group" aria-label="Hình thức thẻ ôn"><button data-act="revModeSet" data-v="auto" aria-pressed="${UI.rev !== "classic"}">Đa dạng</button><button data-act="revModeSet" data-v="classic" aria-pressed="${UI.rev === "classic"}">Cổ điển</button></div></div>`;
+  return _viewSettings53().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, m => m + rows);
 };
 applyUI();
 

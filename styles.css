@@ -784,3 +784,38 @@ textarea.field { width: 100%; resize: vertical; font: 16px/1.55 var(--en); paddi
 .cf-row.wrong { border-color: var(--bad); background: var(--bad-soft); }
 .cf-btns { display: flex; gap: 6px; flex-wrap: wrap; }
 .cf-btns .tile.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+/* ===== Học im lặng và thẻ ôn nhiều hình thức ===== */
+body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="pxPlayAu"], body.mute [data-act="playDialog"], body.mute [data-act="sayStep"], body.mute [data-act="phHear"], body.mute [data-act="rvPlay"], body.mute [data-act="asrSpeak"], body.mute [data-act="recStart"], body.mute [data-act="quoteNext"] ~ [data-act="say"] { display: none !important; }
+.tb.on { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.tb-mute .tb { min-width: 34px; justify-content: center; }
+.step-card .choices .choice { text-align: left; }
+.why-wrong span[lang="en"] { font-family: var(--en); }
+/* ===== Lý thuyết ngữ pháp dạng danh sách ===== */
+.gp-sum { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: linear-gradient(135deg, color-mix(in srgb, var(--gen) 12%, var(--surface)), color-mix(in srgb, var(--med) 10%, var(--surface))); border: 1px solid var(--rule); font-weight: 600; margin-bottom: 14px; }
+.gp-ic { color: var(--gen); flex: none; margin-top: 1px; }
+.gp-sec { margin-top: 14px; border-left: 4px solid var(--gen); }
+.gp-u { border-left-color: var(--med); } .gp-s { border-left-color: #7a63d6; } .gp-c { border-left-color: #c9862c; background: color-mix(in srgb, #c9862c 6%, var(--surface)); }
+.gp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.gp-list li { display: grid; gap: 6px; }
+.gp-label { justify-self: start; font-size: 12px; font-weight: 700; letter-spacing: .02em; padding: 3px 10px; border-radius: 999px; color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--surface)); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--rule)); }
+.gp-pat { font-family: var(--en); font-weight: 600; font-size: 16.5px; padding: 9px 12px; border-radius: 10px; border: 1.5px solid color-mix(in srgb, var(--gen) 40%, var(--rule)); background: color-mix(in srgb, var(--gen) 6%, var(--surface)); overflow-wrap: anywhere; }
+.gp-fex { font-family: var(--en); color: var(--muted); font-size: 15px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-left: 4px; }
+.gp-uses { margin: 0; padding: 0; list-style: none; counter-reset: gpu; display: grid; gap: 12px; }
+.gp-uses li { counter-increment: gpu; position: relative; padding-left: 38px; display: grid; gap: 6px; }
+.gp-uses li::before { content: counter(gpu); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; font: 700 13px/1 var(--ui); color: var(--c); background: color-mix(in srgb, var(--c) 15%, var(--surface)); }
+.gp-ut { display: grid; gap: 2px; } .gp-ut span { color: var(--muted); font-size: 14.5px; }
+.gp-uex { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center; padding: 8px 10px; border-radius: 10px; background: var(--sunk); border-left: 3px solid var(--c); }
+.gp-uex .en { font-family: var(--en); font-size: 16px; } .gp-uex .vi { grid-column: 1; color: var(--muted); font-size: 13.5px; } .gp-uex .icon-btn { grid-row: 1 / span 2; grid-column: 2; }
+.gp-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.gp-chip { font-family: var(--en); font-size: 15px; padding: 4px 12px; border-radius: 999px; color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 40%, var(--rule)); background: color-mix(in srgb, var(--c) 10%, var(--surface)); }
+.gp-caut { margin: 0; padding-left: 4px; list-style: none; display: grid; gap: 8px; }
+.gp-caut li { position: relative; padding-left: 22px; }
+.gp-caut li::before { content: "!"; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #c9862c; color: #fff; font: 700 11px/16px var(--ui); text-align: center; }
+.why-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; font-size: 14.5px; line-height: 1.55; }
+.why-list li { position: relative; padding: 0 0 0 18px; }
+.why-list li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.why-list .w-mean { --c: #0a8f78; } .why-list .w-gram { --c: #3158d4; } .why-list .w-clue { --c: #b9701a; }
+.why-list b { margin-right: 4px; color: var(--c); }
+.def-q { font-size: 21px; line-height: 1.45; margin: 4px 0 6px; font-family: var(--serif, inherit); }
+.def-hint { gap: 10px; align-items: center; margin-bottom: 10px; }
+.vi-hint { color: var(--muted, #5b6675); font-size: 15px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--gen, #3158d4) 10%, transparent); }

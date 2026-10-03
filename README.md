@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.22.1 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.26.0 (04.10.26).
 
 ## Tính năng
 
@@ -13,7 +13,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.22.1 (02.10.26).
 
 **Từ vựng**
 - **Thư viện từ vựng** khoảng 3.800 từ (hơn 3.100 từ phổ thông) theo chủ đề và cấp độ: phổ thông A1 đến C1, luyện thi (TOEIC, IELTS, VSTEP), họ từ, kết hợp từ, và y khoa (giải phẫu, sinh lý, bệnh học, lâm sàng, giáo trình M1 đến M6). Có câu ví dụ, phiên âm và định nghĩa tiếng Anh cho từ B1 trở lên.
-- **Luyện tập** (một trang): ôn thẻ đến hạn bằng thuật toán FSRS (mỗi từ có thẻ nhìn từ nhớ nghĩa và thẻ nhìn nghĩa gõ lại từ, kèm hướng dẫn chấm), rồi các bài tập theo dạng.
+- **Luyện tập** (một trang): ôn thẻ đến hạn bằng thuật toán FSRS; mỗi từ có hai thẻ nhưng hiện dưới **8 hình thức** (lật thẻ, chọn nghĩa, nghe và chọn nghĩa, chọn định nghĩa tiếng Anh, chọn từ cho nghĩa, điền từ vào câu, đoán từ từ định nghĩa, sắp xếp chữ cái, nghe và gõ), tự chọn theo độ vững của thẻ và có thể đổi về 2 kiểu cổ điển (kèm hướng dẫn chấm), rồi các bài tập theo dạng.
 - **Thư viện thuật ngữ y khoa**: hơn 260 hình vị (tiền tố, gốc, hậu tố) và gần 400 thuật ngữ mẫu chia theo 17 hệ cơ quan, có ô tìm kiếm; luyện ghép thuật ngữ từ các mảnh, chọn theo hệ cơ quan.
 
 **Ngữ pháp, luyện đề, đọc, viết**
@@ -32,6 +32,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.22.1 (02.10.26).
 - **Mục tiêu và tiến bộ** (một trang): thống kê thời gian học và chuỗi ngày, biểu đồ ra-đa mức hoàn thiện kỹ năng (100% là học và làm hết nội dung hiện có), cùng phần thiết lập mục tiêu. Lịch học dạng bảng nhiệt nằm ở trang Hôm nay.
 - **Mục tiêu** và **kiểm tra đầu vào** ước lượng vốn từ.
 - **Cài đặt** gom thành các nhóm thu gọn (Học tập, Giọng đọc, Đồng bộ, Dữ liệu). Đồng bộ thiết bị qua GitHub Gist, sao lưu và khôi phục bằng file, giao diện sáng tối, dùng được trên điện thoại và máy tính bảng.
+- **Học im lặng**: nút trên thanh công cụ (và trong Cài đặt) để bỏ qua phần nghe và nói: ẩn nút nghe, bỏ bài chép chính tả và bài nói, bài nghe hiểu hiện bản ghi; mỗi bài nghe còn có nút bỏ qua riêng.
 - **Tối ưu màn hình học**: tay nắm ở đường giáp ranh giữa menu và nội dung để ẩn/hiện menu (thanh bên hoặc thanh dưới trên điện thoại), chỉnh cỡ chữ 5 mức ngay trên thanh công cụ, trong màn hình học và trong Cài đặt; lưu riêng cho từng thiết bị.
 - **Ngôn ngữ giao diện Việt hoặc Anh**: nút VI/EN trên thanh công cụ. Chỉ dịch phần giao diện; nghĩa tiếng Việt của từ và nội dung bài học giữ nguyên.
 
@@ -80,3 +81,19 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Thư viện là bộ từ lõi có chọn lọc, chưa phải toàn bộ vốn từ của mỗi cấp CEFR; mức C1 còn ít từ nhất. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Điểm Viết và Nói là tự chấm, ứng dụng không chấm tự động, đang trong quá trình hoàn thiện.
 - Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế.
+## Cập nhật 4.26.0
+
+- Giải thích đáp án bài điền đoạn văn gồm ba dòng: **Nghĩa** (từ hoặc cụm từ), **Ngữ pháp** (vì sao chọn dạng này, ví dụ nhận ra quá khứ để chia động từ) và **Dấu hiệu** trong câu.
+- Trang lý thuyết ngữ pháp trình bày dạng danh sách có màu: tóm tắt, công thức đóng khung, cách dùng đánh số kèm ví dụ, dấu hiệu nhận biết và các lưu ý hay nhầm.
+- Mỗi chủ điểm ngữ pháp có ít nhất 22 bài luyện, mọi câu trắc nghiệm đều có 4 đáp án và lý do cho đáp án sai.
+
+## Cập nhật 4.26.0: âm thanh thu sẵn
+
+- Thư mục `audio/` chứa mp3 giọng Mỹ (Piper, giọng `en_US-lessac-high` cho người nói thứ nhất và `en_US-ryan-high` cho người nói thứ hai). `audio/manifest.js` liệt kê các file, khóa là băm của "người nói|câu".
+- Hiện có 698 câu: hội thoại trong bài học, bài nghe hiểu và câu ví dụ ngữ pháp. Nút nghe dùng mp3 trước; câu nào chưa có file, hoặc khi chọn giọng Anh-Anh, thì đọc bằng giọng máy như trước.
+- Tạo thêm: chạy `tools_gen_audio.py` (cần `piper-tts`, `lameenc` và hai mô hình giọng) rồi dựng lại `audio/manifest.js`.
+
+## Cập nhật 4.26.0: điền từ theo nghĩa Anh-Anh
+
+- Bài điền từ trong học từ vựng mới không còn dùng câu ví dụ để chừa trống. Người học đọc định nghĩa tiếng Anh rồi chọn hoặc gõ từ đúng; nghĩa tiếng Việt chỉ hiện khi bấm "Gợi ý tiếng Việt". Câu ví dụ hiện ở phần giải thích sau khi trả lời.
+- Bổ sung 1.791 định nghĩa tiếng Anh cho `WORD_DEFS`, nên mọi từ (không tính họ từ) đều có định nghĩa.
