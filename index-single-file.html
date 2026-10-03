@@ -733,6 +733,44 @@ body { overflow-x: clip; }
 }
 @media (max-width: 520px) { .lw-act .mini { height: 32px; min-height: 0; } .lw-act .icon-btn { width: 44px; height: 40px; } }
 @media (max-width: 700px) { .mt-sys { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; margin-bottom: 8px; } .mt-sys::-webkit-scrollbar { display: none; } .mt-sys .exm-btn { flex: none; white-space: nowrap; } }
+/* ===== Cỡ chữ, thu gọn thanh công cụ và menu ===== */
+.main .page, .focus-page { zoom: var(--fs, 1); }
+.tb-fs .tb { min-width: 30px; padding: 0 6px; justify-content: center; }
+.tb-fs .fs-a { font-weight: 700; line-height: 1; }
+.tb-fs .fs-a.sm { font-size: 12px; }
+.tb-fs .fs-a.lg { font-size: 18px; }
+.tb-fs .fs-cy { display: none; font-weight: 700; }
+.tb:disabled { opacity: .4; cursor: default; }
+.fs-focus { display: inline-flex; font-weight: 700; }
+body.side-folded .shell { grid-template-columns: 1fr; }
+body.side-folded .side { display: none; }
+body.side-folded .main .page { max-width: 1120px; margin-left: auto; margin-right: auto; width: 100%; }
+@media (max-width: 860px) { body.side-folded .bottom { display: none !important; } body.side-folded .main .page { padding-bottom: 28px; } }
+@media (max-width: 520px) {
+  .tb-fs .fs-dn, .tb-fs .fs-up, .tb-fs .tb-cap { display: none; }
+  .tb-fs .fs-cy { display: inline-flex; }
+    .topbar .mobile-brand { order: 0; }
+  .topbar .toolbar { order: 2; }
+    }
+@media (max-width: 520px) {
+  .topbar .tb-group[aria-label="Giọng đọc"] { display: none; }
+  .topbar { gap: 6px; }
+  .topbar     .topbar .toolbar { margin-left: auto; gap: 3px; }
+}
+
+/* Tay nắm đóng mở menu, nằm giữa đường giáp ranh thanh menu và trang nội dung */
+.edge-toggle { position: fixed; z-index: 30; top: 50%; left: 236px; width: 22px; height: 64px; transform: translate(-50%, -50%); padding: 0; border-radius: 12px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 8px -2px color-mix(in srgb, var(--ink) 22%, transparent); }
+.edge-toggle svg { transform: rotate(90deg); transition: transform .15s; }
+.edge-toggle:hover { color: var(--accent); border-color: var(--accent); }
+body.side-folded .edge-toggle { left: 0; transform: translate(0, -50%); border-radius: 0 12px 12px 0; }
+body.side-folded .edge-toggle svg { transform: rotate(-90deg); }
+@media (max-width: 860px) {
+  .edge-toggle { top: auto; left: 50%; bottom: calc(66px + env(safe-area-inset-bottom, 0px)); width: 64px; height: 22px; transform: translate(-50%, 50%); border-radius: 12px 12px 0 0; }
+  .edge-toggle svg { transform: none; }
+  body.side-folded .edge-toggle { left: 50%; bottom: 0; transform: translate(-50%, 0); border-radius: 12px 12px 0 0; }
+  body.side-folded .edge-toggle svg { transform: rotate(180deg); }
+}
+body.focus .edge-toggle { display: none; }
 
 </style>
 </head>
@@ -26586,7 +26624,21 @@ const I18N_EN = {
 "Miễn dịch, dị ứng": "Immune and allergy",
 "Ung bướu": "Oncology",
 "Nhiễm trùng": "Infection",
-"Thuật ngữ chung": "General terms"
+"Thuật ngữ chung": "General terms",
+"Cỡ chữ": "Text size",
+"Giảm cỡ chữ": "Decrease text size",
+"Tăng cỡ chữ": "Increase text size",
+"Đổi cỡ chữ": "Change text size",
+"Ẩn thanh công cụ": "Hide toolbar",
+"Hiện thanh công cụ": "Show toolbar",
+"Ẩn menu": "Hide menu",
+"Hiện menu": "Show menu",
+"Phóng to hoặc thu nhỏ nội dung học trên thiết bị này.": "Enlarge or shrink the learning content on this device.",
+"Nhỏ": "Small",
+"Vừa": "Medium",
+"Lớn": "Large",
+"Rất lớn": "Very large",
+"Cực lớn": "Extra large"
 };
 
 /* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */
@@ -30817,7 +30869,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.20.1"; APP.build = "01.10.26";
+APP.version = "4.21.3"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -31095,6 +31147,46 @@ viewAbout = function () {
    Giao diện được viết bằng tiếng Việt; khi chọn EN, mỗi đoạn chữ hiển thị được tra trong từ điển I18N_EN (content-study.js)
    rồi thay bằng bản tiếng Anh. Câu có số hoặc tên xen vào được nhận dạng theo mẫu {1}, {2}. Đoạn nào chưa có bản dịch giữ tiếng Việt.
    Nội dung học (nghĩa tiếng Việt của từ, giải thích ngữ pháp trong bài) không bị dịch. */
+/* ---------------- Tùy chỉnh giao diện: cỡ chữ, thu gọn thanh công cụ và menu (lưu theo từng thiết bị) ---------------- */
+const FS_LEVELS = [0.9, 1, 1.12, 1.25, 1.4], FS_NAMES = ["Nhỏ", "Vừa", "Lớn", "Rất lớn", "Cực lớn"];
+const UI = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem("tnk_ui") || "{}") || {}; } catch (e) { o = {}; } return { tb: !!o.tb, side: !!o.side, fs: Math.min(FS_LEVELS.length - 1, Math.max(0, Number.isInteger(o.fs) ? o.fs : 1)) }; })();
+function saveUI() { try { localStorage.setItem("tnk_ui", JSON.stringify(UI)); } catch (e) { } }
+function applyUI() {
+  const b = document.body, r = document.documentElement; if (!b) return;
+  b.classList.toggle("side-folded", UI.side);
+  r.style.setProperty("--fs", String(FS_LEVELS[UI.fs]));
+}
+Object.assign(ICONS, { chevUp: '<path d="M6 15l6-6 6 6"/>', chevDown: '<path d="M6 9l6 6 6-6"/>', panel: '<rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="M9.5 5v14"/>' });
+const _toolbar51 = toolbar;
+toolbar = function () {
+  const grp = `<div class="tb-group tb-fs" role="group" aria-label="Cỡ chữ"><span class="tb-cap">Cỡ chữ</span><button class="tb fs-dn" data-act="fsDown" title="Giảm cỡ chữ" aria-label="Giảm cỡ chữ" ${UI.fs <= 0 ? "disabled" : ""}><span class="fs-a sm">A</span></button><button class="tb fs-up" data-act="fsUp" title="Tăng cỡ chữ" aria-label="Tăng cỡ chữ" ${UI.fs >= FS_LEVELS.length - 1 ? "disabled" : ""}><span class="fs-a lg">A</span></button><button class="tb fs-cy" data-act="fsCycle" title="Đổi cỡ chữ" aria-label="Đổi cỡ chữ">Aa</button></div>`;
+  return _toolbar51().replace('<span id="timer"', grp + '<span id="timer"');
+};
+const _focusBar51 = focusBar;
+focusBar = (segs, label) => _focusBar51(segs, label).replace('<span id="timer"', `<button class="tb fs-cy fs-focus" data-act="fsCycle" title="Đổi cỡ chữ" aria-label="Đổi cỡ chữ">Aa</button><span id="timer"`);
+function fsSet(i) { UI.fs = Math.min(FS_LEVELS.length - 1, Math.max(0, i)); saveUI(); applyUI(); render(); }
+Object.assign(ACT, {
+  fsDown() { fsSet(UI.fs - 1); }, fsUp() { fsSet(UI.fs + 1); },
+  fsCycle() { fsSet((UI.fs + 1) % FS_LEVELS.length); toast("Cỡ chữ: " + FS_NAMES[UI.fs]); },
+  fsPick(el) { fsSet(+el.dataset.i); },
+  uiFoldSide() { UI.side = !UI.side; saveUI(); applyUI(); injectFold(); }
+});
+/* Nút thu gọn menu: một tay nắm nằm giữa đường giáp ranh thanh menu và nội dung (thanh bên trên máy tính, thanh dưới trên điện thoại). */
+function injectFold() {
+  document.querySelectorAll(".edge-toggle").forEach(e => e.remove());
+  if (!document.querySelector(".shell") || document.body.classList.contains("focus")) return;
+  const label = UI.side ? "Hiện menu" : "Ẩn menu";
+  document.body.insertAdjacentHTML("beforeend", `<button class="edge-toggle" data-act="uiFoldSide" title="${label}" aria-label="${label}" aria-pressed="${UI.side}">${ic("chevDown", 16)}</button>`);
+}
+const _afterRender51 = afterRender;
+afterRender = function () { _afterRender51(); applyUI(); injectFold(); };
+const _viewSettings51 = viewSettings;
+viewSettings = function () {
+  const row = `<div class="setting"><div><b>Cỡ chữ</b><div class="s">Phóng to hoặc thu nhỏ nội dung học trên thiết bị này.</div></div><div class="seg-tog" role="group" aria-label="Cỡ chữ">${FS_NAMES.map((n, i) => `<button data-act="fsPick" data-i="${i}" aria-pressed="${UI.fs === i}">${n}</button>`).join("")}</div></div>`;
+  return _viewSettings51().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, (m) => m + row);
+};
+applyUI();
+
 const LOC = () => (LANG === "en" ? "en-US" : "vi-VN");
 let LANG = (() => { try { return localStorage.getItem("tnk_lang") === "en" ? "en" : "vi"; } catch (e) { return "vi"; } })();
 const I18N = (() => {

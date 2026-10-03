@@ -718,3 +718,41 @@ body { overflow-x: clip; }
 }
 @media (max-width: 520px) { .lw-act .mini { height: 32px; min-height: 0; } .lw-act .icon-btn { width: 44px; height: 40px; } }
 @media (max-width: 700px) { .mt-sys { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; margin-bottom: 8px; } .mt-sys::-webkit-scrollbar { display: none; } .mt-sys .exm-btn { flex: none; white-space: nowrap; } }
+/* ===== Cỡ chữ, thu gọn thanh công cụ và menu ===== */
+.main .page, .focus-page { zoom: var(--fs, 1); }
+.tb-fs .tb { min-width: 30px; padding: 0 6px; justify-content: center; }
+.tb-fs .fs-a { font-weight: 700; line-height: 1; }
+.tb-fs .fs-a.sm { font-size: 12px; }
+.tb-fs .fs-a.lg { font-size: 18px; }
+.tb-fs .fs-cy { display: none; font-weight: 700; }
+.tb:disabled { opacity: .4; cursor: default; }
+.fs-focus { display: inline-flex; font-weight: 700; }
+body.side-folded .shell { grid-template-columns: 1fr; }
+body.side-folded .side { display: none; }
+body.side-folded .main .page { max-width: 1120px; margin-left: auto; margin-right: auto; width: 100%; }
+@media (max-width: 860px) { body.side-folded .bottom { display: none !important; } body.side-folded .main .page { padding-bottom: 28px; } }
+@media (max-width: 520px) {
+  .tb-fs .fs-dn, .tb-fs .fs-up, .tb-fs .tb-cap { display: none; }
+  .tb-fs .fs-cy { display: inline-flex; }
+    .topbar .mobile-brand { order: 0; }
+  .topbar .toolbar { order: 2; }
+    }
+@media (max-width: 520px) {
+  .topbar .tb-group[aria-label="Giọng đọc"] { display: none; }
+  .topbar { gap: 6px; }
+  .topbar     .topbar .toolbar { margin-left: auto; gap: 3px; }
+}
+
+/* Tay nắm đóng mở menu, nằm giữa đường giáp ranh thanh menu và trang nội dung */
+.edge-toggle { position: fixed; z-index: 30; top: 50%; left: 236px; width: 22px; height: 64px; transform: translate(-50%, -50%); padding: 0; border-radius: 12px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 8px -2px color-mix(in srgb, var(--ink) 22%, transparent); }
+.edge-toggle svg { transform: rotate(90deg); transition: transform .15s; }
+.edge-toggle:hover { color: var(--accent); border-color: var(--accent); }
+body.side-folded .edge-toggle { left: 0; transform: translate(0, -50%); border-radius: 0 12px 12px 0; }
+body.side-folded .edge-toggle svg { transform: rotate(-90deg); }
+@media (max-width: 860px) {
+  .edge-toggle { top: auto; left: 50%; bottom: calc(66px + env(safe-area-inset-bottom, 0px)); width: 64px; height: 22px; transform: translate(-50%, 50%); border-radius: 12px 12px 0 0; }
+  .edge-toggle svg { transform: none; }
+  body.side-folded .edge-toggle { left: 50%; bottom: 0; transform: translate(-50%, 0); border-radius: 12px 12px 0 0; }
+  body.side-folded .edge-toggle svg { transform: rotate(180deg); }
+}
+body.focus .edge-toggle { display: none; }

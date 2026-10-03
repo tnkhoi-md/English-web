@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.20.1 (02.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.21.3 (02.10.26).
 
 ## Tính năng
 
@@ -32,6 +32,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.20.1 (02.10.26).
 - **Mục tiêu và tiến bộ** (một trang): thống kê thời gian học và chuỗi ngày, biểu đồ ra-đa mức hoàn thiện kỹ năng (100% là học và làm hết nội dung hiện có), cùng phần thiết lập mục tiêu. Lịch học dạng bảng nhiệt nằm ở trang Hôm nay.
 - **Mục tiêu** và **kiểm tra đầu vào** ước lượng vốn từ.
 - **Cài đặt** gom thành các nhóm thu gọn (Học tập, Giọng đọc, Đồng bộ, Dữ liệu). Đồng bộ thiết bị qua GitHub Gist, sao lưu và khôi phục bằng file, giao diện sáng tối, dùng được trên điện thoại và máy tính bảng.
+- **Tối ưu màn hình học**: tay nắm ở đường giáp ranh giữa menu và nội dung để ẩn/hiện menu (thanh bên hoặc thanh dưới trên điện thoại), chỉnh cỡ chữ 5 mức ngay trên thanh công cụ, trong màn hình học và trong Cài đặt; lưu riêng cho từng thiết bị.
 - **Ngôn ngữ giao diện Việt hoặc Anh**: nút VI/EN trên thanh công cụ. Chỉ dịch phần giao diện; nghĩa tiếng Việt của từ và nội dung bài học giữ nguyên.
 
 ## Nguồn học liệu

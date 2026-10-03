@@ -19863,7 +19863,21 @@ const I18N_EN = {
 "Miễn dịch, dị ứng": "Immune and allergy",
 "Ung bướu": "Oncology",
 "Nhiễm trùng": "Infection",
-"Thuật ngữ chung": "General terms"
+"Thuật ngữ chung": "General terms",
+"Cỡ chữ": "Text size",
+"Giảm cỡ chữ": "Decrease text size",
+"Tăng cỡ chữ": "Increase text size",
+"Đổi cỡ chữ": "Change text size",
+"Ẩn thanh công cụ": "Hide toolbar",
+"Hiện thanh công cụ": "Show toolbar",
+"Ẩn menu": "Hide menu",
+"Hiện menu": "Show menu",
+"Phóng to hoặc thu nhỏ nội dung học trên thiết bị này.": "Enlarge or shrink the learning content on this device.",
+"Nhỏ": "Small",
+"Vừa": "Medium",
+"Lớn": "Large",
+"Rất lớn": "Very large",
+"Cực lớn": "Extra large"
 };
 
 /* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */

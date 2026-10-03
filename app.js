@@ -2914,7 +2914,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.20.1"; APP.build = "01.10.26";
+APP.version = "4.21.3"; APP.build = "01.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3192,6 +3192,46 @@ viewAbout = function () {
    Giao diện được viết bằng tiếng Việt; khi chọn EN, mỗi đoạn chữ hiển thị được tra trong từ điển I18N_EN (content-study.js)
    rồi thay bằng bản tiếng Anh. Câu có số hoặc tên xen vào được nhận dạng theo mẫu {1}, {2}. Đoạn nào chưa có bản dịch giữ tiếng Việt.
    Nội dung học (nghĩa tiếng Việt của từ, giải thích ngữ pháp trong bài) không bị dịch. */
+/* ---------------- Tùy chỉnh giao diện: cỡ chữ, thu gọn thanh công cụ và menu (lưu theo từng thiết bị) ---------------- */
+const FS_LEVELS = [0.9, 1, 1.12, 1.25, 1.4], FS_NAMES = ["Nhỏ", "Vừa", "Lớn", "Rất lớn", "Cực lớn"];
+const UI = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem("tnk_ui") || "{}") || {}; } catch (e) { o = {}; } return { tb: !!o.tb, side: !!o.side, fs: Math.min(FS_LEVELS.length - 1, Math.max(0, Number.isInteger(o.fs) ? o.fs : 1)) }; })();
+function saveUI() { try { localStorage.setItem("tnk_ui", JSON.stringify(UI)); } catch (e) { } }
+function applyUI() {
+  const b = document.body, r = document.documentElement; if (!b) return;
+  b.classList.toggle("side-folded", UI.side);
+  r.style.setProperty("--fs", String(FS_LEVELS[UI.fs]));
+}
+Object.assign(ICONS, { chevUp: '<path d="M6 15l6-6 6 6"/>', chevDown: '<path d="M6 9l6 6 6-6"/>', panel: '<rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="M9.5 5v14"/>' });
+const _toolbar51 = toolbar;
+toolbar = function () {
+  const grp = `<div class="tb-group tb-fs" role="group" aria-label="Cỡ chữ"><span class="tb-cap">Cỡ chữ</span><button class="tb fs-dn" data-act="fsDown" title="Giảm cỡ chữ" aria-label="Giảm cỡ chữ" ${UI.fs <= 0 ? "disabled" : ""}><span class="fs-a sm">A</span></button><button class="tb fs-up" data-act="fsUp" title="Tăng cỡ chữ" aria-label="Tăng cỡ chữ" ${UI.fs >= FS_LEVELS.length - 1 ? "disabled" : ""}><span class="fs-a lg">A</span></button><button class="tb fs-cy" data-act="fsCycle" title="Đổi cỡ chữ" aria-label="Đổi cỡ chữ">Aa</button></div>`;
+  return _toolbar51().replace('<span id="timer"', grp + '<span id="timer"');
+};
+const _focusBar51 = focusBar;
+focusBar = (segs, label) => _focusBar51(segs, label).replace('<span id="timer"', `<button class="tb fs-cy fs-focus" data-act="fsCycle" title="Đổi cỡ chữ" aria-label="Đổi cỡ chữ">Aa</button><span id="timer"`);
+function fsSet(i) { UI.fs = Math.min(FS_LEVELS.length - 1, Math.max(0, i)); saveUI(); applyUI(); render(); }
+Object.assign(ACT, {
+  fsDown() { fsSet(UI.fs - 1); }, fsUp() { fsSet(UI.fs + 1); },
+  fsCycle() { fsSet((UI.fs + 1) % FS_LEVELS.length); toast("Cỡ chữ: " + FS_NAMES[UI.fs]); },
+  fsPick(el) { fsSet(+el.dataset.i); },
+  uiFoldSide() { UI.side = !UI.side; saveUI(); applyUI(); injectFold(); }
+});
+/* Nút thu gọn menu: một tay nắm nằm giữa đường giáp ranh thanh menu và nội dung (thanh bên trên máy tính, thanh dưới trên điện thoại). */
+function injectFold() {
+  document.querySelectorAll(".edge-toggle").forEach(e => e.remove());
+  if (!document.querySelector(".shell") || document.body.classList.contains("focus")) return;
+  const label = UI.side ? "Hiện menu" : "Ẩn menu";
+  document.body.insertAdjacentHTML("beforeend", `<button class="edge-toggle" data-act="uiFoldSide" title="${label}" aria-label="${label}" aria-pressed="${UI.side}">${ic("chevDown", 16)}</button>`);
+}
+const _afterRender51 = afterRender;
+afterRender = function () { _afterRender51(); applyUI(); injectFold(); };
+const _viewSettings51 = viewSettings;
+viewSettings = function () {
+  const row = `<div class="setting"><div><b>Cỡ chữ</b><div class="s">Phóng to hoặc thu nhỏ nội dung học trên thiết bị này.</div></div><div class="seg-tog" role="group" aria-label="Cỡ chữ">${FS_NAMES.map((n, i) => `<button data-act="fsPick" data-i="${i}" aria-pressed="${UI.fs === i}">${n}</button>`).join("")}</div></div>`;
+  return _viewSettings51().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, (m) => m + row);
+};
+applyUI();
+
 const LOC = () => (LANG === "en" ? "en-US" : "vi-VN");
 let LANG = (() => { try { return localStorage.getItem("tnk_lang") === "en" ? "en" : "vi"; } catch (e) { return "vi"; } })();
 const I18N = (() => {
