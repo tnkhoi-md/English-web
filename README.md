@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.26.2 (04.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.26.3 (04.10.26).
 
 ## Tính năng
 
@@ -81,19 +81,19 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Thư viện là bộ từ lõi có chọn lọc, chưa phải toàn bộ vốn từ của mỗi cấp CEFR; mức C1 còn ít từ nhất. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Điểm Viết và Nói là tự chấm, ứng dụng không chấm tự động, đang trong quá trình hoàn thiện.
 - Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế.
-## Cập nhật 4.26.2
+## Cập nhật 4.26.3
 
 - Giải thích đáp án bài điền đoạn văn gồm ba dòng: **Nghĩa** (từ hoặc cụm từ), **Ngữ pháp** (vì sao chọn dạng này, ví dụ nhận ra quá khứ để chia động từ) và **Dấu hiệu** trong câu.
 - Trang lý thuyết ngữ pháp trình bày dạng danh sách có màu: tóm tắt, công thức đóng khung, cách dùng đánh số kèm ví dụ, dấu hiệu nhận biết và các lưu ý hay nhầm.
 - Mỗi chủ điểm ngữ pháp có ít nhất 22 bài luyện, mọi câu trắc nghiệm đều có 4 đáp án và lý do cho đáp án sai.
 
-## Cập nhật 4.26.2: âm thanh thu sẵn
+## Cập nhật 4.26.3: âm thanh thu sẵn
 
 - Thư mục `audio/` chứa mp3 giọng Mỹ (Piper, giọng `en_US-lessac-high` cho người nói thứ nhất và `en_US-ryan-high` cho người nói thứ hai). `audio/manifest.js` liệt kê các file, khóa là băm của "người nói|câu".
 - Hiện có 698 câu: hội thoại trong bài học, bài nghe hiểu và câu ví dụ ngữ pháp. Nút nghe dùng mp3 trước; câu nào chưa có file, hoặc khi chọn giọng Anh-Anh, thì đọc bằng giọng máy như trước.
 - Tạo thêm: chạy `tools_gen_audio.py` (cần `piper-tts`, `lameenc` và hai mô hình giọng) rồi dựng lại `audio/manifest.js`.
 
-## Cập nhật 4.26.2: điền từ theo nghĩa Anh-Anh
+## Cập nhật 4.26.3: điền từ theo nghĩa Anh-Anh
 
 - Bài điền từ trong học từ vựng mới không còn dùng câu ví dụ để chừa trống. Người học đọc định nghĩa tiếng Anh rồi chọn hoặc gõ từ đúng; nghĩa tiếng Việt chỉ hiện khi bấm "Gợi ý tiếng Việt". Câu ví dụ hiện ở phần giải thích sau khi trả lời.
 - Bổ sung 1.791 định nghĩa tiếng Anh cho `WORD_DEFS`, nên mọi từ (không tính họ từ) đều có định nghĩa.

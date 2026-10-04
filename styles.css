@@ -820,3 +820,8 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .def-hint { gap: 10px; align-items: center; margin-bottom: 10px; }
 .vi-hint { color: var(--muted, #5b6675); font-size: 15px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--gen, #3158d4) 10%, transparent); }
 .lw-ex::before, .ex-item > .example::before, .example.eg::before { content: "E.g: "; font-style: normal; font-weight: 700; font-size: .86em; letter-spacing: .02em; color: var(--gen, #3158d4); margin-right: 2px; }
+/* iOS Safari: svg có max-width:100% trong nút lưới (auto) bị co gần bằng 0, nên nút loa trông như không có biểu tượng. */
+.icon-btn { padding: 0; }
+.icon-btn { flex: none; min-width: 44px; }
+.icon-btn svg, .mini svg, button svg { max-width: none; flex: none; display: block; }
+.icon-btn[data-act="say"] svg { width: 24px; height: 24px; min-width: 24px; min-height: 24px; }
