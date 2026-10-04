@@ -852,3 +852,5 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .gp-uex .icon-btn { width: 38px; height: 38px; }
 .gp-fex { padding-left: 0; display: grid; grid-template-columns: 1fr auto; }
 .gp-fex .icon-btn { width: 38px; height: 38px; }
+.gp-fex { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.gp-fex .icon-btn { margin-left: auto; }

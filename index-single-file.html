@@ -870,6 +870,8 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .gp-uex .icon-btn { width: 38px; height: 38px; }
 .gp-fex { padding-left: 0; display: grid; grid-template-columns: 1fr auto; }
 .gp-fex .icon-btn { width: 38px; height: 38px; }
+.gp-fex { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.gp-fex .icon-btn { margin-left: auto; }
 
 </style>
 </head>
@@ -53252,7 +53254,16 @@ const I18N_EN = {
 "Tiếng Việt hoặc tiếng Anh. Bản tiếng Anh ẩn phần dịch trùng với tiêu đề.": "Vietnamese or English. The English version hides translations that repeat the title.",
 "Tiếng Việt": "Vietnamese",
 "Chưa bật đồng bộ. Nhập mã truy cập ở mục Đồng bộ thiết bị.": "Sync is off. Enter your access token under Device sync.",
-"Thiết lập đồng bộ": "Set up sync"
+"Thiết lập đồng bộ": "Set up sync",
+"Học ngoại tuyến": "Offline study",
+"Trang tự lưu mã và nội dung sau lần mở đầu tiên. Tải trước âm thanh thu sẵn để nghe được khi không có mạng (khoảng 10 MB).": "The app saves its code and content after the first visit. Download the recorded audio in advance to listen without a connection (about 10 MB).",
+"Tải âm thanh": "Download audio",
+"Xóa": "Clear",
+"Cần có mạng để tải âm thanh.": "You need a connection to download the audio.",
+"Đã lưu toàn bộ âm thanh để học ngoại tuyến.": "All audio saved for offline study.",
+"Đã xóa âm thanh đã lưu.": "Saved audio cleared.",
+"Đã có mạng trở lại.": "Back online.",
+"Đang ngoại tuyến. Bài học và âm thanh đã lưu vẫn dùng được; đồng bộ sẽ chạy lại khi có mạng.": "You are offline. Lessons and saved audio still work; sync will resume when you are back online."
 };
 
 /* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */
@@ -54823,10 +54834,11 @@ function voicePair() {
 function stopSpeech() { SPEECH.token++; SPEECH.busy = false; if (SPEECH.audio) { const a = SPEECH.audio; SPEECH.audio = null; try { a.pause(); } catch { } } if (TTS_OK) speechSynthesis.cancel(); document.querySelectorAll(".line.speaking").forEach(e => e.classList.remove("speaking")); }
 /* Âm thanh thu sẵn (giọng Mỹ, tạo bằng Piper) cho bài nghe và câu ví dụ; thiếu file thì đọc bằng giọng máy. */
 function audioHash(s) { let x = 0x811c9dc5, y = 0x1234567; for (let i = 0; i < s.length; i++) { const ch = s.charCodeAt(i); x = Math.imul(x ^ ch, 0x01000193) >>> 0; y = (y * 31 + ch) >>> 0; } return x.toString(16).padStart(8, "0") + y.toString(16).padStart(8, "0"); }
+function audioPath(h) { const n = typeof AUDIO_MAP !== "undefined" ? AUDIO_MAP[h] : 0; return n ? (n > 0 ? `audio-${n}/audio/${h}.mp3` : `audio/${h}.mp3`) : null; }
 function recordedUrl(text, who) {
   if (typeof AUDIO_MAP === "undefined" || S.settings.accent === "uk") return null;
   const h = audioHash((who ? 1 : 0) + "|" + String(text).split(/\s+/).join(" ").trim());
-  const n = AUDIO_MAP[h]; return n ? (n === 1 ? `audio-1/audio/${h}.mp3` : n > 1 ? `audio-${n}/audio/${h}.mp3` : `audio/${h}.mp3`) : null;
+  return audioPath(h);
 }
 function playRecorded(url, rate) {
   return new Promise(res => {
@@ -57569,7 +57581,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.27.3"; APP.build = "04.10.26";
+APP.version = "4.28.1"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -58343,6 +58355,38 @@ viewSettings = function () {
   return _viewSettings55().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, m => m + row);
 };
 ACT.noop = function () { };
+/* ---------------- Chế độ ngoại tuyến: service worker, tải trước âm thanh, báo mất mạng ---------------- */
+const OFF = { busy: false, total: 0, have: 0 };
+const AUDIO_CACHE = "tnk-audio-v1";
+async function offlineCount() { try { const c = await caches.open(AUDIO_CACHE); return (await c.keys()).length; } catch (e) { return 0; } }
+function offlineLabel() { const reg = "serviceWorker" in navigator; return !reg ? "Trình duyệt này chưa hỗ trợ học ngoại tuyến." : `Đã lưu ${OFF.have}/${OFF.total} file âm thanh trên thiết bị này.`; }
+function paintOffline() { const el = document.getElementById("offStat"); if (el) el.textContent = offlineLabel(); const b = document.getElementById("offBtn"); if (b) { b.disabled = OFF.busy || !("caches" in window); } }
+ACT.offlineAudio = async function () {
+  if (OFF.busy || !("caches" in window) || typeof AUDIO_MAP === "undefined") return;
+  if (!navigator.onLine) { toast("Cần có mạng để tải âm thanh."); return; }
+  OFF.busy = true; paintOffline();
+  try {
+    const c = await caches.open(AUDIO_CACHE), have = new Set((await c.keys()).map(r => new URL(r.url).pathname));
+    const todo = Object.keys(AUDIO_MAP).map(audioPath).filter(u => u && !have.has(new URL(u, location.href).pathname));
+    let i = 0, fail = 0;
+    const worker = async () => { while (i < todo.length) { const u = todo[i++]; try { const r = await fetch(u); if (r.ok) await c.put(u, r); else fail++; } catch (e) { fail++; } OFF.have = OFF.total - (todo.length - i) - 0; if (i % 20 === 0) paintOffline(); } };
+    await Promise.all(Array.from({ length: 6 }, worker));
+    OFF.have = await offlineCount(); toast(fail ? `Đã tải xong, còn ${fail} file chưa tải được. Thử lại khi có mạng ổn định.` : "Đã lưu toàn bộ âm thanh để học ngoại tuyến.");
+  } catch (e) { toast("Không tải được âm thanh. Thử lại sau."); }
+  OFF.busy = false; paintOffline();
+};
+ACT.offlineClear = async function () { if (!confirm("Xóa âm thanh đã lưu trên thiết bị này? Bạn vẫn tải lại được sau.")) return; try { await caches.delete(AUDIO_CACHE); } catch (e) { } OFF.have = 0; paintOffline(); toast("Đã xóa âm thanh đã lưu."); };
+const _viewSettings56 = viewSettings;
+viewSettings = function () {
+  const row = `<div class="setting"><div><b>Học ngoại tuyến</b><div class="s">Trang tự lưu mã và nội dung sau lần mở đầu tiên. Tải trước âm thanh thu sẵn để nghe được khi không có mạng (khoảng 10 MB).</div><div class="s" id="offStat">${esc(offlineLabel())}</div></div><div class="row" style="gap:8px"><button class="btn" id="offBtn" data-act="offlineAudio">Tải âm thanh</button><button class="btn quiet" data-act="offlineClear">Xóa</button></div></div>`;
+  return _viewSettings56().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, m => m + row);
+};
+const _afterRender56 = afterRender;
+afterRender = function () { _afterRender56(); if (ROUTE.name === "settings") { OFF.total = typeof AUDIO_MAP !== "undefined" ? Object.keys(AUDIO_MAP).length : 0; offlineCount().then(n => { OFF.have = n; paintOffline(); }); } };
+window.addEventListener("offline", () => toast("Đang ngoại tuyến. Bài học và âm thanh đã lưu vẫn dùng được; đồng bộ sẽ chạy lại khi có mạng."));
+window.addEventListener("online", () => { toast("Đã có mạng trở lại."); if (syncCfg().token && syncCfg().auto !== false && SYNC.pending) syncNow(false); });
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => { }));
+
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
 

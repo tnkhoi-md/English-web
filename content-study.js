@@ -46388,7 +46388,16 @@ const I18N_EN = {
 "Tiếng Việt hoặc tiếng Anh. Bản tiếng Anh ẩn phần dịch trùng với tiêu đề.": "Vietnamese or English. The English version hides translations that repeat the title.",
 "Tiếng Việt": "Vietnamese",
 "Chưa bật đồng bộ. Nhập mã truy cập ở mục Đồng bộ thiết bị.": "Sync is off. Enter your access token under Device sync.",
-"Thiết lập đồng bộ": "Set up sync"
+"Thiết lập đồng bộ": "Set up sync",
+"Học ngoại tuyến": "Offline study",
+"Trang tự lưu mã và nội dung sau lần mở đầu tiên. Tải trước âm thanh thu sẵn để nghe được khi không có mạng (khoảng 10 MB).": "The app saves its code and content after the first visit. Download the recorded audio in advance to listen without a connection (about 10 MB).",
+"Tải âm thanh": "Download audio",
+"Xóa": "Clear",
+"Cần có mạng để tải âm thanh.": "You need a connection to download the audio.",
+"Đã lưu toàn bộ âm thanh để học ngoại tuyến.": "All audio saved for offline study.",
+"Đã xóa âm thanh đã lưu.": "Saved audio cleared.",
+"Đã có mạng trở lại.": "Back online.",
+"Đang ngoại tuyến. Bài học và âm thanh đã lưu vẫn dùng được; đồng bộ sẽ chạy lại khi có mạng.": "You are offline. Lessons and saved audio still work; sync will resume when you are back online."
 };
 
 /* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */
