@@ -46383,7 +46383,12 @@ const I18N_EN = {
 "Đọc nghĩa tiếng Anh, chọn từ phù hợp.": "Read the English meaning and choose the matching word.",
 "Đọc nghĩa tiếng Anh rồi gõ từ đó.": "Read the English meaning, then type the word.",
 "Gợi ý tiếng Việt": "Vietnamese hint",
-"Ẩn gợi ý": "Hide hint"
+"Ẩn gợi ý": "Hide hint",
+"Ngôn ngữ giao diện": "Interface language",
+"Tiếng Việt hoặc tiếng Anh. Bản tiếng Anh ẩn phần dịch trùng với tiêu đề.": "Vietnamese or English. The English version hides translations that repeat the title.",
+"Tiếng Việt": "Vietnamese",
+"Chưa bật đồng bộ. Nhập mã truy cập ở mục Đồng bộ thiết bị.": "Sync is off. Enter your access token under Device sync.",
+"Thiết lập đồng bộ": "Set up sync"
 };
 
 /* Bản vá câu trắc nghiệm viết tay: đủ 4 lựa chọn, kèm lý do sai (áp dụng trong app.js). */

@@ -2981,7 +2981,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.23.1"; APP.build = "01.10.26";
+APP.version = "4.27.1"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3163,7 +3163,7 @@ function viewVoices() {
       <p><b>Máy tính Windows hoặc Mac:</b> mở trang bằng Microsoft Edge. Edge có các giọng “Online (Natural)” như Aria, Jenny, Guy (Anh-Mỹ), Sonia, Ryan, Libby (Anh-Anh), nghe rất gần người thật. Các giọng này cần mạng.</p>
       <p><b>iPad và iPhone:</b> Safari không cho trang web dùng giọng Siri, và giọng tải thêm (Premium, Enhanced) thường không hiện trong trình duyệt. Vì vậy trên iPad, bản ghi người thật là nguồn tốt nhất để luyện phát âm. Bạn vẫn có thể thử vào Cài đặt, Trợ năng, Nội dung được đọc, Giọng nói, Tiếng Anh, tải giọng Premium hoặc Enhanced, rồi mở lại trang để xem giọng có xuất hiện không.</p>
       <p><b>Android:</b> dùng Chrome với giọng Google; vào cài đặt Chuyển văn bản thành giọng nói để tải giọng tiếng Anh chất lượng cao.</p>
-      <p class="muted small">Tốc độ đọc đổi nhanh bằng nút tốc độ trên thanh công cụ. Luyện thi nên nghe ở 1.0×; mới học có thể dùng 0.9×.</p></section>`;
+      <p class="muted small">Tốc độ đọc chỉnh bằng thanh trượt Tốc độ ở phần Giọng đọc trong Cài đặt. Luyện thi nên nghe ở 1.0×; mới học có thể dùng 0.9×.</p></section>`;
 }
 
 /* ---------------- Settings / About additions ---------------- */
@@ -3727,5 +3727,33 @@ toolbar = function () {
 };
 ACT.tbLang = function () { LANG = LANG === "en" ? "vi" : "en"; try { localStorage.setItem("tnk_lang", LANG); } catch (e) {} render(); };
 if (LANG === "en") trStart();
+/* ---------------- Thanh công cụ gọn: đồng bộ, cỡ chữ, thời gian học. Giọng, tốc độ, giao diện, học im lặng nằm trong Cài đặt. ---------------- */
+toolbar = function () {
+  const c = syncCfg(), sy = c.token ? SYNC.status || "idle" : "off";
+  const fs = `<div class="tb-group tb-fs" role="group" aria-label="Cỡ chữ"><button class="tb fs-dn" data-act="fsDown" title="Giảm cỡ chữ" aria-label="Giảm cỡ chữ" ${UI.fs <= 0 ? "disabled" : ""}><span class="fs-a sm">A</span></button><button class="tb fs-up" data-act="fsUp" title="Tăng cỡ chữ" aria-label="Tăng cỡ chữ" ${UI.fs >= FS_LEVELS.length - 1 ? "disabled" : ""}><span class="fs-a lg">A</span></button><button class="tb fs-cy" data-act="fsCycle" title="Đổi cỡ chữ" aria-label="Đổi cỡ chữ">Aa</button></div>`;
+  return `<div class="toolbar" role="toolbar" aria-label="Công cụ nhanh">
+    <button class="tb sync-dot s-${sy}" data-act="tbSync" title="${esc(c.token ? syncTitle() + ". Bấm để đồng bộ ngay" : "Chưa bật đồng bộ. Bấm để thiết lập")}" aria-label="${esc(c.token ? "Đồng bộ ngay. " + syncTitle() : "Thiết lập đồng bộ")}">${ic("cloud", 18)}<i></i></button>
+    ${fs}<span id="timer" class="timer-pill" aria-live="off"></span></div>`;
+};
+focusBar = function (segs, label) {
+  const c = syncCfg(), sy = c.token ? SYNC.status || "idle" : "off";
+  return `<div class="focus-bar"><button class="icon-btn" data-act="exitFocus" aria-label="Thoát">${ic("close")}</button>
+    ${segs ? `<div class="progress" role="progressbar" aria-label="${esc(label || "Tiến độ")}" aria-valuemin="0" aria-valuemax="${segs.n}" aria-valuenow="${segs.i}">${Array.from({ length: segs.n }, (_, k) => `<i class="${k < segs.i ? "on" : k === segs.i ? "cur" : ""}"></i>`).join("")}</div>` : `<div class="grow" style="flex:1"><b>${esc(label || "")}</b></div>`}
+    <button class="tb sync-dot s-${sy}" data-act="tbSync" title="${esc(c.token ? "Đồng bộ ngay" : "Thiết lập đồng bộ")}" aria-label="${esc(c.token ? "Đồng bộ ngay" : "Thiết lập đồng bộ")}">${ic("cloud", 18)}<i></i></button>
+    <button class="tb fs-cy fs-focus" data-act="fsCycle" title="Đổi cỡ chữ" aria-label="Đổi cỡ chữ">Aa</button><span id="timer" class="timer-pill"></span></div>`;
+};
+ACT.tbSync = function () { if (!syncCfg().token) { location.hash = "#/settings/sync"; toast("Chưa bật đồng bộ. Nhập mã truy cập ở mục Đồng bộ thiết bị."); return; } if (SYNC.busy) return; syncNow(true); };
+
+/* Trang "Thêm" trên điện thoại: cùng nhóm và biểu tượng như thanh menu bên trái trên máy tính bảng và laptop. */
+viewMore = function () {
+  const due = dueList().length;
+  return `<section class="page-head"><h1>Thêm</h1></section><div class="more-nav">${NAV4.map(([g, items]) => `<div class="nav-group">${g}</div><nav class="nav more-card" aria-label="${esc(g)}">${items.map(([id, label, icon, col]) => `<a href="#/${id}" style="--ni:${col}"><span class="ni">${ic(icon, 18)}</span><span class="nl">${label}</span>${id === "review" && due ? `<span class="badge" aria-label="${due} thẻ đến hạn">${due}</span>` : ""}<span class="more-go" aria-hidden="true">›</span></a>`).join("")}</nav>`).join("")}</div><p class="side-foot more-foot">Phiên bản ${APP.version} (${APP.build})<br>Xây dựng bởi ${APP.author}<br>${APP.credit}</p>`;
+};
+const _viewSettings55 = viewSettings;
+viewSettings = function () {
+  const row = `<div class="setting"><div><b>Ngôn ngữ giao diện</b><div class="s">Tiếng Việt hoặc tiếng Anh. Bản tiếng Anh ẩn phần dịch trùng với tiêu đề.</div></div><div class="seg-tog" role="group" aria-label="Ngôn ngữ giao diện"><button data-act="${LANG === "vi" ? "noop" : "tbLang"}" aria-pressed="${LANG === "vi"}">Tiếng Việt</button><button data-act="${LANG === "en" ? "noop" : "tbLang"}" aria-pressed="${LANG === "en"}">English</button></div></div>`;
+  return _viewSettings55().replace(/(<details class="ex-group set-group" data-k="Học tập"[\s\S]*?<div class="stack" style="padding:0 2px 12px">)/, m => m + row);
+};
+ACT.noop = function () { };
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
