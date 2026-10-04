@@ -250,7 +250,7 @@ function audioHash(s) { let x = 0x811c9dc5, y = 0x1234567; for (let i = 0; i < s
 function recordedUrl(text, who) {
   if (typeof AUDIO_MAP === "undefined" || S.settings.accent === "uk") return null;
   const h = audioHash((who ? 1 : 0) + "|" + String(text).split(/\s+/).join(" ").trim());
-  return AUDIO_MAP[h] ? `audio/${h}.mp3` : null;
+  const n = AUDIO_MAP[h]; return n ? (n === 1 ? `audio-1/audio/${h}.mp3` : n > 1 ? `audio-${n}/audio/${h}.mp3` : `audio/${h}.mp3`) : null;
 }
 function playRecorded(url, rate) {
   return new Promise(res => {
@@ -591,14 +591,26 @@ function pickOpt(q, qs, o, skill) {
   if (o === q.a) { qs.done = true; qs.ok = qs.picked.length === 0; result(skill, qs.ok); }
   else { qs.picked.push(o); if (qs.picked.length >= (q.opts.length <= 2 ? 1 : 2)) { qs.done = true; qs.ok = false; result(skill, false); } }
 }
+/* Viết tắt và viết đầy đủ được coi là một: it's = it is, don't = do not, I'm = I am... (chuẩn hóa cả đáp án lẫn bài làm trước khi so). */
+function normC(s) {
+  return norm(s)
+    .replace(/\bwon't\b/g, "will not").replace(/\bcan't\b/g, "can not").replace(/\bcannot\b/g, "can not").replace(/\bshan't\b/g, "shall not")
+    .replace(/\blet's\b/g, "let us")
+    .replace(/\b(it|he|she|that|there|here|what|who|where|how|when|why)'s\b/g, "$1 is")
+    .replace(/(\w)n't\b/g, "$1 not").replace(/(\w)'m\b/g, "$1 am").replace(/(\w)'re\b/g, "$1 are").replace(/(\w)'ve\b/g, "$1 have").replace(/(\w)'ll\b/g, "$1 will").replace(/(\w)'d\b/g, "$1 would")
+    .replace(/\s+/g, " ").trim();
+}
 function wordDiff(target, input) {
-  const T = target.split(/\s+/), tn = T.map(norm), U = norm(input).split(" ").filter(Boolean);
-  const m = tn.length, n = U.length, dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
-  for (let i = m - 1; i >= 0; i--) for (let j = n - 1; j >= 0; j--) dp[i][j] = tn[i] === U[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
-  const marks = [], extra = []; let i = 0, j = 0;
-  while (i < m && j < n) { if (tn[i] === U[j]) { marks.push([T[i], "ok"]); i++; j++; } else if (dp[i + 1][j] >= dp[i][j + 1]) { marks.push([T[i], "miss"]); i++; } else { extra.push(U[j]); j++; } }
-  while (i < m) marks.push([T[i++], "miss"]); while (j < n) extra.push(U[j++]);
-  return { html: marks.map(([w, c]) => `<span class="${c}">${esc(w)}</span>`).join(" ") + (extra.length ? ` <span class="extra">${esc(extra.join(" "))}</span>` : ""), ok: marks.every(x => x[1] === "ok") && !extra.length, hits: marks.filter(x => x[1] === "ok").length, total: m };
+  const T = target.split(/\s+/).filter(Boolean), flat = [], owner = [];
+  T.forEach((w, k) => normC(w).split(" ").filter(Boolean).forEach(t => { flat.push(t); owner.push(k); }));
+  const U = normC(input).split(" ").filter(Boolean);
+  const m = flat.length, n = U.length, dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+  for (let i = m - 1; i >= 0; i--) for (let j = n - 1; j >= 0; j--) dp[i][j] = flat[i] === U[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const hit = Array(m).fill(false), extra = []; let i = 0, j = 0;
+  while (i < m && j < n) { if (flat[i] === U[j]) { hit[i] = true; i++; j++; } else if (dp[i + 1][j] >= dp[i][j + 1]) i++; else { extra.push(U[j]); j++; } }
+  while (j < n) extra.push(U[j++]);
+  const marks = T.map((w, k) => { const idx = owner.map((o, x) => o === k ? x : -1).filter(x => x >= 0); return [w, idx.length && idx.every(x => hit[x]) ? "ok" : idx.length ? "miss" : "ok"]; });
+  return { html: marks.map(([w, c]) => `<span class="${c}">${esc(w)}</span>`).join(" ") + (extra.length ? ` <span class="extra">${esc(extra.join(" "))}</span>` : ""), ok: marks.every(x => x[1] === "ok") && !extra.length, hits: marks.filter(x => x[1] === "ok").length, total: T.length };
 }
 function coverage(text, kw) { const t = " " + norm(text) + " "; return kw.map(g => g.some(a => t.includes(norm(a).length > 3 ? norm(a) : " " + norm(a) + " "))); }
 
@@ -1050,8 +1062,8 @@ const ACT = {
   toggleScript() { const st = stState(), step = L.steps[L.i]; st.show = !st.show; if (st.show && !step.qs.every((_, i) => st.q?.[i]?.done)) st.peek = true; render(); },
   toggleVi() { const st = stState(); st.vi = !st.vi; render(); },
   checkCloze() {
-    const step = L.steps[L.i], st = stState(); if (st.done) return; const v = norm($("#ans")?.value); st.val = $("#ans")?.value || ""; if (!v) return;
-    const ans = step.a.map(norm);
+    const step = L.steps[L.i], st = stState(); if (st.done) return; const v = normC($("#ans")?.value); st.val = $("#ans")?.value || ""; if (!v) return;
+    const ans = step.a.map(normC);
     if (ans.includes(v)) { st.done = true; st.ok = !st.tries; }
     else if (ans.some(a => a.length > 3 && lev(a, v) <= 1)) { st.done = true; st.ok = !st.tries; st.typo = true; }
     else { st.tries = (st.tries || 0) + 1; if (st.tries >= 2) { st.done = true; st.ok = false; } }
@@ -2215,8 +2227,8 @@ Object.assign(ACT, {
   pathTrack(el) { PF.track = el.dataset.t; render(); },
   pxPick(el) { const it = PX.items[PX.i], st = PX.st[PX.i]; st.pick = +el.dataset.o; pxMark(st.pick === it.a); },
   pxCheck() {
-    const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; st.val = $("#pxIn")?.value || ""; const v = norm(st.val); if (!v) return;
-    const ans = it.ans.map(norm); if (ans.includes(v)) return pxMark(true);
+    const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; st.val = $("#pxIn")?.value || ""; const v = normC(st.val); if (!v) return;
+    const ans = it.ans.map(normC); if (ans.includes(v)) return pxMark(true);
     if (ans.some(a => a.length > 4 && lev(a, v) <= 1)) return pxMark(true, true);
     pxMark(false);
   },
@@ -2981,7 +2993,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.27.1"; APP.build = "04.10.26";
+APP.version = "4.27.3"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
