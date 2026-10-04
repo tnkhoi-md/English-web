@@ -789,7 +789,7 @@ function viewReview() {
     body = `<span class="step-kind">Nhìn từ, nhớ nghĩa</span><div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div>
       ${R.phase === "back" ? `<div class="divider"></div><p style="font-size:22px;font-weight:600">${esc(w.vi)}</p>${partsHtml(w.parts)}${w.ex ? `<div class="ex-item"><span class="example" lang="en">${esc(w.ex)}</span><span class="example-vi">${esc(w.exvi)}</span>${hear(w.ex)}</div>` : ""}` : ""}</div>`;
   } else {
-    const bl = blankIn(w.ex, w.w);
+    const bl = null; /* không dùng câu ví dụ để chừa trống */
     body = `<span class="step-kind">Nhìn nghĩa, gõ lại từ</span><div class="flash"><p style="font-size:26px;font-weight:600">${esc(w.vi)}</p>${bl ? `<p class="cloze" lang="en" style="font-size:22px">${bl}</p>` : ""}<p class="muted small">${esc(w.exvi)}</p>
       <div class="row"><input class="field" id="ans" style="flex:1;min-width:200px" value="${esc(R.typed)}" data-enter="revCheck" ${R.phase === "back" ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Gõ từ tiếng Anh">${R.phase === "front" ? `<button class="btn primary" data-act="revCheck">Kiểm tra</button>` : ""}</div>
       ${R.phase === "back" ? `<div class="feedback ${R.check.ok ? "ok" : "no"}" role="status"><b>${R.check.ok ? (R.check.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> <span class="en" lang="en" style="font-size:19px">${esc(w.w)}</span> <span class="muted">${esc(ipaOf(w))}</span></div><div class="row">${hear(w.w)}${w.ex ? hear(w.ex, "Nghe câu") + `<span class="example" lang="en" style="font-size:17px">${esc(w.ex)}</span>` : ""}</div>` : ""}</div>`;
@@ -1261,7 +1261,7 @@ LIB.forEach(t => {
   for (const lv of Object.keys(t.levels)) for (const line of t.levels[lv].split("\n")) {
     const p = line.split("|").map(x => x.trim()); if (!p[0]) continue;
     let sl = slugify(p[0]); while (seen.has(sl)) sl += "-x"; seen.add(sl);
-    const w = { key: `${t.id}:${sl}`, w: p[0], pos: p[1] || "", vi: p[2] || "", ex: p[3] || "", lvl: lv, topic: t };
+    const w = { key: `${t.id}:${sl}`, w: p[0], pos: p[1] || "", vi: p[2] || "", ex: (typeof WORD_EX !== "undefined" && WORD_EX[`${t.id}:${sl}`]) || p[3] || "", lvl: lv, topic: t };
     t.words.push(w); LIB_WORD[w.key] = w;
   }
   LIB_BY[t.id] = t;
@@ -1993,7 +1993,9 @@ function parseBank(txt) {
 function shuffleChoice(opts, a) { const right = opts[a], o = shuffle(opts); return [o, o.indexOf(right)]; }
 function shuffleItemOpts(it) { if ((it.t === "c" || it.t === "x") && it.opts && typeof it.a === "number") { const [o, a] = shuffleChoice(it.opts, it.a); it.opts = o; it.a = a; } return it; }
 GRAMMAR.forEach(g => { g.bank = parseBank(GRAMMAR_BANK[g.id]); g.quiz = (g.quiz || []).map(([q, opts, a, why, wrong]) => { const [o, k] = shuffleChoice(opts, a); return [q, o, k, why, wrong || {}]; }); });
-function unitWords(u) { const seen = new Set(), out = []; u.vocab.forEach(([tid, l]) => (LIB_BY[tid]?.words || []).forEach(w => { if (w.lvl === l && !seen.has(w.key)) { seen.add(w.key); out.push(w); } })); return out; }
+/* Một mục từ vựng của chặng là [chủ đề, cấp] hoặc [chủ đề, cấp, từ, đến] khi một nhóm từ được chia cho nhiều chặng (vị trí là bội của LESSON_SIZE để mã bài học không đổi). */
+function pairWords(tid, l, from, to) { const ws = (LIB_BY[tid]?.words || []).filter(w => w.lvl === l); return from == null ? ws : ws.slice(from, to); }
+function unitWords(u) { const seen = new Set(), out = []; u.vocab.forEach(([tid, l, a, b]) => pairWords(tid, l, a, b).forEach(w => { if (!seen.has(w.key)) { seen.add(w.key); out.push(w); } })); return out; }
 const unitsOf = track => UNITS.filter(u => u.track === track);
 const unitsWithTopic = tid => UNITS.filter(u => u.vocab.some(([t]) => t === tid));
 const unitsWithGrammar = gid => UNITS.filter(u => u.grammar.includes(gid));
@@ -2018,7 +2020,12 @@ function currentUnit(track) {
 const _san42 = sanitize;
 sanitize = function (raw) {
   const s = _san42(raw); s.utest = {};
-  if (raw && raw.utest && typeof raw.utest === "object") for (const [k, v] of Object.entries(raw.utest)) if (UNIT_BY[k] && v) s.utest[k] = { best: clamp(num(v.best), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last), ...(v.pass ? { pass: 1, at: num(v.at) } : {}), ...(num(v.lf) > 0 ? { lf: num(v.lf) } : {}) };
+  if (raw && raw.utest && typeof raw.utest === "object") for (const [k0, v] of Object.entries(raw.utest)) {
+    if (!v) continue; const direct = !!UNIT_BY[k0];
+    /* Chặng cũ đã chia nhỏ: kết quả vượt chặng được chuyển sang các chặng mới tách ra từ chặng đó. */
+    const targets = direct ? [k0] : (v.pass && typeof UNIT_MIGRATE !== "undefined" ? (UNIT_MIGRATE[k0] || []) : []).filter(x => UNIT_BY[x]);
+    for (const k of targets) { if (!direct && s.utest[k]) continue; s.utest[k] = { best: clamp(num(v.best), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last), ...(v.pass ? { pass: 1, at: num(v.at) } : {}), ...(num(v.lf) > 0 ? { lf: num(v.lf) } : {}) }; }
+  }
   return s;
 };
 const _fresh42 = fresh; fresh = () => { const s = _fresh42(); s.utest = {}; return s; };
@@ -2065,7 +2072,7 @@ function viewUnit() {
     return [(S.utest[u.id]?.best || 0) >= 0.8 ? "Làm lại bài kiểm tra chặng" : "Làm bài kiểm tra chặng", `#/practice/u-${u.id}`];
   })();
   const us = unitsOf(u.track), i = us.indexOf(u), prev = us[i - 1], nxt = us[i + 1];
-  const sets = u.vocab.map(([tid, l]) => { const t = LIB_BY[tid]; if (!t) return ""; const ws = t.words.filter(w => w.lvl === l); if (!ws.length) return ""; const c = coverage2(ws); return `<a class="uset" href="#/library/${tid}" style="--tc:${t.color}"><span class="ti">${t.icon}</span><span class="grow"><b lang="en">${esc(t.title)}</b> <span class="lv lv-${l}">${lvName(l)}</span><br><span class="muted small">${esc(t.vi)}</span><span class="meter"><i style="width:${c.p * 100}%"></i></span></span><span class="muted small">${c.d}/${c.n}</span></a>`; }).join("");
+  const sets = u.vocab.map(([tid, l, a, b]) => { const t = LIB_BY[tid]; if (!t) return ""; const ws = pairWords(tid, l, a, b); if (!ws.length) return ""; const c = coverage2(ws); return `<a class="uset" href="#/library/${tid}" style="--tc:${t.color}"><span class="ti">${t.icon}</span><span class="grow"><b lang="en">${esc(t.title)}</b> <span class="lv lv-${l}">${lvName(l)}</span><br><span class="muted small">${esc(t.vi)}</span><span class="meter"><i style="width:${c.p * 100}%"></i></span></span><span class="muted small">${c.d}/${c.n}</span></a>`; }).join("");
   const tb = S.utest[u.id];
   return `<section class="page-head" style="--tc:${u.color}"><a class="muted small" href="#/path">Lộ trình</a>
       <div class="row" style="gap:14px"><span class="ti big">${u.icon}</span><div><span class="lv lv-${u.level}">${esc(u.code)}</span><h1 lang="en">${esc(u.title)}</h1><p class="lede" style="margin:0">${esc(u.vi)}</p></div></div>
@@ -2284,7 +2291,8 @@ function buildGenSteps(l, unitIdx, part) {
   shuffle(ws.filter(w => !/·/.test(w.w))).slice(0, 2).forEach(w => { const opts = shuffle([w.w, ...others(w, 3)]); steps.push({ t: "mcq", k: "vocab", q: `Which word means “${w.vi}”?`, opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}.` }); });
   /* Câu điền từ: kèm gợi ý nghĩa tiếng Việt của từ cần điền. Gợi ý này là thứ phân biệt đáp án đúng với các từ còn lại (cùng từ loại, khác nghĩa), nên không có hai đáp án cùng đúng. */
   /* Điền từ theo nghĩa Anh-Anh (không dùng câu ví dụ để điền); nghĩa tiếng Việt chỉ hiện khi bấm gợi ý. Từ chưa có định nghĩa thì dùng câu ví dụ như cũ. */
-  const defWords = ws.filter(w => !/·/.test(w.w) && defOf(w)), defPick = defWords.length >= 2 ? defWords : withEx;
+  /* Câu ví dụ chỉ để minh họa cách dùng, không dùng làm đề kiểm tra: biết điền đúng câu ví dụ chưa chắc biết dùng từ. */
+  const defWords = ws.filter(w => !/·/.test(w.w) && defOf(w)), defPick = defWords.length >= 2 ? defWords : [];
   defPick.slice(0, 2).forEach(w => {
     const lesson = rankDistractors(w, ws, 3), more = lesson.length < 3 ? rankDistractors(w, pool.filter(x => !lesson.includes(x)), 3 - lesson.length) : [];
     const opts = shuffle([w.w, ...lesson.map(x => x.w), ...more.map(x => x.w)]);
@@ -2293,19 +2301,16 @@ function buildGenSteps(l, unitIdx, part) {
   });
   const cls = ws.filter(w => !/·/.test(w.w) && w.pos);
   if (cls.length >= 3) steps.push({ t: "classify", k: "vocab", title: "Word classes", q: "Mỗi từ thuộc từ loại nào?", opts: ["danh từ", "động từ", "tính từ", "khác"], items: cls.map(w => [w.w, posIndex(w.pos)]), why: "n là danh từ, v là động từ, adj là tính từ. Trạng từ (adv), cụm từ (phr), giới từ (prep)… xếp vào loại khác. Một số từ có nhiều từ loại; ở đây tính theo nghĩa đang học." });
-  if (withEx.length >= 2) {
-    const heard = withEx.slice(0, 3), heardText = heard.map(w => w.ex).join(" ");
-    /* Từ nhiễu không được xuất hiện (kể cả dạng biến đổi như lives/lived) trong bản ghi. */
+  const wordsOnly = ws.filter(w => !/·/.test(w.w));
+  if (wordsOnly.length >= 3) {
+    const heard = wordsOnly.slice(0, 3), heardText = heard.map(w => w.w).join(" ");
+    /* Nghe từ (không nghe câu ví dụ); từ nhiễu không trùng các từ vừa nghe. */
     const notIn = shuffle(pool.filter(x => !ws.some(y => y.w === x.w) && !/·/.test(x.w) && !new RegExp("(^|[^A-Za-z'])" + reEsc(x.w), "i").test(heardText)));
-    const qs = heard.slice(0, 2).map((w, k) => { const opts = shuffle([w.w, ...notIn.slice(k * 3, k * 3 + 3).map(x => x.w)]); return { q: "Which of these words is in the recording?", opts, a: opts.indexOf(w.w), why: `Câu có từ ${w.w}: “${w.ex}”` }; }).filter(q => q.opts.length >= 4);
-    if (qs.length) steps.push({ t: "listen", k: "listening", title: "Listen to the examples", who: { N: "Narrator" }, lines: heard.map(w => ["N", w.ex, `${w.w}: ${w.vi}`]), qs });
+    const qs = heard.slice(0, 2).map((w, k) => { const opts = shuffle([w.w, ...notIn.slice(k * 3, k * 3 + 3).map(x => x.w)]); return { q: "Which of these words is in the recording?", opts, a: opts.indexOf(w.w), why: `${w.w}: ${w.vi}` }; }).filter(q => q.opts.length >= 4);
+    if (qs.length) steps.push({ t: "listen", k: "listening", title: "Listen to the words", who: { N: "Narrator" }, lines: heard.map(w => ["N", w.w, `${w.w}: ${w.vi}`]), qs });
   }
-  const sent = withEx.map(w => w.ex).filter(s => { const n = s.split(/\s+/).length; return n >= 3 && n <= 10; });
-  if (sent[0]) steps.push({ t: "order", k: "writing", vi: `Sắp xếp thành câu đúng (có từ mới trong bài).`, tiles: sent[0].split(/\s+/) });
-  const dsent = sent[1] || (withEx.length > 1 ? withEx[1].ex : null);
-  if (dsent && dsent.split(/\s+/).length <= 14) steps.push({ t: "dict", k: "listening", s: dsent, vi: "Nghe câu có từ mới rồi chép lại." });
   const sp = ws.filter(w => !/·/.test(w.w)).slice(-1)[0];
-  if (sp) { const tHint = `nghĩa: ${hintOf(sp)}; bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, spDef = defOf(sp); steps.push(spDef ? { t: "cloze", k: "writing", def: spDef, vi: hintOf(sp), hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : sp.ex && wordRe(sp).test(sp.ex) ? { t: "cloze", k: "writing", s: blank(sp), hint: tHint, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : { t: "cloze", k: "writing", s: `“${sp.vi}” in English: ___`, hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `${sp.w}: ${sp.vi}.` }); }
+  if (sp) { const tHint = `nghĩa: ${hintOf(sp)}; bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, spDef = defOf(sp); steps.push(spDef ? { t: "cloze", k: "writing", def: spDef, vi: hintOf(sp), hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `Viết đúng chính tả: ${sp.w} (${sp.vi}).` } : { t: "cloze", k: "writing", s: `“${sp.vi}” in English: ___`, hint: `bắt đầu bằng “${sp.w[0]}”, ${sp.w.length} ký tự`, type: true, a: [sp.w], why: `${sp.w}: ${sp.vi}.` }); }
   steps.push({ t: "pairs", set: PAIR_KEYS[(unitIdx * 3 + part) % PAIR_KEYS.length] });
   const fam = ws.every(w => /·/.test(w.w)); const spk = (fam ? ws : ws.filter(w => !/·/.test(w.w))).slice(0, 4);
   steps.push({ t: "speak", title: "Use the new words", prompt: `Say or write one short sentence with each word: ${spk.map(w => baseWord(w.w)).join(", ")}.`, vi: fam ? "Nói hoặc viết mỗi họ từ một câu, dùng ít nhất dạng đầu tiên của họ từ." : "Nói hoặc viết mỗi từ một câu ngắn. Máy kiểm tra bạn đã dùng đủ các từ chưa.", models: spk.map(w => w.ex || `${capFirst(baseWord(w.w))}.`), kw: spk.map(w => fam ? w.w.split(" · ").map(x => x.toLowerCase()) : [baseWord(w.w).toLowerCase()]), labels: spk.map(w => baseWord(w.w)) });
@@ -2322,15 +2327,18 @@ const GEN_LESSONS = [];
 UNITS.forEach((u, ui) => {
   u.core = u.core || u.lessons.slice(); u.groups = [];
   const pool = unitWords(u).map(lessonWord);
-  u.vocab.forEach(([tid, lvl]) => {
-    const t = LIB_BY[tid]; if (!t) return; const ws = t.words.filter(w => w.lvl === lvl); if (!ws.length) return;
-    const chunks = []; for (let i = 0; i < ws.length; i += LESSON_SIZE) chunks.push(ws.slice(i, i + LESSON_SIZE));
-    if (chunks.length > 1 && chunks[chunks.length - 1].length < 3) { const last = chunks.pop(); chunks[chunks.length - 1].push(...last); }
+  u.vocab.forEach(([tid, lvl, from, to]) => {
+    const t = LIB_BY[tid]; if (!t) return; const all = t.words.filter(w => w.lvl === lvl), ws = from == null ? all : all.slice(from, to); if (!ws.length) return;
+    /* Chia nhóm từ thành bài 5 từ như cũ: bài k của cả nhóm luôn có cùng mã dù nhóm được chia cho nhiều chặng. */
+    const allChunks = []; for (let i = 0; i < all.length; i += LESSON_SIZE) allChunks.push(all.slice(i, i + LESSON_SIZE));
+    if (allChunks.length > 1 && allChunks[allChunks.length - 1].length < 3) { const last = allChunks.pop(); allChunks[allChunks.length - 1].push(...last); }
+    const first = from == null ? 0 : Math.round(from / LESSON_SIZE);
+    const chunks = from == null ? allChunks : allChunks.slice(first, to >= all.length ? allChunks.length : Math.round(to / LESSON_SIZE));
     const ids = chunks.map((ch, k) => {
-      const id = `v-${tid}-${lvl}-${k + 1}`, words = ch.map(lessonWord);
-      const l = { id, gen: true, unit: u.id, topic: tid, part: k + 1, parts: chunks.length, track: u.track, level: u.track === "med" ? (lvl === "T1" ? "Nền tảng" : "Mở rộng") : lvl, min: 10,
-        title: t.title, vi: `${t.vi}, phần ${k + 1}/${chunks.length}`, can: `Nhận biết, nghe, viết và dùng đúng ${words.length} từ: ${words.map(w => w.w).join(", ")}.`, pre: [], words, pool };
-      l.steps = buildGenSteps(l, ui, k); LESSON_BY[id] = l; GEN_LESSONS.push(l); return id;
+      const id = `v-${tid}-${lvl}-${first + k + 1}`, words = ch.map(lessonWord);
+      const l = { id, gen: true, unit: u.id, topic: tid, part: first + k + 1, parts: allChunks.length, track: u.track, level: u.track === "med" ? (lvl === "T1" ? "Nền tảng" : "Mở rộng") : lvl, min: 10,
+        title: t.title, vi: `${t.vi}, phần ${first + k + 1}/${allChunks.length}`, can: `Nhận biết, nghe, viết và dùng đúng ${words.length} từ: ${words.map(w => w.w).join(", ")}.`, pre: [], words, pool };
+      l.steps = buildGenSteps(l, ui, first + k); LESSON_BY[id] = l; GEN_LESSONS.push(l); return id;
     });
     u.groups.push({ tid, lvl, ids });
   });
@@ -2998,7 +3006,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.31.1"; APP.build = "04.10.26";
+APP.version = "4.34.0"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3580,7 +3588,7 @@ function revDistract(info, n, needDef) {
 function revEligible(info) {
   const w = info.w, ok = {}, def = revDef(info), p3 = revDistract(info, 3, false).length >= 3;
   if (info.dir === "r") { ok.flash = 1; if (p3) ok.mcvi = 1; if (def && revDistract(info, 3, true).length >= 3) ok.mcdef = 1; if (p3 && !UI.mute) ok.lmc = 1; }
-  else { ok.type = 1; if (p3) ok.mcen = 1; if (p3 && w.ex && blankIn(w.ex, w.w)) ok.clmc = 1; if (def && p3) ok.defw = 1; if (/^[A-Za-z]{4,13}$/.test(w.w)) ok.scr = 1; if (!UI.mute) ok.ltype = 1; }
+  else { ok.type = 1; if (p3) ok.mcen = 1; if (def && p3) ok.defw = 1; if (/^[A-Za-z]{4,13}$/.test(w.w)) ok.scr = 1; if (!UI.mute) ok.ltype = 1; }
   return ok;
 }
 const REV_W = {
@@ -3599,8 +3607,8 @@ function revPrepare(info, m, st) {
   const w = info.w, mk = (right, wrongs, f) => { const o = shuffle([{ t: f(right), ex: "" , r: 1 }, ...wrongs.map(x => ({ t: f(x), ex: x }))]); return o; };
   st.ready = true; st.t0 = Date.now();
   if (m === "mcvi" || m === "lmc") { const d = revDistract(info, 3, false); st.opts = shuffle([{ t: w.vi, r: 1 }, ...d.map(x => ({ t: x.vi, src: x.w }))]); st.kind = "mc"; }
-  else if (m === "mcdef") { const d = revDistract(info, 3, true); st.opts = shuffle([{ t: revDef(info), r: 1 }, ...d.map(x => ({ t: defOf(x), src: x.w }))]); st.kind = "mc"; }
-  else if (m === "mcen" || m === "clmc" || m === "defw") { const d = revDistract(info, 3, false); st.opts = shuffle([{ t: w.w, r: 1 }, ...d.map(x => ({ t: x.w, src: x.vi }))]); st.kind = "mc"; }
+  else if (m === "mcdef") { const d = revDistract(info, 3, true); st.opts = shuffle([{ t: revDef(info), r: 1 }, ...d.map(x => ({ t: defOf(x), src: x.w, x }))]); st.kind = "mc"; }
+  else if (m === "mcen" || m === "clmc" || m === "defw") { const d = revDistract(info, 3, false); st.opts = shuffle([{ t: w.w, r: 1 }, ...d.map(x => ({ t: x.w, src: x.vi, x }))]); st.kind = "mc"; }
   else if (m === "scr") { st.kind = "scr"; st.tiles = w.w.split(""); do { st.pool = shuffle(st.tiles.map((_, k) => k)); } while (st.pool.every((v, k) => v === k)); st.ans = []; }
   else st.kind = "type";
   if (st.opts) st.a = st.opts.findIndex(o => o.r);
@@ -3943,12 +3951,16 @@ const UT = { PASS: 0.9, SEC: 0.8, COOL: 24 * 3600 * 1000 };
 const UT_SEC = { vocab: "Từ vựng", grammar: "Ngữ pháp", reading: "Đọc hiểu", listening: "Nghe" };
 const utSecOf = it => it.sec || (it.skill === "grammar" ? "grammar" : it.skill === "reading" ? "reading" : it.skill === "listening" ? "listening" : "vocab");
 const UT_RD_LVL = { A1: "A2", A2: "A2", B1: "B1", B2: "B2", C1: "C1", T1: "B1", T2: "B2" };
+/* Độ dài đề tăng dần theo cấp: tỉ lệ từ vựng lấy mẫu, số câu ngữ pháp mỗi điểm, số bài đọc, số bộ bài nghe. */
+const UT_PARAMS = { A1: { vr: 0.5, gp: 4, rd: 1, lc: 0 }, A2: { vr: 0.55, gp: 5, rd: 1, lc: 0 }, B1: { vr: 0.6, gp: 6, rd: 2, lc: 2 }, B2: { vr: 0.65, gp: 7, rd: 2, lc: 2 }, C1: { vr: 0.7, gp: 8, rd: 3, lc: 2 }, T1: { vr: 0.55, gp: 5, rd: 1, lc: 0 }, T2: { vr: 0.6, gp: 6, rd: 2, lc: 0 } };
+const UT_LC_LVL = { B1: "B1", B2: "B2", C1: "B2" };
 function utBuild(u) {
+  const P = UT_PARAMS[u.level] || UT_PARAMS.A2;
   const tag = (list, sec, extra) => list.map(it => ({ ...it, sec: sec || utSecOf(it), src: "ut:" + u.id, ...(extra || {}) }));
   const ws = unitWords(u).filter(w => !/·/.test(w.w)), out = [];
-  /* Từ vựng: lấy mẫu có phân tầng theo chủ đề, khoảng 40% số từ của chặng (12 đến 60 câu). */
+  /* Từ vựng: lấy mẫu có phân tầng theo chủ đề (12 đến 60 câu). */
   if (ws.length) {
-    const nV = Math.min(60, Math.max(12, Math.ceil(ws.length * 0.4))), by = {};
+    const nV = Math.min(60, Math.max(12, Math.ceil(ws.length * P.vr))), by = {};
     ws.forEach(w => (by[w.topic.id] = by[w.topic.id] || []).push(w));
     let pick = []; Object.values(by).forEach(g => pick.push(...shuffle(g).slice(0, Math.max(2, Math.round(nV * g.length / ws.length)))));
     pick = shuffle(pick).slice(0, nV);
@@ -3957,26 +3969,31 @@ function utBuild(u) {
     out.push(...tag(vi.filter(it => it.t !== "l"), "vocab"), ...tag(vi.filter(it => it.t === "l"), "listening"));
   }
   /* Nghe hiểu cho chặng có bộ bài nghe cùng cấp độ. */
-  if (!UI.mute && typeof LC_SETS !== "undefined") { const sets = shuffle(LC_SETS.filter(s => s.lvl === u.level)).slice(0, 2); sets.forEach(s => out.push(...tag(lcItems(s), "listening"))); }
-  /* Ngữ pháp: 5 câu cho mỗi điểm, lấy từ ngân hàng luyện, câu so sánh dễ nhầm và câu tìm lỗi. */
-  u.grammar.forEach(gid => {
+  if (!UI.mute && P.lc && typeof LC_SETS !== "undefined") { const lvl = UT_LC_LVL[u.level]; shuffle(LC_SETS.filter(s => s.lvl === lvl)).slice(0, P.lc).forEach(s => out.push(...tag(lcItems(s), "listening"))); }
+  /* Ngữ pháp: mỗi điểm lấy từ ngân hàng luyện, câu so sánh dễ nhầm và câu tìm lỗi. Chặng chưa có điểm mới thì ôn hai điểm gần nhất cùng cấp. */
+  let gids = u.grammar.slice();
+  if (!gids.length) { const prev = UNITS.filter(x => x.track === u.track && x.level === u.level && UNITS.indexOf(x) < UNITS.indexOf(u)).flatMap(x => x.grammar); gids = prev.slice(-2); }
+  const per = gids.length === 1 ? P.gp + 2 : P.gp;
+  gids.forEach(gid => {
     const g = GRAMMAR_BY[gid], x = GX[gid]; if (!g) return;
-    const a = shuffle(g.bank.filter(b => b.t === "c" || b.t === "x" || b.t === "t")).slice(0, x ? 2 : 5).map(b => shuffleItemOpts({ ...b, skill: "grammar" }));
+    const nB = Math.ceil(per * 0.4), nQ = Math.ceil(per * 0.4), nF = Math.max(1, per - nB - nQ);
+    const a = shuffle(g.bank.filter(b => b.t === "c" || b.t === "x" || b.t === "t")).slice(0, x ? nB : per).map(b => shuffleItemOpts({ ...b, skill: "grammar" }));
     let b = [], f = [];
     if (x) {
-      b = shuffle(x.contrast.quiz).slice(0, 2).map(q => shuffleItemOpts({ t: q.q.includes("___") ? "c" : "x", q: q.q, opts: q.opts.slice(), a: q.a, why: q.why, wrong: q.wrong || {}, skill: "grammar" }));
-      const m = shuffle(x.mistakes.map(e => ({ e, sp: errSpan(e.wrong, e.right) }))), er = m.find(o => o.sp.wrong);
-      if (er) f = [{ t: "f", mixed: true, s: er.e.wrong, wrong: er.sp.wrong, fix: er.sp.fix, why: er.e.why, skill: "grammar" }];
-      if (m.length > 1) { const k = m.find(o => o !== er); f.push({ t: "f", ok: true, s: k.e.right, why: `Câu này đúng. Lỗi hay gặp là viết “${k.e.wrong}”: ${k.e.why}`, skill: "grammar" }); }
-      f = f.slice(0, 1);
+      b = shuffle(x.contrast.quiz).slice(0, nQ).map(q => shuffleItemOpts({ t: q.q.includes("___") ? "c" : "x", q: q.q, opts: q.opts.slice(), a: q.a, why: q.why, wrong: q.wrong || {}, skill: "grammar" }));
+      const m = shuffle(x.mistakes.map(e => ({ e, sp: errSpan(e.wrong, e.right) })));
+      const errs = m.filter(o => o.sp.wrong).slice(0, Math.ceil(nF * 0.6)), rest = m.filter(o => !errs.includes(o)).slice(0, nF - errs.length);
+      f = [...errs.map(o => ({ t: "f", mixed: true, s: o.e.wrong, wrong: o.sp.wrong, fix: o.sp.fix, why: o.e.why, skill: "grammar" })), ...rest.map(o => ({ t: "f", ok: true, s: o.e.right, why: `Câu này đúng. Lỗi hay gặp là viết “${o.e.wrong}”: ${o.e.why}`, skill: "grammar" }))];
     }
-    out.push(...tag([...a, ...b, ...f].slice(0, 5), "grammar", { gid }));
+    out.push(...tag([...a, ...b, ...f].slice(0, per), "grammar", { gid }));
   });
-  /* Đọc hiểu: 1 bài (A1 đến A2) hoặc 2 bài (từ B1) cùng cấp độ, đúng mạch thông dụng hoặc y khoa. */
+  /* Đọc hiểu: số bài tăng theo cấp, cùng cấp độ, đúng mạch thông dụng hoặc y khoa. */
   const lvl = UT_RD_LVL[u.level], cand = RD_ALL.filter(p => p.lvl === lvl && (u.track === "med" ? p.topic === "medical" : p.topic !== "medical"));
-  shuffle(cand).slice(0, ["A1", "A2", "T1"].includes(u.level) ? 1 : 2).forEach(p => out.push(...tag(readingItems(p), "reading")));
-  const order = ["vocab", "listening", "grammar", "reading"];
-  return order.flatMap(s => out.filter(it => utSecOf(it) === s));
+  shuffle(cand).slice(0, P.rd).forEach(p => out.push(...tag(readingItems(p), "reading")));
+  const order = ["vocab", "listening", "grammar", "reading"], seen = new Set();
+  /* Bỏ câu trùng lặp (cùng một câu xuất hiện ở hai dạng bài hoặc hai nguồn) để đề không hỏi lại. */
+  const key = it => norm(it.t === "c" && it.opts ? String(it.q).replace("___", it.opts[it.a]) : it.t === "x" && it.opts ? it.opts[it.a] : it.t === "t" ? String(it.q).replace("___", (it.ans || [""])[0]) : it.t === "f" ? (it.ok ? it.s : String(it.s).replace(it.wrong, it.fix)) : it.t === "o" ? it.s : (it.q || it.s || (it.w && it.w.w) || "") + (it.pass ? "|" + it.pass.id : ""));
+  return order.flatMap(s => out.filter(it => utSecOf(it) === s)).filter(it => { const k = key(it); if (!k || seen.has(k)) return !k; seen.add(k); return true; });
 }
 function utCount(items) { const n = {}; items.forEach(it => { const s = utSecOf(it); n[s] = (n[s] || 0) + 1; }); return n; }
 function utCool(id) { const t = S.utest[id]; return t && t.lf && !t.pass ? Math.max(0, t.lf + UT.COOL - Date.now()) : 0; }
@@ -4072,6 +4089,35 @@ viewPractice = function () {
 ACT.utSkip = function () {
   if (!PX || PX.kind !== "ut") return; const it = PX.items[PX.i], st = PX.st[PX.i]; if (!it || st.done) return;
   stopSpeech(); st.done = true; st.ok = false; st.skipped = true; evidence(it.skill, false, it.src); PX.i++; render();
+};
+
+/* Lộ trình có nhiều chặng: gom theo cấp, chỉ mở cấp đang học (các cấp khác thu gọn, kèm số chặng đã xong). */
+const PATH_OPEN = new Set();
+const _viewPath62 = viewPath;
+viewPath = function () {
+  const h = _viewPath62(), parts = h.split('<h2 class="sec-h">'); if (parts.length < 2) return h;
+  const anyCur = parts.slice(1).some(p => p.includes('class="unode done cur"') || p.includes('unode  cur') || /class="unode [^"]*\bcur\b/.test(p));
+  return parts[0] + parts.slice(1).map((p, i) => {
+    const e = p.indexOf("</h2>"), inner = p.slice(0, e), rest = p.slice(e + 5);
+    const n = (rest.match(/class="unode /g) || []).length, done = (rest.match(/class="unode done/g) || []).length;
+    const key = inner.replace(/<[^>]*>/g, "").trim(), cur = /class="unode [^"]*\bcur\b/.test(rest);
+    const open = PATH_OPEN.has(key) || cur || (!anyCur && i === 0);
+    return `<details class="lvl-group" data-k="${esc(key)}" ${open ? "open" : ""}><summary><h2 class="sec-h">${inner}</h2><span class="chip ${done === n ? "good" : ""}">${done}/${n} chặng</span></summary>${rest}</details>`;
+  }).join("");
+};
+document.addEventListener("toggle", e => { const d = e.target; if (d && d.classList && d.classList.contains("lvl-group")) { if (d.open) PATH_OPEN.add(d.dataset.k); else PATH_OPEN.delete(d.dataset.k); } }, true);
+
+/* ---------------- Thẻ ôn theo định nghĩa: sau khi trả lời, nêu đáp án (và lựa chọn của bạn nếu sai) kèm định nghĩa Anh, bản dịch Việt và nghĩa của từ ---------------- */
+function defVi(x) { const k = x.key || (x.lw && x.lw.key); return (typeof WORD_DEFS_VI !== "undefined" && k && WORD_DEFS_VI[k]) || ""; }
+function defLine(x) { const d = defOf(x), v = defVi(x); return d ? `<div class="fb-def"><span class="en" lang="en">“${esc(d)}”</span>${v ? `<br>→ “${esc(v)}”` : ""}</div>` : ""; }
+const _revFeedback61 = revFeedback;
+revFeedback = function (info, st) {
+  const h = _revFeedback61(info, st); if (!(R.mode === "defw" || R.mode === "mcdef")) return h;
+  const w = info.w, mine = st.opts && st.pick != null ? st.opts[st.pick] : null, tail = h.slice(h.indexOf('<div class="row">'));
+  const lwk = info.id && /^V:/.test(info.id) ? LIB_WORD[info.id.split(":").slice(1, 3).join(":")] : null, wd = lwk || w;
+  const ans = `<div class="fb-ans"><b>${st.ok ? (st.typo ? "Gần đúng." : "Đúng.") : "Đáp án:"}</b> <span class="en" lang="en" style="font-size:19px">${esc(w.w)}</span> → <b>${esc(w.vi)}</b> <span class="muted">${esc(ipaOf(w))}</span></div>${defLine(wd)}`;
+  const pick = !st.ok && mine && mine.x ? `<div class="fb-pick"><b>Bạn chọn:</b> <span class="en" lang="en">${esc(mine.x.w)}</span> → <b>${esc(mine.x.vi)}</b>${defLine(mine.x)}</div>` : "";
+  return `<div class="feedback ${st.ok ? "ok" : "no"}" role="status">${ans}${pick}</div>${tail}`;
 };
 
 initApp();

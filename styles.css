@@ -897,3 +897,14 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 @media (max-width: 860px) { .unode-act { padding-left: 46px; } }
 .ut-rules { margin: 0; padding-left: 20px; display: grid; gap: 4px; line-height: 1.5; }
 .ut-card.ut-pass { border-left: 4px solid var(--good); }
+
+.lvl-group { margin-top: 10px; }
+.lvl-group > summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; list-style: none; padding: 2px 0; }
+.lvl-group > summary::-webkit-details-marker { display: none; }
+.lvl-group > summary h2 { margin: 6px 0; }
+.lvl-group > summary::after { content: "▾"; color: var(--muted); font-size: 18px; margin-left: 4px; transition: transform .15s; }
+.lvl-group:not([open]) > summary::after { transform: rotate(-90deg); }
+
+.fb-def { margin-top: 3px; font-size: 14.5px; line-height: 1.5; opacity: .92; }
+.fb-def .en { font-style: italic; }
+.fb-pick { margin-top: 10px; padding-top: 8px; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
