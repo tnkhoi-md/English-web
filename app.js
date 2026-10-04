@@ -89,8 +89,9 @@ function sanitize(raw) {
   if (raw.lessons && typeof raw.lessons === "object") for (const [id, v] of Object.entries(raw.lessons)) if (LESSON_BY[id] && v) S.lessons[id] = { done: !!v.done, best: clamp(num(v.best, 0), 0, 1), last: num(v.last, 0), n: Math.max(0, Math.round(num(v.n, 0))) };
   if (raw.cards && typeof raw.cards === "object") for (const [id, c] of Object.entries(raw.cards)) {
     if (!/^[GM]\d:\d:[rp]$/.test(id) || !c) continue;
-    S.cards[id] = { state: ["new", "learning", "review", "relearning"].includes(c.state) ? c.state : "new", due: num(c.due, Date.now()), s: Math.max(0, num(c.s, 0)), d: clamp(num(c.d, 5), 1, 10), reps: Math.max(0, Math.round(num(c.reps))), lapses: Math.max(0, Math.round(num(c.lapses))), last: num(c.last, 0), step: Math.round(num(c.step)) };
+    S.cards[id] = { state: ["new", "learning", "review", "relearning"].includes(c.state) ? c.state : "new", due: num(c.due, Date.now()), s: Math.max(0, num(c.s, 0)), d: clamp(num(c.d, 5), 1, 10), reps: Math.max(0, Math.round(num(c.reps))), lapses: Math.max(0, Math.round(num(c.lapses))), last: num(c.last, 0), step: Math.round(num(c.step)), ...(num(c.off) > 0 ? { off: num(c.off) } : {}), ...(num(c.mt) > 0 ? { mt: num(c.mt) } : {}) };
   }
+  if (raw.rdk && typeof raw.rdk === "object") { S.rdk = {}; for (const k of ["main", "detail", "vocab", "inference", "tfng"]) { const v = raw.rdk[k]; if (v) S.rdk[k] = { n: Math.max(0, Math.round(num(v.n))), ok: Math.max(0, Math.round(num(v.ok))) }; } }
   if (Array.isArray(raw.log)) S.log = raw.log.filter(e => e && SKILLS[e.k]).slice(-4000).map(e => ({ t: num(e.t, 0), k: e.k, ok: e.ok ? 1 : 0, src: String(e.src || "").slice(0, 24) }));
   if (raw.cases && typeof raw.cases === "object") for (const [id, v] of Object.entries(raw.cases)) if (CASE_BY[id] && v) S.cases[id] = { best: clamp(num(v.best, 0), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last, 0) };
   if (raw.pron && typeof raw.pron === "object") for (const [id, v] of Object.entries(raw.pron)) if (PAIRS[id] && v) S.pron[id] = { n: Math.max(0, Math.round(num(v.n))), ok: Math.max(0, Math.round(num(v.ok))) };
@@ -1313,7 +1314,7 @@ sanitize = function (raw) {
   if (raw.known && typeof raw.known === "object") for (const [k, v] of Object.entries(raw.known)) if (LIB_WORD[k]) s.known[k] = num(v, 1);
   if (raw.cards && typeof raw.cards === "object") for (const [id, c] of Object.entries(raw.cards)) {
     const m = /^V:([a-z0-9-]+):([a-z0-9-]+):[rp]$/.exec(id); if (!m || !c || !LIB_WORD[m[1] + ":" + m[2]]) continue;
-    s.cards[id] = { state: ["new", "learning", "review", "relearning"].includes(c.state) ? c.state : "new", due: num(c.due, Date.now()), s: Math.max(0, num(c.s, 0)), d: clamp(num(c.d, 5), 1, 10), reps: Math.max(0, Math.round(num(c.reps))), lapses: Math.max(0, Math.round(num(c.lapses))), last: num(c.last, 0), step: Math.round(num(c.step)) };
+    s.cards[id] = { state: ["new", "learning", "review", "relearning"].includes(c.state) ? c.state : "new", due: num(c.due, Date.now()), s: Math.max(0, num(c.s, 0)), d: clamp(num(c.d, 5), 1, 10), reps: Math.max(0, Math.round(num(c.reps))), lapses: Math.max(0, Math.round(num(c.lapses))), last: num(c.last, 0), step: Math.round(num(c.step)), ...(num(c.off) > 0 ? { off: num(c.off) } : {}), ...(num(c.mt) > 0 ? { mt: num(c.mt) } : {}) };
   }
   if (raw.intake && typeof raw.intake === "object") Object.entries(raw.intake).filter(([d]) => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().slice(-90).forEach(([d, v]) => { s.intake[d] = { gen: Math.max(0, Math.round(num(v && v.gen))), med: Math.max(0, Math.round(num(v && v.med))) }; });
   s.goals = sanGoals(raw.goals); s.settingsAt = num(raw.settingsAt, 0); s.updatedAt = num(raw.updatedAt, 0);
@@ -2017,13 +2018,13 @@ function currentUnit(track) {
 const _san42 = sanitize;
 sanitize = function (raw) {
   const s = _san42(raw); s.utest = {};
-  if (raw && raw.utest && typeof raw.utest === "object") for (const [k, v] of Object.entries(raw.utest)) if (UNIT_BY[k] && v) s.utest[k] = { best: clamp(num(v.best), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last) };
+  if (raw && raw.utest && typeof raw.utest === "object") for (const [k, v] of Object.entries(raw.utest)) if (UNIT_BY[k] && v) s.utest[k] = { best: clamp(num(v.best), 0, 1), n: Math.max(0, Math.round(num(v.n))), last: num(v.last), ...(v.pass ? { pass: 1, at: num(v.at) } : {}), ...(num(v.lf) > 0 ? { lf: num(v.lf) } : {}) };
   return s;
 };
 const _fresh42 = fresh; fresh = () => { const s = _fresh42(); s.utest = {}; return s; };
 S = load();
 const _merge42 = mergeState;
-mergeState = function (a, b) { const m = _merge42(a, b); m.utest = { ...(a.utest || {}) }; for (const [k, v] of Object.entries(b.utest || {})) { const x = m.utest[k]; m.utest[k] = !x ? v : { best: Math.max(x.best, v.best), n: Math.max(x.n, v.n), last: Math.max(x.last, v.last) }; } return m; };
+mergeState = function (a, b) { const m = _merge42(a, b); m.utest = { ...(a.utest || {}) }; for (const [k, v] of Object.entries(b.utest || {})) { const x = m.utest[k]; m.utest[k] = !x ? v : { best: Math.max(x.best, v.best), n: Math.max(x.n, v.n), last: Math.max(x.last, v.last), ...((x.pass || v.pass) ? { pass: 1, at: Math.max(x.at || 0, v.at || 0) } : {}), ...((x.lf || v.lf) ? { lf: Math.max(x.lf || 0, v.lf || 0) } : {}) }; } return m; };
 
 /* ---------------- Routes ---------------- */
 const _isFocus42 = isFocus, _isStudy42 = isStudyRoute;
@@ -2184,14 +2185,15 @@ function pxBody(it, st) {
       ${st.done ? "" : `<div class="row"><button class="btn" data-act="pxReset">Xếp lại</button><button class="btn primary" data-act="pxOrder" ${st.ans.length === st.tiles.length ? "" : "disabled"}>Kiểm tra</button></div>`}`;
   }
   else if (it.t === "f") {
-    const toks = it.s.split(/\s+/), wi = toks.findIndex(x => norm(x) === norm(it.wrong));
-    body = `<p class="muted">Câu dưới đây có một từ sai. Chạm vào từ đó.</p><p class="ftoks" lang="en">${toks.map((x, k) => `<button class="ftok ${st.done ? (k === wi ? "right" : st.pick === k ? "wrong" : "") : ""}" data-act="pxTok" data-k="${k}" ${st.done ? "disabled" : ""}>${esc(x)}</button>`).join(" ")}</p>`;
-    it._wi = wi;
+    const toks = it.s.split(/\s+/), wi = it.ok ? -1 : toks.findIndex(x => norm(x) === norm(String(it.wrong).split(/\s+/)[0])), wn = String(it.wrong).split(/\s+/).length;
+    const mixed = it.mixed || it.ok;
+    body = `<p class="muted">${mixed ? "Câu dưới đây có thể có một từ sai. Chạm vào từ sai, hoặc bấm “Không có lỗi” nếu câu đúng." : "Câu dưới đây có một từ sai. Chạm vào từ đó."}</p><p class="ftoks" lang="en">${toks.map((x, k) => `<button class="ftok ${st.done ? (k >= wi && k < wi + wn && !it.ok ? "right" : st.pick === k ? "wrong" : "") : ""}" data-act="pxTok" data-k="${k}" ${st.done ? "disabled" : ""}>${esc(x)}</button>`).join(" ")}</p>${mixed ? `<div class="row"><button class="btn ${st.done && it.ok ? "good" : ""}" data-act="pxNoErr" ${st.done ? "disabled" : ""}>Không có lỗi</button></div>` : ""}`;
+    it._wi = wi; it._wn = wn;
   }
   let fb = "";
   if (st.done) {
-    const answer = it.t === "c" || it.t === "x" ? it.opts[it.a] : it.t === "t" || it.t === "s" ? it.ans[0] : it.t === "o" ? it.s : it.t === "f" ? `${it.wrong} → ${it.fix}` : it.t === "m" ? it.w.vi : it.w.w;
-    fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> ${!st.ok || it.t === "f" || st.typo ? `<span class="en" lang="en">${esc(it.t === "f" ? "Sửa: " + it.wrong + " → " + it.fix : answer)}</span>. ` : ""}${escQ(it.why || "")}</div>${!st.ok && (it.t === "c" || it.t === "x") ? wrongWhy(it, st.pick) : ""}${it.w ? `<div class="row">${hear(it.w.w)}${it.w.ex ? `<span class="example" lang="en" style="font-size:16px">${esc(it.w.ex)}</span>` : ""}</div>` : it.t === "o" ? `<div>${hear(it.s)}</div>` : ""}`;
+    const answer = it.t === "c" || it.t === "x" ? it.opts[it.a] : it.t === "t" || it.t === "s" ? it.ans[0] : it.t === "o" ? it.s : it.t === "f" ? (it.ok ? "Câu này đúng" : `${it.wrong} → ${it.fix}`) : it.t === "m" ? it.w.vi : it.w.w;
+    fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? (st.typo ? "Gần đúng, sai chính tả nhẹ." : "Đúng.") : "Đáp án:"}</b> ${!st.ok || it.t === "f" || st.typo ? `<span class="en" lang="en">${esc(it.t === "f" ? (it.ok ? "Câu này đúng, không có lỗi" : "Sửa: " + it.wrong + " → " + it.fix) : answer)}</span>. ` : ""}${escQ(it.why || "")}</div>${!st.ok && (it.t === "c" || it.t === "x") ? wrongWhy(it, st.pick) : ""}${it.w ? `<div class="row">${hear(it.w.w)}${it.w.ex ? `<span class="example" lang="en" style="font-size:16px">${esc(it.w.ex)}</span>` : ""}</div>` : it.t === "o" ? `<div>${hear(it.s)}</div>` : ""}`;
   }
   return lbl + body + fb;
 }
@@ -2237,7 +2239,8 @@ Object.assign(ACT, {
   pxOut(el) { PX.st[PX.i].ans.splice(+el.dataset.j, 1); render(); },
   pxReset() { PX.st[PX.i].ans = []; render(); },
   pxOrder() { const it = PX.items[PX.i], st = PX.st[PX.i]; pxMark(norm(st.ans.map(k => st.tiles[k]).join(" ")) === norm(it.s)); if (st.ok) speakNow(it.s); },
-  pxTok(el) { const it = PX.items[PX.i], st = PX.st[PX.i]; st.pick = +el.dataset.k; pxMark(st.pick === it._wi); },
+  pxTok(el) { const it = PX.items[PX.i], st = PX.st[PX.i]; st.pick = +el.dataset.k; pxMark(!it.ok && it._wi >= 0 && st.pick >= it._wi && st.pick < it._wi + (it._wn || 1)); },
+  pxNoErr() { const it = PX.items[PX.i], st = PX.st[PX.i]; st.pick = -1; pxMark(!!it.ok); },
   pxPlay(el) { const it = PX.items[PX.i]; speakNow(it.w.w, { slow: !!el.dataset.slow }); },
   pxNext() { PX.i++; render(); const it = PX.items[PX.i]; if (it && (it.t === "l" || it.t === "m")) speakNow(it.w.w); },
   pxRestart() { startPractice(PX.arg); render(); },
@@ -2443,6 +2446,7 @@ function defOf(w) { const k = w.key || (w.lw && w.lw.key); return (typeof WORD_D
 const _wordRow46 = wordRow;
 wordRow = (w, a, b) => { const h = _wordRow46(w, a, b), d = defOf(w); return d ? h.replace(/(<div class="lw-vi">[^<]*<\/div>)/, `$1<div class="lw-def" lang="en">${esc(d)}</div>`) : h; };
 const RD_ALL = typeof READING !== "undefined" ? READING : [];
+if (typeof RD_TFNG !== "undefined") RD_ALL.forEach(p => { (RD_TFNG[p.id] || []).forEach(x => p.qs.push({ kind: "tfng", q: x.q, opts: ["True", "False", "Not given"], a: x.a, ev: x.ev || "", why: x.why })); });
 const RD_BY = Object.fromEntries(RD_ALL.map(p => [p.id, p]));
 const D_T5 = typeof TOEIC5 !== "undefined" ? TOEIC5 : [], D_T6 = typeof TOEIC6 !== "undefined" ? TOEIC6 : [];
 const D_CM = typeof CLOZE_MC !== "undefined" ? CLOZE_MC : [], D_CO = typeof CLOZE_OPEN !== "undefined" ? CLOZE_OPEN : [], D_KW = typeof KWT !== "undefined" ? KWT : [];
@@ -2546,7 +2550,7 @@ pxBody = function (it, st) {
   const opts = () => `<div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}</div>`;
   const input = ph => `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="pxCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="${ph}" aria-label="Câu trả lời"><button class="btn primary" data-act="pxCheck" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>`;
   let body = "";
-  if (it.t === "k") body = `${readPassage(it)}<p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p>${opts()}`;
+  if (it.t === "k") body = `${rkBlock(it)}${readPassage(it)}<p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p>${opts()}`;
   else if (it.t === "p") body = `${gapPassage(it, st)}<p class="muted small" style="margin:8px 0 4px">${it.sentence ? "Chọn câu hợp lý nhất cho chỗ trống " : "Chọn đáp án cho chỗ trống "}(${it.gap + 1}).</p>${opts()}`;
   else if (it.t === "po") body = `${gapPassage(it, st)}<p class="muted small" style="margin:8px 0 4px">Gõ MỘT từ cho chỗ trống (${it.gap + 1}).</p>${input("Gõ một từ")}`;
   else if (it.t === "w") body = `<p class="muted">Điền 2 đến 5 từ, gồm từ cho sẵn (không đổi dạng), để câu thứ hai cùng nghĩa với câu thứ nhất.</p>
@@ -2994,7 +2998,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.28.1"; APP.build = "04.10.26";
+APP.version = "4.31.1"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3799,6 +3803,276 @@ afterRender = function () { _afterRender56(); if (ROUTE.name === "settings") { O
 window.addEventListener("offline", () => toast("Đang ngoại tuyến. Bài học và âm thanh đã lưu vẫn dùng được; đồng bộ sẽ chạy lại khi có mạng."));
 window.addEventListener("online", () => { toast("Đã có mạng trở lại."); if (syncCfg().token && syncCfg().auto !== false && SYNC.pending) syncNow(false); });
 if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => { }));
+
+/* ---------------- Không ôn nữa: ngừng ôn một từ (cả hai thẻ), bật lại được ---------------- */
+const cardSib = id => id.slice(0, -1) + (id.endsWith("r") ? "p" : "r");
+function setCardsOff(ids, off) { const t = Date.now(); ids.forEach(id => { const c = S.cards[id]; if (!c) return; if (off) c.off = t; else delete c.off; c.mt = t; }); S.settingsAt = S.settingsAt || 0; touch(); save(); }
+const isOffWord = w => ["r", "p"].some(d => { const c = S.cards[`V:${w.key}:${d}`]; return c && c.off; });
+dueList = function (ahead = 0) {
+  const lim = Date.now() + ahead;
+  return Object.entries(S.cards).filter(([id, c]) => !c.off && c.due <= lim && cardInfo(id)).sort((a, b) => a[1].due - b[1].due).map(([id]) => id);
+};
+cardStats = function () {
+  const st = { new: 0, learning: 0, young: 0, mature: 0, off: 0, total: 0 };
+  for (const c of Object.values(S.cards)) { if (c.off) { st.off++; continue; } st.total++; if (c.state === "new") st.new++; else if (c.state !== "review") st.learning++; else if (c.s >= 21) st.mature++; else st.young++; }
+  return st;
+};
+forecast = function (days = 7) {
+  const out = Array(days).fill(0); const base = dayDue(Date.now(), 0);
+  for (const c of Object.values(S.cards)) { if (c.off) continue; const idx = Math.floor((Math.max(c.due, base) - base) / DAY); if (idx >= 0 && idx < days) out[idx]++; }
+  return out;
+};
+const _wStatus57 = wStatus;
+wStatus = function (w) { return isOffWord(w) ? "off" : _wStatus57(w); };
+const _wordRow57 = wordRow;
+wordRow = function (w, showTopic, hideLevel) {
+  const h = _wordRow57(w, showTopic, hideLevel);
+  return wStatus(w) === "off" ? h.replace(/<span class="chip [^"]*">undefined<\/span>/, `<span class="chip">không ôn nữa</span><button class="mini" data-act="cardResume" data-k="${w.key}" title="Ôn lại từ này">${ic("cards", 15)}<span>Ôn lại</span></button>`) : h;
+};
+const _nextCard57 = nextCard;
+nextCard = function () { if (R) R.queue = R.queue.filter(id => !(S.cards[id] && S.cards[id].off)); _nextCard57(); };
+const _viewReview57 = viewReview;
+viewReview = function () {
+  let h = _viewReview57();
+  if (ROUTE.arg === "go" && R && R.cur) return h.replace("</article>", `<div class="rv-off"><button class="btn quiet small" data-act="cardOff" title="Ngừng ôn từ này, không hỏi lại nữa">Không ôn nữa</button></div></article>`);
+  if (ROUTE.arg !== "go") {
+    const keys = [...new Set(Object.entries(S.cards).filter(([id, cd]) => cd.off && /^V:/.test(id)).map(([id]) => id.slice(2, -2)))].filter(k => LIB_WORD[k]);
+    if (keys.length) h = h.replace('<h2 class="sec-h" style="margin-top:22px">Bài tập theo dạng</h2>', `<details class="panel off-list" style="margin-top:14px"><summary><b>Từ đã ngừng ôn</b> <span class="chip">${keys.length}</span></summary><p class="muted small" style="margin:6px 0 8px">Những từ này không còn xuất hiện trong thẻ ôn. Bấm “Ôn lại” để đưa chúng trở lại.</p><div class="lw-list">${keys.map(k => wordRow(LIB_WORD[k], true)).join("")}</div></details><h2 class="sec-h" style="margin-top:22px">Bài tập theo dạng</h2>`);
+  }
+  return h;
+};
+Object.assign(ACT, {
+  cardOff() {
+    if (!R || !R.cur) return; const id = R.cur, ids = [id, cardSib(id)]; stopSpeech();
+    setCardsOff(ids, true); R.queue = R.queue.filter(x => !ids.includes(x)); nextCard(); render(); if (!R.cur) save();
+    toast("Đã ngừng ôn từ này. Bật lại ở trang Luyện tập, mục Từ đã ngừng ôn.");
+  },
+  cardResume(el) {
+    const k = el.dataset.k; setCardsOff([`V:${k}:r`, `V:${k}:p`], false); toast("Đã bật ôn lại từ này."); render();
+  }
+});
+WF_OPTS.push(["off", "Không ôn nữa"]); WF_MAP["không ôn nữa"] = "off";
+const _merge57 = mergeState;
+mergeState = function (a, b) {
+  const m = _merge57(a, b), st = c => Math.max(c.last || 0, c.mt || 0);
+  for (const [id, c] of Object.entries(b.cards)) { const x = a.cards[id]; if (x && c) m.cards[id] = JSON.parse(JSON.stringify(st(c) > st(x) ? c : x)); }
+  return m;
+};
+S = load();
+
+/* ---------------- Lỗi thường gặp, So sánh dễ nhầm, nhãn kỹ năng đọc ---------------- */
+const GX = typeof GRAMMAR_GX !== "undefined" ? GRAMMAR_GX : {};
+const RK = {
+  main: ["Ý chính", "Hỏi bài nói chủ yếu về điều gì hoặc được viết để làm gì. Đọc lướt câu đầu và câu cuối mỗi đoạn trước."],
+  detail: ["Chi tiết", "Tìm từ khóa trong câu hỏi rồi quét bài để tìm đúng câu chứa thông tin, đừng chọn theo trí nhớ."],
+  vocab: ["Từ vựng trong ngữ cảnh", "Đoán nghĩa từ các câu xung quanh. Đừng chọn nghĩa quen thuộc nhất, hãy chọn nghĩa hợp với câu."],
+  inference: ["Suy luận", "Đáp án không được nói thẳng. Hãy ghép các chi tiết trong bài để rút ra kết luận hợp lý nhất."],
+  tfng: ["Đúng / Sai / Không có thông tin", "Đúng: bài nói như vậy. Sai: bài nói ngược lại. Không có thông tin: bài không đề cập, dù câu nghe có vẻ hợp lý."]
+};
+function rdkAdd(kind, ok) { S.rdk = S.rdk || {}; const v = S.rdk[kind] || (S.rdk[kind] = { n: 0, ok: 0 }); v.n++; if (ok) v.ok++; touch(); save(); }
+function rkBlock(it) {
+  const r = RK[it.kind]; if (!r) return "";
+  const first = !(S.rdk && S.rdk[it.kind] && S.rdk[it.kind].n);
+  return `<div class="rk-row"><span class="chip rk-chip">${r[0]}</span></div>${first ? `<p class="rk-tip">💡 ${esc(r[1])}</p>` : ""}`;
+}
+const _pxMark58 = pxMark;
+pxMark = function (ok, typo) { const it = PX && PX.items[PX.i], st = PX && PX.st[PX.i], was = st && st.done; _pxMark58(ok, typo); if (it && !was && it.t === "k" && RK[it.kind]) rdkAdd(it.kind, !!ok); };
+const _viewReading58 = viewReading;
+EXTRA_VIEWS.reading = function () {
+  let h = _viewReading58(); if (ROUTE.arg) return h;
+  const rows = Object.entries(RK).map(([k, [lab]]) => { const v = (S.rdk || {})[k] || { n: 0, ok: 0 }; return `<div class="skill"><span>${esc(lab)}</span><div class="bar"><i style="width:${v.n ? v.ok / v.n * 100 : 0}%"></i></div><span class="n">${v.n ? Math.round(v.ok / v.n * 100) + "% (" + v.ok + "/" + v.n + ")" : "chưa làm"}</span></div>`; }).join("");
+  const panel = `<section class="panel stack rk-panel" style="margin:14px 0"><h3 style="margin:0">Kỹ năng đọc của bạn</h3><p class="muted small" style="margin:0">Tỉ lệ đúng theo loại câu hỏi. Loại nào thấp nhất thì nên luyện nhiều hơn.</p>${rows}</section>`;
+  const i = h.indexOf("</section>"); return i < 0 ? panel + h : h.slice(0, i + 10) + panel + h.slice(i + 10);
+};
+const _merge58 = mergeState;
+mergeState = function (a, b) { const m = _merge58(a, b); const r = {}; for (const k of Object.keys(RK)) { const x = (a.rdk || {})[k], y = (b.rdk || {})[k]; if (x || y) r[k] = { n: Math.max(x ? x.n : 0, y ? y.n : 0), ok: Math.max(x ? x.ok : 0, y ? y.ok : 0) }; } m.rdk = r; return m; };
+
+/* Luyện tìm lỗi (fx) và chọn đúng giữa hai dạng dễ nhầm (ct) */
+function errSpan(wrong, right) {
+  const a = wrong.split(/\s+/), b = right.split(/\s+/), na = a.map(norm), nb = b.map(norm);
+  let p = 0; while (p < a.length && p < b.length && na[p] === nb[p]) p++;
+  let s = 0; while (s < a.length - p && s < b.length - p && na[a.length - 1 - s] === nb[b.length - 1 - s]) s++;
+  const w = a.slice(p, a.length - s).join(" "), f = b.slice(p, b.length - s).join(" ");
+  return { wrong: w.replace(/[.,!?;:]+$/, ""), fix: f.replace(/[.,!?;:]+$/, "") || "(bỏ từ này)" };
+}
+const _start58 = startPractice;
+startPractice = function (arg) {
+  const m = /^(fx|ct)-(.+)$/.exec(arg || ""); if (!m) return _start58(arg);
+  const g = GRAMMAR_BY[m[2]], x = GX[m[2]]; if (!g || !x) return false;
+  let items, title;
+  if (m[1] === "fx") {
+    const all = shuffle(x.mistakes.map(e => ({ e, sp: errSpan(e.wrong, e.right) })));
+    const find = all.filter(o => o.sp.wrong), rest = all.filter(o => !o.sp.wrong);
+    const nErr = Math.min(find.length, 6), errs = find.slice(0, nErr), oks = [...find.slice(nErr), ...rest].slice(0, Math.max(3, Math.round(nErr / 2)));
+    items = shuffle([
+      ...errs.map(o => ({ t: "f", mixed: true, s: o.e.wrong, wrong: o.sp.wrong, fix: o.sp.fix, why: o.e.why, skill: "grammar", src: "gram:" + g.id })),
+      ...oks.map(o => ({ t: "f", ok: true, s: o.e.right, why: `Câu này đúng. Lỗi hay gặp là viết “${o.e.wrong}”: ${o.e.why}`, skill: "grammar", src: "gram:" + g.id }))
+    ]);
+    title = "Tìm lỗi: " + g.title;
+  } else {
+    items = shuffle(x.contrast.quiz).map(q => shuffleItemOpts({ t: q.q.includes("___") ? "c" : "x", q: q.q, opts: q.opts.slice(), a: q.a, why: q.why, wrong: q.wrong || {}, skill: "grammar", src: "gram:" + g.id }));
+    title = "So sánh: " + x.contrast.title;
+  }
+  if (!items.length) return false;
+  PX = { arg, kind: m[1], id: g.id, title, back: "#/grammar/" + g.id, track: "gen", items, i: 0, st: items.map(() => ({})), saved: true };
+  return true;
+};
+const _viewGP58 = viewGrammarPoint;
+viewGrammarPoint = function (g) {
+  const h = _viewGP58(g), x = GX[g.id]; if (!x) return h;
+  /* Gộp "Lỗi sai thường gặp" cũ với lỗi mới thành một khối: bỏ lỗi trùng, hiện 5 lỗi đầu, phần còn lại nằm trong "Xem thêm". */
+  const toks = s => new Set(norm(s).split(" ").filter(Boolean));
+  const sim = (s, t) => { const A = toks(s), B = toks(t); let n = 0; A.forEach(w => { if (B.has(w)) n++; }); return n / Math.max(1, Math.min(A.size, B.size)); };
+  const olds = (g.err || []).filter(([w]) => !x.mistakes.some(e => sim(w, e.wrong) >= 0.6)).map(([w, r, why]) => ({ wrong: w, right: r, why }));
+  const all = [...x.mistakes, ...olds];
+  const row = e => `<div class="pitfall"><span class="mark-x">✗</span><span class="x" lang="en">${esc(e.wrong)}</span><span class="mark-v">✓</span><span class="v" lang="en">${esc(e.right)}</span><span class="why">${escQ(e.why)}</span></div>`;
+  const nFind = x.mistakes.filter(e => errSpan(e.wrong, e.right).wrong).length, nFx = Math.min(nFind, 6) + Math.max(3, Math.round(Math.min(nFind, 6) / 2));
+  const panelM = `<section class="panel stack gx-mist" style="margin-top:14px"><h3>Lỗi sai thường gặp</h3><p class="muted small" style="margin:0">Những lỗi hay gặp khi nghĩ bằng tiếng Việt rồi dịch sang tiếng Anh.</p><div>${all.slice(0, 5).map(row).join("")}</div>${all.length > 5 ? `<details class="gx-more"><summary>Xem thêm ${all.length - 5} lỗi</summary><div>${all.slice(5).map(row).join("")}</div></details>` : ""}<div class="row"><a class="btn primary" href="#/practice/fx-${g.id}">Luyện tìm lỗi trong câu (${nFx} câu)</a></div></section>`;
+  const c = x.contrast;
+  const table = `<div class="gx-table" role="table"><div class="gx-r gx-h" role="row"><span></span><b lang="en">${esc(c.a)}</b><b lang="en">${esc(c.b)}</b></div>${c.rows.map(r => `<div class="gx-r" role="row"><b class="gx-k">${escQ(r[0])}</b><span data-l="${esc(c.a)}">${escQ(r[1])}</span><span data-l="${esc(c.b)}">${escQ(r[2])}</span></div>`).join("")}</div>`;
+  const exs = c.ex.map(([a, b]) => `<div class="gx-ex"><div class="gx-e a"><span class="en" lang="en">${esc(a)}</span>${hear(a)}</div><div class="gx-e b"><span class="en" lang="en">${esc(b)}</span>${hear(b)}</div></div>`).join("");
+  const panelC = `<section class="panel stack gx-cmp" style="margin-top:14px"><h3>So sánh dễ nhầm: <span lang="en">${esc(c.title)}</span></h3>${table}${exs}<p class="gx-tip">💡 ${escQ(c.tip)}</p><div class="row"><a class="btn primary" href="#/practice/ct-${g.id}">Luyện chọn đúng (${c.quiz.length} câu)</a></div></section>`;
+  const key = '<section class="panel stack practice-cta"';
+  let base = h; const hi = base.indexOf("<h3>Lỗi sai thường gặp</h3>");
+  if (hi >= 0) { const s0 = base.lastIndexOf("<section", hi), e0 = base.indexOf("</section>", hi) + 10; base = base.slice(0, s0) + base.slice(e0); }
+  return base.includes(key) ? base.replace(key, panelM + panelC + key) : base + panelM + panelC;
+};
+
+/* ---------------- Kiểm tra vượt chặng: đạt từ 90%, mỗi phần từ 80% thì xem như đã học xong chặng ---------------- */
+const UT = { PASS: 0.9, SEC: 0.8, COOL: 24 * 3600 * 1000 };
+const UT_SEC = { vocab: "Từ vựng", grammar: "Ngữ pháp", reading: "Đọc hiểu", listening: "Nghe" };
+const utSecOf = it => it.sec || (it.skill === "grammar" ? "grammar" : it.skill === "reading" ? "reading" : it.skill === "listening" ? "listening" : "vocab");
+const UT_RD_LVL = { A1: "A2", A2: "A2", B1: "B1", B2: "B2", C1: "C1", T1: "B1", T2: "B2" };
+function utBuild(u) {
+  const tag = (list, sec, extra) => list.map(it => ({ ...it, sec: sec || utSecOf(it), src: "ut:" + u.id, ...(extra || {}) }));
+  const ws = unitWords(u).filter(w => !/·/.test(w.w)), out = [];
+  /* Từ vựng: lấy mẫu có phân tầng theo chủ đề, khoảng 40% số từ của chặng (12 đến 60 câu). */
+  if (ws.length) {
+    const nV = Math.min(60, Math.max(12, Math.ceil(ws.length * 0.4))), by = {};
+    ws.forEach(w => (by[w.topic.id] = by[w.topic.id] || []).push(w));
+    let pick = []; Object.values(by).forEach(g => pick.push(...shuffle(g).slice(0, Math.max(2, Math.round(nV * g.length / ws.length)))));
+    pick = shuffle(pick).slice(0, nV);
+    const pool = ws.length >= 4 ? ws : LIB.filter(t => t.track === u.track).flatMap(t => t.words);
+    let vi = vocabItems(pick, pool); if (UI.mute) vi = vi.filter(it => it.t !== "l");
+    out.push(...tag(vi.filter(it => it.t !== "l"), "vocab"), ...tag(vi.filter(it => it.t === "l"), "listening"));
+  }
+  /* Nghe hiểu cho chặng có bộ bài nghe cùng cấp độ. */
+  if (!UI.mute && typeof LC_SETS !== "undefined") { const sets = shuffle(LC_SETS.filter(s => s.lvl === u.level)).slice(0, 2); sets.forEach(s => out.push(...tag(lcItems(s), "listening"))); }
+  /* Ngữ pháp: 5 câu cho mỗi điểm, lấy từ ngân hàng luyện, câu so sánh dễ nhầm và câu tìm lỗi. */
+  u.grammar.forEach(gid => {
+    const g = GRAMMAR_BY[gid], x = GX[gid]; if (!g) return;
+    const a = shuffle(g.bank.filter(b => b.t === "c" || b.t === "x" || b.t === "t")).slice(0, x ? 2 : 5).map(b => shuffleItemOpts({ ...b, skill: "grammar" }));
+    let b = [], f = [];
+    if (x) {
+      b = shuffle(x.contrast.quiz).slice(0, 2).map(q => shuffleItemOpts({ t: q.q.includes("___") ? "c" : "x", q: q.q, opts: q.opts.slice(), a: q.a, why: q.why, wrong: q.wrong || {}, skill: "grammar" }));
+      const m = shuffle(x.mistakes.map(e => ({ e, sp: errSpan(e.wrong, e.right) }))), er = m.find(o => o.sp.wrong);
+      if (er) f = [{ t: "f", mixed: true, s: er.e.wrong, wrong: er.sp.wrong, fix: er.sp.fix, why: er.e.why, skill: "grammar" }];
+      if (m.length > 1) { const k = m.find(o => o !== er); f.push({ t: "f", ok: true, s: k.e.right, why: `Câu này đúng. Lỗi hay gặp là viết “${k.e.wrong}”: ${k.e.why}`, skill: "grammar" }); }
+      f = f.slice(0, 1);
+    }
+    out.push(...tag([...a, ...b, ...f].slice(0, 5), "grammar", { gid }));
+  });
+  /* Đọc hiểu: 1 bài (A1 đến A2) hoặc 2 bài (từ B1) cùng cấp độ, đúng mạch thông dụng hoặc y khoa. */
+  const lvl = UT_RD_LVL[u.level], cand = RD_ALL.filter(p => p.lvl === lvl && (u.track === "med" ? p.topic === "medical" : p.topic !== "medical"));
+  shuffle(cand).slice(0, ["A1", "A2", "T1"].includes(u.level) ? 1 : 2).forEach(p => out.push(...tag(readingItems(p), "reading")));
+  const order = ["vocab", "listening", "grammar", "reading"];
+  return order.flatMap(s => out.filter(it => utSecOf(it) === s));
+}
+function utCount(items) { const n = {}; items.forEach(it => { const s = utSecOf(it); n[s] = (n[s] || 0) + 1; }); return n; }
+function utCool(id) { const t = S.utest[id]; return t && t.lf && !t.pass ? Math.max(0, t.lf + UT.COOL - Date.now()) : 0; }
+function fmtWait(ms) { const h = Math.ceil(ms / 3600000); return h >= 1 ? `${h} giờ` : "ít phút"; }
+EXTRA_VIEWS.utest = function () {
+  const u = UNIT_BY[ROUTE.arg]; if (!u) return `<div class="empty"><p>Không tìm thấy chặng.</p><a class="btn" href="#/path">Về lộ trình</a></div>`;
+  const items = utBuild(u), n = utCount(items), tot = items.length, t = S.utest[u.id], cool = utCool(u.id);
+  const rows = Object.keys(UT_SEC).filter(k => n[k]).map(k => `<li><b>${UT_SEC[k]}</b>: ${n[k]} câu</li>`).join("");
+  return `<section class="page-head" style="--tc:${u.color}"><a class="muted small" href="#/unit/${u.id}">Chặng ${esc(u.code)}</a><h1>Kiểm tra vượt chặng</h1><p class="lede" lang="en">${esc(u.title)} <span class="muted">${esc(u.vi)}</span></p></section>
+    <section class="panel stack ut-card"><h3>Đạt thế nào thì được vượt chặng</h3>
+      <ul class="ut-rules"><li>Điểm chung từ <b>${UT.PASS * 100}%</b> trở lên.</li><li>Mỗi phần từ <b>${UT.SEC * 100}%</b> trở lên, không để phần mạnh che phần yếu.</li><li>Khi đạt, các bài học và điểm ngữ pháp của chặng được tính là xong. Từ vựng của chặng vào hàng ôn tập mức thấp, xem như mới học xong; bạn bấm “Không ôn nữa” ở thẻ nào thì thẻ đó ngừng.</li><li>Có thể bấm “Bỏ qua câu này” khi chưa biết; câu bỏ qua tính là sai.</li><li>Chưa đạt: nghỉ ${UT.COOL / 3600000} giờ rồi mới thi lại. Bạn nên học phần yếu trước.</li></ul>
+      <h3 style="margin-top:6px">Đề lần này gồm ${tot} câu</h3><ul class="ut-rules">${rows}</ul><p class="muted small">Câu hỏi bốc ngẫu nhiên từ kho của chặng, mỗi lần một đề khác. Khoảng ${Math.max(5, Math.round(tot * 0.5))} phút. Nếu bật học im lặng, phần nghe sẽ được bỏ.</p>
+      ${t && t.pass ? `<p class="feedback ok">Bạn đã vượt chặng này (tốt nhất ${Math.round(t.best * 100)}%). Làm lại để lấy điểm cao hơn nếu muốn.</p>` : t ? `<p class="muted small">Lần tốt nhất: ${Math.round(t.best * 100)}% (${t.n} lượt).</p>` : ""}
+      <div class="row">${cool > 0 ? `<button class="btn primary" disabled>Thi lại sau ${fmtWait(cool)}</button>` : `<a class="btn primary" href="#/practice/ut-${u.id}">Bắt đầu kiểm tra</a>`}<a class="btn quiet" href="#/unit/${u.id}">Quay lại chặng</a></div></section>`;
+};
+const _startUT59 = startPractice;
+startPractice = function (arg) {
+  const mu = /^u-(.+)$/.exec(arg || ""); if (mu && UNIT_BY[mu[1]]) { location.replace("#/utest/" + mu[1]); return false; }
+  const m = /^ut-(.+)$/.exec(arg || ""); if (!m) return _startUT59(arg);
+  const u = UNIT_BY[m[1]]; if (!u) return false;
+  if (utCool(u.id) > 0) { location.replace("#/utest/" + u.id); return false; }
+  const items = utBuild(u); if (!items.length) return false;
+  PX = { arg, kind: "ut", id: u.id, title: `Kiểm tra vượt chặng ${u.code}`, back: "#/unit/" + u.id, track: u.track, items, i: 0, st: items.map(() => ({})), saved: false };
+  return true;
+};
+function utApply(u, items, st) {
+  const now = Date.now(); let lessons = 0, gram = 0, words = 0;
+  u.lessons.forEach(id => { const r = S.lessons[id]; S.lessons[id] = { done: true, best: Math.max(r ? r.best : 0, UT.PASS), last: now, n: (r ? r.n : 0) + 1 }; lessons++; });
+  u.grammar.forEach(id => { const p = S.gram[id]; S.gram[id] = { best: Math.max(p ? p.best : 0, UT.PASS), n: (p ? p.n : 0) + 1, last: now }; gram++; });
+  const okKeys = new Set(items.map((it, i) => (it.w && it.w.key && st[i].ok) ? it.w.key : null).filter(Boolean));
+  unitWords(u).forEach(w => {
+    if (/·/.test(w.w)) return; const good = okKeys.has(w.key); let made = false;
+    ["r", "p"].forEach(d => { const id = `V:${w.key}:${d}`; if (S.cards[id]) return; made = true; const days = good ? 8 + Math.random() * 16 : 2 + Math.random() * 12; S.cards[id] = { state: "review", due: now + Math.round(days * DAY), s: good ? 14 : 4, d: 5, reps: 1, lapses: 0, last: now, step: 0 }; });
+    if (made) words++;
+  });
+  return { lessons, gram, words };
+}
+const _pxFinish59 = pxFinish;
+pxFinish = function () {
+  if (!PX || PX.kind !== "ut") return _pxFinish59();
+  const u = UNIT_BY[PX.id], items = PX.items, st = PX.st, tot = items.length, okN = st.filter(s => s.ok).length, sc = okN / tot;
+  const sec = {}; items.forEach((it, i) => { const k = utSecOf(it), v = sec[k] || (sec[k] = { n: 0, ok: 0 }); v.n++; if (st[i].ok) v.ok++; });
+  const secOk = Object.values(sec).every(v => v.ok / v.n >= UT.SEC), pass = sc >= UT.PASS && secOk;
+  let applied = null;
+  if (!PX.saved) {
+    PX.saved = true; const p = S.utest[u.id], now = Date.now();
+    const rec = { best: Math.max(p ? p.best : 0, sc), n: (p ? p.n : 0) + 1, last: now, ...(p && p.pass ? { pass: 1, at: p.at } : {}), ...(p && p.lf ? { lf: p.lf } : {}) };
+    if (pass) { applied = utApply(u, items, st); rec.pass = 1; rec.at = now; PX.applied = applied; } else if (!rec.pass) rec.lf = now;
+    S.utest[u.id] = rec; touch(); save();
+  } else applied = PX.applied || null;
+  const secRows = Object.keys(UT_SEC).filter(k => sec[k]).map(k => { const v = sec[k], r = v.ok / v.n, good = r >= UT.SEC; return `<div class="skill"><span>${UT_SEC[k]}</span><div class="bar"><i style="width:${r * 100}%;${good ? "" : "background:var(--bad)"}"></i></div><span class="n">${Math.round(r * 100)}% ${good ? "✓" : "✗"}</span></div>`; }).join("");
+  const wg = {}; items.forEach((it, i) => { if (it.gid && !st[i].ok) wg[it.gid] = (wg[it.gid] || 0) + 1; });
+  const weakG = Object.keys(wg).map(id => `<a class="chip acc" href="#/grammar/${id}">${esc(GRAMMAR_BY[id].title)}</a>`).join(" ");
+  const weakSec = Object.keys(UT_SEC).filter(k => sec[k] && sec[k].ok / sec[k].n < UT.SEC).map(k => UT_SEC[k]).join(", ");
+  const wrong = items.map((it, i) => [it, st[i]]).filter(([, s]) => !s.ok);
+  const skipped = st.filter(s => s.skipped).length;
+  const verdict = pass ? `<p class="feedback ok"><b>Đạt, bạn đã vượt chặng ${esc(u.code)}.</b> ${applied ? `${applied.lessons} bài học và ${applied.gram} điểm ngữ pháp được tính là xong; ${applied.words} từ mới vào hàng ôn tập mức thấp.` : ""}</p>`
+    : `<p class="feedback no"><b>Chưa đạt.</b> ${sc < UT.PASS ? `Điểm chung ${Math.round(sc * 100)}%, cần ${UT.PASS * 100}%. ` : ""}${weakSec ? `Phần dưới ${UT.SEC * 100}%: ${esc(weakSec)}. ` : ""}Hãy học lại phần yếu rồi thi lại sau ${UT.COOL / 3600000} giờ.</p>`;
+  return `<span class="step-kind">Kết quả</span><h1>${esc(PX.title)}</h1><div class="row" style="gap:18px"><div class="result-num">${Math.round(sc * 100)}%</div><p class="muted">${okN}/${tot} câu đúng${skipped ? `, bỏ qua ${skipped} câu (tính là sai)` : ""}</p></div>${verdict}
+    <div>${secRows}</div>${weakG ? `<h3>Điểm ngữ pháp nên xem lại</h3><div class="row" style="flex-wrap:wrap;gap:6px">${weakG}</div>` : ""}
+    ${wrong.length ? `<details class="panel" style="margin-top:10px"><summary><b>Xem lại ${wrong.length} câu sai</b></summary><div class="list">${wrong.map(([it]) => `<div class="item"><span class="grow"><span class="s">${esc(PX_LABEL[it.t] || "")}</span><br><span class="en" lang="en">${esc(it.q && it.t !== "x" && it.t !== "m" && it.t !== "r" && it.t !== "s" ? it.q : it.s || (it.w ? it.w.w : it.q || ""))}</span><br><span class="muted small">${escQ(it.why || "")}</span></span></div>`).join("")}</div></details>` : ""}
+    <div class="row" style="margin-top:12px"><a class="btn primary" href="#/unit/${u.id}">Về chặng ${esc(u.code)}</a><a class="btn quiet" href="#/path">Về lộ trình</a></div>`;
+};
+const _viewUnit59 = viewUnit;
+viewUnit = function () {
+  let h = _viewUnit59(); const u = UNIT_BY[ROUTE.arg]; if (!u) return h;
+  const t = S.utest[u.id], cool = utCool(u.id);
+  const card = `<section class="panel stack ut-card ${t && t.pass ? "ut-pass" : ""}" style="margin-top:14px"><div class="row between"><h3>🏁 Kiểm tra vượt chặng</h3>${t && t.pass ? `<span class="chip good">đã vượt chặng</span>` : t ? `<span class="chip acc">tốt nhất ${Math.round(t.best * 100)}%</span>` : ""}</div>
+    <p class="muted" style="margin:0">Đã biết rồi thì thi để bỏ qua học lẻ từng bài. Đạt từ ${UT.PASS * 100}% và mỗi phần từ ${UT.SEC * 100}% thì chặng được tính là xong; từ vựng vào hàng ôn tập mức thấp.</p>
+    <div class="row"><a class="btn ${t && t.pass ? "" : "primary"}" href="#/utest/${u.id}">${cool > 0 ? `Thi lại sau ${fmtWait(cool)}` : t && t.pass ? "Làm lại để lấy điểm cao hơn" : "Xem đề và bắt đầu"}</a></div></section>`;
+  /* thay khối "Kiểm tra chặng" cũ bằng khối mới, đặt ngay sau phần đầu trang */
+  const hi = h.indexOf("<h3>🏁 Kiểm tra chặng</h3>");
+  if (hi >= 0) { const s0 = h.lastIndexOf("<section", hi), e0 = h.indexOf("</section>", hi) + 10; h = h.slice(0, s0) + h.slice(e0); }
+  const i = h.indexOf("</section>"); return i < 0 ? card + h : h.slice(0, i + 10) + card + h.slice(i + 10);
+};
+const _unitNode59 = unitNode;
+unitNode = function (u, cur) {
+  let h = _unitNode59(u, cur); const t = S.utest[u.id];
+  if (t && t.pass) h = h.replace('class="chip good">', 'class="chip good">⏭ ');
+  return `<div class="unode-wrap">${h}<div class="unode-act">${t && t.pass ? `<span class="chip good">đã vượt chặng bằng kiểm tra</span>` : `<a class="btn small" href="#/utest/${u.id}">Kiểm tra vượt chặng</a>`}</div></div>`;
+};
+
+/* Kiểm tra vượt chặng: nút "Bỏ qua câu này", tính là sai. */
+const _viewPractice60 = viewPractice;
+viewPractice = function () {
+  let h = _viewPractice60();
+  if (PX && PX.kind === "ut" && PX.i < PX.items.length && !PX.st[PX.i].done) {
+    const i = h.lastIndexOf("</article>");
+    if (i >= 0) h = h.slice(0, i + 10) + `<div class="step-actions"><button class="btn quiet" data-act="utSkip" title="Bỏ qua câu này, tính là sai">Bỏ qua câu này</button></div>` + h.slice(i + 10);
+  }
+  return h;
+};
+ACT.utSkip = function () {
+  if (!PX || PX.kind !== "ut") return; const it = PX.items[PX.i], st = PX.st[PX.i]; if (!it || st.done) return;
+  stopSpeech(); st.done = true; st.ok = false; st.skipped = true; evidence(it.skill, false, it.src); PX.i++; render();
+};
 
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);

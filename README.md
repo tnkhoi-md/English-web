@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.28.1 (04.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.31.1 (04.10.26).
 
 ## Tính năng
 
@@ -81,35 +81,54 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Thư viện là bộ từ lõi có chọn lọc, chưa phải toàn bộ vốn từ của mỗi cấp CEFR; mức C1 còn ít từ nhất. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Điểm Viết và Nói là tự chấm, ứng dụng không chấm tự động, đang trong quá trình hoàn thiện.
 - Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế.
-## Cập nhật 4.28.1
+## Cập nhật 4.31.1
 
 - Giải thích đáp án bài điền đoạn văn gồm ba dòng: **Nghĩa** (từ hoặc cụm từ), **Ngữ pháp** (vì sao chọn dạng này, ví dụ nhận ra quá khứ để chia động từ) và **Dấu hiệu** trong câu.
 - Trang lý thuyết ngữ pháp trình bày dạng danh sách có màu: tóm tắt, công thức đóng khung, cách dùng đánh số kèm ví dụ, dấu hiệu nhận biết và các lưu ý hay nhầm.
 - Mỗi chủ điểm ngữ pháp có ít nhất 22 bài luyện, mọi câu trắc nghiệm đều có 4 đáp án và lý do cho đáp án sai.
 
-## Cập nhật 4.28.1: âm thanh thu sẵn
+## Cập nhật 4.31.1: âm thanh thu sẵn
 
 - Thư mục `audio/` chứa mp3 giọng Mỹ (Piper, giọng `en_US-lessac-high` cho người nói thứ nhất và `en_US-ryan-high` cho người nói thứ hai). `audio/manifest.js` liệt kê các file, khóa là băm của "người nói|câu".
 - Hiện có 698 câu: hội thoại trong bài học, bài nghe hiểu và câu ví dụ ngữ pháp. Nút nghe dùng mp3 trước; câu nào chưa có file, hoặc khi chọn giọng Anh-Anh, thì đọc bằng giọng máy như trước.
 - Tạo thêm: chạy `tools_gen_audio.py` (cần `piper-tts`, `lameenc` và hai mô hình giọng) rồi dựng lại `audio/manifest.js`.
 
-## Cập nhật 4.28.1: điền từ theo nghĩa Anh-Anh
+## Cập nhật 4.31.1: điền từ theo nghĩa Anh-Anh
 
 - Bài điền từ trong học từ vựng mới không còn dùng câu ví dụ để chừa trống. Người học đọc định nghĩa tiếng Anh rồi chọn hoặc gõ từ đúng; nghĩa tiếng Việt chỉ hiện khi bấm "Gợi ý tiếng Việt". Câu ví dụ hiện ở phần giải thích sau khi trả lời.
 - Bổ sung 1.791 định nghĩa tiếng Anh cho `WORD_DEFS`, nên mọi từ (không tính họ từ) đều có định nghĩa.
 
-## Cập nhật 4.28.1: thanh công cụ gọn và trang Thêm
+## Cập nhật 4.31.1: thanh công cụ gọn và trang Thêm
 
 - Thanh công cụ ở đầu trang chỉ còn ba mục: **đồng bộ** (bấm là đồng bộ ngay, chưa bật thì mở phần thiết lập), **cỡ chữ** và **thời gian học**. Giọng chuẩn, tốc độ đọc, giao diện sáng tối, học im lặng và ngôn ngữ VI/EN nằm trong **Cài đặt**.
 - Trang **Thêm** trên điện thoại dùng cùng nhóm và biểu tượng màu như thanh menu bên trái ở máy tính bảng và laptop (Học, Thư viện, Của bạn).
 
-## 4.28.1: đường dẫn âm thanh
+## 4.31.1: đường dẫn âm thanh
 
 Trên GitHub, mp3 nằm trong `audio-1/audio` đến `audio-8/audio`. `audio-map.js` ghi số thư mục của từng file, nên ứng dụng tự tìm đúng đường dẫn mà không cần di chuyển file.
 
-## 4.28.1: học ngoại tuyến
+## 4.31.1: học ngoại tuyến
 
 - `sw.js` là service worker: sau lần mở đầu tiên, mã, nội dung, phông chữ và âm thanh đã nghe được lưu vào máy; mất mạng vẫn mở và học được. Trang luôn lấy bản mới nhất khi có mạng.
 - Cài đặt có mục **Học ngoại tuyến** để tải trước toàn bộ âm thanh thu sẵn.
 - **Khi phát hành bản mới, đổi `VERSION` trong `sw.js` cho trùng số `?v=` trong `index.html`**, để máy bỏ bộ nhớ đệm cũ.
 - Đồng bộ và tra từ điển trực tuyến cần mạng; khi mất mạng ứng dụng bỏ qua và đồng bộ lại sau.
+
+## 4.31.1: Không ôn nữa
+
+- Khi ôn thẻ, nút **Không ôn nữa** ngừng ôn từ đó (cả hai thẻ nhận biết nghĩa và gợi nhớ từ). Thẻ bị ẩn khỏi hàng đợi, thống kê và dự báo 7 ngày.
+- Từ đã ngừng ôn nằm trong mục **Từ đã ngừng ôn** ở trang Luyện tập, có nút **Ôn lại** để đưa trở lại; trạng thái này cũng hiện ở dòng từ trong Thư viện từ vựng.
+- Trạng thái được lưu trong dữ liệu thẻ (`off`, `mt`) và được đồng bộ giữa các thiết bị: thay đổi nào mới hơn sẽ thắng.
+
+## 4.31.1: lỗi thường gặp, so sánh dễ nhầm, kỹ năng đọc
+
+- `content-gx.js` (mới): với mỗi điểm ngữ pháp có 8 **lỗi người Việt hay mắc** (sai, đúng, giải thích), một bảng **so sánh dễ nhầm** có ví dụ và mẹo, 8 câu trắc nghiệm chọn đúng giữa hai dạng, cùng thêm 2 câu đúng/sai/không có thông tin cho mỗi bài đọc.
+- Trang ngữ pháp có hai khối mới, mỗi khối kèm nút luyện: **Luyện tìm lỗi trong câu** (cả câu đúng lẫn sai, có nút "Không có lỗi") và **Luyện chọn đúng**.
+- Bài đọc: mỗi câu hỏi có nhãn kỹ năng (ý chính, chi tiết, từ vựng trong ngữ cảnh, suy luận, đúng/sai/không có thông tin), mẹo hiện lần đầu mỗi loại, và trang Kho luyện đọc hiện tỉ lệ đúng theo từng kỹ năng.
+
+## 4.31.1: kiểm tra vượt chặng
+
+- Mỗi chặng trong Lộ trình có **Kiểm tra vượt chặng** (trang `#/utest/<chặng>`). Đề bốc ngẫu nhiên theo độ phủ kiến thức của chặng: từ vựng (khoảng 40% số từ, phân tầng theo chủ đề, tối đa 60 câu), nghe, ngữ pháp (5 câu mỗi điểm), đọc hiểu (1 đến 2 bài cùng cấp độ). Từ 26 đến khoảng 100 câu.
+- **Đạt** khi điểm chung từ 90% và mỗi phần từ 80%. Khi đạt: bài học và điểm ngữ pháp của chặng được tính là xong; mọi từ vựng chưa có thẻ vào hàng ôn tập mức thấp như mới học xong (từ làm đúng ôn sau 8 đến 24 ngày, từ khác sau 2 đến 14 ngày); bấm "Không ôn nữa" ở thẻ nào thì thẻ đó ngừng.
+- **Chưa đạt:** chờ 24 giờ mới thi lại; trang kết quả chỉ ra phần yếu và các điểm ngữ pháp nên xem lại. Học im lặng bỏ phần nghe.
+- Kết quả lưu trong `S.utest[<chặng>]` (best, n, last, pass, at, lf) và được đồng bộ.
