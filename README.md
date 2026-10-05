@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.35.0 (04.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.41.2 (06.10.26).
 
 ## Tính năng
 
@@ -81,6 +81,52 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Thư viện là bộ từ lõi có chọn lọc, chưa phải toàn bộ vốn từ của mỗi cấp CEFR; mức C1 còn ít từ nhất. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Điểm Viết và Nói là tự chấm, ứng dụng không chấm tự động, đang trong quá trình hoàn thiện.
 - Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế.
+## Cập nhật 4.41.2: mặt trời, mặt trăng và sao theo giờ
+
+- Ban ngày (6 giờ đến 18 giờ) có mặt trời đi theo vòng cung từ trái sang phải; ban đêm có mặt trăng, **đúng pha trăng của ngày hôm đó** (tính từ chu kỳ 29,53 ngày). Vị trí cập nhật mỗi phút.
+- Màu bầu trời chế độ sáng đổi theo giờ: bình minh (5 giờ đến 7 giờ 30) và hoàng hôn (17 giờ đến 19 giờ) ngả hồng cam, ban ngày xanh nhạt, ban đêm xanh sẫm hơn và có sao.
+- Chế độ tối vẫn là galaxy; ban ngày có thêm mặt trời, ban đêm thêm mặt trăng. Mặt trời và mặt trăng nằm sau lớp mây hoặc ngân hà trôi.
+- Thêm mặt trời/mặt trăng nhỏ (34 px) chạy ngang thanh trên cùng theo giờ, luôn thấy được dù nội dung đang che nền; bản lớn ở nền chỉ là ánh sáng phía sau.
+- `skyTick()` trong `app.js` đặt `data-sky` trên thẻ html và tạo phần tử `#skybody`.
+
+## Cập nhật 4.40.0: chế độ sáng nền bầu trời
+
+- Nền trời xanh nhạt chuyển sắc, có vầng nắng nhẹ ở góc trên phải và các đám mây trắng mờ (SVG nhúng trong CSS) trôi rất chậm (160 giây, chậm gấp đôi khi làm bài). Tắt chuyển động khi hệ điều hành bật "giảm chuyển động".
+- Thanh bên, thanh trên, thanh dưới và thanh làm bài là kính trắng làm mờ; thẻ là trắng trong suốt nhẹ với viền xanh nhạt. Thẻ làm bài gần như đặc.
+- Trang đặt lớp `is-light` trên thẻ html khi ở chế độ sáng (cùng nơi đặt `is-dark`).
+
+## Cập nhật 4.39.0: giao diện tối "Galaxy nhẹ"
+
+- Nền xanh đen vũ trụ bằng CSS (không dùng ảnh): các vệt sáng xanh dương, lam ngọc, chàm nhạt trôi rất chậm (70 giây, 140 giây khi đang làm bài), 46 chấm sao tĩnh. Tự tắt chuyển động khi hệ điều hành bật "giảm chuyển động".
+- Kính mờ (`backdrop-filter`) chỉ dùng cho thanh bên, thanh trên, thanh dưới và thanh làm bài; thẻ và khung dùng nền tím trong suốt không làm mờ để nhẹ máy. Thẻ làm bài gần như đặc để dễ đọc.
+- Có dải ngân hà chéo (SVG nhúng trong CSS, gồm lớp bụi sáng, vệt tối giữa dải và hàng trăm sao nhỏ) trôi cùng nền, cộng 14 ngôi sao sáng lấp lánh nhẹ (`html.is-dark::after`).
+- Màu nhấn xanh dương nhạt `#8db4ff`; chữ `#e8f0ff`; các màu trạng thái (đỏ, cam, vàng, xanh biển, xanh lá) giữ nguyên nghĩa. Chế độ sáng không đổi.
+- Trang đặt lớp `is-dark` trên thẻ html khi ở chế độ tối (do `applyTheme`), nên mọi luật của Galaxy nằm dưới `.is-dark` trong `styles.css`.
+
+## Cập nhật 4.38.0: giao diện, kế hoạch hôm nay, kiểm tra chính tả
+
+- Khung **Tiến trình ghi nhớ** (Luyện tập) chia 5 nhóm có màu: Chưa học (đỏ), Mới học (cam), Đang học (vàng), Đang củng cố (xanh biển), Đã vững (xanh lá). Thanh tiến độ của Thư viện từ vựng dùng 3 màu: đã vững, đang học, chưa học.
+- Tiêu đề trang (h1) có biểu tượng và màu theo từng mục, không khung.
+- **Tiếp tục học hôm nay** luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở (lưu theo từng thiết bị trong trình duyệt, không đồng bộ).
+- Khi gõ từ, phản hồi so sánh từng ký tự: ký tự đúng tô xanh, ký tự sai gạch đỏ, chữ còn thiếu gạch chân đỏ ở dòng “Đúng”.
+- Các ví dụ “E.g.” không còn nút loa.
+
+## Cập nhật 4.37.0: Luyện tập chia hai phần, Luyện nói theo tình huống
+
+- Trang **Luyện tập** gồm hai phần: (1) Ôn tập từ vựng (thẻ nhớ, thống kê, từ đã ngừng ôn) và (2) Luyện tập kỹ năng với sáu nhóm: Từ vựng, Ngữ pháp, Nghe, Nói, Đọc, Viết. Từ vựng và Ngữ pháp xếp theo dạng bài; Nghe và Đọc xếp theo trình độ A2 đến C1 (Đọc chia tiếp theo dạng bài); Viết xếp theo dạng bài.
+- **Luyện nói** (`#/speaking`): 25 tình huống từ A1 đến C1, có phần y khoa. Mỗi tình huống có cấu trúc, cụm hay dùng, hội thoại mẫu, mẹo phát âm, lỗi hay gặp, **nhập vai** (ứng dụng nói phần đối thoại, bạn nói phần của mình theo gợi ý) và **nói tự do** có ghi âm tùy chọn và bảng tự chấm. Kết quả lưu như bài viết (`S.exam`, khóa `w-sp-...`) và được tính vào kỹ năng Nói.
+- Thêm 12 bài nghe hiểu: 6 bài A2 và 6 bài C1 (`content-listen2.js`), nên Nghe có đủ A2, B1, B2, C1.
+- Thư viện sắp theo chủ đề: Phát âm, Từ vựng, Ngữ pháp, Luyện đọc, Luyện viết, Thuật ngữ y khoa, có thanh chuyển nhanh ở đầu mỗi trang.
+- Âm thanh thu sẵn có thêm: hội thoại mẫu của Luyện nói (`audio-ten/noi`) và các bài nghe mới (`audio-ten/nghe`).
+
+## Cập nhật 4.36.0: âm thanh thu sẵn đặt tên theo bài
+
+- Bỏ âm thanh thu sẵn của câu ví dụ (không giúp luyện nghe). Bấm loa ở ví dụ vẫn đọc bằng giọng máy.
+- Thu sẵn giọng Mỹ cho: hội thoại trong bài học (`bai-hoc`), nghe chép (`chep`), 20 bài nghe hiểu (`nghe`) và 66 bài trong Kho luyện đọc (`doc`).
+- Tệp nằm trong `audio-ten/<nhóm>/<mã bài>-<tên bài>.mp3`, ví dụ `audio-ten/doc/a2-a04-at-the-ticket-office.mp3`. Bài nghe và hội thoại có đuôi số câu (`-01`, `-02`).
+- `audio-map.js` ghi đường dẫn đầy đủ cho từng câu, nên đổi tên hay chuyển thư mục chỉ cần sửa file này. Thiếu tệp thì ứng dụng đọc bằng giọng máy.
+- Thư mục `audio-1` đến `audio-8` cũ không còn dùng, có thể xóa khỏi GitHub.
+
 ## Cập nhật 4.35.0
 
 - Giải thích đáp án bài điền đoạn văn gồm ba dòng: **Nghĩa** (từ hoặc cụm từ), **Ngữ pháp** (vì sao chọn dạng này, ví dụ nhận ra quá khứ để chia động từ) và **Dấu hiệu** trong câu.

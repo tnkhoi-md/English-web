@@ -1,10 +1,10 @@
 /* Tnkhoi English: chế độ ngoại tuyến.
    Mỗi lần phát hành, đổi VERSION (cùng số với ?v= trong index.html) để máy xóa bộ nhớ đệm cũ. */
-const VERSION = "4.35.0";
+const VERSION = "4.41.2";
 const CORE = "tnk-core-" + VERSION, AUDIO = "tnk-audio-v1", FONTS = "tnk-fonts-v1";
 const PRECACHE = [
   "./", "index.html", "styles.css?v=" + VERSION, "content-lessons.js?v=" + VERSION, "content-library.js?v=" + VERSION,
-  "content-study.js?v=" + VERSION, "content-gx.js?v=" + VERSION, "content-grammar2.js?v=" + VERSION, "content-defs-vi.js?v=" + VERSION, "content-examples.js?v=" + VERSION, "content-vocab2.js?v=" + VERSION, "audio-map.js?v=" + VERSION, "app.js?v=" + VERSION,
+  "content-study.js?v=" + VERSION, "content-gx.js?v=" + VERSION, "content-grammar2.js?v=" + VERSION, "content-defs-vi.js?v=" + VERSION, "content-examples.js?v=" + VERSION, "content-vocab2.js?v=" + VERSION, "content-listen2.js?v=" + VERSION, "content-speaking.js?v=" + VERSION, "audio-map.js?v=" + VERSION, "app.js?v=" + VERSION,
   "manifest.webmanifest", "logo.svg", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png"
 ];
 

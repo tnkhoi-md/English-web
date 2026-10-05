@@ -1,0 +1,1159 @@
+/* Bài nghe hiểu bổ sung: A2 (lc-121..126) và C1 (lc-131..136), nạp sau content-study.js */
+LC_SETS.push(...[
+{
+"id": "lc-121",
+"lvl": "A2",
+"kind": "conversation",
+"title": "Buying a rucksack",
+"script": [
+[
+"Assistant",
+"Good morning. Can I help you?"
+],
+[
+"Customer",
+"Yes, please. I'm looking for a rucksack for school. Something not too big."
+],
+[
+"Assistant",
+"This blue one is popular. It's twenty-eight pounds, and it has a pocket for water."
+],
+[
+"Customer",
+"It's nice, but a bit expensive. Do you have anything cheaper?"
+],
+[
+"Assistant",
+"The grey one is twenty-two pounds. It's smaller, but it's very strong."
+],
+[
+"Customer",
+"Grey is fine. I need space for my laptop. Can it fit?"
+],
+[
+"Assistant",
+"Yes, a small laptop fits in the back pocket."
+],
+[
+"Customer",
+"Great, I'll take it. Can I pay by card?"
+],
+[
+"Assistant",
+"Of course. Please put your card in the machine."
+]
+],
+"qs": [
+{
+"q": "What does the customer decide to do?",
+"opts": [
+"Buy the blue rucksack",
+"Buy the grey rucksack",
+"Look in another shop",
+"Ask for a bigger bag"
+],
+"a": 1,
+"kind": "gist",
+"why": "Khách nói cần thứ rẻ hơn, nghe giá ba lô xám rồi nói \"I'll take it\", nghĩa là quyết định mua chiếc màu xám.",
+"wrong": {
+"Buy the blue rucksack": "Khách thấy chiếc xanh hơi đắt và hỏi món rẻ hơn nên không chọn nó.",
+"Look in another shop": "Khách nói \"I'll take it\" và hỏi trả bằng thẻ, tức là mua ngay tại cửa hàng này.",
+"Ask for a bigger bag": "Khách muốn thứ \"not too big\"; chiếc xám còn nhỏ hơn nhưng khách vẫn đồng ý."
+}
+},
+{
+"q": "How much is the grey rucksack?",
+"opts": [
+"£12",
+"£20",
+"£28",
+"£22"
+],
+"a": 3,
+"kind": "number",
+"why": "Nhân viên nói \"The grey one is twenty-two pounds\", tức 22 bảng; 28 bảng là giá chiếc xanh.",
+"wrong": {
+"£12": "Không có giá mười hai bảng nào trong đoạn hội thoại, giá chiếc xám là hai mươi hai.",
+"£20": "Nhân viên nêu rõ hai mươi hai bảng, không phải hai mươi.",
+"£28": "Hai mươi tám bảng là giá chiếc ba lô xanh, khách đã chê là hơi đắt."
+}
+},
+{
+"q": "What does the customer want to carry in the bag?",
+"opts": [
+"A laptop",
+"A water bottle",
+"A lunch box",
+"A camera"
+],
+"a": 0,
+"kind": "detail",
+"why": "Khách nói \"I need space for my laptop\" và nhân viên xác nhận máy tính nhỏ vừa ngăn sau.",
+"wrong": {
+"A water bottle": "Ngăn đựng nước chỉ là điểm của chiếc xanh; khách không nói cần mang chai nước.",
+"A lunch box": "Không ai nhắc đến hộp cơm trong đoạn hội thoại.",
+"A camera": "Khách không đề cập máy ảnh; thứ khách cần chỗ để là máy tính xách tay."
+}
+}
+]
+},
+{
+"id": "lc-122",
+"lvl": "A2",
+"kind": "announcement",
+"title": "A school trip reminder",
+"script": [
+[
+"Head teacher",
+"Good afternoon, everyone. This is a reminder about Friday's school trip to the science museum."
+],
+[
+"Head teacher",
+"The bus leaves at eight thirty, so please arrive at the school gate by eight fifteen."
+],
+[
+"Head teacher",
+"Students should wear their school uniform and bring their own lunch."
+],
+[
+"Head teacher",
+"There is no need to bring money, because the museum tickets are already paid."
+],
+[
+"Head teacher",
+"If it rains, we will still go, so please bring a coat."
+],
+[
+"Head teacher",
+"We will be back at school at three o'clock, and parents can collect children at the main gate."
+],
+[
+"Head teacher",
+"Thank you for listening."
+]
+],
+"qs": [
+{
+"q": "What is the announcement mainly about?",
+"opts": [
+"A change to the school uniform",
+"A new rule about lunch",
+"Arrangements for a visit on Friday",
+"The cancellation of a trip"
+],
+"a": 2,
+"kind": "gist",
+"why": "Cả thông báo nhắc về chuyến đi bảo tàng vào thứ Sáu: giờ xe, đồ mang theo, giờ về.",
+"wrong": {
+"A change to the school uniform": "Đồng phục chỉ được nhắc một lần như yêu cầu, không có thay đổi nào.",
+"A new rule about lunch": "Bữa trưa chỉ là một đồ cần mang, không phải nội dung chính.",
+"The cancellation of a trip": "Người nói nói rõ nếu mưa vẫn đi, nên chuyến đi không bị hủy."
+}
+},
+{
+"q": "What time should students be at the gate?",
+"opts": [
+"8.15",
+"8.30",
+"9.15",
+"3.00"
+],
+"a": 0,
+"kind": "number",
+"why": "Người nói bảo đến cổng trước tám giờ mười lăm; 8.30 là giờ xe chạy.",
+"wrong": {
+"8.30": "Tám giờ ba mươi là lúc xe buýt rời đi, học sinh phải đến sớm hơn.",
+"9.15": "Không có giờ chín giờ mười lăm nào trong thông báo.",
+"3.00": "Ba giờ là lúc cả đoàn về đến trường, không phải giờ tập trung."
+}
+},
+{
+"q": "What do students NOT need to bring?",
+"opts": [
+"A coat",
+"Their own lunch",
+"School uniform",
+"Money for tickets"
+],
+"a": 3,
+"kind": "detail",
+"why": "Người nói bảo \"no need to bring money\" vì vé bảo tàng đã trả trước.",
+"wrong": {
+"A coat": "Người nói dặn mang áo khoác vì nếu mưa vẫn đi.",
+"Their own lunch": "Học sinh được dặn mang bữa trưa của mình.",
+"School uniform": "Học sinh được dặn phải mặc đồng phục."
+}
+}
+]
+},
+{
+"id": "lc-123",
+"lvl": "A2",
+"kind": "voicemail",
+"title": "A restaurant booking problem",
+"script": [
+[
+"Maria",
+"Hello, this is Maria from the Green Table restaurant, calling for Mr Evans."
+],
+[
+"Maria",
+"You asked for a table for six people on Saturday at seven o'clock."
+],
+[
+"Maria",
+"I'm sorry, but we have a private party that evening, so the big room is not free."
+],
+[
+"Maria",
+"We can offer a table at six o'clock, or a table at eight thirty."
+],
+[
+"Maria",
+"Both tables are in the garden."
+],
+[
+"Maria",
+"Please call me back before Thursday and tell me which one you prefer."
+],
+[
+"Maria",
+"Thank you, and sorry again."
+]
+],
+"qs": [
+{
+"q": "Why is Maria calling Mr Evans?",
+"opts": [
+"The time he asked for is not available",
+"To thank him for a booking",
+"To ask him to pay a deposit",
+"To change the day to Sunday"
+],
+"a": 0,
+"kind": "gist",
+"why": "Maria xin lỗi vì có tiệc riêng nên phòng lớn không trống vào giờ bảy giờ tối thứ Bảy.",
+"wrong": {
+"To thank him for a booking": "Cô xin lỗi và đưa phương án khác, không phải cảm ơn.",
+"To ask him to pay a deposit": "Trong tin nhắn không hề nhắc đến tiền đặt cọc.",
+"To change the day to Sunday": "Cô đề nghị đổi giờ (sáu giờ hoặc tám giờ rưỡi), không đổi sang Chủ nhật."
+}
+},
+{
+"q": "How many people is the booking for?",
+"opts": [
+"Four",
+"Seven",
+"Six",
+"Eight"
+],
+"a": 2,
+"kind": "number",
+"why": "Maria nói \"a table for six people\", tức bàn cho sáu người.",
+"wrong": {
+"Four": "Không có bàn bốn người nào được nhắc đến.",
+"Seven": "Bảy giờ là giờ khách yêu cầu, không phải số người.",
+"Eight": "Tám giờ rưỡi là giờ được đề nghị, không phải số người."
+}
+},
+{
+"q": "What should Mr Evans do?",
+"opts": [
+"Go to the restaurant on Thursday",
+"Choose a time and call back",
+"Book a table in the big room",
+"Wait for another message"
+],
+"a": 1,
+"kind": "next-step",
+"why": "Maria dặn gọi lại trước thứ Năm để nói thích giờ nào trong hai giờ được đề nghị.",
+"wrong": {
+"Go to the restaurant on Thursday": "Thứ Năm chỉ là hạn chót để gọi lại, không phải ngày đến nhà hàng.",
+"Book a table in the big room": "Phòng lớn không trống vì có tiệc riêng, nên không thể đặt.",
+"Wait for another message": "Maria yêu cầu ông chủ động gọi lại, chứ không chờ tin khác."
+}
+}
+]
+},
+{
+"id": "lc-124",
+"lvl": "A2",
+"kind": "conversation",
+"title": "A cough at the pharmacy",
+"script": [
+[
+"Pharmacist",
+"Hello. How can I help you?"
+],
+[
+"Customer",
+"Hi. I've had a cough for three days, and my throat hurts."
+],
+[
+"Pharmacist",
+"Do you have a fever?"
+],
+[
+"Customer",
+"No, but I feel tired, and I can't sleep well."
+],
+[
+"Pharmacist",
+"I'd suggest this cough syrup. Take two spoons after meals, three times a day."
+],
+[
+"Customer",
+"Is it safe to drive after taking it?"
+],
+[
+"Pharmacist",
+"Yes, it's fine. But drink lots of water and rest. If you're still ill after a week, see your doctor."
+],
+[
+"Customer",
+"OK, thank you. How much is it?"
+],
+[
+"Pharmacist",
+"It's six pounds fifty."
+]
+],
+"qs": [
+{
+"q": "What problem does the customer have?",
+"opts": [
+"A high fever",
+"A bad headache",
+"A stomach ache",
+"A cough and a sore throat"
+],
+"a": 3,
+"kind": "gist",
+"why": "Khách nói ho ba ngày và đau họng; không có sốt.",
+"wrong": {
+"A high fever": "Khách trả lời \"No\" khi được hỏi có sốt không.",
+"A bad headache": "Khách không nhắc đến đau đầu, chỉ nói ho và đau họng.",
+"A stomach ache": "Không có triệu chứng đau bụng nào trong hội thoại."
+}
+},
+{
+"q": "How often should she take the medicine?",
+"opts": [
+"Once a day",
+"Three times a day",
+"Twice a day",
+"Every night only"
+],
+"a": 1,
+"kind": "detail",
+"why": "Dược sĩ dặn uống hai thìa sau bữa ăn, ba lần một ngày.",
+"wrong": {
+"Once a day": "Dược sĩ nói ba lần mỗi ngày, không phải một lần.",
+"Twice a day": "Hai là số thìa mỗi lần uống, không phải số lần trong ngày.",
+"Every night only": "Thuốc uống sau các bữa ăn, không chỉ vào buổi tối."
+}
+},
+{
+"q": "When should she see a doctor?",
+"opts": [
+"Right now",
+"After three days",
+"If she is not better after seven days",
+"When the bottle is empty"
+],
+"a": 2,
+"kind": "next-step",
+"why": "Dược sĩ nói nếu sau một tuần vẫn còn ốm thì nên đi khám bác sĩ.",
+"wrong": {
+"Right now": "Dược sĩ cho rằng siro là đủ lúc này, chưa cần đi khám ngay.",
+"After three days": "Ba ngày là thời gian khách đã bị ho, không phải mốc đi khám.",
+"When the bottle is empty": "Dược sĩ chỉ nêu mốc một tuần, không nói đến lúc hết thuốc."
+}
+}
+]
+},
+{
+"id": "lc-125",
+"lvl": "A2",
+"kind": "conversation",
+"title": "Finishing the group project",
+"script": [
+[
+"Lena",
+"Hi, Tom. Is our group project ready? We present on Wednesday."
+],
+[
+"Tom",
+"Almost. I finished the slides last night, but I still need pictures for the last page."
+],
+[
+"Lena",
+"I have some photos from the factory visit. I'll send them to you this afternoon."
+],
+[
+"Tom",
+"Thanks. Also, the teacher wants a printed report, not just slides."
+],
+[
+"Lena",
+"Really? The library printer is cheap, but it closes at four."
+],
+[
+"Tom",
+"I have a class until four thirty, so I can't go."
+],
+[
+"Lena",
+"No problem. I finish at three, so I'll print it tomorrow."
+],
+[
+"Tom",
+"Perfect. I'll send you the file before noon."
+]
+],
+"qs": [
+{
+"q": "What does Tom still need for the project?",
+"opts": [
+"More slides about the factory",
+"Pictures for the final page",
+"A new presentation day",
+"A printer for the slides"
+],
+"a": 1,
+"kind": "detail",
+"why": "Tom nói đã xong slide nhưng vẫn cần ảnh cho trang cuối.",
+"wrong": {
+"More slides about the factory": "Tom đã làm xong các slide; chỉ thiếu ảnh cho trang cuối.",
+"A new presentation day": "Ngày thuyết trình là thứ Tư và không ai muốn đổi.",
+"A printer for the slides": "Máy in là cho bản báo cáo chứ không phải slide, và Tom không nhờ tìm máy in."
+}
+},
+{
+"q": "Why can't Tom print the report himself?",
+"opts": [
+"His class ends after the library closes",
+"The printer is too expensive",
+"He has no photos to print",
+"The teacher wants slides only"
+],
+"a": 0,
+"kind": "inference",
+"why": "Tom học đến bốn giờ rưỡi, còn máy in thư viện đóng cửa lúc bốn giờ nên anh không kịp.",
+"wrong": {
+"The printer is too expensive": "Lena nói máy in thư viện rẻ, nên giá không phải lý do.",
+"He has no photos to print": "Ảnh là thứ Lena sẽ gửi; lý do của Tom là giờ học trùng giờ đóng cửa.",
+"The teacher wants slides only": "Giáo viên muốn có báo cáo in, không chỉ slide."
+}
+},
+{
+"q": "What will Tom do before noon tomorrow?",
+"opts": [
+"Print the report at the library",
+"Visit the factory again",
+"Send the report file to Lena",
+"Give the presentation"
+],
+"a": 2,
+"kind": "next-step",
+"why": "Tom nói \"I'll send you the file before noon\" để Lena in.",
+"wrong": {
+"Print the report at the library": "Lena mới là người sẽ in báo cáo vào ngày mai.",
+"Visit the factory again": "Chuyến thăm nhà máy đã xảy ra rồi, Lena đã có ảnh.",
+"Give the presentation": "Buổi thuyết trình diễn ra vào thứ Tư, không phải trước trưa ngày mai."
+}
+}
+]
+},
+{
+"id": "lc-126",
+"lvl": "A2",
+"kind": "conversation",
+"title": "Buying bus tickets",
+"script": [
+[
+"Clerk",
+"Next, please. Where would you like to go?"
+],
+[
+"Traveller",
+"Two tickets to Oakford, please. Today, if possible."
+],
+[
+"Clerk",
+"The next bus leaves at one fifteen and takes about an hour and a half."
+],
+[
+"Traveller",
+"Good. How much is a ticket?"
+],
+[
+"Clerk",
+"A single is eight pounds, but a return is twelve. Children under ten travel free."
+],
+[
+"Traveller",
+"We're two adults, and we're coming back tonight, so two returns, please."
+],
+[
+"Clerk",
+"That's twenty-four pounds. The bus leaves from platform four."
+],
+[
+"Traveller",
+"Thank you. I'll pay by card."
+]
+],
+"qs": [
+{
+"q": "What does the traveller buy?",
+"opts": [
+"Two one-way tickets",
+"A ticket for a child",
+"A day pass for the bus",
+"Two round-trip tickets"
+],
+"a": 3,
+"kind": "gist",
+"why": "Khách nói \"two returns\" vì hai người lớn sẽ quay về trong tối nay.",
+"wrong": {
+"Two one-way tickets": "Khách đi về trong ngày nên chọn vé khứ hồi, không phải vé một chiều.",
+"A ticket for a child": "Cả hai khách đều là người lớn, không có trẻ em.",
+"A day pass for the bus": "Nhân viên không nhắc đến loại vé ngày nào."
+}
+},
+{
+"q": "How much does the traveller pay in total?",
+"opts": [
+"£8",
+"£12",
+"£24",
+"£16"
+],
+"a": 2,
+"kind": "number",
+"why": "Hai vé khứ hồi, mỗi vé 12 bảng, tổng 24 bảng như nhân viên nói.",
+"wrong": {
+"£8": "Tám bảng là giá một vé một chiều, khách mua hai vé khứ hồi.",
+"£12": "Mười hai bảng là giá một vé khứ hồi, khách mua hai vé.",
+"£16": "Mười sáu sẽ là hai vé một chiều, nhưng khách mua vé khứ hồi nên tổng là hai mươi bốn."
+}
+},
+{
+"q": "Where does the bus leave from?",
+"opts": [
+"Platform four",
+"Platform one",
+"Platform two",
+"Platform three"
+],
+"a": 0,
+"kind": "detail",
+"why": "Nhân viên nói xe chạy từ \"platform four\", tức bến số bốn.",
+"wrong": {
+"Platform one": "Số một không được nhắc; một giờ mười lăm chỉ là giờ xe chạy.",
+"Platform two": "Số hai chỉ xuất hiện như số lượng vé, không phải bến.",
+"Platform three": "Không có bến số ba trong hội thoại."
+}
+}
+]
+},
+{
+"id": "lc-131",
+"lvl": "C1",
+"kind": "talk",
+"title": "Why testing beats re-reading",
+"script": [
+[
+"Lecturer",
+"Good morning. Today I want to challenge an assumption that most of you probably hold about revision. Ask a room of first-year students how they prepare for an exam, and the majority will say they read their notes again, perhaps highlighting the important parts."
+],
+[
+"Lecturer",
+"The trouble is that re-reading feels productive precisely because the material looks familiar. Familiarity, however, is not the same as being able to recall something. Psychologists call this the illusion of fluency, and it can leave students badly overconfident."
+],
+[
+"Lecturer",
+"Now consider a well-known experiment. One group studied a short passage four times in a row. A second group studied it once and then spent the remaining time trying to write down everything they could remember."
+],
+[
+"Lecturer",
+"Five minutes later, the first group actually performed slightly better. Had the researchers stopped there, re-reading might have looked like the winner. But when both groups were tested again a week later, the picture reversed completely."
+],
+[
+"Lecturer",
+"The students who had practised retrieval remembered roughly half as much again as the re-readers. This is what we call the testing effect: the act of pulling information out of memory strengthens it more than putting it in again."
+],
+[
+"Lecturer",
+"I should add a caveat. Retrieval practice works best when it is a little difficult. If the questions are so easy that every answer comes instantly, the benefit shrinks. Mistakes, surprisingly, are not a problem, provided you check the correct answer afterwards."
+],
+[
+"Lecturer",
+"What surprised many teachers was that this does not require formal tests. Writing a quick summary from memory, or explaining a concept aloud to a friend, achieves much the same thing."
+],
+[
+"Lecturer",
+"So, for next week, I am not asking you to read chapter six again. Instead, close the book, write down five questions about it, and answer them without looking. We will compare how that went in our next session."
+]
+],
+"qs": [
+{
+"q": "What is the main point the lecturer makes about re-reading?",
+"opts": [
+"It is the most reliable way to prepare for any exam.",
+"It creates a feeling of knowing that does not match real recall.",
+"It works well only when notes are highlighted carefully.",
+"It helps students most when they study in groups."
+],
+"a": 1,
+"kind": "gist",
+"why": "Giảng viên nói đọc lại 'feels productive' vì tài liệu trông quen, và gọi đó là ảo giác lưu loát, tức cảm giác biết nhưng chưa chắc nhớ được.",
+"wrong": {
+"It is the most reliable way to prepare for any exam.": "Bài giảng nói đọc lại chỉ tạo cảm giác quen thuộc, không phải cách đáng tin cậy nhất; thí nghiệm sau một tuần còn cho thấy kết quả ngược lại.",
+"It works well only when notes are highlighted carefully.": "Người nói chỉ nhắc việc tô đậm như thói quen phổ biến, không hề nói rằng tô đậm kỹ sẽ làm cho việc đọc lại hiệu quả.",
+"It helps students most when they study in groups.": "Bài giảng không đề cập đến học nhóm; nhóm trong thí nghiệm chỉ là hai nhóm đối chiếu, không liên quan đến cách đọc lại."
+}
+},
+{
+"q": "What happened when both groups were tested a week later?",
+"opts": [
+"The group that studied four times remembered more.",
+"Both groups remembered about the same amount.",
+"Neither group could recall the passage at all.",
+"The group that practised recalling remembered clearly more."
+],
+"a": 3,
+"kind": "detail",
+"why": "Sau năm phút nhóm đọc lại hơn một chút, nhưng sau một tuần bức tranh đảo ngược và nhóm luyện nhớ lại nhớ nhiều hơn khoảng một nửa.",
+"wrong": {
+"The group that studied four times remembered more.": "Kết quả đảo ngược sau một tuần: nhóm đọc lại bốn lần chỉ hơn ở bài kiểm tra sau năm phút, chứ không phải sau một tuần.",
+"Both groups remembered about the same amount.": "Giảng viên nói bức tranh 'reversed completely' và nhóm luyện nhớ lại nhớ nhiều hơn khoảng một nửa, nên hai nhóm không hề bằng nhau.",
+"Neither group could recall the passage at all.": "Nhóm luyện nhớ lại vẫn nhớ khá nhiều, nên không thể nói cả hai nhóm đều không nhớ được gì sau một tuần."
+}
+},
+{
+"q": "What does the lecturer ask the students to do before the next session?",
+"opts": [
+"Quiz themselves on a chapter without using the book.",
+"Read chapter six once more and highlight it.",
+"Take a formal test written by their teacher.",
+"Explain the experiment to a friend in writing."
+],
+"a": 0,
+"kind": "next-step",
+"why": "Cuối bài người nói bảo đóng sách, viết năm câu hỏi về chương sáu và trả lời mà không nhìn tài liệu, rồi sẽ so sánh ở buổi sau.",
+"wrong": {
+"Read chapter six once more and highlight it.": "Giảng viên nói rõ không yêu cầu đọc lại chương sáu, mà bảo đóng sách lại và tự trả lời câu hỏi.",
+"Take a formal test written by their teacher.": "Người nói nhấn mạnh việc này không cần bài kiểm tra chính thức; sinh viên tự viết năm câu hỏi và tự trả lời.",
+"Explain the experiment to a friend in writing.": "Giải thích cho bạn chỉ được nhắc như một ví dụ về luyện nhớ lại, còn bài tập về nhà là tự viết và trả lời năm câu hỏi."
+}
+}
+]
+},
+{
+"id": "lc-132",
+"lvl": "C1",
+"kind": "interview",
+"title": "Restoring seagrass meadows",
+"script": [
+[
+"Presenter",
+"My guest today is Dr Hale, a marine ecologist who has spent a decade trying to bring back seagrass meadows along our coast. Dr Hale, why should anyone care about what is, frankly, underwater grass?"
+],
+[
+"Dr Hale",
+"Well, that is exactly the perception problem. Seagrass stores carbon, shelters young fish and calms the water so the seabed doesn't wash away. Pound for pound, it locks away carbon faster than many forests, although people rarely hear that."
+],
+[
+"Presenter",
+"And yet we have lost a great deal of it."
+],
+[
+"Dr Hale",
+"Roughly a third in this region, mostly through pollution and boat anchors. For years the assumption was that if you simply planted seeds, the meadows would return. Our early trials, I'm afraid, were rather humbling. Most of the seedlings were eaten or buried within weeks."
+],
+[
+"Presenter",
+"So what changed?"
+],
+[
+"Dr Hale",
+"We stopped treating it as a gardening exercise. We spent a year just watching: which spots had the right currents, where the sediment was stable. When we replanted in carefully chosen patches, survival went from about ten per cent to nearly sixty."
+],
+[
+"Presenter",
+"That sounds like a success story."
+],
+[
+"Dr Hale",
+"Cautiously, yes. What worries me is the funding cycle. Most grants last three years, whereas a meadow needs closer to ten to become self-sustaining. If monitoring stops too early, we may never know whether the work has really lasted."
+],
+[
+"Presenter",
+"Is there anything the public can do?"
+],
+[
+"Dr Hale",
+"Honestly, the most useful thing is modest: avoid anchoring in the beds. Some harbours now provide mooring buoys, and a few boat owners have even volunteered to help us count shoots each summer. That sort of local pride matters more than any one big donation."
+]
+],
+"qs": [
+{
+"q": "According to Dr Hale, what was the main reason the early trials struggled?",
+"opts": [
+"The seeds were too expensive to plant widely.",
+"Pollution had already killed all the meadows.",
+"Seedlings were placed in spots where they could not survive.",
+"Volunteers damaged the seedlings by anchoring boats."
+],
+"a": 2,
+"kind": "detail",
+"why": "Sau một năm quan sát dòng chảy và độ ổn định của trầm tích, tỷ lệ sống tăng mạnh, nghĩa là trước đó cây bị trồng sai chỗ.",
+"wrong": {
+"The seeds were too expensive to plant widely.": "Dr Hale không nhắc đến giá hạt giống; vấn đề là cây con bị ăn hoặc bị vùi lấp do chọn sai vị trí.",
+"Pollution had already killed all the meadows.": "Ông nói đã mất khoảng một phần ba thảm cỏ biển, không phải tất cả, và lý do thử nghiệm đầu thất bại là vị trí trồng.",
+"Volunteers damaged the seedlings by anchoring boats.": "Neo thuyền được nhắc như nguyên nhân gây mất thảm cỏ, còn thử nghiệm đầu thất bại vì cây con bị ăn hoặc bị vùi."
+}
+},
+{
+"q": "What is Dr Hale most concerned about?",
+"opts": [
+"Projects may be judged before the meadows are secure.",
+"Too many boat owners are volunteering for the work.",
+"People now believe seagrass is less useful than forests.",
+"The new planting method has a low survival rate."
+],
+"a": 0,
+"kind": "inference",
+"why": "Ông lo nguồn tài trợ chỉ kéo dài ba năm trong khi thảm cỏ cần gần mười năm, nên việc theo dõi có thể dừng quá sớm.",
+"wrong": {
+"Too many boat owners are volunteering for the work.": "Ông nói tình nguyện viên là điều tích cực; mối lo thật sự là thời gian tài trợ quá ngắn.",
+"People now believe seagrass is less useful than forests.": "Ông nói rằng cỏ biển hấp thụ carbon nhanh hơn nhiều khu rừng; vấn đề là ít người biết điều đó, chứ không phải bị coi là kém giá trị.",
+"The new planting method has a low survival rate.": "Tỷ lệ sống đã tăng từ khoảng mười lên gần sáu mươi phần trăm, nên đó không phải điều ông lo ngại."
+}
+},
+{
+"q": "What does Dr Hale say is the most helpful thing for the public to do?",
+"opts": [
+"Give one large donation to the research team.",
+"Plant seeds along the shoreline themselves.",
+"Stay away from the coast during the summer.",
+"Keep boats from dropping anchor on the seagrass."
+],
+"a": 3,
+"kind": "detail",
+"why": "Ông nói việc hữu ích nhất khá khiêm tốn là tránh thả neo trong các thảm cỏ, và nhiều bến cảng đã có phao neo.",
+"wrong": {
+"Give one large donation to the research team.": "Ông nói niềm tự hào địa phương quan trọng hơn bất kỳ khoản quyên góp lớn nào.",
+"Plant seeds along the shoreline themselves.": "Ông nói thử nghiệm trồng hạt đơn giản đã thất bại, và không khuyên công chúng tự trồng.",
+"Stay away from the coast during the summer.": "Không có chi tiết nào về việc tránh bờ biển; ông còn nhắc tình nguyện viên đếm chồi mỗi mùa hè."
+}
+}
+]
+},
+{
+"id": "lc-133",
+"lvl": "C1",
+"kind": "conversation",
+"title": "Launching the new booking system",
+"script": [
+[
+"Priya",
+"Callum, I've read your proposal for switching every branch to the new booking system on the first of March, and I have to be honest, I'm not comfortable with it."
+],
+[
+"Callum",
+"I did expect that. But think about the alternative. If we run two systems side by side for months, staff will have to enter every appointment twice. That's a recipe for errors."
+],
+[
+"Priya",
+"I understand the risk of duplication, but a full launch in one go is a much bigger gamble. If something breaks, all twelve branches are affected at once, and it's the busiest period of the year."
+],
+[
+"Callum",
+"The vendor has promised round-the-clock support for the first fortnight. And honestly, a pilot would only delay the training we need to do anyway."
+],
+[
+"Priya",
+"Promises are one thing. What worries me is that the test version still crashes when two people edit the same booking. Until that's fixed, I wouldn't put it in front of customers."
+],
+[
+"Callum",
+"Fair point, I hadn't realised that was still open. Though I'd argue that's an argument for fixing it quickly, not for slowing everything down."
+],
+[
+"Priya",
+"Why not both? Start with the two smallest branches in March. If they run smoothly for three weeks, the rest could follow in April. The delay is minor, and we would learn what actually goes wrong."
+],
+[
+"Callum",
+"Hmm. My concern is that the director is expecting a single date. Moving it would mean explaining why we changed our minds."
+],
+[
+"Priya",
+"I'd rather explain a cautious start than a failure. Let me draft a short note for her, and you can check whether the numbers hold up."
+],
+[
+"Callum",
+"All right, send it over. I'm not fully convinced, but I'd like to see the plan on paper before I object any further."
+]
+],
+"qs": [
+{
+"q": "What is Priya's main objection to the original plan?",
+"opts": [
+"Staff would have to be trained twice.",
+"Starting everywhere at once carries too much risk.",
+"The vendor refuses to offer any support.",
+"The date clashes with the director's schedule."
+],
+"a": 1,
+"kind": "gist",
+"why": "Priya nói nếu hệ thống hỏng thì cả mười hai chi nhánh bị ảnh hưởng cùng lúc, trong thời điểm bận nhất năm.",
+"wrong": {
+"Staff would have to be trained twice.": "Callum mới là người nói về việc nhập đôi dữ liệu; Priya phản đối vì rủi ro khi ra mắt đồng loạt cả mười hai chi nhánh.",
+"The vendor refuses to offer any support.": "Nhà cung cấp đã hứa hỗ trợ suốt ngày đêm trong hai tuần đầu, nên đó không phải lý do phản đối của Priya.",
+"The date clashes with the director's schedule.": "Chỉ Callum lo giám đốc mong một ngày duy nhất; Priya không phản đối vì lịch của giám đốc."
+}
+},
+{
+"q": "What problem with the test version does Priya mention?",
+"opts": [
+"It cannot store more than twelve branches.",
+"It deletes appointments entered twice.",
+"It fails when two users change one booking.",
+"It is too slow to use during busy periods."
+],
+"a": 2,
+"kind": "detail",
+"why": "Priya nói bản thử vẫn bị treo khi hai người cùng chỉnh sửa một lượt đặt, và Callum thừa nhận mình chưa biết lỗi này.",
+"wrong": {
+"It cannot store more than twelve branches.": "Con số mười hai chỉ là số chi nhánh; không có giới hạn lưu trữ nào được nhắc đến.",
+"It deletes appointments entered twice.": "Việc nhập đôi chỉ là rủi ro nếu chạy hai hệ thống song song; lỗi của bản thử lại là treo khi hai người sửa cùng lúc.",
+"It is too slow to use during busy periods.": "Tốc độ không được nói đến; lỗi được nêu là bị treo khi hai người cùng sửa một lượt đặt chỗ."
+}
+},
+{
+"q": "What will probably happen next?",
+"opts": [
+"Priya will write a note proposing a gradual start.",
+"Callum will tell the vendor to cancel the project.",
+"Both colleagues will launch in all branches in March.",
+"The director will test the system with customers."
+],
+"a": 0,
+"kind": "next-step",
+"why": "Priya nói sẽ soạn một ghi chú ngắn cho giám đốc về việc khởi đầu thận trọng, còn Callum sẽ kiểm tra các con số.",
+"wrong": {
+"Callum will tell the vendor to cancel the project.": "Callum vẫn muốn tiếp tục dự án, chỉ nói muốn xem kế hoạch trên giấy trước khi phản đối thêm.",
+"Both colleagues will launch in all branches in March.": "Priya đề xuất bắt đầu với hai chi nhánh nhỏ trước, và Callum chưa đồng ý ra mắt đồng loạt.",
+"The director will test the system with customers.": "Giám đốc chỉ được nhắc là người mong một ngày ra mắt duy nhất, và sẽ nhận ghi chú giải thích."
+}
+}
+]
+},
+{
+"id": "lc-134",
+"lvl": "C1",
+"kind": "conversation",
+"title": "Planning a stroke patient's pathway",
+"script": [
+[
+"Dr Okafor",
+"Before the ward round, can we go through Mr Brennan's pathway? He's day six after the stroke, and his weakness on the left side has improved quite a bit."
+],
+[
+"Nurse Lindqvist",
+"Yes, physio say he can now stand with support for two minutes. His swallowing is the concern, though. The speech therapist saw him this morning and still wants him on thickened fluids."
+],
+[
+"Dr Okafor",
+"Understood. That does limit our options for discharge. His daughter has been asking whether he can go home at the weekend."
+],
+[
+"Nurse Lindqvist",
+"I did explain that it's too soon, but I don't think she fully accepted it. She works full-time and she's worried about leaving him alone during the day."
+],
+[
+"Dr Okafor",
+"That's reasonable, and it matters. What I'd suggest is a transfer to the rehabilitation unit rather than home. He'd get daily therapy, and we could reassess in two to three weeks."
+],
+[
+"Nurse Lindqvist",
+"The unit has a bed on Thursday, but there's a catch. They need his blood pressure stable for forty-eight hours first, and yesterday's reading was a little high."
+],
+[
+"Dr Okafor",
+"Then let's adjust his medication this afternoon and recheck tomorrow. If the readings settle, we can confirm the Thursday bed."
+],
+[
+"Nurse Lindqvist",
+"Should I speak to the daughter, or would you prefer to do it?"
+],
+[
+"Dr Okafor",
+"I'll see her myself after the round, because she'll want to ask about the long-term outlook. Could you make sure the social worker has the family's contact details? We will need a home assessment eventually."
+],
+[
+"Nurse Lindqvist",
+"Of course. I'll page her straight away and note that the transfer depends on his blood pressure."
+]
+],
+"qs": [
+{
+"q": "Why is Mr Brennan not ready to go home at the weekend?",
+"opts": [
+"He cannot stand up even with any support.",
+"His daughter has refused to take him home.",
+"The rehabilitation unit has no beds this week.",
+"His swallowing problem still needs specialist management."
+],
+"a": 3,
+"kind": "inference",
+"why": "Người nói nhắc nhà trị liệu ngôn ngữ vẫn muốn dùng chất lỏng đặc, tức vấn đề nuốt khiến việc xuất viện cuối tuần là quá sớm.",
+"wrong": {
+"He cannot stand up even with any support.": "Vật lý trị liệu nói ông đã đứng được hai phút khi có hỗ trợ, nên không phải hoàn toàn không đứng được.",
+"His daughter has refused to take him home.": "Con gái chỉ lo lắng vì phải đi làm cả ngày; không có chi tiết nào cho thấy cô từ chối đón ông.",
+"The rehabilitation unit has no beds this week.": "Đơn vị phục hồi có giường vào thứ Năm, nhưng điều kiện là huyết áp ổn định."
+}
+},
+{
+"q": "What must happen before the Thursday bed can be confirmed?",
+"opts": [
+"The social worker must complete a home visit.",
+"His blood pressure must stay steady for two days.",
+"His daughter must sign the transfer papers.",
+"He must walk unaided for several minutes."
+],
+"a": 1,
+"kind": "detail",
+"why": "Y tá nói đơn vị phục hồi cần huyết áp ổn định bốn mươi tám giờ, tức hai ngày, và hôm qua chỉ số hơi cao.",
+"wrong": {
+"The social worker must complete a home visit.": "Đánh giá tại nhà sẽ cần sau này; nó không phải điều kiện cho giường vào thứ Năm.",
+"His daughter must sign the transfer papers.": "Không có giấy tờ nào của con gái được nhắc; điều kiện duy nhất là huyết áp ổn định.",
+"He must walk unaided for several minutes.": "Ông mới đứng được hai phút khi có hỗ trợ, và việc đi bộ không phải điều kiện chuyển khoa."
+}
+},
+{
+"q": "What will the doctor do after the ward round?",
+"opts": [
+"Page the social worker about the home assessment.",
+"Change the speech therapist's treatment plan.",
+"Meet the daughter to discuss his future recovery.",
+"Increase the patient's therapy sessions himself."
+],
+"a": 2,
+"kind": "next-step",
+"why": "Bác sĩ nói sẽ tự gặp con gái sau khi đi buồng bệnh vì cô sẽ hỏi về tiên lượng lâu dài của cha.",
+"wrong": {
+"Page the social worker about the home assessment.": "Việc gọi nhân viên xã hội là do y tá đảm nhận, không phải bác sĩ.",
+"Change the speech therapist's treatment plan.": "Bác sĩ chấp nhận ý kiến nhà trị liệu về chất lỏng đặc và không nói sẽ thay đổi kế hoạch của họ.",
+"Increase the patient's therapy sessions himself.": "Bác sĩ chỉ đề xuất chuyển sang đơn vị phục hồi, không nói sẽ tự tăng số buổi trị liệu."
+}
+}
+]
+},
+{
+"id": "lc-135",
+"lvl": "C1",
+"kind": "conversation",
+"title": "Should town centres ban cars?",
+"script": [
+[
+"Presenter",
+"Welcome back. Tonight we are asking whether town centres should be closed to private cars. With me is Marta Quill, who studies urban transport. Marta, is a ban realistic?"
+],
+[
+"Marta Quill",
+"It can be, but it rarely works as a sudden ban. Where it has succeeded, towns have usually closed a few streets first, then expanded once people got used to the change."
+],
+[
+"Presenter",
+"Shopkeepers always warn that customers will vanish."
+],
+[
+"Marta Quill",
+"That fear is understandable, although the evidence is mixed in a rather interesting way. Shop owners typically overestimate how many customers arrive by car. Counts show that most visitors walk, cycle or take the bus."
+],
+[
+"Presenter",
+"So the shops are wrong?"
+],
+[
+"Marta Quill",
+"Not entirely. Delivery access matters, and people with limited mobility need to reach the centre. A scheme that ignores those groups deserves the criticism it gets."
+],
+[
+"Presenter",
+"What about the drivers who live outside the town?"
+],
+[
+"Marta Quill",
+"That's the hardest part. If there are no frequent buses, you are effectively telling them to stay away. I'd say the transport has to improve first, and the restrictions come second, not the other way round."
+],
+[
+"Presenter",
+"Some people argue the whole idea is simply anti-car."
+],
+[
+"Marta Quill",
+"I see why it looks that way, but I think the real aim is more modest: giving the space back to people. Once the first street becomes a coffee area, opposition tends to soften considerably."
+],
+[
+"Presenter",
+"A final thought for councils listening?"
+],
+[
+"Marta Quill",
+"Start small, publish the numbers openly, and be willing to adjust. Credibility counts for more than speed."
+]
+],
+"qs": [
+{
+"q": "What does Marta say about the way successful bans have been introduced?",
+"opts": [
+"They began with a few streets and grew gradually.",
+"They were imposed on the whole centre overnight.",
+"They started only after shops had agreed to them.",
+"They were limited to evenings and weekends."
+],
+"a": 0,
+"kind": "detail",
+"why": "Marta nói thành công thường bắt đầu bằng việc đóng vài con phố rồi mở rộng khi người dân đã quen.",
+"wrong": {
+"They were imposed on the whole centre overnight.": "Marta nói hiếm khi thành công nếu cấm đột ngột; các thị trấn thành công thường đóng vài con phố trước.",
+"They started only after shops had agreed to them.": "Cô không nói cửa hàng phải đồng ý trước; cô còn nói chủ cửa hàng thường đánh giá quá cao số khách đi ô tô.",
+"They were limited to evenings and weekends.": "Không có chi tiết nào về giới hạn buổi tối hay cuối tuần; điểm chính là mở rộng dần từ vài con phố."
+}
+},
+{
+"q": "What is Marta's attitude to shopkeepers' concerns?",
+"opts": [
+"She believes they are entirely mistaken.",
+"She thinks they should be ignored by councils.",
+"She thinks they are partly valid but exaggerated.",
+"She is mainly concerned about their delivery costs."
+],
+"a": 2,
+"kind": "inference",
+"why": "Cô nói chủ cửa hàng đánh giá quá cao khách đi ô tô nhưng vẫn có lý về giao hàng, tức một phần đúng và một phần phóng đại.",
+"wrong": {
+"She believes they are entirely mistaken.": "Cô nói 'Not entirely' và thừa nhận vấn đề giao hàng và người khó đi lại là những mối lo có cơ sở.",
+"She thinks they should be ignored by councils.": "Cô nói một kế hoạch phớt lờ các nhóm đó xứng đáng bị chỉ trích, nên không khuyên bỏ qua.",
+"She is mainly concerned about their delivery costs.": "Cô chỉ nhắc quyền tiếp cận giao hàng như một ví dụ chính đáng, chứ không nói về chi phí của cửa hàng."
+}
+},
+{
+"q": "What order of change does Marta recommend?",
+"opts": [
+"Add restrictions and improve transport at once.",
+"Close the centre first and then add bus routes.",
+"Open cafés first and then close the streets.",
+"Improve public transport before adding restrictions."
+],
+"a": 3,
+"kind": "next-step",
+"why": "Cô nói giao thông phải được cải thiện trước, hạn chế đến sau, vì người sống ngoài thị trấn cần xe buýt thường xuyên.",
+"wrong": {
+"Add restrictions and improve transport at once.": "Cô nói rõ giao thông công cộng phải cải thiện trước, còn hạn chế đến sau, chứ không đồng thời.",
+"Close the centre first and then add bus routes.": "Cô nói 'not the other way round', tức không đóng cửa trung tâm trước rồi mới thêm tuyến xe buýt.",
+"Open cafés first and then close the streets.": "Khu cà phê chỉ xuất hiện sau khi phố đầu tiên được đóng; cô không nói mở quán trước để đóng đường."
+}
+}
+]
+},
+{
+"id": "lc-136",
+"lvl": "C1",
+"kind": "announcement",
+"title": "A change to the conference programme",
+"script": [
+[
+"Organiser",
+"Good morning, everyone, and welcome to the second day of the regional teaching conference. Before we begin, I have a few updates to the printed programme, so please take a pen."
+],
+[
+"Organiser",
+"Nothing is changing for registration, which stays open at the front desk all day."
+],
+[
+"Organiser",
+"First, the opening keynote on digital assessment will start at nine thirty, as printed, in the main hall. The speaker has asked me to say that her slides will be shared online after the session, so there's no need to photograph them."
+],
+[
+"Organiser",
+"Now, the programme says the workshop on classroom feedback takes place in Room Four at eleven. That is no longer correct. Room Four is being used for a catering delivery, so the workshop has moved to the library annexe, which is across the courtyard."
+],
+[
+"Organiser",
+"Sorry, I should be more precise about the time as well. It will still begin at eleven, but it will now finish at twelve fifteen rather than twelve, because the facilitator has asked for extra time for discussion."
+],
+[
+"Organiser",
+"Lunch is therefore served from twelve thirty instead of twelve fifteen. Vegetarian and gluten-free options are labelled, and anyone with a serious allergy should speak to a member of the catering team at the front desk."
+],
+[
+"Organiser",
+"Finally, a reminder about the evening event. Earlier this week, we told you that the dinner would be on the riverside terrace. Because of the forecast, we have decided to hold it indoors in the main hall, and you will not need to bring a coat."
+],
+[
+"Organiser",
+"If you have any questions, look for a volunteer wearing a green badge. Thank you, and enjoy the day."
+]
+],
+"qs": [
+{
+"q": "Where will the feedback workshop now be held?",
+"opts": [
+"In Room Four, as the programme says.",
+"In a smaller building across the courtyard.",
+"In the main hall beside the keynote.",
+"On the riverside terrace near the coffee stand."
+],
+"a": 1,
+"kind": "detail",
+"why": "Hội thảo chuyển sang khu nhà phụ của thư viện, nằm bên kia sân trong; đây là sửa đổi so với chương trình in.",
+"wrong": {
+"In Room Four, as the programme says.": "Người nói nói rõ thông tin trong chương trình in không còn đúng vì phòng số bốn dùng cho việc giao đồ ăn.",
+"In the main hall beside the keynote.": "Sảnh chính là nơi diễn ra bài phát biểu mở đầu và sau này là bữa tối, không phải hội thảo phản hồi.",
+"On the riverside terrace near the coffee stand.": "Sân thượng ven sông chỉ liên quan đến bữa tối, vốn cũng đã được chuyển vào trong nhà."
+}
+},
+{
+"q": "What is the new finishing time of the workshop?",
+"opts": [
+"A quarter past twelve",
+"Twelve o'clock",
+"Half past twelve",
+"Eleven fifteen"
+],
+"a": 0,
+"kind": "number",
+"why": "Người nói sửa lại giờ kết thúc từ mười hai giờ thành mười hai giờ mười lăm vì người điều phối cần thêm thời gian thảo luận.",
+"wrong": {
+"Twelve o'clock": "Mười hai giờ là giờ kết thúc cũ trong chương trình in, đã được người nói sửa lại.",
+"Half past twelve": "Mười hai giờ ba mươi là giờ bắt đầu bữa trưa mới chứ không phải giờ kết thúc hội thảo.",
+"Eleven fifteen": "Mười một giờ là giờ bắt đầu hội thảo, không có mốc mười một giờ mười lăm nào trong thông báo."
+}
+},
+{
+"q": "What can be inferred about the evening dinner?",
+"opts": [
+"It was cancelled because of the catering delivery.",
+"It will take place on the terrace as announced.",
+"It was moved because of the weather forecast.",
+"It will start earlier than first planned."
+],
+"a": 2,
+"kind": "inference",
+"why": "Người nói nói vì dự báo thời tiết nên bữa tối chuyển từ sân thượng ven sông vào sảnh chính, nên khách không cần mang áo khoác.",
+"wrong": {
+"It was cancelled because of the catering delivery.": "Việc giao đồ ăn chỉ liên quan đến phòng số bốn; bữa tối vẫn diễn ra nhưng ở trong sảnh.",
+"It will take place on the terrace as announced.": "Địa điểm ngoài trời đã được thông báo trước đó nhưng nay đổi sang sảnh chính do dự báo thời tiết.",
+"It will start earlier than first planned.": "Thông báo không đổi giờ bữa tối, chỉ nói đổi địa điểm vào trong nhà."
+}
+}
+]
+}
+]);
