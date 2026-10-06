@@ -2680,7 +2680,7 @@ function rdSummary(p) {
 }
 function viewReading() {
   if (ROUTE.arg && RD_BY[ROUTE.arg]) return viewRead(RD_BY[ROUTE.arg]);
-  const lv = ["A2", "B1", "B2", "C1"];
+  const lv = ["A1", "A2", "B1", "B2", "C1"];
   const list = RD_ALL.filter(p => (!RDF.lvl || p.lvl === RDF.lvl) && (!RDF.topic || (RDF.topic === "med" ? p.topic === "medical" : p.topic !== "medical")));
   const done = RD_ALL.filter(p => exRes("d-" + p.id)).length;
   const btn = (act, key, val, label, cur) => `<button class="exm-btn ${cur === val ? "on" : ""}" data-act="${act}" data-v="${val}">${label}</button>`;
@@ -2712,7 +2712,28 @@ const WR_ITEMS = [
   { id: "s2", kind: "nói", lvl: "B1", min: 3, words: "1–2 phút", title: "Nói về một người giúp bạn", prompt: "Talk about a person who helped you learn something important. Say who the person is, what they taught you, and how you felt." },
   { id: "s3", kind: "nói", lvl: "B2", min: 5, words: "2 phút", title: "Ý kiến: mạng xã hội", prompt: "Do you think social media brings people closer together or pushes them apart? Give your opinion with reasons and one example." },
   { id: "s4", kind: "nói", lvl: "B2", min: 5, words: "2 phút", title: "Y khoa: giải thích cho bệnh nhân", prompt: "Explain to a patient, in simple words, why they should finish a full course of antibiotics. Check their understanding at the end (teach-back)." }
+,
+  { id: "w6", kind: "viết", lvl: "A1", min: 8, words: "40", title: "Giới thiệu bản thân", prompt: "Write about yourself (about 40 words). Say your name, your age, where you are from, what you do (work or study) and one thing you like." },
+  { id: "w7", kind: "viết", lvl: "A1", min: 8, words: "40", title: "Thiệp sinh nhật", prompt: "Write a birthday card to a friend (about 40 words). Say happy birthday, say you have a small present, and ask your friend to come to your home on Sunday." },
+  { id: "w8", kind: "viết", lvl: "A1", min: 10, words: "50", title: "Một ngày của tôi", prompt: "Write about a normal day (about 50 words). Use times: when you get up, eat, go to work or school, come home and go to bed." },
+  { id: "w9", kind: "viết", lvl: "A1", min: 10, words: "50", title: "Cơ thể của tôi", prompt: "A friend asks, \"How are you today?\" Write a short message (about 50 words) about your body: say what hurts (head, back, stomach, hand or leg), how long it hurts and what you will do (rest, drink water, see a doctor)." },
+  { id: "w10", kind: "viết", lvl: "A2", min: 12, words: "80", title: "Email mời bạn đi chơi", prompt: "Write an email to a friend (about 80 words). Invite your friend to do something this weekend. Say where, when and what you will do. Ask your friend to reply." },
+  { id: "w11", kind: "viết", lvl: "A2", min: 12, words: "60", title: "Tin nhắn xin nghỉ", prompt: "You are ill and cannot go to class or work. Write a message to your teacher or manager (about 60 words). Say what is wrong, say that you cannot come, and say when you will come back." },
+  { id: "w12", kind: "viết", lvl: "A2", min: 12, words: "80", title: "Gia đình tôi", prompt: "Describe your family (about 80 words). Say who is in your family, what they do and what each person likes. Say who you are most like." },
+  { id: "w13", kind: "viết", lvl: "A2", min: 15, words: "90", title: "Cuối tuần vừa rồi", prompt: "Write about your last weekend (about 90 words). Say where you went, who you were with, what you did and how you felt. Use the past simple." },
+  { id: "w14", kind: "viết", lvl: "A2", min: 12, words: "80", title: "Mô tả cơ thể: tim và phổi", prompt: "Write a short text for a child (about 80 words) about the heart and the lungs. Use these words: heart, blood, lungs, air, chest. Say where they are and what they do." },
+  { id: "w15", kind: "viết", lvl: "B1", min: 20, words: "120", title: "Thư hỏi thông tin khóa học", prompt: "You want to join an English course. Write an email to the school (at least 120 words). Ask about the dates, the price, the level test and the class size. Say why you want to study English." },
+  { id: "w16", kind: "viết", lvl: "B1", min: 25, words: "150", title: "Bài giới thiệu thành phố", prompt: "Write an article for a travel magazine about your town or city (at least 150 words). Describe what visitors can see and do, the best time to visit and one problem for visitors." },
+  { id: "w17", kind: "viết", lvl: "B1", min: 20, words: "120", title: "Bài đánh giá", prompt: "Write a review of a restaurant, a film or an app that you know well (at least 120 words). Say what it is, what you liked, what you did not like and whether you recommend it." },
+  { id: "w18", kind: "viết", lvl: "B1", min: 25, words: "130", title: "Giải thích cơ thể: hệ tiêu hóa", prompt: "Write a short information text for teenagers (at least 130 words) explaining what happens to food in the body. Use the words mouth, stomach, intestine, liver and explain the order in simple steps." },
+  { id: "w19", kind: "viết", lvl: "B2", min: 30, words: "200", title: "Báo cáo khảo sát giấc ngủ", prompt: "A survey of 100 students shows: 62 sleep less than seven hours on school nights; 48 use their phone in bed; 35 feel tired in class every day; 70 say they sleep longer at weekends. Write a report (at least 200 words) that describes the results, explains two possible reasons and gives two recommendations." },
+  { id: "w20", kind: "viết", lvl: "B2", min: 40, words: "250", title: "Bài luận: làm việc từ xa", prompt: "More companies now allow staff to work from home several days a week. Discuss the advantages and disadvantages of this trend and give your own opinion (at least 250 words)." },
+  { id: "w21", kind: "viết", lvl: "B2", min: 30, words: "180", title: "Thư xin việc", prompt: "You saw this advertisement: \"Friendly receptionist needed for a language school. Good English and computer skills. Evening hours.\" Write a letter of application (at least 180 words) explaining why you are suitable and what experience you have." },
+  { id: "w22", kind: "viết", lvl: "C1", min: 45, words: "280", title: "Bài luận: sức khỏe cộng đồng và tự do cá nhân", prompt: "Some governments tax sugary drinks and restrict junk-food advertising to improve public health. Others say people should be free to decide what they eat. Discuss both views and say which you find more convincing, with reasons and examples (at least 280 words)." },
+  { id: "w23", kind: "viết", lvl: "C1", min: 40, words: "250", title: "Đề xuất cải thiện thư viện", prompt: "The university library is often crowded, noisy and closed at weekends. Write a proposal to the head of the library (at least 250 words) that explains the problems, suggests three realistic improvements, and considers the cost and the expected benefits." },
+  { id: "w24", kind: "viết", lvl: "C1", min: 35, words: "220", title: "Mô tả số liệu", prompt: "The percentage of people over 65 in a country rose from 8% in 1990 to 14% in 2020 and is expected to reach 25% in 2050. During the same period, the number of people of working age fell from 66% to 61% and is expected to be 52% in 2050. Write a report (at least 220 words) that summarises the main trends, makes comparisons, and comments on possible effects on health services." }
 ];
+{ const lo = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4 }; WR_ITEMS.sort((a, b) => (a.kind === b.kind ? 0 : a.kind === "viết" ? -1 : 1) || (lo[a.lvl] - lo[b.lvl])); }
 const WR_CRIT = {
   "viết": [["Hoàn thành yêu cầu", "Trả lời đủ mọi ý của đề, đúng thể loại và đúng giọng điệu."], ["Mạch lạc và liên kết", "Có mở, thân, kết; mỗi đoạn một ý; dùng từ nối đa dạng, không lặp máy móc."], ["Từ vựng", "Dùng từ chính xác, có kết hợp từ tự nhiên, ít lặp từ."], ["Ngữ pháp", "Câu đa dạng (đơn, ghép, phức), lỗi ít và không gây khó hiểu."]],
   "nói": [["Hoàn thành yêu cầu", "Nói đủ các ý của đề, có ví dụ cụ thể."], ["Lưu loát và mạch lạc", "Nói liền mạch, ít ngập ngừng, biết nối ý (first, however, because)."], ["Từ vựng", "Diễn đạt bằng từ khác nhau, biết nói lại khi quên từ."], ["Ngữ pháp và phát âm", "Câu đúng, dễ nghe, nhấn trọng âm và ngắt nhịp hợp lý."]]
@@ -3007,7 +3028,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.41.2"; APP.build = "04.10.26";
+APP.version = "4.43.1"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3332,7 +3353,7 @@ function cfItems(rounds) {
     const okW = (t, o) => t.words.filter(w => ["A1", "A2", "B1"].includes(w.lvl) && !/[·\s]/.test(w.w) && /^n$/.test((w.pos || "").trim()) && !o.words.some(x => x.w.toLowerCase() === w.w.toLowerCase()));
     const wa = shuffle(okW(ta, tb)).slice(0, 4), wb = shuffle(okW(tb, ta)).slice(0, 4); if (wa.length < 4 || wb.length < 4) continue;
     const cats = [ta.title, tb.title];
-    items.push({ t: "cf", cats, items: shuffle([...wa.map(w => [w.w, 0]), ...wb.map(w => [w.w, 1])]), why: `${cats[0]}: ${wa.map(w => w.w).join(", ")}. ${cats[1]}: ${wb.map(w => w.w).join(", ")}.`, skill: "vocab", src: "cf" });
+    items.push({ t: "cf", cats, items: shuffle([...wa.map(w => [w.w, 0, w.vi]), ...wb.map(w => [w.w, 1, w.vi])]), why: `${cats[0]}: ${wa.map(w => w.w).join(", ")}. ${cats[1]}: ${wb.map(w => w.w).join(", ")}.`, skill: "vocab", src: "cf" });
   }
   return items;
 }
@@ -3361,7 +3382,7 @@ Object.assign(NEWT, { wf: 1, au: 1, so: 1, mp: 1, cf: 1 });
 const pxInput = (st, ph) => `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="pxCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="${ph}" aria-label="Câu trả lời"><button class="btn primary" data-act="pxCheck" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>`;
 const _itemLabel52 = itemLabel, _itemAnswer52 = itemAnswer;
 itemLabel = it => it.t === "wf" ? it.s : it.t === "au" ? it.q : it.t === "so" ? (it.title || "Sắp xếp câu thành đoạn") : it.t === "mp" ? "Nối từ với nghĩa" : it.t === "cf" ? "Phân loại: " + it.cats.join(" / ") : _itemLabel52(it);
-itemAnswer = it => it.t === "wf" ? it.ans.join(" / ") : it.t === "au" ? it.opts[it.a] : it.t === "so" ? it.sents.join(" ") : it.t === "mp" ? it.pairs.map(p => `${p[0]} = ${p[1]}`).join("; ") : it.t === "cf" ? it.items.map(([w, c]) => `${w}: ${it.cats[c]}`).join("; ") : _itemAnswer52(it);
+itemAnswer = it => it.t === "wf" ? it.ans.join(" / ") : it.t === "au" ? it.opts[it.a] : it.t === "so" ? it.sents.join(" ") : it.t === "mp" ? it.pairs.map(p => `${p[0]} = ${p[1]}`).join("; ") : it.t === "cf" ? it.items.map(([w, c, vi]) => `${w} → ${vi || "…"} → ${it.cats[c]}`).join("; ") : _itemAnswer52(it);
 const _pxBody52 = pxBody;
 pxBody = function (it, st) {
   if (it.t === "po" && it.root) return _pxBody52(it, st).replace(/(Gõ MỘT từ cho chỗ trống \(\d+\)\.)/, `$1 Từ cho sẵn: <span class="keybox" lang="en">${esc(it.root)}</span>`);
@@ -3383,7 +3404,8 @@ pxBody = function (it, st) {
     body = `<p class="muted">Xếp mỗi từ vào đúng nhóm.</p><div class="cf-list">${it.items.map(([w, c], k) => { const p = st.pk[k]; const cls = st.done ? (p === c ? "right" : "wrong") : ""; return `<div class="cf-row ${cls}"><span class="en" lang="en"><b>${esc(w)}</b></span><span class="cf-btns">${it.cats.map((n, ci) => `<button class="tile ${p === ci ? "on" : ""}" data-act="cfSet" data-k="${k}" data-c="${ci}" ${st.done ? "disabled" : ""}>${esc(n)}</button>`).join("")}</span></div>`; }).join("")}</div>${st.done ? "" : `<div class="row"><button class="btn primary" data-act="cfCheck" ${Object.keys(st.pk).length === it.items.length ? "" : "disabled"}>Kiểm tra</button></div>`}`;
   }
   let fb = "";
-  if (st.done) { fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && ["so", "mp", "cf"].includes(it.t) ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${escQ(it.why || "")}</div>${!st.ok && it.t === "au" ? wrongWhy(it, st.pick) : ""}`; }
+  if (st.done && it.t === "cf") { fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng. Ôn lại: từ → nghĩa → nhóm" : "Đáp án: từ → nghĩa → nhóm"}</b><ul class="cf-ans">${it.items.slice().sort((p, q) => p[1] - q[1]).map(([w, c, vi]) => `<li class="cf-c${c}"><b lang="en">${esc(w)}</b><span class="arr" aria-hidden="true">→</span><span>${esc(vi || "")}</span><span class="arr" aria-hidden="true">→</span><span class="chip">${esc(it.cats[c])}</span></li>`).join("")}</ul></div>`; }
+  else if (st.done) { fb = `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Đúng." : "Đáp án:"}</b> ${st.ok && ["so", "mp", "cf"].includes(it.t) ? "" : `<span class="en" lang="en">${esc(itemAnswer(it))}</span>. `}${escQ(it.why || "")}</div>${!st.ok && it.t === "au" ? wrongWhy(it, st.pick) : ""}`; }
   return lbl + body + fb;
 };
 const _pxCheck52 = ACT.pxCheck;
@@ -4121,7 +4143,7 @@ revFeedback = function (info, st) {
   return `<div class="feedback ${st.ok ? "ok" : "no"}" role="status">${ans}${pick}</div>${tail}`;
 };
 
-/* ---------------- 4.41.2: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
+/* ---------------- 4.43.1: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
 const SPK = typeof SPEAK_TPL !== "undefined" ? SPEAK_TPL : [], SPK_BY = Object.fromEntries(SPK.map(t => [t.id, t]));
 const SPK_LV = ["A1", "A2", "B1", "B2", "C1"];
 const SPK_LVNAME = { A1: "A1: Nhập môn", A2: "A2: Sơ cấp", B1: "B1: Trung cấp", B2: "B2: Trên trung cấp", C1: "C1: Nâng cao" };
@@ -4328,9 +4350,14 @@ function pskTabBody(tab) {
     + sec("Cấu trúc câu", "Diễn đạt cùng một ý bằng cấu trúc khác.", setType("kw"))
     + sec("Theo từng điểm ngữ pháp", "Mỗi điểm ngữ pháp có bộ câu hỏi riêng, lỗi người Việt hay mắc và bảng so sánh dễ nhầm.", linkType("#/grammar", "grammar", "Thư viện ngữ pháp", "Giải thích, ví dụ, lỗi thường gặp và bộ câu hỏi cho từng điểm.", `${GRAMMAR.length} điểm · A1–C1`, GRAMMAR.filter(g => S.gram[g.id]).length, GRAMMAR.length));
   if (tab === "listen") {
-    const ss = sets("lc"), lv = ["A2", "B1", "B2", "C1"];
-    const blocks = lv.map((l, k) => { const xs = ss.filter(s => s.lvl === l); if (!xs.length) return ""; const d = xs.filter(s => exRes("e-" + s.id)).length; return pskLevelBlock(l, `${lvName[l]} (${xs.length} bài nghe)`, `<div class="topics">${xs.map(card).join("")}</div>`, d, xs.length, k === 0 || (d > 0 && d < xs.length)); }).join("");
-    return `<p class="muted small psk-note">${PSK_INFO.lc[4]}</p>${blocks}<p class="muted small psk-note">Nghe chép và hội thoại có trong từng bài của <a href="#/path">Lộ trình</a>. Âm thanh giọng Mỹ được thu sẵn; không có mạng thì bài nghe dùng giọng máy.</p>`;
+    const ss = sets("lc"), dd = sets("dc"), lv = ["A1", "A2", "B1", "B2", "C1"];
+    const blocks = lv.map((l, k) => {
+      const xs = ss.filter(s => s.lvl === l), ds = dd.filter(s => s.lvl === l); if (!xs.length && !ds.length) return "";
+      const all = xs.concat(ds), d = all.filter(s => exRes("e-" + s.id)).length;
+      const body = sub(`Nghe hiểu: hội thoại, thông báo, tin nhắn (${xs.length})`, xs.length ? `<div class="topics">${xs.map(card).join("")}</div>` : "") + sub(`Nghe chép: nghe câu rồi gõ lại (${ds.length})`, ds.length ? `<div class="topics">${ds.map(card).join("")}</div>` : "");
+      return pskLevelBlock(l, `${lvName[l]} (${all.length} bộ)`, body, d, all.length, k === 0 || (d > 0 && d < all.length));
+    }).join("");
+    return `<p class="muted small psk-note">${PSK_INFO.lc[4]}</p>${blocks}<p class="muted small psk-note">Hội thoại và nghe chép còn có trong từng bài của <a href="#/path">Lộ trình</a>. Âm thanh giọng Mỹ được thu sẵn; không có mạng thì bài nghe dùng giọng máy.</p>`;
   }
   if (tab === "speak") {
     const blocks = SPK_LV.map((l, k) => { const xs = SPK.filter(t => t.lvl === l); if (!xs.length) return ""; const d = xs.filter(t => spkRes(t.id)).length; return pskLevelBlock(l, `${lvName[l]} (${xs.length} tình huống)`, `<div class="topics">${xs.map(t => { const r = spkRes(t.id); return `<a class="gcard" href="#/speaking/${t.id}"><div class="row between"><span class="lv lv-${t.lvl}">${t.lvl}</span><span class="chip">${t.track === "med" ? "Y khoa" : REG_VI[t.register]}</span></div><b>${esc(t.title)}</b><span class="muted small" lang="en">${esc(t.en)}</span><span class="chip ${r && r.best >= 0.8 ? "good" : ""}">${r ? "Tự chấm " + Math.round(r.best * 100) + "%" : "Chưa luyện"}</span></a>`; }).join("")}</div>`, d, xs.length, k === 0 || (d > 0 && d < xs.length)); }).join("");
@@ -4340,7 +4367,7 @@ function pskTabBody(tab) {
       + sec("Luyện cùng nội dung khác", "Giao tiếp y khoa và phát âm.", linkType("#/clinic", "steth", "Phòng khám ảo", "Hỏi bệnh sử, giải thích và tư vấn với bệnh nhân ảo.", `${CASES.length} ca bệnh`, Object.keys(S.cases).length, CASES.length) + linkType("#/phonemes", "wave", "Phát âm", "44 âm, cặp âm dễ nhầm và kho từ phát âm.", "luyện từng âm", Object.keys(S.pron || {}).length, Object.keys(PAIRS).length));
   }
   if (tab === "read") {
-    const lv = ["A2", "B1", "B2", "C1"], rdCard = p => `<a class="gcard" href="#/reading/${p.id}"><div class="row between"><span class="lv lv-${p.lvl}">${p.lvl}</span>${scoreChip(exRes("d-" + p.id))}</div><b lang="en">${esc(p.title)}</b><span class="muted small">${esc(rdGenre[p.genre] || p.genre)} · ${esc(rdTopic[p.topic] || p.topic)} · ${wordCount(p.text)} từ</span></a>`;
+    const lv = ["A1", "A2", "B1", "B2", "C1"], rdCard = p => `<a class="gcard" href="#/reading/${p.id}"><div class="row between"><span class="lv lv-${p.lvl}">${p.lvl}</span>${scoreChip(exRes("d-" + p.id))}</div><b lang="en">${esc(p.title)}</b><span class="muted small">${esc(rdGenre[p.genre] || p.genre)} · ${esc(rdTopic[p.topic] || p.topic)} · ${wordCount(p.text)} từ</span></a>`;
     const blocks = lv.map((l, k) => {
       const rd = RD_ALL.filter(p => p.lvl === l), p7 = sets("p7").filter(s => s.lvl === l), mh = sets("mh").filter(s => s.lvl === l);
       if (!rd.length && !p7.length && !mh.length) return "";
@@ -4355,7 +4382,7 @@ function pskTabBody(tab) {
     return sec("Viết theo mẫu", "Học cấu trúc, cụm diễn đạt và bài mẫu của từng loại văn bản, rồi viết lại theo mẫu có bảng kiểm.", linkType("#/templates", "grammar", "Thư viện mẫu viết", "Thư, đơn, email, văn bản y khoa và bài luận: hướng dẫn, bài mẫu có chú thích, viết lại theo mẫu.", `${TPL.length} mẫu`, TPL.filter(x => exRes("tw-" + x.id)).length, Math.max(1, TPL.length)))
       + sec("Luyện nhanh theo từng mẫu", "Điền cụm, chọn giọng điệu, sắp xếp câu cho từng loại văn bản.", setType("wt"))
       + sec("Sắp xếp câu thành đoạn", "Dựng đoạn văn mạch lạc từ các câu của bài mẫu.", setType("so"))
-      + sec("Viết theo đề mở", "Viết bài hoàn chỉnh theo đề rồi tự chấm bằng bảng kiểm.", wr.length ? `<div class="topics">${wr.map(w => `<a class="gcard" href="#/writing/${w.id}"><div class="row between"><span class="lv lv-${w.lvl}">${w.lvl}</span>${scoreChip(exRes("w-" + w.id))}</div><b>${esc(w.title)}</b><span class="muted small">${esc(w.words)} từ</span></a>`).join("")}</div>` : "");
+      + sec("Viết theo đề mở", "Viết bài hoàn chỉnh theo đề, từ A1 đến C1, rồi tự chấm bằng bảng tiêu chí.", wr.length ? ["A1", "A2", "B1", "B2", "C1"].map((l, k) => { const xs = wr.filter(w => w.lvl === l); if (!xs.length) return ""; const d = xs.filter(w => exRes("w-" + w.id)).length; return pskLevelBlock(l, `${lvName[l]} (${xs.length} đề)`, `<div class="topics">${xs.map(w => `<a class="gcard" href="#/writing/${w.id}"><div class="row between"><span class="lv lv-${w.lvl}">${w.lvl}</span>${scoreChip(exRes("w-" + w.id))}</div><b>${esc(w.title)}</b><span class="muted small">${esc(w.words)} từ</span></a>`).join("")}</div>`, d, xs.length, k === 0 || (d > 0 && d < xs.length)); }).join("") : "");
   }
   return "";
 }
@@ -4364,7 +4391,7 @@ function practiceSkills() {
   return `${tabs}<div class="ex-secs psk-panel">${pskTabBody(PSK.tab)}</div>`;
 }
 
-/* ---------------- 4.41.2: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
+/* ---------------- 4.43.1: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
 const H1_STYLE = {
   today: ["home", "#e0773a"], goals: ["target", "#d9486b"], path: ["path", "#3158d4"], review: ["cards", "#7a63d6"], clinic: ["steth", "#0a8f78"],
   library: ["book", "#c9862c"], grammar: ["grammar", "#5b4fc4"], reading: ["reading", "#2f8fd8"], templates: ["exam", "#b9742a"], writing: ["exam", "#b9742a"],
@@ -4380,7 +4407,7 @@ function decorateH1() {
 }
 const _afterRender64 = afterRender;
 afterRender = function () { _afterRender64(); decorateH1(); };
-/* ---------------- 4.41.2: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
+/* ---------------- 4.43.1: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
 const PXKEY = "tnk_px_resume", PXMETA = "tnk_px_meta";
 function pxMeta() { try { const m = JSON.parse(localStorage.getItem(PXMETA) || "null"); return m && m.arg ? m : null; } catch (e) { return null; } }
 function pxClear() { try { localStorage.removeItem(PXKEY); localStorage.removeItem(PXMETA); } catch (e) { } }
@@ -4429,7 +4456,7 @@ viewToday = function () {
   const h = _viewToday64(), pl = planToday().find(p => p.act);
   return pl ? h.replace(/<a class="btn primary" href="#\/today">Tiếp tục<\/a>/, `<button class="btn primary" data-act="${pl.act}">Tiếp tục</button>`) : h;
 };
-/* ---------------- 4.41.2: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
+/* ---------------- 4.43.1: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
 function lcsMask(a, b) {
   const x = a.toLowerCase(), y = b.toLowerCase(), n = x.length, m = y.length, d = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
   for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) d[i][j] = x[i - 1] === y[j - 1] ? d[i - 1][j - 1] + 1 : Math.max(d[i - 1][j], d[i][j - 1]);
@@ -4499,7 +4526,7 @@ focusBar = function (segs, label) {
   const tog = `<button class="tb acc-tog lang-focus" data-act="tbLang" title="Đổi ngôn ngữ giao diện giữa tiếng Việt và tiếng Anh" aria-label="Ngôn ngữ giao diện: ${LANG === "en" ? "tiếng Anh" : "tiếng Việt"}. Bấm để đổi"><span class="${LANG === "vi" ? "on" : ""}">VI</span><span class="${LANG === "en" ? "on" : ""}">EN</span></button>`;
   return _focusBar66(segs, label).replace('<button class="tb fs-cy fs-focus"', tog + '<button class="tb fs-cy fs-focus"');
 };
-/* ---------------- 4.41.2: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
+/* ---------------- 4.43.1: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
 const SKY_TINT = {
   dawn: ["#ffc8a6", "#ffe1d0", "#fdf0e8", "#f7fbff"], day: ["#b9d9ff", "#d6eafe", "#ecf5ff", "#f7fbff"],
   dusk: ["#f2a98f", "#ffd2c0", "#fdebe3", "#f7fbff"], night: ["#7396c6", "#a3bcdd", "#c8d8ee", "#e6eef8"]
@@ -4532,7 +4559,7 @@ function skyTick() {
 }
 skyTick(); setInterval(skyTick, 60000); addEventListener("resize", skyTick);
 const _afterRender67 = afterRender; afterRender = function () { _afterRender67(); skyTick(); }; document.addEventListener("visibilitychange", () => { if (!document.hidden) skyTick(); });
-/* ---------------- 4.41.2: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
+/* ---------------- 4.43.1: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
 const _toolbar68 = toolbar;
 toolbar = function () {
   const dark = document.documentElement.classList.contains("is-dark");
@@ -4550,5 +4577,77 @@ ACT.tbThemeToggle = function () {
   const st = S.settings, dark = document.documentElement.classList.contains("is-dark");
   st.theme = dark ? "light" : "dark"; S.settingsAt = Date.now(); touch(); save(); applyTheme(); render();
 };
+/* ---------------- 4.43.1: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
+PX_LABEL.dc = "nghe chép";
+function dcPools() {
+  const pools = { A1: [], A2: [], B1: [], B2: [], C1: [] }, seen = new Set();
+  const add = (lvl, text, who, vi) => {
+    const t = String(text).replace(/\s+/g, " ").trim(), n = t.split(" ").length, max = lvl === "C1" ? 26 : lvl === "B2" ? 22 : lvl === "B1" ? 18 : 14;
+    if (!pools[lvl] || n < 4 || n > max || !/[a-z]/i.test(t) || seen.has(t.toLowerCase())) return;
+    seen.add(t.toLowerCase()); pools[lvl].push({ s: t, who, vi: vi || "" });
+  };
+  const lvOfLesson = id => ({ G1: "A1", G2: "A1", G3: "A1", G4: "A2", G5: "A2", G6: "A2" })[id];
+  (typeof GENERAL !== "undefined" ? GENERAL : []).forEach(l => {
+    const lv = lvOfLesson(l.id); if (!lv) return;
+    (l.steps || []).filter(st => st.t === "listen").forEach(st => { const keys = Object.keys(st.who || {}); (st.lines || []).forEach(([spk, en, vi]) => add(lv, en, keys.indexOf(spk) % 2, vi)); });
+  });
+  (typeof LC_SETS !== "undefined" ? LC_SETS : []).forEach(set => { const who = {}; let n = 0; set.script.forEach(([spk, en]) => { if (!(spk in who)) who[spk] = n++ % 2; add(set.lvl, en, who[spk], ""); }); });
+  return pools;
+}
+const DC_POOLS = dcPools();
+Object.entries(DC_POOLS).forEach(([lvl, pool]) => {
+  const per = 8, k = Math.min(6, Math.floor(pool.length / per));
+  for (let i = 0; i < k; i++) {
+    const part = pool.slice(i * per, (i + 1) * per);
+    addSet({ id: `dc-${lvl}-${i + 1}`, group: "dc", title: `Nghe chép ${lvl}, bộ ${i + 1}`, sub: `${per} câu, nghe rồi gõ lại đúng từng từ`, lvl, lvlText: lvl, n: per, build: () => shuffle(part.slice()).map(p => ({ t: "dc", s: p.s, who: p.who, vi: p.vi, skill: "listening", src: "dc:" + lvl })) });
+  }
+});
+function dcBody(it, st) {
+  const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. Nghe chép</span>`;
+  const tries = st.tries ? `<div class="feedback no" role="status"><b>Chưa đúng.</b> Nghe lại và sửa các từ đỏ, bạn còn một lần thử.</div>` : "";
+  const input = `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="dcCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="Gõ câu bạn nghe được" aria-label="Câu bạn nghe được">${st.done ? "" : `<button class="btn primary" data-act="dcCheck">Kiểm tra</button>`}</div>`;
+  const play = `<div class="row"><button class="btn primary" data-act="dcPlay">${ic("speaker", 18)} Nghe câu</button><button class="btn" data-act="dcPlay" data-slow="1">Nghe chậm ×0,75</button></div>`;
+  const fb = st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Chính xác." : "Câu đúng:"}</b> <span class="en" lang="en">${esc(it.s)}</span>${it.vi ? `<br><span class="muted">${esc(it.vi)}</span>` : ""}</div>` : tries;
+  return lbl + `<p class="muted small">Nghe câu rồi gõ lại đúng từng từ. Không cần viết hoa hay dấu câu.</p>${play}${input}${st.diff ? `<p class="diff" lang="en">${st.diff}</p>` : ""}${fb}`;
+}
+const _pxBody69 = pxBody;
+pxBody = function (it, st) { return it.t === "dc" ? dcBody(it, st) : _pxBody69(it, st); };
+const _itemLabel69 = itemLabel, _itemAnswer69 = itemAnswer;
+itemLabel = it => it.t === "dc" ? "Nghe chép" : _itemLabel69(it);
+itemAnswer = it => it.t === "dc" ? it.s : _itemAnswer69(it);
+Object.assign(ACT, {
+  dcPlay(el) { const it = PX.items[PX.i]; speakNow(it.s, { who: it.who, slow: !!el.dataset.slow }); },
+  dcCheck() {
+    const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; st.val = $("#pxIn")?.value || ""; if (!norm(st.val)) return;
+    const d = wordDiff(it.s, st.val); st.diff = d.html;
+    if (d.ok) { st.ok = true; pxMark(true); st.ok = !st.tries; return; }
+    st.tries = (st.tries || 0) + 1; if (st.tries >= 2) { pxMark(false); return; } render();
+  }
+});
+if (typeof PSK_INFO !== "undefined") PSK_INFO.dc = ["wave", "Nghe chép", "Nghe câu rồi gõ lại đúng từng từ; câu lấy từ hội thoại bài học và bài nghe hiểu.", "8 câu mỗi bộ, gõ lại câu", "Nghe cả câu một lần, gõ phần nghe rõ, rồi nghe chậm ×0,75 để bắt các từ nối và âm cuối."];
+/* Phiên âm của các mục thư viện có dữ liệu WORD_IPA (hiện cho 11 mục họ từ). */
+const _wordRow70 = wordRow;
+wordRow = function (w, a, b) {
+  const h = _wordRow70(w, a, b), ip = typeof WORD_IPA !== "undefined" && WORD_IPA[w.key];
+  return ip ? h.replace('<span class="pos">', `<span class="ipa sm" lang="en">${esc(ip)}</span><span class="pos">`) : h;
+};
+/* ---------------- 4.42.0: thu gọn thanh lọc; điện thoại không còn nút ẩn thanh menu dưới ---------------- */
+const FB = { fold: (() => { try { return localStorage.getItem("tnk_fbfold") === "1"; } catch (e) { return false; } })() };
+function decorateFilterbars() {
+  document.querySelectorAll("#page .filterbar").forEach(fb => {
+    if (fb.querySelector(".fb-fold") || !fb.querySelector(".seg-tog, .lv-filter")) return;
+    const skip = /^(Tất cả|Mọi cấp|Mọi kỳ thi|All|Any level|Any exam)$/;
+    const act = [...fb.querySelectorAll('.seg-tog [aria-pressed="true"], .lv-filter .on, .lv-filter [aria-pressed="true"]')].map(b => b.textContent.trim()).filter(t => t && !skip.test(t));
+    const q = fb.querySelector('input[type="search"]'), sum = [...new Set(act)].join(" · ") || "Tất cả";
+    const b = document.createElement("button"); b.type = "button"; b.className = "fb-fold"; b.dataset.act = "fbFold"; b.setAttribute("aria-expanded", String(!FB.fold));
+    b.innerHTML = `<span class="fb-t"><b>Bộ lọc</b>${FB.fold ? `<span class="fb-sum">${esc(sum)}</span>` : ""}</span><span class="fb-i">${ic(FB.fold ? "chevDown" : "chevUp", 18)}</span>`;
+    b.title = FB.fold ? "Mở bộ lọc" : "Thu gọn bộ lọc";
+    fb.insertBefore(b, fb.firstChild); fb.classList.toggle("folded", FB.fold);
+  });
+}
+ACT.fbFold = function () { FB.fold = !FB.fold; try { localStorage.setItem("tnk_fbfold", FB.fold ? "1" : "0"); } catch (e) { } render(); };
+const _afterRender68 = afterRender; afterRender = function () { _afterRender68(); decorateFilterbars(); };
+const _injectFold68 = injectFold;
+injectFold = function () { if (matchMedia("(max-width: 860px)").matches) { document.querySelectorAll(".edge-toggle").forEach(e => e.remove()); return; } _injectFold68(); };
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);

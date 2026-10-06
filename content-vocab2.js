@@ -8,4 +8,6 @@
   Object.assign(WORD_DEFS, DEFS);
   if (typeof WORD_DEFS_VI !== "undefined") Object.assign(WORD_DEFS_VI, DEFS_VI);
   UNITS.push(...NEW_UNITS);
+  /* Điểm ngữ pháp nâng cao (content-grammar3.js) gắn vào hai chặng C1 mới */
+  [["c1-08", "adverbial-clauses"], ["c1-09", "ellipsis-substitution"]].forEach(([uid, gid]) => { const u = UNITS.find(x => x.id === uid); if (u && !u.grammar.includes(gid)) u.grammar.push(gid); });
 })();

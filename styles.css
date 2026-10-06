@@ -1116,3 +1116,27 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .is-light .sky-moon { opacity: .55; filter: drop-shadow(0 0 16px rgba(255, 255, 255, .7)) drop-shadow(0 0 44px rgba(255, 255, 255, .35)); }
 .tb-fixed { display: inline-flex; align-items: center; gap: 4px; }
 .tb-theme { min-width: 36px; padding: 0 8px; }
+
+/* Đáp án bài phân loại: từ → nghĩa → nhóm */
+.cf-ans { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
+.cf-ans li { display: grid; grid-template-columns: minmax(84px, auto) auto minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent); font-size: 15px; }
+.cf-ans li:first-child { border-top: 0; }
+.cf-ans li b { font-family: var(--en); font-size: 17px; }
+.cf-ans .arr { color: var(--muted); }
+.cf-ans .chip { white-space: nowrap; }
+.cf-ans .cf-c0 .chip { background: var(--gen-soft); }
+.cf-ans .cf-c1 .chip { background: var(--med-soft); }
+@media (max-width: 520px) { .cf-ans li { grid-template-columns: auto auto minmax(0, 1fr); } .cf-ans li .arr:nth-of-type(2), .cf-ans li .chip { grid-column: 3; } .cf-ans li .arr:nth-of-type(2) { display: none; } }
+
+/* 4.42.0: thanh lọc có nút thu gọn; điện thoại bỏ nút ẩn menu dưới */
+.filterbar > .fb-fold { flex: 1 0 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 40px; padding: 4px 8px; border: 0; background: transparent; color: var(--ink); border-radius: 10px; text-align: left; }
+.filterbar > .fb-fold:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.fb-t { display: flex; align-items: baseline; gap: 10px; min-width: 0; flex-wrap: wrap; }
+.fb-sum { font-size: 13px; color: var(--muted); }
+.fb-i { display: inline-flex; flex: none; color: var(--muted); }
+.filterbar.folded > :not(.fb-fold):not(.searchbox) { display: none; }
+@media (max-width: 860px) {
+  .edge-toggle { display: none !important; }
+  body:not(.focus).side-folded .bottom { display: grid !important; }
+  body.side-folded .main .page { padding-bottom: 110px; }
+}

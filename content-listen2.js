@@ -1,5 +1,539 @@
-/* Bài nghe hiểu bổ sung: A2 (lc-121..126) và C1 (lc-131..136), nạp sau content-study.js */
+/* Bài nghe hiểu bổ sung: A1 (lc-111..116), A2 (lc-121..126) và C1 (lc-131..136), nạp sau content-study.js */
 LC_SETS.push(...[
+{
+"id": "lc-111",
+"lvl": "A1",
+"kind": "conversation",
+"title": "Meeting a new friend",
+"script": [
+[
+"Anna",
+"Hello, I'm Anna. Nice to meet you."
+],
+[
+"Tom",
+"Hi Anna, I'm Tom. Where are you from?"
+],
+[
+"Anna",
+"I'm from Leeds. I live with my family."
+],
+[
+"Tom",
+"Oh, nice. Have you got a big family?"
+],
+[
+"Anna",
+"Yes. I've got two brothers and one sister."
+],
+[
+"Tom",
+"How old is your sister?"
+],
+[
+"Anna",
+"She is twelve. My brothers are twenty and twenty-two."
+]
+],
+"qs": [
+{
+"q": "What are the two people doing?",
+"opts": [
+"Buying a gift for a sister",
+"Saying hello and talking about family",
+"Looking for a house in Leeds",
+"Asking the way to a school"
+],
+"a": 1,
+"kind": "gist",
+"why": "Hai người chào nhau lần đầu (Nice to meet you) rồi hỏi về quê quán và gia đình, nên đây là cuộc trò chuyện làm quen và nói về gia đình.",
+"wrong": {
+"Buying a gift for a sister": "Không ai nói về việc mua quà; em gái chỉ được nhắc đến khi Tom hỏi tuổi cô ấy.",
+"Looking for a house in Leeds": "Leeds chỉ là nơi Anna đến từ, hai người không hề đi tìm nhà ở đó.",
+"Asking the way to a school": "Không ai hỏi đường; Tom chỉ hỏi Anna đến từ đâu và có gia đình lớn không."
+}
+},
+{
+"q": "Where is Anna from?",
+"opts": [
+"London",
+"York",
+"Leeds",
+"Oxford"
+],
+"a": 2,
+"kind": "detail",
+"why": "Anna nói \"I'm from Leeds\", nghĩa là cô ấy đến từ Leeds; các thành phố khác không được nhắc đến trong bài.",
+"wrong": {
+"London": "London không xuất hiện trong bài; Anna nói rõ cô ấy đến từ Leeds.",
+"York": "York không có trong bài nghe, Anna chỉ nói một tên thành phố là Leeds.",
+"Oxford": "Oxford không được ai nhắc đến; câu trả lời của Anna là Leeds."
+}
+},
+{
+"q": "How old is Anna's sister?",
+"opts": [
+"Twelve",
+"Twenty",
+"Twenty-two",
+"Two"
+],
+"a": 0,
+"kind": "number",
+"why": "Anna nói \"She is twelve\" khi Tom hỏi tuổi em gái, nên em gái 12 tuổi; hai con số còn lại là tuổi của các anh em trai.",
+"wrong": {
+"Twenty": "Số 20 là tuổi của một người anh trai, không phải tuổi của em gái.",
+"Twenty-two": "Số 22 là tuổi của người anh trai còn lại, em gái mới 12 tuổi.",
+"Two": "Số 2 là số lượng anh em trai (two brothers), không phải tuổi của em gái."
+}
+}
+]
+},
+{
+"id": "lc-112",
+"lvl": "A1",
+"kind": "conversation",
+"title": "Buying a bag",
+"script": [
+[
+"Clerk",
+"Hello. Can I help you?"
+],
+[
+"Customer",
+"Yes, please. How much is this blue bag?"
+],
+[
+"Clerk",
+"It is twenty-five pounds."
+],
+[
+"Customer",
+"Oh, that is a lot. Have you got a red bag?"
+],
+[
+"Clerk",
+"Yes. The red bag is eighteen pounds."
+],
+[
+"Customer",
+"Good. I like it. I'll take the red one."
+],
+[
+"Clerk",
+"Great. Eighteen pounds, please."
+]
+],
+"qs": [
+{
+"q": "What does the customer want to buy?",
+"opts": [
+"A coat",
+"A hat",
+"A pair of shoes",
+"A bag"
+],
+"a": 3,
+"kind": "gist",
+"why": "Khách hỏi \"How much is this blue bag?\" và sau đó mua chiếc túi màu đỏ, nên món đồ khách muốn mua là một chiếc túi.",
+"wrong": {
+"A coat": "Không có áo khoác nào được nhắc đến; khách chỉ hỏi về túi xách.",
+"A hat": "Mũ không xuất hiện trong bài; hai người chỉ nói về chiếc túi xanh và túi đỏ.",
+"A pair of shoes": "Giày không được nhắc đến; khách hỏi giá túi xanh rồi chọn túi đỏ."
+}
+},
+{
+"q": "How much is the red bag?",
+"opts": [
+"25 pounds",
+"18 pounds",
+"15 pounds",
+"80 pounds"
+],
+"a": 1,
+"kind": "number",
+"why": "Nhân viên nói \"The red bag is eighteen pounds\", tức 18 bảng; 25 bảng là giá của chiếc túi xanh.",
+"wrong": {
+"25 pounds": "25 bảng là giá chiếc túi xanh, còn túi đỏ rẻ hơn.",
+"15 pounds": "15 bảng không được nhắc đến; eighteen là 18, không phải fifteen là 15.",
+"80 pounds": "80 bảng dễ nhầm với eighteen (18) nhưng giá thật của túi đỏ là 18 bảng."
+}
+},
+{
+"q": "What will the customer do next?",
+"opts": [
+"Look at more blue bags",
+"Go to another shop",
+"Pay for the red bag",
+"Ask for a cheaper hat"
+],
+"a": 2,
+"kind": "next-step",
+"why": "Khách nói sẽ lấy chiếc túi đỏ và nhân viên đòi 18 bảng, nên bước tiếp theo là khách trả tiền cho chiếc túi đỏ.",
+"wrong": {
+"Look at more blue bags": "Khách thấy túi xanh quá đắt và đã chọn túi đỏ, nên không xem thêm túi xanh.",
+"Go to another shop": "Khách đã quyết định mua ở cửa hàng này (I'll take the red one), không đi nơi khác.",
+"Ask for a cheaper hat": "Không ai nhắc đến mũ; khách chỉ mua chiếc túi đỏ."
+}
+}
+]
+},
+{
+"id": "lc-113",
+"lvl": "A1",
+"kind": "announcement",
+"title": "English class this week",
+"script": [
+[
+"Teacher",
+"Good morning, everyone. This message is about our English class."
+],
+[
+"Teacher",
+"The class is on Tuesday and Thursday."
+],
+[
+"Teacher",
+"It starts at six in the evening."
+],
+[
+"Teacher",
+"The room is number twelve, on the second floor."
+],
+[
+"Teacher",
+"Please come ten minutes early."
+],
+[
+"Teacher",
+"Bring a pen and a book."
+],
+[
+"Teacher",
+"Again, room twelve, at six o'clock. Thank you."
+]
+],
+"qs": [
+{
+"q": "What is the message about?",
+"opts": [
+"A language lesson",
+"A job interview",
+"A football game",
+"A birthday party"
+],
+"a": 0,
+"kind": "gist",
+"why": "Người nói mở đầu bằng \"our English class\" rồi cho biết ngày, giờ và phòng học, nên thông báo nói về một lớp học tiếng Anh.",
+"wrong": {
+"A job interview": "Không có buổi phỏng vấn xin việc nào; thông báo chỉ nói về lớp tiếng Anh.",
+"A football game": "Không có trận bóng đá nào được nhắc đến, chỉ có giờ và phòng của lớp học.",
+"A birthday party": "Không có tiệc sinh nhật; người nói chỉ nhắc học viên mang bút và sách."
+}
+},
+{
+"q": "Which room is the class in?",
+"opts": [
+"Room 2",
+"Room 6",
+"Room 10",
+"Room 12"
+],
+"a": 3,
+"kind": "number",
+"why": "Người nói nhắc hai lần \"room twelve\", tức phòng 12; số 2 là tầng, số 6 là giờ học.",
+"wrong": {
+"Room 2": "Số 2 là tầng hai (second floor), không phải số phòng.",
+"Room 6": "Số 6 là giờ bắt đầu lớp (six o'clock), không phải số phòng.",
+"Room 10": "Phòng 10 không có trong bài; mười phút (ten minutes) là thời gian đến sớm."
+}
+},
+{
+"q": "What should students bring?",
+"opts": [
+"A phone and a bag",
+"Something to write with and a book",
+"Some food and water",
+"A computer and a pen"
+],
+"a": 1,
+"kind": "detail",
+"why": "Người nói dặn \"Bring a pen and a book\", nghĩa là mang một cây bút để viết và một quyển sách.",
+"wrong": {
+"A phone and a bag": "Điện thoại và túi không được nhắc đến; chỉ có bút và sách.",
+"Some food and water": "Thức ăn và nước không được nhắc đến trong lời dặn của giáo viên.",
+"A computer and a pen": "Máy tính không được nhắc đến; giáo viên chỉ nói mang bút và sách."
+}
+}
+]
+},
+{
+"id": "lc-114",
+"lvl": "A1",
+"kind": "voicemail",
+"title": "Meeting on Saturday",
+"script": [
+[
+"Ben",
+"Hi Mia, it's Ben."
+],
+[
+"Ben",
+"Let's meet on Saturday."
+],
+[
+"Ben",
+"We can meet at the bus station."
+],
+[
+"Ben",
+"Please come at half past ten."
+],
+[
+"Ben",
+"Then we can go to the park."
+],
+[
+"Ben",
+"The park is near the station."
+],
+[
+"Ben",
+"Call me if there is a problem. Bye."
+]
+],
+"qs": [
+{
+"q": "Where will Ben and Mia meet?",
+"opts": [
+"At the park gate",
+"At Mia's house",
+"At the place where buses stop",
+"At a shop in town"
+],
+"a": 2,
+"kind": "detail",
+"why": "Ben nói \"We can meet at the bus station\", tức gặp ở bến xe buýt; công viên chỉ là nơi họ đi sau đó.",
+"wrong": {
+"At the park gate": "Công viên là nơi họ đi sau khi gặp nhau, không phải chỗ hẹn gặp.",
+"At Mia's house": "Ben không nhắc đến nhà của Mia; chỗ hẹn là bến xe buýt.",
+"At a shop in town": "Không có cửa hàng nào được nhắc đến; họ gặp nhau ở bến xe."
+}
+},
+{
+"q": "What time will they meet?",
+"opts": [
+"10:30",
+"10:00",
+"11:30",
+"9:30"
+],
+"a": 0,
+"kind": "number",
+"why": "Ben nói \"half past ten\", nghĩa là 10 giờ 30; các giờ khác không được nhắc đến trong tin nhắn.",
+"wrong": {
+"10:00": "10:00 là \"ten o'clock\"; Ben nói half past ten, tức 10 giờ rưỡi.",
+"11:30": "11:30 không có trong bài; half past ten là 10:30, không phải 11:30.",
+"9:30": "9:30 không được nhắc đến; Ben hẹn lúc half past ten."
+}
+},
+{
+"q": "What will they do after they meet?",
+"opts": [
+"Go shopping",
+"Have lunch",
+"Watch a film",
+"Visit the park"
+],
+"a": 3,
+"kind": "next-step",
+"why": "Ben nói \"Then we can go to the park\", nên sau khi gặp nhau họ sẽ đi công viên.",
+"wrong": {
+"Go shopping": "Ben không nhắc đến việc đi mua sắm; kế hoạch là đi công viên.",
+"Have lunch": "Không có bữa trưa nào được nhắc đến trong tin nhắn của Ben.",
+"Watch a film": "Không có phim nào được nhắc đến; họ định đến công viên gần bến xe."
+}
+}
+]
+},
+{
+"id": "lc-115",
+"lvl": "A1",
+"kind": "conversation",
+"title": "A rainy morning",
+"script": [
+[
+"Jo",
+"Hi Sam. What do you do in the morning?"
+],
+[
+"Sam",
+"I get up at six. I have breakfast at seven."
+],
+[
+"Jo",
+"Do you go to work by bus?"
+],
+[
+"Sam",
+"Yes, I do. The bus is at half past seven."
+],
+[
+"Jo",
+"But today it's raining."
+],
+[
+"Sam",
+"Yes. Today I take a taxi. I don't like rain."
+],
+[
+"Jo",
+"Good idea. Have a nice day."
+]
+],
+"qs": [
+{
+"q": "What are Jo and Sam talking about?",
+"opts": [
+"A holiday",
+"Sam's morning",
+"A new job",
+"Their lunch"
+],
+"a": 1,
+"kind": "gist",
+"why": "Jo hỏi Sam làm gì buổi sáng, và Sam kể giờ dậy, giờ ăn sáng và cách đi làm, nên họ nói về buổi sáng của Sam.",
+"wrong": {
+"A holiday": "Không ai nói về kỳ nghỉ; họ nói về giờ dậy và đi làm.",
+"A new job": "Sam đã có việc rồi, họ chỉ nói cách Sam đi làm mỗi sáng.",
+"Their lunch": "Không có bữa trưa nào được nhắc đến, chỉ có bữa sáng lúc bảy giờ."
+}
+},
+{
+"q": "When does Sam have breakfast?",
+"opts": [
+"At six",
+"At half past seven",
+"At seven",
+"At eight"
+],
+"a": 2,
+"kind": "number",
+"why": "Sam nói \"I have breakfast at seven\", tức 7 giờ; 6 giờ là giờ dậy và 7:30 là giờ xe buýt.",
+"wrong": {
+"At six": "6 giờ là lúc Sam thức dậy (get up), không phải giờ ăn sáng.",
+"At half past seven": "7:30 là giờ xe buýt chạy, không phải giờ ăn sáng.",
+"At eight": "8 giờ không được nhắc đến trong bài; Sam ăn sáng lúc bảy giờ."
+}
+},
+{
+"q": "How does Sam go to work today?",
+"opts": [
+"In a taxi",
+"By bus",
+"On foot",
+"By bike"
+],
+"a": 0,
+"kind": "inference",
+"why": "Hôm nay trời mưa và Sam nói \"Today I take a taxi\", nên hôm nay Sam đi làm bằng taxi dù thường đi xe buýt.",
+"wrong": {
+"By bus": "Xe buýt là cách Sam đi thường ngày, nhưng hôm nay trời mưa nên anh đổi sang taxi.",
+"On foot": "Đi bộ không được nhắc đến; Sam không thích mưa và đi taxi.",
+"By bike": "Xe đạp không có trong bài; Sam nói rõ hôm nay anh đi taxi."
+}
+}
+]
+},
+{
+"id": "lc-116",
+"lvl": "A1",
+"kind": "conversation",
+"title": "At the pharmacy",
+"script": [
+[
+"Pharmacist",
+"Good afternoon. Can I help you?"
+],
+[
+"Customer",
+"Yes. I feel ill. My head hurts."
+],
+[
+"Pharmacist",
+"Is it only your head?"
+],
+[
+"Customer",
+"No. My back and my stomach hurt too."
+],
+[
+"Pharmacist",
+"Take this medicine two times a day."
+],
+[
+"Customer",
+"Two times a day. Thank you."
+],
+[
+"Pharmacist",
+"Drink water and rest at home."
+]
+],
+"qs": [
+{
+"q": "What else hurts?",
+"opts": [
+"Hand and head",
+"Hand and back",
+"Hand and stomach",
+"Back and stomach"
+],
+"a": 3,
+"kind": "detail",
+"why": "Người khách nói \"My back and my stomach hurt too\", nên ngoài đầu còn đau lưng và bụng; tay không được nhắc đến.",
+"wrong": {
+"Hand and head": "Đầu đau từ đầu, và tay không hề được nhắc đến trong bài.",
+"Hand and back": "Lưng có đau nhưng tay thì không được nhắc đến; phần đau còn lại là bụng.",
+"Hand and stomach": "Bụng có đau nhưng tay không được nhắc đến; phần đau còn lại là lưng."
+}
+},
+{
+"q": "How often should the customer take the medicine?",
+"opts": [
+"One time a day",
+"Twice every day",
+"Three times a day",
+"Four times a day"
+],
+"a": 1,
+"kind": "number",
+"why": "Dược sĩ nói \"two times a day\", tức hai lần mỗi ngày, đúng với \"twice every day\".",
+"wrong": {
+"One time a day": "Một lần một ngày sai với \"two times a day\" của dược sĩ.",
+"Three times a day": "Ba lần một ngày không được nhắc đến; dược sĩ nói hai lần.",
+"Four times a day": "Bốn lần một ngày không có trong bài; dược sĩ nói hai lần mỗi ngày."
+}
+},
+{
+"q": "What does the pharmacist tell the customer to do?",
+"opts": [
+"Go back to work",
+"Visit the hospital",
+"Rest and have some water",
+"Play some sport"
+],
+"a": 2,
+"kind": "next-step",
+"why": "Dược sĩ dặn \"Drink water and rest at home\", nghĩa là uống nước và nghỉ ngơi ở nhà.",
+"wrong": {
+"Go back to work": "Dược sĩ bảo nghỉ ở nhà, không bảo quay lại làm việc.",
+"Visit the hospital": "Không ai nhắc đến bệnh viện; dược sĩ chỉ đưa thuốc và dặn nghỉ ngơi.",
+"Play some sport": "Chơi thể thao không được nhắc đến; khách đang ốm nên được dặn nghỉ ngơi."
+}
+}
+]
+},
 {
 "id": "lc-121",
 "lvl": "A2",

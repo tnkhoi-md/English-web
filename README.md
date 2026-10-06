@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.41.2 (06.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.43.1 (06.10.26).
 
 ## Tính năng
 
@@ -81,6 +81,11 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Thư viện là bộ từ lõi có chọn lọc, chưa phải toàn bộ vốn từ của mỗi cấp CEFR; mức C1 còn ít từ nhất. Kiểm tra đầu vào chỉ ước lượng vốn từ nhận biết, không phải bài thi CEFR.
 - Điểm Viết và Nói là tự chấm, ứng dụng không chấm tự động, đang trong quá trình hoàn thiện.
 - Nội dung y khoa phục vụ học ngôn ngữ, không phải tài liệu chuyên môn hay tư vấn y tế.
+## Cập nhật 4.43.1: thu gọn thanh lọc
+
+- Mọi thanh lọc (thư viện từ vựng, đọc, ngữ pháp, thuật ngữ...) có nút **Bộ lọc** ở đầu để thu gọn; khi gọn vẫn hiện tóm tắt bộ lọc đang chọn và ô tìm kiếm. Trạng thái nhớ theo thiết bị.
+- Điện thoại (rộng dưới 861 px): bỏ nút mũi tên ẩn thanh menu dưới, thanh luôn hiện. Máy tính và máy tính bảng ngang vẫn có nút ẩn thanh bên.
+
 ## Cập nhật 4.41.2: mặt trời, mặt trăng và sao theo giờ
 
 - Ban ngày (6 giờ đến 18 giờ) có mặt trời đi theo vòng cung từ trái sang phải; ban đêm có mặt trăng, **đúng pha trăng của ngày hôm đó** (tính từ chu kỳ 29,53 ngày). Vị trí cập nhật mỗi phút.
@@ -88,6 +93,19 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Chế độ tối vẫn là galaxy; ban ngày có thêm mặt trời, ban đêm thêm mặt trăng. Mặt trời và mặt trăng nằm sau lớp mây hoặc ngân hà trôi.
 - Thêm mặt trời/mặt trăng nhỏ (34 px) chạy ngang thanh trên cùng theo giờ, luôn thấy được dù nội dung đang che nền; bản lớn ở nền chỉ là ánh sáng phía sau.
 - `skyTick()` trong `app.js` đặt `data-sky` trên thẻ html và tạo phần tử `#skybody`.
+
+## Cập nhật 4.43.0: thêm đề viết, nghe A1, nghe chép, định nghĩa còn thiếu
+
+- **Đề viết:** thêm 19 đề viết mở, nay có 24 đề từ A1 đến C1 (giới thiệu bản thân, thiệp, một ngày của tôi, cơ thể của tôi, email mời bạn, tin nhắn xin nghỉ, thư hỏi thông tin, bài giới thiệu thành phố, bài đánh giá, báo cáo khảo sát, bài luận làm việc từ xa, thư xin việc, bài luận sức khỏe cộng đồng, đề xuất, mô tả số liệu). Có các đề cơ thể và giải phẫu cơ bản: cơ thể của tôi (A1), tim và phổi (A2), hệ tiêu hóa (B1). Tab Viết của Luyện tập nhóm đề theo trình độ.
+- **Nghe hiểu A1:** 6 bài mới (`lc-111` đến `lc-116`) có giọng Mỹ thu sẵn, gồm giới thiệu bản thân, mua hàng, thông báo lớp học, tin nhắn hẹn, thời tiết và đi mua thuốc khi không khỏe. Nghe hiểu nay có đủ A1 đến C1.
+- **Nghe chép:** dạng bài mới ngoài bài học, theo trình độ A1 đến C1 (tối đa 6 bộ mỗi cấp, 8 câu mỗi bộ). Câu lấy từ hội thoại bài học và các bài nghe hiểu nên đều có giọng Mỹ thu sẵn; có nút “Nghe chậm ×0,75”; mỗi câu được thử hai lần, từ sai tô đỏ.
+- **11 mục họ từ** (`x-families`) có đủ định nghĩa Anh, bản dịch Việt và phiên âm IPA (`content-patch.js`); phiên âm hiện ở hàng từ trong thư viện.
+
+## Cập nhật 4.42.0: thêm nội dung ngữ pháp B2–C1, bài đọc A1–A2, từ vựng y khoa
+
+- **10 điểm ngữ pháp nâng cao** (`content-grammar3.js`): B2: past perfect continuous, reporting verbs, comparison nâng cao, articles nâng cao, gradable/ungradable adjectives; C1: adverbial clauses, nominalisation, ellipsis và substitution, hedging, discourse markers. Mỗi điểm có lý thuyết, 24–28 câu hỏi, 8 lỗi hay gặp và bảng so sánh, đã gắn vào các chặng B2.3, 5, 7, 10, 12 và C1.3, 5, 7, 8, 9. Tổng 70 điểm ngữ pháp.
+- **12 bài đọc mới** (`content-reading2.js`): 6 bài A1 (thông báo, thư ngắn, quảng cáo, giờ mở cửa phòng khám, giới thiệu, thực đơn) và 6 bài A2 (hướng dẫn cảm lạnh, du ký, email đổi lịch họp, thông báo trường, một ngày của điều dưỡng, tin cộng đồng). Bộ lọc Kho luyện đọc và tab Đọc có thêm cấp A1. Tổng 78 bài.
+- **391 từ y khoa mới** (`content-med2.js`) cho 15 chủ đề trước đó mỏng (cơ, tim mạch, hô hấp, tiêu hóa, thần kinh, tiết niệu và sinh dục, nội tiết, giác quan, sinh lý, bệnh nhiễm, thăm khám, điều trị, dấu hiệu và triệu chứng). Mỗi chủ đề nay có 38–52 từ, đều có nghĩa Việt, định nghĩa Anh–Anh, bản dịch định nghĩa và câu ví dụ lâm sàng. Tổng 4.943 từ.
 
 ## Cập nhật 4.40.0: chế độ sáng nền bầu trời
 
