@@ -587,8 +587,8 @@ function qsBlock(step, st, en = true, hearQ = false) {
 }
 function pickOpt(q, qs, o, skill) {
   if (qs.done) return; qs.picked = qs.picked || []; if (qs.picked.includes(o)) return;
-  if (o === q.a) { qs.done = true; qs.ok = qs.picked.length === 0; result(skill, qs.ok); }
-  else { qs.picked.push(o); if (qs.picked.length >= (q.opts.length <= 2 ? 1 : 2)) { qs.done = true; qs.ok = false; result(skill, false); } }
+  if (o === q.a) { qs.done = true; qs.ok = qs.picked.length === 0; result(skill, qs.ok); if (!qs.ok) errQ(q, skill, "les:" + L.id); }
+  else { qs.picked.push(o); if (qs.picked.length >= (q.opts.length <= 2 ? 1 : 2)) { qs.done = true; qs.ok = false; result(skill, false); errQ(q, skill, "les:" + L.id); } }
 }
 /* Viết tắt và viết đầy đủ được coi là một: it's = it is, don't = do not, I'm = I am... (chuẩn hóa cả đáp án lẫn bài làm trước khi so). */
 function normC(s) {
@@ -1297,7 +1297,7 @@ function sanGoals(g) {
     gen: { level: CEFR_IDS.includes(gen.level) ? gen.level : "A0", target: ["A2", "B1", "B2", "C1"].includes(gen.target) ? gen.target : "C1", date: okDate(gen.date) },
     med: { stage: STAGE_IDS.includes(med.stage) ? med.stage : "anatomy", date: okDate(med.date) },
     newPerDay: clamp(Math.round(num(g.newPerDay, 10)), 3, 40), setAt: num(g.setAt, 0),
-    placed: g.placed && typeof g.placed === "object" ? { at: num(g.placed.at), level: CEFR_IDS.includes(g.placed.level) ? g.placed.level : "A0" } : null
+    placed: g.placed && typeof g.placed === "object" ? { at: num(g.placed.at), level: CEFR_IDS.includes(g.placed.level) ? g.placed.level : "A0", stage: typeof g.placed.stage === "string" ? g.placed.stage.slice(0, 12) : "" } : null
   };
 }
 function recomputeTime(s) {
@@ -1320,6 +1320,25 @@ sanitize = function (raw) {
   if (!Object.keys(s.time.byDev).length && Object.keys(s.time.days).length) s.time.byDev["pre-" + DEV] = { ...s.time.days };
   recomputeTime(s);
   return s;
+};
+/* 4.46.0: sổ lỗi sai (S.err) phải nằm trong chuỗi sanitize/merge từ sớm để các lần load/save sau không làm mất */
+const ERR_TYPES = ["c", "x", "t", "f", "o", "m", "r", "l", "s", "au", "sy"], ERR_BOX = [1, 3, 7, 14, 30], ERR_MAX = 400;
+const _fresh46 = fresh; fresh = () => { const s = _fresh46(); s.err = {}; s.errGrad = 0; return s; };
+const _san46 = sanitize;
+sanitize = function (raw) {
+  const s = _san46(raw); s.err = {}; s.errGrad = 0; if (!raw || typeof raw !== "object") return s;
+  s.errGrad = Math.max(0, Math.round(num(raw.errGrad)));
+  if (raw.err && typeof raw.err === "object") Object.entries(raw.err).slice(0, ERR_MAX).forEach(([id, e]) => {
+    if (!/^[a-z0-9]{1,12}$/.test(id) || !e || typeof e !== "object" || !e.it || !ERR_TYPES.includes(e.it.t)) return;
+    s.err[id] = { it: e.it, box: clamp(Math.round(num(e.box)), 0, ERR_BOX.length - 1), due: num(e.due, Date.now()), n: Math.max(1, Math.round(num(e.n, 1))), at: num(e.at, Date.now()), last: num(e.last, Date.now()) };
+  });
+  return s;
+};
+const _merge46 = mergeState;
+mergeState = function (a, b) {
+  const m = _merge46(a, b); m.err = { ...(a.err || {}) }; m.errGrad = Math.max(a.errGrad || 0, b.errGrad || 0);
+  for (const [id, e] of Object.entries(b.err || {})) { const x = m.err[id]; if (!x || (e.last || 0) > (x.last || 0)) m.err[id] = e; }
+  return m;
 };
 S = load();
 addSeconds = function (n) { const k = dayKey(), bd = S.time.byDev, d = bd[DEV] || (bd[DEV] = {}); d[k] = (d[k] || 0) + n; S.time.days[k] = (S.time.days[k] || 0) + n; S.time.total += n; touch(); };
@@ -1704,7 +1723,7 @@ Object.assign(ACT, {
   syncOff() { if (!confirm("Tắt đồng bộ và xóa mã truy cập khỏi thiết bị này?")) return; const c = syncCfg(); saveCfg({ gistId: c.gistId }); SYNC.status = "idle"; render(); }
 });
 const _pick = ACT.pick;
-ACT.pick = el => { if (el.dataset.q === "qz") { const it = QZ.items[QZ.i]; const was = it.st.done; pickOpt2q(it.q, it.st, +el.dataset.o); if (!was && it.st.done) { if (it.st.ok) QZ.ok++; evidence("vocab", it.st.ok, "quiz"); } render(); return; } _pick(el); };
+ACT.pick = el => { if (el.dataset.q === "qz") { const it = QZ.items[QZ.i]; const was = it.st.done; pickOpt2q(it.q, it.st, +el.dataset.o); if (!was && it.st.done) { if (it.st.ok) QZ.ok++; evidence("vocab", it.st.ok, "quiz"); if (!it.st.ok && it.w && it.q && it.q.opts) errRecord({ t: "m", w: it.w, opts: it.q.opts.slice(), a: it.q.a, why: `${it.w.w}: ${it.w.vi}`, skill: "vocab", src: "quiz" }); } render(); return; } _pick(el); };
 function pickOpt2q(q, qs, o) { if (qs.done) return; qs.picked = qs.picked || []; if (o === q.a) { qs.done = true; qs.ok = !qs.picked.length; } else { qs.picked.push(o); if (qs.picked.length >= 2) { qs.done = true; qs.ok = false; } } }
 function refreshRow(el, w) { if (ROUTE.name === "library" && ROUTE.arg) { render(); return; } const row = el.closest(".lw"); if (row) row.outerHTML = wordRow(w, !!el.closest("[data-showtopic]")); }
 
@@ -1927,7 +1946,7 @@ Object.assign(ACT, {
     if (ROUTE.name === "grammar" && /^g\d+$/.test(q) && GQ) {
       const g = GRAMMAR_BY[GQ.id], k = +q.slice(1), [qq, opts, a, why, wrong] = g.quiz[k], st = GQ.st[k], was = st.done;
       pickOpt2q({ q: qq, opts, a, why, wrong }, st, +el.dataset.o);
-      if (!was && st.done) { evidence("grammar", st.ok, "gram:" + g.id); if (GQ.st.every(s => s.done)) { const sc = GQ.st.filter(s => s.ok).length / GQ.st.length, pr = S.gram[g.id]; S.gram[g.id] = { best: Math.max(pr?.best || 0, sc), n: (pr?.n || 0) + 1, last: Date.now() }; touch(); save(); } }
+      if (!was && st.done) { evidence("grammar", st.ok, "gram:" + g.id); if (!st.ok) errQ({ q: qq, opts, a, why }, "grammar", "gram:" + g.id); if (GQ.st.every(s => s.done)) { const sc = GQ.st.filter(s => s.ok).length / GQ.st.length, pr = S.gram[g.id]; S.gram[g.id] = { best: Math.max(pr?.best || 0, sc), n: (pr?.n || 0) + 1, last: Date.now() }; touch(); save(); } }
       render(); return;
     }
     _pick41(el);
@@ -2685,7 +2704,7 @@ function viewReading() {
   const done = RD_ALL.filter(p => exRes("d-" + p.id)).length;
   const btn = (act, key, val, label, cur) => `<button class="exm-btn ${cur === val ? "on" : ""}" data-act="${act}" data-v="${val}">${label}</button>`;
   const card = p => { const n = wordCount(p.text); return `<a class="gcard" href="#/reading/${p.id}"><div class="row between"><span class="lv lv-${p.lvl}">${p.lvl}</span>${scoreChip(exRes("d-" + p.id))}</div><b lang="en">${esc(p.title)}</b><span class="muted small">${rdGenre[p.genre] || p.genre}, ${rdTopic[p.topic] || p.topic}</span><span class="muted small">${n} từ, khoảng ${Math.max(1, Math.round(n / 120))} phút đọc, ${p.qs.length} câu hỏi</span></a>`; };
-  return `<section class="page-head"><h1>Kho luyện đọc</h1><p class="lede">${RD_ALL.length} đoạn văn ngắn do tác giả tự viết, từ A2 đến C1, gồm thư, thông báo, bài báo, hội thoại và tài liệu y khoa. Chạm vào từ gạch chân để xem nghĩa và thêm vào lịch ôn. Bạn đã làm ${done}/${RD_ALL.length} bài.</p></section>
+  return `<section class="page-head"><h1>Kho luyện đọc</h1><p class="lede">${RD_ALL.length} đoạn văn do tác giả tự viết, từ A1 đến C1, xếp từ ngắn đến dài và từ dễ đến khó, gồm thư, thông báo, bài báo, hội thoại và tài liệu y khoa. Chạm vào từ gạch chân để xem nghĩa và thêm vào lịch ôn. Sau mỗi bài có phần điểm chính. Bạn đã làm ${done}/${RD_ALL.length} bài.</p></section>
     <div class="filterbar"><div class="lv-filter">${btn("rdFilter", "lvl", "", "Mọi cấp", RDF.lvl)}${lv.map(l => btn("rdFilter", "lvl", l, l, RDF.lvl)).join("")}</div>
     <div class="lv-filter">${btn("rdTopic", "topic", "", "Tất cả", RDF.topic)}${btn("rdTopic", "topic", "gen", "Phổ thông", RDF.topic)}${btn("rdTopic", "topic", "med", "Y khoa", RDF.topic)}</div></div>
     ${list.length ? `<div class="topics">${list.map(card).join("")}</div>` : `<div class="empty"><p>Không có bài nào khớp bộ lọc.</p></div>`}`;
@@ -2995,7 +3014,7 @@ viewReview = function () {
       <section class="panel stack"><h3 style="margin:0">Tiến trình ghi nhớ của ${st.total} thẻ</h3><div class="rv-stack" role="img" aria-label="Phân bố tiến trình ghi nhớ">${seg}</div><div class="rv-legend">${legend}</div></section>
       <section class="panel stack"><div class="row between"><h3 style="margin:0">7 ngày tới</h3><span class="muted small">${wk} thẻ</span></div><div class="bars">${fc.map((v, i) => `<div title="${v} thẻ"><span>${v}</span><i style="height:${Math.max(v ? 6 : 0, Math.round(v / max * 80))}px"></i><span>${i === 0 ? "Hôm nay" : new Date(Date.now() + i * DAY).toLocaleDateString(LOC(), { weekday: "short" })}</span></div>`).join("")}</div></section></div>` : "";
   const help = `<details class="panel rv-help" style="margin-top:14px"><summary><b>Chấm thế nào cho đúng</b> <span class="muted small">(phím 1 đến 4, cách để lật thẻ)</span></summary><div class="rv-grades">${grades.map(([k, l, c, d]) => `<div class="rv-g rv-g-${c}"><b><kbd>${k}</kbd> ${l}</b><span>${d}</span></div>`).join("")}</div><p class="muted small">Hãy chấm thật lòng; thuật toán dựa vào đó để hẹn lịch. FSRS ước lượng lúc bạn sắp quên từng thẻ và hẹn ôn đúng lúc đó. Mỗi từ có hai thẻ (nhận biết nghĩa và gợi nhớ từ). Mỗi lần ôn, thẻ hiện dưới một trong nhiều hình thức: lật thẻ, chọn nghĩa, nghe và chọn, chọn định nghĩa, điền vào câu, đoán từ từ định nghĩa, sắp xếp chữ cái, nghe và gõ.</p></details>`;
-  return `<section class="page-head"><h1>Luyện tập</h1><p class="lede">Lộ trình là trục chính của việc học; trang này bổ trợ bằng nhiều hình thức khác. Phần 1 ôn từ vựng bằng thẻ nhớ. Phần 2 luyện từng kỹ năng theo dạng bài. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích; đạt từ 70% là qua bộ đề.</p></section>
+  return `<section class="page-head"><h1>Luyện tập</h1><p class="lede">Lộ trình là trục chính của việc học; trang này bổ trợ bằng nhiều hình thức khác. Phần 1 ôn từ vựng bằng thẻ nhớ. Phần 2 ôn lại các câu từng làm sai. Phần 3 luyện từng kỹ năng theo dạng bài. Mỗi câu trắc nghiệm chỉ có một đáp án đúng, có giải thích; đạt từ 70% là qua bộ đề.</p></section>
     <h2 class="sec-h" style="margin-top:6px">1. Ôn tập từ vựng</h2>${hero}${cards}${help}
     <h2 class="sec-h" style="margin-top:22px">2. Luyện tập kỹ năng</h2>${practiceSkills()}`;
 };
@@ -3028,7 +3047,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.45.0"; APP.build = "04.10.26";
+APP.version = "4.47.1"; APP.build = "07.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3706,9 +3725,9 @@ let LANG = (() => { try { return localStorage.getItem("tnk_lang") === "en" ? "en
 const I18N = (() => {
   const exact = new Map(), pats = [];
   for (const [k, v] of Object.entries(typeof I18N_EN !== "undefined" ? I18N_EN : {})) {
-    if (/\{\d+\}/.test(k)) {
+    if (/\{#?\d+\}/.test(k)) {
       const order = [];
-      const re = "^" + k.split(/(\{\d+\})/).map(p => { const m = /^\{(\d+)\}$/.exec(p); if (m) { order.push(+m[1]); return "(.+?)"; } return p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("") + "$";
+      const re = "^" + k.split(/(\{#?\d+\})/).map(p => { const m = /^\{(#?)(\d+)\}$/.exec(p); if (m) { order.push(+m[2]); return m[1] ? "(\\d+)" : "(.+?)"; } return p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("") + "$";
       pats.push({ re: new RegExp(re, "s"), order, v, len: k.length });
     } else exact.set(k, v);
   }
@@ -3716,12 +3735,31 @@ const I18N = (() => {
   return { exact, pats };
 })();
 const VI_RE = /[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+let _VI2EN = false; const HIDE_VI = new Set();
+/* Bản dịch tiêu đề lấy từ chính dữ liệu: chủ đề, điểm ngữ pháp, chặng, bài học, ca bệnh, tình huống nói, mẫu viết, câu nói hay. */
+function buildVi2En() {
+  _VI2EN = true; const put = (vi, en) => { if (typeof vi !== "string" || typeof en !== "string" || !vi || !en || vi === en) return; const k = vi.replace(/\s+/g, " ").trim(); if (k && !I18N.exact.has(k)) I18N.exact.set(k, en); };
+  const each = (arr, f) => { try { (arr || []).forEach(f); } catch (e) { } };
+  [typeof LIB !== "undefined" ? LIB : [], typeof GRAMMAR !== "undefined" ? GRAMMAR : [], typeof UNITS !== "undefined" ? UNITS : [], typeof LESSONS !== "undefined" ? LESSONS : [], typeof CASES !== "undefined" ? CASES : []].forEach(arr => each(arr, o => put(o.vi, o.title || o.en)));
+  each(typeof UNITS !== "undefined" ? UNITS : [], o => { put(`${o.icon} ${o.code} ${o.vi}`, `${o.icon} ${o.code} ${o.title}`); put(`${o.code} ${o.vi}`, `${o.code} ${o.title}`); put(`Chặng ${o.code} ${o.vi}`, `Stage ${o.code} ${o.title}`); });
+  each(typeof LIB !== "undefined" ? LIB : [], o => put(`${o.icon} ${o.vi}`, `${o.icon} ${o.title}`));
+  each(typeof SPK !== "undefined" ? SPK : [], o => put(o.title, o.en)); each(typeof TPL !== "undefined" ? TPL : [], o => put(o.title, o.en));
+  each(typeof PROVERBS !== "undefined" ? PROVERBS : [], a => { if (typeof a[2] === "string") HIDE_VI.add(a[2].replace(/\s+/g, " ").trim()); });
+}
 function trEn(text, d = 0) {
+  if (!_VI2EN) buildVi2En();
   const core = text.replace(/\s+/g, " ").trim(); if (!core) return null;
   let v = I18N.exact.get(core);
   if (v === undefined) for (const p of I18N.pats) {
     const m = p.re.exec(core); if (!m) continue;
-    const args = {}; p.order.forEach((n, i) => { const raw = m[i + 1]; args[n] = d < 2 ? (trEn(raw, d + 1) ?? raw) : raw; });
+    const args = {}; let bad = false;
+    p.order.forEach((n, i) => {
+      const raw = m[i + 1]; if (d >= 2) { args[n] = raw; return; }
+      const tr = trEn(raw, d + 1); args[n] = tr ?? raw;
+      /* Không dịch dở: nếu phần xen vào vẫn còn tiếng Việt mà câu mẫu dùng đến thì bỏ mẫu này. */
+      if (tr == null && VI_RE.test(raw) && p.v.includes("{" + n + "}")) bad = true;
+    });
+    if (bad) continue;
     v = p.v.replace(/\{(\d+)\}/g, (x, n) => args[n] ?? x); break;
   }
   return v === undefined ? null : v;
@@ -3742,6 +3780,8 @@ function trNode(n) {
   if (n.parentElement && n.parentElement.closest(TR_SKIP)) return;
   /* Tiếng Anh: bỏ chú thích tiếng Việt đứng cạnh tiêu đề tiếng Anh (chủ đề, điểm ngữ pháp, chặng, bài học) để khỏi lặp nghĩa tiêu đề. */
   if (n.parentElement && subTitleSet().has(core) && !n.parentElement.closest(".lw, .choice, button, .chip, select, option, textarea")) { n.parentElement.classList.add("bi-dup"); return; }
+  if (!_VI2EN) buildVi2En();
+  if (HIDE_VI.has(core) && n.parentElement) { n.parentElement.classList.add("bi-dup"); return; }
   const v = trEn(t); if (v == null || v === core) return;
   n.nodeValue = (/^\s/.test(t) ? " " : "") + v + (/\s$/.test(t) ? " " : "");
 }
@@ -4666,5 +4706,330 @@ pxBody = function (it, st) {
 };
 ACT.tpDk = function () { const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; st.dk = true; pxMark(false); };
 ACT.pxShowTx = function () { const st = PX.st[PX.i]; if (st.done) return; st.tx = true; render(); };
+/* ---------------- 4.46.0: Sổ lỗi sai kiểu Anki + Phiên 15 phút ---------------- */
+/* Mọi câu sai (luyện tập, ngữ pháp, bài học, quiz từ vựng) được lưu vào S.err và ôn theo các mốc 1, 3, 7, 14, 30 ngày; trả lời đúng ở mốc cuối thì "tốt nghiệp". */
+Object.assign(PX_LABEL, { n: "từ mới", sy: "nói to" });
+function errSnap(it) {
+  const o = {};
+  for (const [k, v] of Object.entries(it)) { if (k[0] === "_" || typeof v === "function" || ["sec", "cid", "eid", "src"].includes(k)) continue; o[k] = k === "w" && v ? { w: v.w, vi: v.vi, pos: v.pos || "", ex: v.ex || "", key: v.key || "" } : v; }
+  return JSON.parse(JSON.stringify(o));
+}
+function errId(it) {
+  const base = [it.t, it.q || it.s || (it.w && it.w.w) || "", (it.ans && it.ans[0]) || "", it.opts ? String(it.opts[it.a]) : ""].join("|"); let h = 2166136261;
+  for (let i = 0; i < base.length; i++) { h ^= base.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(36);
+}
+function errRecord(it) {
+  if (!it || !ERR_TYPES.includes(it.t)) return; const now = Date.now(), id = errId(it); S.err = S.err || {}; const e = S.err[id];
+  if (e) { e.box = 0; e.due = dayDue(now, 1); e.n++; e.last = now; }
+  else {
+    S.err[id] = { it: errSnap(it), box: 0, due: dayDue(now, 1), n: 1, at: now, last: now };
+    const ids = Object.keys(S.err); if (ids.length > ERR_MAX) { ids.sort((x, y) => S.err[y].box - S.err[x].box || S.err[x].last - S.err[y].last); delete S.err[ids[0]]; }
+  }
+  touch();
+}
+function errQ(q, skill, src) { if (q && q.q && Array.isArray(q.opts) && typeof q.a === "number") errRecord({ t: "x", q: q.q, opts: q.opts.slice(), a: q.a, why: q.why || "", skill, src }); }
+function errPass(id) { const e = S.err[id]; if (!e) return; const now = Date.now(); e.box++; e.last = now; if (e.box >= ERR_BOX.length) { delete S.err[id]; S.errGrad = (S.errGrad || 0) + 1; } else e.due = dayDue(now, ERR_BOX[e.box]); touch(); }
+function errFail(id) { const e = S.err[id]; if (!e) return; const now = Date.now(); e.box = 0; e.due = dayDue(now, 1); e.n++; e.last = now; touch(); }
+const errDueIds = () => Object.entries(S.err || {}).filter(([, e]) => e.due <= Date.now()).sort((a, b) => a[1].due - b[1].due).map(([id]) => id);
+function errItem(id) { const e = S.err[id]; if (!e) return null; const it = JSON.parse(JSON.stringify(e.it)); it.eid = id; it.src = "err"; it.skill = it.skill || "grammar"; return shuffleItemOpts(it); }
+function errText(it) {
+  const t = it.t; return t === "c" ? String(it.q).replace("___", "…") : t === "x" || t === "t" || t === "au" || t === "sy" ? it.q : t === "f" || t === "o" ? it.s : t === "m" ? it.w.w : t === "r" || t === "s" ? it.w.vi : t === "l" ? "(nghe) " + it.w.w : "";
+}
+function errAns(it) {
+  const t = it.t; return t === "c" || t === "x" || t === "au" ? it.opts[it.a] : t === "t" || t === "s" ? it.ans[0] : t === "o" ? it.s : t === "f" ? (it.ok ? "Câu này đúng" : `${it.wrong} → ${it.fix}`) : t === "m" ? it.w.vi : t === "sy" ? it.q : it.w.w;
+}
+/* Ghi nhận câu sai, chấm mốc ôn của sổ, và chấm thẻ ôn khi làm trong phiên 15 phút. */
+const _itemAnswer46 = itemAnswer; itemAnswer = function (it) { if (it.t === "sy") return it.q; if (it.t === "f") return it.ok ? "Câu này đúng" : `${it.wrong} → ${it.fix}`; if (it.t === "o") return it.s; if (!it.ans && it.opts && typeof it.a === "number") return it.opts[it.a]; if (!it.ans && it.w) return it.t === "m" ? it.w.vi : it.w.w; return _itemAnswer46(it); };
+const _itemLabel46 = itemLabel; itemLabel = function (it) { return it.t === "sy" ? it.q : _itemLabel46(it); };
+const _pxMark46 = pxMark;
+pxMark = function (ok, typo) {
+  const it = PX && PX.items[PX.i], st = PX && PX.st[PX.i], was = st && st.done;
+  _pxMark46(ok, typo);
+  if (!it || was) return;
+  if (it.eid) { if (ok) errPass(it.eid); else errFail(it.eid); }
+  else if (!ok && !st.skipped) errRecord(it);
+  if (it.cid && S.cards[it.cid]) { S.cards[it.cid] = schedule(S.cards[it.cid], ok ? (typo ? 2 : 3) : 1); touch(); }
+  save();
+};
+
+/* ---- Phiên 15 phút ---- */
+const SES_LV = ["A1", "A2", "B1", "B2", "C1"];
+let SES_POOL = null;
+const sesPool = () => SES_POOL || (SES_POOL = LIB.flatMap(t => t.words).filter(w => !/·/.test(w.w)));
+function sesLevel() { const l = (S.goals && S.goals.gen && S.goals.gen.level) || "A1"; const i = SES_LV.indexOf(l); return SES_LV[Math.max(0, i)] || "A1"; }
+function sesBuild() {
+  const out = [], add = (sec, arr) => arr.forEach(it => out.push({ ...it, sec }));
+  /* 1. Ôn thẻ đến hạn (tối đa 8 từ), chấm thẻ theo kết quả */
+  const seen = new Set(), pool = sesPool(), rev = [];
+  for (const id of dueList().slice(0, 40)) { const info = cardInfo(id); if (!info) continue; const k = info.w.key || info.w.w; if (seen.has(k)) continue; seen.add(k); rev.push([id, info]); if (rev.length >= 8) break; }
+  add("Ôn thẻ", rev.map(([id, info], i) => {
+    const w = { ...info.w, pos: info.w.pos || "" }, why = `${w.w}: ${w.vi}`;
+    const kind = info.dir === "r" ? (i % 2 && !UI.mute ? "l" : "m") : (i % 2 ? "s" : "r");
+    if (kind === "s") return { t: "s", w, q: w.vi, ans: [w.w], why, skill: "writing", src: "ses", cid: id };
+    const k = kind === "m" ? "vi" : "w", opts = shuffle([w[k], ...rankDistractors(w, pool, 3).map(x => x[k])]);
+    return { t: kind, w, opts, a: opts.indexOf(w[k]), why, skill: kind === "l" ? "listening" : "vocab", src: "ses", cid: id };
+  }));
+  /* 2. Câu sai đến hạn trong sổ (tối đa 4) */
+  add("Ôn câu sai", errDueIds().slice(0, 4).map(errItem).filter(it => it && !(UI.mute && (it.t === "l" || it.t === "au"))));
+  /* 3. Từ mới (tối đa 3, không vượt mục tiêu từ mới mỗi ngày) */
+  const room = Math.max(0, (S.goals.newPerDay || 10) - todayIntake()), nNew = Math.min(3, room);
+  if (nNew) {
+    const x = S.intake[dayKey()] || { gen: 0, med: 0 }, order = x.med < x.gen ? ["med", "gen"] : ["gen", "med"];
+    let t = null;
+    for (const trk of order) { const c = LIB.filter(tt => tt.track === trk && tt.words.some(w => wStatus(w) === "new")); if (c.length) { t = c.find(tt => tt.words.some(isLearned)) || c[0]; break; } }
+    if (t) { const idx = l => [...GEN_LEVELS, ...MED_LEVELS].indexOf(l); const ws = t.words.filter(w => wStatus(w) === "new" && !/·/.test(w.w)).sort((a, b) => idx(a.lvl) - idx(b.lvl)).slice(0, nNew); add("Từ mới", ws.map(w => ({ t: "n", w, skill: "intro", src: "ses" }))); }
+  }
+  /* 4. Một điểm ngữ pháp: điểm chưa làm, hoặc điểm có điểm thấp nhất */
+  const gs = GRAMMAR.filter(g => g.bank && g.bank.length >= 3), lvOK = g => SES_LV.indexOf(g.lvl) <= SES_LV.indexOf(sesLevel()) + 1;
+  const gc = (gs.filter(lvOK).length ? gs.filter(lvOK) : gs); const g = gc.find(x => !S.gram[x.id]) || gc.slice().sort((a, b) => (S.gram[a.id]?.best || 0) - (S.gram[b.id]?.best || 0))[0];
+  if (g) add("Ngữ pháp", shuffle(g.bank).slice(0, 3).map(b => shuffleItemOpts({ ...b, skill: "grammar", src: "gram:" + g.id })));
+  /* 5. Một bài nghe (2 câu hỏi) */
+  if (!UI.mute) { const lc = EX_SETS.filter(x => x.group === "lc"), lv = sesLevel(); const c = lc.filter(x => x.lvl === lv); const set = shuffle(c.length ? c : lc)[0]; if (set) add("Nghe", set.build().slice(0, 2)); }
+  /* 6. Hai câu nói to */
+  const sp = SPK.filter(x => x.lvl === sesLevel()), tpl = shuffle(sp.length ? sp : SPK)[0];
+  if (tpl && tpl.phrases) add("Nói", shuffle(tpl.phrases).slice(0, 2).map(ph => ({ t: "sy", q: ph.en, vi: ph.vi, w: { w: ph.en, vi: ph.vi, pos: "" }, why: tpl.title, skill: "speaking", src: "ses" })));
+  return out;
+}
+const _startPractice46 = startPractice;
+startPractice = function (arg) {
+  if (arg === "ses") {
+    const items = sesBuild(); if (!items.length) return false;
+    PX = { arg, kind: "e", id: arg, title: "Phiên 15 phút", back: "#/today", track: "gen", items, i: 0, st: items.map(() => ({})), saved: true, t0: Date.now() };
+    return true;
+  }
+  if (arg === "err" || arg === "err-all") {
+    let ids = arg === "err" ? errDueIds() : Object.keys(S.err || {}).sort((a, b) => S.err[a].box - S.err[b].box || S.err[a].due - S.err[b].due);
+    let items = ids.map(errItem).filter(Boolean); if (UI.mute) items = items.filter(it => it.t !== "l" && it.t !== "au");
+    items = shuffle(items.slice(0, 15)); if (!items.length) return false;
+    PX = { arg, kind: "e", id: arg, title: "Sổ lỗi sai", back: "#/review", track: "gen", items, i: 0, st: items.map(() => ({})), saved: true, t0: Date.now() };
+    return true;
+  }
+  return _startPractice46(arg);
+};
+const _pxBody46 = pxBody;
+pxBody = function (it, st) {
+  const tag = it.sec ? `<span class="chip ses-sec">${esc(it.sec)}</span>` : "";
+  const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. ${PX_LABEL[it.t][0].toUpperCase() + PX_LABEL[it.t].slice(1)}</span>`;
+  if (it.t === "n") {
+    const w = it.w;
+    return tag + lbl + `<div class="row between" style="align-items:flex-start"><div class="specimen"><div class="spec-word sm" lang="en">${esc(w.w)}</div><span class="pos">${esc(w.pos)}</span></div>${hear(w.w)}</div>
+      <p style="font-size:24px;font-weight:600">${esc(w.vi)}</p>${w.ex ? `<div class="ex-item"><span class="example" lang="en">${esc(w.ex)}</span>${hear(w.ex)}</div>` : ""}
+      ${st.done ? `<p class="muted small">${st.add ? "Đã thêm vào hàng ôn tập." : "Đã đánh dấu là đã biết."}</p>` : `<div class="row"><button class="btn primary" data-act="sesAdd">Thêm vào ôn tập</button><button class="btn" data-act="sesKnown">Tôi đã biết từ này</button></div>`}`;
+  }
+  if (it.t === "sy") {
+    return tag + lbl + `<p class="muted">Nghe mẫu, rồi nói to câu này, chú ý nhịp và trọng âm.</p><p class="spec-word sm" lang="en">${esc(it.q)}</p><p class="muted">${esc(it.vi)}</p><div class="row">${hear(it.q)}</div>
+      ${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status">${st.ok ? "Tốt. Câu này sẽ không vào sổ lỗi sai." : "Câu này đã được đưa vào sổ lỗi sai để nói lại sau."}</div>` : `<div class="row"><button class="btn primary" data-act="sesSay" data-ok="1">Tôi đã nói ổn</button><button class="btn" data-act="sesSay" data-ok="0">Còn vấp, cần luyện thêm</button></div>`}`;
+  }
+  return tag + _pxBody46(it, st) + (it.eid && st.done ? `<p class="muted small tp-note">${st.ok ? (S.err[it.eid] ? "Đúng. Lần ôn tới của câu này sau " + fmtIvl(S.err[it.eid].due - Date.now()) + "." : "Đúng. Câu này đã thuộc và ra khỏi sổ lỗi sai.") : "Sai. Câu này quay lại mốc ngày mai."}</p>` : "");
+};
+Object.assign(ACT, {
+  sesAdd() { const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; st.add = true; addWordCards(it.w); pxMark(true); },
+  sesKnown() { const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; markKnown(it.w); pxMark(true); },
+  sesSay(el) { const st = PX.st[PX.i]; if (st.done) return; pxMark(el.dataset.ok === "1"); },
+  errDel(el) { delete S.err[el.dataset.id]; touch(); save(); render(); }
+});
+const _pxFinish46 = pxFinish;
+pxFinish = function () {
+  if (!PX || PX.arg !== "ses") return _pxFinish46();
+  const A = PX.items, B = PX.st, keep = A.map(it => it.t !== "n");
+  PX.items = A.filter((_, k) => keep[k]); PX.st = B.filter((_, k) => keep[k]);
+  let h; try { h = _pxFinish46(); } finally { PX.items = A; PX.st = B; }
+  const mins = Math.max(1, Math.round((Date.now() - (PX.t0 || Date.now())) / 60000));
+  const secs = {}; A.forEach((it, k) => { if (it.t === "n" || !it.sec) return; const b = secs[it.sec] || (secs[it.sec] = [0, 0]); b[1]++; if (B[k].ok) b[0]++; });
+  const added = A.filter((it, k) => it.t === "n" && B[k].add).length, cards = A.filter((it, k) => it.cid && B[k].done).length;
+  const newErr = Object.values(S.err || {}).filter(e => e.at >= (PX.t0 || 0)).length, dueLeft = errDueIds().length;
+  const sum = `<div class="panel stack ses-sum"><div class="grid3"><div class="stat"><b>${mins}</b><span>phút</span></div><div class="stat"><b>${cards}</b><span>thẻ đã ôn</span></div><div class="stat"><b>${added}</b><span>từ mới vào ôn tập</span></div></div>
+    <div>${Object.entries(secs).map(([n, [o, t]]) => `<div class="skill"><span>${esc(n)}</span><div class="bar"><i style="width:${o / t * 100}%"></i></div><span class="n">${o}/${t}</span></div>`).join("")}</div>
+    <p class="muted small">${newErr ? `${newErr} câu sai mới đã vào sổ lỗi sai` : "Không có câu sai mới"}${dueLeft ? `, còn ${dueLeft} câu đến hạn trong sổ.` : "."}</p><div class="row"><a class="btn" href="#/review">Mở sổ lỗi sai</a></div></div>`;
+  return h.replace(/Đạt yêu cầu\.|Cần \d+% để đạt\./, "").replace(/(<h1>[^<]*<\/h1>)/, "$1" + sum);
+};
+function errSection() {
+  const all = Object.entries(S.err || {}).sort((a, b) => a[1].due - b[1].due), due = errDueIds().length, now = Date.now();
+  const list = all.map(([id, e]) => {
+    const it = e.it, dots = ERR_BOX.map((_, k) => `<i class="err-dot ${k < e.box ? "on" : ""}"></i>`).join("");
+    return `<div class="item err-item"><span class="grow"><span class="s">${esc(PX_LABEL[it.t] || it.t)}${e.n > 1 ? ` · sai ${e.n} lần` : ""}</span><br><span class="en" lang="en">${esc(errText(it))}</span><br><span class="small"><b>Đáp án:</b> <span lang="en">${esc(errAns(it))}</span></span><br><span class="err-meta">${dots} <span class="muted small">${e.due <= now ? "đến hạn" : "ôn sau " + fmtIvl(e.due - now)}</span></span></span><button class="btn quiet small" data-act="errDel" data-id="${id}" aria-label="Xóa câu này khỏi sổ">Xóa</button></div>`;
+  }).join("");
+  return `<h2 class="sec-h" style="margin-top:22px">2. Ôn lỗi sai</h2>
+    <div class="panel stack"><p class="muted small" style="margin:0">Mọi câu làm sai tự vào sổ và được hẹn ôn sau 1, 3, 7, 14 rồi 30 ngày. Đúng ở mốc cuối thì câu ra khỏi sổ; sai thì về mốc đầu.</p>
+    <div class="grid3"><div class="stat"><b>${all.length}</b><span>câu trong sổ</span></div><div class="stat"><b>${due}</b><span>đến hạn</span></div><div class="stat"><b>${S.errGrad || 0}</b><span>đã thuộc, ra khỏi sổ</span></div></div>
+    <div class="row">${due ? `<a class="btn primary" href="#/practice/err">Ôn ${Math.min(due, 15)} câu đến hạn</a>` : `<p class="muted">${all.length ? "Chưa có câu nào đến hạn." : "Sổ đang trống. Làm bài luyện tập, câu nào sai sẽ vào đây."}</p>`}${all.length ? `<a class="btn" href="#/practice/err-all">Luyện thêm các câu sai</a>` : ""}<a class="btn quiet" href="#/practice/ses">Phiên 15 phút</a></div>
+    ${all.length ? `<details class="err-details"><summary>Xem danh sách ${all.length} câu</summary><div class="list" style="margin-top:10px">${list}</div></details>` : ""}</div>`;
+}
+EXTRA_VIEWS.errors = function () { location.replace("#/review"); return ""; };
+const _viewReview46 = viewReview;
+viewReview = function () {
+  const h = _viewReview46(); if (ROUTE.arg === "go") return h;
+  const m = '<h2 class="sec-h" style="margin-top:22px">2. Luyện tập kỹ năng</h2>';
+  return h.includes(m) ? h.replace(m, errSection() + '<h2 class="sec-h" style="margin-top:22px">3. Luyện tập kỹ năng</h2>') : h + errSection();
+};
+const _viewToday46 = viewToday;
+viewToday = function () {
+  const h = _viewToday46(), due = errDueIds().length;
+  const card = `<div class="panel ses-card"><div><b>Phiên 15 phút</b><p class="muted small">Một phiên trộn sẵn: ôn thẻ, từ mới, ngữ pháp, một bài nghe, vài câu nói và câu sai trong sổ. Có tổng kết cuối phiên.</p></div><div class="row"><a class="btn primary" href="#/practice/ses">Bắt đầu phiên 15 phút</a>${Object.keys(S.err || {}).length ? `<a class="btn" href="#/review">Sổ lỗi sai${due ? ` (${due} đến hạn)` : ""}</a>` : ""}</div></div>`;
+  return /<div class="today-note-wrap/.test(h) ? h.replace(/<div class="today-note-wrap/, card + '<div class="today-note-wrap') : h.replace("</section>", "</section>" + card);
+};
+/* ---------------- 4.47.0: điểm chính sau bài đọc và bài nghe, bài tiếp theo, kiểm tra đầu vào đủ ba phần ---------------- */
+Object.assign(rdGenre, { review: "Bài đánh giá", forum: "Diễn đàn", interview: "Phỏng vấn", instructions: "Hướng dẫn", speech: "Bài phát biểu", case: "Ca lâm sàng" });
+const RD_LVL = ["A1", "A2", "B1", "B2", "C1"];
+const LC_BY = Object.fromEntries((typeof LC_SETS !== "undefined" ? LC_SETS : []).map(s => [s.id, s]));
+/* Điểm ngữ pháp đặc biệt tự nhận ra trong bài (dùng khi bài chưa có ghi chú do tác giả viết). */
+const RD_GRAM = [
+  ["Passive voice (bị động)", /\b(?:is|are|was|were|been|being|be)\s+(?:\w+ly\s+)?(?:[a-z]+ed|made|given|taken|seen|known|shown|done|found|built|written|held|kept|told|set|put)\b/i, "Chủ ngữ chịu tác động của hành động: be + V3/V-ed. Dùng khi người làm không quan trọng hoặc chưa rõ."],
+  ["Present perfect (hiện tại hoàn thành)", /\b(?:has|have|hasn't|haven't)\s+(?:\w+ly\s+)?(?:been|[a-z]+ed|made|given|taken|seen|known|done|found|written|become|gone)\b/i, "have/has + V3 nói về việc xảy ra trước hiện tại nhưng còn liên quan đến hiện tại hoặc kết quả còn thấy."],
+  ["Past perfect (quá khứ hoàn thành)", /\bhad\s+(?:\w+ly\s+)?(?:been|[a-z]+ed|made|given|taken|seen|known|done|found|written|become|gone)\b/i, "had + V3 diễn tả việc xảy ra trước một mốc hoặc một việc khác trong quá khứ."],
+  ["Conditional (câu điều kiện)", /\b(?:if|unless|provided that|as long as)\b[^.]*\b(?:will|would|could|might|can|should)\b|\b(?:would|could)\b[^.]*\bif\b/i, "Mệnh đề if nêu điều kiện, mệnh đề chính nêu kết quả; will cho khả năng thật, would cho giả định."],
+  ["Relative clause (mệnh đề quan hệ)", /\b(?:who|whom|which|whose|where)\b\s+\w+/i, "who, which, whose, where nối thêm thông tin về danh từ đứng trước, giúp câu dài mà vẫn gọn."],
+  ["Modal of deduction / obligation (động từ khuyết thiếu)", /\b(?:must|might|may|could|should|ought to|have to|needn't)\s+(?:have\s+)?\w+/i, "Động từ khuyết thiếu thêm sắc thái: chắc chắn, có thể, bắt buộc, lời khuyên. Theo sau là động từ nguyên mẫu."],
+  ["Reported speech (câu tường thuật)", /\b(?:said|told|asked|explained|suggested|mentioned|claimed)\s+(?:\w+\s+)?(?:that\s+)?(?:he|she|it|they|we|I|the|there)\b/i, "Thuật lại lời người khác: lùi một thì và đổi đại từ, thời gian cho phù hợp."],
+  ["Comparison (so sánh)", /\b(?:\w+er|more \w+|less \w+)\s+than\b|\b(?:the most|the \w+est)\b|\bas \w+ as\b/i, "so sánh hơn với -er/more … than, so sánh nhất với the most/-est, so sánh bằng với as … as."],
+  ["Participle clause (mệnh đề phân từ)", /(?:^|[.!?]\s+|,\s+)(?:\w+ing|having \w+|\w+ed)\s+[^,]{3,60},\s+\w+/i, "Cụm V-ing/V-ed đứng đầu câu thay cho mệnh đề phụ, chủ ngữ của hai vế phải trùng nhau."],
+  ["Inversion (đảo ngữ)", /(?:^|[.!?]\s+)(?:Never|Rarely|Seldom|Hardly|Not only|Only when|Little)\s+(?:do|does|did|had|has|have|is|are|was|were|can|could|will|would)\b/i, "Từ phủ định đứng đầu câu kéo trợ động từ lên trước chủ ngữ để nhấn mạnh, thường gặp trong văn viết trang trọng."],
+  ["Future forms (cách nói tương lai)", /\b(?:will|won't|going to|is about to|will be \w+ing)\b/i, "will cho dự đoán hoặc quyết định tức thì, going to cho kế hoạch đã có, hiện tại tiếp diễn cho lịch hẹn."],
+  ["Linking words (từ nối)", /\b(?:however|although|despite|whereas|therefore|moreover|nevertheless|because of|as a result|in addition|on the other hand)\b/i, "Từ nối cho biết quan hệ giữa các ý: tương phản, nguyên nhân, kết quả, bổ sung."]
+];
+const RD_TIP = { email: "Đọc dòng chào và câu mở đầu để biết lý do viết thư, sau đó tìm yêu cầu hoặc việc cần làm ở cuối thư.", notice: "Với thông báo, nhìn tiêu đề trước, rồi tìm ngày, giờ, nơi chốn và điều được yêu cầu.", blog: "Blog thường kể theo trình tự và có ý kiến cá nhân; chú ý từ chỉ cảm xúc và từ chỉ thời gian.", dialogue: "Theo dõi ai nói câu nào; lời đáp thường lặp lại hoặc diễn đạt lại ý của câu hỏi.", article: "Câu đầu mỗi đoạn thường là ý chính của đoạn; đọc lướt các câu đó trước khi đọc kỹ.", story: "Truyện có diễn biến: tình huống, vấn đề, cách giải quyết. Tìm điểm xoay chuyển của câu chuyện.", leaflet: "Tờ hướng dẫn chia thành các mục ngắn; dùng tiêu đề mục để tìm đúng thông tin cần.", advert: "Quảng cáo nhấn vào lợi ích và con số; đọc kỹ điều kiện nhỏ ở cuối.", news: "Tin tức trả lời ai, cái gì, khi nào, ở đâu ở đoạn đầu; các đoạn sau bổ sung chi tiết.", letter: "Xác định người viết, người nhận và mục đích trước khi đọc chi tiết.", report: "Báo cáo có số liệu và kết luận; đối chiếu số trong bảng hoặc câu với từ chỉ xu hướng (rise, fall, remain).", abstract: "Tóm tắt nghiên cứu theo thứ tự bối cảnh, phương pháp, kết quả, kết luận; câu hỏi thường nhắm vào kết quả và kết luận.", review: "Bài đánh giá có ưu điểm, nhược điểm và lời khuyên; chú ý các từ chỉ mức độ như quite, rather, highly.", forum: "Diễn đàn gồm câu hỏi và nhiều câu trả lời; xác định mỗi người trả lời cho điều gì.", interview: "Phỏng vấn theo dạng hỏi đáp; câu trả lời thường diễn đạt lại câu hỏi bằng từ khác.", instructions: "Hướng dẫn đi theo thứ tự các bước; chú ý từ chỉ thứ tự (first, then, after that) và cảnh báo.", speech: "Bài phát biểu có mở, ý chính lặp lại và kết có tính khích lệ; chú ý câu nhắc lại ý quan trọng.", case: "Ca lâm sàng theo thứ tự: lý do đến khám, bệnh sử, khám, kết quả, hướng xử trí." };
+function rdAutoNotes(p) {
+  const rank = l => [...GEN_LEVELS, ...MED_LEVELS].indexOf(l);
+  const seen = new Map(); (p.text.match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) || []).forEach(t => { const w = glossFind(t); if (w && w.w.length >= 5 && !/·/.test(w.w) && !seen.has(w.key)) seen.set(w.key, [w, t]); });
+  const vocab = [...seen.values()].sort((a, b) => rank(b[0].lvl) - rank(a[0].lvl) || (isLearned(a[0]) ? 1 : 0) - (isLearned(b[0]) ? 1 : 0) || b[0].w.length - a[0].w.length).slice(0, 6).map(([w, t]) => [w.w, w.vi, w.pos || ""]);
+  const sents = p.text.replace(/\n+/g, " ").split(/(?<=[.!?])\s+/), grammar = [];
+  for (const [name, re, why] of RD_GRAM) { const s = sents.find(x => x.length >= 25 && x.length <= 170 && re.test(x)); if (s) grammar.push([name, s.trim(), why]); if (grammar.length >= 3) break; }
+  return { vocab, grammar, tips: [RD_TIP[p.genre] || "Đọc câu hỏi trước, rồi tìm bằng chứng trong bài cho từng câu."] };
+}
+/* Tách rõ tiếng Anh trong lời giải thích tiếng Việt: cụm tiếng Anh in nghiêng và đổi màu, phần trong ngoặc kép cũng vậy. */
+let _ENG = null;
+const ENG_WEAK = new Set(["v", "ed", "ing", "s", "es", "wh", "to", "no", "me", "as", "so", "do", "an", "am", "a", "i", "be", "on", "in", "at", "by", "it", "is", "if", "or", "and", "he", "we", "my"]);
+function engSet() {
+  if (_ENG) return _ENG; _ENG = new Set();
+  try { Object.values(LIB_WORD).forEach(w => String(w.w).toLowerCase().split(/[^a-z']+/).forEach(t => t && t.length > 1 && _ENG.add(t))); } catch (e) { }
+  "the a an to of in on at by for from with without into over under about after before between during is are was were be been being am do does did done have has had having will would shall can could may might must should ought not no and or but if unless although because since while when where which who whom whose that this these those it its he she they we you i me him her them us my your his their our there here then than as so such very too more most less much many some any each every all both either neither only also just still yet already ever never always often sometimes usually first next finally last past present future perfect simple continuous passive active modal clause verb noun adjective adverb comparative superlative".split(" ").forEach(t => _ENG.add(t));
+  return _ENG;
+}
+let _ENG_CTX = null;
+const isEngTok = t => { const l = t.toLowerCase().replace(/^-+|-+$/g, ""); return (_ENG_CTX && l.length > 2 && _ENG_CTX.has(l)) || /^v\d?$|^v-?(ing|ed)$|^(ed|ing|s|es)$|^wh$/i.test(l) || engSet().has(l) || engSet().has(l.replace(/'s$/, "")); };
+const EN_TOK = "-?[A-Za-z][A-Za-z0-9'’]*(?:-[A-Za-z0-9]+)*";
+const EN_RE = new RegExp("([“\"])([^“”\"\\n]{1,160})([”\"])|(?<![\\p{L}\\p{N}_])" + EN_TOK + "(?:[ ]+" + EN_TOK + ")*(?![\\p{L}\\p{N}_])", "gu");
+function hiEn(text) {
+  const raw = String(text == null ? "" : text); let out = "", last = 0, m; EN_RE.lastIndex = 0;
+  while ((m = EN_RE.exec(raw))) {
+    out += esc(raw.slice(last, m.index)); last = m.index + m[0].length;
+    if (m[1]) { out += VI_RE.test(m[2]) ? esc(m[0]) : `${esc(m[1])}<em class="en-t" lang="en">${esc(m[2])}</em>${esc(m[3])}`; continue; }
+    const toks = m[0].split(/ +/), good = toks.some(isEngTok) && (toks.length > 1 || !ENG_WEAK.has(toks[0].toLowerCase()));
+    out += good ? `<em class="en-t" lang="en">${esc(m[0])}</em>` : esc(m[0]);
+  }
+  return out + esc(raw.slice(last));
+}
+function notesHtml(n, title, ctx) {
+  _ENG_CTX = new Set(String(ctx || "").toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || []);
+  if (!n || !((n.vocab || []).length || (n.grammar || []).length || (n.tips || []).length)) return "";
+  const V = n.vocab || [], G = n.grammar || [], T = n.tips || [];
+  const vItem = ([w, vi, note]) => { const pos = note && /^[a-z][a-z, .]{0,14}$/.test(note); return `<li class="rdn-item"><div class="rdn-w"><b lang="en">${esc(w)}</b>${hear(w)}${pos ? `<span class="rdn-pos">${esc(note)}</span>` : ""}</div><div class="rdn-m">${hiEn(vi)}</div>${note && !pos ? `<div class="rdn-n">${hiEn(note)}</div>` : ""}</li>`; };
+  const gItem = ([pt, ex, vi]) => { const k = pt.indexOf("("), head = k > 0 ? pt.slice(0, k).trim() : pt, tag = k > 0 ? pt.slice(k) : ""; return `<li class="rdn-item"><div class="rdn-gt"><span lang="en">${esc(head)}</span>${tag ? ` <span class="rdn-gv">${hiEn(tag)}</span>` : ""}</div><p class="example eg rdn-eg" lang="en">${esc(ex)}</p><div class="rdn-m">${hiEn(vi)}</div></li>`; };
+  const card = (cls, ic, name, count, body) => `<div class="rdn-card ${cls}"><h4><span class="rdn-ic" aria-hidden="true">${ic}</span>${name}<span class="rdn-ct">${count}</span></h4>${body}</div>`;
+  return `<section class="rd-notes"><div class="rdn-head"><h3>${title}</h3><span class="muted small">${V.length} từ · ${G.length} điểm ngữ pháp · ${T.length} mẹo</span></div><div class="rdn-grid">
+    ${V.length ? card("rdn-v", "📘", "Từ vựng đáng nhớ", V.length, `<ul class="rdn-list rdn-two">${V.map(vItem).join("")}</ul>`) : ""}
+    ${G.length ? card("rdn-g", "🧩", "Ngữ pháp đặc biệt", G.length, `<ul class="rdn-list">${G.map(gItem).join("")}</ul>`) : ""}
+    ${T.length ? card("rdn-t", "💡", "Mẹo đọc hiểu", T.length, `<ul class="rdn-list">${T.map(t => `<li class="rdn-item rdn-tip">${hiEn(t)}</li>`).join("")}</ul>`) : ""}</div></section>`;
+}
+const rdNotes = p => notesHtml(p.notes && ((p.notes.vocab || []).length || (p.notes.grammar || []).length) ? p.notes : rdAutoNotes(p), "Điểm chính của bài", p.text);
+/* Bài tiếp theo: chưa làm, cùng mạch, từ ngắn đến dài và từ dễ đến khó. */
+function rdOrder() { return RD_ALL.slice().sort((a, b) => RD_LVL.indexOf(a.lvl) - RD_LVL.indexOf(b.lvl) || wordCount(a.text) - wordCount(b.text)); }
+function rdNext(p) {
+  const med = p.topic === "medical", ord = rdOrder().filter(x => (x.topic === "medical") === med), i = ord.findIndex(x => x.id === p.id);
+  const after = ord.slice(i + 1).find(x => !exRes("d-" + x.id)) || ord.find(x => !exRes("d-" + x.id) && x.id !== p.id);
+  return after ? `<a class="btn" href="#/reading/${after.id}">Bài tiếp theo: ${esc(after.title)} (${after.lvl}, ${wordCount(after.text)} từ)</a>` : "";
+}
+const _viewRead47 = viewRead;
+viewRead = function (p) {
+  const h = _viewRead47(p), k = '<div class="row" style="margin-top:16px"><a class="btn primary" href="#/practice/d-';
+  const det = `<details class="rd-key"><summary>Xem điểm chính của bài (từ vựng khó, ngữ pháp đặc biệt)</summary>${rdNotes(p)}</details>`;
+  return h.includes(k) ? h.replace(k, det + k) : h + det;
+};
+const _pxFinish47 = pxFinish;
+pxFinish = function () {
+  const h = _pxFinish47(); if (!PX || !PX.arg) return h;
+  let extra = "", nx = "";
+  const m = /^d-(.+)$/.exec(PX.arg), lc = /^e-(lc-\d+)$/.exec(PX.arg);
+  if (m && RD_BY[m[1]]) { extra = rdNotes(RD_BY[m[1]]); nx = rdNext(RD_BY[m[1]]); }
+  else if (lc && LC_BY[lc[1]] && LC_BY[lc[1]].notes) extra = notesHtml(LC_BY[lc[1]].notes, "Điểm chính của bài nghe", LC_BY[lc[1]].script.map(l => l[1]).join(" "));
+  if (!extra && !nx) return h;
+  const i = h.lastIndexOf('<div class="row">');
+  const withBtn = nx ? (i >= 0 ? h.slice(0, i) + h.slice(i).replace(/<a class="btn quiet"/, nx + '<a class="btn quiet"') : h) : h;
+  const j = withBtn.lastIndexOf('<div class="row">');
+  return j >= 0 ? withBtn.slice(0, j) + extra + withBtn.slice(j) : withBtn + extra;
+};
+/* Danh sách bài đọc: xếp từ dễ đến khó, từ ngắn đến dài. */
+const _viewReading47 = EXTRA_VIEWS.reading;
+EXTRA_VIEWS.reading = function () {
+  if (ROUTE.arg && RD_BY[ROUTE.arg]) return _viewReading47();
+  const orig = RD_ALL.slice(); const ord = rdOrder(); RD_ALL.splice(0, RD_ALL.length, ...ord);
+  try { return _viewReading47(); } finally { RD_ALL.splice(0, RD_ALL.length, ...orig); }
+};
+/* ---- Kiểm tra đầu vào đủ ba phần: từ vựng, ngữ pháp, nghe; gợi ý chặng bắt đầu ---- */
+startPlacement = function () {
+  const items = [];
+  GEN_LEVELS.forEach(l => { const ws = genLevelWords(l); shuffle(ws).slice(0, 5).forEach(w => { const opts = shuffle([w.vi, ...shuffle(ws.filter(x => x !== w && x.vi !== w.vi)).slice(0, 3).map(x => x.vi)]); opts.push("Tôi không biết"); items.push({ kind: "v", w, l, opts, a: opts.indexOf(w.vi), pick: null }); }); });
+  GEN_LEVELS.forEach(l => {
+    const pool = shuffle(GRAMMAR.filter(g => g.lvl === l && g.bank)).flatMap(g => shuffle(g.bank.filter(b => (b.t === "c" || b.t === "x") && Array.isArray(b.opts) && b.opts.length >= 3 && typeof b.a === "number")).slice(0, 1)).slice(0, 3);
+    pool.forEach(b => { const [o, a] = shuffleChoice(b.opts, b.a); items.push({ kind: "g", l, q: b.q, cloze: b.t === "c", opts: [...o, "Tôi không biết"], a, pick: null }); });
+  });
+  if (!UI.mute) GEN_LEVELS.forEach(l => {
+    const s = LC_SETS.filter(x => x.lvl === l).sort((a, b) => a.script.map(z => z[1]).join(" ").length - b.script.map(z => z[1]).join(" ").length)[0]; if (!s) return;
+    const q = s.qs.find(z => z.kind === "gist") || s.qs[0], [o, a] = shuffleChoice(q.opts, q.a);
+    items.push({ kind: "l", l, set: s.id, q: q.q, opts: [...o, "Tôi không biết"], a, pick: null });
+  });
+  PL = { items, i: 0, done: false };
+};
+placementResult = function () {
+  const by = {}, pass = {};
+  ["v", "g", "l"].forEach(k => { by[k] = {}; GEN_LEVELS.forEach(l => { const xs = PL.items.filter(x => (x.kind || "v") === k && x.l === l); by[k][l] = { ok: xs.filter(x => x.pick === x.a).length, n: xs.length }; }); });
+  const reach = (k, need) => { let lvl = "A0"; for (const l of GEN_LEVELS) { const b = by[k][l]; if (b.n && b.ok >= need(b.n)) lvl = l; else if (b.n) break; } return lvl; };
+  const lv = { v: reach("v", n => 4), g: reach("g", n => Math.max(1, n - 1)), l: reach("l", n => n) };
+  const have = ["v", "g", "l"].filter(k => PL.items.some(x => (x.kind || "v") === k));
+  const idx = l => GEN_LEVELS.indexOf(l) + 1, low = have.map(k => lv[k]).sort((a, b) => idx(a) - idx(b))[0] || "A0";
+  const startLvl = low === "A0" ? "A1" : GEN_LEVELS[Math.min(GEN_LEVELS.length - 1, idx(low))], unit = UNITS.filter(u => u.track === "gen" && u.level === startLvl).sort((a, b) => parseFloat(a.code.slice(1)) - parseFloat(b.code.slice(1)))[0];
+  return { by, lv, lvl: low, startLvl, unit };
+};
+const PL_NAME = { v: "Từ vựng", g: "Ngữ pháp", l: "Nghe hiểu" };
+viewPlacement = function () {
+  if (!PL) startPlacement();
+  if (PL.i >= PL.items.length) {
+    const r = placementResult(), kinds = ["v", "g", "l"].filter(k => PL.items.some(x => (x.kind || "v") === k));
+    const bars = kinds.map(k => `<div class="pl-sk"><b>${PL_NAME[k]}</b>: ${r.lv[k] === "A0" ? "dưới A1" : r.lv[k]}</div>` + GEN_LEVELS.map(l => { const b = r.by[k][l]; return b.n ? `<div class="skill"><span class="lv lv-${l}">${l}</span><div class="bar"><i style="width:${b.ok / b.n * 100}%"></i></div><span class="n">${b.ok}/${b.n}</span></div>` : ""; }).join("")).join("");
+    return `${focusBar(null, "Kiểm tra đầu vào")}<div class="focus-page"><article class="step-card"><span class="step-kind">Kết quả</span><h1>Trình độ ước tính: ${r.lvl === "A0" ? "khởi đầu (dưới A1)" : r.lvl}</h1>
+      <p>Gợi ý bắt đầu từ <b>chặng ${esc(r.unit ? r.unit.code + " " + r.unit.title : r.startLvl)}</b>${r.lvl === "A0" ? "" : `, vì bạn đã vững ${r.lvl} ở mọi phần đã làm`}.</p>
+      <div>${bars}</div>
+      <p class="muted">Một cấp được tính là đạt khi gần như đúng hết câu của cấp đó và mọi cấp thấp hơn cũng đạt. Trình độ chung lấy theo phần yếu nhất để bạn không bỏ sót nền tảng. Đây chỉ là ước lượng nhanh, không phải bài thi CEFR chính thức.</p>
+      <div class="row"><button class="btn primary" data-act="plApply">Đặt ${r.lvl === "A0" ? "khởi đầu" : r.lvl} làm trình độ hiện tại</button>${r.unit ? `<button class="btn" data-act="plApplyGo">Đặt và mở chặng ${esc(r.unit.code)}</button>` : ""}<button class="btn quiet" data-act="plRetry">Làm lại</button><a class="btn quiet" href="#/goals">Về Mục tiêu</a></div></article></div>`;
+  }
+  const it = PL.items[PL.i], k = it.kind || "v", part = { v: "Phần 1/3. Từ vựng: chọn nghĩa đúng", g: "Phần 2/3. Ngữ pháp: chọn đáp án đúng", l: "Phần 3/3. Nghe: chọn đáp án đúng" }[k];
+  const opts = `<div class="choices">${it.opts.map((o, i) => `<button class="choice" data-act="plPick" data-i="${i}" ${k !== "v" ? 'lang="en"' : ""}>${esc(o)}</button>`).join("")}</div>`;
+  let body;
+  if (k === "v") body = `<p class="q" lang="en" style="font-size:30px">${esc(it.w.w)}</p>${opts}`;
+  else if (k === "g") body = `<p class="cloze" lang="en">${it.cloze ? gapify(it.q, "") : esc(it.q)}</p>${opts}`;
+  else body = `<div class="row"><button class="btn primary" data-act="plListen">${ic("speaker", 18)} Nghe bài</button><span class="muted small">Bạn có thể nghe lại.</span></div><p class="q" lang="en">${esc(it.q)}</p>${opts}`;
+  return `${focusBar({ n: PL.items.length, i: PL.i }, "Kiểm tra đầu vào")}<div class="focus-page"><article class="step-card"><span class="step-kind">Câu ${PL.i + 1}/${PL.items.length}. ${part}. Chọn “Tôi không biết” nếu không chắc.</span>${body}</article></div>`;
+};
+Object.assign(ACT, {
+  plListen() { const it = PL.items[PL.i], s = LC_BY[it.set]; if (!s) return; const who = {}; sayLines(s.script.map(l => ({ text: l[1], who: (who[l[0]] ?? (who[l[0]] = Object.keys(who).length % 2)) })), () => { }); },
+  plPick(el) { stopSpeech(); PL.items[PL.i].pick = +el.dataset.i; PL.i++; render(); const n = PL.items[PL.i]; if (n && n.kind === "l") setTimeout(() => ACT.plListen(), 300); },
+  plApply() {
+    const r = placementResult(); S.goals.gen.level = r.lvl; S.goals.placed = { at: Date.now(), level: r.lvl, stage: r.unit ? r.unit.id : "" }; S.goals.setAt = Date.now();
+    PL.items.filter(x => (x.kind || "v") === "v" && x.pick === x.a && GEN_LEVELS.indexOf(x.l) <= GEN_LEVELS.indexOf(r.lvl)).forEach(x => { S.known[x.w.key] = S.known[x.w.key] || Date.now(); });
+    touch(); save(); const go = r.unit && ACT._plGo; PL = null; ACT._plGo = false; location.hash = go ? "#/unit/" + r.unit.id : "#/goals"; toast("Đã cập nhật trình độ hiện tại.");
+  },
+  plApplyGo() { ACT._plGo = true; ACT.plApply(); }
+});
+/* ---- Thoát hoặc Quay lại từ bài luyện về đúng trang bạn vừa đi vào (không luôn về trang Luyện tập) ---- */
+let LAST_PAGE = "";
+addEventListener("hashchange", () => { const h = location.hash; if (h && !/^#\/(practice|review\/go|lesson|learn|quiz|placement)(\/|$)/.test(h) && !/^#\/clinic\/./.test(h)) LAST_PAGE = h; });
+{ const h = location.hash; if (h && !/^#\/(practice|review\/go|lesson|learn|quiz|placement)(\/|$)/.test(h)) LAST_PAGE = h; }
+const _startPractice47 = startPractice;
+startPractice = function (arg) {
+  const ok = _startPractice47(arg);
+  if (ok && PX && /^e-/.test(arg || "") && !/^e-tp-/.test(arg) && LAST_PAGE && LAST_PAGE !== "#/review" && !/^#\/practice/.test(LAST_PAGE)) PX.back = LAST_PAGE;
+  return ok;
+};
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);

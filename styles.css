@@ -1158,3 +1158,53 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .is-light .panel, .is-light .gcard, .is-light .topic, .is-light .ex-group, .is-light .more-card, .is-light .more-item, .is-light .ts-card, .is-light .ex-tile, .is-light .ubody, .is-light .wgroup, .is-light .lgroup, .is-light .phtile, .is-light .plan-step, .is-light .lw, .is-light .passage { background: rgba(255, 255, 255, .94); box-shadow: 0 1px 2px rgba(40, 70, 110, .08); }
 .is-dark .panel, .is-dark .gcard, .is-dark .topic, .is-dark .ex-group, .is-dark .more-card, .is-dark .more-item, .is-dark .ts-card, .is-dark .ex-tile, .is-dark .ubody, .is-dark .wgroup, .is-dark .lgroup, .is-dark .phtile, .is-dark .plan-step, .is-dark .lw, .is-dark .passage { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 4px 14px rgba(0, 6, 24, .35); }
 .btn.primary { box-shadow: none !important; }
+
+/* 4.46.0: phiên 15 phút và sổ lỗi sai */
+.ses-card{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;margin:14px 0}
+.ses-card p{margin:4px 0 0;max-width:46ch}
+.ses-sec{margin-bottom:8px;align-self:flex-start}
+.ses-sum{margin:14px 0}
+.err-item{align-items:flex-start;gap:10px}
+.err-meta{display:inline-flex;align-items:center;gap:8px}
+.err-dot{width:9px;height:9px;border-radius:50%;background:var(--line,#d6dce4);display:inline-block;margin-right:3px}
+.err-dot.on{background:#3c9a4f}
+.ses-card b{display:block;font-size:17px;color:var(--ink)}
+.ses-card.panel{margin-bottom:14px}
+.err-details summary{cursor:pointer;font-weight:600;padding:6px 0}
+/* 4.47.0: điểm chính của bài, một khung duy nhất, ba mục phân cách bằng đường kẻ và màu tiêu đề */
+.rd-notes{margin:12px 0;padding:16px 18px;border:1px solid var(--rule);border-radius:16px;background:var(--surface,#fff)}
+.rdn-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px;padding-bottom:10px}.rdn-head h3{margin:0}
+.rdn-grid{display:grid;gap:0}
+.rdn-card{--c:#2f6fdc;padding:14px 0 4px;border-top:1px solid var(--rule)}
+.rdn-v{--c:#2f6fdc}.rdn-g{--c:#7a4fd0}.rdn-t{--c:#d98a1c}
+.rdn-card h4{margin:0 0 8px;display:flex;align-items:center;gap:8px;font-size:15px;color:var(--c);text-transform:none}
+.rdn-ic{font-size:17px}.rdn-ct{margin-left:auto;font-size:12px;font-weight:700;color:var(--c)}
+.rdn-list{list-style:none;margin:0;padding:0}
+.rdn-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));column-gap:28px}
+.rdn-item{padding:8px 0;line-height:1.5;border-bottom:1px solid color-mix(in srgb,var(--rule) 60%,transparent)}
+.rdn-list>.rdn-item:last-child{border-bottom:0}
+.rdn-w{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.rdn-w b{font-size:17px}
+.rdn-w .icon-btn{width:28px;height:28px;padding:0;background:none}
+.rdn-pos{font-size:12px;color:var(--c)}
+.rdn-m{margin-top:1px}.rdn-n{font-size:13px;color:var(--muted)}
+.rdn-gt{font-weight:700;color:var(--c)}
+.rdn-num{display:none}
+.rdn-q{margin:6px 0;padding:0 0 0 12px;border-left:3px solid var(--c);font-style:italic}
+.rdn-tip{padding-left:20px;position:relative}.rdn-tip::before{content:"→";position:absolute;left:0;color:var(--c);font-weight:700}
+.rd-key{margin:12px 0}.rd-key summary{cursor:pointer;font-weight:600;padding:6px 0;color:#7a4fd0}
+.rd-key[open] summary{margin-bottom:6px}
+.pl-sk{margin:12px 0 4px}
+
+/* 4.47.0: tiếng Anh trong lời giải thích in nghiêng, đổi màu theo mục; ví dụ dạng "E.g.:" */
+.en-t{font-style:italic;font-weight:600;color:var(--c,#2f6fdc)}
+.rd-notes .rdn-eg{margin:4px 0 6px;font-style:italic}
+.rd-notes .rdn-eg::before{color:var(--c)}
+.rdn-gt{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:baseline}.rdn-gv{font-weight:400;color:var(--muted);font-size:14px}
+.rdn-gv .en-t{font-weight:500}
+/* 4.47.0 quy ước màu trong khung điểm chính: "E.g.:" xám, ví dụ đen, tiếng Anh trong lời giải thích một màu riêng khác màu tiêu đề */
+.rd-notes{--en-c:#0f7f70}
+:root[data-theme="dark"] .rd-notes,.is-dark .rd-notes{--en-c:#5fd4c0}
+.rd-notes .en-t{color:var(--en-c);font-style:italic;font-weight:600}
+.rd-notes .rdn-eg{color:var(--ink);font-style:italic}
+.rd-notes .rdn-eg::before{color:var(--muted);font-weight:600}
+.rd-notes .rdn-gv,.rd-notes .rdn-gv .en-t{color:var(--muted)}

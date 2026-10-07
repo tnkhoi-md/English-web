@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ A1 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt: không cần máy chủ, không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn, có thể đồng bộ giữa các thiết bị và dùng được khi mất mạng.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.45.0.
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.47.1.
 
 ## Nội dung hiện có
 
@@ -11,8 +11,8 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.45.0.
 | Từ vựng | khoảng 5.000 từ và cụm từ trong 71 chủ đề (46 phổ thông và luyện thi, 25 y khoa), có nghĩa tiếng Việt, câu ví dụ, định nghĩa Anh–Anh kèm bản dịch và phiên âm IPA giọng Mỹ |
 | Lộ trình | 97 chặng, mỗi chặng khoảng 25 đến 65 từ, kèm bài học, ngữ pháp, phát âm và bài kiểm tra vượt chặng |
 | Ngữ pháp | 76 điểm từ A1 đến C1; mỗi điểm có lý thuyết, 22 đến 29 câu hỏi, 8 lỗi người Việt hay mắc và bảng so sánh dạng dễ nhầm |
-| Đọc | 82 bài từ A1 đến C1 (có câu hỏi kèm bằng chứng, đúng/sai/không có thông tin), TOEIC Part 7, nối tiêu đề với đoạn |
-| Nghe | 42 bài nghe hiểu A1 đến C1, nghe chép viết riêng theo từng cấp (khoảng 50 bộ, mỗi bộ 8 câu), hội thoại trong bài học |
+| Đọc | 164 bài từ A1 đến C1, xếp từ ngắn đến dài và từ dễ đến khó (60 đến 580 từ, 6 đến 10 câu hỏi mỗi bài, có câu hỏi kèm bằng chứng, đúng/sai/không có thông tin), TOEIC Part 7, nối tiêu đề với đoạn |
+| Nghe | 78 bài nghe hiểu A1 đến C1 (bài mới có ghi chú điểm chính), nghe chép viết riêng theo từng cấp (khoảng 50 bộ, mỗi bộ 8 câu), hội thoại trong bài học |
 | Nói | 29 tình huống giao tiếp từ cơ bản đến chuyên nghiệp (có phần y khoa), cùng các đề nói mở |
 | Viết | 23 mẫu viết có hướng dẫn và viết lại theo mẫu, 24 đề viết mở từ A1 đến C1, luyện nhanh theo từng mẫu |
 | Phát âm | 44 âm tiếng Anh, cặp âm tối thiểu, kho từ phát âm |
@@ -33,6 +33,10 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.45.0.
 - Ôn thẻ đến hạn bằng thuật toán FSRS; mỗi từ có hai thẻ và hiện dưới nhiều hình thức (lật thẻ, chọn nghĩa, nghe và chọn, chọn định nghĩa tiếng Anh, điền từ vào câu, đoán từ từ định nghĩa, sắp xếp chữ cái, nghe và gõ).
 - Tiến trình ghi nhớ chia 5 nhóm có màu (chưa học, mới học, đang học, đang củng cố, đã vững) và thanh tiến độ ba màu ở thư viện.
 - Gõ từ được so sánh từng ký tự: đúng thì xanh, sai thì đỏ, có số ký tự của đáp án.
+- **Sổ lỗi sai** (phần 2 của trang Luyện tập): mọi câu sai (luyện tập, ngữ pháp, bài học, quiz từ vựng) tự vào sổ và được ôn lại sau 1, 3, 7, 14, 30 ngày; trả lời đúng ở mốc cuối thì ra khỏi sổ. Dữ liệu sổ được đồng bộ giữa các thiết bị.
+- **Điểm chính sau mỗi bài đọc và bài nghe**: từ vựng khó, ngữ pháp đặc biệt và mẹo đọc hiểu; gợi ý bài tiếp theo theo độ dài và độ khó.
+- **Kiểm tra đầu vào** gồm từ vựng, ngữ pháp và nghe (45 câu), đánh giá theo phần yếu nhất và gợi ý chặng bắt đầu.
+- **Phiên 15 phút** (trang Hôm nay): một phiên trộn sẵn gồm ôn thẻ đến hạn, từ mới, câu sai trong sổ, một điểm ngữ pháp, một bài nghe và vài câu nói, kèm tổng kết cuối phiên.
 - Nút **Không ôn nữa** để ngừng ôn một từ; có thể bật lại bất cứ lúc nào.
 
 **Luyện tập kỹ năng** (trang Luyện tập)
@@ -82,7 +86,7 @@ Danh sách này cũng hiển thị trong mục **Góc tác giả** của ứng d
 | `content-vocab2.js` | Bộ từ vựng cách dùng từ: kết hợp động từ, từ với giới từ, từ dễ nhầm, phrasal verb, tiền tố và hậu tố, câu giao tiếp |
 | `content-med2.js`, `content-units-med.js` | Bổ sung từ vựng y khoa; các chặng y khoa chia nhỏ |
 | `content-ipa.js`, `content-patch.js` | Phiên âm IPA và các chỉnh sửa nhỏ |
-| `content-listen2.js`, `content-reading2.js`, `content-speaking.js`, `content-dictation.js` | Bài nghe hiểu, bài đọc, tình huống Luyện nói, câu nghe chép |
+| `content-listen2.js`, `content-listen3.js`, `content-reading2.js`, `content-reading3.js`, `content-speaking.js`, `content-dictation.js` | Bài nghe hiểu, bài đọc, tình huống Luyện nói, câu nghe chép |
 | `audio-map.js` | Bảng tra từ câu và giọng đọc sang đường dẫn tệp âm thanh |
 | `audio-ten-1` … `audio-ten-5`, `phan-1` … `phan-9` | Các tệp mp3 thu sẵn, đặt tên theo bài (ví dụ `doc/a2-a04-at-the-ticket-office.mp3`); đừng đổi tên hay di chuyển, vì `audio-map.js` trỏ tới đúng các vị trí này |
 | `index-single-file.html` | Bản gộp một tệp (không kèm âm thanh), dùng để mở thử hoặc dự phòng |
@@ -107,7 +111,7 @@ Một số dữ liệu chỉ lưu theo từng thiết bị và không đồng b�
 
 - **Từ vựng**: mỗi dòng trong `content-library.js` có dạng `từ|từ loại|nghĩa|câu ví dụ`; thêm vào đúng cấp (`A1` … `C1`, hoặc `T1`/`T2` cho y khoa) của chủ đề. Mã thẻ ôn tính theo mã chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả từ đã có người học. Định nghĩa, bản dịch định nghĩa và ví dụ nằm ở `WORD_DEFS`, `WORD_DEFS_VI` và `WORD_EX` (khóa dạng `chủ-đề:từ`).
 - **Bài tập ngữ pháp**: mỗi dòng của `GRAMMAR_BANK` là một câu hỏi: `c|câu có ___|A / B / C / D|chỉ số đúng|giải thích|A=>vì sao A sai;;B=>…` (chọn đáp án), `x|Chọn câu đúng|câu 1 / câu 2 / câu 3|chỉ số|giải thích`, `t|câu có ___ (gợi ý)|đáp án 1;đáp án 2|giải thích` (gõ), `f|câu có lỗi|từ sai|sửa thành|giải thích` (tìm lỗi), `o|câu hoàn chỉnh|giải thích` (sắp xếp). Chỉ số bắt đầu từ 0, mỗi câu trắc nghiệm có đúng một đáp án hợp lệ.
-- **Bài nghe, bài đọc, tình huống nói, câu nghe chép**: thêm vào các tệp `content-listen2.js`, `content-reading2.js`, `content-speaking.js`, `content-dictation.js` theo cấu trúc dữ liệu đã có. Muốn có giọng thu sẵn, tạo tệp mp3 rồi thêm một dòng vào `audio-map.js`; thiếu tệp thì ứng dụng tự đọc bằng giọng máy.
+- **Bài nghe, bài đọc, tình huống nói, câu nghe chép**: thêm vào các tệp `content-listen2.js`, `content-listen3.js`, `content-reading2.js`, `content-reading3.js`, `content-speaking.js`, `content-dictation.js` theo cấu trúc dữ liệu đã có. Muốn có giọng thu sẵn, tạo tệp mp3 rồi thêm một dòng vào `audio-map.js`; thiếu tệp thì ứng dụng tự đọc bằng giọng máy.
 
 ## Giới hạn
 
