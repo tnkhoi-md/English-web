@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ A1 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt: không cần máy chủ, không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn, có thể đồng bộ giữa các thiết bị và dùng được khi mất mạng.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.44.1.
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.45.0.
 
 ## Nội dung hiện có
 
@@ -45,7 +45,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.44.1.
 - Phát âm, Từ vựng, Ngữ pháp, Luyện đọc, Luyện viết, Thuật ngữ y khoa; có thanh chuyển nhanh giữa các mục và thanh lọc thu gọn được.
 
 **Giao diện và tiện ích**
-- Chế độ sáng với nền bầu trời có mây, chế độ tối với nền thiên hà; mặt trời, mặt trăng đúng pha và sao theo giờ trong ngày. Nút sáng/tối và nút ngôn ngữ luôn hiện trên thanh công cụ.
+- Chế độ sáng và chế độ tối với nền cố định, dịu, không chuyển động và không làm mờ nền, để máy chạy nhẹ và tập trung vào nội dung. Nút sáng/tối và nút ngôn ngữ luôn hiện trên thanh công cụ.
 - Ngôn ngữ giao diện Việt hoặc Anh (chỉ dịch giao diện; nội dung bài học giữ nguyên).
 - Cỡ chữ 5 mức, học im lặng (bỏ phần nghe và nói), ẩn hiện menu, dùng được trên điện thoại, máy tính bảng và máy tính.
 - Giọng đọc: âm thanh Mỹ thu sẵn cho nội dung chính; từ đơn dùng giọng người thật khi có; còn lại là giọng máy của thiết bị. Chọn giọng Anh-Mỹ hoặc Anh-Anh, đổi tốc độ.

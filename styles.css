@@ -1140,3 +1140,21 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
   body:not(.focus).side-folded .bottom { display: grid !important; }
   body.side-folded .main .page { padding-bottom: 110px; }
 }
+
+/* 4.45.0: nền cố định, nhẹ và dịu để tập trung vào nội dung; không còn mặt trời, mặt trăng, chuyển động, sao lấp lánh hay làm mờ nền */
+#skybody, .sky-mini, .sky-orb { display: none !important; }
+.is-dark body::after, .is-light body::after, .is-dark::after, .is-light::after { animation: none !important; will-change: auto; }
+.is-dark body::before { background: radial-gradient(120% 70% at 20% -10%, #101c3d 0%, transparent 60%), linear-gradient(180deg, #0b1124 0%, #070b17 100%); }
+.is-dark body::after { opacity: .38; }
+.is-dark::after { opacity: .45; }
+.is-light body::before { background: linear-gradient(180deg, #e3eefb 0%, #eef5fc 45%, #f6f9fd 100%); }
+.is-light body::after { opacity: .28; }
+.is-light[data-sky]::after { display: none; }
+.is-dark { --glass: rgba(10, 20, 48, .82); }
+.is-dark .side, .is-dark .topbar, .is-dark .bottom, .is-dark .focus-bar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(8, 15, 36, .92) !important; }
+.is-light .side, .is-light .topbar, .is-light .bottom, .is-light .focus-bar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, .92) !important; }
+.is-dark .filterbar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(9, 17, 40, .9); }
+.is-light .filterbar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, .92); }
+.is-light .panel, .is-light .gcard, .is-light .topic, .is-light .ex-group, .is-light .more-card, .is-light .more-item, .is-light .ts-card, .is-light .ex-tile, .is-light .ubody, .is-light .wgroup, .is-light .lgroup, .is-light .phtile, .is-light .plan-step, .is-light .lw, .is-light .passage { background: rgba(255, 255, 255, .94); box-shadow: 0 1px 2px rgba(40, 70, 110, .08); }
+.is-dark .panel, .is-dark .gcard, .is-dark .topic, .is-dark .ex-group, .is-dark .more-card, .is-dark .more-item, .is-dark .ts-card, .is-dark .ex-tile, .is-dark .ubody, .is-dark .wgroup, .is-dark .lgroup, .is-dark .phtile, .is-dark .plan-step, .is-dark .lw, .is-dark .passage { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 4px 14px rgba(0, 6, 24, .35); }
+.btn.primary { box-shadow: none !important; }

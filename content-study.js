@@ -45318,6 +45318,8 @@ const I18N_EN = {
 "Nghe": "Listening",
 "Nghe chậm": "Listen slowly",
 "Nghe chậm ×0,75": "Slow ×0.75",
+"Hiện từ": "Show the word",
+"Hiện lời thoại": "Show the script",
 "Nghe câu": "Listen to the sentence",
 "Nghe câu có từ mới rồi chép lại.": "Listen to the sentence with the new word, then write it down.",
 "Nghe câu nói": "Listen to the sentence",

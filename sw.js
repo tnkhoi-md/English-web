@@ -1,6 +1,6 @@
 /* Tnkhoi English: chế độ ngoại tuyến.
    Mỗi lần phát hành, đổi VERSION (cùng số với ?v= trong index.html) để máy xóa bộ nhớ đệm cũ. */
-const VERSION = "4.44.1";
+const VERSION = "4.45.1";
 const CORE = "tnk-core-" + VERSION, AUDIO = "tnk-audio-v1", FONTS = "tnk-fonts-v1";
 const PRECACHE = [
   "./", "index.html", "styles.css?v=" + VERSION, "content-lessons.js?v=" + VERSION, "content-library.js?v=" + VERSION,

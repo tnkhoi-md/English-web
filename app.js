@@ -644,7 +644,7 @@ const STEP = {
     const all = step.qs.every((_, i) => st.q && st.q[i] && st.q[i].done); const show = st.show || all;
     const keys = Object.keys(step.who);
     return `<span class="step-kind">Nghe hiểu</span><h2 lang="en">${esc(step.title)}</h2>
-      <div class="row"><button class="btn primary" data-act="playDialog">Nghe hội thoại</button><button class="btn" data-act="playDialog" data-slow="1">Nghe chậm ×0,75</button><button class="btn quiet" data-act="toggleScript" ${all ? "disabled" : ""}>${show ? "Ẩn lời thoại" : "Xem lời thoại"}</button></div>
+      <div class="row"><button class="btn primary" data-act="playDialog">Nghe hội thoại</button><button class="btn quiet" data-act="toggleScript" ${all ? "disabled" : ""}>${show ? "Ẩn lời thoại" : "Xem lời thoại"}</button></div>
       ${show ? `<div class="dialogue">${step.lines.map(([spk, en, vi], i) => `<div class="line" id="ln-${i}"><span class="who">${esc(step.who[spk])}</span><div><div class="en" lang="en">${esc(en)}</div><div class="vi">${esc(vi)}</div></div>${hear(en, "Nghe câu", `data-who="${keys.indexOf(spk) % 2}"`)}</div>`).join("")}</div>`
         : `<p class="muted small">Nghe trước rồi trả lời. Nếu xem lời thoại trước khi trả lời, câu đó được tính vào kỹ năng đọc thay vì nghe.</p>`}
       <div class="divider"></div>${qsBlock(step, st)}`;
@@ -677,7 +677,7 @@ const STEP = {
   },
   dict(step, st) {
     return `<span class="step-kind">Nghe và chép</span><p class="muted">Nghe câu rồi gõ lại đúng từng từ. Không cần viết hoa hay dấu câu.</p>
-      <div class="row"><button class="btn primary" data-act="sayStep">Nghe câu</button><button class="btn" data-act="sayStep" data-slow="1">Nghe chậm ×0,75</button></div>
+      <div class="row"><button class="btn primary" data-act="sayStep">Nghe câu</button></div>
       <div class="row"><input class="field" id="ans" style="flex:1;min-width:220px" value="${esc(st.val || "")}" data-enter="checkDict" ${st.done ? "disabled" : ""} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Câu bạn nghe được"><button class="btn primary" data-act="checkDict" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>
       ${st.diff ? `<div class="stack"><p class="diff" lang="en">${st.diff}</p>${st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Chính xác." : "Câu đúng:"}</b> <span class="en" lang="en">${esc(step.s)}</span><br><span class="muted">${esc(step.vi)}</span></div>` : `<div class="feedback no" role="status"><b>Còn thiếu hoặc sai</b> ở các từ gạch chân. Nghe lại và sửa một lần.</div>`}</div>` : ""}`;
   },
@@ -1521,7 +1521,7 @@ function viewTopic(t) {
   return `<section class="page-head topic-head" style="--tc:${t.color}"><a class="muted small" href="#/library">Thư viện từ vựng</a>
       <div class="row" style="gap:16px;align-items:center"><span class="ti big" aria-hidden="true">${t.icon}</span><div><h1 lang="en">${esc(t.title)}</h1><p class="lede" style="margin:0">${esc(t.vi)}</p></div></div>
       <div class="meter lg">${m3i(t.words)}</div>${m3key(t.words)}<p class="muted small">${c.d}/${c.n} từ đã học${t.track === "med" ? ". Dòng in nghiêng là định nghĩa bằng tiếng Anh đơn giản, dùng được khi giải thích cho bệnh nhân." : ""}</p>
-      <div class="row">${fresh ? `<a class="btn primary" href="#/learn/${t.id}">Học từ mới (${Math.min(fresh, S.goals.newPerDay)})</a>` : ""}${c.d >= 4 ? `<a class="btn" href="#/quiz/${t.id}">Luyện nhanh 10 câu</a>` : ""}${fresh ? `<button class="btn quiet" data-act="libAddAll" data-t="${t.id}">Thêm cả chủ đề vào ôn tập</button>` : ""}</div></section>
+      <div class="row">${fresh ? `<a class="btn primary" href="#/learn/${t.id}">Học từ mới (${Math.min(fresh, S.goals.newPerDay)})</a>` : ""}${c.d >= 4 ? `<a class="btn" href="#/quiz/${t.id}">Luyện nhanh 10 câu</a>` : ""}${c.d >= 1 ? `<a class="btn" href="#/practice/e-tp-${t.id}">Luyện tập từ trong chủ đề</a>` : ""}</div></section>
     ${levels.map(l => `<section class="stack" style="margin-bottom:20px"><h3 class="lv-h"><span class="lv lv-${l}">${lvName(l)}</span> <span class="muted small">${t.words.filter(w => w.lvl === l).length} từ</span></h3><div class="lw-list">${t.words.filter(w => w.lvl === l).map(w => wordRow(w, false, true)).join("")}</div></section>`).join("")}`;
 }
 
@@ -2184,7 +2184,7 @@ function pxBody(it, st) {
   else if (it.t === "t") body = `<p class="cloze" lang="en">${gapify(it.q, st.done ? it.ans[0] : "")}</p>${input("Gõ từ hoặc cụm từ cần điền")}`;
   else if (it.t === "m") body = `<div class="row"><p class="spec-word sm" lang="en">${esc(it.w.w)}</p>${hear(it.w.w)}</div><span class="pos">${esc(it.w.pos)}</span>${opts(false)}`;
   else if (it.t === "r") body = `<p style="font-size:26px;font-weight:600">${esc(it.w.vi)}</p><span class="pos">${esc(it.w.pos)}</span>${opts(true)}`;
-  else if (it.t === "l") body = `<div><button class="btn primary" data-act="pxPlay">${ic("speaker", 18)} Nghe</button> <button class="btn" data-act="pxPlay" data-slow="1">Nghe chậm ×0,75</button></div>${opts(true)}`;
+  else if (it.t === "l") body = `<div><button class="btn primary" data-act="pxPlay">${ic("speaker", 18)} Nghe</button></div>${opts(true)}`;
   else if (it.t === "s") { const hint = it.w.w.replace(/[A-Za-z]/g, (ch, k) => k === 0 ? ch : "_"); body = `<p style="font-size:24px;font-weight:600">${esc(it.w.vi)}</p><p class="muted">Gợi ý: <span class="en" lang="en" style="letter-spacing:.15em">${esc(hint)}</span> (${it.w.pos})</p><div>${hear(it.w.w, "Nghe từ")}</div>${input("Viết từ tiếng Anh")}`; }
   else if (it.t === "o") {
     if (!st.pool) { st.tiles = it.s.split(/\s+/); do { st.pool = shuffle(st.tiles.map((x, k) => k)); } while (st.tiles.length > 2 && st.pool.every((v, k) => v === k)); st.ans = []; }
@@ -3028,7 +3028,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.44.1"; APP.build = "04.10.26";
+APP.version = "4.45.0"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3390,7 +3390,7 @@ pxBody = function (it, st) {
   const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. ${capW(PX_LABEL[it.t])}</span>`;
   let body = "";
   if (it.t === "wf") body = `<p class="muted">Điền dạng đúng của từ cho sẵn vào chỗ trống.</p><p class="cloze" lang="en">${gapify(it.s, st.done ? it.ans[0] : "")}</p><p style="margin:10px 0"><span class="keybox" lang="en">${esc(it.root)}</span></p>${pxInput(st, "Gõ từ đã biến đổi")}`;
-  else if (it.t === "au") body = `<p class="muted small">${esc(it.setTitle)}: nghe rồi chọn đáp án. Bạn có thể nghe lại.</p><div class="row"><button class="btn primary" data-act="pxPlayAu">${ic("speaker", 18)} Nghe</button><button class="btn" data-act="pxPlayAu" data-slow="1">Nghe chậm ×0,75</button></div><p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p><div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}</div>${st.done ? `<details class="ex-group"><summary><span class="grow"><b>Bản ghi</b></span></summary><div class="stack" lang="en" style="padding:0 2px 10px">${it.script.map(l => `<p style="margin:2px 0"><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div></details>` : ""}`;
+  else if (it.t === "au") body = `<p class="muted small">${esc(it.setTitle)}: nghe rồi chọn đáp án. Bạn có thể nghe lại.</p><div class="row"><button class="btn primary" data-act="pxPlayAu">${ic("speaker", 18)} Nghe</button><button class="btn" data-act="pxShowTx">Hiện lời thoại</button></div>${st.tx && !st.done ? `<div class="soft au-tx" lang="en">${it.script.map(l => `<p><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div>` : ""}<p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p><div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}</div>${st.done ? `<details class="ex-group"><summary><span class="grow"><b>Bản ghi</b></span></summary><div class="stack" lang="en" style="padding:0 2px 10px">${it.script.map(l => `<p style="margin:2px 0"><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div></details>` : ""}`;
   else if (it.t === "so") {
     if (!st.pool) { st.tiles = it.sents.slice(); do { st.pool = shuffle(st.tiles.map((x, k) => k)); } while (st.tiles.length > 2 && st.pool.every((v, k) => v === k)); st.ans = []; }
     body = `<p class="muted">${esc(it.title || "")} Chạm các câu theo đúng thứ tự để tạo thành đoạn văn hợp lý.</p><ol class="so-ans" lang="en">${st.ans.map((k, j) => `<li><button class="tile sent" data-act="pxOut" data-j="${j}" ${st.done ? "disabled" : ""}>${esc(st.tiles[k])}</button></li>`).join("") || `<li class="muted small">Chạm các câu bên dưới.</li>`}</ol>
@@ -3661,13 +3661,13 @@ function viewRevMode() {
   const optsHtml = () => `<div class="choices">${st.opts.map((o, k) => { const cls = st.done ? (o.r ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="rvPick" data-o="${k}" ${st.done ? "disabled" : ""} ${m === "mcvi" || m === "lmc" || m === "mcdef" ? "" : 'lang="en"'}>${esc(o.t)}</button>`; }).join("")}</div>`;
   let body = "";
   if (m === "mcvi") body = `<div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div>${optsHtml()}</div>`;
-  else if (m === "lmc") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button><button class="btn" data-act="rvPlay" data-slow="1">Nghe chậm ×0,75</button></div>${optsHtml()}</div>`;
+  else if (m === "lmc") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button></div>${optsHtml()}</div>`;
   else if (m === "mcdef") body = `<div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div><span class="pos">${esc(w.pos || "")}</span>${optsHtml()}</div>`;
   else if (m === "mcen") body = `<div class="flash"><p style="font-size:26px;font-weight:600">${esc(w.vi)}</p><span class="pos">${esc(w.pos || "")}</span>${optsHtml()}</div>`;
   else if (m === "clmc") { const bl = blankIn(w.ex, w.w); body = `<div class="flash"><p class="cloze" lang="en" style="font-size:22px">${bl}</p><p class="muted small">Gợi ý nghĩa của từ cần điền: ${esc(w.vi)}</p>${optsHtml()}</div>`; }
   else if (m === "defw") body = `<div class="flash"><p lang="en" style="font-size:20px;font-style:italic">${esc(revDef(info))}</p><span class="pos">${esc(w.pos || "")}</span>${optsHtml()}</div>`;
   else if (m === "scr") body = `<div class="flash"><p style="font-size:26px;font-weight:600">${esc(w.vi)}</p><span class="pos">${esc(w.pos || "")}</span><div class="tiles answer" lang="en">${st.ans.map((k, j) => `<button class="tile" data-act="rvScrOut" data-j="${j}" ${st.done ? "disabled" : ""}>${esc(st.tiles[k])}</button>`).join("") || '<span class="muted small" style="padding:8px">Chạm các chữ cái theo đúng thứ tự.</span>'}</div><div class="tiles" lang="en">${st.pool.map(k => `<button class="tile ${st.ans.includes(k) ? "used" : ""}" data-act="rvScrIn" data-k="${k}" ${st.done || st.ans.includes(k) ? "disabled" : ""}>${esc(st.tiles[k])}</button>`).join("")}</div>${st.done ? "" : `<div class="row"><button class="btn" data-act="rvScrReset">Xếp lại</button></div>`}</div>`;
-  else if (m === "ltype") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button><button class="btn" data-act="rvPlay" data-slow="1">Nghe chậm ×0,75</button></div><p class="muted small">Nghe rồi gõ lại đúng từ. Gợi ý nghĩa: ${esc(w.vi)}</p><div class="row"><input class="field" id="rvAns" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="rvTypeCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Gõ từ bạn nghe được">${st.done ? "" : `<button class="btn primary" data-act="rvTypeCheck">Kiểm tra</button>`}</div></div>`;
+  else if (m === "ltype") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button></div><p class="muted small">Nghe rồi gõ lại đúng từ. Gợi ý nghĩa: ${esc(w.vi)}</p><div class="row"><input class="field" id="rvAns" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="rvTypeCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" aria-label="Gõ từ bạn nghe được">${st.done ? "" : `<button class="btn primary" data-act="rvTypeCheck">Kiểm tra</button>`}</div></div>`;
   const fb = st.done ? revFeedback(info, st) : "";
   const act = st.done ? `<div class="step-actions"><button class="btn primary" data-act="rvNext" style="width:100%">Tiếp tục</button></div>` : "";
   return `<div class="track-${info.l.track}">${focusBar(null, `Còn ${left} thẻ`)}<div class="focus-page"><article class="step-card"><span class="step-kind">${REV_LABEL[m]}</span>${body}${fb}<p class="muted small">Từ ${esc(info.l.title)}${c.state === "new" ? ", thẻ mới" : c.lapses ? ", đã quên " + c.lapses + " lần" : ""}</p></article>${act}</div></div>`;
@@ -4138,7 +4138,7 @@ revFeedback = function (info, st) {
   return `<div class="feedback ${st.ok ? "ok" : "no"}" role="status">${ans}${pick}</div>${tail}`;
 };
 
-/* ---------------- 4.44.1: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
+/* ---------------- 4.45.0: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
 const SPK = typeof SPEAK_TPL !== "undefined" ? SPEAK_TPL : [], SPK_BY = Object.fromEntries(SPK.map(t => [t.id, t]));
 const SPK_LV = ["A1", "A2", "B1", "B2", "C1"];
 const SPK_LVNAME = { A1: "A1: Nhập môn", A2: "A2: Sơ cấp", B1: "B1: Trung cấp", B2: "B2: Trên trung cấp", C1: "C1: Nâng cao" };
@@ -4386,7 +4386,7 @@ function practiceSkills() {
   return `${tabs}<div class="ex-secs psk-panel">${pskTabBody(PSK.tab)}</div>`;
 }
 
-/* ---------------- 4.44.1: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
+/* ---------------- 4.45.0: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
 const H1_STYLE = {
   today: ["home", "#e0773a"], goals: ["target", "#d9486b"], path: ["path", "#3158d4"], review: ["cards", "#7a63d6"], clinic: ["steth", "#0a8f78"],
   library: ["book", "#c9862c"], grammar: ["grammar", "#5b4fc4"], reading: ["reading", "#2f8fd8"], templates: ["exam", "#b9742a"], writing: ["exam", "#b9742a"],
@@ -4402,7 +4402,7 @@ function decorateH1() {
 }
 const _afterRender64 = afterRender;
 afterRender = function () { _afterRender64(); decorateH1(); };
-/* ---------------- 4.44.1: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
+/* ---------------- 4.45.0: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
 const PXKEY = "tnk_px_resume", PXMETA = "tnk_px_meta";
 function pxMeta() { try { const m = JSON.parse(localStorage.getItem(PXMETA) || "null"); return m && m.arg ? m : null; } catch (e) { return null; } }
 function pxClear() { try { localStorage.removeItem(PXKEY); localStorage.removeItem(PXMETA); } catch (e) { } }
@@ -4451,7 +4451,7 @@ viewToday = function () {
   const h = _viewToday64(), pl = planToday().find(p => p.act);
   return pl ? h.replace(/<a class="btn primary" href="#\/today">Tiếp tục<\/a>/, `<button class="btn primary" data-act="${pl.act}">Tiếp tục</button>`) : h;
 };
-/* ---------------- 4.44.1: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
+/* ---------------- 4.45.0: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
 function lcsMask(a, b) {
   const x = a.toLowerCase(), y = b.toLowerCase(), n = x.length, m = y.length, d = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
   for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) d[i][j] = x[i - 1] === y[j - 1] ? d[i - 1][j - 1] + 1 : Math.max(d[i - 1][j], d[i][j - 1]);
@@ -4521,40 +4521,10 @@ focusBar = function (segs, label) {
   const tog = `<button class="tb acc-tog lang-focus" data-act="tbLang" title="Đổi ngôn ngữ giao diện giữa tiếng Việt và tiếng Anh" aria-label="Ngôn ngữ giao diện: ${LANG === "en" ? "tiếng Anh" : "tiếng Việt"}. Bấm để đổi"><span class="${LANG === "vi" ? "on" : ""}">VI</span><span class="${LANG === "en" ? "on" : ""}">EN</span></button>`;
   return _focusBar66(segs, label).replace('<button class="tb fs-cy fs-focus"', tog + '<button class="tb fs-cy fs-focus"');
 };
-/* ---------------- 4.44.1: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
-const SKY_TINT = {
-  dawn: ["#ffc8a6", "#ffe1d0", "#fdf0e8", "#f7fbff"], day: ["#b9d9ff", "#d6eafe", "#ecf5ff", "#f7fbff"],
-  dusk: ["#f2a98f", "#ffd2c0", "#fdebe3", "#f7fbff"], night: ["#7396c6", "#a3bcdd", "#c8d8ee", "#e6eef8"]
-};
-function moonSvg() {
-  /* Pha trăng từ chu kỳ giao hội 29,53 ngày (mốc trăng non 06.01.2000 18:14 UTC) */
-  const days = (Date.now() - Date.UTC(2000, 0, 6, 18, 14)) / 86400000, p = ((days % 29.530588) + 29.530588) % 29.530588 / 29.530588, th = 2 * Math.PI * p, r = 44, rx = Math.abs(Math.cos(th)) * r;
-  const waxing = p < 0.5, crescent = Math.cos(th) > 0, limb = waxing ? 1 : 0, term = waxing ? (crescent ? 0 : 1) : (crescent ? 1 : 0);
-  const lit = p < 0.015 || p > 0.985 ? "" : `M0 ${-r}A${r} ${r} 0 0 ${limb} 0 ${r}A${rx.toFixed(1)} ${r} 0 0 ${term} 0 ${-r}Z`;
-  return `<svg viewBox="-50 -50 100 100" width="100%" height="100%" aria-hidden="true"><defs><radialGradient id="mg" cx="38%" cy="34%" r="75%"><stop offset="0" stop-color="#fffef5"/><stop offset=".6" stop-color="#e9edf8"/><stop offset="1" stop-color="#c3cbe0"/></radialGradient><clipPath id="mc"><path d="${lit}"/></clipPath></defs><circle r="${r}" fill="#9fb1d6" fill-opacity=".16"/>${lit ? `<path d="${lit}" fill="url(#mg)"/><g clip-path="url(#mc)" fill="#aab4cf" fill-opacity=".28"><circle cx="-14" cy="-12" r="9"/><circle cx="14" cy="10" r="12"/><circle cx="-8" cy="22" r="5"/><circle cx="20" cy="-20" r="5"/><circle cx="2" cy="-2" r="4"/></g>` : ""}</svg>`;
-}
-function skyTick() {
-  const root = document.documentElement, n = new Date(), h = n.getHours() + n.getMinutes() / 60;
-  const phase = h >= 7.5 && h < 17 ? "day" : h >= 5 && h < 7.5 ? "dawn" : h >= 17 && h < 19 ? "dusk" : "night";
-  root.dataset.sky = phase;
-  const t = SKY_TINT[phase]; ["0", "1", "2", "3"].forEach((k, i) => root.style.setProperty("--sky-" + k, t[i]));
-  let el = document.getElementById("skybody");
-  if (!el) { el = document.createElement("div"); el.id = "skybody"; el.setAttribute("aria-hidden", "true"); el.innerHTML = '<div class="sky-orb sky-sun"></div><div class="sky-orb sky-moon"></div>'; document.body.insertBefore(el, document.body.firstChild); el.querySelector(".sky-moon").innerHTML = moonSvg(); }
-  const dayTime = h >= 6 && h < 18, p = dayTime ? (h - 6) / 12 : ((h >= 18 ? h - 18 : h + 6) / 12), y = 17 - 12 * Math.sin(Math.PI * p);
-  const sd = document.querySelector(".side"), sw = sd && sd.offsetWidth && !document.body.classList.contains("focus") ? sd.offsetWidth : 0, x = sw + (innerWidth - sw) * (0.1 + 0.8 * p);
-  el.querySelector(".sky-sun").style.display = dayTime ? "" : "none"; el.querySelector(".sky-moon").style.display = dayTime ? "none" : "";
-  const bar = document.querySelector(".topbar, .focus-bar");
-  if (bar) {
-    let m = bar.querySelector(".sky-mini"); if (!m) { m = document.createElement("span"); m.className = "sky-mini"; m.setAttribute("aria-hidden", "true"); bar.insertBefore(m, bar.firstChild); }
-    const key = dayTime ? "sun" : "moon" + Math.floor((Date.now() / 86400000) % 30);
-    if (m.dataset.k !== key) { m.dataset.k = key; m.innerHTML = dayTime ? '<i class="mini-sun"></i>' : moonSvg().replace(/(mg|mc)(?=["\)])/g, "$12"); }
-    m.style.left = (6 + 86 * p).toFixed(1) + "%"; m.style.top = (31 - 11 * Math.sin(Math.PI * p)).toFixed(0) + "px";
-  }
-  const o = el.querySelector(dayTime ? ".sky-sun" : ".sky-moon"); o.style.left = Math.round(x) + "px"; o.style.top = y.toFixed(1) + "%";
-}
-skyTick(); setInterval(skyTick, 60000); addEventListener("resize", skyTick);
-const _afterRender67 = afterRender; afterRender = function () { _afterRender67(); skyTick(); }; document.addEventListener("visibilitychange", () => { if (!document.hidden) skyTick(); });
-/* ---------------- 4.44.1: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
+/* Nền cố định: không còn mặt trời, mặt trăng hay chuyển động (tiết kiệm năng lượng). */
+document.documentElement.removeAttribute("data-sky");
+const _sk = document.getElementById("skybody"); if (_sk) _sk.remove();
+/* ---------------- 4.45.0: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
 const _toolbar68 = toolbar;
 toolbar = function () {
   const dark = document.documentElement.classList.contains("is-dark");
@@ -4572,7 +4542,7 @@ ACT.tbThemeToggle = function () {
   const st = S.settings, dark = document.documentElement.classList.contains("is-dark");
   st.theme = dark ? "light" : "dark"; S.settingsAt = Date.now(); touch(); save(); applyTheme(); render();
 };
-/* ---------------- 4.44.1: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
+/* ---------------- 4.45.0: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
 PX_LABEL.dc = "nghe chép";
 function dcPools() {
   const pools = { A1: [], A2: [], B1: [], B2: [], C1: [] }, seen = new Set();
@@ -4603,7 +4573,7 @@ function dcBody(it, st) {
   const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. Nghe chép</span>`;
   const tries = st.tries ? `<div class="feedback no" role="status"><b>Chưa đúng.</b> Nghe lại và sửa các từ đỏ, bạn còn một lần thử.</div>` : "";
   const input = `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="dcCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="Gõ câu bạn nghe được" aria-label="Câu bạn nghe được">${st.done ? "" : `<button class="btn primary" data-act="dcCheck">Kiểm tra</button>`}</div>`;
-  const play = `<div class="row"><button class="btn primary" data-act="dcPlay">${ic("speaker", 18)} Nghe câu</button><button class="btn" data-act="dcPlay" data-slow="1">Nghe chậm ×0,75</button></div>`;
+  const play = `<div class="row"><button class="btn primary" data-act="dcPlay">${ic("speaker", 18)} Nghe câu</button></div>`;
   const fb = st.done ? `<div class="feedback ${st.ok ? "ok" : "no"}" role="status"><b>${st.ok ? "Chính xác." : "Câu đúng:"}</b> <span class="en" lang="en">${esc(it.s)}</span>${it.vi ? `<br><span class="muted">${esc(it.vi)}</span>` : ""}</div>` : tries;
   return lbl + `<p class="muted small">Nghe câu rồi gõ lại đúng từng từ. Không cần viết hoa hay dấu câu.</p>${play}${input}${st.diff ? `<p class="diff" lang="en">${st.diff}</p>` : ""}${fb}`;
 }
@@ -4660,5 +4630,41 @@ ACT.stepNext = function () {
   } catch (e) { }
   return r;
 };
+/* ---------------- Luyện tập từ trong chủ đề: 12 từ lấy ngẫu nhiên của chủ đề, xen các dạng nhận biết nghĩa, chọn từ, nghe và gõ ---------------- */
+const _startPractice72 = startPractice;
+startPractice = function (arg) {
+  const m = /^e-tp-(.+)$/.exec(arg || ""); if (!m) return _startPractice72(arg);
+  const t = LIB_BY[m[1]]; if (!t) return false;
+  const all = t.words.filter(w => !/·/.test(w.w)), learned = shuffle(all.filter(isLearned)).slice(0, 12);
+  if (!learned.length) return false;
+  let items = vocabItems(learned, all.length >= 8 ? all : LIB.filter(x => x.track === t.track).flatMap(x => x.words));
+  if (UI.mute) items = items.filter(it => it.t !== "l");
+  items.forEach(it => { it.src = "tp:" + t.id; });
+  if (!items.length) return false;
+  PX = { arg, kind: "e", id: arg, title: `Luyện tập: ${t.title}`, back: "#/library/" + t.id, track: t.track === "med" ? "med" : "gen", items, i: 0, st: items.map(() => ({})), saved: false };
+  return true;
+};
+/* Từ trả lời sai hoặc chọn "Không nhớ" được đưa vào hàng ôn tập ngay để học lại. */
+function tpRelearn(w) {
+  if (!w || !w.key) return;
+  addWordCards(w, false);
+  ["r", "p"].forEach(d => { const c = S.cards[`V:${w.key}:${d}`]; if (c && !c.off) c.due = Date.now(); });
+  touch(); save();
+}
+const _pxMark73 = pxMark;
+pxMark = function (ok, typo) {
+  const it = PX && PX.items[PX.i], st = PX && PX.st[PX.i], was = st && st.done;
+  _pxMark73(ok, typo);
+  if (it && !was && /^tp:/.test(it.src || "") && !ok) tpRelearn(it.w);
+};
+const _pxBody73 = pxBody;
+pxBody = function (it, st) {
+  const h = _pxBody73(it, st);
+  if (!/^tp:/.test(it.src || "")) return h;
+  if (!st.done) return h + `<div class="row tp-dk"><button class="btn quiet" data-act="tpDk">Không nhớ, cho tôi xem đáp án</button></div>`;
+  return st.ok ? h : h + `<p class="muted small tp-note">Từ này đã được đưa vào hàng ôn tập để học lại ngay.</p>`;
+};
+ACT.tpDk = function () { const it = PX.items[PX.i], st = PX.st[PX.i]; if (st.done) return; st.dk = true; pxMark(false); };
+ACT.pxShowTx = function () { const st = PX.st[PX.i]; if (st.done) return; st.tx = true; render(); };
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
