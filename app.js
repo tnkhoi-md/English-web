@@ -3028,7 +3028,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.44.0"; APP.build = "04.10.26";
+APP.version = "4.44.1"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -4138,7 +4138,7 @@ revFeedback = function (info, st) {
   return `<div class="feedback ${st.ok ? "ok" : "no"}" role="status">${ans}${pick}</div>${tail}`;
 };
 
-/* ---------------- 4.44.0: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
+/* ---------------- 4.44.1: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
 const SPK = typeof SPEAK_TPL !== "undefined" ? SPEAK_TPL : [], SPK_BY = Object.fromEntries(SPK.map(t => [t.id, t]));
 const SPK_LV = ["A1", "A2", "B1", "B2", "C1"];
 const SPK_LVNAME = { A1: "A1: Nhập môn", A2: "A2: Sơ cấp", B1: "B1: Trung cấp", B2: "B2: Trên trung cấp", C1: "C1: Nâng cao" };
@@ -4386,7 +4386,7 @@ function practiceSkills() {
   return `${tabs}<div class="ex-secs psk-panel">${pskTabBody(PSK.tab)}</div>`;
 }
 
-/* ---------------- 4.44.0: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
+/* ---------------- 4.44.1: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
 const H1_STYLE = {
   today: ["home", "#e0773a"], goals: ["target", "#d9486b"], path: ["path", "#3158d4"], review: ["cards", "#7a63d6"], clinic: ["steth", "#0a8f78"],
   library: ["book", "#c9862c"], grammar: ["grammar", "#5b4fc4"], reading: ["reading", "#2f8fd8"], templates: ["exam", "#b9742a"], writing: ["exam", "#b9742a"],
@@ -4402,7 +4402,7 @@ function decorateH1() {
 }
 const _afterRender64 = afterRender;
 afterRender = function () { _afterRender64(); decorateH1(); };
-/* ---------------- 4.44.0: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
+/* ---------------- 4.44.1: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
 const PXKEY = "tnk_px_resume", PXMETA = "tnk_px_meta";
 function pxMeta() { try { const m = JSON.parse(localStorage.getItem(PXMETA) || "null"); return m && m.arg ? m : null; } catch (e) { return null; } }
 function pxClear() { try { localStorage.removeItem(PXKEY); localStorage.removeItem(PXMETA); } catch (e) { } }
@@ -4451,7 +4451,7 @@ viewToday = function () {
   const h = _viewToday64(), pl = planToday().find(p => p.act);
   return pl ? h.replace(/<a class="btn primary" href="#\/today">Tiếp tục<\/a>/, `<button class="btn primary" data-act="${pl.act}">Tiếp tục</button>`) : h;
 };
-/* ---------------- 4.44.0: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
+/* ---------------- 4.44.1: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
 function lcsMask(a, b) {
   const x = a.toLowerCase(), y = b.toLowerCase(), n = x.length, m = y.length, d = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
   for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) d[i][j] = x[i - 1] === y[j - 1] ? d[i - 1][j - 1] + 1 : Math.max(d[i - 1][j], d[i][j - 1]);
@@ -4521,7 +4521,7 @@ focusBar = function (segs, label) {
   const tog = `<button class="tb acc-tog lang-focus" data-act="tbLang" title="Đổi ngôn ngữ giao diện giữa tiếng Việt và tiếng Anh" aria-label="Ngôn ngữ giao diện: ${LANG === "en" ? "tiếng Anh" : "tiếng Việt"}. Bấm để đổi"><span class="${LANG === "vi" ? "on" : ""}">VI</span><span class="${LANG === "en" ? "on" : ""}">EN</span></button>`;
   return _focusBar66(segs, label).replace('<button class="tb fs-cy fs-focus"', tog + '<button class="tb fs-cy fs-focus"');
 };
-/* ---------------- 4.44.0: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
+/* ---------------- 4.44.1: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
 const SKY_TINT = {
   dawn: ["#ffc8a6", "#ffe1d0", "#fdf0e8", "#f7fbff"], day: ["#b9d9ff", "#d6eafe", "#ecf5ff", "#f7fbff"],
   dusk: ["#f2a98f", "#ffd2c0", "#fdebe3", "#f7fbff"], night: ["#7396c6", "#a3bcdd", "#c8d8ee", "#e6eef8"]
@@ -4554,7 +4554,7 @@ function skyTick() {
 }
 skyTick(); setInterval(skyTick, 60000); addEventListener("resize", skyTick);
 const _afterRender67 = afterRender; afterRender = function () { _afterRender67(); skyTick(); }; document.addEventListener("visibilitychange", () => { if (!document.hidden) skyTick(); });
-/* ---------------- 4.44.0: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
+/* ---------------- 4.44.1: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
 const _toolbar68 = toolbar;
 toolbar = function () {
   const dark = document.documentElement.classList.contains("is-dark");
@@ -4572,7 +4572,7 @@ ACT.tbThemeToggle = function () {
   const st = S.settings, dark = document.documentElement.classList.contains("is-dark");
   st.theme = dark ? "light" : "dark"; S.settingsAt = Date.now(); touch(); save(); applyTheme(); render();
 };
-/* ---------------- 4.44.0: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
+/* ---------------- 4.44.1: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
 PX_LABEL.dc = "nghe chép";
 function dcPools() {
   const pools = { A1: [], A2: [], B1: [], B2: [], C1: [] }, seen = new Set();
@@ -4650,5 +4650,15 @@ ACT.fbFold = function () { FB.fold = !FB.fold; try { localStorage.setItem("tnk_f
 const _afterRender68 = afterRender; afterRender = function () { _afterRender68(); decorateFilterbars(); };
 const _injectFold68 = injectFold;
 injectFold = function () { if (matchMedia("(max-width: 860px)").matches) { document.querySelectorAll(".edge-toggle").forEach(e => e.remove()); return; } _injectFold68(); };
+/* Vào bước "Từ mới" của bài học thì đọc ngay từ đầu tiên (các từ sau đã tự đọc khi bấm Từ sau). */
+const _stepNext71 = ACT.stepNext;
+ACT.stepNext = function () {
+  const before = typeof L !== "undefined" && L ? L.i : -1;
+  const r = _stepNext71.apply(this, arguments);
+  try {
+    if (L && L.steps && L.i !== before) { const step = L.steps[L.i]; if (step && step.t === "words") { const w = L.l.words[(stState().wi) || 0]; if (w) speakNow(w.w); } }
+  } catch (e) { }
+  return r;
+};
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);
