@@ -1330,7 +1330,7 @@ const _cardInfo = cardInfo;
 cardInfo = function (id) {
   if (!id.startsWith("V:")) return _cardInfo(id);
   const [, tid, sl, dir] = id.split(":"); const w = LIB_WORD[tid + ":" + sl]; if (!w) return null;
-  return { id, dir, lw: w, l: { id: tid, track: w.topic.track, title: w.topic.title, lib: true }, w: { w: w.w, pos: w.pos, vi: w.vi, ex: w.ex, exvi: "", syl: [w.w], st: 0, us: "", uk: "" } };
+  return { id, dir, lw: w, l: { id: tid, track: w.topic.track, title: w.topic.title, lib: true }, w: { w: w.w, pos: w.pos, vi: w.vi, ex: w.ex, exvi: "", syl: [w.w], st: 0, us: (typeof WORD_IPA !== "undefined" && WORD_IPA[w.key]) ? (/^\//.test(WORD_IPA[w.key]) ? WORD_IPA[w.key] : "/" + WORD_IPA[w.key] + "/") : "", uk: "" } };
 };
 function wStatus(w) {
   const c = S.cards[`V:${w.key}:p`] || S.cards[`V:${w.key}:r`];
@@ -1527,7 +1527,7 @@ function viewTopic(t) {
 
 /* ---------------- Learn (daily intake) ---------------- */
 let LN = null;
-function startLearn(tid) { const t = LIB_BY[tid]; if (!t) return false; const n = Math.max(3, S.goals.newPerDay - todayIntake()) || 5; const words = t.words.filter(w => wStatus(w) === "new").sort((a, b) => [...GEN_LEVELS, ...MED_LEVELS].indexOf(a.lvl) - [...GEN_LEVELS, ...MED_LEVELS].indexOf(b.lvl)).slice(0, n); LN = { tid, t, words, i: 0, phase: "ask", choice: null, added: 0, known: 0 }; return true; }
+function startLearn(tid) { const t = LIB_BY[tid]; if (!t) return false; const n = S.goals.newPerDay || 10; const words = t.words.filter(w => wStatus(w) === "new").sort((a, b) => [...GEN_LEVELS, ...MED_LEVELS].indexOf(a.lvl) - [...GEN_LEVELS, ...MED_LEVELS].indexOf(b.lvl)).slice(0, n); LN = { tid, t, words, i: 0, phase: "ask", choice: null, added: 0, known: 0 }; return true; }
 function viewLearn() {
   if (!LN || LN.tid !== ROUTE.arg) { if (!startLearn(ROUTE.arg)) return `<div class="focus-page"><p>Không tìm thấy chủ đề.</p></div>`; }
   const t = LN.t, cls = `track-${t.track}`;
@@ -2110,7 +2110,7 @@ const _startLearn42 = startLearn;
 startLearn = function (tid) {
   if (!tid.startsWith("u-")) return _startLearn42(tid);
   const u = UNIT_BY[tid.slice(2)]; if (!u) return false;
-  const n = Math.max(3, S.goals.newPerDay - todayIntake());
+  const n = S.goals.newPerDay || 10;
   const words = unitWords(u).filter(w => wStatus(w) === "new").slice(0, n);
   LN = { tid, t: { id: tid, track: u.track, title: `${u.code} ${u.title}`, vi: u.vi, icon: u.icon, color: u.color, words: unitWords(u) }, words, i: 0, phase: "ask", choice: null, added: 0, known: 0 };
   return true;
@@ -3028,7 +3028,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.43.1"; APP.build = "04.10.26";
+APP.version = "4.44.0"; APP.build = "04.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3909,12 +3909,7 @@ function rkBlock(it) {
 const _pxMark58 = pxMark;
 pxMark = function (ok, typo) { const it = PX && PX.items[PX.i], st = PX && PX.st[PX.i], was = st && st.done; _pxMark58(ok, typo); if (it && !was && it.t === "k" && RK[it.kind]) rdkAdd(it.kind, !!ok); };
 const _viewReading58 = viewReading;
-EXTRA_VIEWS.reading = function () {
-  let h = _viewReading58(); if (ROUTE.arg) return h;
-  const rows = Object.entries(RK).map(([k, [lab]]) => { const v = (S.rdk || {})[k] || { n: 0, ok: 0 }; return `<div class="skill"><span>${esc(lab)}</span><div class="bar"><i style="width:${v.n ? v.ok / v.n * 100 : 0}%"></i></div><span class="n">${v.n ? Math.round(v.ok / v.n * 100) + "% (" + v.ok + "/" + v.n + ")" : "chưa làm"}</span></div>`; }).join("");
-  const panel = `<section class="panel stack rk-panel" style="margin:14px 0"><h3 style="margin:0">Kỹ năng đọc của bạn</h3><p class="muted small" style="margin:0">Tỉ lệ đúng theo loại câu hỏi. Loại nào thấp nhất thì nên luyện nhiều hơn.</p>${rows}</section>`;
-  const i = h.indexOf("</section>"); return i < 0 ? panel + h : h.slice(0, i + 10) + panel + h.slice(i + 10);
-};
+EXTRA_VIEWS.reading = function () { return _viewReading58(); }; /* Bảng "Kỹ năng đọc của bạn" đã được bỏ khỏi trang này; số liệu vẫn được ghi (S.rdk). */
 const _merge58 = mergeState;
 mergeState = function (a, b) { const m = _merge58(a, b); const r = {}; for (const k of Object.keys(RK)) { const x = (a.rdk || {})[k], y = (b.rdk || {})[k]; if (x || y) r[k] = { n: Math.max(x ? x.n : 0, y ? y.n : 0), ok: Math.max(x ? x.ok : 0, y ? y.ok : 0) }; } m.rdk = r; return m; };
 
@@ -4143,7 +4138,7 @@ revFeedback = function (info, st) {
   return `<div class="feedback ${st.ok ? "ok" : "no"}" role="status">${ans}${pick}</div>${tail}`;
 };
 
-/* ---------------- 4.43.1: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
+/* ---------------- 4.44.0: Luyện tập chia hai phần (Ôn từ vựng, Luyện kỹ năng) và Luyện nói theo tình huống ---------------- */
 const SPK = typeof SPEAK_TPL !== "undefined" ? SPEAK_TPL : [], SPK_BY = Object.fromEntries(SPK.map(t => [t.id, t]));
 const SPK_LV = ["A1", "A2", "B1", "B2", "C1"];
 const SPK_LVNAME = { A1: "A1: Nhập môn", A2: "A2: Sơ cấp", B1: "B1: Trung cấp", B2: "B2: Trên trung cấp", C1: "C1: Nâng cao" };
@@ -4391,7 +4386,7 @@ function practiceSkills() {
   return `${tabs}<div class="ex-secs psk-panel">${pskTabBody(PSK.tab)}</div>`;
 }
 
-/* ---------------- 4.43.1: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
+/* ---------------- 4.44.0: tiêu đề trang có biểu tượng và màu theo mục, không khung ---------------- */
 const H1_STYLE = {
   today: ["home", "#e0773a"], goals: ["target", "#d9486b"], path: ["path", "#3158d4"], review: ["cards", "#7a63d6"], clinic: ["steth", "#0a8f78"],
   library: ["book", "#c9862c"], grammar: ["grammar", "#5b4fc4"], reading: ["reading", "#2f8fd8"], templates: ["exam", "#b9742a"], writing: ["exam", "#b9742a"],
@@ -4407,7 +4402,7 @@ function decorateH1() {
 }
 const _afterRender64 = afterRender;
 afterRender = function () { _afterRender64(); decorateH1(); };
-/* ---------------- 4.43.1: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
+/* ---------------- 4.44.0: Kế hoạch hôm nay luôn gồm 3 việc: ôn thẻ, tiếp tục lộ trình cơ bản, tiếp tục phần luyện tập đang dở ---------------- */
 const PXKEY = "tnk_px_resume", PXMETA = "tnk_px_meta";
 function pxMeta() { try { const m = JSON.parse(localStorage.getItem(PXMETA) || "null"); return m && m.arg ? m : null; } catch (e) { return null; } }
 function pxClear() { try { localStorage.removeItem(PXKEY); localStorage.removeItem(PXMETA); } catch (e) { } }
@@ -4456,7 +4451,7 @@ viewToday = function () {
   const h = _viewToday64(), pl = planToday().find(p => p.act);
   return pl ? h.replace(/<a class="btn primary" href="#\/today">Tiếp tục<\/a>/, `<button class="btn primary" data-act="${pl.act}">Tiếp tục</button>`) : h;
 };
-/* ---------------- 4.43.1: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
+/* ---------------- 4.44.0: so sánh từng ký tự khi gõ từ (đúng tô xanh, sai gạch đỏ); ví dụ E.g. không có loa ---------------- */
 function lcsMask(a, b) {
   const x = a.toLowerCase(), y = b.toLowerCase(), n = x.length, m = y.length, d = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
   for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) d[i][j] = x[i - 1] === y[j - 1] ? d[i - 1][j - 1] + 1 : Math.max(d[i - 1][j], d[i][j - 1]);
@@ -4526,7 +4521,7 @@ focusBar = function (segs, label) {
   const tog = `<button class="tb acc-tog lang-focus" data-act="tbLang" title="Đổi ngôn ngữ giao diện giữa tiếng Việt và tiếng Anh" aria-label="Ngôn ngữ giao diện: ${LANG === "en" ? "tiếng Anh" : "tiếng Việt"}. Bấm để đổi"><span class="${LANG === "vi" ? "on" : ""}">VI</span><span class="${LANG === "en" ? "on" : ""}">EN</span></button>`;
   return _focusBar66(segs, label).replace('<button class="tb fs-cy fs-focus"', tog + '<button class="tb fs-cy fs-focus"');
 };
-/* ---------------- 4.43.1: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
+/* ---------------- 4.44.0: mặt trời, mặt trăng (đúng pha) và sao theo giờ trong ngày ---------------- */
 const SKY_TINT = {
   dawn: ["#ffc8a6", "#ffe1d0", "#fdf0e8", "#f7fbff"], day: ["#b9d9ff", "#d6eafe", "#ecf5ff", "#f7fbff"],
   dusk: ["#f2a98f", "#ffd2c0", "#fdebe3", "#f7fbff"], night: ["#7396c6", "#a3bcdd", "#c8d8ee", "#e6eef8"]
@@ -4559,7 +4554,7 @@ function skyTick() {
 }
 skyTick(); setInterval(skyTick, 60000); addEventListener("resize", skyTick);
 const _afterRender67 = afterRender; afterRender = function () { _afterRender67(); skyTick(); }; document.addEventListener("visibilitychange", () => { if (!document.hidden) skyTick(); });
-/* ---------------- 4.43.1: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
+/* ---------------- 4.44.0: nút ngôn ngữ VI | EN và sáng / tối luôn hiện trên thanh công cụ ---------------- */
 const _toolbar68 = toolbar;
 toolbar = function () {
   const dark = document.documentElement.classList.contains("is-dark");
@@ -4577,7 +4572,7 @@ ACT.tbThemeToggle = function () {
   const st = S.settings, dark = document.documentElement.classList.contains("is-dark");
   st.theme = dark ? "light" : "dark"; S.settingsAt = Date.now(); touch(); save(); applyTheme(); render();
 };
-/* ---------------- 4.43.1: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
+/* ---------------- 4.44.0: Nghe chép theo trình độ A1 đến C1 (câu lấy từ hội thoại bài học và bài nghe hiểu, đã có giọng Mỹ thu sẵn) ---------------- */
 PX_LABEL.dc = "nghe chép";
 function dcPools() {
   const pools = { A1: [], A2: [], B1: [], B2: [], C1: [] }, seen = new Set();
@@ -4595,11 +4590,13 @@ function dcPools() {
   return pools;
 }
 const DC_POOLS = dcPools();
+/* Bộ câu nghe chép viết riêng (content-dictation.js), đứng trước các bộ lấy từ hội thoại và bài nghe. */
+if (typeof DC_WRITTEN !== "undefined") Object.entries(DC_WRITTEN).forEach(([lvl, sets]) => sets.forEach((st, i) => addSet({ id: `dcw-${lvl}-${i + 1}`, group: "dc", title: `Nghe chép ${lvl}: ${st.title}`, sub: `${st.sents.length} câu, nghe rồi gõ lại đúng từng từ`, lvl, lvlText: lvl, n: st.sents.length, build: () => shuffle(st.sents.slice()).map(p => ({ t: "dc", s: p.s, who: 0, vi: p.vi, skill: "listening", src: "dc:" + lvl })) })));
 Object.entries(DC_POOLS).forEach(([lvl, pool]) => {
   const per = 8, k = Math.min(6, Math.floor(pool.length / per));
   for (let i = 0; i < k; i++) {
     const part = pool.slice(i * per, (i + 1) * per);
-    addSet({ id: `dc-${lvl}-${i + 1}`, group: "dc", title: `Nghe chép ${lvl}, bộ ${i + 1}`, sub: `${per} câu, nghe rồi gõ lại đúng từng từ`, lvl, lvlText: lvl, n: per, build: () => shuffle(part.slice()).map(p => ({ t: "dc", s: p.s, who: p.who, vi: p.vi, skill: "listening", src: "dc:" + lvl })) });
+    addSet({ id: `dc-${lvl}-${i + 1}`, group: "dc", title: `Nghe chép ${lvl}: hội thoại, bộ ${i + 1}`, sub: `${per} câu, nghe rồi gõ lại đúng từng từ`, lvl, lvlText: lvl, n: per, build: () => shuffle(part.slice()).map(p => ({ t: "dc", s: p.s, who: p.who, vi: p.vi, skill: "listening", src: "dc:" + lvl })) });
   }
 });
 function dcBody(it, st) {
@@ -4629,7 +4626,11 @@ if (typeof PSK_INFO !== "undefined") PSK_INFO.dc = ["wave", "Nghe chép", "Nghe 
 const _wordRow70 = wordRow;
 wordRow = function (w, a, b) {
   const h = _wordRow70(w, a, b), ip = typeof WORD_IPA !== "undefined" && WORD_IPA[w.key];
-  return ip ? h.replace('<span class="pos">', `<span class="ipa sm" lang="en">${esc(ip)}</span><span class="pos">`) : h;
+  if (!ip) return h;
+  const t = /^\//.test(ip) || /·/.test(ip) ? ip : "/" + ip + "/";
+  /* Nếu đã có ô phiên âm (điền từ bản ghi của từ điển khi có mạng) thì đặt phiên âm tích hợp vào đó làm mặc định. */
+  const re = /(<span class="ipa sm" data-ipa-for="[^"]*">)(<\/span>)/;
+  return re.test(h) ? h.replace(re, `$1${esc(t)}$2`) : h.replace('<span class="pos">', `<span class="ipa sm" lang="en">${esc(t)}</span><span class="pos">`);
 };
 /* ---------------- 4.42.0: thu gọn thanh lọc; điện thoại không còn nút ẩn thanh menu dưới ---------------- */
 const FB = { fold: (() => { try { return localStorage.getItem("tnk_fbfold") === "1"; } catch (e) { return false; } })() };

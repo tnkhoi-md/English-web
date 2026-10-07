@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ 0 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt, không cần máy chủ và không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.43.1 (06.10.26).
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.44.0 (06.10.26).
 
 ## Tính năng
 
@@ -93,6 +93,16 @@ Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained
 - Chế độ tối vẫn là galaxy; ban ngày có thêm mặt trời, ban đêm thêm mặt trăng. Mặt trời và mặt trăng nằm sau lớp mây hoặc ngân hà trôi.
 - Thêm mặt trời/mặt trăng nhỏ (34 px) chạy ngang thanh trên cùng theo giờ, luôn thấy được dù nội dung đang che nền; bản lớn ở nền chỉ là ánh sáng phía sau.
 - `skyTick()` trong `app.js` đặt `data-sky` trên thẻ html và tạo phần tử `#skybody`.
+
+## Cập nhật 4.44.0: nội dung C1, y khoa cơ bản, nghe chép viết riêng, phiên âm, chặng y khoa nhỏ hơn
+
+- **6 điểm ngữ pháp C1** (`content-grammar4.js`): complex noun phrases, advanced verb patterns, advanced modals, advanced passive, emphasis structures, prepositional phrases. Tổng 76 điểm, trong đó 15 điểm C1, gắn vào các chặng C1.1 đến C1.7.
+- **4 tình huống nói C1** (chủ trì cuộc họp, tranh luận, góp ý và nhận xét hiệu suất, giải thích giải phẫu cho người không chuyên), **4 bài nghe hiểu C1** (lc-137 đến lc-140), **4 bài đọc C1** (rd-c1-g01 đến g04).
+- **61 từ y khoa mới** cho 4 chủ đề còn mỏng (vùng cơ thể, xương, bệnh học đại cương, bệnh theo hệ cơ quan); các chủ đề y khoa đều có từ 38 đến 59 từ.
+- **Nghe chép viết riêng** (`content-dictation.js`): 5 bộ mỗi cấp A1 đến C1, 8 câu mỗi bộ, có giọng Mỹ thu sẵn; đứng trước các bộ nghe chép lấy từ hội thoại.
+- **Phiên âm IPA cho gần 4.900 từ** (`content-ipa.js`), giọng Mỹ, tạo tự động bằng espeak-ng rồi chuẩn hóa về kiểu từ điển (đối chiếu với 63 từ có phiên âm viết tay: khớp khoảng 90%); hiện ở hàng từ trong thư viện và ở thẻ ôn. Mang tính tham khảo; từ nào sai có thể chỉnh trong `content-patch.js` (`WORD_IPA`).
+- **Chia nhỏ các chặng y khoa L1 đến L9** thành 17 chặng 25–64 từ (`content-units-med.js`). Bài học giữ nguyên mã nên tiến độ bài học không đổi; kết quả kiểm tra cũ chuyển sang các chặng con qua `UNIT_MIGRATE`.
+- `index-single-file.html` được dựng lại từ bản hiện tại.
 
 ## Cập nhật 4.43.0: thêm đề viết, nghe A1, nghe chép, định nghĩa còn thiếu
 

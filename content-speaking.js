@@ -1,4 +1,4 @@
-/* Luyện nói theo tình huống: 25 mẫu, từ A1 đến C1 (có phần y khoa). Nạp trước app.js. */
+/* Luyện nói theo tình huống: 29 mẫu, từ A1 đến C1 (có phần y khoa). Nạp trước app.js. */
 const SPEAK_TPL = [
 {
 "id": "sp-greet",
@@ -6089,6 +6089,1000 @@ const SPEAK_TPL = [
 "Mình dùng cách nói thận trọng như “suggest” và “may”.",
 "Mình ghi nhận câu hỏi khó và thừa nhận hạn chế.",
 "Mình nói chậm, ngắt nghỉ đúng chỗ và không đọc từ slide."
+]
+}
+},
+{
+"id": "sp-chair-meeting",
+"title": "Chủ trì một cuộc họp công việc",
+"en": "Chairing a business meeting",
+"lvl": "C1",
+"track": "gen",
+"register": "formal",
+"when": "Bạn là người điều hành cuộc họp và cần mở đầu, đi qua chương trình, kiểm soát thời gian và các ý kiến. Mục tiêu là kết thúc với quyết định và việc cần làm rõ ràng.",
+"parts": [
+{
+"name": "Opening",
+"vi": "Bắt đầu đúng giờ, cảm ơn mọi người và nêu mục tiêu của cuộc họp.",
+"ex": "Right, let's make a start. Thanks everyone for coming. Today we need to settle the launch date."
+},
+{
+"name": "Agenda",
+"vi": "Nêu các mục trong chương trình và thứ tự sẽ bàn.",
+"ex": "There are three items on the agenda. Let's take the launch date first."
+},
+{
+"name": "Managing contributions",
+"vi": "Mời người khác phát biểu, lịch sự ngắt lời khi ai đó nói quá dài.",
+"ex": "Can I stop you there for a moment? Could you give us the main risk in one sentence?"
+},
+{
+"name": "Keeping to time",
+"vi": "Nhắc giới hạn thời gian và hoãn các vấn đề lạc đề sang lần sau.",
+"ex": "We'll finish by ten to eleven at the latest. Let's park the hiring plan until next week."
+},
+{
+"name": "Summarising",
+"vi": "Tóm tắt quyết định, người phụ trách và hạn chót, rồi kết thúc họp.",
+"ex": "So, to sum up: we're moving the launch to March. I'll send the minutes this afternoon."
+}
+],
+"phrases": [
+{
+"en": "Right, let's make a start",
+"vi": "Nào, chúng ta bắt đầu thôi",
+"use": "Opening"
+},
+{
+"en": "There are three items on the agenda",
+"vi": "Chương trình có ba mục",
+"use": "Agenda"
+},
+{
+"en": "Let's take the launch date first",
+"vi": "Ta bàn ngày ra mắt trước",
+"use": "Agenda"
+},
+{
+"en": "Can I stop you there for a moment?",
+"vi": "Cho phép tôi ngắt anh một chút nhé?",
+"use": "Managing contributions"
+},
+{
+"en": "Could you give us the main risk in one sentence?",
+"vi": "Anh có thể nêu rủi ro chính trong một câu không?",
+"use": "Managing contributions"
+},
+{
+"en": "We'll finish by ten to eleven at the latest",
+"vi": "Muộn nhất là mười một giờ kém mười ta sẽ kết thúc",
+"use": "Keeping to time"
+},
+{
+"en": "Let's park the hiring plan until next week",
+"vi": "Tạm gác kế hoạch tuyển dụng sang tuần sau",
+"use": "Keeping to time"
+},
+{
+"en": "Are we agreed on March, then?",
+"vi": "Vậy chúng ta thống nhất tháng Ba chứ?",
+"use": "Summarising"
+},
+{
+"en": "So, to sum up",
+"vi": "Vậy, tóm lại",
+"use": "Summarising"
+},
+{
+"en": "I'll send the minutes this afternoon",
+"vi": "Chiều nay tôi sẽ gửi biên bản họp",
+"use": "Summarising"
+}
+],
+"model": {
+"type": "dialogue",
+"roles": [
+"Mark (colleague)",
+"You (chair)"
+],
+"lines": [
+{
+"who": 1,
+"en": "Right, let's make a start, as we're a few minutes behind. Thanks everyone for coming. Today we need to settle the launch date.",
+"vi": "Nào, chúng ta bắt đầu thôi vì đã trễ vài phút. Cảm ơn mọi người đã đến. Hôm nay ta cần chốt ngày ra mắt.",
+"hint": "Mở đầu, cảm ơn mọi người và nêu mục tiêu hôm nay. [make a start / thanks / settle / launch date]"
+},
+{
+"who": 0,
+"en": "Sounds good. Before we begin, could I just check how long we have? I've got a client call at eleven.",
+"vi": "Nghe ổn. Trước khi bắt đầu, tôi hỏi chúng ta có bao lâu được không? Tôi có cuộc gọi với khách hàng lúc mười một giờ.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "We'll finish by ten to eleven at the latest. There are three items on the agenda: the launch date, the budget and the hiring plan. Let's take the launch date first.",
+"vi": "Muộn nhất là mười một giờ kém mười ta sẽ xong. Có ba mục: ngày ra mắt, ngân sách và kế hoạch tuyển dụng. Ta bàn ngày ra mắt trước.",
+"hint": "Nói giờ kết thúc, nêu ba mục chương trình và bắt đầu mục đầu. [finish by / three items / take first]"
+},
+{
+"who": 0,
+"en": "Well, I think we should delay the launch until March. The testing is nowhere near finished, and a rushed release would damage our reputation, especially with the larger clients.",
+"vi": "Tôi nghĩ nên hoãn ra mắt đến tháng Ba. Việc kiểm thử còn lâu mới xong, và phát hành vội sẽ hại uy tín, nhất là với các khách hàng lớn.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "That's a valid concern, Mark. Can I stop you there for a moment? We only have ten minutes for this item, so could you give us the main risk in one sentence?",
+"vi": "Đó là mối lo chính đáng, Mark. Cho tôi ngắt anh một chút nhé? Mục này chỉ có mười phút, anh nêu rủi ro chính trong một câu được không?",
+"hint": "Ghi nhận ý kiến, lịch sự ngắt lời, nhắc chỉ có mười phút và xin một câu. [valid concern / stop you / ten minutes / main risk]"
+},
+{
+"who": 0,
+"en": "Sure. The main risk is that two critical bugs are still open, and fixing them could take six weeks.",
+"vi": "Được. Rủi ro chính là hai lỗi nghiêm trọng vẫn chưa xử lý, và sửa có thể mất sáu tuần.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Thank you, that's very clear. Let's park the hiring plan until next week, because it depends on the date. Are we agreed on March, then?",
+"vi": "Cảm ơn, rất rõ ràng. Tạm gác kế hoạch tuyển dụng sang tuần sau vì nó phụ thuộc vào ngày. Vậy ta thống nhất tháng Ba chứ?",
+"hint": "Cảm ơn, hoãn mục tuyển dụng sang tuần sau và hỏi mọi người có đồng ý tháng Ba không. [park / next week / depends / agreed]"
+},
+{
+"who": 0,
+"en": "I'm happy with March, as long as we tell the clients early. Otherwise they'll assume we've missed a deadline.",
+"vi": "Tôi đồng ý tháng Ba, miễn là báo sớm cho khách hàng. Nếu không họ sẽ nghĩ ta trễ hạn.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Agreed. So, to sum up: we're moving the launch to March, Mark will list the open bugs by Friday, and I'll inform the clients on Monday. Is that right?",
+"vi": "Đồng ý. Vậy tóm lại: ta dời ra mắt sang tháng Ba, Mark liệt kê các lỗi chưa xử lý trước thứ Sáu, và tôi báo khách hàng vào thứ Hai. Đúng chứ?",
+"hint": "Tóm tắt quyết định và việc từng người làm kèm hạn, rồi hỏi xác nhận. [sum up / March / by Friday / Monday / right]"
+},
+{
+"who": 0,
+"en": "Yes, that covers it. Though I'd also like someone to own the client message, in case questions come back.",
+"vi": "Vâng, vậy là đủ. Nhưng tôi muốn có người chịu trách nhiệm thông điệp gửi khách, phòng khi họ hỏi lại.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Good idea. I'll take that on myself. We're out of time, so thanks for your input, everyone. I'll send the minutes this afternoon, and we'll meet again next Tuesday.",
+"vi": "Ý hay. Tôi sẽ nhận việc đó. Hết giờ rồi, cảm ơn đóng góp của mọi người. Chiều nay tôi gửi biên bản, và thứ Ba tuần sau ta họp lại.",
+"hint": "Nhận việc đó, báo hết giờ, cảm ơn, hứa gửi biên bản chiều nay và hẹn họp lại. [take on / out of time / minutes / next Tuesday]"
+},
+{
+"who": 0,
+"en": "Perfect. Thanks for keeping us on track.",
+"vi": "Tuyệt. Cảm ơn bạn đã giữ cho cuộc họp đi đúng hướng.",
+"hint": ""
+}
+],
+"notes": [
+{
+"line": 0,
+"vi": "“Right, let's make a start” báo hiệu cuộc họp bắt đầu; nêu ngay mục tiêu giúp mọi người tập trung."
+},
+{
+"line": 4,
+"vi": "Ghi nhận trước (“That's a valid concern”) rồi mới ngắt bằng “Can I stop you there?” giúp bạn kiểm soát mà không thô lỗ."
+},
+{
+"line": 6,
+"vi": "“Park” nghĩa là tạm gác một vấn đề; đây là cách gọn để tránh lạc đề mà không gạt bỏ ý kiến của ai."
+},
+{
+"line": 8,
+"vi": "Bản tóm tắt tốt có ba phần: quyết định, người phụ trách và hạn chót, kết thúc bằng câu xác nhận “Is that right?”."
+}
+]
+},
+"pron": [
+{
+"en": "Right, let's make a start",
+"tip": "Nhấn mạnh “start” và đọc rõ âm cuối /t/ trong “let's” và “start”; người Việt hay bỏ âm cuối này."
+},
+{
+"en": "Can I stop you there for a moment?",
+"tip": "Lên giọng ở cuối câu hỏi; “can” là dạng yếu /kən/, nhấn “stop” và “moment”."
+},
+{
+"en": "So, to sum up",
+"tip": "Ngắt nhẹ sau “So”, nhấn “sum”; nối “sum up” thành /sʌmˈʌp/ nghe liền mạch."
+},
+{
+"en": "Are we agreed on March, then?",
+"tip": "Xuống giọng rồi lên nhẹ ở “then”; phát âm rõ /tʃ/ trong “March” và âm cuối /d/ của “agreed”."
+}
+],
+"mistakes": [
+{
+"x": "We have three item in the agenda.",
+"v": "We have three items on the agenda.",
+"why": "Danh từ số nhiều cần -s, và “on the agenda” mới là giới từ đúng."
+},
+{
+"x": "Let's discuss about the budget.",
+"v": "Let's discuss the budget.",
+"why": "“Discuss” là ngoại động từ, không đi với “about”."
+},
+{
+"x": "Please you stop talking, we have not much time.",
+"v": "Could I stop you there? We don't have much time.",
+"why": "Cách nói này quá cộc; hãy dùng câu hỏi lịch sự và “don't have much time”."
+},
+{
+"x": "I will summary the decisions now.",
+"v": "I'll summarise the decisions now.",
+"why": "“Summary” là danh từ; động từ là “summarise”."
+}
+],
+"task": {
+"scenario": "You are chairing a weekly team meeting about a delayed office move. Two colleagues disagree about the new date, and one keeps talking for too long. You must keep the meeting on time and end with clear action points.",
+"scenario_vi": "Bạn chủ trì cuộc họp nhóm hằng tuần về việc dời văn phòng bị trễ. Hai đồng nghiệp bất đồng về ngày mới, và một người nói quá dài. Bạn phải giữ đúng giờ và kết thúc với các việc cần làm rõ ràng.",
+"points": [
+"Open the meeting and state the goal",
+"Present a short agenda with timings",
+"Politely interrupt someone who talks too long",
+"Park an off-topic issue for later",
+"Summarise decisions and action points with names and deadlines"
+],
+"seconds": [
+90,
+150
+],
+"self": [
+"Mình đã mở đầu và nêu rõ mục tiêu cuộc họp",
+"Mình đã nêu chương trình và giới hạn thời gian",
+"Mình ngắt lời một cách lịch sự, không thô lỗ",
+"Mình đã hoãn một vấn đề lạc đề bằng “park”",
+"Mình tóm tắt quyết định, người phụ trách và hạn chót",
+"Mình phát âm rõ âm cuối như /t/, /d/, /s/"
+]
+}
+},
+{
+"id": "sp-debate-position",
+"title": "Lập luận và bảo vệ quan điểm trong tranh biện",
+"en": "Arguing and defending a position in a debate",
+"lvl": "C1",
+"track": "gen",
+"register": "formal",
+"when": "Bạn cần trình bày và bảo vệ một quan điểm trước người phản biện, dùng bằng chứng, nhượng bộ khi cần và phản bác thuyết phục. Mục tiêu là giữ lập luận chặt chẽ và lịch sự.",
+"parts": [
+{
+"name": "Position",
+"vi": "Nêu rõ quan điểm của bạn ngay từ đầu.",
+"ex": "I'll argue that cities should ban private cars from their centres."
+},
+{
+"name": "Evidence",
+"vi": "Đưa số liệu hoặc ví dụ cụ thể và nêu nguồn.",
+"ex": "According to the council's own figures, pollution fell by a third."
+},
+{
+"name": "Concession",
+"vi": "Thừa nhận điểm hợp lý của đối phương để tăng uy tín, rồi quay lại lập luận.",
+"ex": "I concede that point. However, a ban can include exemptions."
+},
+{
+"name": "Rebuttal",
+"vi": "Phản bác lập luận của đối phương bằng lý lẽ hoặc dữ kiện.",
+"ex": "I'd challenge that. Enforcement costs are modest compared with health costs."
+},
+{
+"name": "Closing",
+"vi": "Tóm lại lập luận chính và kêu gọi ủng hộ.",
+"ex": "To conclude, the benefits clearly outweigh the costs."
+}
+],
+"phrases": [
+{
+"en": "Thank you, chair",
+"vi": "Xin cảm ơn chủ tọa",
+"use": "Position"
+},
+{
+"en": "I'll argue that",
+"vi": "Tôi sẽ lập luận rằng",
+"use": "Position"
+},
+{
+"en": "According to the council's own figures",
+"vi": "Theo số liệu của chính hội đồng thành phố",
+"use": "Evidence"
+},
+{
+"en": "The evidence says otherwise",
+"vi": "Bằng chứng cho thấy điều ngược lại",
+"use": "Evidence"
+},
+{
+"en": "I concede that point",
+"vi": "Tôi thừa nhận điểm đó",
+"use": "Concession"
+},
+{
+"en": "I'd challenge that",
+"vi": "Tôi xin phản bác điều đó",
+"use": "Rebuttal"
+},
+{
+"en": "That's possible in the short term, but",
+"vi": "Điều đó có thể xảy ra trong ngắn hạn, nhưng",
+"use": "Rebuttal"
+},
+{
+"en": "To conclude",
+"vi": "Để kết luận",
+"use": "Closing"
+},
+{
+"en": "The benefits clearly outweigh the costs",
+"vi": "Lợi ích rõ ràng lớn hơn chi phí",
+"use": "Closing"
+},
+{
+"en": "I urge you to support this motion",
+"vi": "Tôi kêu gọi quý vị ủng hộ đề xuất này",
+"use": "Closing"
+}
+],
+"model": {
+"type": "dialogue",
+"roles": [
+"Opponent",
+"You"
+],
+"lines": [
+{
+"who": 1,
+"en": "Thank you, chair. I'll argue that cities should ban private cars from their centres, because it is the most realistic way to cut pollution.",
+"vi": "Xin cảm ơn chủ tọa. Tôi sẽ lập luận rằng các thành phố nên cấm xe cá nhân vào trung tâm, vì đó là cách thực tế nhất để giảm ô nhiễm.",
+"hint": "Cảm ơn chủ tọa, nêu quan điểm: cấm xe cá nhân ở trung tâm, vì giảm ô nhiễm. [I'll argue / ban / realistic way / pollution]"
+},
+{
+"who": 0,
+"en": "But a ban would hurt shops and disabled residents. Surely most people simply can't manage without a car in the centre?",
+"vi": "Nhưng lệnh cấm sẽ gây hại cho cửa hàng và người khuyết tật. Chẳng lẽ hầu hết mọi người không thể sống thiếu xe ở trung tâm sao?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "The evidence says otherwise. When Varden closed its centre to cars, nitrogen dioxide fell by a third and shop sales rose, according to the council's own figures.",
+"vi": "Bằng chứng cho thấy ngược lại. Khi Varden cấm xe ở trung tâm, khí nitơ đioxit giảm một phần ba và doanh thu cửa hàng tăng, theo số liệu của chính hội đồng.",
+"hint": "Phản bác bằng ví dụ thành phố Varden: ô nhiễm giảm, doanh thu tăng, nêu nguồn. [evidence / Varden / fell by a third / according to]"
+},
+{
+"who": 0,
+"en": "That's one city. And disabled people rely on cars, which you haven't addressed at all.",
+"vi": "Đó mới chỉ là một thành phố. Và người khuyết tật phụ thuộc vào xe, điều mà bạn hoàn toàn chưa đề cập.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "I concede that point: access for disabled residents matters. However, a ban can include exemptions, so it doesn't undermine the principle.",
+"vi": "Tôi thừa nhận điểm đó: việc đi lại của người khuyết tật rất quan trọng. Tuy nhiên, lệnh cấm có thể có ngoại lệ, nên không làm lung lay nguyên tắc.",
+"hint": "Thừa nhận điểm về người khuyết tật, rồi nói lệnh cấm có thể có ngoại lệ. [concede / access / exemptions / principle]"
+},
+{
+"who": 0,
+"en": "Exemptions would be abused, and enforcement is expensive. Your plan sounds good on paper, but not in practice.",
+"vi": "Ngoại lệ sẽ bị lạm dụng, và việc thực thi rất tốn kém. Kế hoạch của bạn nghe hay trên giấy nhưng không khả thi.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "I'd challenge that. Enforcement costs are modest compared with the health costs of pollution, and cameras already work well in other cities.",
+"vi": "Tôi xin phản bác. Chi phí thực thi không đáng kể so với chi phí y tế do ô nhiễm, và camera đã hoạt động tốt ở các thành phố khác.",
+"hint": "Phản bác: chi phí thực thi nhỏ so với chi phí sức khỏe, camera đã hiệu quả. [challenge / enforcement / health costs / cameras]"
+},
+{
+"who": 0,
+"en": "Fine, but people will simply move their shopping to out-of-town malls.",
+"vi": "Được thôi, nhưng người ta sẽ chuyển sang mua sắm ở các trung tâm thương mại ngoại ô.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "That's possible in the short term, but combined with cheap public transport, most shoppers would return, as Varden's experience suggests.",
+"vi": "Điều đó có thể xảy ra trong ngắn hạn, nhưng kết hợp với giao thông công cộng giá rẻ, hầu hết khách sẽ quay lại, như kinh nghiệm của Varden cho thấy.",
+"hint": "Thừa nhận ngắn hạn có thể, nhưng có giao thông công cộng rẻ thì khách quay lại. [short term / public transport / return / Varden]"
+},
+{
+"who": 0,
+"en": "Thank you both. Please make your closing statement.",
+"vi": "Cảm ơn cả hai. Xin mời đưa ra phát biểu kết thúc.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "To conclude, a car ban improves health, safety and the local economy. Yes, it needs exemptions and investment, but the benefits clearly outweigh the costs. I urge you to support this motion.",
+"vi": "Để kết luận, lệnh cấm xe cải thiện sức khỏe, an toàn và kinh tế địa phương. Đúng, nó cần ngoại lệ và đầu tư, nhưng lợi ích rõ ràng lớn hơn chi phí. Tôi kêu gọi quý vị ủng hộ đề xuất này.",
+"hint": "Kết luận: lợi ích về sức khỏe, an toàn, kinh tế, thừa nhận chi phí, kêu gọi ủng hộ. [conclude / outweigh / costs / urge / motion]"
+}
+],
+"notes": [
+{
+"line": 0,
+"vi": "Nêu quan điểm trong một câu bằng “I'll argue that”, kèm một lý do chính, để người nghe biết ngay bạn bảo vệ điều gì."
+},
+{
+"line": 2,
+"vi": "Nêu nguồn (“according to…”) làm bằng chứng đáng tin hơn; “The evidence says otherwise” phản bác mà vẫn lịch sự."
+},
+{
+"line": 4,
+"vi": "Nhượng bộ có chọn lọc (“I concede… However…”) cho thấy bạn công bằng, rồi chuyển lại thành lập luận có lợi cho mình."
+},
+{
+"line": 6,
+"vi": "“I'd challenge that” là cách phản bác trang trọng, tấn công lập luận chứ không công kích cá nhân."
+}
+]
+},
+"pron": [
+{
+"en": "I concede that point",
+"tip": "Nhấn “concede” ở âm tiết thứ hai /kənˈsiːd/ và đọc rõ âm cuối /t/ của “point”."
+},
+{
+"en": "The evidence says otherwise",
+"tip": "Nhấn “EV” trong “evidence” và “OTH” trong “otherwise”; đọc /ð/ bằng cách đặt lưỡi giữa răng."
+},
+{
+"en": "The benefits clearly outweigh the costs",
+"tip": "Nhấn “benefits”, “clearly”, “outweigh”; đọc rõ âm cuối /ts/ trong “benefits” và “costs”."
+},
+{
+"en": "To conclude",
+"tip": "“To” đọc yếu /tə/, nhấn “clude” /kənˈkluːd/ và xuống giọng để báo hiệu phần kết."
+}
+],
+"mistakes": [
+{
+"x": "I am agree with this motion.",
+"v": "I agree with this motion.",
+"why": "“Agree” là động từ, không dùng với “am”."
+},
+{
+"x": "The pollution is decrease after the ban.",
+"v": "Pollution decreased after the ban.",
+"why": "Cần động từ chia thì quá khứ, không dùng “is” cộng động từ nguyên mẫu; “pollution” không cần “the”."
+},
+{
+"x": "You are wrong, this is stupid idea.",
+"v": "I'd challenge that; I think the idea is sound.",
+"why": "Công kích trực tiếp quá thô lỗ trong tranh biện; hãy phản bác lập luận và nhớ mạo từ."
+},
+{
+"x": "In my opinion, I think that the benefit is more big than cost.",
+"v": "In my view, the benefits are greater than the costs.",
+"why": "Không nói “in my opinion, I think” cùng lúc; dùng “greater”, không dùng “more big”, và danh từ số nhiều."
+}
+],
+"task": {
+"scenario": "You are in a university debate and must argue for or against the motion that remote work should become the default for office jobs. State your position, support it with evidence, concede one point and rebut your opponent. Then close persuasively.",
+"scenario_vi": "Bạn tham gia một buổi tranh biện ở đại học và phải ủng hộ hoặc phản đối đề xuất rằng làm việc từ xa nên là mặc định cho công việc văn phòng. Nêu quan điểm, dùng bằng chứng, nhượng bộ một điểm và phản bác đối thủ, rồi kết thúc thuyết phục.",
+"points": [
+"State your position clearly",
+"Give one piece of evidence and its source",
+"Concede one fair point from your opponent",
+"Rebut an opposing argument",
+"Close with a summary and a call to support you"
+],
+"seconds": [
+90,
+150
+],
+"self": [
+"Mình nêu quan điểm rõ ràng ngay từ đầu",
+"Mình đưa ra bằng chứng cụ thể và nêu nguồn",
+"Mình thừa nhận một điểm hợp lý của đối phương",
+"Mình phản bác lập luận chứ không công kích cá nhân",
+"Mình kết luận ngắn gọn và kêu gọi ủng hộ",
+"Mình nhấn đúng các từ khóa và đọc rõ âm cuối"
+]
+}
+},
+{
+"id": "sp-appraisal-feedback",
+"title": "Góp ý và nhận góp ý trong buổi đánh giá hiệu suất",
+"en": "Giving and receiving feedback in a performance review",
+"lvl": "C1",
+"track": "gen",
+"register": "formal",
+"when": "Bạn cần trao đổi với sếp hoặc nhân viên trong buổi đánh giá hiệu suất. Mục tiêu là góp ý thẳng thắn nhưng khéo léo, phản hồi bình tĩnh và thống nhất bước tiếp theo.",
+"parts": [
+{
+"name": "Opening positively",
+"vi": "Mở đầu bằng điều tích cực và ghi nhận thành quả cụ thể.",
+"ex": "I'd like to start by saying how impressed I've been with your work on the Hamburg account."
+},
+{
+"name": "Specific examples",
+"vi": "Đưa ví dụ cụ thể thay vì nhận xét chung chung.",
+"ex": "You brought in three new clients, and that's made a real difference to the team."
+},
+{
+"name": "Raising a concern",
+"vi": "Nêu vấn đề một cách ngoại giao, tập trung vào hành vi chứ không phải con người.",
+"ex": "One concern, though: in a couple of meetings you held back your ideas until afterwards."
+},
+{
+"name": "Responding to criticism",
+"vi": "Ghi nhận góp ý, không phòng thủ, thể hiện bạn hiểu vấn đề.",
+"ex": "That's fair, and I appreciate you telling me."
+},
+{
+"name": "Agreeing next steps",
+"vi": "Thống nhất hành động cụ thể, người phụ trách và thời hạn, rồi tóm tắt lại.",
+"ex": "To sum up, I'll prepare points before meetings, and you'll arrange the coaching session."
+}
+],
+"phrases": [
+{
+"en": "I'd like to start by saying",
+"vi": "Trước hết tôi muốn nói rằng",
+"use": "Opening positively"
+},
+{
+"en": "That's made a real difference",
+"vi": "Điều đó đã tạo ra khác biệt thực sự",
+"use": "Specific examples"
+},
+{
+"en": "One concern, though",
+"vi": "Tuy nhiên có một điều tôi băn khoăn",
+"use": "Raising a concern"
+},
+{
+"en": "I'd like to hear them in the room",
+"vi": "Tôi muốn nghe chúng ngay trong cuộc họp",
+"use": "Raising a concern"
+},
+{
+"en": "That's fair, and I appreciate you telling me",
+"vi": "Anh/chị nói có lý, và tôi cảm ơn vì đã nói với tôi",
+"use": "Responding to criticism"
+},
+{
+"en": "I can see how it comes across as",
+"vi": "Tôi hiểu vì sao điều đó bị nhìn nhận là",
+"use": "Responding to criticism"
+},
+{
+"en": "Would that help?",
+"vi": "Như vậy có giúp được không?",
+"use": "Agreeing next steps"
+},
+{
+"en": "Is there anything you'd like more support with",
+"vi": "Anh/chị có muốn tôi hỗ trợ thêm điều gì không",
+"use": "Agreeing next steps"
+},
+{
+"en": "I'd really value some coaching on",
+"vi": "Tôi rất mong được kèm cặp về",
+"use": "Agreeing next steps"
+},
+{
+"en": "To sum up",
+"vi": "Tóm lại",
+"use": "Agreeing next steps"
+}
+],
+"model": {
+"type": "dialogue",
+"roles": [
+"Manager (Helen)",
+"You (Minh)"
+],
+"lines": [
+{
+"who": 0,
+"en": "Thanks for making time, Minh. I'd like to start by saying how impressed I've been with the way you took over the Hamburg account this year.",
+"vi": "Cảm ơn em đã dành thời gian, Minh. Trước hết chị muốn nói là chị rất ấn tượng với cách em tiếp quản tài khoản Hamburg năm nay.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Thank you, that's good to hear. It was a steep learning curve at first, but I've really enjoyed the challenge.",
+"vi": "Cảm ơn chị, em rất vui khi nghe vậy. Lúc đầu khá khó khăn, nhưng em thực sự thích thử thách này.",
+"hint": "Cảm ơn và nói lúc đầu rất khó nhưng bạn thích thử thách. [steep learning curve / enjoyed / challenge]"
+},
+{
+"who": 0,
+"en": "You brought in three new clients, and your reports have been consistently clear. That's made a real difference to the team.",
+"vi": "Em mang về ba khách hàng mới, và báo cáo của em luôn rõ ràng. Điều đó đã tạo ra khác biệt thực sự cho cả nhóm.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "I'm glad they've been useful. I've tried to keep them short, because I know people don't have much time to read.",
+"vi": "Em mừng vì chúng hữu ích. Em cố viết ngắn gọn vì biết mọi người không có nhiều thời gian đọc.",
+"hint": "Nói bạn mừng vì báo cáo hữu ích và giải thích vì sao bạn viết ngắn. [glad / useful / short / time to read]"
+},
+{
+"who": 0,
+"en": "Exactly. One concern, though: in a couple of meetings you held back your ideas until afterwards. I'd like to hear them in the room.",
+"vi": "Đúng vậy. Nhưng chị có một băn khoăn: trong vài cuộc họp em giữ ý kiến lại đến sau. Chị muốn nghe ngay trong cuộc họp.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "That's fair, and I appreciate you telling me. I sometimes worry about interrupting, but I can see how it comes across as being passive.",
+"vi": "Chị nói có lý, và em cảm ơn chị đã nói. Đôi khi em ngại ngắt lời, nhưng em hiểu vì sao điều đó bị xem là thụ động.",
+"hint": "Nhận góp ý, cảm ơn, giải thích bạn ngại ngắt lời nhưng hiểu vấn đề. [fair / appreciate / interrupting / comes across / passive]"
+},
+{
+"who": 0,
+"en": "Perhaps you could prepare one or two points before each meeting. Would that help?",
+"vi": "Có lẽ em có thể chuẩn bị một hai ý trước mỗi cuộc họp. Như vậy có giúp được không?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Yes, definitely. I could send you my main points the evening before, and then raise at least one of them during the meeting.",
+"vi": "Chắc chắn rồi ạ. Em có thể gửi chị các ý chính vào tối hôm trước, rồi nêu ít nhất một ý trong cuộc họp.",
+"hint": "Đồng ý và đề xuất gửi ý chính tối hôm trước, phát biểu ít nhất một ý. [definitely / evening before / raise / at least one]"
+},
+{
+"who": 0,
+"en": "That sounds like a good plan. Is there anything you'd like more support with from me over the next six months?",
+"vi": "Nghe là một kế hoạch tốt. Trong sáu tháng tới em có muốn chị hỗ trợ thêm điều gì không?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "I'd really value some coaching on presenting to senior stakeholders. I'd like to take on more of that responsibility.",
+"vi": "Em rất mong được kèm cặp về thuyết trình trước các bên liên quan cấp cao. Em muốn đảm nhận nhiều hơn việc đó.",
+"hint": "Xin được kèm cặp về thuyết trình với lãnh đạo cấp cao, muốn nhận thêm trách nhiệm. [coaching / presenting / senior stakeholders / responsibility]"
+},
+{
+"who": 0,
+"en": "Let's set that up. I'll arrange a session with Priya in the next fortnight, and we can review progress in March.",
+"vi": "Vậy mình sắp xếp nhé. Chị sẽ đặt một buổi với Priya trong hai tuần tới, và mình xem lại tiến độ vào tháng Ba.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Perfect. To sum up, I'll prepare points before meetings, and you'll arrange the coaching session. Thanks for the honest feedback.",
+"vi": "Tuyệt ạ. Tóm lại, em sẽ chuẩn bị ý trước các cuộc họp, còn chị sắp xếp buổi kèm cặp. Cảm ơn chị đã góp ý thẳng thắn.",
+"hint": "Tóm tắt hai việc của hai bên và cảm ơn vì góp ý thẳng thắn. [sum up / prepare points / arrange / honest feedback]"
+}
+],
+"notes": [
+{
+"line": 0,
+"vi": "Mở đầu bằng “I'd like to start by saying” và một thành tích cụ thể giúp buổi nói chuyện bớt căng thẳng và nghe trang trọng, chuyên nghiệp."
+},
+{
+"line": 4,
+"vi": "“One concern, though” và “I'd like to hear them in the room” nêu vấn đề qua hành vi cụ thể, không chỉ trích con người nên nghe ngoại giao."
+},
+{
+"line": 5,
+"vi": "“That's fair” kết hợp “I can see how” cho thấy bạn nhận góp ý mà không phòng thủ, đồng thời vẫn giải thích được lý do của mình."
+},
+{
+"line": 11,
+"vi": "Tóm tắt cuối buổi bằng “To sum up” xác nhận hai bên hiểu giống nhau về việc cần làm và người chịu trách nhiệm."
+}
+]
+},
+"pron": [
+{
+"en": "One concern, though",
+"tip": "Nhấn mạnh “con-cern”, xuống giọng ở “though” và dừng nhẹ sau dấu phẩy. Đọc rõ âm cuối /n/ của “concern”."
+},
+{
+"en": "That's fair, and I appreciate you telling me",
+"tip": "“and” đọc yếu thành /ən/ hoặc /n/. Nhấn “ap-PRE-ci-ate”, phát âm /ʃ/ trong “appreciate” chứ không đọc “si”."
+},
+{
+"en": "I can see how it comes across as being passive",
+"tip": "Nối “comes across as” thành một cụm liền mạch, nhấn “a-CROSS” và đừng bỏ âm /s/ cuối ở “passive” và “comes”."
+},
+{
+"en": "I'd really value some coaching on",
+"tip": "Nhấn “VAL-ue” và “COACH-ing”; “I'd” đọc nhẹ. Âm cuối /tʃ/ của “coach” cần bật rõ trước khi sang “ing”."
+}
+],
+"mistakes": [
+{
+"x": "I am very appreciate your feedback.",
+"v": "I really appreciate your feedback.",
+"why": "“Appreciate” là động từ nên không dùng “am” trước nó; dùng trạng từ “really” để nhấn mạnh."
+},
+{
+"x": "I think you have a problem in the meeting.",
+"v": "I have one concern about how you contribute in meetings.",
+"why": "Nói “you have a problem” nghe gay gắt; nên diễn đạt nhẹ nhàng qua “concern” và nói về hành vi cụ thể."
+},
+{
+"x": "Your report is very good, I want you continue.",
+"v": "Your reports are very good, and I'd like you to continue.",
+"why": "Sau “want/would like” cần “you to + động từ”, và “report” nên dùng số nhiều khi nói chung."
+},
+{
+"x": "I will improve it from next month on, I promise to you.",
+"v": "I'll start improving it next month, I promise.",
+"why": "“Promise” không đi với “to you” theo cách này, và “from next month on” không tự nhiên; dùng “start … next month”."
+}
+],
+"task": {
+"scenario": "You are the team leader and it is time for your colleague Tom's annual review. He is very reliable, but he often misses deadlines when he takes on extra projects. Give him feedback and agree on next steps.",
+"scenario_vi": "Bạn là trưởng nhóm và đến lúc đánh giá thường niên của đồng nghiệp tên Tom. Anh ấy rất đáng tin cậy nhưng hay trễ hạn khi nhận thêm dự án. Hãy góp ý và thống nhất bước tiếp theo.",
+"points": [
+"Open with something positive and give a specific example",
+"Raise the problem of missed deadlines diplomatically",
+"Respond to a defensive comment from Tom calmly",
+"Agree on at least two concrete next steps",
+"Summarise what you have agreed"
+],
+"seconds": [
+90,
+150
+],
+"self": [
+"Mình đã mở đầu bằng điều tích cực và có ví dụ cụ thể",
+"Mình nêu vấn đề một cách ngoại giao, nói về hành vi chứ không chỉ trích con người",
+"Mình đã dùng ít nhất hai cụm như “One concern, though” hoặc “That's fair”",
+"Mình thống nhất được các bước tiếp theo rõ ràng",
+"Mình đã tóm tắt lại bằng “To sum up” hoặc cách nói tương tự",
+"Mình nói trôi chảy, giọng điệu lịch sự và bình tĩnh"
+]
+}
+},
+{
+"id": "sp-explain-anatomy",
+"title": "Giải thích cơ thể người cho người không chuyên",
+"en": "Explaining how a body system works to non-specialists",
+"lvl": "C1",
+"track": "med",
+"register": "neutral",
+"when": "Bạn cần giải thích cho bệnh nhân, người nhà hoặc sinh viên cách một hệ cơ quan hoạt động. Mục tiêu là dùng thuật ngữ cơ bản chính xác, ví von dễ hiểu và kiểm tra xem họ đã hiểu chưa.",
+"parts": [
+{
+"name": "Setting the scene",
+"vi": "Bắt đầu bằng hình ảnh tổng quát dễ hình dung.",
+"ex": "Think of the heart as a pump, about the size of a fist."
+},
+{
+"name": "Naming the parts",
+"vi": "Gọi tên các cơ quan bằng từ cơ bản và giải thích ngắn gọn chức năng.",
+"ex": "Blood travels through tubes called blood vessels."
+},
+{
+"name": "Using an analogy",
+"vi": "Dùng phép so sánh với đồ vật quen thuộc.",
+"ex": "Arteries are thick and muscular, like hoses under pressure."
+},
+{
+"name": "Correcting misunderstandings",
+"vi": "Nhẹ nhàng sửa quan niệm sai thường gặp.",
+"ex": "That's a common misunderstanding. The heart is still working."
+},
+{
+"name": "Checking understanding",
+"vi": "Hỏi xem người nghe đã hiểu chưa và mời họ hỏi thêm.",
+"ex": "Does that make sense so far, or shall I go over anything again?"
+}
+],
+"phrases": [
+{
+"en": "Think of the heart as",
+"vi": "Hãy hình dung tim như là",
+"use": "Setting the scene"
+},
+{
+"en": "tubes called blood vessels",
+"vi": "những ống gọi là mạch máu",
+"use": "Naming the parts"
+},
+{
+"en": "It's a figure of eight",
+"vi": "Nó giống như số tám",
+"use": "Naming the parts"
+},
+{
+"en": "pick up oxygen",
+"vi": "nhận oxy",
+"use": "Naming the parts"
+},
+{
+"en": "like hoses under pressure",
+"vi": "giống như ống nước chịu áp lực",
+"use": "Using an analogy"
+},
+{
+"en": "that's a common misunderstanding",
+"vi": "đó là một hiểu lầm khá phổ biến",
+"use": "Correcting misunderstandings"
+},
+{
+"en": "fluid can build up in",
+"vi": "dịch có thể tích tụ ở",
+"use": "Correcting misunderstandings"
+},
+{
+"en": "Does that make sense so far",
+"vi": "Đến đây bác/anh/chị có hiểu không",
+"use": "Checking understanding"
+},
+{
+"en": "shall I go over anything again",
+"vi": "tôi có cần giải thích lại phần nào không",
+"use": "Checking understanding"
+},
+{
+"en": "a very clear way to put it",
+"vi": "một cách diễn đạt rất rõ ràng",
+"use": "Checking understanding"
+}
+],
+"model": {
+"type": "dialogue",
+"roles": [
+"Relative (Mrs Okafor)",
+"You (doctor)"
+],
+"lines": [
+{
+"who": 0,
+"en": "Doctor, my father has just been told he has heart failure. I don't really understand what's going on inside his body. Could you explain it simply?",
+"vi": "Bác sĩ, bố tôi vừa được báo là bị suy tim. Tôi không hiểu bên trong cơ thể ông đang xảy ra chuyện gì. Bác sĩ giải thích đơn giản giúp tôi được không?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Of course. Think of the heart as a pump, about the size of a fist, that sends blood around the body through tubes called blood vessels.",
+"vi": "Tất nhiên rồi. Hãy hình dung tim như một cái bơm to bằng nắm tay, đẩy máu đi khắp cơ thể qua những ống gọi là mạch máu.",
+"hint": "Đồng ý giải thích, ví tim như cái bơm cỡ nắm tay đẩy máu qua mạch máu. [think of / pump / size of a fist / blood vessels]"
+},
+{
+"who": 0,
+"en": "So how does the blood actually travel? Does it just go round in one big circle?",
+"vi": "Vậy máu đi như thế nào? Có phải nó chỉ đi vòng một vòng lớn không?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Almost. It's a figure of eight. The right side sends blood to the lungs to pick up oxygen, and the left side pumps it around the body.",
+"vi": "Gần đúng. Nó giống số tám. Bên phải đưa máu lên phổi để nhận oxy, còn bên trái bơm máu đi khắp cơ thể.",
+"hint": "Nói máu đi theo hình số tám: phải lên phổi lấy oxy, trái bơm đi cơ thể. [figure of eight / right side / lungs / left side]"
+},
+{
+"who": 0,
+"en": "And the tubes, are they all the same?",
+"vi": "Còn các ống đó thì sao, chúng có giống nhau không?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "No. Arteries carry oxygen-rich blood away from the heart and are thick and muscular, like hoses under pressure. Veins bring it back and are thinner and softer.",
+"vi": "Không. Động mạch mang máu giàu oxy rời khỏi tim, dày và nhiều cơ, như ống nước chịu áp lực. Tĩnh mạch đưa máu trở về, mỏng và mềm hơn.",
+"hint": "So sánh động mạch (dày, như ống nước) với tĩnh mạch (mỏng, đưa máu về). [arteries / away / hoses / veins / thinner]"
+},
+{
+"who": 0,
+"en": "I see. So what goes wrong in heart failure? Has the heart stopped?",
+"vi": "Tôi hiểu rồi. Vậy suy tim là hỏng ở chỗ nào? Tim đã ngừng đập rồi sao?",
+"hint": ""
+},
+{
+"who": 1,
+"en": "No, that's a common misunderstanding. The heart is still working, but the muscle is weaker, so fluid can build up in the lungs and legs.",
+"vi": "Không, đó là hiểu lầm khá phổ biến. Tim vẫn hoạt động, nhưng cơ tim yếu hơn nên dịch có thể tích tụ ở phổi và chân.",
+"hint": "Sửa hiểu lầm: tim vẫn chạy nhưng cơ yếu, dịch tích ở phổi và chân. [common misunderstanding / muscle weaker / fluid / lungs]"
+},
+{
+"who": 0,
+"en": "That explains why he's so breathless and his ankles are swollen.",
+"vi": "Thế thì giải thích được vì sao ông ấy khó thở và sưng mắt cá chân.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "Exactly. Medicines can help the heart pump more easily and remove extra fluid. Does that make sense so far, or shall I go over anything again?",
+"vi": "Chính xác. Thuốc có thể giúp tim bơm dễ hơn và loại bớt dịch thừa. Đến đây bác có hiểu không, hay tôi giải thích lại phần nào?",
+"hint": "Xác nhận, nói thuốc giúp tim bơm dễ và loại dịch thừa, rồi hỏi bà đã hiểu chưa. [medicines / pump / extra fluid / make sense / again]"
+},
+{
+"who": 0,
+"en": "I think so. The heart is a pump, and his pump is tired, so the fluid backs up.",
+"vi": "Tôi nghĩ là hiểu. Tim là cái bơm, bơm của ông mệt rồi nên dịch bị ứ lại.",
+"hint": ""
+},
+{
+"who": 1,
+"en": "That's exactly right, and a very clear way to put it. Please ask me anything else at any time, and we can draw a diagram together.",
+"vi": "Hoàn toàn đúng, và là cách diễn đạt rất rõ ràng. Bà cứ hỏi tôi bất cứ lúc nào, và chúng ta có thể cùng vẽ sơ đồ.",
+"hint": "Khen cách diễn đạt của bà, mời hỏi thêm và đề nghị cùng vẽ sơ đồ. [exactly right / clear way / ask / diagram]"
+}
+],
+"notes": [
+{
+"line": 1,
+"vi": "“Think of the heart as a pump” là phép ví von quen thuộc giúp người không chuyên có hình dung ngay; câu ngắn và tránh thuật ngữ khó."
+},
+{
+"line": 5,
+"vi": "So sánh với “hoses under pressure” giúp giải thích vì sao động mạch dày hơn tĩnh mạch mà không cần dùng thuật ngữ về huyết áp."
+},
+{
+"line": 7,
+"vi": "“That's a common misunderstanding” sửa quan niệm sai mà không làm người nghe thấy mình sai hay ngốc."
+},
+{
+"line": 9,
+"vi": "Hỏi kiểm tra bằng “Does that make sense so far” và “shall I go over anything again” đặt trách nhiệm lên người giải thích, không phải người nghe."
+}
+]
+},
+"pron": [
+{
+"en": "tubes called blood vessels",
+"tip": "Nhấn “TUBES” và “VES-sels”; đọc rõ âm cuối /z/ ở “tubes” và “vessels”, đừng bỏ âm cuối như tiếng Việt."
+},
+{
+"en": "It's a figure of eight",
+"tip": "“figure” đọc /ˈfɪɡjər/, nhấn âm đầu. Nối “of eight” thành /əvˈeɪt/ và nhấn từ “EIGHT”, đừng bỏ âm /t/ cuối."
+},
+{
+"en": "Arteries carry oxygen-rich blood",
+"tip": "“ARteries” nhấn âm đầu, “OXygen” nhấn âm đầu. Giọng đi lên nhẹ ở “carry” rồi xuống ở “blood”; đọc rõ âm cuối /d/."
+},
+{
+"en": "Does that make sense so far",
+"tip": "Câu hỏi Yes/No nên lên giọng ở cuối: “so FAR ↗”. “Does that” đọc nhanh, nối thành /dəz ðət/."
+}
+],
+"mistakes": [
+{
+"x": "The heart it pumps the blood to all body.",
+"v": "The heart pumps blood around the whole body.",
+"why": "Không lặp chủ ngữ bằng “it”, không dùng “the” cho “blood” nói chung, và “whole body” cần “around the”."
+},
+{
+"x": "Artery carry blood go out from heart.",
+"v": "Arteries carry blood away from the heart.",
+"why": "Cần dạng số nhiều “arteries”, động từ “carry” đứng riêng và dùng “away from” thay vì “go out from”."
+},
+{
+"x": "Your father heart is weak so he is short breath.",
+"v": "Your father's heart is weak, so he is short of breath.",
+"why": "Sở hữu cần “'s” và cụm cố định là “short of breath”, không phải “short breath”."
+},
+{
+"x": "You understand what I say?",
+"v": "Does that make sense so far?",
+"why": "Hỏi thẳng “You understand?” nghe như kiểm tra người nghe; hãy dùng câu hỏi nhẹ nhàng, đúng ngữ pháp."
+}
+],
+"task": {
+"scenario": "A student volunteer in your clinic has asked you how digestion works. Explain it simply, from the moment food is swallowed until waste leaves the body. Use clear everyday comparisons and check that they understand.",
+"scenario_vi": "Một sinh viên tình nguyện ở phòng khám nhờ bạn giải thích quá trình tiêu hóa hoạt động như thế nào. Hãy giải thích đơn giản, từ lúc nuốt thức ăn đến khi chất thải rời cơ thể, dùng ví von quen thuộc và kiểm tra xem bạn ấy đã hiểu chưa.",
+"points": [
+"Name the stomach, small intestine, large intestine and liver correctly",
+"Use at least one everyday analogy",
+"Explain the role of each organ in one or two sentences",
+"Correct one common misunderstanding",
+"Check understanding and invite questions"
+],
+"seconds": [
+90,
+150
+],
+"self": [
+"Mình dùng đúng tên các cơ quan: stomach, intestine, liver",
+"Mình có ít nhất một phép ví von dễ hiểu",
+"Mình giải thích theo thứ tự rõ ràng từ đầu đến cuối",
+"Mình dùng câu ngắn, ít thuật ngữ khó",
+"Mình đã kiểm tra người nghe bằng “Does that make sense?” hoặc tương tự",
+"Mình nói trôi chảy và nhấn đúng âm cuối của từ"
 ]
 }
 }

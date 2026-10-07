@@ -1,4 +1,4 @@
-/* Bài nghe hiểu bổ sung: A1 (lc-111..116), A2 (lc-121..126) và C1 (lc-131..136), nạp sau content-study.js */
+/* Bài nghe hiểu bổ sung: A1 (lc-111..116), A2 (lc-121..126) và C1 (lc-131..140), nạp sau content-study.js */
 LC_SETS.push(...[
 {
 "id": "lc-111",
@@ -1686,6 +1686,406 @@ LC_SETS.push(...[
 "It was cancelled because of the catering delivery.": "Việc giao đồ ăn chỉ liên quan đến phòng số bốn; bữa tối vẫn diễn ra nhưng ở trong sảnh.",
 "It will take place on the terrace as announced.": "Địa điểm ngoài trời đã được thông báo trước đó nhưng nay đổi sang sảnh chính do dự báo thời tiết.",
 "It will start earlier than first planned.": "Thông báo không đổi giờ bữa tối, chỉ nói đổi địa điểm vào trong nhà."
+}
+}
+]
+},
+{
+"id": "lc-137",
+"lvl": "C1",
+"kind": "talk",
+"title": "How the circulatory system works",
+"script": [
+[
+"Lecturer",
+"Good morning. Today I want to look at the circulatory system, and I'd like to start with a common misconception: that the heart is simply a pump pushing blood round a loop. It is a pump, of course, but it is really two pumps working side by side, and that distinction explains almost everything else we'll cover."
+],
+[
+"Lecturer",
+"The right side of the heart receives blood that has already travelled round the body and sends it to the lungs, where it picks up oxygen. The left side then takes that oxygen-rich blood and drives it out to everything else, from the brain to the stomach."
+],
+[
+"Lecturer",
+"Vessels leaving the heart are called arteries. Their walls are thick and elastic, because they have to withstand high pressure with every beat. Veins, which carry blood back, have thinner walls, and what surprises most students is that they contain small valves to stop blood sliding backwards, particularly in the legs."
+],
+[
+"Lecturer",
+"Between the two lie the capillaries, which are so narrow that red cells pass through almost in single file. This is where oxygen and nutrients actually leave the blood and enter the tissues. Although arteries and veins get most of the attention, the capillaries are where the real exchange happens."
+],
+[
+"Lecturer",
+"Now, a point about the pulse. When you feel a pulse at your wrist, you are not feeling blood rushing past; you are feeling the artery wall stretching and recoiling as a pressure wave travels along it. That wave moves far faster than the blood itself."
+],
+[
+"Lecturer",
+"Blood pressure is the next idea. It is given as two numbers: the higher one is measured as the heart contracts, the lower one as it relaxes between beats. A reading that is slightly high on a single occasion is not alarming; doctors look for a consistent pattern over several visits."
+],
+[
+"Lecturer",
+"Finally, for next week, please read the chapter on the digestive system. We will see how the stomach and the intestines depend on a good blood supply after meals, which is why you may feel sluggish after a very large lunch."
+],
+[
+"Lecturer",
+"Before you go, one practical point. The lab session on measuring pulse rates will take place on Thursday rather than Wednesday, so please check the timetable."
+]
+],
+"qs": [
+{
+"q": "What point does the lecturer make about the heart at the start?",
+"opts": [
+"It consists of two pumps operating together",
+"It is a single pump sending blood round a loop",
+"It sends blood only to the lungs and stomach",
+"It matters less than the vessels around it"
+],
+"a": 0,
+"kind": "gist",
+"why": "Người giảng mở đầu bằng cách bác bỏ quan niệm sai về một bơm duy nhất; câu 'really two pumps working side by side' cho thấy tim gồm hai bơm hoạt động song song.",
+"wrong": {
+"It is a single pump sending blood round a loop": "Đây chính là quan niệm sai mà người giảng nêu ra rồi bác bỏ khi nói tim thực chất là hai bơm cạnh nhau.",
+"It sends blood only to the lungs and stomach": "Bên phải gửi máu tới phổi, còn bên trái đẩy máu đi khắp cơ thể, từ não đến dạ dày, nên không chỉ có hai nơi này.",
+"It matters less than the vessels around it": "Bài giảng không so sánh tầm quan trọng; người giảng còn nói sự phân biệt hai bơm giải thích hầu hết nội dung còn lại."
+}
+},
+{
+"q": "What does the lecturer suggest about the pulse felt at the wrist?",
+"opts": [
+"It shows how fast the blood is travelling",
+"It is caused by valves closing inside the veins",
+"It is strongest in people with high blood pressure",
+"It is the artery wall responding to a pressure wave"
+],
+"a": 3,
+"kind": "inference",
+"why": "Người giảng nói ta không cảm nhận máu chảy qua mà cảm nhận thành động mạch giãn ra và co lại khi sóng áp lực đi qua, nên mạch phản ánh phản ứng của thành động mạch.",
+"wrong": {
+"It shows how fast the blood is travelling": "Người giảng nói rõ sóng áp lực di chuyển nhanh hơn nhiều so với bản thân dòng máu, nên mạch không cho biết tốc độ máu.",
+"It is caused by valves closing inside the veins": "Van được nhắc đến ở tĩnh mạch để ngăn máu chảy ngược, còn mạch ở cổ tay liên quan đến thành động mạch, không phải van.",
+"It is strongest in people with high blood pressure": "Bài giảng không hề so sánh mạch của người huyết áp cao; huyết áp chỉ được nói riêng ở phần sau."
+}
+},
+{
+"q": "What are students asked to read before the next lecture?",
+"opts": [
+"A chapter about the heart's two sides",
+"A chapter about how food is processed",
+"A chapter about measuring pulse rates",
+"A chapter about how lungs absorb oxygen"
+],
+"a": 1,
+"kind": "next-step",
+"why": "Cuối bài người giảng yêu cầu đọc chương về hệ tiêu hóa cho tuần sau, tức chương nói về cách thức ăn được xử lý, gồm dạ dày và ruột.",
+"wrong": {
+"A chapter about the heart's two sides": "Phần về hai bên của tim đã được giảng trong bài hôm nay, không phải bài đọc cho tuần sau.",
+"A chapter about measuring pulse rates": "Đo nhịp mạch là buổi thực hành dời sang thứ Năm, người giảng không giao chương đọc về chủ đề này.",
+"A chapter about how lungs absorb oxygen": "Phổi chỉ được nhắc khi nói về máu nhận oxy, và không có chương riêng nào về phổi được giao đọc."
+}
+}
+]
+},
+{
+"id": "lc-138",
+"lvl": "C1",
+"kind": "interview",
+"title": "Teenagers and school start times",
+"script": [
+[
+"Interviewer",
+"Dr Marlow, you've spent three years studying what happens when secondary schools start later. What prompted the research?"
+],
+[
+"Dr Marlow",
+"Mainly a puzzle, really. Teachers kept telling us that students were drowsy in first lessons, and the usual explanation was that they stayed up too late on their phones. We wanted to test whether biology might be the larger factor."
+],
+[
+"Interviewer",
+"And what did you find?"
+],
+[
+"Dr Marlow",
+"Adolescents' body clocks shift later during puberty, so asking a sixteen-year-old to concentrate at eight o'clock is a bit like asking an adult to concentrate at five in the morning. In the six schools that moved their start from eight to a quarter past nine, attendance improved by roughly four percent, which is modest but consistent."
+],
+[
+"Interviewer",
+"Four percent doesn't sound dramatic."
+],
+[
+"Dr Marlow",
+"No, and I'd caution against overselling it. What surprised us was that exam results barely changed in the first year. The benefit showed up elsewhere, in fewer reports of low mood and fewer late arrivals."
+],
+[
+"Interviewer",
+"So should every school simply push back its day?"
+],
+[
+"Dr Marlow",
+"I'd stop short of that. Later starts mean later finishes, and that collides with sports, part-time jobs and, for some families, childcare. One school we studied had to cut its after-school clubs, and parents were far from happy."
+],
+[
+"Interviewer",
+"What would you advise a head teacher who is tempted?"
+],
+[
+"Dr Marlow",
+"Pilot it for a term before committing, and ask the students themselves. We'll be publishing a short guide for schools in the spring, and the full data should be available online by the end of this month."
+]
+],
+"qs": [
+{
+"q": "Why did the researchers begin the study?",
+"opts": [
+"To find out whether phones were damaging exam results",
+"To test whether drowsiness had a biological cause",
+"To measure how childcare affects late arrivals",
+"To compare attendance in schools abroad"
+],
+"a": 1,
+"kind": "detail",
+"why": "Dr Marlow nói giáo viên giải thích sự buồn ngủ bằng việc thức khuya vì điện thoại, còn nhóm muốn kiểm tra xem yếu tố sinh học có lớn hơn không.",
+"wrong": {
+"To find out whether phones were damaging exam results": "Điện thoại chỉ là lời giải thích thông thường của giáo viên; nhóm nghiên cứu muốn kiểm tra giả thuyết sinh học, không phải tác hại lên kết quả thi.",
+"To measure how childcare affects late arrivals": "Việc trông trẻ chỉ được nhắc như một khó khăn của giờ tan học muộn, không phải lý do khởi đầu nghiên cứu.",
+"To compare attendance in schools abroad": "Bài chỉ nói đến sáu trường đã dời giờ vào học, không hề so sánh với các trường ở nước ngoài."
+}
+},
+{
+"q": "How does Dr Marlow feel about the attendance improvement?",
+"opts": [
+"She sees it as a dramatic breakthrough",
+"She thinks it proves exam results will rise",
+"She finds it encouraging but modest",
+"She regards it as too small to be useful"
+],
+"a": 2,
+"kind": "inference",
+"why": "Bà gọi mức tăng khoảng bốn phần trăm là 'modest but consistent' và cảnh báo đừng thổi phồng, nghĩa là bà thấy khả quan nhưng khiêm tốn.",
+"wrong": {
+"She sees it as a dramatic breakthrough": "Bà đồng ý với người phỏng vấn rằng con số không ấn tượng và nói mình sẽ cảnh báo chống việc thổi phồng kết quả.",
+"She thinks it proves exam results will rise": "Bà nói điểm thi hầu như không đổi trong năm đầu, nên không thể nói nó chứng minh điểm sẽ tăng.",
+"She regards it as too small to be useful": "Bà gọi nó là nhỏ nhưng đều đặn và nêu thêm các lợi ích khác như ít buồn bã hơn, nên không coi là vô dụng."
+}
+},
+{
+"q": "When will the full data be published online?",
+"opts": [
+"Before the month is over",
+"In the spring",
+"After a one-term pilot",
+"At the end of the school year"
+],
+"a": 0,
+"kind": "number",
+"why": "Cuối cuộc phỏng vấn bà nói dữ liệu đầy đủ sẽ có trực tuyến vào cuối tháng này, tức trước khi tháng kết thúc.",
+"wrong": {
+"In the spring": "Mùa xuân là thời điểm xuất bản bản hướng dẫn ngắn cho các trường, không phải dữ liệu đầy đủ.",
+"After a one-term pilot": "Thử nghiệm một học kỳ là lời khuyên dành cho hiệu trưởng, không liên quan đến lịch công bố dữ liệu.",
+"At the end of the school year": "Không có chỗ nào nhắc đến cuối năm học; bà chỉ nói dữ liệu sẽ có vào cuối tháng này."
+}
+}
+]
+},
+{
+"id": "lc-139",
+"lvl": "C1",
+"kind": "conversation",
+"title": "Negotiating a report deadline",
+"script": [
+[
+"Priya",
+"Tom, have you got a minute? It's about the client report. I know Friday was the plan, but I'm not sure I can hand over the final figures before Monday."
+],
+[
+"Tom",
+"Monday is tricky, Priya. The client is expecting it first thing Tuesday, and I need a full day to check and format everything."
+],
+[
+"Priya",
+"I understand. The problem is that the regional sales data arrived two days late, and I'd rather not send you numbers I haven't properly verified."
+],
+[
+"Tom",
+"Fair enough. Could you send me the sections that are finished so I can start on the layout in the meantime?"
+],
+[
+"Priya",
+"That's possible. The summary and the first two chapters are done, so I could email those by Thursday afternoon. The sales analysis would follow on Monday morning."
+],
+[
+"Tom",
+"Monday morning works if it's before ten. After that I have the budget review, and I wouldn't be able to touch the report until the afternoon."
+],
+[
+"Priya",
+"Ten might be ambitious. How about noon, and I ask Dana whether she can help check the formatting?"
+],
+[
+"Tom",
+"Dana's on leave until Wednesday, so that wouldn't help. Look, what if we tell the client Wednesday morning instead of Tuesday? I'm fairly sure they wouldn't object, as long as we warn them today."
+],
+[
+"Priya",
+"I'd feel more comfortable with that. Shall I draft a short email, or would you rather phone them?"
+],
+[
+"Tom",
+"I'll phone. Clients tend to take a delay better when they hear it from a person. Just send me the key points so I don't forget anything."
+],
+[
+"Priya",
+"Will do. Thanks for being flexible, Tom."
+],
+[
+"Tom",
+"No problem. But let's not make a habit of this."
+]
+],
+"qs": [
+{
+"q": "What are the speakers mainly doing?",
+"opts": [
+"Deciding which parts of a report to remove",
+"Arguing about who caused a delay",
+"Agreeing a revised schedule for a report",
+"Planning the agenda for a budget review"
+],
+"a": 2,
+"kind": "gist",
+"why": "Hai đồng nghiệp bàn cách xử lý việc số liệu đến muộn và thống nhất lịch mới: gửi từng phần trước và báo khách hàng dời sang sáng thứ Tư.",
+"wrong": {
+"Deciding which parts of a report to remove": "Không phần nào bị loại bỏ; Priya chỉ đề nghị gửi trước các phần đã xong và gửi phần phân tích bán hàng sau.",
+"Arguing about who caused a delay": "Cuộc trò chuyện hợp tác và lịch sự; Tom nói 'Fair enough' và cảm ơn sự linh hoạt, không ai đổ lỗi cho ai.",
+"Planning the agenda for a budget review": "Buổi họp ngân sách chỉ được Tom nhắc để giải thích vì sao anh bận sau mười giờ sáng thứ Hai."
+}
+},
+{
+"q": "Why does Tom say Dana cannot help with the formatting?",
+"opts": [
+"She is working on the budget review",
+"She has not seen the regional data",
+"She is unfamiliar with the layout",
+"She is away until midweek"
+],
+"a": 3,
+"kind": "detail",
+"why": "Tom nói Dana nghỉ phép đến thứ Tư, tức đang vắng mặt đến giữa tuần nên không thể giúp kiểm tra định dạng vào sáng thứ Hai.",
+"wrong": {
+"She is working on the budget review": "Buổi họp ngân sách là việc của Tom vào sáng thứ Hai, không ai nói Dana tham gia việc đó.",
+"She has not seen the regional data": "Không có chi tiết nào về việc Dana đã xem dữ liệu hay chưa; lý do duy nhất Tom đưa ra là cô đang nghỉ phép.",
+"She is unfamiliar with the layout": "Priya đề xuất nhờ Dana vì cô có thể kiểm tra định dạng; Tom không nghi ngờ khả năng mà chỉ nói cô vắng mặt."
+}
+},
+{
+"q": "What will Tom do about the client?",
+"opts": [
+"Write a short email explaining the delay",
+"Speak to them by phone about the change",
+"Ask them to accept the Tuesday date",
+"Send them the finished chapters today"
+],
+"a": 1,
+"kind": "next-step",
+"why": "Tom từ chối soạn email và nói sẽ gọi điện vì khách hàng dễ chấp nhận chậm trễ hơn khi nghe trực tiếp từ một người.",
+"wrong": {
+"Write a short email explaining the delay": "Đó là phương án Priya đưa ra, nhưng Tom chọn gọi điện thay vì email.",
+"Ask them to accept the Tuesday date": "Ngày thứ Ba là thời hạn khách mong đợi ban đầu; kế hoạch mới là báo họ rằng sẽ giao vào sáng thứ Tư.",
+"Send them the finished chapters today": "Các chương đã xong sẽ được Priya gửi cho Tom vào chiều thứ Năm để làm bố cục, không gửi cho khách hàng."
+}
+}
+]
+},
+{
+"id": "lc-140",
+"lvl": "C1",
+"kind": "announcement",
+"title": "A flu clinic update",
+"script": [
+[
+"Announcer",
+"This is a public health notice for residents of the Eastbrook area, brought to you on behalf of the local health partnership."
+],
+[
+"Announcer",
+"From next week, the annual flu vaccination programme will be delivered differently. Instead of booking through your doctor's surgery, adults over sixty-five and those with long-term conditions such as asthma or heart disease will be invited to attend one of three community clinics."
+],
+[
+"Announcer",
+"The main clinic will run at the Greenfield Library from Monday the fourteenth, between nine and four each day."
+],
+[
+"Announcer",
+"Sorry, I need to correct that. The main clinic will be held at the Town Hall, not the library, because the library's lift is out of order and many patients struggle with the stairs. The dates and hours are unchanged."
+],
+[
+"Announcer",
+"Please bring your invitation letter if you have received one, and wear a short-sleeved top so the nurse can reach your upper arm easily."
+],
+[
+"Announcer",
+"If you have had a severe reaction to a vaccine in the past, or if you have a fever on the day, you should postpone and call the helpline instead."
+],
+[
+"Announcer",
+"Anyone who cannot travel will not be forgotten. Home visits can be arranged through the helpline, although you should expect to wait up to two weeks, as the nursing team is stretched at present."
+],
+[
+"Announcer",
+"The helpline number is on your letter, and the lines are open on weekdays until six in the evening. We would ask you not to call just to check the clinic address, since the information is repeated on our website and in the local paper."
+],
+[
+"Announcer",
+"Finally, a reminder that the vaccine takes around ten to fourteen days to give full protection, so the sooner you attend, the better prepared you will be before the cold weather arrives. Thank you for listening."
+]
+],
+"qs": [
+{
+"q": "What is the main purpose of the announcement?",
+"opts": [
+"To explain a new way of giving flu vaccinations",
+"To announce a new library opening in Eastbrook",
+"To warn residents about a shortage of nurses",
+"To ask people to book through their surgery"
+],
+"a": 0,
+"kind": "gist",
+"why": "Thông báo nói chương trình tiêm cúm năm nay sẽ được thực hiện khác đi, với các phòng khám cộng đồng thay vì đặt lịch qua bác sĩ gia đình.",
+"wrong": {
+"To announce a new library opening in Eastbrook": "Thư viện chỉ xuất hiện trong phần đính chính địa điểm, và nó bị loại vì thang máy hỏng, không phải một cơ sở mới mở.",
+"To warn residents about a shortage of nurses": "Đội y tá bị quá tải chỉ được nhắc ngắn khi nói về thời gian chờ thăm khám tại nhà, không phải mục đích chính.",
+"To ask people to book through their surgery": "Bản tin nói ngược lại: thay vì đặt lịch qua phòng khám bác sĩ, người dân sẽ được mời đến các điểm tiêm cộng đồng."
+}
+},
+{
+"q": "Why does the speaker change the location of the main clinic?",
+"opts": [
+"The library has closed permanently",
+"The Town Hall has longer opening hours",
+"A piece of equipment at the library is not working",
+"Too many patients live near the Town Hall"
+],
+"a": 2,
+"kind": "detail",
+"why": "Người nói đính chính rằng phòng khám chính ở Town Hall vì thang máy của thư viện đang hỏng và nhiều bệnh nhân khó leo cầu thang.",
+"wrong": {
+"The library has closed permanently": "Chỉ có thang máy đang hỏng; không có thông tin nào nói thư viện đóng cửa vĩnh viễn.",
+"The Town Hall has longer opening hours": "Người nói nhấn mạnh ngày và giờ không thay đổi, nên giờ mở cửa không phải lý do đổi địa điểm.",
+"Too many patients live near the Town Hall": "Lý do được nêu là khả năng tiếp cận do thang máy hỏng, không có lời nào về nơi cư trú của bệnh nhân."
+}
+},
+{
+"q": "How long might someone wait for a home visit?",
+"opts": [
+"Up to a week",
+"Around ten days",
+"About a month",
+"As long as a fortnight"
+],
+"a": 3,
+"kind": "number",
+"why": "Người nói cho biết thời gian chờ thăm khám tại nhà có thể lên tới hai tuần, tương đương một fortnight.",
+"wrong": {
+"Up to a week": "Thời gian chờ được nêu là tối đa hai tuần, dài hơn một tuần.",
+"Around ten days": "Mười đến mười bốn ngày là thời gian vắc-xin cần để bảo vệ đầy đủ, không phải thời gian chờ thăm khám tại nhà.",
+"About a month": "Bản tin chỉ nói tối đa hai tuần vì đội y tá quá tải, không nhắc đến một tháng."
 }
 }
 ]
