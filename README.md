@@ -2,7 +2,7 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ A1 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt: không cần máy chủ, không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn, có thể đồng bộ giữa các thiết bị và dùng được khi mất mạng.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.47.1.
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.48.17.
 
 ## Nội dung hiện có
 
@@ -33,6 +33,7 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.47.1.
 - Ôn thẻ đến hạn bằng thuật toán FSRS; mỗi từ có hai thẻ và hiện dưới nhiều hình thức (lật thẻ, chọn nghĩa, nghe và chọn, chọn định nghĩa tiếng Anh, điền từ vào câu, đoán từ từ định nghĩa, sắp xếp chữ cái, nghe và gõ).
 - Tiến trình ghi nhớ chia 5 nhóm có màu (chưa học, mới học, đang học, đang củng cố, đã vững) và thanh tiến độ ba màu ở thư viện.
 - Gõ từ được so sánh từng ký tự: đúng thì xanh, sai thì đỏ, có số ký tự của đáp án.
+- **Thuật ngữ y khoa theo chuyên khoa**: 21 chuyên khoa (tim mạch, hô hấp, tiêu hóa, thần kinh, thận tiết niệu, sản phụ khoa, nội tiết, huyết học miễn dịch, cơ xương khớp, da liễu, mắt, tai mũi họng, tâm thần, nhi, cấp cứu, truyền nhiễm, ung bướu, dược, ngoại khoa, chẩn đoán hình ảnh và xét nghiệm, điều dưỡng), mỗi chuyên khoa từ 100 từ cơ bản kèm nghĩa, định nghĩa tiếng Anh và câu ví dụ.
 - **Sổ lỗi sai** (phần 2 của trang Luyện tập): mọi câu sai (luyện tập, ngữ pháp, bài học, quiz từ vựng) tự vào sổ và được ôn lại sau 1, 3, 7, 14, 30 ngày; trả lời đúng ở mốc cuối thì ra khỏi sổ. Dữ liệu sổ được đồng bộ giữa các thiết bị.
 - **Điểm chính sau mỗi bài đọc và bài nghe**: từ vựng khó, ngữ pháp đặc biệt và mẹo đọc hiểu; gợi ý bài tiếp theo theo độ dài và độ khó.
 - **Kiểm tra đầu vào** gồm từ vựng, ngữ pháp và nghe (45 câu), đánh giá theo phần yếu nhất và gợi ý chặng bắt đầu.
@@ -84,7 +85,7 @@ Danh sách này cũng hiển thị trong mục **Góc tác giả** của ứng d
 | `content-grammar2.js`, `content-grammar3.js`, `content-grammar4.js` | Các điểm ngữ pháp bổ sung (A1 đến C1) |
 | `content-defs-vi.js`, `content-examples.js` | Bản dịch định nghĩa và câu ví dụ của từ vựng |
 | `content-vocab2.js` | Bộ từ vựng cách dùng từ: kết hợp động từ, từ với giới từ, từ dễ nhầm, phrasal verb, tiền tố và hậu tố, câu giao tiếp |
-| `content-med2.js`, `content-units-med.js` | Bổ sung từ vựng y khoa; các chặng y khoa chia nhỏ |
+| `content-med2.js`, `content-spec.js`, `content-units-med.js` | Bổ sung từ vựng y khoa; các chặng y khoa chia nhỏ |
 | `content-ipa.js`, `content-patch.js` | Phiên âm IPA và các chỉnh sửa nhỏ |
 | `content-listen2.js`, `content-listen3.js`, `content-reading2.js`, `content-reading3.js`, `content-speaking.js`, `content-dictation.js` | Bài nghe hiểu, bài đọc, tình huống Luyện nói, câu nghe chép |
 | `audio-map.js` | Bảng tra từ câu và giọng đọc sang đường dẫn tệp âm thanh |

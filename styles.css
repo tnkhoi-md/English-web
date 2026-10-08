@@ -1208,3 +1208,37 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .rd-notes .rdn-eg{color:var(--ink);font-style:italic}
 .rd-notes .rdn-eg::before{color:var(--muted);font-weight:600}
 .rd-notes .rdn-gv,.rd-notes .rdn-gv .en-t{color:var(--muted)}
+/* 4.48.0: trang Thuật ngữ y khoa */
+.sp-hero{display:grid;gap:14px;padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb,#0a8f78 14%,var(--surface,#fff)),color-mix(in srgb,#3158d4 10%,var(--surface,#fff)));border:1px solid var(--rule);margin-bottom:14px}
+.sp-hero h2{margin:0 0 4px;font-size:21px}.sp-hero p{margin:0;max-width:64ch}
+.sp-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:10px}
+.sp-card{--tc:#0a8f78;border:1px solid var(--rule);border-top:4px solid var(--tc);border-radius:16px;padding:14px 16px;background:var(--surface,#fff);display:grid;gap:10px;align-content:start}
+.sp-card header{display:flex;gap:12px;align-items:center}.sp-card h3{margin:0;font-size:17px;line-height:1.25}.sp-card header p{margin:2px 0 0}
+.sp-ic{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;font-size:23px;background:color-mix(in srgb,var(--tc) 14%,transparent);flex:none}
+.sp-meter .meter{display:flex;height:8px;border-radius:99px;overflow:hidden;background:var(--sunk)}
+.sp-nums{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;font-size:14px}
+.sp-act{display:flex;flex-wrap:wrap;gap:8px}
+.sp-base{display:flex;flex-wrap:wrap;gap:8px}
+.sp-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tc) 35%,transparent);background:color-mix(in srgb,var(--tc) 8%,transparent);text-decoration:none;color:inherit;font-size:14px}
+.sp-chip b{font-size:12px;color:var(--muted)}
+.tabs{overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none}.tabs .tab{white-space:nowrap}
+@media (max-width:560px){.sp-stats .stat b{font-size:22px}.sp-hero{padding:14px}.sp-hero h2{font-size:18px}}
+/* 4.48.4: trang Thuật ngữ y khoa chia ba mục, không dùng tab */
+.sp-sub{margin:18px 0 6px;font-size:17px}
+.mp-wrap{display:grid;gap:10px;margin-top:10px}
+.mp-grp{border:1px solid var(--rule);border-radius:14px;padding:6px 14px;background:var(--surface,#fff)}
+.mp-grp summary{cursor:pointer;padding:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mp-grp[open] summary{border-bottom:1px solid var(--rule);margin-bottom:6px}
+
+.mp-build{margin-top:12px;border:1px solid var(--rule);border-radius:14px;padding:12px 14px;background:var(--surface,#fff)}
+.mp-build .panel{box-shadow:none;border:0;padding:8px 0 0}
+
+/* Cấu tạo từ của thuật ngữ y khoa */
+.lw-parts{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin:4px 0;font-size:14px}
+.lw-parts i{color:var(--muted);font-style:normal}
+.lw-pl{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-right:2px}
+.lw-pt{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--rule);border-radius:8px;padding:1px 8px;background:var(--surface,#fff)}
+.lw-pt b{color:#7a4fd0}.lw-pt small{color:var(--muted);font-size:12px}
+.lw-tk{font-style:italic;color:var(--ink)}

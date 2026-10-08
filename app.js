@@ -3047,7 +3047,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.47.1"; APP.build = "07.10.26";
+APP.version = "4.48.17"; APP.build = "07.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -5021,6 +5021,137 @@ Object.assign(ACT, {
   },
   plApplyGo() { ACT._plGo = true; ACT.plApply(); }
 });
+/* ---------------- 4.48.0: trang Thuật ngữ y khoa thiết kế lại: chuyên khoa (từ 100 từ cơ bản mỗi chuyên khoa), hình vị, ghép thuật ngữ, sổ từ ---------------- */
+const SP_TOPICS = () => LIB.filter(t => t.group === "specialty" && /^s-/.test(t.id));
+let SPQ = "";
+const wordsTabs = tab => `<div class="tabs" role="tablist">${[["spec", "Chuyên khoa"], ["anatomy", "Hình vị y khoa"], ["build", "Ghép thuật ngữ"], ["list", "Sổ từ của tôi"]].map(([id, l]) => `<a role="tab" href="#/words${id === "spec" ? "" : "/" + id}" aria-selected="${tab === id}" style="text-decoration:none"><button tabindex="-1" class="tab ${tab === id ? "on" : ""}">${l}</button></a>`).join("")}</div>`;
+function spCard(t) {
+  const basic = t.words.filter(w => w.lvl === "T1"), ext = t.words.length - basic.length, d = t.words.filter(isLearned).length, fresh = t.words.length - d;
+  return `<article class="sp-card" style="--tc:${t.color}"><header><span class="sp-ic" aria-hidden="true">${t.icon}</span><div><h3 lang="en">${esc(t.title)}</h3><p class="muted small">${esc(t.vi)}</p></div></header>
+    <div class="sp-meter"><span class="meter">${m3i(t.words)}</span></div>
+    <div class="sp-nums"><span><b>${basic.length}</b> từ cơ bản${ext ? ` · <b>${ext}</b> mở rộng` : ""}</span><span class="muted">${d}/${t.words.length} đã học</span></div>
+    <div class="sp-act">${fresh ? `<a class="btn primary small" href="#/learn/${t.id}">Học từ mới</a>` : ""}${d ? `<a class="btn small" href="#/practice/e-tp-${t.id}">Luyện tập</a>` : ""}<a class="btn quiet small" href="#/library/${t.id}">Xem ${t.words.length} từ</a></div></article>`;
+}
+function spSearchHtml() {
+  const q = norm(SPQ), qv = SPQ.trim().toLowerCase(); if (!q) return "";
+  const hit = LIB.filter(t => t.track === "med").flatMap(t => t.words).filter(w => norm(w.w).includes(q) || w.vi.toLowerCase().includes(qv));
+  return `<p class="muted small">${hit.length} từ khớp${hit.length > 60 ? ", hiển thị 60 từ đầu" : ""}.</p><div class="lw-list">${hit.slice(0, 60).map(w => wordRow(w, true)).join("") || ""}</div>`;
+}
+const WORD_SECTIONS = [
+  ["Giải phẫu", "a-regions a-skeleton a-muscles a-cardio a-resp a-gi a-neuro a-uro a-endo a-senses bk-skin bk-skeleton bk-muscle bk-blood"],
+  ["Sinh lý", "p-core p-circ p-systems bk-molecular-cell bk-genes-tissues"],
+  ["Dược lý", "s-pharmacology"],
+  ["Điều dưỡng và chăm sóc người bệnh", "s-nursing"],
+  ["Bệnh học", "d-general d-infect d-systems"],
+  ["Lâm sàng", "c-signs c-exam c-treat"]
+];
+const SP_BASIC_IDS = new Set(WORD_SECTIONS.flatMap(([, ids]) => ids.split(" ")));
+function morphHtml() {
+  const grp = (type, title, hint) => { const ms = MORPHEMES.filter(m => m[0] === type); return `<details class="mp-grp"><summary><b>${title}</b> <span class="chip">${ms.length}</span> <span class="muted small">${hint}</span></summary>${ms.map(([, f, en, vi, ex]) => `<div class="morph"><b lang="en">${esc(f)}</b><span><span lang="en">${esc(en)}</span><br><span class="muted small">${esc(vi)}</span></span><span class="ex row" lang="en">${esc(ex)} ${hear(ex)}</span></div>`).join("")}</details>`; };
+  return `<p class="muted" style="max-width:64ch">Phần lớn thuật ngữ y khoa ghép từ gốc Hy Lạp và La-tinh theo công thức tiền tố, gốc từ, hậu tố. Biết các mảnh này là đoán được nghĩa của hàng trăm từ. Bấm từng nhóm để mở.</p>
+    <div class="mp-wrap">${grp("prefix", "Tiền tố", "đứng trước, đổi hoặc thêm nghĩa")}${grp("root", "Gốc từ", "phần nghĩa chính, thường là cơ quan")}${grp("suffix", "Hậu tố", "đứng sau, cho biết bệnh, thủ thuật hay tình trạng")}</div>
+    <div class="mp-build"><div class="row between"><h3 style="margin:0">Luyện ghép thuật ngữ</h3><button class="btn ${WB.open ? "quiet" : ""}" data-act="wbToggle">${WB.open ? "Thu gọn" : "Bắt đầu luyện"}</button></div>${WB.open ? `<div class="lv-filter mt-sys" role="group" aria-label="Chọn hệ cơ quan" style="margin:8px 0">${[["", "Tất cả"], ...Object.entries(SYS_LABELS)].filter(([k]) => !k || TERMS.some(t => t.s === k)).map(([k, l]) => `<button class="exm-btn ${BSYS === k ? "on" : ""}" data-act="buildSys" data-v="${k}" aria-pressed="${BSYS === k}">${l}</button>`).join("")}</div>` + buildGameHtml() : `<p class="muted small" style="margin:6px 0 0">Ghép tiền tố, gốc từ và hậu tố để tạo thuật ngữ đúng.</p>`}</div>`;
+}
+
+/* Cấu tạo từ cho thuật ngữ y khoa: tách tiền tố, gốc từ, hậu tố bằng bảng hình vị có sẵn. */
+let _MPX = null;
+function morphIndex() {
+  if (_MPX) return _MPX; _MPX = [];
+  MORPHEMES.forEach(([type, f, en, vi]) => String(f).split("/").forEach(x => { const form = x.trim().replace(/-/g, "").toLowerCase(); if (form && /^[a-z]+$/.test(form)) _MPX.push({ type, form, shown: x.trim(), en, vi }); }));
+  _MPX.sort((a, b) => b.form.length - a.form.length); return _MPX;
+}
+const _MPC = {};
+const MP_SKIP = new Set("refusal reversal removal arrival denial proposal approval survival renewal betrayal interval lateral federal several general tutorial material memorial".split(" "));
+function medParts(word) {
+  const lw = String(word || "").trim().toLowerCase(); if (!/^[a-z]{6,}$/.test(lw) || MP_SKIP.has(lw)) return null; if (lw in _MPC) return _MPC[lw];
+  const idx = morphIndex(), n = lw.length, memo = new Map();
+  const solve = i => {
+    if (i === n) return [];
+    if (memo.has(i)) return memo.get(i);
+    let best = null;
+    for (const m of idx) {
+      if (!lw.startsWith(m.form, i)) continue;
+      const end = i + m.form.length;
+      if (m.type === "prefix" && i !== 0 && !(prevPrefix(i))) continue;
+      if (m.type === "suffix" && end !== n) continue;
+      if (m.type === "prefix" && m.form.length < 2) continue;
+      if (m.type === "suffix" && m.form.length < 2) continue;
+      for (const skip of (m.type === "root" && "oiae".includes(lw[end] || "~") ? [0, 1] : [0])) {
+        const rest = solve(end + skip); if (!rest) continue;
+        const cand = [{ ...m, vowel: skip ? lw[end] : "" }, ...rest];
+        if (!best || cand.length < best.length) best = cand;
+      }
+    }
+    memo.set(i, best); return best;
+  };
+  const prevPrefix = i => idx.some(m => m.type === "prefix" && m.form.length === i && lw.startsWith(m.form));
+  let r = solve(0);
+  if (r && r.length < 2) r = null;
+  /* cần ít nhất một gốc từ, hoặc cặp tiền tố + hậu tố dài (endo- + -scopy); gốc ngắn 2 chữ chỉ nhận khi đi kèm mảnh khác */
+  if (r && !r.some(x => x.type === "root") && !(r.some(x => x.type === "prefix" && x.form.length >= 3) && r.some(x => x.type === "suffix" && x.form.length >= 4))) r = null;
+  if (r && r.filter(x => x.type === "root").every(x => x.form.length < 3) && r.length < 3) r = null;
+  if (r && r.some(x => x.type === "root" && x.form.length < 2)) r = null;
+  _MPC[lw] = r ? r.map(x => [x.type === "prefix" ? x.shown.split("/")[0].trim().replace(/-?$/, "-") : x.type === "suffix" ? "-" + x.form : x.form + (x.vowel ? "/" + x.vowel : ""), x.vi]) : null;
+  return _MPC[lw];
+}
+function medPartsFor(w) {
+  if (!w || !w.topic || w.topic.track !== "med") return "";
+  let ps = null;
+  const tm = typeof TERMS !== "undefined" && TERMS.find(t => t.t.toLowerCase() === String(w.w).toLowerCase());
+  if (tm) {
+    const idx = morphIndex(); ps = []; let bail = false;
+    tm.p.forEach(p => {
+      if (bail) return;
+      const k = p.replace(/-/g, "").toLowerCase();
+      if (/^[oiae]$/.test(k) && ps.length) { ps[ps.length - 1][0] += "/" + k; return; }
+      if (k.length < 2) { ps = null; bail = true; return; }
+      const m = idx.find(x => x.form === k) || (k.length >= 3 ? idx.find(x => x.form.length >= 3 && (x.form.startsWith(k) || k.startsWith(x.form))) : null);
+      ps.push([m ? (m.type === "prefix" ? k + "-" : m.type === "suffix" ? "-" + k : k) : p, m ? m.vi : ""]);
+    });
+  }
+  else ps = medParts(w.w);
+  const chips = ps => ps.map(([f, vi]) => `<span class="lw-pt"><b>${esc(f)}</b>${vi ? `<small>${esc(vi)}</small>` : ""}</span>`).join('<i>+</i>');
+  if (ps && ps.length >= 2) return `<div class="lw-parts" lang="en"><span class="lw-pl">Cấu tạo từ</span>${chips(ps)}</div>`;
+  /* Cụm từ nhiều chữ: tách từng chữ ghép được (tối đa 2 chữ) */
+  const toks = String(w.w).split(/[\s\-\/(),]+/).filter(t => /^[A-Za-z]{6,}$/.test(t));
+  if (String(w.w).trim().includes(" ") && toks.length) {
+    const rows = toks.map(t => [t, medParts(t)]).filter(([, p]) => p && p.length >= 2).slice(0, 2);
+    if (rows.length) return rows.map(([t, p], k) => `<div class="lw-parts" lang="en">${k ? "" : '<span class="lw-pl">Cấu tạo từ</span>'}<span class="lw-tk">${esc(t)}</span><i>=</i>${chips(p)}</div>`).join("");
+  }
+  return "";
+}
+const _wordRow48 = wordRow;
+wordRow = function (w, a, b) { const h = _wordRow48(w, a, b), p = medPartsFor(w); return p ? h.replace(/(<div class="lw-vi">[^<]*<\/div>)/, "$1" + p) : h; };
+const _viewLearn48 = viewLearn;
+viewLearn = function () {
+  const h = _viewLearn48(); if (typeof LN === "undefined" || !LN || LN.phase !== "reveal" || !LN.words || !LN.words[LN.i]) return h;
+  const p = medPartsFor(LN.words[LN.i]); return p ? h.replace(/(<p style="font-size:24px;font-weight:600">[^<]*<\/p>)/, "$1" + p) : h;
+};
+/* Trang chủ đề y khoa: đường dẫn quay lại về Thuật ngữ y khoa */
+const _viewLibrary48 = viewLibrary;
+viewLibrary = function () {
+  const h = _viewLibrary48(), t = ROUTE.arg && LIB_BY[ROUTE.arg];
+  return t && t.track === "med" ? h.replace('<a class="muted small" href="#/library">Thư viện từ vựng</a>', '<a class="muted small" href="#/words">Thuật ngữ y khoa</a>') : h;
+};
+const WB = { open: false };
+ACT.wbToggle = function () { WB.open = !WB.open; render(); };
+function spView() {
+  const sp = SP_TOPICS(), all = LIB.filter(t => t.track === "med"), allW = all.flatMap(t => t.words), learned = allW.filter(isLearned).length;
+  const byId = Object.fromEntries(all.map(t => [t.id, t]));
+  const search = `<input class="search" id="spsearch" type="search" placeholder="Tìm thuật ngữ hoặc nghĩa trong mọi mục…" value="${esc(SPQ)}" aria-label="Tìm thuật ngữ y khoa"><div id="splist" style="margin-top:12px">${spSearchHtml()}</div>`;
+  const lede = `<p class="muted">${allW.length} thuật ngữ trong ${all.length} chủ đề, bạn đã học ${learned}. Mỗi từ có nghĩa, định nghĩa tiếng Anh và câu ví dụ.</p>`;
+  const sec1 = `<h2 class="sec-h">1. Cấu tạo thuật ngữ y khoa</h2>${morphHtml()}`;
+  const sec2 = `<h2 class="sec-h" style="margin-top:28px">2. Thuật ngữ cơ bản</h2>` + WORD_SECTIONS.map(([name, ids]) => { const ts = ids.split(" ").map(id => byId[id]).filter(Boolean); return ts.length ? `<h3 class="sp-sub">${name} <span class="muted small">${ts.reduce((a, t) => a + t.words.length, 0)} từ</span></h3><div class="sp-grid">${ts.map(spCard).join("")}</div>` : ""; }).join("");
+  const spec = sp.filter(t => !SP_BASIC_IDS.has(t.id));
+  const sec3 = `<h2 class="sec-h" style="margin-top:28px">3. Thuật ngữ chuyên khoa</h2><p class="muted">${spec.length} chuyên khoa, mỗi chuyên khoa từ 100 từ cơ bản.</p>${spec.length ? `<div class="sp-grid">${spec.map(spCard).join("")}</div>` : `<div class="empty"><p>Chưa có dữ liệu chuyên khoa.</p></div>`}`;
+  return lede + search + sec1 + sec2 + sec3;
+}
+const _viewWords48 = viewWords;
+viewWords = function () {
+  if (ROUTE.arg) { location.replace("#/words"); return ""; }
+  return libBar("words") + `<section class="page-head"><h1>Thuật ngữ y khoa</h1></section><div style="margin-top:6px">${spView()}</div>`;
+};
+document.addEventListener("input", e => { if (e.target && e.target.id === "spsearch") { SPQ = e.target.value; const b = document.getElementById("splist"); if (b) b.innerHTML = spSearchHtml(); } });
 /* ---- Thoát hoặc Quay lại từ bài luyện về đúng trang bạn vừa đi vào (không luôn về trang Luyện tập) ---- */
 let LAST_PAGE = "";
 addEventListener("hashchange", () => { const h = location.hash; if (h && !/^#\/(practice|review\/go|lesson|learn|quiz|placement)(\/|$)/.test(h) && !/^#\/clinic\/./.test(h)) LAST_PAGE = h; });
