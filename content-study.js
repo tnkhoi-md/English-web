@@ -45299,6 +45299,7 @@ const I18N_EN = {
 "Nghe chậm ×0,75": "Slow ×0.75",
 "Hiện từ": "Show the word",
 "Hiện lời thoại": "Show the script",
+"Không biết": "I don't know",
 "Cấu tạo từ": "Word structure",
 "Thuật ngữ ghép từ các mảnh": "Terms built from parts",
 "{#1} từ, học như thẻ từ vựng": "{1} words, studied like vocabulary cards",

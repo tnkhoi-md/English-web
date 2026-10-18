@@ -2,9 +2,9 @@
 
 Hệ thống tự học tiếng Anh phổ thông (từ A1 đến C1) và tiếng Anh y khoa, chạy hoàn toàn trong trình duyệt: không cần máy chủ, không cần tài khoản. Dữ liệu học nằm trên thiết bị của bạn, có thể đồng bộ giữa các thiết bị và dùng được khi mất mạng.
 
-Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.48.17.
+Xây dựng bởi Nguyên Khôi. © KhoiTN-MD.
 
-## Nội dung hiện có
+## Nội dung
 
 | Phần | Quy mô |
 |---|---|
@@ -56,7 +56,13 @@ Xây dựng bởi Nguyên Khôi. © KhoiTN-MD. Phiên bản 4.48.17.
 - Giọng đọc: âm thanh Mỹ thu sẵn cho nội dung chính; từ đơn dùng giọng người thật khi có; còn lại là giọng máy của thiết bị. Chọn giọng Anh-Mỹ hoặc Anh-Anh, đổi tốc độ.
 - Chế độ ngoại tuyến (service worker): lưu giao diện và nội dung để học khi mất mạng; có nút tải trước toàn bộ âm thanh.
 - Thêm vào màn hình chính của điện thoại và máy tính bảng như một ứng dụng (có biểu tượng riêng).
-- Đồng bộ thiết bị qua GitHub Gist, sao lưu và khôi phục bằng tệp.
+- Sao lưu và khôi phục bằng tệp.
+
+**Đồng bộ giữa các thiết bị**
+- Đồng bộ qua GitHub Gist. Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained token trên GitHub với duy nhất quyền **Gists: Read and write**, dán vào ứng dụng. Ứng dụng tạo một Gist bí mật và gộp dữ liệu hai chiều khi mở ứng dụng, mỗi 3 phút và khi rời trang. Trên thiết bị thứ hai, dán cùng mã.
+- Thẻ ôn lấy bản ôn gần nhất, điểm lấy mức cao nhất, từ “đã biết” lấy hợp của hai bên, thời gian học cộng theo từng thiết bị, cài đặt lấy bản sửa sau cùng.
+- Mã truy cập chỉ lưu trên thiết bị, không nằm trong tệp sao lưu hay trong Gist. Đồng bộ chỉ hoạt động trên GitHub Pages hoặc khi mở tệp trực tiếp.
+- Cỡ chữ, thu gọn menu, bộ lọc và bài luyện tập đang làm dở chỉ lưu theo từng thiết bị, không đồng bộ.
 
 ## Nguồn học liệu
 
@@ -64,55 +70,10 @@ Danh sách này cũng hiển thị trong mục **Góc tác giả** của ứng d
 
 - **Nội dung do tác giả biên soạn**: từ vựng (ví dụ, nghĩa, định nghĩa), bài học, câu hỏi ngữ pháp, bài đọc, bài nghe, tình huống nói, mẫu viết, ca bệnh và đề viết nói được viết mới cho ứng dụng, không sao chép từ đề thi hay sách giáo khoa. Danh sách từ đối chiếu cấp độ với khung CEFR và các danh mục từ phổ biến (Oxford 3000, NGSL, TSL) chỉ như danh mục kiểm tra, không sao chép định nghĩa.
 - **Âm thanh thu sẵn**: giọng Mỹ tổng hợp bằng bộ giọng mã nguồn mở Piper (en_US lessac và ryan), lưu thành tệp mp3 tên theo bài.
-- **Phiên âm IPA**: tạo bằng espeak-ng rồi chuẩn hóa về kiểu từ điển, mang tính tham khảo; có thể sửa trong `content-patch.js`.
+- **Phiên âm IPA**: tạo bằng espeak-ng rồi chuẩn hóa về kiểu từ điển, mang tính tham khảo.
 - **Giọng người thật cho từ đơn**: lấy qua [Free Dictionary API](https://dictionaryapi.dev) (dữ liệu Wiktionary và Wikimedia Commons, giấy phép CC BY-SA); khi không có bản ghi hoặc mất mạng, ứng dụng dùng giọng máy.
 - **Định dạng đề thi** tham khảo từ trang chính thức: [TOEIC (ETS)](https://www.ets.org/toeic/about/listening-reading.html), [IELTS](https://ielts.org), [Cambridge English](https://www.cambridgeenglish.org), [VSTEP (ĐHQG Hà Nội)](https://vstep.vnu.edu.vn/test-format/).
 - **Nguồn mở để học thêm** (giấy phép cho phép dùng lại kèm ghi công): VOA Learning English, MedlinePlus, NHS, Project Gutenberg, Tatoeba, Simple English Wikipedia và Wikibooks (CC BY-SA). Báo cáo chi tiết về giấy phép nằm trong `NGHIEN-CUU-NGUON-MO.md`.
-
-## Cấu trúc tệp
-
-| Tệp hoặc thư mục | Vai trò |
-|---|---|
-| `index.html` | Trang chính, nạp các tệp script theo đúng thứ tự (có tham số `?v=` để làm mới bộ nhớ đệm) |
-| `styles.css` | Giao diện (sáng, tối, thiết bị di động) |
-| `app.js` | Toàn bộ mã ứng dụng, tự khởi động ở cuối tệp |
-| `sw.js` | Chế độ ngoại tuyến; hằng `VERSION` phải trùng với `?v=` trong `index.html` |
-| `manifest.webmanifest`, `logo.svg`, `icons/` | Thông tin ứng dụng cài được và biểu tượng |
-| `content-lessons.js` | Bài học viết tay, ca bệnh ảo, hình vị, tình huống phòng khám |
-| `content-library.js` | Thư viện từ vựng phổ thông, luyện thi và y khoa |
-| `content-study.js` | Ngữ pháp, lộ trình và các chặng, ngân hàng bài tập, 44 âm, bài đọc, bài nghe hiểu, dữ liệu luyện đề, bản dịch giao diện tiếng Anh |
-| `content-gx.js` | Lỗi người Việt hay mắc và bảng so sánh dạng dễ nhầm cho từng điểm ngữ pháp |
-| `content-grammar2.js`, `content-grammar3.js`, `content-grammar4.js` | Các điểm ngữ pháp bổ sung (A1 đến C1) |
-| `content-defs-vi.js`, `content-examples.js` | Bản dịch định nghĩa và câu ví dụ của từ vựng |
-| `content-vocab2.js` | Bộ từ vựng cách dùng từ: kết hợp động từ, từ với giới từ, từ dễ nhầm, phrasal verb, tiền tố và hậu tố, câu giao tiếp |
-| `content-med2.js`, `content-spec.js`, `content-units-med.js` | Bổ sung từ vựng y khoa; các chặng y khoa chia nhỏ |
-| `content-ipa.js`, `content-patch.js` | Phiên âm IPA và các chỉnh sửa nhỏ |
-| `content-listen2.js`, `content-listen3.js`, `content-reading2.js`, `content-reading3.js`, `content-speaking.js`, `content-dictation.js` | Bài nghe hiểu, bài đọc, tình huống Luyện nói, câu nghe chép |
-| `audio-map.js` | Bảng tra từ câu và giọng đọc sang đường dẫn tệp âm thanh |
-| `audio-ten-1` … `audio-ten-5`, `phan-1` … `phan-9` | Các tệp mp3 thu sẵn, đặt tên theo bài (ví dụ `doc/a2-a04-at-the-ticket-office.mp3`); đừng đổi tên hay di chuyển, vì `audio-map.js` trỏ tới đúng các vị trí này |
-| `index-single-file.html` | Bản gộp một tệp (không kèm âm thanh), dùng để mở thử hoặc dự phòng |
-| `NGHIEN-CUU-NGUON-MO.md` | Báo cáo nghiên cứu nguồn mở và giấy phép |
-
-Không đổi thứ tự các thẻ `<script>` trong `index.html`: các tệp `content-*.js` và `audio-map.js` phải nạp trước `app.js`.
-
-## Đăng lên GitHub Pages và cập nhật
-
-1. Trên bản đang chạy, vào Cài đặt, chọn tải tệp sao lưu (phòng khi cần).
-2. Tải các tệp thay đổi lên nhánh `main` (kéo thả trên giao diện web của GitHub). Tải âm thanh trước, mã sau. Tối đa khoảng 90 tệp mỗi lần kéo thả.
-3. Bật GitHub Pages cho nhánh `main`, thư mục gốc.
-4. Dữ liệu học cũ được giữ nguyên và tự nâng cấp. Mỗi lần phát hành nên đổi `VERSION` trong `sw.js` và tham số `?v=` trong `index.html` cho cùng một số, để máy xóa bộ nhớ đệm cũ. Sau khi cập nhật, mở trang hai lần hoặc tải lại cứng (Ctrl+Shift+R).
-
-## Đồng bộ giữa các thiết bị
-
-Vào Cài đặt, mở nhóm Đồng bộ thiết bị, tạo một fine-grained token trên GitHub với duy nhất quyền **Gists: Read and write**, dán vào ứng dụng. Ứng dụng tạo một Gist bí mật `tnkhoi-english-sync.json` và gộp dữ liệu hai chiều khi mở ứng dụng, mỗi 3 phút và khi rời trang. Trên thiết bị thứ hai, dán cùng mã. Quy tắc gộp: thẻ ôn lấy bản ôn gần nhất, điểm lấy mức cao nhất, từ “đã biết” lấy hợp của hai bên, thời gian học cộng theo từng thiết bị, cài đặt lấy bản sửa sau cùng. Mã truy cập chỉ lưu trên thiết bị, không nằm trong tệp sao lưu hay trong Gist. Đồng bộ chỉ hoạt động trên GitHub Pages hoặc khi mở tệp trực tiếp.
-
-Một số dữ liệu chỉ lưu theo từng thiết bị và không đồng bộ: cỡ chữ, thu gọn menu, bộ lọc, bài luyện tập đang làm dở.
-
-## Thêm nội dung
-
-- **Từ vựng**: mỗi dòng trong `content-library.js` có dạng `từ|từ loại|nghĩa|câu ví dụ`; thêm vào đúng cấp (`A1` … `C1`, hoặc `T1`/`T2` cho y khoa) của chủ đề. Mã thẻ ôn tính theo mã chủ đề và chính tả của từ, nên đừng đổi `id` chủ đề hay sửa chính tả từ đã có người học. Định nghĩa, bản dịch định nghĩa và ví dụ nằm ở `WORD_DEFS`, `WORD_DEFS_VI` và `WORD_EX` (khóa dạng `chủ-đề:từ`).
-- **Bài tập ngữ pháp**: mỗi dòng của `GRAMMAR_BANK` là một câu hỏi: `c|câu có ___|A / B / C / D|chỉ số đúng|giải thích|A=>vì sao A sai;;B=>…` (chọn đáp án), `x|Chọn câu đúng|câu 1 / câu 2 / câu 3|chỉ số|giải thích`, `t|câu có ___ (gợi ý)|đáp án 1;đáp án 2|giải thích` (gõ), `f|câu có lỗi|từ sai|sửa thành|giải thích` (tìm lỗi), `o|câu hoàn chỉnh|giải thích` (sắp xếp). Chỉ số bắt đầu từ 0, mỗi câu trắc nghiệm có đúng một đáp án hợp lệ.
-- **Bài nghe, bài đọc, tình huống nói, câu nghe chép**: thêm vào các tệp `content-listen2.js`, `content-listen3.js`, `content-reading2.js`, `content-reading3.js`, `content-speaking.js`, `content-dictation.js` theo cấu trúc dữ liệu đã có. Muốn có giọng thu sẵn, tạo tệp mp3 rồi thêm một dòng vào `audio-map.js`; thiếu tệp thì ứng dụng tự đọc bằng giọng máy.
 
 ## Giới hạn
 

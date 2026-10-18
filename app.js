@@ -1322,7 +1322,7 @@ sanitize = function (raw) {
   return s;
 };
 /* 4.46.0: sổ lỗi sai (S.err) phải nằm trong chuỗi sanitize/merge từ sớm để các lần load/save sau không làm mất */
-const ERR_TYPES = ["c", "x", "t", "f", "o", "m", "r", "l", "s", "au", "sy"], ERR_BOX = [1, 3, 7, 14, 30], ERR_MAX = 400;
+const ERR_TYPES = ["c", "x", "t", "f", "o", "m", "r", "l", "s", "au", "sy", "so", "mp", "cf", "dc", "w", "po", "wf", "p"], ERR_BOX = [1, 3, 7, 14, 30], ERR_MAX = 400;
 const _fresh46 = fresh; fresh = () => { const s = _fresh46(); s.err = {}; s.errGrad = 0; return s; };
 const _san46 = sanitize;
 sanitize = function (raw) {
@@ -2195,7 +2195,7 @@ function startPractice(arg) {
 const gapify = (q, fill) => esc(q).replace("___", `<span class="gap">${fill ? esc(fill) : "&nbsp;"}</span>`);
 function pxBody(it, st) {
   const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. ${PX_LABEL[it.t][0].toUpperCase() + PX_LABEL[it.t].slice(1)}</span>`;
-  const opts = (en) => `<div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} ${en ? 'lang="en"' : ""}>${esc(o)}</button>`; }).join("")}</div>`;
+  const opts = (en) => `<div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} ${en ? 'lang="en"' : ""}>${esc(o)}</button>`; }).join("")}${idkBtn("pxPick","data-o",st.done)}</div>`;
   const input = (ph) => `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="pxCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="${ph}" aria-label="Câu trả lời"><button class="btn primary" data-act="pxCheck" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>`;
   let body = "";
   if (it.t === "c") body = `<p class="cloze" lang="en">${gapify(it.q, st.done ? it.opts[it.a] : "")}</p>${opts(true)}`;
@@ -2575,7 +2575,7 @@ const _pxBody45 = pxBody;
 pxBody = function (it, st) {
   if (!NEWT[it.t]) return _pxBody45(it, st);
   const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. ${capW(PX_LABEL[it.t])}</span>`;
-  const opts = () => `<div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}</div>`;
+  const opts = () => `<div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}${idkBtn("pxPick","data-o",st.done)}</div>`;
   const input = ph => `<div class="row"><input class="field" id="pxIn" style="flex:1;min-width:200px" value="${esc(st.val || "")}" data-enter="pxCheck" ${st.done ? "disabled" : "data-autofocus"} autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" placeholder="${ph}" aria-label="Câu trả lời"><button class="btn primary" data-act="pxCheck" ${st.done ? "disabled" : ""}>Kiểm tra</button></div>`;
   let body = "";
   if (it.t === "k") body = `${rkBlock(it)}${readPassage(it)}<p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p>${opts()}`;
@@ -3047,7 +3047,7 @@ viewUnit = function () {
    trang Giọng đọc, Thư viện 44 âm tiếng Anh.
    Nạp SAU app-v43.js; gọi initApp() ở cuối file.
    ============================================================ */
-APP.version = "4.48.17"; APP.build = "07.10.26";
+APP.version = "4.48.20"; APP.build = "07.10.26";
 const PH_BY = Object.fromEntries(PHONEMES.map(p => [p.id, p]));
 
 /* ---------------- State ---------------- */
@@ -3409,7 +3409,7 @@ pxBody = function (it, st) {
   const lbl = `<span class="step-kind">${PX.i + 1}/${PX.items.length}. ${capW(PX_LABEL[it.t])}</span>`;
   let body = "";
   if (it.t === "wf") body = `<p class="muted">Điền dạng đúng của từ cho sẵn vào chỗ trống.</p><p class="cloze" lang="en">${gapify(it.s, st.done ? it.ans[0] : "")}</p><p style="margin:10px 0"><span class="keybox" lang="en">${esc(it.root)}</span></p>${pxInput(st, "Gõ từ đã biến đổi")}`;
-  else if (it.t === "au") body = `<p class="muted small">${esc(it.setTitle)}: nghe rồi chọn đáp án. Bạn có thể nghe lại.</p><div class="row"><button class="btn primary" data-act="pxPlayAu">${ic("speaker", 18)} Nghe</button><button class="btn" data-act="pxShowTx">Hiện lời thoại</button></div>${st.tx && !st.done ? `<div class="soft au-tx" lang="en">${it.script.map(l => `<p><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div>` : ""}<p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p><div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}</div>${st.done ? `<details class="ex-group"><summary><span class="grow"><b>Bản ghi</b></span></summary><div class="stack" lang="en" style="padding:0 2px 10px">${it.script.map(l => `<p style="margin:2px 0"><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div></details>` : ""}`;
+  else if (it.t === "au") body = `<p class="muted small">${esc(it.setTitle)}: nghe rồi chọn đáp án. Bạn có thể nghe lại.</p><div class="row"><button class="btn primary" data-act="pxPlayAu">${ic("speaker", 18)} Nghe</button><button class="btn" data-act="pxShowTx">Hiện lời thoại</button></div>${st.tx && !st.done ? `<div class="soft au-tx" lang="en">${it.script.map(l => `<p><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div>` : ""}<p class="q" lang="en" style="margin-top:12px">${esc(it.q)}</p><div class="choices">${it.opts.map((o, k) => { const cls = st.done ? (k === it.a ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="pxPick" data-o="${k}" ${st.done ? "disabled" : ""} lang="en">${esc(o)}</button>`; }).join("")}${idkBtn("pxPick","data-o",st.done)}</div>${st.done ? `<details class="ex-group"><summary><span class="grow"><b>Bản ghi</b></span></summary><div class="stack" lang="en" style="padding:0 2px 10px">${it.script.map(l => `<p style="margin:2px 0"><b>${esc(l[0])}:</b> ${esc(l[1])}</p>`).join("")}</div></details>` : ""}`;
   else if (it.t === "so") {
     if (!st.pool) { st.tiles = it.sents.slice(); do { st.pool = shuffle(st.tiles.map((x, k) => k)); } while (st.tiles.length > 2 && st.pool.every((v, k) => v === k)); st.ans = []; }
     body = `<p class="muted">${esc(it.title || "")} Chạm các câu theo đúng thứ tự để tạo thành đoạn văn hợp lý.</p><ol class="so-ans" lang="en">${st.ans.map((k, j) => `<li><button class="tile sent" data-act="pxOut" data-j="${j}" ${st.done ? "disabled" : ""}>${esc(st.tiles[k])}</button></li>`).join("") || `<li class="muted small">Chạm các câu bên dưới.</li>`}</ol>
@@ -3677,7 +3677,7 @@ function viewRevMode() {
   const info = cardInfo(R.cur), c = S.cards[R.cur], w = info.w, m = R.mode, st = R.mst, left = R.queue.length + 1;
   if (!st.ready) revPrepare(info, m, st);
   if (!st.played && !st.done && (m === "lmc" || m === "ltype")) { st.played = true; setTimeout(() => speakNow(w.w), 300); }
-  const optsHtml = () => `<div class="choices">${st.opts.map((o, k) => { const cls = st.done ? (o.r ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="rvPick" data-o="${k}" ${st.done ? "disabled" : ""} ${m === "mcvi" || m === "lmc" || m === "mcdef" ? "" : 'lang="en"'}>${esc(o.t)}</button>`; }).join("")}</div>`;
+  const optsHtml = () => `<div class="choices">${st.opts.map((o, k) => { const cls = st.done ? (o.r ? " right" : st.pick === k ? " wrong" : "") : ""; return `<button class="choice${cls}" data-act="rvPick" data-o="${k}" ${st.done ? "disabled" : ""} ${m === "mcvi" || m === "lmc" || m === "mcdef" ? "" : 'lang="en"'}>${esc(o.t)}</button>`; }).join("")}${idkBtn("rvPick","data-o",st.done)}</div>`;
   let body = "";
   if (m === "mcvi") body = `<div class="flash"><div class="row between" style="align-items:flex-start">${specimen(w)}${hear(w.w)}</div>${optsHtml()}</div>`;
   else if (m === "lmc") body = `<div class="flash"><div class="row"><button class="btn primary" data-act="rvPlay">${ic("speaker", 18)} Nghe từ</button></div>${optsHtml()}</div>`;
@@ -5004,7 +5004,7 @@ viewPlacement = function () {
       <div class="row"><button class="btn primary" data-act="plApply">Đặt ${r.lvl === "A0" ? "khởi đầu" : r.lvl} làm trình độ hiện tại</button>${r.unit ? `<button class="btn" data-act="plApplyGo">Đặt và mở chặng ${esc(r.unit.code)}</button>` : ""}<button class="btn quiet" data-act="plRetry">Làm lại</button><a class="btn quiet" href="#/goals">Về Mục tiêu</a></div></article></div>`;
   }
   const it = PL.items[PL.i], k = it.kind || "v", part = { v: "Phần 1/3. Từ vựng: chọn nghĩa đúng", g: "Phần 2/3. Ngữ pháp: chọn đáp án đúng", l: "Phần 3/3. Nghe: chọn đáp án đúng" }[k];
-  const opts = `<div class="choices">${it.opts.map((o, i) => `<button class="choice" data-act="plPick" data-i="${i}" ${k !== "v" ? 'lang="en"' : ""}>${esc(o)}</button>`).join("")}</div>`;
+  const opts = `<div class="choices">${it.opts.map((o, i) => `<button class="choice" data-act="plPick" data-i="${i}" ${k !== "v" ? 'lang="en"' : ""}>${esc(o)}</button>`).join("")}${idkBtn("plPick","data-i")}</div>`;
   let body;
   if (k === "v") body = `<p class="q" lang="en" style="font-size:30px">${esc(it.w.w)}</p>${opts}`;
   else if (k === "g") body = `<p class="cloze" lang="en">${it.cloze ? gapify(it.q, "") : esc(it.q)}</p>${opts}`;
@@ -5128,6 +5128,7 @@ viewLearn = function () {
   const p = medPartsFor(LN.words[LN.i]); return p ? h.replace(/(<p style="font-size:24px;font-weight:600">[^<]*<\/p>)/, "$1" + p) : h;
 };
 /* Trang chủ đề y khoa: đường dẫn quay lại về Thuật ngữ y khoa */
+const idkBtn = (act, attr, done) => done ? "" : `<button class="choice idk" data-act="${act}" ${attr}="-1">Không biết</button>`;
 const _viewLibrary48 = viewLibrary;
 viewLibrary = function () {
   const h = _viewLibrary48(), t = ROUTE.arg && LIB_BY[ROUTE.arg];
@@ -5161,6 +5162,50 @@ startPractice = function (arg) {
   const ok = _startPractice47(arg);
   if (ok && PX && /^e-/.test(arg || "") && !/^e-tp-/.test(arg) && LAST_PAGE && LAST_PAGE !== "#/review" && !/^#\/practice/.test(LAST_PAGE)) PX.back = LAST_PAGE;
   return ok;
+};
+/* ---- 4.48.19: Không biết ở mọi bài tập không có đáp án chọn sẵn: hiện đáp án kèm giải thích, rồi đưa câu đó vào sổ ôn lỗi ---- */
+const IDK_SKIP = ["n", "sy", "k"];
+ACT.pxIdk = function () { const st = PX && PX.st[PX.i]; if (!st || st.done) return; st.dk = true; pxMark(false); };
+const _pxBody419 = pxBody;
+pxBody = function (it, st) {
+  const h = _pxBody419(it, st);
+  if (st.done || IDK_SKIP.includes(it.t) || /^tp:/.test(it.src || "") || (it.opts && typeof it.a === "number")) return h;
+  return h + `<div class="row idk-row"><button class="btn quiet small" data-act="pxIdk">Không biết</button></div>`;
+};
+/* 4.48.20: Sau khi trả lời, bỏ khung ô xáo trộn của bài sắp xếp để không còn khoảng trắng thừa; khi bấm Không biết thì hiện đúng thứ tự. */
+const _pxBody420 = pxBody;
+pxBody = function (it, st) {
+  const h = _pxBody420(it, st);
+  if (!st.done || (it.t !== "so" && it.t !== "o")) return h;
+  if (!st.ans || st.ans.length) return h.replace(/<div class="tiles(?: sents)?"[^>]*>[\s\S]*?<\/div>/, "");
+  const shown = it.t === "o" ? it.s.split(/\s+/).map(x => `<button class="tile" disabled lang="en">${esc(x)}</button>`).join("") : it.sents.map(x => `<li><button class="tile sent" disabled lang="en">${esc(x)}</button></li>`).join("");
+  return h.replace(/<div class="tiles(?: sents)?"[^>]*>[\s\S]*?<\/div>/, "").replace(/<span class="muted small" style="padding:8px">Chạm các ô bên dưới theo thứ tự\.<\/span>|<li class="muted small">Chạm các câu bên dưới\.<\/li>/, shown);
+};
+const _errText419 = errText, _errAns419 = errAns, _itemAnswer419 = itemAnswer;
+errText = function (it) {
+  const t = it.t;
+  if (t === "so") return it.title || "Sắp xếp đoạn văn";
+  if (t === "mp") return it.pairs.map(p => p[0]).join(", ");
+  if (t === "cf") return it.cats.join(" / ");
+  if (t === "dc" || t === "wf") return it.s;
+  if (t === "w") return it.s1;
+  if (t === "po" || t === "p") return `${(it.pass && it.pass.title) || "Điền đoạn văn"}, chỗ ${(it.gap || 0) + 1}`;
+  return _errText419(it);
+};
+errAns = function (it) {
+  const t = it.t;
+  if (t === "so" || t === "mp" || t === "cf") return itemAnswer(it);
+  if (t === "p") return it.opts[it.a];
+  if (t === "dc") return it.s;
+  if (t === "po" || t === "wf" || t === "w") return it.ans[0];
+  return _errAns419(it);
+};
+itemAnswer = function (it) {
+  if (it.t === "so") return it.sents.join(" ");
+  if (it.t === "mp") return it.pairs.map(([en, vi]) => `${en} = ${vi}`).join("; ");
+  if (it.t === "cf") return it.items.map(([w, c]) => `${w} → ${it.cats[c]}`).join("; ");
+  if (it.t === "dc") return it.s;
+  return _itemAnswer419(it);
 };
 initApp();
 if (syncCfg().token && syncCfg().auto !== false) setTimeout(() => syncNow(false), 1500);

@@ -1242,3 +1242,7 @@ body.mute [data-act="say"], body.mute [data-act="pxPlay"], body.mute [data-act="
 .lw-pt{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--rule);border-radius:8px;padding:1px 8px;background:var(--surface,#fff)}
 .lw-pt b{color:#7a4fd0}.lw-pt small{color:var(--muted);font-size:12px}
 .lw-tk{font-style:italic;color:var(--ink)}
+
+.choice.idk{border-style:dashed;color:var(--muted,#6b7686);background:transparent;font-style:italic}
+.choice.idk:hover{color:var(--ink,#17202d)}
+.idk-row{margin-top:10px}
